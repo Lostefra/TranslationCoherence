@@ -95,16 +95,18 @@ def extract_synset(w):
                     except WordNetError:
                         return None
 
-#return all the synonyms of all the possible meanings of word (return a list of strings) 
+
+# return all the synonyms of all the possible meanings of word (return a list of strings)
 def get_word_synonyms(word):
     return [str(lemma.name()) for syn_set in wordnet.synsets(word) for lemma in syn_set.lemmas()]
 
-#find the pairs of synonyms in the 2 graphs
+
+# find the pairs of synonyms in the 2 graphs
 def find_synonyms(g2, g1, n, result_graph):
-    #extract the set of IRI and their corresponding word from the graphs
+    # extract the set of IRI and their corresponding word from the graphs
     g1_words = extract_words(g1)
     g2_words = extract_words(g2)
-    #for each pair of words, check if they are synonyms
+    # for each pair of words, check if they are synonyms
     for iri1, word1 in g1_words:
         g1_synonyms = get_word_synonyms(word1)
         for iri2, word2 in g2_words:
@@ -112,9 +114,9 @@ def find_synonyms(g2, g1, n, result_graph):
             lemma2 = lemmatizer.lemmatize(word2)
             if word1 != word2 and lemma2 in g1_synonyms:
                 print(word1, word2)
-                #g2_synonyms = get_word_synonyms(word2)
-                #print(word1, "has synonyms ", g1_synonyms)
-                #print(word2, "has synonyms ", g2_synonyms)
+                # g2_synonyms = get_word_synonyms(word2)
+                # print(word1, "has synonyms ", g1_synonyms)
+                # print(word2, "has synonyms ", g2_synonyms)
                 result_graph.add((iri1, n.similar_to, iri2))
 
 def synonyms1(g2, g1, n, result_graph):
