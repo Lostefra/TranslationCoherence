@@ -11,6 +11,6 @@ UNWANTED = ["http://www.ontologydesignpatterns.org/ont/fred/pos.owl",
             "http://www.essepuntato.it/2008/12/earmark",
             "http://www.ontologydesignpatterns.org/ont/cnlp/dependencies.owl",
             "http://www.ontologydesignpatterns.org/ont/vn/data",
-            "http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl",
+            # "http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl",
             TEXTUAL_REFERENCE_PREFIX,
             "ObjectProperty"]

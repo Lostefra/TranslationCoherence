@@ -49,7 +49,15 @@ def sameAs_equivalentClass_transitivity(g1, g2, n, result_graph):
 #  1) add checks for instances (i.e. propagate the equivalence only if there exists
 #       a single individual for the class, for example)
 #  2) add more starting point (not just sameAs and equivalentClass)
-def find_alias(g1, g2, n, result_graph):
+#  3) decide how to handle equivalence:
+#       a) remove triples
+#       b) adding connection
+#       c) (I think it's the best) just keep tracks of the equivalent nodes and the frontier's nodes.
+#           In such a way we'll just check the variations classes on the neighbours nodes of the
+#           frontier's nodes. As soon the variation is classified, then we restarted the equivalence
+#           propagation until it stops; then variation classification and so on and so forth until
+#           all the nodes (optimistically speaking, maybe almost all) are either equivalent or different
+def find_equivalence(g1, g2, n, result_graph):
     # Check alias via "owl:sameAs" and "owl:equivalentClass", exploiting a lot of stuff
     nodes_to_expand_queue = []
     alias_found = []
@@ -59,8 +67,10 @@ def find_alias(g1, g2, n, result_graph):
         for s1, o1 in g1_property:
             for s2, o2 in g2_property:
                 if prefix(o2, g2) == prefix(o1, g1):
-                    # print(s1, " = ", s2)
-                    result_graph.add((s1, n.alias, s2))
+                    result_graph.add((s1, constants.SAME_AS_PREDICATE, s2))
+                    # result_graph.remove((s1, property, o1))
+                    # result_graph.remove((s2, property, o2))
+                    # print("Equivalent:\n\t", s1, " ", property, " ", o1, "\n\t", s2, " ", property, " ", o2)
                     nodes_to_expand_queue.append((s1, s2))
                     alias_found = [(s1, s2), (o1, o2)]
     # the pair just found will be the starting point for the search:
@@ -68,14 +78,19 @@ def find_alias(g1, g2, n, result_graph):
     # "equal" according to some criteria, and propagate the equivalence
     # the starting pair is the equivalence found before
     while len(nodes_to_expand_queue):
-        elem1, elem2 = nodes_to_expand_queue.pop()
+        elem1, elem2 = nodes_to_expand_queue.pop(0)
         # check if a predicate-object equivalent pair exists
         for p1, o1 in g1.predicate_objects(elem1):
             for p2, o2 in g2.predicate_objects(elem2):
+                # if "bug_1" in str(elem1):
+                #     print("1: ", s1, p1, elem1)
+                #     print("2: ", s2, p2, elem2)
                 if (o1, o2) not in alias_found and prefix(p1, g1) == prefix(p2, g2) and p1 != constants.LABEL_PREDICATE \
                         and prefix(o1, g1) == prefix(o2, g2):
-                    # print(o1, " = ", o2)
-                    result_graph.add((o1, n.alias, o2))
+                    result_graph.add((o1, constants.SAME_AS_PREDICATE, o2))
+                    # result_graph.remove((elem1, p1, o1))
+                    # result_graph.remove((elem2, p2, o2))
+                    # print("Equivalent:\n\t", elem1, " ", p1, " ", o1, "\n\t", elem2, " ", p2, " ", o2)
                     nodes_to_expand_queue.append((o1, o2))
                     alias_found.append((o1, o2))
         # check if a subject-predicate equivalent pair exists
@@ -87,8 +102,10 @@ def find_alias(g1, g2, n, result_graph):
                     # label1 = g1.value(subject=s1, predicate=LABEL_PREDICATE, default=0)
                     # label2 = g2.value(subject=s2, predicate=LABEL_PREDICATE, default=0)
                     # if label1 and label2 and label1 == label2:
-                    # print(s1, " = ", s2)
-                    result_graph.add((s1, n.alias, s2))
+                    result_graph.add((s1, constants.SAME_AS_PREDICATE, s2))
+                    # result_graph.remove((s1, p1, elem1))
+                    # result_graph.remove((s2, p2, elem2))
+                    # print("Equivalent:\n\t", s1, " ", p1, " ", elem1, "\n\t", s2, " ", p2, " ", elem2)
                     nodes_to_expand_queue.append((s1, s2))
                     alias_found.append((s1, s2))
     return result_graph
@@ -228,7 +245,7 @@ def compare_graphs(g1, g2):
         indexes[name] = index_generator()
 
     # Populate result_graph by recognizing patterns on g1, g2
-    find_alias(g1, g2, n, result_graph)
+    find_equivalence(g1, g2, n, result_graph)
     # negative_verbs(g1, g2, n, result_graph, indexes)
     # negative_verbs(g2, g1, n, result_graph, indexes)
     # print("WordNet (synset)")
