@@ -1,23 +1,10 @@
 import rdflib.term
 from rdflib import Graph
-
-TEXTUAL_REFERENCE_PREFIX = "offset_"
-OFFSET_LABEL_PROPERTY = "http://www.w3.org/2000/01/rdf-schema#label"
-DENOTE_PROPERTY = "http://ontologydesignpatterns.org/cp/owl/semiotics.owl#denotes"
-HAS_INTERPRETANT_PROPERTY = "http://ontologydesignpatterns.org/cp/owl/semiotics.owl#hasInterpretant"
-LABEL_PROPERTY = rdflib.term.URIRef("rdfs:label")
-UNWANTED = ["http://www.ontologydesignpatterns.org/ont/fred/pos.owl",
-            "http://ontologydesignpatterns.org/cp/owl/semiotics.owl",
-            "http://www.essepuntato.it/2008/12/earmark",
-            "http://www.ontologydesignpatterns.org/ont/cnlp/dependencies.owl",
-            "http://www.ontologydesignpatterns.org/ont/vn/data",
-            "http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl",
-            TEXTUAL_REFERENCE_PREFIX,
-            "ObjectProperty"]
+import constants
 
 
 def wanted_triplet(s, p, o):
-    for unwanted in UNWANTED:
+    for unwanted in constants.UNWANTED:
         if unwanted in s or unwanted in p or unwanted in o:
             return False
     return True
@@ -58,26 +45,27 @@ def construct_text_references(g_in):
         g_out.add((s, p, o))
         # check if the subject is an offset in the ontology and collect information about:
         # the expression and the individual and/or the class related
-        if TEXTUAL_REFERENCE_PREFIX in s:
+        if constants.TEXTUAL_REFERENCE_PREFIX in s:
+            print(str(p))
             # text span
-            if str(p) == OFFSET_LABEL_PROPERTY:
+            if p == constants.LABEL_PREDICATE:
                 enriching_triples_labels[str(s)] = ' '.join((o.split('^')[0]).split('_'))
             # individual referenced by text span
-            if str(p) == DENOTE_PROPERTY:
+            if p == constants.DENOTE_PREDICATE:
                 enriching_triples_individuals[str(s)] = o
             # class referenced by text span
-            if str(p) == HAS_INTERPRETANT_PROPERTY:
+            if p == constants.HAS_INTERPRETANT_PREDICATE:
                 enriching_triples_classes[str(s)] = o
     # add triples found
     for key, label in enriching_triples_labels.items():
         individual_object = enriching_triples_individuals.get(key)
         if individual_object is not None:
-            g_out.add((individual_object, LABEL_PROPERTY, rdflib.Literal(label)))
-            # print(individual_object, " => ", label)
+            g_out.add((individual_object, constants.LABEL_PREDICATE, rdflib.Literal(label)))
+            print(individual_object, " => ", label)
         class_object = enriching_triples_classes.get(key)
         if class_object is not None:
-            g_out.add((class_object, LABEL_PROPERTY, rdflib.Literal(label)))
-            # print(class_object, " => ", label)
+            g_out.add((class_object, constants.LABEL_PREDICATE, rdflib.Literal(label)))
+            print(class_object, " => ", label)
     return g_out
 
 
