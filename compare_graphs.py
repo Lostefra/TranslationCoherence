@@ -52,11 +52,11 @@ def sameAs_equivalentClass_transitivity(g1, g2, n, result_graph):
 #  3) decide how to handle equivalence:
 #       a) remove triples
 #       b) adding connection
-#       c) (I think it's the best) just keep tracks of the equivalent nodes and the frontier's nodes.
-#           In such a way we'll just check the variations classes on the neighbours nodes of the
-#           frontier's nodes. As soon the variation is classified, then we restarted the equivalence
-#           propagation until it stops; then variation classification and so on and so forth until
-#           all the nodes (optimistically speaking, maybe almost all) are either equivalent or different
+#       c) (this doesn't exclude the previous two, but probably needed) keep tracks of the equivalent nodes and the
+#           frontier's nodes. In such a way we'll just check the variations classes on the neighbours nodes of the
+#           frontier's nodes, and compare just the potential differences (both for correctness and efficiency). As soon
+#           the variation is classified, then we restarted the equivalence propagation until it stops; then variation
+#           classification and so on and so forth until all the nodes are evaluated.
 def find_equivalence(g1, g2, n, result_graph):
     # Check alias via "owl:sameAs" and "owl:equivalentClass", exploiting a lot of stuff
     nodes_to_expand_queue = []
