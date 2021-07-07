@@ -28,7 +28,8 @@ def graph_bind(g_clean):
     g_clean.bind("rdf", "http://www.w3.org/1999/02/22-rdf-syntax-ns#")
     g_clean.bind("dul", "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#")
     g_clean.bind("vn.role", "http://www.ontologydesignpatterns.org/ont/vn/abox/role/")
-    g_clean.bind("boxer", "http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#")
+    g_clean.bind("boxer", "http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#")
+    g_clean.bind("boxing", "http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#")
     g_clean.bind("dbpedia", "http://dbpedia.org/resource/")
     g_clean.bind("transl_coher", "http://example.org/translation_coherence/")
 
