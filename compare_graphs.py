@@ -236,6 +236,60 @@ def synonyms2(g2, g1, n, result_graph):
                 if similarity > 0.8:
                     result_graph.add((iri1, n.similar_to, iri2))
 
+def dbpedia_equivalence(g1, g2, n, result_graph):
+    #Check if a dbpedia object appears in both ontologies, in one case as an individual and in the other as a class.
+    #In this case, add the triple (s, sameAs, o), where s is the fred object in a "owl:sameAs" relation with the dbpedia individual,
+    #and o is the instance of the fred object in a "owl:equivalentClass" relation with the dbpedia class (or viceversa).
+    
+    #Store pairs of objects to relate
+    #In the first list the order is g1,g2; in the second list the order is g2,g1
+    #(only useful to print)
+    to_match = [[],[]]
+    for s1,p1,o1 in g1:
+        if prefix(p1, g1) == "owl:equivalentClass":
+            #Check same object in a "owl:sameAs" relation
+            for s2,p2,o2 in g2:
+                if any(["dbpedia" in i for i in [prefix(s1, g1), prefix(s2, g2), prefix(o1, g1), prefix(o2, g2)]]):
+                    if prefix(s2, g2) == prefix(s1, g1) and ('dbpedia' in prefix(s1, g1)) and (prefix(p2, g2) == "owl:sameAs"):
+                        #To match: o2, instance of o1
+                        to_match[0].append(([i for i in g1.subjects(constants.TYPE_PREDICATE, o1)][0], o2))
+                    elif prefix(s2, g2) == prefix(o1, g1) and ('dbpedia' in prefix(o1, g1)) and (prefix(p2, g2) == "owl:sameAs"):
+                        #To match: o2, instance of s1
+                        to_match[0].append(([i for i in g1.subjects(constants.TYPE_PREDICATE, s1)][0], o2))
+                    elif prefix(o2, g2) == prefix(s1, g1) and ('dbpedia' in prefix(s1, g1)) and (prefix(p2, g2) == "owl:sameAs"):
+                        #To match: s2, instance of o1
+                        to_match[0].append(([i for i in g1.subjects(constants.TYPE_PREDICATE, o1)][0], s2))
+                    elif prefix(o2, g2) == prefix(o1, g1) and ('dbpedia' in prefix(o1, g1)) and (prefix(p2, g2) == "owl:sameAs"):
+                        #To match: s2, instance of s1
+                        to_match[0].append(([i for i in g1.subjects(constants.TYPE_PREDICATE, s1)][0], s2))
+    
+        elif prefix(p1, g1) == "owl:sameAs":
+            #Check same object in a "owl:equivalentClass" relation
+            for s2,p2,o2 in g2:
+                if any(["dbpedia" in i for i in [prefix(s1, g1), prefix(s2, g2), prefix(o1, g1), prefix(o2, g2)]]):
+                    if prefix(s2, g2) == prefix(s1, g1) and ('dbpedia' in prefix(s1, g1)) and (prefix(p2, g2) == "owl:equivalentClass"):
+                        #To match: o1, instance of o2
+                        to_match[1].append(([i for i in g2.subjects(constants.TYPE_PREDICATE, o2)][0], o1))
+                    elif prefix(s2, g2) == prefix(o1, g1) and ('dbpedia' in prefix(o1, g1)) and (prefix(p2, g2) == "owl:equivalentClass"):
+                        #To match: s1, instance of o2
+                        to_match[1].append(([i for i in g2.subjects(constants.TYPE_PREDICATE, o2)][0], s1))
+                    elif prefix(o2, g2) == prefix(s1, g1) and ('dbpedia' in prefix(s1, g1)) and (prefix(p2, g2) == "owl:equivalentClass"):
+                        #To match: o1, instance of s2
+                        to_match[1].append(([i for i in g2.subjects(constants.TYPE_PREDICATE, s2)][0], o1))
+                    elif prefix(o2, g2) == prefix(o1, g1) and ('dbpedia' in prefix(o1, g1)) and (prefix(p2, g2) == "owl:equivalentClass"):
+                        #To match: s1, instance of s2
+                        to_match[1].append(([i for i in g2.subjects(constants.TYPE_PREDICATE, s2)][0], s1))
+    
+    #Add matches found to result graph
+    #Pairs g1,g2
+    for s,o in to_match[0]:
+        print(prefix(s,g1), "owl:sameAs", prefix(o,g2))
+        result_graph.add((s, constants.SAME_AS_PREDICATE, o))
+    #Pairs g2,g1
+    for s,o in to_match[1]:
+        print(prefix(s,g2), "owl:sameAs", prefix(o,g1))
+        result_graph.add((s, constants.SAME_AS_PREDICATE, o))
+
 
 def compare_graphs(g1, g2):
     n = Namespace("http://example.org/translation_coherence/")
@@ -245,7 +299,7 @@ def compare_graphs(g1, g2):
         indexes[name] = index_generator()
 
     # Populate result_graph by recognizing patterns on g1, g2
-    find_equivalence(g1, g2, n, result_graph)
+    #find_equivalence(g1, g2, n, result_graph)
     # negative_verbs(g1, g2, n, result_graph, indexes)
     # negative_verbs(g2, g1, n, result_graph, indexes)
     # print("WordNet (synset)")
@@ -257,6 +311,9 @@ def compare_graphs(g1, g2):
     # print("GloVe")
     # synonyms2(g1, g2, n, result_graph)
     # print("-" * 150)  # #########################################################
+    print("DBPedia equivalence")
+    dbpedia_equivalence(g1, g2, n, result_graph)
+    print("-" * 150)  # #########################################################
 
     graph_bind(result_graph)
     return result_graph

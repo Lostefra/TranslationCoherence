@@ -10,7 +10,7 @@ for s, p, o in g_test:
 
 print("-" * 150)  # #########################################################
 
-g1 = build_graph("turtle/en_it_en_sentence2.ttl")
+g1 = build_graph("turtle/en_it_en_sentence1.ttl")
 print("EN -> IT -> EN")
 print("Number of triplets:", len(g1))
 for s, p, o in g1:
@@ -19,7 +19,7 @@ for s, p, o in g1:
 
 print("-" * 150)  # #########################################################
 
-g2 = build_graph("turtle/en_sentence2.ttl")
+g2 = build_graph("turtle/en_sentence1.ttl")
 print("EN")
 print("Number of triplets:", len(g2))
 for s, p, o in g2:
