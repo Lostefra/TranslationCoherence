@@ -1,7 +1,9 @@
+from pattern import pad_prefix
 from plot_graph import plot_graph
 from build_graph import build_graph
-from compare_graphs import pad_prefix, compare_graphs
+from compare_graphs import compare_graphs
 
+'''
 g_test = build_graph("turtle/test/this_is_a_test_all.ttl")
 print("Number of triplets:", len(g_test))
 for s, p, o in g_test:
@@ -9,8 +11,10 @@ for s, p, o in g_test:
 # plot_graph(g_test)
 
 print("-" * 150)  # #########################################################
+'''
 
-g1 = build_graph("turtle/en_it_en_sentence1.ttl")
+g1 = build_graph("turtle/en_it_en_sentence2.ttl")
+# g1 = build_graph("turtle/EN_IT_EN.ttl")
 print("EN -> IT -> EN")
 print("Number of triplets:", len(g1))
 for s, p, o in g1:
@@ -19,7 +23,8 @@ for s, p, o in g1:
 
 print("-" * 150)  # #########################################################
 
-g2 = build_graph("turtle/en_sentence1.ttl")
+g2 = build_graph("turtle/en_sentence2.ttl")
+# g2 = build_graph("turtle/EN.ttl")
 print("EN")
 print("Number of triplets:", len(g2))
 for s, p, o in g2:
