@@ -3,8 +3,7 @@ from build_graph import graph_bind
 
 import constants
 
-
-from pattern import negative_verbs, dbpedia_equivalence, find_synonyms, prefix, index_generator
+from pattern import negative_verbs, dbpedia_equivalence, find_synonyms, prefix, index_generator, lemmatizer
 
 
 # TODO avoid alias if object / subjects are already the same
@@ -13,14 +12,129 @@ def sameAs_equivalentClass_transitivity(g1, g2, n, result_graph):
     for s1, p1, o1 in g1:
         if prefix(p1, g1) == "owl:sameAs" or prefix(p1, g1) == "owl:equivalentClass":
             for s2, p2, o2 in g2:
-                if prefix(s2, g2) == prefix(s1, g1) and (prefix(p2, g2) == "owl:sameAs" or prefix(p2, g2) == "owl:equivalentClass"):
+                if prefix(s2, g2) == prefix(s1, g1) and (
+                        prefix(p2, g2) == "owl:sameAs" or prefix(p2, g2) == "owl:equivalentClass"):
                     result_graph.add((o2, n.alias, o1))
-                elif prefix(s2, g2) == prefix(o1, g1) and (prefix(p2, g2) == "owl:sameAs" or prefix(p2, g2) == "owl:equivalentClass"):
+                elif prefix(s2, g2) == prefix(o1, g1) and (
+                        prefix(p2, g2) == "owl:sameAs" or prefix(p2, g2) == "owl:equivalentClass"):
                     result_graph.add((o2, n.alias, s1))
-                elif prefix(o2, g2) == prefix(s1, g1) and (prefix(p2, g2) == "owl:sameAs" or prefix(p2, g2) == "owl:equivalentClass"):
+                elif prefix(o2, g2) == prefix(s1, g1) and (
+                        prefix(p2, g2) == "owl:sameAs" or prefix(p2, g2) == "owl:equivalentClass"):
                     result_graph.add((s2, n.alias, o1))
-                elif prefix(o2, g2) == prefix(o1, g1) and (prefix(p2, g2) == "owl:sameAs" or prefix(p2, g2) == "owl:equivalentClass"):
+                elif prefix(o2, g2) == prefix(o1, g1) and (
+                        prefix(p2, g2) == "owl:sameAs" or prefix(p2, g2) == "owl:equivalentClass"):
                     result_graph.add((s2, n.alias, s1))
+
+
+def has_enough_matches(node, label, node_triples, g1, g2):
+    tot = 0
+    new_starting_points = []
+    for s1, p1, o1 in node_triples:
+        label_subj = lemmatizer.lemmatize(g1.label(s1))
+        label_obj = lemmatizer.lemmatize(g1.label(o1))
+
+        if label_subj != "" and label_obj != "":
+            for s2, p2, o2 in g2:
+                if (label_subj, p1, label_obj) == (lemmatizer.lemmatize(g2.label(s2)), p2, lemmatizer.lemmatize(g2.label(o2))):
+                    if label == label_subj and not (o1, o2) in new_starting_points:
+                        tot += 1
+                        new_starting_points.append((o1, o2))
+                        break
+                    elif label == label_obj and not (s1, s2) in new_starting_points:
+                        tot += 1
+                        new_starting_points.append((s1, s2))
+                        break
+        elif label_subj == "" and label_obj != "" and is_class(s1, g1):
+            for s2, p2, o2 in g2:
+                if (s1, p1, label_obj) == (s2, p2, lemmatizer.lemmatize(g2.label(o2))):
+                    if node == s1 and not (o1, o2) in new_starting_points:
+                        tot += 1
+                        new_starting_points.append((o1, o2))
+                        break
+                    elif label == label_obj and not (s1, s2) in new_starting_points:
+                        tot += 1
+                        new_starting_points.append((s1, s2))
+                        break
+        elif label_subj != "" and label_obj == "" and is_class(o1, g1):
+            for s2, p2, o2 in g2:
+                if (label_subj, p1, o1) == (lemmatizer.lemmatize(g2.label(s2)), p2, o2):
+                    if label == label_subj and not (o1, o2) in new_starting_points:
+                        tot += 1
+                        new_starting_points.append((o1, o2))
+                        break
+                    elif node == o1 and not (s1, s2) in new_starting_points:
+                        tot += 1
+                        new_starting_points.append((s1, s2))
+                        break
+        elif label_subj == "" and label_obj == "" and is_class(s1, g1) and is_class(o1, g1):
+            for s2, p2, o2 in g2:
+                if (s1, p1, o1) == (s2, p2, o2):
+                    if node == s1 and not (o1, o2) in new_starting_points:
+                        tot += 1
+                        new_starting_points.append((o1, o2))
+                        break
+                    elif node == o1 and not (s1, s2) in new_starting_points:
+                        tot += 1
+                        new_starting_points.append((s1, s2))
+                        break
+
+    if tot < 4:
+        return []
+    else:
+        return new_starting_points
+
+
+def get_node_triples(node, g):
+    result = []
+    for s, p, o in g:
+        if (s == node or o == node) and p != constants.LABEL_PREDICATE:
+            result.append((s, p, o))
+    return result
+
+
+def is_class(obj, graph):
+    is_explicit_class = graph.value(subject=obj, predicate=constants.TYPE_PREDICATE, default=0) == constants.CLASS_OBJECT
+    is_subclass_of = graph.value(subject=obj, predicate=constants.SUBCLASS_PREDICATE, default=0) is not None
+    return is_explicit_class or is_subclass_of
+
+
+def find_starting_points(g1, g2, n, result_graph):
+    # Mark as starting_points all the nodes which have at least 3 relations equal in both graphs
+    starting_points, equivalence_found_1, equivalence_found_2 = [], [], []
+    '''
+    # Find alias via "owl:sameAs" and "owl:equivalentClass", these predicates are in relation with dbpedia IRI
+    # search for sameAs and equivalentClass to find equivalent objects in the two ontologies
+    for property in (constants.SAME_AS_PREDICATE, constants.EQUIVALENT_CLASS_PREDICATE):
+        g1_property, g2_property = g1.subject_objects(property), g2.subject_objects(property)
+        for s1, o1 in g1_property:
+            for s2, o2 in g2_property:
+                if prefix(o2, g2) == prefix(o1, g1):
+                    result_graph.add((s1, constants.SAME_AS_PREDICATE, s2))
+                    starting_points.append((s1, s2))
+                    equivalence_found_1 += [(s1, s2), (o1, o2)]
+    '''
+    for node in g1.all_nodes():
+        label = lemmatizer.lemmatize(g1.label(node))
+        # The centroid must have the same label in both graph, or must be the same class in both graph
+        if (label != "" and label in [lemmatizer.lemmatize(g2.label(node_2)) for node_2 in g2.all_nodes()]) or \
+                (label == "" and is_class(node, g1) and node in g2.all_nodes() and is_class(node, g2)):
+            # Get all g1 triples where node is present
+            node_triples = get_node_triples(node, g1)
+            # If the node has enough equal relations in both graphs, collect the relations' nodes
+            new_starting_points = has_enough_matches(node, label, node_triples, g1, g2)
+            if new_starting_points:
+                starting_points = starting_points + [(node, node)] + new_starting_points
+                print(prefix(node, g1))
+    # Remove duplicates
+    print(len(starting_points))
+    starting_points = list(set(starting_points))
+    print(len(starting_points))
+    for node in starting_points:
+        print(prefix(node[0], g1))
+        result_graph.add((node[0], constants.SAME_AS_PREDICATE, node[1]))
+    equivalence_found = list(map(list, zip(*starting_points)))
+    equivalence_found_g1, equivalence_found_g2 = equivalence_found[0], equivalence_found[1]
+    return starting_points, equivalence_found_g1, equivalence_found_g2
 
 
 # TODO:
@@ -36,56 +150,40 @@ def sameAs_equivalentClass_transitivity(g1, g2, n, result_graph):
 #           the variation is classified, then we restarted the equivalence propagation until it stops; then variation
 #           classification and so on and so forth until all the nodes are evaluated.
 def find_equivalence(g1, g2, n, result_graph):
-    # Check alias via "owl:sameAs" and "owl:equivalentClass", exploiting a lot of stuff
-    nodes_to_expand_queue = []
-    alias_found = []
-    # search for sameAs and equivalentClass to find equivalent objects in the two ontologies
-    for property in (constants.SAME_AS_PREDICATE, constants.EQUIVALENT_CLASS_PREDICATE):
-        g1_property, g2_property = g1.subject_objects(property), g2.subject_objects(property)
-        for s1, o1 in g1_property:
-            for s2, o2 in g2_property:
-                if prefix(o2, g2) == prefix(o1, g1):
-                    result_graph.add((s1, constants.SAME_AS_PREDICATE, s2))
-                    # result_graph.remove((s1, property, o1))
-                    # result_graph.remove((s2, property, o2))
-                    # print("Equivalent:\n\t", s1, " ", property, " ", o1, "\n\t", s2, " ", property, " ", o2)
-                    nodes_to_expand_queue.append((s1, s2))
-                    alias_found = [(s1, s2), (o1, o2)]
-    # the pair just found will be the starting point for the search:
-    # for each pair see if in the two ontologies there are predicate-object or subject-predicate
+    # starting_points are nodes from which propagate the equivalences
+    # equivalence_found are nodes which have a correspondence in both the graphs
+    starting_points, equivalence_found_g1, equivalence_found_g2 = find_starting_points(g1, g2, n, result_graph)
+
+    '''
+    print("-" * 150)
+    for node in equivalence_found_1:
+        print(prefix(node, g1))
+    '''
+
+    # TODO SAMEAS PROPAGATION
+    # for each pair of starting_points see if in the two ontologies there are predicate-object or subject-predicate
     # "equal" according to some criteria, and propagate the equivalence
     # the starting pair is the equivalence found before
-    while len(nodes_to_expand_queue):
-        elem1, elem2 = nodes_to_expand_queue.pop(0)
+    while len(starting_points):
+        elem1, elem2 = starting_points.pop(0)
         # check if a predicate-object equivalent pair exists
         for p1, o1 in g1.predicate_objects(elem1):
             for p2, o2 in g2.predicate_objects(elem2):
-                # if "bug_1" in str(elem1):
-                #     print("1: ", s1, p1, elem1)
-                #     print("2: ", s2, p2, elem2)
-                if (o1, o2) not in alias_found and prefix(p1, g1) == prefix(p2, g2) and p1 != constants.LABEL_PREDICATE \
+                if (o1, o2) not in equivalence_found and prefix(p1, g1) == prefix(p2,
+                                                                                  g2) and p1 != constants.LABEL_PREDICATE \
                         and prefix(o1, g1) == prefix(o2, g2):
                     result_graph.add((o1, constants.SAME_AS_PREDICATE, o2))
-                    # result_graph.remove((elem1, p1, o1))
-                    # result_graph.remove((elem2, p2, o2))
-                    # print("Equivalent:\n\t", elem1, " ", p1, " ", o1, "\n\t", elem2, " ", p2, " ", o2)
-                    nodes_to_expand_queue.append((o1, o2))
-                    alias_found.append((o1, o2))
+                    starting_points.append((o1, o2))
+                    equivalence_found.append((o1, o2))
         # check if a subject-predicate equivalent pair exists
         for s1, p1 in g1.subject_predicates(elem1):
             for s2, p2 in g2.subject_predicates(elem2):
-                if (s1, s2) not in alias_found and prefix(p1, g1) == prefix(p2, g2) and p1 != constants.LABEL_PREDICATE \
+                if (s1, s2) not in equivalence_found and prefix(p1, g1) == prefix(p2,
+                                                                                  g2) and p1 != constants.LABEL_PREDICATE \
                         and prefix(s1, g1) == prefix(s2, g2):
-                    # check if the labels are equal
-                    # label1 = g1.value(subject=s1, predicate=LABEL_PREDICATE, default=0)
-                    # label2 = g2.value(subject=s2, predicate=LABEL_PREDICATE, default=0)
-                    # if label1 and label2 and label1 == label2:
                     result_graph.add((s1, constants.SAME_AS_PREDICATE, s2))
-                    # result_graph.remove((s1, p1, elem1))
-                    # result_graph.remove((s2, p2, elem2))
-                    # print("Equivalent:\n\t", s1, " ", p1, " ", elem1, "\n\t", s2, " ", p2, " ", elem2)
-                    nodes_to_expand_queue.append((s1, s2))
-                    alias_found.append((s1, s2))
+                    starting_points.append((s1, s2))
+                    equivalence_found.append((s1, s2))
 
 
 def compare_graphs(g1, g2):
