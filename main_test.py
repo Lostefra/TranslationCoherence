@@ -1,7 +1,8 @@
-from pattern import pad_prefix
+from utility_functions import pad_prefix
 from plot_graph import plot_graph
 from build_graph import build_graph
 from compare_graphs import compare_graphs
+
 
 '''
 g_test = build_graph("turtle/test/this_is_a_test_all.ttl")
