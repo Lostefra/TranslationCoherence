@@ -143,15 +143,23 @@ def find_starting_points(g1, g2, lemmas, n, result_graph):
 
 
 # return True if the 2 nodes from the 2 graphs received in input are considered equivalent
+# (i.e they are connected with the same predicate, have the same lemma and are both individuals or class)
 def check_nodes_equivalence(g1, g2, lemmas, node1, p1, node2, p2, equivalences_found_g1, equivalences_found_g2):
-    if (node1 not in equivalences_found_g1) and (node2 not in equivalences_found_g2) and \
-            p1 == p2 and p1 != constants.LABEL_PREDICATE:
+    if p1 == p2 and p1 != constants.LABEL_PREDICATE:
         lemma1 = lemmas[str(g1.label(node1))]
         lemma2 = lemmas[str(g2.label(node2))]
         is_s1_class = is_class(node1, g1)
         is_s2_class = is_class(node2, g2)
         return (((not is_s1_class) and not is_s2_class) and lemma1 and lemma1 == lemma2) or \
                 (is_s1_class and is_s2_class and node1 == node2)
+    return False
+
+
+def add_equivalence(node1, node2, result_graph, starting_points, equivalences_found_g1, equivalences_found_g2):
+    result_graph.add((node1, constants.SAME_AS_PREDICATE, node2))
+    starting_points.append((node1, node2))
+    equivalences_found_g1.append(node1)
+    equivalences_found_g2.append(node2)
 
 
 # TODO:
@@ -171,11 +179,11 @@ def find_equivalence(g1, g2, lemmas, n, result_graph):
     # equivalences_found are nodes which have a correspondence in both the graphs
     starting_points, equivalences_found_g1, equivalences_found_g2 = find_starting_points(g1, g2, lemmas, n, result_graph)
 
-    '''
+
     print("-" * 150)
-    for node in equivalences_found_1:
-        print(prefix(node, g1))
-    '''
+    for node1, node2 in zip(equivalences_found_g1, equivalences_found_g2):
+        print(prefix(node1, g1), " = ", prefix(node2, g2))
+
 
     # TODO SAMEAS PROPAGATION
     # for each pair of starting_points see if in the two ontologies there are predicate-object or subject-predicate
@@ -186,19 +194,15 @@ def find_equivalence(g1, g2, lemmas, n, result_graph):
         # check if a predicate-object equivalent pair exists
         for p1, o1 in g1.predicate_objects(elem1):
             for p2, o2 in g2.predicate_objects(elem2):
-                if check_nodes_equivalence(g1, g2, lemmas, o1, p1, o2, p2, equivalences_found_g1, equivalences_found_g2):
-                    result_graph.add((o1, constants.SAME_AS_PREDICATE, o2))
-                    starting_points.append((o1, o2))
-                    equivalences_found_g1.append(o1)
-                    equivalences_found_g2.append(o2)
+                if (o1 not in equivalences_found_g1) and (o2 not in equivalences_found_g2) and  \
+                        check_nodes_equivalence(g1, g2, lemmas, o1, p1, o2, p2, equivalences_found_g1, equivalences_found_g2):
+                    add_equivalence(o1, o2, result_graph, starting_points, equivalences_found_g1, equivalences_found_g2)
         # check if a subject-predicate equivalent pair exists
         for s1, p1 in g1.subject_predicates(elem1):
             for s2, p2 in g2.subject_predicates(elem2):
-                if check_nodes_equivalence(g1, g2, lemmas, s1, p1, s2, p2, equivalences_found_g1, equivalences_found_g2):
-                    result_graph.add((s1, constants.SAME_AS_PREDICATE, s2))
-                    starting_points.append((s1, s2))
-                    equivalences_found_g1.append(s1)
-                    equivalences_found_g2.append(s2)
+                if (s1 not in equivalences_found_g1) and (s2 not in equivalences_found_g2) and \
+                        check_nodes_equivalence(g1, g2, lemmas, s1, p1, s2, p2, equivalences_found_g1, equivalences_found_g2):
+                    add_equivalence(s1, s2, result_graph, starting_points, equivalences_found_g1, equivalences_found_g2)
 
 
 # receives N graphs in input and return a dictionary with the form "label" => label's lemma
