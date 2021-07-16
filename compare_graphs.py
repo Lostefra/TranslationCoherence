@@ -120,6 +120,9 @@ def find_starting_points(g1, g2, lemmas, n, result_graph):
             # If the node has enough equal relations in both graphs, collect the relations' nodes
             new_starting_points = has_enough_matches(node, label, node_triples, g1, g2, lemmas)
             node_2 = get_other_centroid(node, label, g1, g2, lemmas)
+            # Abort operation by setting empty "new_starting_points" if nodes are not both classes or both individuals
+            if (is_class(node, g1) and not is_class(node_2, g2)) or (not is_class(node, g1) and is_class(node_2, g2)):
+                new_starting_points = []
             if new_starting_points:
                 starting_points = starting_points + [(node, node_2)] + new_starting_points
                 # print(prefix(node, g1))

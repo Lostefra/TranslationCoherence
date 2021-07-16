@@ -39,7 +39,8 @@ def lemma(text):
 def is_class(obj, graph):
     is_explicit_class = graph.value(subject=obj, predicate=constants.TYPE_PREDICATE, default=None) == constants.CLASS_OBJECT
     is_subclass_of = graph.value(subject=obj, predicate=constants.SUBCLASS_PREDICATE, default=None) is not None
-    return is_explicit_class or is_subclass_of
+    is_type_of = graph.value(object=obj, predicate=constants.TYPE_PREDICATE, default=None) is not None
+    return is_explicit_class or is_subclass_of or is_type_of
 
 
 def get_node_triples(node, g):
