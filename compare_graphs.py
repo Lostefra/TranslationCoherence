@@ -79,7 +79,7 @@ def has_enough_matches(node, label, node_triples, g1, g2, lemmas):
                         new_starting_points.append((s1, s2))
                         break
 
-    if tot < 4:
+    if tot < 3:
         return []
     else:
         return new_starting_points
@@ -96,7 +96,7 @@ def get_other_centroid(node, label, g1, g2, lemmas):
 
 
 def find_starting_points(g1, g2, lemmas, n, result_graph):
-    # Mark as starting_points all the nodes which have at least 3 relations equal in both graphs
+    # Mark as starting_points all the nodes which have enough relations equal in both graphs
     starting_points, equivalences_found_1, equivalences_found_2 = [], [], []
     '''
     # Find alias via "owl:sameAs" and "owl:equivalentClass", these predicates are in relation with dbpedia IRI
@@ -130,8 +130,12 @@ def find_starting_points(g1, g2, lemmas, n, result_graph):
     for node in starting_points:
         # print(prefix(node[0], g1))
         result_graph.add((node[0], constants.SAME_AS_PREDICATE, node[1]))
+    # print(starting_points)
     equivalences_found = list(map(list, zip(*starting_points)))
-    equivalences_found_g1, equivalences_found_g2 = equivalences_found[0], equivalences_found[1]
+    if equivalences_found:
+        equivalences_found_g1, equivalences_found_g2 = equivalences_found[0], equivalences_found[1]
+    else:
+        equivalences_found_g1, equivalences_found_g2 = [], []
     return starting_points, equivalences_found_g1, equivalences_found_g2
 
 

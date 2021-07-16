@@ -37,8 +37,8 @@ def lemma(text):
 
 
 def is_class(obj, graph):
-    is_explicit_class = graph.value(subject=obj, predicate=constants.TYPE_PREDICATE, default=0) == constants.CLASS_OBJECT
-    is_subclass_of = graph.value(subject=obj, predicate=constants.SUBCLASS_PREDICATE, default=0) is not None
+    is_explicit_class = graph.value(subject=obj, predicate=constants.TYPE_PREDICATE, default=None) == constants.CLASS_OBJECT
+    is_subclass_of = graph.value(subject=obj, predicate=constants.SUBCLASS_PREDICATE, default=None) is not None
     return is_explicit_class or is_subclass_of
 
 
