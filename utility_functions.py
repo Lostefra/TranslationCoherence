@@ -4,7 +4,7 @@ from rdflib.term import Literal
 from nltk.corpus import wordnet
 
 nlp_analyzer = spacy.load('en_core_web_sm')
-
+n = 0
 
 def pad_prefix(el, graph):
     return "{:<50}".format(el.n3(graph.namespace_manager))

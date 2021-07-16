@@ -4,7 +4,7 @@ from scipy import spatial
 import numpy as np
 import re
 import constants
-from utility_functions import prefix, lemma, word
+from utility_functions import prefix, lemma, word, get_word_synonyms
 
 
 def negative_verbs(g1, g2, n, result_graph, indexes):
