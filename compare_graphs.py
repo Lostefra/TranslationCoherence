@@ -85,6 +85,16 @@ def has_enough_matches(node, label, node_triples, g1, g2, lemmas):
         return new_starting_points
 
 
+def get_other_centroid(node, label, g1, g2, lemmas):
+    if label != "":
+        for node_2 in g2.all_nodes():
+            if label in lemmas[str(g2.label(node_2))]:
+                return node_2
+    elif label == "" and is_class(node, g1) and node in g2.all_nodes() and is_class(node, g2):
+        # Return "node" since it is the same IRI of "node_2", so same object
+        return node
+
+
 def find_starting_points(g1, g2, lemmas, n, result_graph):
     # Mark as starting_points all the nodes which have at least 3 relations equal in both graphs
     starting_points, equivalences_found_1, equivalences_found_2 = [], [], []
@@ -109,8 +119,9 @@ def find_starting_points(g1, g2, lemmas, n, result_graph):
             node_triples = get_node_triples(node, g1)
             # If the node has enough equal relations in both graphs, collect the relations' nodes
             new_starting_points = has_enough_matches(node, label, node_triples, g1, g2, lemmas)
+            node_2 = get_other_centroid(node, label, g1, g2, lemmas)
             if new_starting_points:
-                starting_points = starting_points + [(node, node)] + new_starting_points
+                starting_points = starting_points + [(node, node_2)] + new_starting_points
                 # print(prefix(node, g1))
     # Remove duplicates
     # print(len(starting_points))
