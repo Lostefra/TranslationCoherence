@@ -2,12 +2,9 @@ from rdflib import Namespace, Graph, term
 from build_graph import graph_bind
 from utility_functions import lemma, is_class
 from nltk.corpus import wordnet
-from nltk.corpus.reader.wordnet import Synset
 import constants
-from utility_functions import prefix, lemma, index_generator, get_node_triples, get_word_synonyms, extract_synset, \
-    get_class_name_from_iri
-from pattern import negative_verbs, dbpedia_equivalence, find_synonyms, synonyms1, find_similar_words
-import time
+from utility_functions import prefix, lemma, index_generator, get_node_triples, get_word_synonyms
+from pattern import negative_verbs, class_subclass_equivalence, find_synonyms
 
 THRESHOLD_SIMILARITY_SYNONYMY = 0.75
 
@@ -319,10 +316,12 @@ def compare_graphs(g1, g2):
     # print("negative verbs")
     # negative_verbs(g1, g2, n, result_graph, indexes)
     # negative_verbs(g2, g1, n, result_graph, indexes)
-
     # print("DBPedia equivalence")
     # dbpedia_equivalence(g1, g2, n, result_graph)
     # print("-" * 150)  # #########################################################
+    print("class_subclass_equivalence")
+    class_subclass_equivalence(g1, g2, lemmas, n, result_graph)
+    print("-" * 150)  # #########################################################
 
     graph_bind(result_graph)
     return result_graph

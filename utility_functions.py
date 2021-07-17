@@ -74,7 +74,6 @@ def get_node_triples(node, g):
             result.append((s, p, o))
     return result
 
-
 def get_class_name_from_iri(class_iri_string):
     name = ""
     for char in class_iri_string.split('#')[-1]:
@@ -82,3 +81,20 @@ def get_class_name_from_iri(class_iri_string):
             name += " "
         name += char
     return name
+
+
+def superclasses(node, g):
+    unwanted_superclasses = ['dul:Event', 'owl:Class']
+
+    classes = list(g.objects(node, constants.TYPE_PREDICATE))
+    still_classes = classes != []
+    while(still_classes):
+        before = len(classes)
+        to_add = list(g.objects(classes[-1], constants.SUBCLASS_PREDICATE))
+        classes = classes + to_add
+        after = len(classes)
+        if(after == before):
+            still_classes = False
+        #print([prefix(c, g) for c in classes])
+    classes = filter(lambda x: len(list(g.subjects(constants.TYPE_PREDICATE, x)))<2, classes)
+    return list(filter(lambda x: prefix(x,g) not in unwanted_superclasses, classes))
