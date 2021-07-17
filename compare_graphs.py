@@ -3,7 +3,7 @@ from build_graph import graph_bind
 from utility_functions import lemma, is_class
 import constants
 from utility_functions import prefix, lemma, index_generator, get_node_triples
-from pattern import negative_verbs, dbpedia_equivalence, find_synonyms
+from pattern import negative_verbs, class_subclass_equivalence, find_synonyms
 import time
 
 
@@ -235,9 +235,9 @@ def compare_graphs(g1, g2):
     # print("sameAs_equivalentClass_transitivity")
     # sameAs_equivalentClass_transitivity(g1, g2, n, result_graph)
     # print("-" * 150)  # #########################################################
-    print("find equivalence")
-    find_equivalence(g1, g2, lemmas, n, result_graph)
-    print("-" * 150)  # #########################################################
+    #print("find equivalence")
+    #find_equivalence(g1, g2, lemmas, n, result_graph)
+    #print("-" * 150)  # #########################################################
     # print("negative verbs")
     # negative_verbs(g1, g2, n, result_graph, indexes)
     # negative_verbs(g2, g1, n, result_graph, indexes)
@@ -251,9 +251,9 @@ def compare_graphs(g1, g2):
     # print("GloVe")
     # synonyms2(g1, g2, n, result_graph)
     # print("-" * 150)  # #########################################################
-    # print("DBPedia equivalence")
-    # dbpedia_equivalence(g1, g2, n, result_graph)
-    # print("-" * 150)  # #########################################################
-
+    print("class_subclass_equivalence")
+    class_subclass_equivalence(g1, g2, lemmas, n, result_graph)
+    print("-" * 150)  # #########################################################
+    
     graph_bind(result_graph)
     return result_graph

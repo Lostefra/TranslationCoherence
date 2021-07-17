@@ -4,7 +4,7 @@ from scipy import spatial
 import numpy as np
 import re
 import constants
-from utility_functions import prefix, lemma, word, get_word_synonyms
+from utility_functions import prefix, lemma, word, get_word_synonyms, superclasses
 
 
 def negative_verbs(g1, g2, n, result_graph, indexes):
@@ -129,15 +129,18 @@ def synonyms2(g2, g1, n, result_graph):
                     result_graph.add((iri1, n.similar_to, iri2))
 
 
-def dbpedia_equivalence(g1, g2, n, result_graph):
-    # Check if a dbpedia object appears in both ontologies, in one case as an individual and in the other as a class.
-    # In this case, add the triple (s, sameAs, o), where s is the fred object in a "owl:sameAs" relation with the dbpedia individual,
-    # and o is the instance of the fred object in a "owl:equivalentClass" relation with the dbpedia class (or viceversa).
+def class_subclass_equivalence(g1, g2, lemmas, n, result_graph):
+    # Find out two related objects, based on:
+    # - relation with same object, but not hierarchically equivalent (e.g. dbpedia individual-class)
+    # - same label, and of two class types which are one descendant of the other (e.g. nevertheless)
+    # - same label, and of two class types which have the same ancestor in a single-branch chain (e.g. disaster)
+
 
     # Store pairs of objects to relate
     # In the first list the order is g1,g2; in the second list the order is g2,g1
     # (only useful to print)
     to_match = [[], []]
+    #DBPedia
     for s1, p1, o1 in g1:
         if prefix(p1, g1) == "owl:equivalentClass":
             # Check same object in a "owl:sameAs" relation
@@ -180,6 +183,37 @@ def dbpedia_equivalence(g1, g2, n, result_graph):
                             prefix(p2, g2) == "owl:equivalentClass"):
                         # To match: s1, instance of s2
                         to_match[1].append(([i for i in g2.subjects(constants.TYPE_PREDICATE, s2)][0], s1))
+
+    # Print
+    print("dbpedia:")
+    # Pairs g1,g2
+    for s, o in to_match[0]:
+        print(prefix(s,g1), "owl:sameAs", prefix(o,g2))
+    # Pairs g2,g1
+    for s, o in to_match[1]:
+        print(prefix(s,g2), "owl:sameAs", prefix(o,g1))
+
+
+    #class-subclass + single-branch chain
+    for node1 in g1.all_nodes():
+        label_1 = lemmas[str(g1.label(node1))]
+        classes_1 = superclasses(node1, g1)
+        for node2 in g2.all_nodes():
+            label_2 = lemmas[str(g2.label(node2))]          
+            classes_2 = superclasses(node2, g2)
+            if label_1 == label_2 and label_1 is not "":
+                for c1 in classes_1:
+                    for c2 in classes_2:
+                        if c1==c2 and (node1, node2) not in to_match[0]:
+                            type1, type2 = list(g1.objects(node1, constants.TYPE_PREDICATE)), list(g2.objects(node2, constants.TYPE_PREDICATE))
+                            if type1 is not []:
+                                type1 = type1[0]
+                            if type2 is not []:
+                                type2 = type2[0]
+                            #print(prefix(c1, g1), prefix(type1, g1), label_1, prefix(c2, g2), prefix(type2, g2), label_2)
+                            to_match[0].append((node1,node2))
+
+
 
     # Add matches found to result graph
     # Pairs g1,g2
