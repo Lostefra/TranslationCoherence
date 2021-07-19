@@ -169,98 +169,131 @@ def synonyms2(g2, g1, n, result_graph):
                     result_graph.add((iri1, n.similar_to, iri2))
 
 
-def class_subclass_equivalence(g1, g2, lemmas, n, result_graph):
+def class_subclass_equivalence(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_frontiers):
     # Find out two related objects, based on:
     # - relation with same object, but not hierarchically equivalent (e.g. dbpedia individual-class)
     # - same label, and of two class types which are one descendant of the other (e.g. nevertheless)
     # - same label, and of two class types which have the same ancestor in a single-branch chain (e.g. disaster)
 
+    frontiers_g1, frontiers_g2 = [], []
+    list_frontiers = list(map(list, zip(*frontiers)))
+    if list_frontiers:
+        frontiers_g1, frontiers_g2 = list_frontiers[0], list_frontiers[1]
 
-    # Store pairs of objects to relate
-    # In the first list the order is g1,g2; in the second list the order is g2,g1
-    # (only useful to print)
-    to_match = [[], []]
+    print("-------")
+    print("dbpedia:")
     #DBPedia
     for s1, p1, o1 in g1:
+        is_g1_frontier = s1 in frontiers_g1 or o1 in frontiers_g1
+        node1, node2 = None, None
         if prefix(p1, g1) == "owl:equivalentClass":
             # Check same object in a "owl:sameAs" relation
             for s2, p2, o2 in g2:
-                if any(["dbpedia" in i for i in [prefix(s1, g1), prefix(s2, g2), prefix(o1, g1), prefix(o2, g2)]]):
+                is_g2_frontier = s2 in frontiers_g2 or o2 in frontiers_g2
+                if is_g1_frontier or is_g2_frontier:
                     if prefix(s2, g2) == prefix(s1, g1) and ('dbpedia' in prefix(s1, g1)) and (
                             prefix(p2, g2) == "owl:sameAs"):
                         # To match: o2, instance of o1
-                        to_match[0].append(([i for i in g1.subjects(constants.TYPE_PREDICATE, o1)][0], o2))
+                        node1, node2 = [i for i in g1.subjects(constants.TYPE_PREDICATE, o1)][0], o2
+                        #to_match.append(([i for i in g1.subjects(constants.TYPE_PREDICATE, o1)][0], o2))
                     elif prefix(s2, g2) == prefix(o1, g1) and ('dbpedia' in prefix(o1, g1)) and (
                             prefix(p2, g2) == "owl:sameAs"):
                         # To match: o2, instance of s1
-                        to_match[0].append(([i for i in g1.subjects(constants.TYPE_PREDICATE, s1)][0], o2))
+                        node1, node2 = [i for i in g1.subjects(constants.TYPE_PREDICATE, s1)][0], o2
+                        #to_match.append(([i for i in g1.subjects(constants.TYPE_PREDICATE, s1)][0], o2))
                     elif prefix(o2, g2) == prefix(s1, g1) and ('dbpedia' in prefix(s1, g1)) and (
                             prefix(p2, g2) == "owl:sameAs"):
                         # To match: s2, instance of o1
-                        to_match[0].append(([i for i in g1.subjects(constants.TYPE_PREDICATE, o1)][0], s2))
+                        node1, node2 = [i for i in g1.subjects(constants.TYPE_PREDICATE, o1)][0], s2
+                        #to_match.append(([i for i in g1.subjects(constants.TYPE_PREDICATE, o1)][0], s2))
                     elif prefix(o2, g2) == prefix(o1, g1) and ('dbpedia' in prefix(o1, g1)) and (
                             prefix(p2, g2) == "owl:sameAs"):
                         # To match: s2, instance of s1
-                        to_match[0].append(([i for i in g1.subjects(constants.TYPE_PREDICATE, s1)][0], s2))
+                        node1, node2 = [i for i in g1.subjects(constants.TYPE_PREDICATE, s1)][0], s2
+                        #to_match.append(([i for i in g1.subjects(constants.TYPE_PREDICATE, s1)][0], s2))
+
 
         elif prefix(p1, g1) == "owl:sameAs":
             # Check same object in a "owl:equivalentClass" relation
             for s2, p2, o2 in g2:
-                if any(["dbpedia" in i for i in [prefix(s1, g1), prefix(s2, g2), prefix(o1, g1), prefix(o2, g2)]]):
+                is_g2_frontier = s2 in frontiers_g2 or o2 in frontiers_g2
+                if is_g1_frontier or is_g2_frontier:
                     if prefix(s2, g2) == prefix(s1, g1) and ('dbpedia' in prefix(s1, g1)) and (
                             prefix(p2, g2) == "owl:equivalentClass"):
                         # To match: o1, instance of o2
-                        to_match[1].append(([i for i in g2.subjects(constants.TYPE_PREDICATE, o2)][0], o1))
+                        node1, node2 = o1, [i for i in g2.subjects(constants.TYPE_PREDICATE, o2)][0]
+                        #to_match.append((o1, [i for i in g2.subjects(constants.TYPE_PREDICATE, o2)][0]))
                     elif prefix(s2, g2) == prefix(o1, g1) and ('dbpedia' in prefix(o1, g1)) and (
                             prefix(p2, g2) == "owl:equivalentClass"):
                         # To match: s1, instance of o2
-                        to_match[1].append(([i for i in g2.subjects(constants.TYPE_PREDICATE, o2)][0], s1))
+                        node1, node2 = s1, [i for i in g2.subjects(constants.TYPE_PREDICATE, o2)][0]
+                        #to_match.append((s1, [i for i in g2.subjects(constants.TYPE_PREDICATE, o2)][0]))
                     elif prefix(o2, g2) == prefix(s1, g1) and ('dbpedia' in prefix(s1, g1)) and (
                             prefix(p2, g2) == "owl:equivalentClass"):
                         # To match: o1, instance of s2
-                        to_match[1].append(([i for i in g2.subjects(constants.TYPE_PREDICATE, s2)][0], o1))
+                        node1, node2 = o1, [i for i in g2.subjects(constants.TYPE_PREDICATE, s2)][0]
+                        #to_match.append((o1, [i for i in g2.subjects(constants.TYPE_PREDICATE, s2)][0]))
                     elif prefix(o2, g2) == prefix(o1, g1) and ('dbpedia' in prefix(o1, g1)) and (
                             prefix(p2, g2) == "owl:equivalentClass"):
                         # To match: s1, instance of s2
-                        to_match[1].append(([i for i in g2.subjects(constants.TYPE_PREDICATE, s2)][0], s1))
+                        node1, node2 = s1, [i for i in g2.subjects(constants.TYPE_PREDICATE, s2)][0]
+                        #to_match.append((s1, [i for i in g2.subjects(constants.TYPE_PREDICATE, s2)][0]))
+        
+        # Add nodes to result graph and to new frontier
+        if node1 and node2:
+            print(prefix(node1, g1), prefix(node2, g2))
+            result_graph.add((node1, n.equivalent, node2))
+            new_frontiers.add((node1, node2))
 
-    # Print
-    print("dbpedia:")
-    # Pairs g1,g2
-    for s, o in to_match[0]:
-        print(prefix(s,g1), "owl:sameAs", prefix(o,g2))
-    # Pairs g2,g1
-    for s, o in to_match[1]:
-        print(prefix(s,g2), "owl:sameAs", prefix(o,g1))
-
-
+    print("-------")
+    print("class_subclass:")
     #class-subclass + single-branch chain
     for node1 in g1.all_nodes():
-        label_1 = lemmas[str(g1.label(node1))]
+        is_g1_frontier = s1 in frontiers_g1
+        lemma_1 = lemmas[str(g1.label(node1))]
         classes_1 = superclasses(node1, g1)
         for node2 in g2.all_nodes():
-            label_2 = lemmas[str(g2.label(node2))]          
+            is_g2_frontier = s2 in frontiers_g2
+            lemma_2 = lemmas[str(g2.label(node2))]          
             classes_2 = superclasses(node2, g2)
-            if label_1 == label_2 and label_1 is not "":
-                for c1 in classes_1:
-                    for c2 in classes_2:
-                        if c1==c2 and (node1, node2) not in to_match[0]:
-                            type1, type2 = list(g1.objects(node1, constants.TYPE_PREDICATE)), list(g2.objects(node2, constants.TYPE_PREDICATE))
-                            if type1 is not []:
-                                type1 = type1[0]
-                            if type2 is not []:
-                                type2 = type2[0]
-                            #print(prefix(c1, g1), prefix(type1, g1), label_1, prefix(c2, g2), prefix(type2, g2), label_2)
-                            to_match[0].append((node1,node2))
+            if lemma_1 == lemma_2 and lemma_1 is not "" and (is_g1_frontier or is_g2_frontier):
+                # If same hierarchy, relate the classes pairwise and the nodes
+                if classes_1==classes_2:
+                    for cl_1, cl_2 in zip(classes_1, classes_2):
+                        result_graph.add((cl_1, constants.EQUIVALENT_CLASS_PREDICATE, cl_2))
+                    if (node1, constants.SAME_AS_PREDICATE, node2) not in result_graph:
+                        result_graph.add((node1, constants.SAME_AS_PREDICATE, node2))
+                        new_frontiers.add((node1, node2))
+                        print(prefix(node1, g1), prefix(node2, g2))
 
+                else:
+                    for cl_idx_1, cl_1 in enumerate(classes_1):
+                        for cl_idx_2, cl_2 in enumerate(classes_2):
+                            if cl_1==cl_2 and (node1, constants.SAME_AS_PREDICATE, node2) not in result_graph and (node1, n.hierarchy_equivalent, node2) not in result_graph:
+    
+                                # If there's more than one superclass, create a hierarchy relationship
+                                if cl_idx_1>0 or cl_idx_2>0:
+                                    # "hierarchy_i" is a reification of a N-ary relationship
+                                    hierarchy_1 = "hierarchy_" + next(indexes["hierarchies"])
+                                    hierarchy_2 = "hierarchy_" + next(indexes["hierarchies"])
+    
+                                    # Add root class
+                                    result_graph.add((n[hierarchy_1], n.root, classes_1[cl_idx_1]))
+                                    result_graph.add((n[hierarchy_2], n.root, classes_2[cl_idx_2]))
+                                    # Add leaf classes
+                                    for i,c in enumerate(classes_1[cl_idx_1-1::-1]):
+                                        result_graph.add((n[hierarchy_1], n["leaf_"+str(i+1)], c))
+                                    for i,c in enumerate(classes_2[cl_idx_2-1::-1]):
+                                        result_graph.add((n[hierarchy_2], n["leaf_"+str(i+1)], c))
+                                    # Relate two hierarchies
+                                    result_graph.add((n[hierarchy_1], n.same_hierarchy, n[hierarchy_2]))
+                                    result_graph.add((node1, n.hierarchy_equivalent, node2))
+    
+                                # Otherwise, simply relate the two objects, along with their classes
+                                else:
+                                    result_graph.add((classes_1[cl_idx_1], constants.EQUIVALENT_CLASS_PREDICATE, classes_2[cl_idx_2]))
+                                    result_graph.add((node1, constants.SAME_AS_PREDICATE, node2))
+                                
+                                new_frontiers.add((node1, node2))
+                                print(prefix(node1, g1), prefix(node2, g2))
 
-
-    # Add matches found to result graph
-    # Pairs g1,g2
-    for s, o in to_match[0]:
-        # print(prefix(s,g1), "owl:sameAs", prefix(o,g2))
-        result_graph.add((s, constants.SAME_AS_PREDICATE, o))
-    # Pairs g2,g1
-    for s, o in to_match[1]:
-        # print(prefix(s,g2), "owl:sameAs", prefix(o,g1))
-        result_graph.add((s, constants.SAME_AS_PREDICATE, o))

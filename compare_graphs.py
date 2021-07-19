@@ -270,7 +270,7 @@ def compare_graphs(g1, g2):
     n = Namespace("http://example.org/translation_coherence/")
     result_graph = Graph()
     indexes = {}
-    for name in ["expressions"]:
+    for name in ["expressions", "hierarchies"]:
         indexes[name] = index_generator()
 
     lemmas = extracts_lemmas(g1, g2)
@@ -321,12 +321,10 @@ def compare_graphs(g1, g2):
         print("negative verbs")
         negative_verbs(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_frontiers, mode=1)
         negative_verbs(g2, g1, n, result_graph, indexes, lemmas, frontiers, new_frontiers, mode=2)
-        # print("DBPedia equivalence")
-        # dbpedia_equivalence(g1, g2, n, result_graph)
         print("-" * 150)  # #########################################################
-        # print("class_subclass_equivalence")
-        # class_subclass_equivalence(g1, g2, lemmas, n, result_graph, frontiers)
-        # print("-" * 150)  # #########################################################
+        print("class_subclass_equivalence")
+        class_subclass_equivalence(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_frontiers)
+        print("-" * 150)  # #########################################################
 
         new_frontiers -= all_frontiers
 
