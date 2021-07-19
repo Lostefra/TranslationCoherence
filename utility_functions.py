@@ -60,6 +60,20 @@ def lemma(text):
     return " ".join([token.lemma_ for token in nlp_analyzer(text)])
 
 
+# receives N graphs in input and return a dictionary with the form "label" => label's lemma
+def extracts_lemmas(*args):
+    lemmas = dict()
+    for g in args:
+        # get all the nodes of the graph
+        nodes = g.all_nodes()
+        for elem in nodes:
+            label = str(g.label(elem))
+            if label != '' and label not in lemmas:
+                lemmas[label] = lemma(label)
+    lemmas[""] = ''
+    return lemmas
+
+
 def is_class(obj, graph):
     is_explicit_class = graph.value(subject=obj, predicate=constants.TYPE_PREDICATE, default=None) == constants.CLASS_OBJECT
     is_subclass_of = graph.value(subject=obj, predicate=constants.SUBCLASS_PREDICATE, default=None) is not None
@@ -74,13 +88,14 @@ def get_node_triples(node, g):
             result.append((s, p, o))
     return result
 
+
 def get_class_name_from_iri(class_iri_string):
     name = ""
     for char in class_iri_string.split('#')[-1]:
-        if char.isupper():
+        if char.isupper() and name != "":
             name += " "
         name += char
-    return name
+    return name.lower()
 
 
 def superclasses(node, g):

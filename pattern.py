@@ -53,7 +53,7 @@ def extract_words(g):
 
 
 # find the pairs of synonyms in the 2 graphs
-def find_synonyms(g1, g2, lemmas, n, result_graph):
+def find_synonyms(g1, g2, lemmas):
     synonyms = set()
     # extract the set of IRI and their corresponding word from the graphs
     for node1 in g1.all_nodes():
@@ -67,7 +67,6 @@ def find_synonyms(g1, g2, lemmas, n, result_graph):
             if lemma1 != lemma2 and lemma2 in word1_synonyms:
                 new_synonyms_pair = (word1, word2) if word1 < word2 else (word2, word1)
                 synonyms.add(new_synonyms_pair)
-                result_graph.add((node1, n.similar_to, node2))
     return synonyms
 
 
@@ -75,7 +74,7 @@ def find_synonyms(g1, g2, lemmas, n, result_graph):
 # similarity_function indicate the wordnet metric for similarity between (path, lch, wup)
 # max_or_average indicates if either the average or the maximum of all the similarities between the synsets of the words
 # should be greater than the threshold
-def find_similar_words(g1, g2, lemmas, n, result_graph, similarity_function, threshold, max_or_average="max"):
+def find_similar_words(g1, g2, lemmas, similarity_function, threshold, max_or_average="max"):
     synonyms = set()
     # exploring the graph
     for node1 in g1.all_nodes():
