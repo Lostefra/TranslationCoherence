@@ -256,44 +256,46 @@ def class_subclass_equivalence(g1, g2, n, result_graph, indexes, lemmas, frontie
             is_g2_frontier = s2 in frontiers_g2
             lemma_2 = lemmas[str(g2.label(node2))]          
             classes_2 = superclasses(node2, g2)
-            if lemma_1 == lemma_2 and lemma_1 is not "" and (is_g1_frontier or is_g2_frontier):
+            are_equal = lemma_1 == lemma_2
+            are_synonyms = False #check_nodes_synonymy(g1, g2, lemmas, node1, None, node2, None)
+            if (are_equal or are_synonyms) and lemma_1 is not "" and (is_g1_frontier or is_g2_frontier):
                 # If same hierarchy, relate the classes pairwise and the nodes
                 if classes_1==classes_2:
                     for cl_1, cl_2 in zip(classes_1, classes_2):
-                        result_graph.add((cl_1, constants.EQUIVALENT_CLASS_PREDICATE, cl_2))
+                        if (cl_1, constants.EQUIVALENT_CLASS_PREDICATE, cl_2) not in result_graph:
+                            # Add the two classes to the result graph
+                            result_graph.add((cl_1, constants.EQUIVALENT_CLASS_PREDICATE, cl_2))
                     if (node1, constants.SAME_AS_PREDICATE, node2) not in result_graph:
+                        # Add the two nodes to the result graph
                         result_graph.add((node1, constants.SAME_AS_PREDICATE, node2))
+                        # Populate frontier
                         new_frontiers.add((node1, node2))
-                        print(prefix(node1, g1), prefix(node2, g2))
+                        print("Equal:", prefix(node1, g1), prefix(node2, g2))
 
+                # Otherwise - if the two lists of superclasses share a sublist - create a hierarchy relationship
                 else:
                     for cl_idx_1, cl_1 in enumerate(classes_1):
                         for cl_idx_2, cl_2 in enumerate(classes_2):
                             if cl_1==cl_2 and (node1, constants.SAME_AS_PREDICATE, node2) not in result_graph and (node1, n.hierarchy_equivalent, node2) not in result_graph:
     
-                                # If there's more than one superclass, create a hierarchy relationship
-                                if cl_idx_1>0 or cl_idx_2>0:
-                                    # "hierarchy_i" is a reification of a N-ary relationship
-                                    hierarchy_1 = "hierarchy_" + next(indexes["hierarchies"])
-                                    hierarchy_2 = "hierarchy_" + next(indexes["hierarchies"])
-    
-                                    # Add root class
-                                    result_graph.add((n[hierarchy_1], n.root, classes_1[cl_idx_1]))
-                                    result_graph.add((n[hierarchy_2], n.root, classes_2[cl_idx_2]))
-                                    # Add leaf classes
-                                    for i,c in enumerate(classes_1[cl_idx_1-1::-1]):
-                                        result_graph.add((n[hierarchy_1], n["leaf_"+str(i+1)], c))
-                                    for i,c in enumerate(classes_2[cl_idx_2-1::-1]):
-                                        result_graph.add((n[hierarchy_2], n["leaf_"+str(i+1)], c))
-                                    # Relate two hierarchies
-                                    result_graph.add((n[hierarchy_1], n.same_hierarchy, n[hierarchy_2]))
-                                    result_graph.add((node1, n.hierarchy_equivalent, node2))
-    
-                                # Otherwise, simply relate the two objects, along with their classes
-                                else:
-                                    result_graph.add((classes_1[cl_idx_1], constants.EQUIVALENT_CLASS_PREDICATE, classes_2[cl_idx_2]))
-                                    result_graph.add((node1, constants.SAME_AS_PREDICATE, node2))
-                                
+                                # Create a hierarchy relationship
+
+                                # "hierarchy_i" is a reification of a N-ary relationship
+                                hierarchy_1 = "hierarchy_" + next(indexes["hierarchies"])
+                                hierarchy_2 = "hierarchy_" + next(indexes["hierarchies"])
+                                # Add root class
+                                result_graph.add((n[hierarchy_1], n.root, classes_1[cl_idx_1]))
+                                result_graph.add((n[hierarchy_2], n.root, classes_2[cl_idx_2]))
+                                # Add leaf classes
+                                for i,c in enumerate(classes_1[cl_idx_1-1::-1]):
+                                    result_graph.add((n[hierarchy_1], n["leaf_"+str(i+1)], c))
+                                for i,c in enumerate(classes_2[cl_idx_2-1::-1]):
+                                    result_graph.add((n[hierarchy_2], n["leaf_"+str(i+1)], c))
+                                # Add the two hierarchies to the result graph
+                                result_graph.add((n[hierarchy_1], n.same_hierarchy, n[hierarchy_2]))
+                                # Add the two nodes to the result graph
+                                result_graph.add((node1, n.hierarchy_equivalent, node2))
+                                # Populate frontier
                                 new_frontiers.add((node1, node2))
-                                print(prefix(node1, g1), prefix(node2, g2))
+                                print("Hierarchy:", prefix(node1, g1), prefix(node2, g2))
 
