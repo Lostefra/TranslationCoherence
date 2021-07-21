@@ -6,7 +6,7 @@ import constants
 from utility_functions import prefix, lemma, index_generator, get_node_triples, get_word_synonyms
 from pattern import negative_verbs, class_subclass_equivalence, find_synonyms, find_similar_words
 
-THRESHOLD_SIMILARITY_SYNONYMY = 0.75
+THRESHOLD_SIMILARITY_SYNONYMY = 0.7
 
 
 # TODO avoid alias if object / subjects are already the same

@@ -108,7 +108,7 @@ def find_similar_words(g1, g2, lemmas, similarity_function, threshold, max_or_av
                     #     similarity = synset1.lis_similarity(synset2, wordnet_ic.ic())
                     # if the 2 words are different and they are synonyms
                     similarity_sum += similarity
-                    if max_or_average == "max" and lemma1 != lemma2 and similarity > threshold:
+                    if max_or_average == "max" and lemma1 != lemma2 and similarity >= threshold:
                          synonymy = True
             similarity = 0 if not n_comparisons else similarity_sum / n_comparisons
             if max_or_average == "average" and lemma1 != lemma2 and similarity > threshold:
