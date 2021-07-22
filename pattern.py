@@ -283,19 +283,30 @@ def class_subclass_equivalence(g1, g2, n, result_graph, indexes, lemmas, frontie
                                 # "hierarchy_i" is a reification of a N-ary relationship
                                 hierarchy_1 = "hierarchy_" + next(indexes["hierarchies"])
                                 hierarchy_2 = "hierarchy_" + next(indexes["hierarchies"])
+
+                                # Store class trees for printing
+                                h1_classes, h2_classes = [], []
+
                                 # Add root class
                                 result_graph.add((n[hierarchy_1], n.root, classes_1[cl_idx_1]))
                                 result_graph.add((n[hierarchy_2], n.root, classes_2[cl_idx_2]))
+                                h1_classes.append(prefix(classes_1[cl_idx_1], g1))
+                                h2_classes.append(prefix(classes_2[cl_idx_2], g2))
+
                                 # Add leaf classes
-                                for i,c in enumerate(classes_1[cl_idx_1-1::-1]):
-                                    result_graph.add((n[hierarchy_1], n["leaf_"+str(i+1)], c))
-                                for i,c in enumerate(classes_2[cl_idx_2-1::-1]):
-                                    result_graph.add((n[hierarchy_2], n["leaf_"+str(i+1)], c))
+                                if len(classes_1)>1:
+                                    for i,c in enumerate(classes_1[cl_idx_1-1::-1]):
+                                        result_graph.add((n[hierarchy_1], n["leaf_"+str(i+1)], c))
+                                        h1_classes.append(prefix(c, g1))
+                                if len(classes_2)>2:
+                                    for i,c in enumerate(classes_2[cl_idx_2-1::-1]):
+                                        result_graph.add((n[hierarchy_2], n["leaf_"+str(i+1)], c))
+                                        h2_classes.append(prefix(c, g2))
                                 # Add the two hierarchies to the result graph
                                 result_graph.add((n[hierarchy_1], n.same_hierarchy, n[hierarchy_2]))
                                 # Add the two nodes to the result graph
                                 result_graph.add((node1, n.hierarchy_equivalent, node2))
                                 # Populate frontier
                                 new_frontiers.add((node1, node2))
-                                print("Hierarchy:", prefix(node1, g1), prefix(node2, g2))
+                                print("Hierarchy:", prefix(node1, g1), prefix(node2, g2), f"({h1_classes}, {h2_classes})")
 
