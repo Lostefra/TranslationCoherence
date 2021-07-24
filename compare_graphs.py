@@ -1,10 +1,10 @@
-from rdflib import Namespace, Graph, term
+from rdflib import Namespace, Graph
 from build_graph import graph_bind
-from utility_functions import lemma, is_class
-from nltk.corpus import wordnet
 import constants
-from utility_functions import prefix, lemma, index_generator, get_node_triples, get_word_synonyms
-from pattern import negative_verbs, class_subclass_equivalence, find_synonyms, find_similar_words
+from utility_functions import prefix, extracts_lemmas, index_generator, get_node_triples, is_class, \
+    check_nodes_equivalence, add_equivalence, check_nodes_synonymy, add_synonymy
+from pattern import negative_verbs, class_subclass_equivalence
+from analysis import find_synonyms, find_similar_words
 
 THRESHOLD_SIMILARITY_SYNONYMY = 0.7
 
@@ -150,72 +150,6 @@ def find_starting_points(g1, g2, lemmas, n, result_graph):
     return set(starting_points), equivalences_found_g1, equivalences_found_g2
 
 
-# return True if the 2 nodes from the 2 graphs received in input are considered equivalent
-# (i.e they are connected with the same predicate, have the same lemma and are both individuals or class)
-def check_nodes_equivalence(g1, g2, lemmas, node1, p1, node2, p2):
-    # check if the two predicates are the same
-    if p1 == p2 and p1 != constants.LABEL_PREDICATE:
-        lemma1, lemma2 = lemmas[str(g1.label(node1))], lemmas[str(g2.label(node2))]
-        is_s1_class, is_s2_class = is_class(node1, g1), is_class(node2, g2)
-        return (((not is_s1_class) and not is_s2_class) and lemma1 and lemma1 == lemma2) or \
-                (is_s1_class and is_s2_class and node1 == node2)
-    return False
-
-
-# return True if two words are synonyms according to some rules that rely on Wordnet synsets and similarity metrics
-def check_synonymy(word1, word2):
-    if word1 in get_word_synonyms(word2):
-        return True
-    # otherwise compute the max similarity between all possible synsest (using path and wup similarity)
-    similarity = 0
-    # for each pair of synset compute the similarity and find the maximum
-    for synset1, synset2 in zip(wordnet.synsets(word1), wordnet.synsets(word2)):
-        new_similarity = 0.33 * synset1.path_similarity(synset2) + 0.67 * synset1.wup_similarity(synset2)
-        similarity = max(similarity, new_similarity) if word1 and word2 else 0
-    # the two words are synonyms if the similarity is above a certain threshold
-    return similarity > THRESHOLD_SIMILARITY_SYNONYMY
-
-
-# TODO: now it works with only single words; extends with multiple words
-# return True if the 2 nodes from the 2 graphs received in input are considered equivalent
-# (i.e they are connected with the same predicate, have the same lemma and are both individuals or class)
-def check_nodes_synonymy(g1, g2, lemmas, node1, p1, node2, p2):
-    # check if the two predicates are the same
-    if p1 == p2 and p1 != constants.LABEL_PREDICATE:
-        is_s1_class = is_class(node1, g1)
-        is_s2_class = is_class(node2, g2)
-        if (not is_s1_class) and (not is_s2_class):
-            word1 = lemmas[str(g1.label(node1))]
-            word2 = lemmas[str(g2.label(node2))]
-        #elif is_s1_class and is_s2_class:
-            # word1 = get_class_name_from_iri(str(node1))
-            # word2 = get_class_name_from_iri(str(node2))
-            wordnet_lemmas = set(wordnet.all_lemma_names())
-            # check if the words are in the wordnet dictionary
-            if word1 in wordnet_lemmas and word2 in wordnet_lemmas:
-                return check_synonymy(word1, word2)
-    return False
-
-
-# connect 2 elements with a certain predicate
-def add_binary_relation_across_graphs(node1, node2, result_graph, new_frontiers, nodes_classified_g1,
-                                      nodes_classified_g2, predicate):
-    result_graph.add((node1, predicate, node2))
-    new_frontiers.add((node1, node2))
-    nodes_classified_g1.append(node1)
-    nodes_classified_g2.append(node2)
-
-
-def add_equivalence(node1, node2, result_graph, new_frontiers, nodes_classified_g1, nodes_classified_g2):
-    add_binary_relation_across_graphs(node1, node2, result_graph, new_frontiers, nodes_classified_g1,
-                                      nodes_classified_g2, constants.EQUIVALENCE_PREDICATE)
-
-
-def add_synonymy(node1, node2, result_graph, new_frontiers, nodes_classified_g1, nodes_classified_g2):
-    add_binary_relation_across_graphs(node1, node2, result_graph, new_frontiers, nodes_classified_g1,
-                                      nodes_classified_g2, constants.SYNONYMY_PREDICATE)
-
-
 # TODO:
 #  1) add checks for instances (i.e. propagate the equivalence only if there exists
 #       a single individual for the class, for example)
@@ -240,7 +174,7 @@ def find_equivalence(g1, g2, lemmas, n, result_graph, starting_points, new_front
                 if (o1 not in nodes_classified_g1) and (o2 not in nodes_classified_g2):
                     if check_nodes_equivalence(g1, g2, lemmas, o1, p1, o2, p2):
                         add_equivalence(o1, o2, result_graph, new_frontiers, nodes_classified_g1, nodes_classified_g2)
-                    elif check_nodes_synonymy(g1, g2, lemmas, o1, p1, o2, p2):
+                    elif check_nodes_synonymy(g1, g2, lemmas, o1, p1, o2, p2, THRESHOLD_SIMILARITY_SYNONYMY):
                         add_synonymy(o1, o2, result_graph, new_frontiers, nodes_classified_g1, nodes_classified_g2)
         # check if a subject-predicate equivalent pair exists
         for s1, p1 in g1.subject_predicates(elem1):
@@ -248,22 +182,8 @@ def find_equivalence(g1, g2, lemmas, n, result_graph, starting_points, new_front
                 if (s1 not in nodes_classified_g1) and (s2 not in nodes_classified_g2):
                     if check_nodes_equivalence(g1, g2, lemmas, s1, p1, s2, p2):
                         add_equivalence(s1, s2, result_graph, new_frontiers, nodes_classified_g1, nodes_classified_g2)
-                    elif check_nodes_synonymy(g1, g2, lemmas, s1, p1, s2, p2):
+                    elif check_nodes_synonymy(g1, g2, lemmas, s1, p1, s2, p2, THRESHOLD_SIMILARITY_SYNONYMY):
                         add_synonymy(s1, s2, result_graph, new_frontiers, nodes_classified_g1, nodes_classified_g2)
-
-
-# receives N graphs in input and return a dictionary with the form "label" => label's lemma
-def extracts_lemmas(*args):
-    lemmas = dict()
-    for g in args:
-        # get all the nodes of the graph
-        nodes = g.all_nodes()
-        for elem in nodes:
-            label = str(g.label(elem))
-            if label != '' and label not in lemmas:
-                lemmas[label] = lemma(label)
-    lemmas[""] = ''
-    return lemmas
 
 
 def compare_graphs(g1, g2):
