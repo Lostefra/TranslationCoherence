@@ -2,7 +2,7 @@ from rdflib import Namespace, Graph
 from build_graph import graph_bind
 import constants
 from utility_functions import prefix, extracts_lemmas, index_generator, get_node_triples, is_class, \
-    check_nodes_equivalence, add_equivalence, check_nodes_synonymy, add_synonymy
+    check_nodes_equivalence, add_equivalence_relation, check_nodes_synonymy, add_synonymy_relation
 from pattern import negative_verbs, class_subclass_equivalence
 from analysis import find_synonyms, find_similar_words
 
@@ -150,40 +150,49 @@ def find_starting_points(g1, g2, lemmas, n, result_graph):
     return set(starting_points), equivalences_found_g1, equivalences_found_g2
 
 
-# TODO:
-#  1) add checks for instances (i.e. propagate the equivalence only if there exists
-#       a single individual for the class, for example)
-#  2) add more starting point (not just sameAs and equivalentClass)
-#  3) decide how to handle equivalence:
-#       a) remove triples
-#       b) adding connection
-#       c) (this doesn't exclude the previous two, but probably needed) keep tracks of the equivalent nodes and the
-#           frontier's nodes. In such a way we'll just check the variations classes on the neighbours nodes of the
-#           frontier's nodes, and compare just the potential differences (both for correctness and efficiency). As soon
-#           the variation is classified, then we restarted the equivalence propagation until it stops; then variation
-#           classification and so on and so forth until all the nodes are evaluated.
-def find_equivalence(g1, g2, lemmas, n, result_graph, starting_points, new_frontiers, nodes_classified_g1, nodes_classified_g2):
-    # TODO SAMEAS PROPAGATION
+def find_equivalence_relations(g1, g2, lemmas, n, result_graph, starting_points, new_frontiers, nodes_classified_g1,
+                               nodes_classified_g2):
+    return find_binary_relations(g1, g2, lemmas, n, result_graph, starting_points, new_frontiers, nodes_classified_g1,
+                                nodes_classified_g2, check_nodes_equivalence, add_equivalence_relation)
+
+
+def find_synonymy_relations(g1, g2, lemmas, n, result_graph, starting_points, new_frontiers, nodes_classified_g1,
+                            nodes_classified_g2):
+    return find_binary_relations(g1, g2, lemmas, n, result_graph, starting_points, new_frontiers, nodes_classified_g1,
+                                 nodes_classified_g2, check_nodes_synonymy, add_synonymy_relation)
+
+
+# DONE:
+# We keep tracks of the equivalent nodes and the frontier's nodes. In such a way we'll just check the variations classes
+# on the neighbours nodes of the frontier's nodes, and compare just the potential differences (both for correctness and
+# efficiency). As soon the variation is classified, then we restarted the equivalence propagation until it stops; then
+# variation classification and so on and so forth until all the nodes are evaluated.
+def find_binary_relations(g1, g2, lemmas, n, result_graph, starting_points, new_frontiers, nodes_classified_g1,
+                          nodes_classified_g2, binary_relation_condition, binary_relation_action):
     # for each pair of starting_points see if in the two ontologies there are predicate-object or subject-predicate
     # "equal" according to some criteria, and propagate the equivalence
     # the starting pair is the equivalence found before
+    found = False
     for elem1, elem2 in starting_points:
         # check if a predicate-object equivalent pair exists
         for p1, o1 in g1.predicate_objects(elem1):
             for p2, o2 in g2.predicate_objects(elem2):
-                if (o1 not in nodes_classified_g1) and (o2 not in nodes_classified_g2):
-                    if check_nodes_equivalence(g1, g2, lemmas, o1, p1, o2, p2):
-                        add_equivalence(o1, o2, result_graph, new_frontiers, nodes_classified_g1, nodes_classified_g2)
-                    elif check_nodes_synonymy(g1, g2, lemmas, o1, p1, o2, p2, THRESHOLD_SIMILARITY_SYNONYMY):
-                        add_synonymy(o1, o2, result_graph, new_frontiers, nodes_classified_g1, nodes_classified_g2)
+                if p1 != constants.TYPE_PREDICATE and p2 != constants.TYPE_PREDICATE and \
+                        (o1 not in nodes_classified_g1) and (o2 not in nodes_classified_g2):
+                    if binary_relation_condition(g1, g2, lemmas, o1, p1, o2, p2):
+                        binary_relation_action(o1, o2, result_graph, new_frontiers, nodes_classified_g1,
+                                               nodes_classified_g2)
+                        found = True
         # check if a subject-predicate equivalent pair exists
         for s1, p1 in g1.subject_predicates(elem1):
             for s2, p2 in g2.subject_predicates(elem2):
-                if (s1 not in nodes_classified_g1) and (s2 not in nodes_classified_g2):
-                    if check_nodes_equivalence(g1, g2, lemmas, s1, p1, s2, p2):
-                        add_equivalence(s1, s2, result_graph, new_frontiers, nodes_classified_g1, nodes_classified_g2)
-                    elif check_nodes_synonymy(g1, g2, lemmas, s1, p1, s2, p2, THRESHOLD_SIMILARITY_SYNONYMY):
-                        add_synonymy(s1, s2, result_graph, new_frontiers, nodes_classified_g1, nodes_classified_g2)
+                if p1 != constants.TYPE_PREDICATE and p2 != constants.TYPE_PREDICATE and \
+                        (s1 not in nodes_classified_g1) and (s2 not in nodes_classified_g2):
+                    if binary_relation_condition(g1, g2, lemmas, s1, p1, s2, p2):
+                        binary_relation_action(s1, s2, result_graph, new_frontiers, nodes_classified_g1,
+                                               nodes_classified_g2)
+                        found = True
+    return found
 
 
 def compare_graphs(g1, g2):
@@ -198,19 +207,19 @@ def compare_graphs(g1, g2):
     # INVESTIGATE SYNONYMY AND SIMILARITIES BETWEEN WORDS
     # print("-" * 150)  # #########################################################
     # print("WordNet (synset)")
-    # print(find_synonyms(g1, g2, lemmas, n, result_graph))
+    # print(find_synonyms(g1, g2, lemmas))
     # print("-" * 150)  # #########################################################
     # print("WordNet (path_similarity)")
-    # print(find_similar_words(g1, g2, lemmas, n, result_graph, "path", 0.5, "max"))
+    # print(find_similar_words(g1, g2, lemmas, "path", 0.5, "max"))
     # print("-" * 150)  # #########################################################
     # print("WordNet (lch_similarity)")
-    # print(find_similar_words(g1, g2, lemmas, n, result_graph, "lch", 0.5, "max"))
+    # print(find_similar_words(g1, g2, lemmas, "lch", 0.5, "max"))
     # print("-" * 150)  # #########################################################
     # print("WordNet (wup_similarity)")
-    # print(find_similar_words(g1, g2, lemmas, n, result_graph, "wup", 0.85, "max"))
+    # print(find_similar_words(g1, g2, lemmas, "wup", 0.85, "max"))
     # print("-" * 150)  # #########################################################
     # print("WordNet (combine similarity)")
-    # print(find_similar_words(g1, g2, lemmas, n, result_graph, "combination", 0.75, "max"))
+    # print(find_similar_words(g1, g2, lemmas, "combination", 0.75, "max"))
     # print("-" * 150)  # #########################################################
     # print("GloVe")
     # synonyms2(g1, g2, n, result_graph)
@@ -234,7 +243,7 @@ def compare_graphs(g1, g2):
         new_frontiers = set()
 
         print("find equivalence")
-        find_equivalence(g1, g2, lemmas, n, result_graph, frontiers, new_frontiers, equivalences_found_g1, equivalences_found_g2)
+        find_equivalence_relations(g1, g2, lemmas, n, result_graph, frontiers, new_frontiers, equivalences_found_g1, equivalences_found_g2)
         print("-" * 150)  # #########################################################
         print("negative verbs")
         negative_verbs(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_frontiers, mode=1)
@@ -243,7 +252,7 @@ def compare_graphs(g1, g2):
         # dbpedia_equivalence(g1, g2, n, result_graph)
         print("-" * 150)  # #########################################################
         print("class_subclass_equivalence")
-        class_subclass_equivalence(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_frontiers)
+        # class_subclass_equivalence(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_frontiers)
         print("-" * 150)  # #########################################################
 
         new_frontiers -= all_frontiers

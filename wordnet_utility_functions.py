@@ -36,8 +36,9 @@ def check_synonymy(word1, word2, threshold_similarity):
     # otherwise compute the max similarity between all possible synsest (using path and wup similarity)
     similarity = 0
     # for each pair of synset compute the similarity and find the maximum
-    for synset1, synset2 in zip(wordnet.synsets(word1), wordnet.synsets(word2)):
-        new_similarity = 0.33 * synset1.path_similarity(synset2) + 0.67 * synset1.wup_similarity(synset2)
-        similarity = max(similarity, new_similarity) if word1 and word2 else 0
+    for synset1 in wordnet.synsets(word1):
+        for synset2 in wordnet.synsets(word2):
+            new_similarity = 0.33 * synset1.path_similarity(synset2) + 0.67 * synset1.wup_similarity(synset2)
+            similarity = max(similarity, new_similarity) if word1 and word2 else 0
     # the two words are synonyms if the similarity is above a certain threshold
     return similarity >= threshold_similarity

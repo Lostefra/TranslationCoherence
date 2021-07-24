@@ -91,7 +91,7 @@ def check_nodes_equivalence(g1, g2, lemmas, node1, p1, node2, p2):
         lemma1, lemma2 = lemmas[str(g1.label(node1))], lemmas[str(g2.label(node2))]
         is_s1_class, is_s2_class = is_class(node1, g1), is_class(node2, g2)
         return (((not is_s1_class) and not is_s2_class) and lemma1 and lemma1 == lemma2) or \
-                (is_s1_class and is_s2_class and node1 == node2)
+               (is_s1_class and is_s2_class and node1 == node2)
     return False
 
 
@@ -100,36 +100,41 @@ def check_nodes_equivalence(g1, g2, lemmas, node1, p1, node2, p2):
 def check_nodes_synonymy(g1, g2, lemmas, node1, p1, node2, p2, threshold_similarity=0.7):
     # check if the two predicates are the same
     if p1 == p2 and p1 != constants.LABEL_PREDICATE:
-        is_s1_class = is_class(node1, g1)
-        is_s2_class = is_class(node2, g2)
+        wordnet_lemmas = set(wordnet.all_lemma_names())
+        is_s1_class, is_s2_class = is_class(node1, g1), is_class(node2, g2)
         if (not is_s1_class) and (not is_s2_class):
-            word1 = lemmas[str(g1.label(node1))]
-            word2 = lemmas[str(g2.label(node2))]
-        #elif is_s1_class and is_s2_class:
-            # word1 = get_class_name_from_iri(str(node1))
-            # word2 = get_class_name_from_iri(str(node2))
-            wordnet_lemmas = set(wordnet.all_lemma_names())
+            word1, word2 = lemmas[str(g1.label(node1))], lemmas[str(g2.label(node2))]
             # check if the words are in the wordnet dictionary
             if word1 in wordnet_lemmas and word2 in wordnet_lemmas:
                 return check_synonymy(word1, word2, threshold_similarity)
+        elif is_s1_class and is_s2_class:
+            expression1, expression2 = get_class_name_from_iri(str(node1)), get_class_name_from_iri(str(node2))
+            expression1 = [word for word in expression1.split(" ")]
+            expression2 = [word for word in expression2.split(" ")]
+            if len(expression1) == len(expression2):
+                for word1, word2 in zip(expression1, expression2):
+                    if word1 != word2 or not check_synonymy(word1, word2):
+                        return False
+                return True
     return False
 
 
 # connect 2 elements with a certain predicate
 def add_binary_relation_across_graphs(node1, node2, result_graph, new_frontiers, nodes_classified_g1,
                                       nodes_classified_g2, predicate):
-    result_graph.add((node1, predicate, node2))
+    if predicate is not None:
+        result_graph.add((node1, predicate, node2))
     new_frontiers.add((node1, node2))
     nodes_classified_g1.append(node1)
     nodes_classified_g2.append(node2)
 
 
-def add_equivalence(node1, node2, result_graph, new_frontiers, nodes_classified_g1, nodes_classified_g2):
+def add_equivalence_relation(node1, node2, result_graph, new_frontiers, nodes_classified_g1, nodes_classified_g2):
     add_binary_relation_across_graphs(node1, node2, result_graph, new_frontiers, nodes_classified_g1,
                                       nodes_classified_g2, constants.EQUIVALENCE_PREDICATE)
 
 
-def add_synonymy(node1, node2, result_graph, new_frontiers, nodes_classified_g1, nodes_classified_g2):
+def add_synonymy_relation(node1, node2, result_graph, new_frontiers, nodes_classified_g1, nodes_classified_g2):
     add_binary_relation_across_graphs(node1, node2, result_graph, new_frontiers, nodes_classified_g1,
                                       nodes_classified_g2, constants.SYNONYMY_PREDICATE)
 
