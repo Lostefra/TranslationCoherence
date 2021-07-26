@@ -1,4 +1,6 @@
 from rdflib import Namespace, Graph
+
+from analysis import find_similar_words, find_synonyms
 from graph_utilities.build_graph import graph_bind
 from pattern.class_subclass_equivalence import class_subclass_equivalence
 from utilities import constants
@@ -210,16 +212,16 @@ def compare_graphs(g1, g2):
     # print(find_synonyms(g1, g2, lemmas))
     # print("-" * 150)  # #########################################################
     # print("WordNet (path_similarity)")
-    # print(find_similar_words(g1, g2, lemmas, "path", 0.5, "max"))
-    # print("-" * 150)  # #########################################################
-    # print("WordNet (lch_similarity)")
-    # print(find_similar_words(g1, g2, lemmas, "lch", 0.5, "max"))
-    # print("-" * 150)  # #########################################################
+    # print(find_similar_words(g1, g2, lemmas, "path", 0.45, "max"))
+    # # print("-" * 150)  # #########################################################
+    # # print("WordNet (lch_similarity)")
+    # # print(find_similar_words(g1, g2, lemmas, "lch", 0.5, "max"))
+    # # print("-" * 150)  # #########################################################
     # print("WordNet (wup_similarity)")
     # print(find_similar_words(g1, g2, lemmas, "wup", 0.85, "max"))
     # print("-" * 150)  # #########################################################
     # print("WordNet (combine similarity)")
-    # print(find_similar_words(g1, g2, lemmas, "combination", 0.75, "max"))
+    # print(find_similar_words(g1, g2, lemmas, "combination", 0.7, "max"))
     # print("-" * 150)  # #########################################################
     # print("GloVe")
     # synonyms2(g1, g2, n, result_graph)
@@ -243,7 +245,11 @@ def compare_graphs(g1, g2):
         new_frontiers = set()
 
         print("find equivalence")
-        find_equivalence_relations(g1, g2, lemmas, n, result_graph, frontiers, new_frontiers, equivalences_found_g1, equivalences_found_g2)
+        while(find_equivalence_relations(g1, g2, lemmas, n, result_graph, frontiers, new_frontiers,
+                                         equivalences_found_g1, equivalences_found_g2)):
+            pass
+        find_synonymy_relations(g1, g2, lemmas, n, result_graph, frontiers, new_frontiers,
+                                   equivalences_found_g1, equivalences_found_g2)
         print("-" * 150)  # #########################################################
         print("negative verbs")
         negative_verbs(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_frontiers, mode=1)

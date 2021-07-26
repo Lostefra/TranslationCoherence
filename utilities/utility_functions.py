@@ -98,7 +98,7 @@ def check_nodes_equivalence(g1, g2, lemmas, node1, p1, node2, p2):
 
 # return True if the 2 nodes from the 2 graphs received in input are considered equivalent
 # (i.e they are connected with the same predicate, have the same lemma and are both individuals or class)
-def check_nodes_synonymy(g1, g2, lemmas, node1, p1, node2, p2, threshold_similarity=0.7):
+def check_nodes_synonymy(g1, g2, lemmas, node1, p1, node2, p2):
     # check if the two predicates are the same
     if p1 == p2 and p1 != constants.LABEL_PREDICATE:
         wordnet_lemmas = set(wordnet.all_lemma_names())
@@ -107,14 +107,14 @@ def check_nodes_synonymy(g1, g2, lemmas, node1, p1, node2, p2, threshold_similar
             word1, word2 = lemmas[str(g1.label(node1))], lemmas[str(g2.label(node2))]
             # check if the words are in the wordnet dictionary
             if word1 in wordnet_lemmas and word2 in wordnet_lemmas:
-                return check_synonymy(word1, word2, threshold_similarity)
+                return check_synonymy(word1, word2)
         elif is_s1_class and is_s2_class:
             expression1, expression2 = get_class_name_from_iri(str(node1)), get_class_name_from_iri(str(node2))
             expression1 = [word for word in expression1.split(" ")]
             expression2 = [word for word in expression2.split(" ")]
             if len(expression1) == len(expression2):
                 for word1, word2 in zip(expression1, expression2):
-                    if word1 != word2 or not check_synonymy(word1, word2, threshold_similarity):
+                    if word1 != word2 or not check_synonymy(word1, word2):
                         return False
                 return True
     return False
