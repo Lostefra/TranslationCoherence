@@ -8,8 +8,8 @@ headers = {
     "Accept": "image/png"
 }
 
-turtle_dir = "../turtle"
-png_dir = "../png"
+turtle_dir = "../EuroParl/Paragraph1/turtle"
+png_dir = "../EuroParl/Paragraph1/png"
 
 for lang in os.listdir(turtle_dir):
     in_dir = os.path.join(turtle_dir,lang)
