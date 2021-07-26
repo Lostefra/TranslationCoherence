@@ -114,7 +114,7 @@ def check_nodes_synonymy(g1, g2, lemmas, node1, p1, node2, p2, threshold_similar
             expression2 = [word for word in expression2.split(" ")]
             if len(expression1) == len(expression2):
                 for word1, word2 in zip(expression1, expression2):
-                    if word1 != word2 or not check_synonymy(word1, word2):
+                    if word1 != word2 or not check_synonymy(word1, word2, threshold_similarity):
                         return False
                 return True
     return False
