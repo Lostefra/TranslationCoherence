@@ -1,10 +1,10 @@
 from rdflib import Namespace, Graph
-from build_graph import graph_bind
-import constants
-from utility_functions import prefix, extracts_lemmas, index_generator, get_node_triples, is_class, \
+from graph_utilities.build_graph import graph_bind
+from pattern.class_subclass_equivalence import class_subclass_equivalence
+from utilities import constants
+from utilities.utility_functions import prefix, extracts_lemmas, index_generator, get_node_triples, is_class, \
     check_nodes_equivalence, add_equivalence_relation, check_nodes_synonymy, add_synonymy_relation
-from pattern import negative_verbs, class_subclass_equivalence
-from analysis import find_synonyms, find_similar_words
+from pattern.negative_verbs import negative_verbs
 
 THRESHOLD_SIMILARITY_SYNONYMY = 0.7
 
@@ -248,11 +248,9 @@ def compare_graphs(g1, g2):
         print("negative verbs")
         negative_verbs(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_frontiers, mode=1)
         negative_verbs(g2, g1, n, result_graph, indexes, lemmas, frontiers, new_frontiers, mode=2)
-        # print("DBPedia equivalence")
-        # dbpedia_equivalence(g1, g2, n, result_graph)
         print("-" * 150)  # #########################################################
         print("class_subclass_equivalence")
-        # class_subclass_equivalence(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_frontiers)
+        class_subclass_equivalence(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_frontiers)
         print("-" * 150)  # #########################################################
 
         new_frontiers -= all_frontiers

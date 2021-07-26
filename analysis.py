@@ -1,7 +1,7 @@
 from scipy import spatial
 import numpy as np
-from utility_functions import extract_words
-from wordnet_utility_functions import extract_synset, get_word_synonyms
+from utilities.utility_functions import extract_words
+from utilities.wordnet_utility_functions import extract_synset, get_word_synonyms
 from nltk.corpus import wordnet
 
 

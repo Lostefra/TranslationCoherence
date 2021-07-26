@@ -1,7 +1,6 @@
-from utility_functions import pad_prefix
-from plot_graph import plot_graph
-from build_graph import build_graph
-from compare_graphs import compare_graphs
+from utilities.utility_functions import pad_prefix
+from graph_utilities.build_graph import build_graph
+from graph_utilities.compare_graphs import compare_graphs
 
 
 '''

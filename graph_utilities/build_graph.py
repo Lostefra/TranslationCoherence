@@ -1,6 +1,6 @@
 import rdflib.term
 from rdflib import Graph
-import constants
+from utilities import constants
 
 
 def wanted_triplet(s, p, o):

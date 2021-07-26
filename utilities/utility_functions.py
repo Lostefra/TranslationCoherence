@@ -1,8 +1,9 @@
-import constants
+import utilities.constants as constants
 import spacy
 from rdflib.term import Literal
-from wordnet_utility_functions import check_synonymy
+from utilities.wordnet_utility_functions import check_synonymy
 from nltk.corpus import wordnet
+import re
 
 nlp_analyzer = spacy.load('en_core_web_sm')
 
@@ -152,5 +153,5 @@ def superclasses(node, g):
         if(after == before):
             still_classes = False
         #print([prefix(c, g) for c in classes])
-    classes = filter(lambda x: len(list(g.subjects(constants.TYPE_PREDICATE, x)))<2, classes)
+    classes = filter(lambda x: len(list(g.subjects(constants.TYPE_PREDICATE, x))) < 2, classes)
     return list(filter(lambda x: prefix(x,g) not in unwanted_superclasses, classes))
