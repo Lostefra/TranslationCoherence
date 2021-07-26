@@ -1,5 +1,5 @@
-from utilities import constants
-from utilities.utility_functions import prefix, superclasses, check_nodes_synonymy
+from utilities.utility_functions import prefix
+from utilities.wordnet_utility_functions import check_synonymy
 
 
 def negative_verbs(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_frontiers, mode):
@@ -15,7 +15,8 @@ def negative_verbs(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_fron
             is_g1_frontier = s1 in frontiers_g1 or o1 in frontiers_g1
             for s2, p2, o2 in g2:
                 is_g2_frontier = s2 in frontiers_g2 or o2 in frontiers_g2
-                if (is_g1_frontier or is_g2_frontier) and lemmas[str(g1.label(o1))] == lemmas[str(g2.label(s2))] and \
+                if (is_g1_frontier or is_g2_frontier) and \
+                        check_synonymy(lemmas[str(g1.label(o1))], lemmas[str(g2.label(s2))]) and \
                         prefix(p2, g2) == "boxing:hasTruthValue" and prefix(o2, g2) == "boxing:False":
                     # "Expression_i" is a reification of a N-ary relationship
                     expr1 = "expression_" + next(indexes["expressions"])
@@ -31,6 +32,5 @@ def negative_verbs(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_fron
 
                     if (o1, n.equivalent, s2) not in result_graph:
                         result_graph.add((o1, n.equivalent, s2))
-                        print("RG aggiunto materialise_1")
                     new_frontiers.add((o1, s2))
 

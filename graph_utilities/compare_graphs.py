@@ -1,12 +1,12 @@
 from rdflib import Namespace, Graph
 
-from analysis import find_similar_words, find_synonyms
 from graph_utilities.build_graph import graph_bind
 from pattern.class_subclass_equivalence import class_subclass_equivalence
 from utilities import constants
 from utilities.utility_functions import prefix, extracts_lemmas, index_generator, get_node_triples, is_class, \
     check_nodes_equivalence, add_equivalence_relation, check_nodes_synonymy, add_synonymy_relation
 from pattern.negative_verbs import negative_verbs
+from utilities.wordnet_utility_functions import check_synonymy
 
 THRESHOLD_SIMILARITY_SYNONYMY = 0.7
 
@@ -264,6 +264,35 @@ def compare_graphs(g1, g2):
         frontiers = new_frontiers.copy()
         all_frontiers = all_frontiers.union(new_frontiers)
         print("-" * 150)  # #########################################################
+
+    # ###############################################################################
+    # Get set of nodes which are synonyms but that are not reached by equivalence propagation
+    frontiers_g1, frontiers_g2 = set(equivalences_found_g1), set(equivalences_found_g2)
+    out_frontiers_g1 = g1.all_nodes() - frontiers_g1
+    out_frontiers_g2 = g2.all_nodes() - frontiers_g2
+    out_frontiers = set()
+    for out_frontier_g1 in out_frontiers_g1:
+        label_1 = lemmas[str(g1.label(out_frontier_g1))]
+        for out_frontier_g2 in out_frontiers_g2:
+            label_2 = lemmas[str(g2.label(out_frontier_g2))]
+            if check_synonymy(label_1, label_2):
+                out_frontiers.add((out_frontier_g1, out_frontier_g2))
+
+    # Apply pattern on nodes which are synonyms but that are not reached by equivalence propagation
+    print("find equivalence")
+    while (find_equivalence_relations(g1, g2, lemmas, n, result_graph, out_frontiers, set(),
+                                      equivalences_found_g1, equivalences_found_g2)):
+        pass
+    find_synonymy_relations(g1, g2, lemmas, n, result_graph, out_frontiers, set(),
+                            equivalences_found_g1, equivalences_found_g2)
+    print("-" * 150)  # #########################################################
+    print("negative verbs")
+    negative_verbs(g1, g2, n, result_graph, indexes, lemmas, out_frontiers, set(), mode=1)
+    negative_verbs(g2, g1, n, result_graph, indexes, lemmas, out_frontiers, set(), mode=2)
+    print("-" * 150)  # #########################################################
+    print("class_subclass_equivalence")
+    class_subclass_equivalence(g1, g2, n, result_graph, indexes, lemmas, out_frontiers, set())
+    print("-" * 150)  # #########################################################
 
     graph_bind(result_graph)
     return result_graph
