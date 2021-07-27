@@ -103,28 +103,30 @@ def find_starting_points(g1, g2, lemmas, n, result_graph):
     # Mark as starting_points all the nodes which have enough relations equal in both graphs or are the same class
     starting_points, equivalences_found_1, equivalences_found_2 = [], [], []
 
-    for node in g1.all_nodes():
-        if str(node).startswith(constants.QUANT_PREFIX) and node in g2.all_nodes() or \
-                str(node).startswith(constants.DUL_PREFIX) and node in g2.all_nodes():
-            starting_points = starting_points + [(node, node)]
+    for node_1 in g1.all_nodes():
+        if str(node_1).startswith(constants.QUANT_PREFIX) and node_1 in g2.all_nodes() or \
+                str(node_1).startswith(constants.DUL_PREFIX) and node_1 in g2.all_nodes():
+            starting_points = starting_points + [(node_1, node_1)]
         else:
-            label = lemmas[str(g1.label(node))]
+            label = lemmas[str(g1.label(node_1))]
             # The centroid must have the same label in both graph, or must be the same class in both graph
             if (label != "" and label in [lemmas[str(g2.label(node_2))] for node_2 in g2.all_nodes()]) or \
-                    (label == "" and is_class(node, g1) and node in g2.all_nodes() and is_class(node, g2)):
+                    (label == "" and is_class(node_1, g1) and node_1 in g2.all_nodes() and is_class(node_1, g2)):
                 # Get all g1 triples where node is present
-                node_triples = get_node_triples(node, g1)
+                node_triples = get_node_triples(node_1, g1)
                 # If the node has enough equal relations in both graphs, collect the relations' nodes
-                new_starting_points = has_enough_matches(node, label, node_triples, g1, g2, lemmas)
-                node_2 = get_other_centroid(node, label, g1, g2, lemmas)
+                new_starting_points = has_enough_matches(node_1, label, node_triples, g1, g2, lemmas)
+                node_2 = get_other_centroid(node_1, label, g1, g2, lemmas)
                 label_2 = lemmas[str(g2.label(node_2))]
                 # Abort operation by setting empty "new_starting_points" if nodes are not both classes or both individuals, or if the have different labels or no labels and different IRI
-                if (is_class(node, g1) and not is_class(node_2, g2)) or (not is_class(node, g1) and is_class(node_2, g2)) or \
-                        (label != "" and label != label_2) or (label == "" and node != node_2):
+                if (is_class(node_1, g1) and not is_class(node_2, g2)) or (not is_class(node_1, g1) and is_class(node_2, g2)) or \
+                        (label != "" and label != label_2) or (label == "" and node_1 != node_2):
                     new_starting_points = []
                 if new_starting_points:
-                    starting_points = starting_points + [(node, node_2)] + new_starting_points
-                    # print(prefix(node, g1))
+                    starting_points = starting_points + [(node_1, node_2)] + new_starting_points
+                # If two nodes are both the same class in both graph, add them in frontier even if they do not share the same neighborhood
+                elif is_class(node_1, g1) and is_class(node_2, g2):
+                    starting_points = starting_points + [(node_1, node_2)]
     # Remove duplicates
     # print(len(starting_points))
     starting_points = list(set(starting_points))
