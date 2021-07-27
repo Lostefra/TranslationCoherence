@@ -100,20 +100,9 @@ def get_other_centroid(node, label, g1, g2, lemmas):
 
 
 def find_starting_points(g1, g2, lemmas, n, result_graph):
-    # Mark as starting_points all the nodes which have enough relations equal in both graphs
+    # Mark as starting_points all the nodes which have enough relations equal in both graphs or are the same class
     starting_points, equivalences_found_1, equivalences_found_2 = [], [], []
-    '''
-    # Find alias via "owl:sameAs" and "owl:equivalentClass", these predicates are in relation with dbpedia IRI
-    # search for sameAs and equivalentClass to find equivalent objects in the two ontologies
-    for property in (constants.SAME_AS_PREDICATE, constants.EQUIVALENT_CLASS_PREDICATE):
-        g1_property, g2_property = g1.subject_objects(property), g2.subject_objects(property)
-        for s1, o1 in g1_property:
-            for s2, o2 in g2_property:
-                if prefix(o2, g2) == prefix(o1, g1):
-                    result_graph.add((s1, constants.SAME_AS_PREDICATE, s2))
-                    starting_points.append((s1, s2))
-                    equivalences_found_1 += [(s1, s2), (o1, o2)]
-    '''
+
     for node in g1.all_nodes():
         if str(node).startswith(constants.QUANT_PREFIX) and node in g2.all_nodes() or \
                 str(node).startswith(constants.DUL_PREFIX) and node in g2.all_nodes():
@@ -273,10 +262,11 @@ def compare_graphs(g1, g2):
     out_frontiers = set()
     for out_frontier_g1 in out_frontiers_g1:
         label_1 = lemmas[str(g1.label(out_frontier_g1))]
-        for out_frontier_g2 in out_frontiers_g2:
-            label_2 = lemmas[str(g2.label(out_frontier_g2))]
-            if check_synonymy(label_1, label_2):
-                out_frontiers.add((out_frontier_g1, out_frontier_g2))
+        if is_class(out_frontier_g1, g1):
+            for out_frontier_g2 in out_frontiers_g2:
+                label_2 = lemmas[str(g2.label(out_frontier_g2))]
+                if check_synonymy(label_1, label_2) and is_class(out_frontier_g2, g2):
+                    out_frontiers.add((out_frontier_g1, out_frontier_g2))
 
     # Apply pattern on nodes which are synonyms but that are not reached by equivalence propagation
     print("find equivalence")
