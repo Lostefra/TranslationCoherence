@@ -32,6 +32,7 @@ def graph_bind(g_clean):
     g_clean.bind("boxing", "http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#")
     g_clean.bind("dbpedia", "http://dbpedia.org/resource/")
     g_clean.bind("foaf", "http://xmlns.com/foaf/0.1/")
+    g_clean.bind("schema", "http://schema.org/")
     g_clean.bind("transl_coher", "http://example.org/translation_coherence/")
 
 
