@@ -114,7 +114,7 @@ def check_nodes_synonymy(g1, g2, lemmas, node1, p1, node2, p2):
             expression2 = [word for word in expression2.split(" ")]
             if len(expression1) == len(expression2):
                 for word1, word2 in zip(expression1, expression2):
-                    if word1 != word2 or not check_synonymy(word1, word2):
+                    if word1 != word2 and not check_synonymy(word1, word2):
                         return False
                 return True
     return False
@@ -142,50 +142,3 @@ def add_synonymy_relation(node1, node2, result_graph, new_frontiers, nodes_class
 def equivalence_classified(node1, node2, result_graph):
     return (node1, constants.EQUIVALENCE_PREDICATE, node2) in result_graph or (
         node1, constants.SYNONYMY_PREDICATE, node2) in result_graph
-
-def hierarchy_classified(class_1, class_2, n, result_graph):
-    h_1 = list(result_graph.subjects(n.root, class_1))
-    h_2 = list(result_graph.subjects(n.root, class_2))
-    if h_1 and h_2 and any([(h1, n.same_hierarchy, h2) in result_graph for h1 in h_1 for h2 in h_2]):
-        return True
-    return False
-
-
-def sub_super_classes(node, g):
-    unwanted_superclasses = ['dul:Event', 'owl:Class']
-
-    is_node_class = is_class(node, g)
-
-    # If node is an individual, its type is the first class
-    if not is_node_class:
-        classes = list(g.objects(node, constants.TYPE_PREDICATE))
-    # If node is a class, itself is the first class
-    else:
-        classes = [node]
-    # Superclasses
-    still_classes = classes != []
-    while(still_classes):
-        before = len(classes)
-        to_add = list(g.objects(classes[0], constants.SUBCLASS_PREDICATE))
-        classes = to_add + classes
-        after = len(classes)
-        if(after == before):
-            still_classes = False
-        #print([prefix(c, g) for c in classes])
-
-    # If node is an individual, filter out classes with more than one instance
-    if not is_node_class:
-        classes = filter(lambda x: len(list(g.subjects(constants.TYPE_PREDICATE, x))) < 2, classes)
-
-    # If node is a class, add also subclasses
-    else:
-        still_classes = True
-        while(still_classes):
-            before = len(classes)
-            to_add = list(g.subjects(constants.SUBCLASS_PREDICATE, classes[-1]))
-            classes = classes + to_add
-            after = len(classes)
-            if(after == before):
-                still_classes = False
-
-    return list(filter(lambda x: prefix(x,g) not in unwanted_superclasses, classes))

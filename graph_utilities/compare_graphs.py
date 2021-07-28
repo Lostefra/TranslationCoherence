@@ -247,7 +247,8 @@ def compare_graphs(g1, g2):
         negative_verbs(g2, g1, n, result_graph, indexes, lemmas, frontiers, new_frontiers, mode=2)
         print("-" * 150)  # #########################################################
         print("class_subclass_equivalence")
-        class_subclass_equivalence(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_frontiers)
+        class_subclass_equivalence(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_frontiers,
+                                   equivalences_found_g1, equivalences_found_g2)
         print("-" * 150)  # #########################################################
 
         new_frontiers -= all_frontiers
@@ -268,7 +269,8 @@ def compare_graphs(g1, g2):
             for out_frontier_g2 in out_frontiers_g2:
                 label_2 = lemmas[str(g2.label(out_frontier_g2))]
                 if check_synonymy(label_1, label_2) and is_class(out_frontier_g2, g2):
-                    out_frontiers.add((out_frontier_g1, out_frontier_g2))
+                    add_synonymy_relation(out_frontier_g1, out_frontier_g2, result_graph, out_frontiers, equivalences_found_g1, equivalences_found_g2)
+                    #out_frontiers.add((out_frontier_g1, out_frontier_g2))
 
     # Apply pattern on nodes which are synonyms but that are not reached by equivalence propagation
     print("find equivalence")
@@ -283,7 +285,8 @@ def compare_graphs(g1, g2):
     negative_verbs(g2, g1, n, result_graph, indexes, lemmas, out_frontiers, set(), mode=2)
     print("-" * 150)  # #########################################################
     print("class_subclass_equivalence")
-    class_subclass_equivalence(g1, g2, n, result_graph, indexes, lemmas, out_frontiers, set())
+    class_subclass_equivalence(g1, g2, n, result_graph, indexes, lemmas, out_frontiers, set(),
+                               equivalences_found_g1, equivalences_found_g2)
     print("-" * 150)  # #########################################################
 
     graph_bind(result_graph)
