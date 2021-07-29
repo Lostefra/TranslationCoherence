@@ -268,7 +268,9 @@ def compare_graphs(g1, g2):
         if is_class(out_frontier_g1, g1):
             for out_frontier_g2 in out_frontiers_g2:
                 label_2 = lemmas[str(g2.label(out_frontier_g2))]
-                if check_synonymy(label_1, label_2) and is_class(out_frontier_g2, g2):
+                if check_nodes_equivalence(g1, g2, lemmas, out_frontier_g1, None, out_frontier_g2, None):
+                    add_equivalence_relation(out_frontier_g1, out_frontier_g2, result_graph, out_frontiers, equivalences_found_g1, equivalences_found_g2)
+                elif check_synonymy(label_1, label_2) and is_class(out_frontier_g2, g2):
                     add_synonymy_relation(out_frontier_g1, out_frontier_g2, result_graph, out_frontiers, equivalences_found_g1, equivalences_found_g2)
                     #out_frontiers.add((out_frontier_g1, out_frontier_g2))
 
