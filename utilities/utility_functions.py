@@ -86,19 +86,20 @@ def get_class_name_from_iri(class_iri_string):
 
 # return True if the 2 nodes from the 2 graphs received in input are considered equivalent
 # (i.e they are connected with the same predicate, have the same lemma and are both individuals or class)
-def check_nodes_equivalence(g1, g2, lemmas, node1, p1, node2, p2):
+def check_nodes_equivalence(g1, g2, lemmas, node1, node2, p1, p2):
     # check if the two predicates are the same
     if p1 == p2 and p1 != constants.LABEL_PREDICATE:
         lemma1, lemma2 = lemmas[str(g1.label(node1))], lemmas[str(g2.label(node2))]
         is_s1_class, is_s2_class = is_class(node1, g1), is_class(node2, g2)
         return (((not is_s1_class) and not is_s2_class) and lemma1 and lemma1 == lemma2) or \
-               (is_s1_class and is_s2_class and node1 == node2)
+               (is_s1_class and is_s2_class and node1 == node2) or \
+               (isinstance(node1, Literal) and isinstance(node1, Literal) and node1 == node2)
     return False
 
 
 # return True if the 2 nodes from the 2 graphs received in input are considered equivalent
 # (i.e they are connected with the same predicate, have the same lemma and are both individuals or class)
-def check_nodes_synonymy(g1, g2, lemmas, node1, p1, node2, p2):
+def check_nodes_synonymy(g1, g2, lemmas, node1, node2, p1, p2):
     # check if the two predicates are the same
     if p1 == p2 and p1 != constants.LABEL_PREDICATE:
         wordnet_lemmas = set(wordnet.all_lemma_names())
@@ -120,24 +121,41 @@ def check_nodes_synonymy(g1, g2, lemmas, node1, p1, node2, p2):
     return False
 
 
+# check if two different nodes seems to play the same role in the ontology (i.e. surrounded by similar objects)
+def check_nodes_binary_difference(g1, g2, lemmas, node1, node2, pred1, pred2, threshold=2):
+    if pred1 == pred2 and pred1 != constants.LABEL_PREDICATE:
+        equivalent_neighbour_counter = 0
+        # check if a predicate-object equivalent pair exists
+        for p1, o1 in g1.predicate_objects(node1):
+            for p2, o2 in g2.predicate_objects(node2):
+                if p1 == p2 and check_nodes_equivalence(g1, g2, lemmas, o1, o2, p1, p2):
+                    equivalent_neighbour_counter += 1
+        # check if a subject-predicate equivalent pair exists
+        for s1, p1 in g1.subject_predicates(node1):
+            for s2, p2 in g2.subject_predicates(node2):
+                if p1 == p2 and check_nodes_equivalence(g1, g2, lemmas, s1, s2, p1, p2):
+                    equivalent_neighbour_counter += 1
+        return equivalent_neighbour_counter >= threshold
+
+
 # connect 2 elements with a certain predicate
-def add_binary_relation_across_graphs(node1, node2, result_graph, new_frontiers, nodes_classified_g1,
-                                      nodes_classified_g2, predicate):
+def add_binary_relation_across_graphs(node1, node2, result_graph, new_frontiers, predicate):
     if predicate is not None:
         result_graph.add((node1, predicate, node2))
     new_frontiers.add((node1, node2))
-    nodes_classified_g1.append(node1)
-    nodes_classified_g2.append(node2)
 
 
-def add_equivalence_relation(node1, node2, result_graph, new_frontiers, nodes_classified_g1, nodes_classified_g2):
-    add_binary_relation_across_graphs(node1, node2, result_graph, new_frontiers, nodes_classified_g1,
-                                      nodes_classified_g2, constants.EQUIVALENCE_PREDICATE)
+def add_equivalence_relation(node1, node2, result_graph, new_frontiers):
+    add_binary_relation_across_graphs(node1, node2, result_graph, new_frontiers, constants.EQUIVALENCE_PREDICATE)
 
 
-def add_synonymy_relation(node1, node2, result_graph, new_frontiers, nodes_classified_g1, nodes_classified_g2):
-    add_binary_relation_across_graphs(node1, node2, result_graph, new_frontiers, nodes_classified_g1,
-                                      nodes_classified_g2, constants.SYNONYMY_PREDICATE)
+def add_synonymy_relation(node1, node2, result_graph, new_frontiers):
+    add_binary_relation_across_graphs(node1, node2, result_graph, new_frontiers, constants.SYNONYMY_PREDICATE)
+
+
+def add_binary_difference_relation(node1, node2, result_graph, new_frontiers):
+    add_binary_relation_across_graphs(node1, node2, result_graph, new_frontiers, constants.GENERIC_DIFFERENCE_PREDICATE)
+
 
 def equivalence_classified(node1, node2, result_graph):
     return (node1, constants.EQUIVALENCE_PREDICATE, node2) in result_graph or (
