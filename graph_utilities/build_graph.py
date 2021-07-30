@@ -39,26 +39,33 @@ def construct_text_references(g_in):
         # check if the subject is an offset in the ontology and collect information about:
         # the expression and the individual and/or the class related
         if constants.TEXTUAL_REFERENCE_PREFIX in s:
-            print(str(p))
             # text span
             if p == constants.LABEL_PREDICATE:
                 enriching_triples_labels[str(s)] = ' '.join((o.split('^')[0]).split('_'))
             # individual referenced by text span
             if p == constants.DENOTE_PREDICATE:
-                enriching_triples_individuals[str(s)] = o
+                if str(s) not in enriching_triples_individuals:
+                    enriching_triples_individuals[str(s)] = [o]
+                else:
+                    enriching_triples_individuals[str(s)] = enriching_triples_individuals[str(s)] + [o]
             # class referenced by text span
             if p == constants.HAS_INTERPRETANT_PREDICATE:
-                enriching_triples_classes[str(s)] = o
+                if str(s) not in enriching_triples_classes:
+                    enriching_triples_classes[str(s)] = [o]
+                else:
+                    enriching_triples_classes[str(s)] = enriching_triples_classes[str(s)] + [o]
     # add triples found
     for key, label in enriching_triples_labels.items():
-        individual_object = enriching_triples_individuals.get(key)
-        if individual_object is not None:
-            g_out.add((individual_object, constants.LABEL_PREDICATE, rdflib.Literal(label)))
-            print(individual_object, " => ", label)
-        class_object = enriching_triples_classes.get(key)
-        if class_object is not None:
-            g_out.add((class_object, constants.LABEL_PREDICATE, rdflib.Literal(label)))
-            print(class_object, " => ", label)
+        individual_object_list = enriching_triples_individuals.get(key)
+        if individual_object_list is not None:
+            for individual_object in individual_object_list:
+                g_out.add((individual_object, constants.LABEL_PREDICATE, rdflib.Literal(label)))
+                # print(individual_object, " => ", label)
+        class_object_list = enriching_triples_classes.get(key)
+        if class_object_list is not None:
+            for class_object in class_object_list:
+                g_out.add((class_object, constants.LABEL_PREDICATE, rdflib.Literal(label)))
+                # print(class_object, " => ", label)
     return g_out
 
 

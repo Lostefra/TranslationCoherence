@@ -5,7 +5,7 @@ from pattern.class_subclass_equivalence import class_subclass_equivalence
 from utilities import constants
 from utilities.utility_functions import prefix, extracts_lemmas, index_generator, get_node_triples, is_class, \
     check_nodes_equivalence, add_equivalence_relation, check_nodes_synonymy, add_synonymy_relation, \
-    check_nodes_binary_difference, add_binary_difference_relation
+    check_common_neighbourhood, add_binary_difference_relation
 from pattern.negative_verbs import negative_verbs
 from utilities.wordnet_utility_functions import check_synonymy
 
@@ -154,7 +154,7 @@ def find_synonymy_relations(g1, g2, lemmas, n, result_graph, starting_points, ne
 
 def find_binary_difference_relations(g1, g2, lemmas, n, result_graph, starting_points, new_frontiers):
     return find_binary_relations(g1, g2, lemmas, n, result_graph, starting_points, new_frontiers,
-                                 check_nodes_binary_difference, add_binary_difference_relation)
+                                 check_common_neighbourhood, add_binary_difference_relation)
 
 
 # DONE:
@@ -174,33 +174,40 @@ def find_binary_relations(g1, g2, lemmas, n, result_graph, starting_points, new_
         # check if a predicate-object equivalent pair exists
         for p1, o1 in g1.predicate_objects(elem1):
             for p2, o2 in g2.predicate_objects(elem2):
-                if p1 != constants.TYPE_PREDICATE and p2 != constants.TYPE_PREDICATE and \
+                if "like" in o1 and "like" in o2:
+                    print("triples: ")
+                    print(str(elem1), p1, o1)
+                    print(elem2, p2, o2)
+                if p1 != constants.TYPE_PREDICATE and p1 != constants.LABEL_PREDICATE and p1 == p2 and \
                         (o1 not in nodes_classified_g1) and (o2 not in nodes_classified_g2):
-                    if binary_relation_condition(g1, g2, lemmas, o1, o2, p1, p2):
+                    if binary_relation_condition(g1, g2, lemmas, o1, o2):
+                        if "person" in str(o1):
+                            print("Relation: ", binary_relation_condition, o1, o2)
+                            print(elem1, elem2)
                         binary_relation_action(o1, o2, result_graph, new_frontiers)
                         found = True
         # check if a subject-predicate equivalent pair exists
         for s1, p1 in g1.subject_predicates(elem1):
             for s2, p2 in g2.subject_predicates(elem2):
-                if p1 != constants.TYPE_PREDICATE and p2 != constants.TYPE_PREDICATE and \
+                if p1 != constants.TYPE_PREDICATE and p1 != constants.LABEL_PREDICATE and p1 == p2 and \
                         (s1 not in nodes_classified_g1) and (s2 not in nodes_classified_g2):
-                    if binary_relation_condition(g1, g2, lemmas, s1, s2, p1, p2):
+                    if binary_relation_condition(g1, g2, lemmas, s1, s2):
+                        if "person" in str(s1):
+                            print("Relation: ", binary_relation_condition, s1, s2)
                         binary_relation_action(s1, s2, result_graph, new_frontiers)
                         found = True
     return found
 
 
 def find_synonymy_classes(g1, g2, lemmas, result_graph, new_frontiers):
-    print(result_graph.all_nodes())
     out_frontiers_g1 = set([node for node in g1.all_nodes()]) - set([s for s in result_graph.subjects()])
     out_frontiers_g2 = set([node for node in g2.all_nodes()]) - set([o for o in result_graph.objects()])
     for out_frontier_g1 in out_frontiers_g1:
         if is_class(out_frontier_g1, g1):
             for out_frontier_g2 in out_frontiers_g2:
-                if check_nodes_equivalence(g1, g2, lemmas, out_frontier_g1, out_frontier_g2, None, None):
+                if check_nodes_equivalence(g1, g2, lemmas, out_frontier_g1, out_frontier_g2):
                     add_equivalence_relation(out_frontier_g1, out_frontier_g2, result_graph, new_frontiers)
-                elif check_nodes_synonymy(g1, g2, lemmas, out_frontier_g1, out_frontier_g2, None, None) and is_class(out_frontier_g2, g2):
-                    print("hey: ", out_frontier_g1, out_frontier_g2)
+                elif check_nodes_synonymy(g1, g2, lemmas, out_frontier_g1, out_frontier_g2) and is_class(out_frontier_g2, g2):
                     add_synonymy_relation(out_frontier_g1, out_frontier_g2, result_graph, new_frontiers)
 
 def compare_graphs(g1, g2):
