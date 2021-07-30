@@ -2,7 +2,6 @@ import rdflib.term
 from rdflib import Graph
 from utilities import constants
 
-
 def wanted_triplet(s, p, o):
     for unwanted in constants.UNWANTED:
         if unwanted in s or unwanted in p or unwanted in o:
@@ -21,21 +20,10 @@ def clean_graph(g_in):
     return g_out
 
 
-def graph_bind(g_clean):
-    g_clean.bind("fred", "http://www.ontologydesignpatterns.org/ont/fred/domain.owl#")
-    g_clean.bind("quant", "http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#")
-    g_clean.bind("owl", "http://www.w3.org/2002/07/owl#")
-    g_clean.bind("rdf", "http://www.w3.org/1999/02/22-rdf-syntax-ns#")
-    g_clean.bind("dul", "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#")
-    g_clean.bind("vn.role", "http://www.ontologydesignpatterns.org/ont/vn/abox/role/")
-    g_clean.bind("boxer", "http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#")
-    g_clean.bind("boxing", "http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#")
-    g_clean.bind("dbpedia", "http://dbpedia.org/resource/")
-    g_clean.bind("foaf", "http://xmlns.com/foaf/0.1/")
-    g_clean.bind("schema", "http://schema.org/")
-    g_clean.bind("coref", "http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#")
-    g_clean.bind("time", "http://www.w3.org/2006/time#")
-    g_clean.bind("transl_coher", "http://example.org/translation_coherence/")
+def graph_bind(g_clean, namespaces=constants.NAMESPACES):
+
+    for name, iri in namespaces.items():
+        g_clean.bind(name, iri)
 
 
 # add to each wanted element the related word (if exists)

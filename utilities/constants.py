@@ -16,8 +16,22 @@ TYPE_PREDICATE = rdflib.term.URIRef('http://www.w3.org/1999/02/22-rdf-syntax-ns#
 CLASS_OBJECT = rdflib.term.URIRef('http://www.w3.org/2002/07/owl#Class')
 SUBCLASS_PREDICATE = rdflib.term.URIRef('http://www.w3.org/2000/01/rdf-schema#subClassOf')
 
-QUANT_PREFIX = "http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#"
-DUL_PREFIX = "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#"
+NAMESPACES = {
+    'fred' : 'http://www.ontologydesignpatterns.org/ont/fred/domain.owl#',
+    'quant' : 'http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#',
+    'owl' : 'http://www.w3.org/2002/07/owl#',
+    'rdf' : 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
+    'dul' : 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#',
+    'vn.role' : 'http://www.ontologydesignpatterns.org/ont/vn/abox/role/',
+    'boxer' : 'http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#',
+    'boxing' : 'http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#',
+    'dbpedia' : 'http://dbpedia.org/resource/',
+    'foaf' : 'http://xmlns.com/foaf/0.1/',
+    'schema' : 'http://schema.org/',
+    'coref' : 'http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#',
+    'time' : 'http://www.w3.org/2006/time#',
+    'transl_coher' : 'http://example.org/translation_coherence/'
+}
 UNWANTED = ["http://www.ontologydesignpatterns.org/ont/fred/pos.owl",
             "http://ontologydesignpatterns.org/cp/owl/semiotics.owl",
             "http://www.essepuntato.it/2008/12/earmark",
@@ -26,3 +40,5 @@ UNWANTED = ["http://www.ontologydesignpatterns.org/ont/fred/pos.owl",
             # "http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl",
             TEXTUAL_REFERENCE_PREFIX,
             "ObjectProperty"]
+QUANT_PREFIX = NAMESPACES['quant']
+DUL_PREFIX = NAMESPACES['dul']

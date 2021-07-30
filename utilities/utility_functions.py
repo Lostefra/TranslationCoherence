@@ -86,7 +86,7 @@ def get_class_name_from_iri(class_iri_string):
 
 # return True if the 2 nodes from the 2 graphs received in input are considered equivalent
 # (i.e they are connected with the same predicate, have the same lemma and are both individuals or class)
-def check_nodes_equivalence(g1, g2, lemmas, node1, node2, p1, p2):
+def check_nodes_equivalence(g1, g2, lemmas, node1, node2, p1=None, p2=None):
     # check if the two predicates are the same
     if p1 == p2 and p1 != constants.LABEL_PREDICATE:
         lemma1, lemma2 = lemmas[str(g1.label(node1))], lemmas[str(g2.label(node2))]
@@ -99,7 +99,7 @@ def check_nodes_equivalence(g1, g2, lemmas, node1, node2, p1, p2):
 
 # return True if the 2 nodes from the 2 graphs received in input are considered equivalent
 # (i.e they are connected with the same predicate, have the same lemma and are both individuals or class)
-def check_nodes_synonymy(g1, g2, lemmas, node1, node2, p1, p2):
+def check_nodes_synonymy(g1, g2, lemmas, node1, node2, p1=None, p2=None):
     # check if the two predicates are the same
     if p1 == p2 and p1 != constants.LABEL_PREDICATE:
         wordnet_lemmas = set(wordnet.all_lemma_names())
