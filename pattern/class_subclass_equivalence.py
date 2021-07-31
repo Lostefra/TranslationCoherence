@@ -1,5 +1,6 @@
 from utilities import constants
-from utilities.utility_functions import prefix, is_class, equivalence_classified, check_nodes_equivalence, check_nodes_synonymy, add_equivalence_relation, add_synonymy_relation
+from utilities.utility_functions import prefix, is_class, equivalence_classified, synonymy_classified, difference_classified, \
+    check_nodes_equivalence, check_nodes_synonymy, add_equivalence_relation, add_synonymy_relation, add_binary_difference_relation
 
 def sub_super_classes(node, g):
     unwanted_superclasses = ['dul:Event', 'owl:Class']
@@ -50,37 +51,58 @@ def equivalent_classes(g1, g2, lemmas, node1, node2, classes_1, classes_2, resul
             if check_nodes_equivalence(g1, g2, lemmas, class_1, class_2):
                 add_equivalence_relation(class_1, class_2, result_graph, new_frontiers)
                 print("Equivalent:", prefix(class_1, g1), prefix(class_2, g2))
-            elif check_nodes_synonymy(g1, g2, lemmas, class_1, class_2):
+            elif check_nodes_synonymy(g1, g2, lemmas, class_1, class_2) and not equivalence_classified(class_1, class_2, result_graph):
                 add_synonymy_relation(class_1, class_2, result_graph, new_frontiers)
-                print("Synonymy:", prefix(class_1, g1), prefix(class_2, g2))
+                print("Synonym:", prefix(class_1, g1), prefix(class_2, g2))
             else:
                 return False
         # Add the nodes to result graph and to new frontier
         if check_nodes_equivalence(g1, g2, lemmas, node1, node2):
             add_equivalence_relation(node1, node2, result_graph, new_frontiers)
             print("Equivalent:", prefix(node1, g1), prefix(node2, g2))
-        elif check_nodes_synonymy(g1, g2, lemmas, node1, node2):
+        elif check_nodes_synonymy(g1, g2, lemmas, node1, node2) and not equivalence_classified(node1, node2, result_graph):
             add_synonymy_relation(node1, node2, result_graph, new_frontiers)
-            print("Synonymy:", prefix(node1, g1), prefix(node2, g2))
+            print("Synonym:", prefix(node1, g1), prefix(node2, g2))
     else:
         return False
     return True
+
+def different_classes(g1, g2, lemmas, node1, node2, classes_1, classes_2, result_graph, new_frontiers):
+    # Return true if all classes were pairwise related
+    if len(classes_1) == len(classes_2):
+        classes = zip(classes_1, classes_2)
+        for class_1, class_2 in classes:
+            add_binary_difference_relation(class_1, class_2, result_graph, new_frontiers)
+            print("Different:", prefix(class_1, g1), prefix(class_2, g2))
+        return True
+    return False
 
 def hierarchy_classified(g1, g2, n, result_graph, classes_1, classes_2):
     h_1, h_2 = [], []
     for class_1, class_2 in zip(classes_1, classes_2):
         h_1 = h_1 + list(result_graph.subjects(n.root, class_1))
         h_2 = h_2 + list(result_graph.subjects(n.root, class_2))
-    if h_1 and h_2 and any([(h1, n.same_hierarchy, h2) in result_graph for h1 in h_1 for h2 in h_2]):
+    if h_1 and h_2 and \
+    any([(h1, n.same_hierarchy, h2) in result_graph for h1 in h_1 for h2 in h_2]) or \
+    any([(h1, n.similar_hierarchy, h2) in result_graph for h1 in h_1 for h2 in h_2]) or \
+    any([(h1, n.different_hierarchy, h2) in result_graph for h1 in h_1 for h2 in h_2]):
         return True
     return False
 
+
 def class_subclass_equivalence(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_frontiers):
-    # Find out two related objects, based on:
-    # - relation with same object, but not hierarchically equivalent (e.g. dbpedia individual-class)
-    # - present in frontier, and of two class types which are one descendant of the other (e.g. nevertheless suffer --- suffer)
-    # - present in frontier, and of two class types which have the same ancestor in a single-branch chain (e.g. disaster)
-    # - present in frontier, and belonging to (or representing) two synonym classes (e.g. nevertheless suffer - still suffer)
+    # Find out relations, based on:
+    # - relation with same object, once as class and the other one as individual (e.g. dbpedia:European_parliament) and one of (s1,s2,o1,o2) in frontier
+    
+    # Propagate relations of (node1, node2) tuple in frontier:
+    # - EQUIVALENCE: of same class types, belonging to same hierarchy (e.g. Period, FestivePeriod, PleasantFestivePeriod)
+    #           => equivalence relationship between each pair of classes
+    # - HIERARCHY: of two class types which have a common ancestor in a single-branch chain (e.g. Truly(Terrible/Appalling)NaturalDisaster, (Nevertheless)Suffer)
+    #           => hierarchy relationship + equivalence between every corresponding class (root+levels)
+    # - SYNONYMY: belonging to (or representing) two synonym classes (e.g. NeverthelessSuffer - StillSuffer)
+    #           => synonymy relationship + eventual equivalence relationship (in this case, Suffer)
+    # - DIFFERENCE: classified as different in result_graph
+    #           => propagate difference along entire hierarchy of classes (pairwise)
 
     frontiers_g1, frontiers_g2 = [], []
     list_frontiers = list(map(list, zip(*frontiers)))
@@ -152,6 +174,9 @@ def class_subclass_equivalence(g1, g2, n, result_graph, indexes, lemmas, frontie
     for node1, node2 in frontiers:
         print("node1, node2", prefix(node1, g1), prefix(node2, g2))
 
+        # Keep track of classified difference
+        are_different = difference_classified(node1, node2, result_graph)
+
         # Extract superclasses (and subclasses in case of classes)
         classes_1, classes_2 = sub_super_classes(node1, g1), sub_super_classes(node2, g2)
         print(f"classes: {[prefix(i, g1) for i in classes_1]}, {[prefix(i, g2) for i in classes_2]}")
@@ -165,14 +190,21 @@ def class_subclass_equivalence(g1, g2, n, result_graph, indexes, lemmas, frontie
         # If same/synonym hierarchy, relate the classes pairwise and the nodes
         if equivalent_classes(g1, g2, lemmas, node1, node2, classes_1, classes_2, result_graph, new_frontiers):
             pass
+
+        # If different nodes, propagate to (equal-length list of) superclasses
+        elif are_different and different_classes(g1, g2, lemmas, node1, node2, classes_1, classes_2, result_graph, new_frontiers):
+            pass
     
-        # Otherwise - if the two lists of superclasses share a sublist - create a hierarchy relationship
+        # Otherwise - if classes are not already classified in any hierarchy - search for equivalences/differences
         elif not (hierarchy_classified(g1, g2, n, result_graph, classes_1, classes_2)):
             for cl_idx_1, cl_1 in enumerate(classes_1):
                 for cl_idx_2, cl_2 in enumerate(classes_2):
-                    # Check if two classes are either already present in graph or equal or synonym, and not already classified in any hierarchy
-                    if (equivalence_classified(cl_1, cl_2, result_graph) or check_nodes_equivalence(g1, g2, lemmas, cl_1, cl_2)) and (
-                        len(classes_1[cl_idx_1:]) > 1 or len(classes_2[cl_idx_2:]) > 1):
+                    cl_len_1, cl_len_2 = len(classes_1[cl_idx_1:]), len(classes_2[cl_idx_2:])
+                    are_equivalent = equivalence_classified(cl_1, cl_2, result_graph) or check_nodes_equivalence(g1, g2, lemmas, cl_1, cl_2)
+                    are_synonymy = synonymy_classified(cl_1, cl_2, result_graph)
+                    # Check if two classes are either already present in graph or found equivalent (and there is more than one class on either side)
+                    # or the two instance nodes are classified as different
+                    if (cl_len_1 > 1 or cl_len_2 > 1) and (are_equivalent or are_synonymy or are_different):
     
                         # Create a hierarchy relationship
     
@@ -186,18 +218,20 @@ def class_subclass_equivalence(g1, g2, n, result_graph, indexes, lemmas, frontie
                         # Add root classes to hierarchy, result graph, new frontier and class tree
                         result_graph.add((n[hierarchy_1], n.root, cl_1))
                         result_graph.add((n[hierarchy_2], n.root, cl_2))
-                        # Root classes can be either equal or synonyms
-                        if check_nodes_equivalence(g1, g2, lemmas, cl_1, cl_2):
+                        # Root classes can be either equal or synonyms or different
+                        if are_different:
+                            add_binary_difference_relation(cl_1, cl_2, result_graph, new_frontiers)
+                            print("Different:", prefix(cl_1, g1), prefix(cl_2, g2))
+                        elif check_nodes_equivalence(g1, g2, lemmas, cl_1, cl_2):
                             add_equivalence_relation(cl_1, cl_2, result_graph, new_frontiers)
                             print("Equivalent:", prefix(cl_1, g1), prefix(cl_2, g2))
-                        elif check_nodes_synonymy(g1, g2, lemmas, cl_1, cl_2):
+                        elif check_nodes_synonymy(g1, g2, lemmas, cl_1, cl_2) and not equivalence_classified(cl_1, cl_2, result_graph):
                             add_synonymy_relation(cl_1, cl_2, result_graph, new_frontiers)
-                            print("Synonymy:", prefix(cl_1, g1), prefix(cl_2, g2))
-                        h_classes_1.append(prefix(cl_1, g1))
-                        h_classes_2.append(prefix(cl_2, g2))
+                            print("Synonym:", prefix(cl_1, g1), prefix(cl_2, g2))
+                        h_classes_1.append(cl_1)
+                        h_classes_2.append(cl_2)
     
                         # Add level classes
-                        cl_len_1, cl_len_2 = len(classes_1[cl_idx_1:]), len(classes_2[cl_idx_2:])
                         min_len = min(cl_len_1, cl_len_2)
                         max_len = max(cl_len_1, cl_len_2)
 
@@ -205,44 +239,49 @@ def class_subclass_equivalence(g1, g2, n, result_graph, indexes, lemmas, frontie
                         for cl_idx in range(min_len-1):
                             class_1, class_2 = classes_1[cl_idx_1+cl_idx+1], classes_2[cl_idx_2+cl_idx+1]
                             # Add equivalence relation across classes
-                            if check_nodes_equivalence(g1, g2, lemmas, class_1, class_2):
+                            if are_different:
+                                add_binary_difference_relation(class_1, class_2, result_graph, new_frontiers)
+                                print("Different:", prefix(class_1, g1), prefix(class_2, g2))
+                            elif check_nodes_equivalence(g1, g2, lemmas, class_1, class_2):
                                 add_equivalence_relation(class_1, class_2, result_graph, new_frontiers)
                                 print("Equivalent:", prefix(class_1, g1), prefix(class_2, g2))
                             # Add synonymy relation across classes
-                            elif check_nodes_synonymy(g1, g2, lemmas, class_1, class_2):
+                            elif check_nodes_synonymy(g1, g2, lemmas, class_1, class_2) and not equivalence_classified(class_1, class_2, result_graph):
                                 add_synonymy_relation(class_1, class_2, result_graph, new_frontiers)
-                                print("Synonymy:", prefix(class_1, g1), prefix(class_2, g2))
+                                print("Synonym:", prefix(class_1, g1), prefix(class_2, g2))
                             
                             # Add levels to hierarchies
-                            result_graph.add((n[hierarchy_1], n["level_"+str(cl_idx+1)], class_1))
-                            result_graph.add((n[hierarchy_2], n["level_"+str(cl_idx+1)], class_2))
-                            h_classes_1.append(prefix(class_1, g1))
-                            h_classes_2.append(prefix(class_2, g2))
+                            result_graph.add((n[hierarchy_1], n["hierarchy_level_"+str(cl_idx+1)], class_1))
+                            result_graph.add((n[hierarchy_2], n["hierarchy_level_"+str(cl_idx+1)], class_2))
+                            h_classes_1.append(class_1)
+                            h_classes_2.append(class_2)
 
                         # Add remaining unpaired classes (from one single graph) to hierarchy
                         if max_len > min_len:
                             # Add levels to h_classes_1
                             if max_len == cl_len_1:
                                 for cl_idx in range(max_len-min_len):
-                                    result_graph.add((n[hierarchy_1], n["level_"+str(min_len+cl_idx)], classes_1[min_len+cl_idx]))
-                                    h_classes_1.append(prefix(classes_1[min_len+cl_idx], g1))
+                                    result_graph.add((n[hierarchy_1], n["hierarchy_level_"+str(min_len+cl_idx)], classes_1[min_len+cl_idx]))
+                                    h_classes_1.append(classes_1[min_len+cl_idx])
                             # Add levels to h_classes_2
                             else:
                                 for cl_idx in range(max_len-min_len):
-                                    result_graph.add((n[hierarchy_2], n["level_"+str(min_len+cl_idx)], classes_2[min_len+cl_idx]))
-                                    h_classes_2.append(prefix(classes_2[min_len+cl_idx], g2))
+                                    result_graph.add((n[hierarchy_2], n["hierarchy_level_"+str(min_len+cl_idx)], classes_2[min_len+cl_idx]))
+                                    h_classes_2.append(classes_2[min_len+cl_idx])
     
                         # Add the two hierarchies to the result graph
-                        result_graph.add((n[hierarchy_1], n.same_hierarchy, n[hierarchy_2]))
-                        # Add the nodes to result graph and to new frontier (nodes can be either equal or synonyms)
-                        if check_nodes_equivalence(g1, g2, lemmas, node1, node2):
-                            add_equivalence_relation(node1, node2, result_graph, new_frontiers)
-                            print("Equivalent:", prefix(node1, g1), prefix(node2, g2))
-                        elif check_nodes_synonymy(g1, g2, lemmas, node1, node2):
-                            add_synonymy_relation(node1, node2, result_graph, new_frontiers)
-                            print("Synonymy:", prefix(node1, g1), prefix(node2, g2))
+                        if are_different:
+                            print("Different", end=' ')
+                            result_graph.add((n[hierarchy_1], n.different_hierarchy, n[hierarchy_2]))
+                        elif any([synonymy_classified(h1, h2, result_graph) for h1,h2 in zip(h_classes_1[:min_len], h_classes_2[:min_len])]):
+                            print("Synonym", end=' ')
+                            result_graph.add((n[hierarchy_1], n.similar_hierarchy, n[hierarchy_2]))
+                        else:
+                            print("Equivalent", end=' ')
+                            result_graph.add((n[hierarchy_1], n.same_hierarchy, n[hierarchy_2]))
 
-                        print(f"Hierarchy: {h_classes_1} : {prefix(node1, g1)}, {h_classes_2} : {prefix(node2, g2)}")
+                        print(f"hierarchy: {[prefix(h,g1) for h in h_classes_1]} : {prefix(node1, g1)},\
+                            {[prefix(h,g2) for h in h_classes_2]} : {prefix(node2, g2)}")
 
                         # Prevent redundant hierarchies:
                         # break inner loop

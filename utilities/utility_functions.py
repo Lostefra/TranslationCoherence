@@ -158,5 +158,10 @@ def add_binary_difference_relation(node1, node2, result_graph, new_frontiers):
 
 
 def equivalence_classified(node1, node2, result_graph):
-    return (node1, constants.EQUIVALENCE_PREDICATE, node2) in result_graph or (
-        node1, constants.SYNONYMY_PREDICATE, node2) in result_graph
+    return (node1, constants.EQUIVALENCE_PREDICATE, node2) in result_graph
+
+def synonymy_classified(node1, node2, result_graph):
+    return (node1, constants.SYNONYMY_PREDICATE, node2) in result_graph
+
+def difference_classified(node1, node2, result_graph):
+    return (node1, constants.GENERIC_DIFFERENCE_PREDICATE, node2) in result_graph

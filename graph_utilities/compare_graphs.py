@@ -198,17 +198,28 @@ def find_binary_relations(g1, g2, lemmas, n, result_graph, starting_points, new_
                         found = True
     return found
 
+def find_equivalent_classes(g1, g2, lemmas, result_graph, new_frontiers):
+    # Find equivalent classes at beginning
+
+    for class_1 in filter(lambda x: is_class(x, g1), g1.all_nodes()):
+        for class_2 in filter(lambda x: is_class(x, g2), g2.all_nodes()):
+            if check_nodes_equivalence(g1, g2, lemmas, class_1, class_2):
+                add_equivalence_relation(class_1, class_2, result_graph, new_frontiers)
+                print("Equivalent classes:", prefix(class_1, g1), prefix(class_2, g2))
 
 def find_synonymy_classes(g1, g2, lemmas, result_graph, new_frontiers):
+    # Find synonym classes among nodes not reached by propagation
+
     out_frontiers_g1 = set([node for node in g1.all_nodes()]) - set([s for s in result_graph.subjects()])
     out_frontiers_g2 = set([node for node in g2.all_nodes()]) - set([o for o in result_graph.objects()])
-    for out_frontier_g1 in out_frontiers_g1:
-        if is_class(out_frontier_g1, g1):
-            for out_frontier_g2 in out_frontiers_g2:
-                if check_nodes_equivalence(g1, g2, lemmas, out_frontier_g1, out_frontier_g2):
-                    add_equivalence_relation(out_frontier_g1, out_frontier_g2, result_graph, new_frontiers)
-                elif check_nodes_synonymy(g1, g2, lemmas, out_frontier_g1, out_frontier_g2) and is_class(out_frontier_g2, g2):
-                    add_synonymy_relation(out_frontier_g1, out_frontier_g2, result_graph, new_frontiers)
+    for node1 in out_frontiers_g1:
+        if is_class(node1, g1):
+            for node2 in out_frontiers_g2:
+                if check_nodes_synonymy(g1, g2, lemmas, node1, node2) and is_class(node2, g2) and \
+                not equivalence_classified(node1, node2, result_graph):
+                    add_synonymy_relation(node1, node2, result_graph, new_frontiers)
+                    print("Synonym:", prefix(node1, g1), prefix(node2, g2))
+    return zip(out_frontiers_g1, out_frontiers_g2)
 
 def compare_graphs(g1, g2):
     n = Namespace("http://example.org/translation_coherence/")
@@ -253,6 +264,7 @@ def compare_graphs(g1, g2):
     frontiers, equivalences_found_g1, equivalences_found_g2 = find_starting_points(g1, g2, lemmas, n,
                                                                                    result_graph)
 
+    find_equivalent_classes(g1, g2, lemmas, result_graph, frontiers)
     old_frontiers = frontiers.copy()
     # while len(frontiers) > 0:
     while len(frontiers) > 0:
@@ -276,8 +288,12 @@ def compare_graphs(g1, g2):
             print("-" * 150)  # #########################################################
 
         print("-" * 150)  # #########################################################
+        print("differences:")
         find_binary_difference_relations(g1, g2, lemmas, n, result_graph, old_frontiers, frontiers)
-        #find_synonymy_classes(g1, g2, lemmas, result_graph, frontiers)
+        print("-" * 150)  # #########################################################
+        print("synonymies:")
+        out_frontiers = find_synonymy_classes(g1, g2, lemmas, result_graph, frontiers)
+        print("-" * 150)  # #########################################################
     ###############################################################################
     # Get set of nodes which are synonyms but that are not reached by equivalence propagation
 
@@ -285,18 +301,18 @@ def compare_graphs(g1, g2):
 
 
     # Apply pattern on nodes which are synonyms but that are not reached by equivalence propagation
-    # print("find equivalence")
-    # while (find_equivalence_relations(g1, g2, lemmas, n, result_graph, out_frontiers, set())):
-    #     pass
-    # find_synonymy_relations(g1, g2, lemmas, n, result_graph, out_frontiers, set())
-    # print("-" * 150)  # #########################################################
-    # print("negative verbs")
-    # negative_verbs(g1, g2, n, result_graph, indexes, lemmas, out_frontiers, set(), mode=1)
-    # negative_verbs(g2, g1, n, result_graph, indexes, lemmas, out_frontiers, set(), mode=2)
-    # print("-" * 150)  # #########################################################
-    # print("class_subclass_equivalence")
-    # class_subclass_equivalence(g1, g2, n, result_graph, indexes, lemmas, out_frontiers, set())
-    # print("-" * 150)  # #########################################################
+    print("find equivalence")
+    while (find_equivalence_relations(g1, g2, lemmas, n, result_graph, out_frontiers, set())):
+        pass
+    find_synonymy_relations(g1, g2, lemmas, n, result_graph, out_frontiers, set())
+    print("-" * 150)  # #########################################################
+    print("negative verbs")
+    negative_verbs(g1, g2, n, result_graph, indexes, lemmas, out_frontiers, set(), mode=1)
+    negative_verbs(g2, g1, n, result_graph, indexes, lemmas, out_frontiers, set(), mode=2)
+    print("-" * 150)  # #########################################################
+    print("class_subclass_equivalence")
+    class_subclass_equivalence(g1, g2, n, result_graph, indexes, lemmas, out_frontiers, set())
+    print("-" * 150)  # #########################################################
 
     graph_bind(result_graph)
     return result_graph

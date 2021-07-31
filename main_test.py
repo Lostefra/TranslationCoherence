@@ -1,6 +1,7 @@
 from utilities.utility_functions import pad_prefix
 from graph_utilities.build_graph import build_graph
 from graph_utilities.compare_graphs import compare_graphs
+from graph_utilities.write_graph import write_graph
 
 
 '''
@@ -13,7 +14,7 @@ for s, p, o in g_test:
 print("-" * 150)  # #########################################################
 '''
 
-g1 = build_graph("EuroParl/Paragraph1/turtle/en/en_sentence1.ttl")
+g1 = build_graph("EuroParl/Paragraph1/turtle/en/en_sentence2.ttl")
 # g1 = build_graph("turtle/EN_IT_EN.ttl")
 print("EN -> IT -> EN")
 print("Number of triplets:", len(g1))
@@ -23,7 +24,7 @@ for s, p, o in g1:
 
 print("-" * 150)  # #########################################################
 
-g2 = build_graph("EuroParl/Paragraph1/turtle/it/en_it_en_sentence1.ttl")
+g2 = build_graph("EuroParl/Paragraph1/turtle/cn/en_cn_en_sentence2.ttl")
 # g2 = build_graph("turtle/EN.ttl")
 print("EN")
 print("Number of triplets:", len(g2))
@@ -35,5 +36,12 @@ print("-" * 150)  # #########################################################
 
 # Generate the knowledge graph containing the semantic comparison between g1, g2
 rg = compare_graphs(g1, g2)
-for s, p, o in rg:
-    print(pad_prefix(s, rg), pad_prefix(p, rg), pad_prefix(o, rg))
+#for s, p, o in rg:
+#    print(pad_prefix(s, rg), pad_prefix(p, rg), pad_prefix(o, rg))
+
+# Ordered printing:
+for p in sorted(set(rg.predicates())):
+    for s,o in rg.subject_objects(predicate=p):
+        print(pad_prefix(s, rg), pad_prefix(p, rg), pad_prefix(o, rg))
+
+write_graph(g1, g2, rg)
