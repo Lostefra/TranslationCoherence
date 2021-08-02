@@ -1,3 +1,6 @@
+from rdflib import Namespace
+from rdflib.term import Literal
+
 from utilities.utility_functions import pad_prefix
 from graph_utilities.build_graph import build_graph
 from graph_utilities.compare_graphs import compare_graphs
@@ -24,7 +27,7 @@ for s, p, o in g1:
 
 print("-" * 150)  # #########################################################
 
-g2 = build_graph("EuroParl/Paragraph1/turtle/cn/en_cn_en_sentence2.ttl")
+g2 = build_graph("EuroParl/Paragraph1/turtle/de/en_de_en_sentence2.ttl")
 # g2 = build_graph("turtle/EN.ttl")
 print("EN")
 print("Number of triplets:", len(g2))
@@ -41,7 +44,26 @@ rg = compare_graphs(g1, g2)
 
 # Ordered printing:
 for p in sorted(set(rg.predicates())):
-    for s,o in rg.subject_objects(predicate=p):
+    for s, o in rg.subject_objects(predicate=p):
         print(pad_prefix(s, rg), pad_prefix(p, rg), pad_prefix(o, rg))
 
 write_graph(g1, g2, rg)
+
+# Analyse which are the nodes left out
+n = Namespace("http://example.org/translation_coherence/")
+rg1 = set()
+rg2 = set()
+for p in [n.starting_point, n.equivalent]:
+    for s, o in rg.subject_objects(predicate=p):
+        rg1.add(s)
+        rg2.add(o)
+left_out_g1 = set()
+left_out_g2 = set()
+for node in g1.all_nodes() - rg1:
+    if type(node) is not Literal:
+        left_out_g1.add(node)
+for node in g2.all_nodes() - rg2:
+    if type(node) is not Literal:
+        left_out_g2.add(node)
+print("\nG1 not taken nodes:", left_out_g1)
+print("\nG2 not taken nodes:", left_out_g2)
