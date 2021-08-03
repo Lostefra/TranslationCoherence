@@ -1,7 +1,7 @@
 from rdflib import Namespace
 from rdflib.term import Literal
 
-from utilities.utility_functions import pad_prefix
+from utilities.utility_functions import pad_prefix, lemma
 from graph_utilities.build_graph import build_graph
 from graph_utilities.compare_graphs import compare_graphs
 from graph_utilities.write_graph import write_graph
@@ -65,5 +65,10 @@ for node in g1.all_nodes() - rg1:
 for node in g2.all_nodes() - rg2:
     if type(node) is not Literal:
         left_out_g2.add(node)
-print("\nG1 not taken nodes:", left_out_g1)
-print("\nG2 not taken nodes:", left_out_g2)
+
+print("\nG1 not taken nodes: ")
+for node in left_out_g1:
+    print(node, " : ", g1.label(node), lemma(g1.label(node)))
+print("\nG2 not taken nodes: ")
+for node in left_out_g2:
+    print(node, " : ", g1.label(node), lemma(g1.label(node)))

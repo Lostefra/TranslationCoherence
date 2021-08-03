@@ -5,7 +5,7 @@ from pattern.class_subclass_equivalence import class_subclass_equivalence
 from utilities import constants
 from utilities.utility_functions import prefix, extracts_lemmas, index_generator, get_node_triples, is_class, \
     check_nodes_equivalence, add_equivalence_relation, check_nodes_synonymy, add_synonymy_relation, \
-    check_common_neighbourhood, add_binary_difference_relation
+    check_common_neighbourhood, add_binary_difference_relation, equivalence_classified
 from pattern.negative_verbs import negative_verbs
 from utilities.wordnet_utility_functions import check_synonymy
 
@@ -103,8 +103,8 @@ def find_starting_points(g1, g2, lemmas, n, result_graph):
     starting_points, equivalences_found_1, equivalences_found_2 = [], [], []
 
     for node_1 in g1.all_nodes():
-        if str(node_1).startswith(constants.QUANT_PREFIX) and node_1 in g2.all_nodes() or \
-                str(node_1).startswith(constants.DUL_PREFIX) and node_1 in g2.all_nodes():
+        if (str(node_1).startswith(constants.QUANT_PREFIX) or str(node_1).startswith(constants.DUL_PREFIX) or
+                str(node_1).startswith(constants.BOXING_PREFIX)) and node_1 in g2.all_nodes():
             starting_points = starting_points + [(node_1, node_1)]
         else:
             label = lemmas[str(g1.label(node_1))]
@@ -123,9 +123,7 @@ def find_starting_points(g1, g2, lemmas, n, result_graph):
                     new_starting_points = []
                 if new_starting_points:
                     starting_points = starting_points + [(node_1, node_2)] + new_starting_points
-                # If two nodes are both the same class in both graph, add them in frontier even if they do not share the same neighborhood
-                elif is_class(node_1, g1) and is_class(node_2, g2):
-                    starting_points = starting_points + [(node_1, node_2)]
+
     # Remove duplicates
     # print(len(starting_points))
     starting_points = list(set(starting_points))
