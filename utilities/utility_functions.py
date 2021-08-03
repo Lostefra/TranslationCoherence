@@ -6,6 +6,7 @@ from nltk.corpus import wordnet
 import re
 
 nlp_analyzer = spacy.load('en_core_web_sm')
+THRESHOLD_COMMON_NEIGHBOURS_FOR_BINARY_DIFFERENCE = 2
 
 
 def pad_prefix(el, graph):
@@ -116,6 +117,11 @@ def check_nodes_synonymy(g1, g2, lemmas, node1, node2):
     return False
 
 
+def check_nodes_binary_difference(g1, g2, lemmas, node1, node2):
+    return lemma(g1.label(node1)) != lemma(g1.label(node1)) and \
+           check_common_neighbourhood(g1, g2, lemmas, node1, node2, THRESHOLD_COMMON_NEIGHBOURS_FOR_BINARY_DIFFERENCE)
+
+
 # check if two different nodes seems to play the same role in the ontology (i.e. surrounded by similar objects)
 def check_common_neighbourhood(g1, g2, lemmas, node1, node2, threshold=2):
     if check_nodes_equivalence(g1, g2, lemmas, node1, node2):
@@ -129,10 +135,6 @@ def check_common_neighbourhood(g1, g2, lemmas, node1, node2, threshold=2):
     # check if a subject-predicate equivalent pair exists
     for s1, p1 in g1.subject_predicates(node1):
         for s2, p2 in g2.subject_predicates(node2):
-            print("triples inside:")
-            print(p1, node1)
-            print(p2, node2)
-            print("--------------------------------------")
             if p1 == p2 and check_nodes_equivalence(g1, g2, lemmas, s1, s2):
                 equivalent_neighbour_counter += 1
     return equivalent_neighbour_counter >= threshold
@@ -160,8 +162,10 @@ def add_binary_difference_relation(node1, node2, result_graph, new_frontiers):
 def equivalence_classified(node1, node2, result_graph):
     return (node1, constants.EQUIVALENCE_PREDICATE, node2) in result_graph
 
+
 def synonymy_classified(node1, node2, result_graph):
     return (node1, constants.SYNONYMY_PREDICATE, node2) in result_graph
+
 
 def difference_classified(node1, node2, result_graph):
     return (node1, constants.GENERIC_DIFFERENCE_PREDICATE, node2) in result_graph

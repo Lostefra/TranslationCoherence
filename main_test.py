@@ -17,7 +17,7 @@ for s, p, o in g_test:
 print("-" * 150)  # #########################################################
 '''
 
-g1 = build_graph("EuroParl/Paragraph1/turtle/en/en_sentence2.ttl")
+g1 = build_graph("EuroParl/Paragraph1/turtle/en/en_sentence1.ttl")
 # g1 = build_graph("turtle/EN_IT_EN.ttl")
 print("EN -> IT -> EN")
 print("Number of triplets:", len(g1))
@@ -27,7 +27,7 @@ for s, p, o in g1:
 
 print("-" * 150)  # #########################################################
 
-g2 = build_graph("EuroParl/Paragraph1/turtle/de/en_de_en_sentence2.ttl")
+g2 = build_graph("EuroParl/Paragraph1/turtle/de/en_de_en_sentence1.ttl")
 # g2 = build_graph("turtle/EN.ttl")
 print("EN")
 print("Number of triplets:", len(g2))
