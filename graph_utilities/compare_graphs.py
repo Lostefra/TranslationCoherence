@@ -1,6 +1,7 @@
 from rdflib import Namespace, Graph
 
 from graph_utilities.build_graph import graph_bind
+from pattern.all_different_relation_and_only_in_1_graph import all_different_relations_and_only_in_1_graph
 from pattern.class_subclass_equivalence import class_subclass_equivalence
 from utilities import constants
 from utilities.utility_functions import prefix, extracts_lemmas, index_generator, get_node_triples, is_class, \
@@ -10,24 +11,24 @@ from pattern.negative_verbs import negative_verbs
 from utilities.wordnet_utility_functions import check_synonymy
 
 
-# TODO avoid alias if object / subjects are already the same
-def sameAs_equivalentClass_transitivity(g1, g2, n, result_graph):
-    # Check alias via "owl:sameAs" and "owl:equivalentClass", exploiting transitivity
-    for s1, p1, o1 in g1:
-        if prefix(p1, g1) == "owl:sameAs" or prefix(p1, g1) == "owl:equivalentClass":
-            for s2, p2, o2 in g2:
-                if prefix(s2, g2) == prefix(s1, g1) and (
-                        prefix(p2, g2) == "owl:sameAs" or prefix(p2, g2) == "owl:equivalentClass"):
-                    result_graph.add((o2, n.alias, o1))
-                elif prefix(s2, g2) == prefix(o1, g1) and (
-                        prefix(p2, g2) == "owl:sameAs" or prefix(p2, g2) == "owl:equivalentClass"):
-                    result_graph.add((o2, n.alias, s1))
-                elif prefix(o2, g2) == prefix(s1, g1) and (
-                        prefix(p2, g2) == "owl:sameAs" or prefix(p2, g2) == "owl:equivalentClass"):
-                    result_graph.add((s2, n.alias, o1))
-                elif prefix(o2, g2) == prefix(o1, g1) and (
-                        prefix(p2, g2) == "owl:sameAs" or prefix(p2, g2) == "owl:equivalentClass"):
-                    result_graph.add((s2, n.alias, s1))
+# # TODO avoid alias if object / subjects are already the same
+# def sameAs_equivalentClass_transitivity(g1, g2, n, result_graph):
+#     # Check alias via "owl:sameAs" and "owl:equivalentClass", exploiting transitivity
+#     for s1, p1, o1 in g1:
+#         if prefix(p1, g1) == "owl:sameAs" or prefix(p1, g1) == "owl:equivalentClass":
+#             for s2, p2, o2 in g2:
+#                 if prefix(s2, g2) == prefix(s1, g1) and (
+#                         prefix(p2, g2) == "owl:sameAs" or prefix(p2, g2) == "owl:equivalentClass"):
+#                     result_graph.add((o2, n.alias, o1))
+#                 elif prefix(s2, g2) == prefix(o1, g1) and (
+#                         prefix(p2, g2) == "owl:sameAs" or prefix(p2, g2) == "owl:equivalentClass"):
+#                     result_graph.add((o2, n.alias, s1))
+#                 elif prefix(o2, g2) == prefix(s1, g1) and (
+#                         prefix(p2, g2) == "owl:sameAs" or prefix(p2, g2) == "owl:equivalentClass"):
+#                     result_graph.add((s2, n.alias, o1))
+#                 elif prefix(o2, g2) == prefix(o1, g1) and (
+#                         prefix(p2, g2) == "owl:sameAs" or prefix(p2, g2) == "owl:equivalentClass"):
+#                     result_graph.add((s2, n.alias, s1))
 
 
 def has_enough_matches(node, label, node_triples, g1, g2, lemmas):
@@ -310,6 +311,9 @@ def compare_graphs(g1, g2):
     print("-" * 150)  # #########################################################
     print("class_subclass_equivalence")
     class_subclass_equivalence(g1, g2, n, result_graph, indexes, lemmas, out_frontiers, set())
+    print("-" * 150)  # #########################################################
+    print("all different relations & only in 1 graph")
+    all_different_relations_and_only_in_1_graph(g1, g2, n, result_graph, lemmas)
     print("-" * 150)  # #########################################################
 
     graph_bind(result_graph)
