@@ -2,6 +2,7 @@ from rdflib import Namespace, Graph
 
 from graph_utilities.build_graph import graph_bind
 from pattern.all_different_relation_and_only_in_1_graph import all_different_relations_and_only_in_1_graph
+from pattern.check_multiples import check_multiples
 from pattern.class_subclass_equivalence import class_subclass_equivalence
 from utilities import constants
 from utilities.utility_functions import prefix, extracts_lemmas, index_generator, get_node_triples, is_class, \
