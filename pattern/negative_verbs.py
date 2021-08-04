@@ -28,7 +28,7 @@ def negative_verbs(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_fron
                     result_graph.add((n[expr2], p2, o2))
                     result_graph.add((n[expr2], n.involves_verb, s2))
 
-                    result_graph.add((n[expr1], n.same_expression, n[expr2]))
+                    result_graph.add((n[expr1], n.different_expression, n[expr2]))
 
                     if (o1, n.equivalent, s2) not in result_graph:
                         result_graph.add((o1, n.equivalent, s2))

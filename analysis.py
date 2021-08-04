@@ -1,6 +1,8 @@
 from scipy import spatial
 import numpy as np
-from utilities.utility_functions import extract_words
+
+from graph_utilities.build_graph import build_graph
+from utilities.utility_functions import extract_words, extracts_lemmas
 from utilities.wordnet_utility_functions import extract_synset, get_word_synonyms
 from nltk.corpus import wordnet
 
@@ -72,30 +74,8 @@ def find_similar_words(g1, g2, lemmas, similarity_function, threshold, max_or_av
     return synonyms
 
 
-def synonyms1(g2, g1, n, result_graph):
-    # Check synonyms in graphs using Wordnet
-    """
-    To use WordNet, first download it:
-    >> import nltk
-    >> nltk.download("wordnet")
-    """
-    # Extract the set of IRI and their corresponding word from the graphs
-    g1_words = extract_words(g1)
-    g2_words = extract_words(g2)
-    # Compare pairwise the words computing the cosine similarity
-    for iri1, word1 in g1_words:
-        synset1 = extract_synset(word1)
-        for iri2, word2 in g2_words:
-            synset2 = extract_synset(word2)
-            # Avoid comparison of the word with itself
-            if word1 != word2:
-                similarity = synset1.wup_similarity(synset2)
-                # print(word1, word2, similarity)
-                if similarity > 0.8:
-                    result_graph.add((iri1, n.similar_to, iri2))
-
-
-def synonyms2(g2, g1, n, result_graph):
+def glove_synonyms(g1, g2):
+    synonyms = set()
     # Check synonyms in graphs using GloVe
     embeddings_dict = {}
     # Load GloVe word embeddings, download the file from http://nlp.stanford.edu/data/glove.6B.zip (820 Mb)
@@ -119,4 +99,33 @@ def synonyms2(g2, g1, n, result_graph):
                 similarity = 1 - spatial.distance.cosine(encoding1, encoding2)
                 # print(word1, word2, similarity)
                 if similarity > 0.8:
-                    result_graph.add((iri1, n.similar_to, iri2))
+                    new_synonyms_pair = (word1, word2) if word1 < word2 else (word2, word1)
+                    synonyms.add(new_synonyms_pair)
+    return synonyms
+
+
+if __name__ == "__main__":
+    g1 = build_graph("EuroParl/Paragraph1/turtle/cn/en_cn_en_sentence2.ttl")
+    g2 = build_graph("EuroParl/Paragraph1/turtle/it/en_it_en_sentence2.ttl")
+    lemmas = extracts_lemmas(g1, g2)
+
+    # INVESTIGATE SYNONYMY AND SIMILARITIES BETWEEN WORDS
+    print("-" * 150)  # #########################################################
+    print("WordNet (synset)")
+    print(find_synonyms(g1, g2, lemmas))
+    print("-" * 150)  # #########################################################
+    print("WordNet (path_similarity)")
+    print(find_similar_words(g1, g2, lemmas, "path", 0.45, "max"))
+    # print("-" * 150)  # #########################################################
+    # print("WordNet (lch_similarity)")
+    # print(find_similar_words(g1, g2, lemmas, "lch", 0.5, "max"))
+    # print("-" * 150)  # #########################################################
+    print("WordNet (wup_similarity)")
+    print(find_similar_words(g1, g2, lemmas, "wup", 0.85, "max"))
+    print("-" * 150)  # #########################################################
+    print("WordNet (combine similarity)")
+    print(find_similar_words(g1, g2, lemmas, "combination", 0.7, "max"))
+    print("-" * 150)  # #########################################################
+    #print("GloVe")
+    #glove_synonyms(g1, g2)
+    #print("-" * 150)  # #########################################################

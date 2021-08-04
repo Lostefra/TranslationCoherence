@@ -2,6 +2,7 @@ import rdflib.term
 from rdflib import Graph
 from utilities import constants
 
+
 def wanted_triplet(s, p, o):
     for unwanted in constants.UNWANTED:
         if unwanted in s or unwanted in p or unwanted in o:

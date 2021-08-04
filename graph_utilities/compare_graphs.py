@@ -11,26 +11,6 @@ from utilities.utility_functions import prefix, extracts_lemmas, index_generator
 from pattern.negative_verbs import negative_verbs
 
 
-# # TODO avoid alias if object / subjects are already the same
-# def sameAs_equivalentClass_transitivity(g1, g2, n, result_graph):
-#     # Check alias via "owl:sameAs" and "owl:equivalentClass", exploiting transitivity
-#     for s1, p1, o1 in g1:
-#         if prefix(p1, g1) == "owl:sameAs" or prefix(p1, g1) == "owl:equivalentClass":
-#             for s2, p2, o2 in g2:
-#                 if prefix(s2, g2) == prefix(s1, g1) and (
-#                         prefix(p2, g2) == "owl:sameAs" or prefix(p2, g2) == "owl:equivalentClass"):
-#                     result_graph.add((o2, n.alias, o1))
-#                 elif prefix(s2, g2) == prefix(o1, g1) and (
-#                         prefix(p2, g2) == "owl:sameAs" or prefix(p2, g2) == "owl:equivalentClass"):
-#                     result_graph.add((o2, n.alias, s1))
-#                 elif prefix(o2, g2) == prefix(s1, g1) and (
-#                         prefix(p2, g2) == "owl:sameAs" or prefix(p2, g2) == "owl:equivalentClass"):
-#                     result_graph.add((s2, n.alias, o1))
-#                 elif prefix(o2, g2) == prefix(o1, g1) and (
-#                         prefix(p2, g2) == "owl:sameAs" or prefix(p2, g2) == "owl:equivalentClass"):
-#                     result_graph.add((s2, n.alias, s1))
-
-
 def has_enough_matches(node, label, node_triples, g1, g2, lemmas):
     tot = 0
     new_starting_points = []
@@ -156,7 +136,6 @@ def find_binary_difference_relations(g1, g2, lemmas, n, result_graph, starting_p
                                  check_nodes_binary_difference, add_binary_difference_relation)
 
 
-# DONE:
 # We keep tracks of the equivalent nodes and the frontier's nodes. In such a way we'll just check the variations classes
 # on the neighbours nodes of the frontier's nodes, and compare just the potential differences (both for correctness and
 # efficiency). As soon the variation is classified, then we restarted the equivalence propagation until it stops; then
@@ -222,35 +201,6 @@ def compare_graphs(g1, g2):
 
     lemmas = extracts_lemmas(g1, g2)
 
-    # INVESTIGATE SYNONYMY AND SIMILARITIES BETWEEN WORDS
-    # print("-" * 150)  # #########################################################
-    # print("WordNet (synset)")
-    # print(find_synonyms(g1, g2, lemmas))
-    # print("-" * 150)  # #########################################################
-    # print("WordNet (path_similarity)")
-    # print(find_similar_words(g1, g2, lemmas, "path", 0.45, "max"))
-    # # print("-" * 150)  # #########################################################
-    # # print("WordNet (lch_similarity)")
-    # # print(find_similar_words(g1, g2, lemmas, "lch", 0.5, "max"))
-    # # print("-" * 150)  # #########################################################
-    # print("WordNet (wup_similarity)")
-    # print(find_similar_words(g1, g2, lemmas, "wup", 0.85, "max"))
-    # print("-" * 150)  # #########################################################
-    # print("WordNet (combine similarity)")
-    # print(find_similar_words(g1, g2, lemmas, "combination", 0.7, "max"))
-    # print("-" * 150)  # #########################################################
-    # print("GloVe")
-    # synonyms2(g1, g2, n, result_graph)
-    # print("-" * 150)  # #########################################################
-
-    # EXPLORING THE GRAPH FOR FINDING RELATIONS
-
-    # Populate result_graph by recognizing patterns on g1, g2
-    # print("-" * 150)  # #########################################################
-    # print("sameAs_equivalentClass_transitivity")
-    # sameAs_equivalentClass_transitivity(g1, g2, n, result_graph)
-    # print("-" * 150)  # #########################################################
-
     # starting_points are nodes from which propagate the equivalences
     # equivalences_found are nodes which have a correspondence in both the graphs
     frontiers, equivalences_found_g1, equivalences_found_g2 = find_starting_points(g1, g2, lemmas, n,
@@ -258,7 +208,6 @@ def compare_graphs(g1, g2):
 
     find_equivalent_classes(g1, g2, lemmas, result_graph, frontiers)
     old_frontiers = frontiers.copy()
-    # while len(frontiers) > 0:
     while len(frontiers) > 0:
         while len(frontiers) > 0:
             new_frontiers = set()
@@ -273,9 +222,6 @@ def compare_graphs(g1, g2):
             print("-" * 150)  # #########################################################
             print("class_subclass_equivalence")
             class_subclass_equivalence(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_frontiers)
-            print("check_multiples")
-            check_multiples(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_frontiers)
-            print("-" * 150)  # #########################################################
 
             new_frontiers -= old_frontiers
             frontiers = new_frontiers.copy()
@@ -283,31 +229,17 @@ def compare_graphs(g1, g2):
             print("-" * 150)  # #########################################################
 
         print("-" * 150)  # #########################################################
+        print("check_multiples")
+        check_multiples(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_frontiers)
+        print("-" * 150)  # #########################################################
         print("differences:")
         find_binary_difference_relations(g1, g2, lemmas, n, result_graph, old_frontiers, frontiers)
         print("-" * 150)  # #########################################################
         print("synonymies:")
         out_frontiers = find_synonymy_classes(g1, g2, lemmas, result_graph, frontiers)
         print("-" * 150)  # #########################################################
-    ###############################################################################
-    # Get set of nodes which are synonyms but that are not reached by equivalence propagation
 
-
-
-
-    # Apply pattern on nodes which are synonyms but that are not reached by equivalence propagation
-    print("find equivalence")
-    while (find_equivalence_relations(g1, g2, lemmas, n, result_graph, out_frontiers, set())):
-        pass
-    find_synonymy_relations(g1, g2, lemmas, n, result_graph, out_frontiers, set())
-    print("-" * 150)  # #########################################################
-    print("negative verbs")
-    negative_verbs(g1, g2, n, result_graph, indexes, lemmas, out_frontiers, set(), mode=1)
-    negative_verbs(g2, g1, n, result_graph, indexes, lemmas, out_frontiers, set(), mode=2)
-    print("-" * 150)  # #########################################################
-    print("class_subclass_equivalence")
-    class_subclass_equivalence(g1, g2, n, result_graph, indexes, lemmas, out_frontiers, set())
-    print("-" * 150)  # #########################################################
+    # Last search to classifying remaining elements
     print("all different relations & only in 1 graph")
     all_different_relations_and_only_in_1_graph(g1, g2, n, result_graph, lemmas)
     print("-" * 150)  # #########################################################

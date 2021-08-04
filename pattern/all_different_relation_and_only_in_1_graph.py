@@ -35,7 +35,7 @@ def all_different_relations_and_only_in_1_graph(g1, g2, n, rg, lemmas):
                         found_equal_relation = True
                         break
                 if not found_equal_relation:
-                    rg.add((node_1, n.all_different_relations, node_1))
+                    rg.add((node_1, n.different_context, node_1))
 
     for node_2 in left_out_g2:
         label = lemmas[str(g2.label(node_2))]
@@ -54,5 +54,5 @@ def all_different_relations_and_only_in_1_graph(g1, g2, n, rg, lemmas):
                         found_equal_relation = True
                         break
                 if not found_equal_relation:
-                    rg.add((node_2, n.all_different_relations, node_2))
+                    rg.add((node_2, n.different_context, node_2))
 

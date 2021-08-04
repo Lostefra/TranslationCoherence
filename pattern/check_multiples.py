@@ -2,10 +2,11 @@ from rdflib.term import URIRef
 from utilities.utility_functions import prefix
 from utilities import constants
 
+
 def multiple_classified(node1, node2, n, result_graph):
-	exprs_1, exprs_2 = result_graph.subject_objects(predicate=n.same_expression)
-	return any([(e_1, n.involves_node, node1) in result_graph for expr_1 in exprs_1]) or \
-		   any([(e_2, n.involves_node, node2) in result_graph for expr_2 in exprs_2])
+	exprs_1, exprs_2 = result_graph.subject_objects(predicate=n.different_expression)
+	return any([(expr_1, n.involves_node, node1) in result_graph for expr_1 in exprs_1]) or \
+		   any([(expr_2, n.involves_node, node2) in result_graph for expr_2 in exprs_2])
 
 
 def check_multiples(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_frontiers):
@@ -33,7 +34,7 @@ def check_multiples(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_fro
 						result_graph.add((n[expr_2], n.involves_node, node2))
 						for obj in objs:
 							result_graph.add((n[expr_2], n.involves_quant, obj))
-							result_graph.add((n[expr_1], n.same_expression, n[expr_2]))
+							result_graph.add((n[expr_1], n.different_expression, n[expr_2]))
 						print("FOUND", prefix(node1, g1), prefix(p1, g1), prefix(node2, g2), [prefix(o2, g2) for o2 in objs])
 
 		objs = list(g1.objects(subject=node1, predicate=quant_predicate))
@@ -51,5 +52,5 @@ def check_multiples(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_fro
 							result_graph.add((n[expr_1], n.involves_quant, obj))
 						result_graph.add((n[expr_2], n.involves_node, node2))
 						result_graph.add((n[expr_2], n.involves_mult, s2))
-						result_graph.add((n[expr_1], n.same_expression, n[expr_2]))
+						result_graph.add((n[expr_1], n.different_expression, n[expr_2]))
 						print("FOUND", prefix(node2, g2), prefix(p2, g2), prefix(node1, g1), [prefix(o1, g1) for o1 in objs])
