@@ -272,6 +272,9 @@ def compare_graphs(g1, g2):
             print("-" * 150)  # #########################################################
             print("class_subclass_equivalence")
             class_subclass_equivalence(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_frontiers)
+            print("check_multiples")
+            check_multiples(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_frontiers)
+            print("-" * 150)  # #########################################################
 
             new_frontiers -= old_frontiers
             frontiers = new_frontiers.copy()
