@@ -1,3 +1,4 @@
+from rdflib import Namespace
 from utilities import constants
 from utilities.utility_functions import prefix, is_class, equivalence_classified, synonymy_classified, difference_classified, \
     check_nodes_equivalence, check_nodes_synonymy, add_equivalence_relation, add_synonymy_relation, add_binary_difference_relation
@@ -78,8 +79,7 @@ def different_classes(g1, g2, lemmas, node1, node2, classes_1, classes_2, result
     return False
 
 def hierarchy_classified(g1, g2, n, result_graph, classes_1, classes_2):
-    hierarchies = list(result_graph.subject_objects(predicate=n.same_hierarchy)) + \
-                  list(result_graph.subject_objects(predicate=n.similar_hierarchy)) + \
+    hierarchies = list(result_graph.subject_objects(predicate=n.similar_hierarchy)) + \
                   list(result_graph.subject_objects(predicate=n.different_hierarchy))
 
     for s1,o1 in hierarchies:
@@ -109,6 +109,9 @@ def class_subclass_equivalence(g1, g2, n, result_graph, indexes, lemmas, frontie
     list_frontiers = list(map(list, zip(*frontiers)))
     if list_frontiers:
         frontiers_g1, frontiers_g2 = list_frontiers[0], list_frontiers[1]
+
+
+    RDF = Namespace(constants.NAMESPACES['rdf'])
 
 #    print("-------")
 #    print("dbpedia:")
@@ -211,7 +214,7 @@ def class_subclass_equivalence(g1, g2, n, result_graph, indexes, lemmas, frontie
     
                         # Create a hierarchy relationship
     
-                        # "hierarchy_i" is a reification of a N-ary relationship
+                        # "hierarchy_i" is a RDFS Container
                         hierarchy_1 = "hierarchy_" + next(indexes["hierarchies"])
                         hierarchy_2 = "hierarchy_" + next(indexes["hierarchies"])
     
@@ -219,8 +222,8 @@ def class_subclass_equivalence(g1, g2, n, result_graph, indexes, lemmas, frontie
                         h_classes_1, h_classes_2 = [], []
     
                         # Add root classes to hierarchy, result graph, new frontier and class tree
-                        result_graph.add((n[hierarchy_1], n.root, cl_1))
-                        result_graph.add((n[hierarchy_2], n.root, cl_2))
+                        result_graph.add((n[hierarchy_1], RDF['_1'], cl_1))
+                        result_graph.add((n[hierarchy_2], RDF['_1'], cl_2))
                         # Root classes can be either equal or synonyms or different
                         if are_different:
                             add_binary_difference_relation(cl_1, cl_2, result_graph, new_frontiers)
@@ -254,8 +257,8 @@ def class_subclass_equivalence(g1, g2, n, result_graph, indexes, lemmas, frontie
 #                                print("Synonym:", prefix(class_1, g1), prefix(class_2, g2))
                             
                             # Add levels to hierarchies
-                            result_graph.add((n[hierarchy_1], n["hierarchy_level_"+str(cl_idx+1)], class_1))
-                            result_graph.add((n[hierarchy_2], n["hierarchy_level_"+str(cl_idx+1)], class_2))
+                            result_graph.add((n[hierarchy_1], RDF["_"+str(cl_idx+2)], class_1))
+                            result_graph.add((n[hierarchy_2], RDF["_"+str(cl_idx+2)], class_2))
                             h_classes_1.append(class_1)
                             h_classes_2.append(class_2)
 
@@ -264,24 +267,21 @@ def class_subclass_equivalence(g1, g2, n, result_graph, indexes, lemmas, frontie
                             # Add levels to h_classes_1
                             if max_len == cl_len_1:
                                 for cl_idx in range(max_len-min_len):
-                                    result_graph.add((n[hierarchy_1], n["hierarchy_level_"+str(min_len+cl_idx)], classes_1[min_len+cl_idx]))
+                                    result_graph.add((n[hierarchy_1], RDF["_"+str(min_len+cl_idx+1)], classes_1[min_len+cl_idx]))
                                     h_classes_1.append(classes_1[min_len+cl_idx])
                             # Add levels to h_classes_2
                             else:
                                 for cl_idx in range(max_len-min_len):
-                                    result_graph.add((n[hierarchy_2], n["hierarchy_level_"+str(min_len+cl_idx)], classes_2[min_len+cl_idx]))
+                                    result_graph.add((n[hierarchy_2], RDF["_"+str(min_len+cl_idx+1)], classes_2[min_len+cl_idx]))
                                     h_classes_2.append(classes_2[min_len+cl_idx])
     
                         # Add the two hierarchies to the result graph
                         if are_different:
 #                            print("Different", end=' ')
                             result_graph.add((n[hierarchy_1], n.different_hierarchy, n[hierarchy_2]))
-                        elif any([synonymy_classified(h1, h2, result_graph) for h1,h2 in zip(h_classes_1[:min_len], h_classes_2[:min_len])]):
+                        else:
 #                            print("Synonym", end=' ')
                             result_graph.add((n[hierarchy_1], n.similar_hierarchy, n[hierarchy_2]))
-                        else:
-#                            print("Equivalent", end=' ')
-                            result_graph.add((n[hierarchy_1], n.same_hierarchy, n[hierarchy_2]))
 
 #                        print(f"hierarchy: {[prefix(h,g1) for h in h_classes_1]} : {prefix(node1, g1)},\
 #                            {[prefix(h,g2) for h in h_classes_2]} : {prefix(node2, g2)}")

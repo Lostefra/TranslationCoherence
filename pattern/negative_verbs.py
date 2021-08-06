@@ -1,4 +1,4 @@
-from utilities.utility_functions import prefix
+from utilities.utility_functions import prefix, add_equivalence_relation
 from utilities.wordnet_utility_functions import check_synonymy
 
 
@@ -30,7 +30,5 @@ def negative_verbs(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_fron
 
                     result_graph.add((n[expr1], n.different_expression, n[expr2]))
 
-                    if (o1, n.equivalent, s2) not in result_graph:
-                        result_graph.add((o1, n.equivalent, s2))
-                    new_frontiers.add((o1, s2))
+                    add_equivalence_relation(o1, s2, result_graph, new_frontiers)
 
