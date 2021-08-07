@@ -1,4 +1,3 @@
-from rdflib import Namespace
 from utilities import constants
 from utilities.utility_functions import prefix, is_class, equivalence_classified, synonymy_classified, difference_classified, \
     check_nodes_equivalence, check_nodes_synonymy, add_equivalence_relation, add_synonymy_relation, add_binary_difference_relation
@@ -110,9 +109,6 @@ def class_subclass_equivalence(g1, g2, n, result_graph, indexes, lemmas, frontie
     if list_frontiers:
         frontiers_g1, frontiers_g2 = list_frontiers[0], list_frontiers[1]
 
-
-    RDF = Namespace(constants.NAMESPACES['rdf'])
-
 #    print("-------")
 #    print("dbpedia:")
     # DBPedia
@@ -214,7 +210,7 @@ def class_subclass_equivalence(g1, g2, n, result_graph, indexes, lemmas, frontie
     
                         # Create a hierarchy relationship
     
-                        # "hierarchy_i" is a RDFS Container
+                        # "hierarchy_i" is the reification of a n-ary relation
                         hierarchy_1 = "hierarchy_" + next(indexes["hierarchies"])
                         hierarchy_2 = "hierarchy_" + next(indexes["hierarchies"])
     
@@ -222,8 +218,8 @@ def class_subclass_equivalence(g1, g2, n, result_graph, indexes, lemmas, frontie
                         h_classes_1, h_classes_2 = [], []
     
                         # Add root classes to hierarchy, result graph, new frontier and class tree
-                        result_graph.add((n[hierarchy_1], RDF['_1'], cl_1))
-                        result_graph.add((n[hierarchy_2], RDF['_1'], cl_2))
+                        result_graph.add((n[hierarchy_1], n.root, cl_1))
+                        result_graph.add((n[hierarchy_2], n.root, cl_2))
                         # Root classes can be either equal or synonyms or different
                         if are_different:
                             add_binary_difference_relation(cl_1, cl_2, result_graph, new_frontiers)
@@ -257,22 +253,22 @@ def class_subclass_equivalence(g1, g2, n, result_graph, indexes, lemmas, frontie
 #                                print("Synonym:", prefix(class_1, g1), prefix(class_2, g2))
                             
                             # Add levels to hierarchies
-                            result_graph.add((n[hierarchy_1], RDF["_"+str(cl_idx+2)], class_1))
-                            result_graph.add((n[hierarchy_2], RDF["_"+str(cl_idx+2)], class_2))
+                            result_graph.add((n[hierarchy_1], n['level_'+str(cl_idx+1)], class_1))
+                            result_graph.add((n[hierarchy_2], n['level_'+str(cl_idx+1)], class_2))
                             h_classes_1.append(class_1)
                             h_classes_2.append(class_2)
 
-                        # Add remaining unpaired classes (from one single graph) to hierarchy
+                        # Add remaining unpaired classes to (longest) hierarchy
                         if max_len > min_len:
-                            # Add levels to h_classes_1
+                            # Add levels to hierarchy_1
                             if max_len == cl_len_1:
                                 for cl_idx in range(max_len-min_len):
-                                    result_graph.add((n[hierarchy_1], RDF["_"+str(min_len+cl_idx+1)], classes_1[min_len+cl_idx]))
+                                    result_graph.add((n[hierarchy_1], n['level_'+str(min_len+cl_idx)], classes_1[min_len+cl_idx]))
                                     h_classes_1.append(classes_1[min_len+cl_idx])
-                            # Add levels to h_classes_2
+                            # Add levels to hierarchy_2
                             else:
                                 for cl_idx in range(max_len-min_len):
-                                    result_graph.add((n[hierarchy_2], RDF["_"+str(min_len+cl_idx+1)], classes_2[min_len+cl_idx]))
+                                    result_graph.add((n[hierarchy_2], n['level_'+str(min_len+cl_idx)], classes_2[min_len+cl_idx]))
                                     h_classes_2.append(classes_2[min_len+cl_idx])
     
                         # Add the two hierarchies to the result graph
