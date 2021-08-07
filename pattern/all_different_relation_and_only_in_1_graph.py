@@ -1,5 +1,5 @@
 from rdflib.term import Literal
-from utilities.utility_functions import lemma, get_node_triples, prefix
+from utilities.utility_functions import get_node_triples
 
 
 def all_different_relations_and_only_in_1_graph(g1, g2, n, rg, lemmas):

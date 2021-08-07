@@ -31,7 +31,12 @@ NAMESPACES = {
     'schema': 'http://schema.org/',
     'coref': 'http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#',
     'time': 'http://www.w3.org/2006/time#',
-    'transl_coher': 'http://example.org/translation_coherence/'
+    'transl_coher': 'http://example.org/translation_coherence/',
+    'transl_coher_final': 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/',
+    # THE FOLLOWING PREFIXES ARE MADE FOR DEBUG REASONS
+    'tc_vocabulary': 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/vocabulary/',
+    'en_sentence2': 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/en__sentence2/',
+    'en_it_en_sentence2': 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/en_it_en__sentence2/',
 }
 UNWANTED = ["http://www.ontologydesignpatterns.org/ont/fred/pos.owl",
             "http://ontologydesignpatterns.org/cp/owl/semiotics.owl",

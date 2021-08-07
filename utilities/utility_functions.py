@@ -1,6 +1,6 @@
 import utilities.constants as constants
 import spacy
-from rdflib.term import Literal
+from rdflib.term import Literal, URIRef
 from utilities.wordnet_utility_functions import check_synonymy
 from nltk.corpus import wordnet
 import re
@@ -15,6 +15,13 @@ def pad_prefix(el, graph):
 
 def prefix(el, graph):
     return pad_prefix(el, graph).strip()
+
+
+def change_prefix(node, new_prefix):
+    if '#' in str(node):
+        return URIRef(new_prefix + "/" + str(node).split("#")[-1])
+    else:
+        return URIRef(new_prefix + "/" + str(node).split("/")[-1])
 
 
 def word(el, graph):
