@@ -48,7 +48,7 @@ def check_multiples(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_fro
 							result_graph.add((n[expr_1], n.involves_mult, s1))
 							result_graph.add((n[expr_2], n.involves_node, node2))
 							for obj in objs:
-								result_graph.add((n[expr_2], n.involves_quant, obj))
+								result_graph.add((n[expr_2], quant_predicate, obj))
 								result_graph.add((n[expr_1], n.same_expression, n[expr_2]))
 							print("FOUND", prefix(node1, g1), prefix(p1, g1), prefix(node2, g2), [prefix(o2, g2) for o2 in objs])
 
