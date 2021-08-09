@@ -1,0 +1,147 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix en_sentence2: <https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/en__sentence2/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+
+en_sentence2:Although rdfs:label "Although" .
+
+en_sentence2:As rdfs:label "as" .
+
+en_sentence2:In rdfs:label "in" .
+
+en_sentence2:Of rdfs:label "of" .
+
+en_sentence2:millennium_1 a en_sentence2:Millennium ;
+    rdfs:label "millennium" ;
+    dul:associatedWith en_sentence2:bug_1 ;
+    quant:hasDeterminer quant:the .
+
+en_sentence2:number_1 a en_sentence2:Number ;
+    rdfs:label "number" ;
+    quant:hasDeterminer quant:a .
+
+en_sentence2:situation_1 a en_sentence2:Situation ;
+    boxing:involves en_sentence2:Dreadful,
+        en_sentence2:series_1 ;
+    dul:hasQuality en_sentence2:Truly .
+
+en_sentence2:situation_2 a en_sentence2:Situation ;
+    boxing:involves en_sentence2:Materialise,
+        en_sentence2:See,
+        en_sentence2:fail_1,
+        en_sentence2:materialise_1,
+        en_sentence2:see_1 ;
+    en_sentence2:although en_sentence2:suffer_1 .
+
+en_sentence2:Bug a owl:Class ;
+    rdfs:label "bug" .
+
+en_sentence2:Country rdfs:label "countries" .
+
+en_sentence2:Disaster rdfs:label "disasters" .
+
+en_sentence2:Dreaded a owl:Class ;
+    rdfs:label "dreaded" ;
+    rdfs:subClassOf dul:Quality .
+
+en_sentence2:DreadedMillennium a owl:Class ;
+    dul:hasQuality en_sentence2:Dreaded ;
+    rdfs:subClassOf en_sentence2:Millennium .
+
+en_sentence2:DreadedMillenniumBug a owl:Class ;
+    rdfs:label "Dreaded Millennium Bug" ;
+    dul:associatedWith en_sentence2:DreadedMillennium ;
+    rdfs:subClassOf en_sentence2:MillenniumBug .
+
+en_sentence2:Fail rdfs:label "failed" ;
+    rdfs:subClassOf dul:Event .
+
+en_sentence2:MillenniumBug a owl:Class ;
+    rdfs:label "millennium bug" ;
+    dul:associatedWith en_sentence2:Millennium ;
+    rdfs:subClassOf en_sentence2:Bug ;
+    owl:equivalentClass dbpedia:Year_2000_problem .
+
+en_sentence2:Natural rdfs:label "natural" .
+
+en_sentence2:NaturalDisaster rdfs:subClassOf en_sentence2:Disaster .
+
+en_sentence2:Number rdfs:label "number" .
+
+en_sentence2:People rdfs:label "people" .
+
+en_sentence2:Person rdfs:label "you" .
+
+en_sentence2:Series rdfs:label "series" .
+
+en_sentence2:Still rdfs:label "still" .
+
+en_sentence2:Suffer rdfs:label "suffered" ;
+    rdfs:subClassOf dul:Event .
+
+en_sentence2:Truly rdfs:label "truly" .
+
+en_sentence2:country_1 a en_sentence2:Country ;
+    rdfs:label "countries" ;
+    quant:hasQuantifier quant:multiple .
+
+en_sentence2:disaster_1 a en_sentence2:NaturalDisaster ;
+    rdfs:label "disasters" ;
+    dul:hasQuality en_sentence2:Natural ;
+    quant:hasQuantifier quant:multiple .
+
+en_sentence2:people_1 a en_sentence2:People ;
+    rdfs:label "people" ;
+    dul:hasQuality en_sentence2:Still ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    en_sentence2:inNumberOf en_sentence2:country_1 .
+
+en_sentence2:person_1 a en_sentence2:Person ;
+    rdfs:label "you" .
+
+en_sentence2:see_1 a en_sentence2:See ;
+    rdfs:label "seen" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent en_sentence2:person_1 ;
+    en_sentence2:as en_sentence2:fail_1 .
+
+en_sentence2:suffer_1 a en_sentence2:Suffer ;
+    rdfs:label "suffered" ;
+    vn.role:Experiencer en_sentence2:people_1 ;
+    vn.role:Theme en_sentence2:series_1 .
+
+en_sentence2:Dreadful rdfs:label "dreadful" .
+
+en_sentence2:Materialise rdfs:label "materialise" ;
+    rdfs:subClassOf dul:Event .
+
+en_sentence2:See rdfs:label "seen" ;
+    rdfs:subClassOf dul:Event .
+
+en_sentence2:fail_1 a en_sentence2:Fail ;
+    rdfs:label "failed" ;
+    vn.role:Agent en_sentence2:bug_1 ;
+    vn.role:Theme en_sentence2:materialise_1 .
+
+en_sentence2:materialise_1 a en_sentence2:Materialise ;
+    rdfs:label "materialise" ;
+    boxer:agent en_sentence2:bug_1 .
+
+en_sentence2:series_1 a en_sentence2:Series ;
+    rdfs:label "series" ;
+    dul:hasQuality en_sentence2:Dreadful ;
+    quant:hasDeterminer quant:a ;
+    en_sentence2:seriesOf en_sentence2:disaster_1 .
+
+en_sentence2:Millennium a owl:Class ;
+    rdfs:label "millennium" .
+
+en_sentence2:bug_1 a en_sentence2:DreadedMillenniumBug ;
+    rdfs:label "bug" .
+

@@ -35,8 +35,23 @@ NAMESPACES = {
     'transl_coher_final': 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/',
     # THE FOLLOWING PREFIXES ARE MADE FOR DEBUG REASONS
     'tc_vocabulary': 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/vocabulary/',
+    # Sentence 1
+    'en_sentence1': 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/en__sentence1/',
+    'en_it_en_sentence1': 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/en_it_en__sentence1/',
+    # Sentence 2
     'en_sentence2': 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/en__sentence2/',
     'en_it_en_sentence2': 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/en_it_en__sentence2/',
+    'en_de_en_sentence2': 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/en_de_en__sentence2/',
+    'en_cn_en_sentence2': 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/en_cn_en__sentence2/',
+    # Sentence 3
+    'en_sentence3': 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/en__sentence3/',
+    'en_it_en_sentence3': 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/en_it_en__sentence3/',
+    # Sentence 4
+    'en_sentence4': 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/en__sentence4/',
+    'en_it_en_sentence4': 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/en_it_en__sentence4/',
+    # Sentence 5
+    'en_sentence5': 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/en__sentence5/',
+    'en_it_en_sentence5': 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/en_it_en__sentence5/',
 }
 UNWANTED = ["http://www.ontologydesignpatterns.org/ont/fred/pos.owl",
             "http://ontologydesignpatterns.org/cp/owl/semiotics.owl",

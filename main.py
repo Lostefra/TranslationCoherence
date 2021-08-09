@@ -27,9 +27,10 @@ print("-" * 150)  # #########################################################
 rg = compare_graphs(g1, g2)
 
 # Ordered printing:
-for p in sorted(set(rg.predicates())):
-    for s, o in rg.subject_objects(predicate=p):
-        print(pad_prefix(s, rg), pad_prefix(p, rg), pad_prefix(o, rg))
+graph = rg
+for p in sorted(set(graph.predicates())):
+    for s, o in graph.subject_objects(predicate=p):
+        print(pad_prefix(s, graph), pad_prefix(p, graph), pad_prefix(o, graph))
 
 print("-" * 150)  # #########################################################
 

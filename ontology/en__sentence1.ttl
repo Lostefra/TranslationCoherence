@@ -1,0 +1,156 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix en_sentence1: <https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/en__sentence1/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme rdfs:label "in" .
+
+en_sentence1:Again rdfs:label "again" .
+
+en_sentence1:Friday rdfs:label "Friday" ;
+    boxer:possibleType time:Interval ;
+    en_sentence1:at "1999-12-17"^^xsd:date .
+
+en_sentence1:Of rdfs:label "of" .
+
+en_sentence1:On rdfs:label "on" .
+
+en_sentence1:Rel rdfs:label "a" .
+
+en_sentence1:To rdfs:label "to" .
+
+en_sentence1:adjourn_1 a en_sentence1:Adjourn ;
+    rdfs:label "adjourned" ;
+    boxer:patient en_sentence1:session_1 ;
+    en_sentence1:on "1999-12-17"^^xsd:date .
+
+en_sentence1:like_1 a en_sentence1:Like ;
+    rdfs:label "like" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality en_sentence1:Once ;
+    vn.role:Experiencer en_sentence1:person_1 ;
+    vn.role:Predicate en_sentence1:person_3 ;
+    vn.role:Theme en_sentence1:hope_1 ;
+    en_sentence1:againTo en_sentence1:wish_1 .
+
+en_sentence1:person_2 coref:coref en_sentence1:person_1 .
+
+en_sentence1:resume_1 a en_sentence1:Resume ;
+    rdfs:label "resumed" ;
+    vn.role:Agent en_sentence1:person_1 ;
+    vn.role:Theme en_sentence1:session_1 .
+
+dbpedia:European_Parliament a schema:Organization .
+
+en_sentence1:Adjourn rdfs:label "adjourned" ;
+    rdfs:subClassOf dul:Event .
+
+en_sentence1:Enjoy rdfs:label "enjoyed" ;
+    rdfs:subClassOf dul:Event .
+
+en_sentence1:European_parliament rdfs:label "European Parliament" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:European_Parliament .
+
+en_sentence1:Festive a owl:Class ;
+    rdfs:label "festive" ;
+    rdfs:subClassOf dul:Quality .
+
+en_sentence1:FestivePeriod a owl:Class ;
+    rdfs:label "Festive Period" ;
+    dul:hasQuality en_sentence1:Festive ;
+    rdfs:subClassOf en_sentence1:Period .
+
+en_sentence1:Happy rdfs:label "happy" .
+
+en_sentence1:HappyNewYear a owl:Class ;
+    rdfs:label "Happy New Year" ;
+    rdfs:subClassOf en_sentence1:NewYear ;
+    owl:equivalentClass dbpedia:Christmas_and_holiday_season .
+
+en_sentence1:Hope rdfs:label "hope" .
+
+en_sentence1:Like rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+en_sentence1:New a owl:Class ;
+    rdfs:label "new" ;
+    rdfs:subClassOf dul:Quality .
+
+en_sentence1:NewYear a owl:Class ;
+    rdfs:label "new year" ;
+    dul:hasQuality en_sentence1:New ;
+    rdfs:subClassOf en_sentence1:Year .
+
+en_sentence1:Once rdfs:label "once" .
+
+en_sentence1:Period a owl:Class ;
+    rdfs:label "period" .
+
+en_sentence1:Pleasant rdfs:label "pleasant" .
+
+en_sentence1:PleasantFestivePeriod a owl:Class ;
+    rdfs:label "Pleasant Festive Period" ;
+    rdfs:subClassOf en_sentence1:FestivePeriod .
+
+en_sentence1:Resume rdfs:label "resumed" ;
+    rdfs:subClassOf dul:Event .
+
+en_sentence1:Session rdfs:label "session" .
+
+en_sentence1:Wish rdfs:label "wish" .
+
+en_sentence1:Year a owl:Class ;
+    rdfs:label "year" .
+
+en_sentence1:enjoy_1 a en_sentence1:Enjoy ;
+    rdfs:label "enjoyed" ;
+    vn.role:Experiencer en_sentence1:person_4 ;
+    vn.role:Theme en_sentence1:period_1 .
+
+en_sentence1:hope_1 a en_sentence1:Hope ;
+    rdfs:label "hope" ;
+    boxer:theme en_sentence1:enjoy_1 ;
+    quant:hasDeterminer quant:the .
+
+en_sentence1:period_1 a en_sentence1:PleasantFestivePeriod ;
+    rdfs:label "period" ;
+    dul:hasQuality en_sentence1:Pleasant ;
+    quant:hasDeterminer quant:a .
+
+en_sentence1:person_3 a en_sentence1:Person ;
+    rdfs:label "you" ;
+    dul:associatedWith en_sentence1:year_1 .
+
+en_sentence1:person_4 a en_sentence1:Person ;
+    rdfs:label "you" .
+
+en_sentence1:wish_1 a en_sentence1:Wish ;
+    rdfs:label "wish" .
+
+en_sentence1:year_1 a en_sentence1:HappyNewYear ;
+    rdfs:label "year" ;
+    dul:hasQuality en_sentence1:Happy ;
+    quant:hasDeterminer quant:a .
+
+en_sentence1:session_1 a en_sentence1:Session ;
+    rdfs:label "session" ;
+    quant:hasDeterminer quant:the ;
+    en_sentence1:sessionOf en_sentence1:European_parliament .
+
+en_sentence1:Person rdfs:label "I",
+        "you" .
+
+en_sentence1:person_1 a en_sentence1:Person ;
+    rdfs:label "I" .
+

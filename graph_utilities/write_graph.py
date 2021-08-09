@@ -1,5 +1,5 @@
 import rdflib
-from rdflib import Namespace
+from rdflib import Namespace, URIRef
 
 from utilities.constants import NAMESPACES
 from utilities.utility_functions import pad_prefix, prefix, change_prefix
@@ -54,44 +54,131 @@ def replace_s(g1, n1, g2, n2, graph, s, p, o):
         raise ValueError(str(s) + " is not present in the graphs g1 g2.")
 
 
-def substitute_invalid_IRI(graph, mode, g1_name, g2_name, g1, g2):
-    transl_coher = Namespace(NAMESPACES["transl_coher_final"])
+def substitute_invalid_IRI(graph, mode, g1_name, g2_name, g1, g2, transl_coher):
 
     for s, p, o in graph:
 
-        # Handle result_graph
+        # Handle result_graph #######################################################################################
         if mode == "rg":
-            # Handle predicates: equivalent, starting_point, synonymy, different_context
-            if prefix(s, graph).startswith("fred:") and prefix(p, graph).startswith("transl_coher:") and prefix(o, graph).startswith("fred:"):
-                graph.remove((s, p, o))
-                graph.add((change_prefix(s, transl_coher[g1_name]), change_prefix(p, transl_coher.vocabulary),
-                           change_prefix(o, transl_coher[g2_name])))
-            elif prefix(p, graph) == "transl_coher:starting_point":
-                graph.remove((s, p, o))
-                graph.add((s, change_prefix(p, transl_coher.vocabulary), o))
             # Handle predicates: subClassOf, type
-            elif prefix(s, graph).startswith("fred:") and (prefix(p, graph) == "rdfs:subClassOf" or prefix(p, graph) == "rdf:type") and prefix(o, graph).startswith("fred:"):
+            if prefix(s, graph).startswith("fred:") and (prefix(p, graph) == "rdfs:subClassOf" or prefix(p, graph) == "rdf:type") and prefix(o, graph).startswith("fred:"):
                 replace_s_o(g1, transl_coher[g1_name], g2, transl_coher[g2_name], graph, s, p, o)
             elif prefix(s, graph).startswith("fred:") and (prefix(p, graph) == "rdfs:subClassOf" or prefix(p, graph) == "rdf:type"):
                 replace_s(g1, transl_coher[g1_name], g2, transl_coher[g2_name], graph, s, p, o)
             elif prefix(s, graph).startswith("transl_coher:") and prefix(p, graph) == "rdf:type" and prefix(o, graph) == "owl:ObjectProperty":
                 graph.remove((s, p, o))
                 graph.add((change_prefix(s, transl_coher.vocabulary), p, o))
-            # Handle subjects/objects expression_i  TODO GESTISCI EXPRESSIONS
+            # Handle different_expression pattern
             elif prefix(s, graph).startswith("transl_coher:expression_") and prefix(p, graph).startswith("transl_coher:") and prefix(o, graph).startswith("transl_coher:expression_"):
-                pass
+                graph.remove((s, p, o))
+                graph.add((change_prefix(s, transl_coher[g1_name]), change_prefix(p, transl_coher.vocabulary),
+                           change_prefix(o, transl_coher[g2_name])))
+            elif prefix(s, graph).startswith("transl_coher:expression_") and int(prefix(s, graph)[-1]) % 2 == 1 and prefix(p, graph).startswith("transl_coher:") and prefix(o, graph).startswith("fred:"):
+                graph.remove((s, p, o))
+                graph.add((change_prefix(s, transl_coher[g1_name]), change_prefix(p, transl_coher.vocabulary),
+                           change_prefix(o, transl_coher[g1_name])))
+            elif prefix(s, graph).startswith("transl_coher:expression_") and int(prefix(s, graph)[-1]) % 2 == 0 and prefix(p, graph).startswith("transl_coher:") and prefix(o, graph).startswith("fred:"):
+                graph.remove((s, p, o))
+                graph.add((change_prefix(s, transl_coher[g2_name]), change_prefix(p, transl_coher.vocabulary),
+                           change_prefix(o, transl_coher[g2_name])))
+            elif prefix(s, graph).startswith("transl_coher:expression_"):
+                graph.remove((s, p, o))
+                graph.add((change_prefix(s, transl_coher.vocabulary), p, o))
+            # Handle similar_hierarchy pattern
+            elif prefix(s, graph).startswith("transl_coher:hierarchy_") and prefix(p, graph).startswith("transl_coher:") and prefix(o, graph).startswith("transl_coher:hierarchy_"):
+                graph.remove((s, p, o))
+                graph.add((change_prefix(s, transl_coher[g1_name]), change_prefix(p, transl_coher.vocabulary),
+                           change_prefix(o, transl_coher[g2_name])))
+            elif prefix(s, graph).startswith("transl_coher:hierarchy_") and int(prefix(s, graph)[-1]) % 2 == 1 and prefix(p, graph).startswith("transl_coher:") and prefix(o, graph).startswith("fred:"):
+                graph.remove((s, p, o))
+                graph.add((change_prefix(s, transl_coher[g1_name]), change_prefix(p, transl_coher.vocabulary),
+                           change_prefix(o, transl_coher[g1_name])))
+            elif prefix(s, graph).startswith("transl_coher:hierarchy_") and int(prefix(s, graph)[-1]) % 2 == 0 and prefix(p, graph).startswith("transl_coher:") and prefix(o, graph).startswith("fred:"):
+                graph.remove((s, p, o))
+                graph.add((change_prefix(s, transl_coher[g2_name]), change_prefix(p, transl_coher.vocabulary),
+                           change_prefix(o, transl_coher[g2_name])))
+            # Handle only_in pattern
+            elif prefix(s, graph).startswith("fred:") and prefix(p, graph) == "transl_coher:only_in" and prefix(o, graph) == "transl_coher:g1":
+                graph.remove((s, p, o))
+                graph.add((change_prefix(s, transl_coher[g1_name]), change_prefix(p, transl_coher.vocabulary),
+                           transl_coher[g1_name]))
+            elif prefix(p, graph) == "transl_coher:only_in" and prefix(o, graph) == "transl_coher:g1":
+                graph.remove((s, p, o))
+                graph.add((s, change_prefix(p, transl_coher.vocabulary), transl_coher[g1_name]))
+            elif prefix(s, graph).startswith("fred:") and prefix(p, graph) == "transl_coher:only_in" and prefix(o, graph) == "transl_coher:g2":
+                graph.remove((s, p, o))
+                graph.add((change_prefix(s, transl_coher[g2_name]), change_prefix(p, transl_coher.vocabulary),
+                           transl_coher[g2_name]))
+            elif prefix(p, graph) == "transl_coher:only_in" and prefix(o, graph) == "transl_coher:g2":
+                graph.remove((s, p, o))
+                graph.add((s, change_prefix(p, transl_coher.vocabulary), transl_coher[g2_name]))
+            # Handle predicates: equivalent, starting_point, synonymy, different_context
+            elif prefix(s, graph).startswith("fred:") and prefix(p, graph).startswith("transl_coher:") and prefix(o, graph).startswith("fred:"):
+                graph.remove((s, p, o))
+                graph.add((change_prefix(s, transl_coher[g1_name]), change_prefix(p, transl_coher.vocabulary),
+                           change_prefix(o, transl_coher[g2_name])))
+            elif prefix(s, graph).startswith("fred:") and prefix(p, graph).startswith("transl_coher:"):
+                graph.remove((s, p, o))
+                graph.add((change_prefix(s, transl_coher[g1_name]), change_prefix(p, transl_coher.vocabulary), o))
+            elif prefix(p, graph).startswith("transl_coher:") and prefix(o, graph).startswith("fred:"):
+                graph.remove((s, p, o))
+                graph.add((s, change_prefix(p, transl_coher.vocabulary), change_prefix(o, transl_coher[g2_name])))
+            elif prefix(p, graph) == "transl_coher:starting_point" or prefix(p, graph) == "transl_coher:equivalent" or prefix(p, graph) == "transl_coher:different_context" or prefix(p, graph) == "transl_coher:synonymy":
+                graph.remove((s, p, o))
+                graph.add((s, change_prefix(p, transl_coher.vocabulary), o))
+        # #######################################################################################
 
-        # Handle g1
+        # Handle g1 #######################################################################################
         elif mode == "g1":
-            if prefix(s, graph).startswith("fred:"):
-                pass
-            if prefix(p, graph).startswith("fred:"):
-                pass
-            if prefix(o, graph).startswith("fred:"):
-                pass
+            if prefix(s, graph).startswith("fred:") and prefix(p, graph).startswith("fred:") and prefix(o, graph).startswith("fred:"):
+                graph.remove((s, p, o))
+                graph.add((change_prefix(s, transl_coher[g1_name]), change_prefix(p, transl_coher[g1_name]),
+                           change_prefix(o, transl_coher[g1_name])))
+            elif prefix(s, graph).startswith("fred:") and prefix(p, graph).startswith("fred:"):
+                graph.remove((s, p, o))
+                graph.add((change_prefix(s, transl_coher[g1_name]), change_prefix(p, transl_coher[g1_name]), o))
+            elif prefix(p, graph).startswith("fred:") and prefix(o, graph).startswith("fred:"):
+                graph.remove((s, p, o))
+                graph.add((s, change_prefix(p, transl_coher[g1_name]), change_prefix(o, transl_coher[g1_name])))
+            elif prefix(o, graph).startswith("fred:") and prefix(s, graph).startswith("fred:"):
+                graph.remove((s, p, o))
+                graph.add((change_prefix(s, transl_coher[g1_name]), p, change_prefix(o, transl_coher[g1_name])))
+            elif prefix(s, graph).startswith("fred:"):
+                graph.remove((s, p, o))
+                graph.add((change_prefix(s, transl_coher[g1_name]), p, o))
+            elif prefix(p, graph).startswith("fred:"):
+                graph.remove((s, p, o))
+                graph.add((s, change_prefix(p, transl_coher[g1_name]), o))
+            elif prefix(o, graph).startswith("fred:"):
+                graph.remove((s, p, o))
+                graph.add((s, p, change_prefix(o, transl_coher[g1_name])))
+        # #######################################################################################
 
+        # Handle g2 #######################################################################################
         elif mode == "g2":
-            pass
+            if prefix(s, graph).startswith("fred:") and prefix(p, graph).startswith("fred:") and prefix(o, graph).startswith("fred:"):
+                graph.remove((s, p, o))
+                graph.add((change_prefix(s, transl_coher[g2_name]), change_prefix(p, transl_coher[g2_name]),
+                           change_prefix(o, transl_coher[g2_name])))
+            elif prefix(s, graph).startswith("fred:") and prefix(p, graph).startswith("fred:"):
+                graph.remove((s, p, o))
+                graph.add((change_prefix(s, transl_coher[g2_name]), change_prefix(p, transl_coher[g2_name]), o))
+            elif prefix(p, graph).startswith("fred:") and prefix(o, graph).startswith("fred:"):
+                graph.remove((s, p, o))
+                graph.add((s, change_prefix(p, transl_coher[g2_name]), change_prefix(o, transl_coher[g2_name])))
+            elif prefix(o, graph).startswith("fred:") and prefix(s, graph).startswith("fred:"):
+                graph.remove((s, p, o))
+                graph.add((change_prefix(s, transl_coher[g2_name]), p, change_prefix(o, transl_coher[g2_name])))
+            elif prefix(s, graph).startswith("fred:"):
+                graph.remove((s, p, o))
+                graph.add((change_prefix(s, transl_coher[g2_name]), p, o))
+            elif prefix(p, graph).startswith("fred:"):
+                graph.remove((s, p, o))
+                graph.add((s, change_prefix(p, transl_coher[g2_name]), o))
+            elif prefix(o, graph).startswith("fred:"):
+                graph.remove((s, p, o))
+                graph.add((s, p, change_prefix(o, transl_coher[g2_name])))
+        # #######################################################################################
 
         else:
             raise ValueError("Mode must be in: rg, g1, g2.")
@@ -112,17 +199,23 @@ def write_graph(g1, g2, result_graph, lang_1, lang_2, sentence, format='turtle')
     destination_g1 = 'ontology/' + g1_name + '.ttl'
     destination_g2 = 'ontology/' + g2_name + '.ttl'
 
-    result_graph_clean = substitute_invalid_IRI(result_graph, "rg", g1_name, g2_name, g1, g2)
-    g1_clean = substitute_invalid_IRI(g1, "g1", g1_name, g2_name, g1, g2)
-    g2_clean = substitute_invalid_IRI(g2, "g2", g1_name, g2_name, g1, g2)
+    transl_coher = Namespace(NAMESPACES["transl_coher_final"])
+    result_graph_clean = substitute_invalid_IRI(result_graph, "rg", g1_name, g2_name, g1, g2, transl_coher)
+    g1_clean = substitute_invalid_IRI(g1, "g1", g1_name, g2_name, g1, g2, transl_coher)
+    g2_clean = substitute_invalid_IRI(g2, "g2", g1_name, g2_name, g1, g2, transl_coher)
+
+    result_graph_clean.add((transl_coher[g1_name], URIRef(str(transl_coher.vocabulary) + "/compared_with"), transl_coher[g2_name]))
+
+    print("-" * 150)  # #########################################################
+    print("Graph with valid IRIs:")
+    # Ordered printing:
+    graph = result_graph_clean
+    for p in sorted(set(graph.predicates())):
+        for s, o in graph.subject_objects(predicate=p):
+            print(pad_prefix(s, graph), pad_prefix(p, graph), pad_prefix(o, graph))
 
     print("-" * 150)  # #########################################################
     print("WRITING")
-    # Ordered printing:
-    for p in sorted(set(result_graph_clean.predicates())):
-        for s, o in result_graph_clean.subject_objects(predicate=p):
-            print(pad_prefix(s, result_graph_clean), pad_prefix(p, result_graph_clean), pad_prefix(o, result_graph_clean))
-    return  # TODO REMOVE
     result_graph_clean.serialize(destination=destination_result_graph, format=format)
     g1_clean.serialize(destination=destination_g1, format=format)
     g2_clean.serialize(destination=destination_g2, format=format)
