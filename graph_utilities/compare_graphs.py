@@ -186,10 +186,9 @@ def find_synonymy_classes(g1, g2, lemmas, result_graph, new_frontiers):
         if is_class(node1, g1):
             for node2 in out_frontiers_g2:
                 if check_nodes_synonymy(g1, g2, lemmas, node1, node2) and is_class(node2, g2) and \
-                not equivalence_classified(node1, node2, result_graph):
+                  not equivalence_classified(node1, node2, result_graph):
                     add_synonymy_relation(node1, node2, result_graph, new_frontiers)
                     print("Synonym:", prefix(node1, g1), prefix(node2, g2))
-    return zip(out_frontiers_g1, out_frontiers_g2)
 
 
 def compare_graphs(g1, g2):
@@ -237,7 +236,7 @@ def compare_graphs(g1, g2):
         find_binary_difference_relations(g1, g2, lemmas, n, result_graph, old_frontiers, frontiers)
         print("-" * 150)  # #########################################################
         print("synonymies:")
-        out_frontiers = find_synonymy_classes(g1, g2, lemmas, result_graph, frontiers)
+        find_synonymy_classes(g1, g2, lemmas, result_graph, frontiers)
         print("-" * 150)  # #########################################################
 
     # Last search to classifying remaining elements

@@ -5,7 +5,7 @@ from graph_utilities.write_graph import write_graph
 
 lang_1 = "en/en"
 lang_2 = "it/en_it_en"
-sentence = "sentence2"
+sentence = "sentence6"
 
 g1 = build_graph("EuroParl/Paragraph1/turtle/" + lang_1 + "_" + sentence + ".ttl")
 print(lang_1)

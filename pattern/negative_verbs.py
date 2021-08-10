@@ -22,13 +22,13 @@ def negative_verbs(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_fron
                     expr1 = "expression_" + next(indexes["expressions"])
                     expr2 = "expression_" + next(indexes["expressions"])
 
-                    result_graph.add((n[expr1], n.involves_aux, s1))
-                    result_graph.add((n[expr1], n.involves_verb, o1))
+                    result_graph.add((n[expr1], n.involvesAuxiliaryVerb, s1))
+                    result_graph.add((n[expr1], n.involvesVerb, o1))
 
                     result_graph.add((n[expr2], p2, o2))
-                    result_graph.add((n[expr2], n.involves_verb, s2))
+                    result_graph.add((n[expr2], n.involvesVerb, s2))
 
-                    result_graph.add((n[expr1], n.different_expression, n[expr2]))
+                    result_graph.add((n[expr1], n.differentExpression, n[expr2]))
 
                     add_equivalence_relation(o1, s2, result_graph, new_frontiers)
 

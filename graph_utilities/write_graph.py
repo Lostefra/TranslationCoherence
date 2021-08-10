@@ -98,18 +98,18 @@ def substitute_invalid_IRI(graph, mode, g1_name, g2_name, g1, g2, transl_coher):
                 graph.add((change_prefix(s, transl_coher[g2_name]), change_prefix(p, transl_coher.vocabulary),
                            change_prefix(o, transl_coher[g2_name])))
             # Handle only_in pattern
-            elif prefix(s, graph).startswith("fred:") and prefix(p, graph) == "transl_coher:only_in" and prefix(o, graph) == "transl_coher:g1":
+            elif prefix(s, graph).startswith("fred:") and prefix(p, graph) == "transl_coher:onlyIn" and prefix(o, graph) == "transl_coher:g1":
                 graph.remove((s, p, o))
                 graph.add((change_prefix(s, transl_coher[g1_name]), change_prefix(p, transl_coher.vocabulary),
                            transl_coher[g1_name]))
-            elif prefix(p, graph) == "transl_coher:only_in" and prefix(o, graph) == "transl_coher:g1":
+            elif prefix(p, graph) == "transl_coher:onlyIn" and prefix(o, graph) == "transl_coher:g1":
                 graph.remove((s, p, o))
                 graph.add((s, change_prefix(p, transl_coher.vocabulary), transl_coher[g1_name]))
-            elif prefix(s, graph).startswith("fred:") and prefix(p, graph) == "transl_coher:only_in" and prefix(o, graph) == "transl_coher:g2":
+            elif prefix(s, graph).startswith("fred:") and prefix(p, graph) == "transl_coher:onlyIn" and prefix(o, graph) == "transl_coher:g2":
                 graph.remove((s, p, o))
                 graph.add((change_prefix(s, transl_coher[g2_name]), change_prefix(p, transl_coher.vocabulary),
                            transl_coher[g2_name]))
-            elif prefix(p, graph) == "transl_coher:only_in" and prefix(o, graph) == "transl_coher:g2":
+            elif prefix(p, graph) == "transl_coher:onlyIn" and prefix(o, graph) == "transl_coher:g2":
                 graph.remove((s, p, o))
                 graph.add((s, change_prefix(p, transl_coher.vocabulary), transl_coher[g2_name]))
             # Handle predicates: equivalent, starting_point, synonymy, different_context
@@ -123,7 +123,7 @@ def substitute_invalid_IRI(graph, mode, g1_name, g2_name, g1, g2, transl_coher):
             elif prefix(p, graph).startswith("transl_coher:") and prefix(o, graph).startswith("fred:"):
                 graph.remove((s, p, o))
                 graph.add((s, change_prefix(p, transl_coher.vocabulary), change_prefix(o, transl_coher[g2_name])))
-            elif prefix(p, graph) == "transl_coher:starting_point" or prefix(p, graph) == "transl_coher:equivalent" or prefix(p, graph) == "transl_coher:different_context" or prefix(p, graph) == "transl_coher:synonymy":
+            elif p == constants.STARTING_POINT_PREDICATE or p == constants.EQUIVALENCE_PREDICATE or p == constants.DIFFERENT_CONTEXT_PREDICATE or p == constants.SYNONYMY_PREDICATE:
                 graph.remove((s, p, o))
                 graph.add((s, change_prefix(p, transl_coher.vocabulary), o))
         # #######################################################################################
@@ -188,7 +188,7 @@ def substitute_invalid_IRI(graph, mode, g1_name, g2_name, g1, g2, transl_coher):
 
 def write_graph(g1, g2, result_graph, lang_1, lang_2, sentence, format='turtle'):
     # Write graph to file
-    complete_graph(g1, g2, result_graph)
+    # complete_graph(g1, g2, result_graph)
 
     lang_1 = lang_1.split("/")[1]
     lang_2 = lang_2.split("/")[1]
@@ -204,7 +204,9 @@ def write_graph(g1, g2, result_graph, lang_1, lang_2, sentence, format='turtle')
     g1_clean = substitute_invalid_IRI(g1, "g1", g1_name, g2_name, g1, g2, transl_coher)
     g2_clean = substitute_invalid_IRI(g2, "g2", g1_name, g2_name, g1, g2, transl_coher)
 
-    result_graph_clean.add((transl_coher[g1_name], URIRef(str(transl_coher.vocabulary) + "/compared_with"), transl_coher[g2_name]))
+    result_graph_clean.add((transl_coher[rg_name], URIRef(str(transl_coher.vocabulary) + "/compareOntology"), transl_coher[g1_name]))
+    result_graph_clean.add((transl_coher[rg_name], URIRef(str(transl_coher.vocabulary) + "/compareOntology"), transl_coher[g2_name]))
+    result_graph_clean.add((transl_coher[g1_name], URIRef(str(transl_coher.vocabulary) + "/compareWith"), transl_coher[g2_name]))
 
     print("-" * 150)  # #########################################################
     print("Graph with valid IRIs:")

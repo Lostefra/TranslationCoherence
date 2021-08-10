@@ -9,9 +9,10 @@ SAME_AS_PREDICATE = rdflib.term.URIRef("http://www.w3.org/2002/07/owl#sameAs")
 EQUIVALENT_CLASS_PREDICATE = rdflib.term.URIRef("http://www.w3.org/2002/07/owl#equivalentClass")
 
 EQUIVALENCE_PREDICATE = rdflib.term.URIRef('http://example.org/translation_coherence/equivalent')
-STARTING_POINT_PREDICATE = rdflib.term.URIRef('http://example.org/translation_coherence/starting_point')
+STARTING_POINT_PREDICATE = rdflib.term.URIRef('http://example.org/translation_coherence/stronglyEquivalent')
 SYNONYMY_PREDICATE = rdflib.term.URIRef('http://example.org/translation_coherence/synonymy')
 GENERIC_DIFFERENCE_PREDICATE = rdflib.term.URIRef('http://example.org/translation_coherence/different')
+DIFFERENT_CONTEXT_PREDICATE = rdflib.term.URIRef('http://example.org/translation_coherence/differentContext')
 
 TYPE_PREDICATE = rdflib.term.URIRef('http://www.w3.org/1999/02/22-rdf-syntax-ns#type')
 CLASS_OBJECT = rdflib.term.URIRef('http://www.w3.org/2002/07/owl#Class')
