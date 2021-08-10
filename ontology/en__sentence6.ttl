@@ -1,0 +1,43 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/en__sentence6/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:observe_1 a ns1:Observe ;
+    rdfs:label "observed" ;
+    vn.role:Agent ns1:House ;
+    vn.role:Theme ns1:silence_1 .
+
+ns1:rise_1 a ns1:Rise ;
+    rdfs:label "rose" ;
+    vn.role:Agent ns1:House .
+
+ns1:Minute rdfs:label "minute" .
+
+ns1:Observe rdfs:label "observed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Rise rdfs:label "rose" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Silence rdfs:label "silence" .
+
+ns1:minute_1 a ns1:Minute ;
+    rdfs:label "minute" ;
+    quant:hasDeterminer quant:a .
+
+ns1:silence_1 a ns1:Silence ;
+    rdfs:label "silence" ;
+    ns1:silenceOf ns1:minute_1 .
+
+ns1:House rdfs:label "House" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:House .
+
