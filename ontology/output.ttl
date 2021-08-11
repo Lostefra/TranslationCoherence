@@ -11,17 +11,21 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <http://schema.org/> .
 @prefix time: <http://www.w3.org/2006/time#> .
-@prefix transl_coher: <https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/vocabulary.ttl/> .
 @prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix : <https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/output.ttl/> .
+@prefix output: <https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/output.ttl/> .
+@prefix transl_coher: <https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/vocabulary.ttl/> .
 @prefix g1: <https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/g1.ttl/> .
 @prefix g2: <https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/g2.ttl/> .
 
-transl_coher:expression_1 transl_coher:involves_mult g1:number_1 ;
-    transl_coher:involves_node g1:member_1 ;
-    transl_coher:same_expression transl_coher:expression_2 .
+:expression_1 a transl_coher:Expression ;
+    transl_coher:involvesMultiple g1:number_1 ;
+    transl_coher:involvesNoun g1:member_1 ;
+    transl_coher:differentExpression :expression_2 .
 
-transl_coher:expression_2 transl_coher:involves_node g2:member_1 ;
-    transl_coher:involves_quant quant:multiple,
+:expression_2 transl_coher:involvesNoun g2:member_1 ;
+    quant:hasQuantifier quant:multiple,
         quant:some .
