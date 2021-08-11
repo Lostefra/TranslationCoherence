@@ -1,0 +1,375 @@
+@prefix : <https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/vocabulary> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix lang: <http://publications.europa.eu/resource/authority/language/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/vocabulary> .
+
+<https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/vocabulary> rdf:type owl:Ontology ;
+                                                                                            owl:imports <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl> ,
+                                                                                                        <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl> ;
+                                                                                            dc:creator "Andrea Lavista" ,
+                                                                                                       "Lorenzo Mario Amorosa" ,
+                                                                                                       "Michele Iannello" ;
+                                                                                            dc:description "An ontology to describe language constructs in order to compare machine-generated ontologies."@en ,
+                                                                                                           "Un'ontologia per descrivere costrutti linguistici in modo da confrontare ontologie generate automaticamente."@it ;
+                                                                                            dc:language lang:ENG ,
+                                                                                                        lang:ITA ;
+                                                                                            dc:title "Ontologia Translation Coherence (coerenza di traduzione)"@it ,
+                                                                                                     "Translation Coherence Ontology"@en ;
+                                                                                            dct:issued "2021-08-15" ;
+                                                                                            dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+                                                                                            dct:modified "2021-08-15" ;
+                                                                                            rdfs:comment "Questa ontologia descrive le classi e le proprietà impiegate per descrivere la coerenza tra ontologie generate da testi diversi, nel contesto della translation coherence task."@it ,
+                                                                                                         "This ontology describes the classes and properties used for describing the coherence between ontologies that are created from different texts in the context of the translation coherence task."@en ;
+                                                                                            rdfs:label "Ontologia Translation Coherence (coerenza di traduzione)"@it ,
+                                                                                                       "Translation Coherence Ontology"@en ;
+                                                                                            owl:versionInfo "1.0" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+dc:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/description
+dc:description rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/language
+dc:language rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+dc:title rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/issued
+dct:issued rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/license
+dct:license rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/modified
+dct:modified rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/vocabularyauxiliaryVerbInvolvedIn
+:auxiliaryVerbInvolvedIn rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf :verbInvolvedIn ;
+                         rdf:type owl:AsymmetricProperty ,
+                                  owl:IrreflexiveProperty ;
+                         rdfs:comment "The property that indicates that a given auxiliary verb is involved in a certain expression" ;
+                         rdfs:isDefinedBy "<https://github.com/Lostefra/TranslationCoherence/tree/main/ontology/translation_coherence_vocabulary.ttl#>" ;
+                         rdfs:label "auxiliaryVerb" .
+
+
+###  https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/vocabularycoherenceProperty
+:coherenceProperty rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf owl:topObjectProperty ;
+                   rdf:type owl:SymmetricProperty ,
+                            owl:IrreflexiveProperty ;
+                   owl:propertyDisjointWith :compareOntology ,
+                                            :comparedWith ,
+                                            :hasHierarchyMember ,
+                                            :involves ,
+                                            :onlyIn ;
+                   rdfs:comment "The property that indicates that the subject and the object are two entities evaluated in relation of the translation coherence task. The subproperties of coherenceProperty describes the role between those entities" ;
+                   rdfs:isDefinedBy "<https://github.com/Lostefra/TranslationCoherence/tree/main/ontology/translation_coherence_vocabulary.ttl#>" ;
+                   rdfs:label "coherenceProperty" .
+
+
+###  https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/vocabularycompareOntology
+:compareOntology rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 owl:inverseOf :ontologyComparedBy ;
+                 rdf:type owl:AsymmetricProperty ,
+                          owl:IrreflexiveProperty ;
+                 rdfs:domain owl:Ontology ;
+                 rdfs:range owl:Ontology ;
+                 owl:propertyDisjointWith :comparedWith ,
+                                          :hasHierarchyMember ,
+                                          :involves ,
+                                          :onlyIn ;
+                 rdfs:isDefinedBy "<https://github.com/Lostefra/TranslationCoherence/tree/main/ontology/translation_coherence_vocabulary.ttl#>" ;
+                 rdfs:label "The property that indicates that a given ontology contains the comparison of certain ontologies through the perspective of translation coherence" ,
+                            "compareOntology" .
+
+
+###  https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/vocabularycomparedWith
+:comparedWith rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdf:type owl:SymmetricProperty ,
+                       owl:IrreflexiveProperty ;
+              rdfs:domain owl:Ontology ;
+              rdfs:range owl:Ontology ;
+              owl:propertyDisjointWith :hasHierarchyMember ,
+                                       :involves ,
+                                       :onlyIn ;
+              rdfs:isDefinedBy "<https://github.com/Lostefra/TranslationCoherence/tree/main/ontology/translation_coherence_vocabulary.ttl#>" ;
+              rdfs:label "The property that indicates that a given ontology is compared with another one through the perspective of translation coherence (co-participation property)" ,
+                         "comparedWith" .
+
+
+###  https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/vocabularydifferent
+:different rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :coherenceProperty ;
+           rdf:type owl:SymmetricProperty ,
+                    owl:IrreflexiveProperty ;
+           owl:propertyDisjointWith :differentExpression ,
+                                    :differentHierarchy ,
+                                    :equivalent ;
+           rdfs:comment "The property that indicates that the subject and the object are two entities different from each other" ;
+           rdfs:isDefinedBy "<https://github.com/Lostefra/TranslationCoherence/tree/main/ontology/translation_coherence_vocabulary.ttl#>" ;
+           rdfs:label "different" .
+
+
+###  https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/vocabularydifferentExpression
+:differentExpression rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf :coherenceProperty ;
+                     rdf:type owl:SymmetricProperty ,
+                              owl:IrreflexiveProperty ;
+                     rdfs:domain :Expression ;
+                     rdfs:range :Expression ;
+                     owl:propertyDisjointWith :differentHierarchy ,
+                                              :equivalent ;
+                     rdfs:comment "The property that indicates that the subject and the object are two expressions different from each other" ;
+                     rdfs:isDefinedBy "<https://github.com/Lostefra/TranslationCoherence/tree/main/ontology/translation_coherence_vocabulary.ttl#>" ;
+                     rdfs:label "differentExpression" .
+
+
+###  https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/vocabularydifferentHierarchy
+:differentHierarchy rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf :coherenceProperty ;
+                    rdf:type owl:SymmetricProperty ,
+                             owl:IrreflexiveProperty ;
+                    rdfs:domain :Hierarchy ;
+                    rdfs:range :Hierarchy ;
+                    owl:propertyDisjointWith :equivalent ;
+                    rdfs:isDefinedBy "<https://github.com/Lostefra/TranslationCoherence/tree/main/ontology/translation_coherence_vocabulary.ttl#>" ,
+                                     "The property that indicates that the subject and the object are two hierarchies different from each other" ;
+                    rdfs:label "differentHierarchies" .
+
+
+###  https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/vocabularyequivalent
+:equivalent rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :coherenceProperty ;
+            rdf:type owl:SymmetricProperty ,
+                     owl:IrreflexiveProperty ;
+            rdfs:comment "The property that indicates that the subject and the object are two entities assessed as equivalent" ;
+            rdfs:isDefinedBy "<https://github.com/Lostefra/TranslationCoherence/tree/main/ontology/translation_coherence_vocabulary.ttl#>" ;
+            rdfs:label "equivalent" .
+
+
+###  https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/vocabularyhasHierarchyMember
+:hasHierarchyMember rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf owl:topObjectProperty ;
+                    owl:inverseOf :isHierarchyMemberOf ;
+                    rdf:type owl:AsymmetricProperty ,
+                             owl:IrreflexiveProperty ;
+                    rdfs:domain :Hierarchy ;
+                    rdfs:range :ClassConcept ;
+                    owl:propertyDisjointWith :involves ,
+                                             :onlyIn ;
+                    rdfs:comment "The property that indicates that a given hierarchy includes a certain class" ;
+                    rdfs:isDefinedBy "<https://github.com/Lostefra/TranslationCoherence/tree/main/ontology/translation_coherence_vocabulary.ttl#>" ;
+                    rdfs:label "hasHierarchyMember" .
+
+
+###  https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/vocabularyinvolves
+:involves rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          owl:inverseOf :isInvolvedIn ;
+          rdf:type owl:AsymmetricProperty ,
+                   owl:IrreflexiveProperty ;
+          rdfs:domain :Expression ;
+          owl:propertyDisjointWith :onlyIn ;
+          rdfs:comment "The property that indicates that a given expression involves a certain entity" ;
+          rdfs:isDefinedBy "<https://github.com/Lostefra/TranslationCoherence/tree/main/ontology/translation_coherence_vocabulary.ttl#>" ;
+          rdfs:label "involves" .
+
+
+###  https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/vocabularyinvolvesAuxiliaryVerb
+:involvesAuxiliaryVerb rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf :involvesVerb ;
+                       rdf:type owl:AsymmetricProperty ,
+                                owl:IrreflexiveProperty ;
+                       rdfs:comment "The property that indicates that a given expression involves an auxiliary verb" ;
+                       rdfs:isDefinedBy "<https://github.com/Lostefra/TranslationCoherence/tree/main/ontology/translation_coherence_vocabulary.ttl#>" ;
+                       rdfs:label "involvesAuxiliaryVerb" .
+
+
+###  https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/vocabularyinvolvesNoun
+:involvesNoun rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :involves ;
+              rdf:type owl:AsymmetricProperty ,
+                       owl:IrreflexiveProperty ;
+              owl:propertyDisjointWith :involvesVerb ;
+              rdfs:comment "The property that indicates that a given expression involves a noun" ;
+              rdfs:isDefinedBy "<https://github.com/Lostefra/TranslationCoherence/tree/main/ontology/translation_coherence_vocabulary.ttl#>" ;
+              rdfs:label "involvesNoun" .
+
+
+###  https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/vocabularyinvolvesVerb
+:involvesVerb rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :involves ;
+              rdf:type owl:AsymmetricProperty ,
+                       owl:IrreflexiveProperty ;
+              rdfs:comment "The property that indicates that a given expression involves a verb" ;
+              rdfs:isDefinedBy "<https://github.com/Lostefra/TranslationCoherence/tree/main/ontology/translation_coherence_vocabulary.ttl#>" ;
+              rdfs:label "involvesVerb" .
+
+
+###  https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/vocabularyisHierarchyMemberOf
+:isHierarchyMemberOf rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf owl:topObjectProperty ;
+                     rdf:type owl:AsymmetricProperty ,
+                              owl:IrreflexiveProperty ;
+                     rdfs:domain :ClassConcept ;
+                     rdfs:range :Hierarchy ;
+                     rdfs:comment "The property that indicates that a given class belonging to a certain hierarchy" ;
+                     rdfs:isDefinedBy "<https://github.com/Lostefra/TranslationCoherence/tree/main/ontology/translation_coherence_vocabulary.ttl#>" ;
+                     rdfs:label "isHierarchyMemberOf" .
+
+
+###  https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/vocabularyisInvolvedIn
+:isInvolvedIn rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdf:type owl:AsymmetricProperty ,
+                       owl:IrreflexiveProperty ;
+              rdfs:range :Expression ;
+              rdfs:comment "The property that indicates that a given entity is involved in a certain expression" ;
+              rdfs:isDefinedBy "<https://github.com/Lostefra/TranslationCoherence/tree/main/ontology/translation_coherence_vocabulary.ttl#>" ;
+              rdfs:label "isInvolvedIn" .
+
+
+###  https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/vocabularynounInvolvedIn
+:nounInvolvedIn rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :isInvolvedIn ;
+                rdf:type owl:AsymmetricProperty ,
+                         owl:IrreflexiveProperty ;
+                rdfs:comment "The property that indicates that a given noun is involved in a certain expression" ;
+                rdfs:isDefinedBy "<https://github.com/Lostefra/TranslationCoherence/tree/main/ontology/translation_coherence_vocabulary.ttl#>" ;
+                rdfs:label "nounInvolvedIn" .
+
+
+###  https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/vocabularyonlyHas
+:onlyHas rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf owl:topObjectProperty ;
+         owl:inverseOf :onlyIn ;
+         rdfs:domain owl:Ontology ;
+         rdfs:comment "The property that indicates that a given ontoly is the only one having a certain entity" ;
+         rdfs:isDefinedBy "<https://github.com/Lostefra/TranslationCoherence/tree/main/ontology/translation_coherence_vocabulary.ttl#>" ;
+         rdfs:label "onlyHas" .
+
+
+###  https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/vocabularyonlyIn
+:onlyIn rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf owl:topObjectProperty ;
+        rdf:type owl:AsymmetricProperty ,
+                 owl:IrreflexiveProperty ;
+        rdfs:range owl:Ontology ;
+        rdfs:comment "The property that indicates that a given entity belongs only to a certain ontology" ;
+        rdfs:isDefinedBy "<https://github.com/Lostefra/TranslationCoherence/tree/main/ontology/translation_coherence_vocabulary.ttl#>" ;
+        rdfs:label "onlyIn" .
+
+
+###  https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/vocabularyontologyComparedBy
+:ontologyComparedBy rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf owl:topObjectProperty ;
+                    rdf:type owl:AsymmetricProperty ,
+                             owl:IrreflexiveProperty ;
+                    rdfs:domain owl:Ontology ;
+                    rdfs:range owl:Ontology ;
+                    rdfs:comment "The property that indicates that a given ontology is subject to a comparison with other ontologies by a certain ontology, through the perspective of translation coherence" ;
+                    rdfs:isDefinedBy "<https://github.com/Lostefra/TranslationCoherence/tree/main/ontology/translation_coherence_vocabulary.ttl#>" ;
+                    rdfs:label "ontollogyComparedBy" .
+
+
+###  https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/vocabularysimilarHierarchy
+:similarHierarchy rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :differentHierarchy ;
+                  rdf:type owl:SymmetricProperty ,
+                           owl:IrreflexiveProperty ;
+                  rdfs:domain :Hierarchy ;
+                  rdfs:range :Hierarchy ;
+                  rdfs:comment "<https://github.com/Lostefra/TranslationCoherence/tree/main/ontology/translation_coherence_vocabulary.ttl#>" ,
+                               "The property that indicates that the subject and the object are two similar hierarchies (like in case of elements in common or elements in relation of synonymy)" ;
+                  rdfs:label "similarHierarchies" .
+
+
+###  https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/vocabularysynonymy
+:synonymy rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :different ;
+          rdf:type owl:SymmetricProperty ,
+                   owl:IrreflexiveProperty ;
+          rdfs:comment "The property that indicates that the subject and the object are two entities assessed as synonyms" ;
+          rdfs:isDefinedBy "<https://github.com/Lostefra/TranslationCoherence/tree/main/ontology/translation_coherence_vocabulary.ttl#>" ;
+          rdfs:label "synonymy" .
+
+
+###  https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/vocabularyverbInvolvedIn
+:verbInvolvedIn rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :isInvolvedIn ;
+                rdf:type owl:AsymmetricProperty ,
+                         owl:IrreflexiveProperty ;
+                rdfs:comment "The property that indicates that a given verb is involved in a certain expression" ;
+                rdfs:isDefinedBy "<https://github.com/Lostefra/TranslationCoherence/tree/main/ontology/translation_coherence_vocabulary.ttl#>" ;
+                rdfs:label "verbInvolvedIn" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.w3.org/2002/07/owl#Ontology
+owl:Ontology rdf:type owl:Class .
+
+
+###  https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/vocabularyClassConcept
+:ClassConcept rdf:type owl:Class ;
+              owl:disjointWith :Expression ,
+                               :Hierarchy ;
+              rdfs:comment "The class of concepts expressed by classes in the TBOX. Necessary to implement the intesional reification of classes" ;
+              rdfs:isDefinedBy "<https://github.com/Lostefra/TranslationCoherence/tree/main/ontology/translation_coherence_vocabulary.ttl#>" ;
+              rdfs:label "ClassConcept" .
+
+
+###  https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/vocabularyExpression
+:Expression rdf:type owl:Class ;
+            rdfs:subClassOf [ rdf:type owl:Restriction ;
+                              owl:onProperty :differentExpression ;
+                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass :Expression
+                            ] ;
+            owl:disjointWith :Hierarchy ;
+            rdfs:comment "The class of linguistic expressions. It allows to represent portion of texts through N-ary relations and allows to make statements about them." ;
+            rdfs:isDefinedBy "<https://github.com/Lostefra/TranslationCoherence/tree/main/ontology/translation_coherence_vocabulary.ttl#>" ;
+            rdfs:label "Expression" .
+
+
+###  https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/vocabularyHierarchy
+:Hierarchy rdf:type owl:Class ;
+           rdfs:subClassOf [ rdf:type owl:Restriction ;
+                             owl:onProperty :differentHierarchy ;
+                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass :Hierarchy
+                           ] ;
+           rdfs:comment "The class of hierachies. It allows to represent hierarchies of classes through N-ary relations and allows to make statements about them." ;
+           rdfs:isDefinedBy "<https://github.com/Lostefra/TranslationCoherence/tree/main/ontology/translation_coherence_vocabulary.ttl#>" ;
+           rdfs:label "Hierachy" .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
