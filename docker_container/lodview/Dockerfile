@@ -5,6 +5,7 @@ RUN apt-get update \
 RUN git clone https://github.com/dvcama/LodView.git
 
 COPY conf.ttl /LodView/src/main/webapp/WEB-INF/
+COPY home.jsp /LodView/src/main/webapp/WEB-INF/views/
 
 RUN cd LodView \
   && mvn compile war:war

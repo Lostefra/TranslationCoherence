@@ -116,18 +116,19 @@ do
 done
 
 
-if [  -d "ontologies" ]; then
+if [  -d "/ontologies" ]; then
     echo "/ontologies exist, moving to /usr/local/virtuoso-opensource/share/virtuoso/vad"
-    mv -v ontologies/* /usr/local/virtuoso-opensource/share/virtuoso/vad/ 
+    if [ ! -d "/usr/local/virtuoso-opensource/share/virtuoso/vad/ontologies" ]; 
+    then 
+        mkdir /usr/local/virtuoso-opensource/share/virtuoso/vad/ontologies
+    fi
+    mv -v /ontologies/* /usr/local/virtuoso-opensource/share/virtuoso/vad/ontologies/ 
 else
 	echo "/ontologies does not exist"
 fi
 
 #Added by Andrea
-if [ ! -d "/usr/local/virtuoso-opensource/share/virtuoso/vad/ontologies" ]; 
-then 
-    mkdir /usr/local/virtuoso-opensource/share/virtuoso/vad/ontologies
-fi
+
 
 if [ -d "/usr/local/virtuoso-opensource/share/virtuoso/vad/ontologies" ]; 
 	then
