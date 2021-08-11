@@ -152,6 +152,7 @@ def substitute_invalid_IRI(graph, mode, g1_name, g2_name, g1, g2, transl_coher):
             elif prefix(o, graph).startswith("fred:"):
                 graph.remove((s, p, o))
                 graph.add((s, p, change_prefix(o, transl_coher[g1_name])))
+            graph.bind(g1_name, transl_coher[g1_name])
         # #######################################################################################
 
         # Handle g2 #######################################################################################
@@ -178,6 +179,7 @@ def substitute_invalid_IRI(graph, mode, g1_name, g2_name, g1, g2, transl_coher):
             elif prefix(o, graph).startswith("fred:"):
                 graph.remove((s, p, o))
                 graph.add((s, p, change_prefix(o, transl_coher[g2_name])))
+            graph.bind(g2_name, transl_coher[g2_name])
         # #######################################################################################
 
         else:
@@ -207,6 +209,10 @@ def write_graph(g1, g2, result_graph, lang_1, lang_2, sentence, format='turtle')
     result_graph_clean.add((transl_coher[rg_name], URIRef(str(transl_coher.vocabulary) + "/compareOntology"), transl_coher[g1_name]))
     result_graph_clean.add((transl_coher[rg_name], URIRef(str(transl_coher.vocabulary) + "/compareOntology"), transl_coher[g2_name]))
     result_graph_clean.add((transl_coher[g1_name], URIRef(str(transl_coher.vocabulary) + "/compareWith"), transl_coher[g2_name]))
+
+    result_graph.bind(g1_name, transl_coher[g1_name])
+    result_graph.bind(g2_name, transl_coher[g2_name])
+    result_graph.bind(rg_name, transl_coher[rg_name])
 
     print("-" * 150)  # #########################################################
     print("Graph with valid IRIs:")
