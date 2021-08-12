@@ -44,9 +44,9 @@ def check_multiples(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_fro
 							# "multiples_i" is a reification of a N-ary relationship
 							expr_1 = "expression_" + next(indexes["expressions"])
 							expr_2 = "expression_" + next(indexes["expressions"])
-							result_graph.add((n[expr_1], n.involvesNode, node1))
-							result_graph.add((n[expr_1], n.involvesMult, s1))
-							result_graph.add((n[expr_2], n.involvesNode, node2))
+							result_graph.add((n[expr_1], n.involvesNoun, node1))
+							result_graph.add((n[expr_1], n.involvesMultiple, s1))
+							result_graph.add((n[expr_2], n.involvesNoun, node2))
 							for obj in objs:
 								result_graph.add((n[expr_2], quant_predicate, obj))
 								result_graph.add((n[expr_1], n.sameExpression, n[expr_2]))
@@ -63,10 +63,10 @@ def check_multiples(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_fro
 							# "multiples_i" is a reification of a N-ary relationship
 							expr_1 = "expression_" + next(indexes["expressions"])
 							expr_2 = "expression_" + next(indexes["expressions"])
-							result_graph.add((n[expr_1], n.involvesNode, node1))
+							result_graph.add((n[expr_1], n.involvesNoun, node1))
 							for obj in objs:
 								result_graph.add((n[expr_1], n.involvesQuant, obj))
-							result_graph.add((n[expr_2], n.involvesNode, node2))
-							result_graph.add((n[expr_2], n.involvesMult, s2))
+							result_graph.add((n[expr_2], n.involvesNoun, node2))
+							result_graph.add((n[expr_2], n.involvesMultiple, s2))
 							result_graph.add((n[expr_1], n.sameExpression, n[expr_2]))
 							# print("FOUND", prefix(node2, g2), prefix(p2, g2), prefix(node1, g1), [prefix(o1, g1) for o1 in objs])
