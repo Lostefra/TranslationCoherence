@@ -130,10 +130,8 @@ fi
 
 if [ -d "/usr/local/virtuoso-opensource/share/virtuoso/vad/ontologies" ]; 
 	then
-    echo "entro quiiiiiiiiiii"
     #if [ ! -f "/usr/local/virtuoso-opensource/share/virtuoso/vad/ontologies/.data_loaded" ] ;
     #then
-    echo "non entro quiiiiiiiiiii"
 	echo "Loading DB data - segment ontologies" ;
 	echo "File in /usr/local/virtuoso-opensource/share/virtuoso/vad/ontologies: ";
 		ls /usr/local/virtuoso-opensource/share/virtuoso/vad/ontologies
