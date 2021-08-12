@@ -84,16 +84,24 @@ def substitute_invalid_IRI(graph, mode, g1_name, g2_name, g1, g2, transl_coher):
             elif prefix(s, graph).startswith("transl_coher:expression_"):
                 graph.remove((s, p, o))
                 graph.add((change_prefix(s, transl_coher.vocabulary), p, o))
-            # Handle similar_hierarchy pattern
+            # Handle similar_hierarchy pattern (isHierarchyMemberOf, hasHierarchyMember)
             elif prefix(s, graph).startswith("transl_coher:hierarchy_") and prefix(p, graph).startswith("transl_coher:") and prefix(o, graph).startswith("transl_coher:hierarchy_"):
                 graph.remove((s, p, o))
                 graph.add((change_prefix(s, transl_coher[g1_name]), change_prefix(p, transl_coher.vocabulary),
                            change_prefix(o, transl_coher[g2_name])))
-            elif prefix(s, graph).startswith("transl_coher:hierarchy_") and int(prefix(s, graph)[-1]) % 2 == 1 and prefix(p, graph).startswith("transl_coher:") and prefix(o, graph).startswith("fred:"):
+            elif prefix(o, graph).startswith("transl_coher:hierarchy_") and int(prefix(o, graph)[-1]) % 2 == 1 and prefix(p, graph).startswith("transl_coher:isHierarchyMemberOf") and prefix(s, graph).startswith("fred:"):
                 graph.remove((s, p, o))
                 graph.add((change_prefix(s, transl_coher[g1_name]), change_prefix(p, transl_coher.vocabulary),
                            change_prefix(o, transl_coher[g1_name])))
-            elif prefix(s, graph).startswith("transl_coher:hierarchy_") and int(prefix(s, graph)[-1]) % 2 == 0 and prefix(p, graph).startswith("transl_coher:") and prefix(o, graph).startswith("fred:"):
+            elif prefix(o, graph).startswith("transl_coher:hierarchy_") and int(prefix(o, graph)[-1]) % 2 == 0 and prefix(p, graph).startswith("transl_coher:isHierarchyMemberOf") and prefix(s, graph).startswith("fred:"):
+                graph.remove((s, p, o))
+                graph.add((change_prefix(s, transl_coher[g2_name]), change_prefix(p, transl_coher.vocabulary),
+                           change_prefix(o, transl_coher[g2_name])))
+            elif prefix(s, graph).startswith("transl_coher:hierarchy_") and int(prefix(s, graph)[-1]) % 2 == 1 and prefix(p, graph).startswith("transl_coher:hasHierarchyMember") and prefix(o, graph).startswith("fred:"):
+                graph.remove((s, p, o))
+                graph.add((change_prefix(s, transl_coher[g1_name]), change_prefix(p, transl_coher.vocabulary),
+                           change_prefix(o, transl_coher[g1_name])))
+            elif prefix(s, graph).startswith("transl_coher:hierarchy_") and int(prefix(s, graph)[-1]) % 2 == 0 and prefix(p, graph).startswith("transl_coher:hasHierarchyMember") and prefix(o, graph).startswith("fred:"):
                 graph.remove((s, p, o))
                 graph.add((change_prefix(s, transl_coher[g2_name]), change_prefix(p, transl_coher.vocabulary),
                            change_prefix(o, transl_coher[g2_name])))
