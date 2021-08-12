@@ -9,11 +9,11 @@ RUN apt-get update && apt-get install -y wget
 # RUN /bin/bash /download_release.sh ${KG_VERSION}
 
 # # Add ontologies
-#RUN mkdir /ontologies
-#ADD https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/vocabulary.ttl /ontologies
-#ADD https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/g1.ttl /ontologies
-#ADD https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/g2.ttl /ontologies
-#ADD https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/output.ttl /ontologies
+RUN mkdir /ontologies
+ADD https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/vocabulary.ttl /ontologies
+ADD https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/g1.ttl /ontologies
+ADD https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/g2.ttl /ontologies
+ADD https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/output.ttl /ontologies
 
 COPY download_data.sh /download_data.sh
 RUN /bin/bash /download_data.sh

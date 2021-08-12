@@ -98,7 +98,7 @@ def check_nodes_equivalence(g1, g2, lemmas, node1, node2):
     lemma1, lemma2 = lemmas[str(g1.label(node1))], lemmas[str(g2.label(node2))]
     is_s1_class, is_s2_class = is_class(node1, g1), is_class(node2, g2)
     return (((not is_s1_class) and not is_s2_class) and lemma1 and lemma1 == lemma2) or \
-           (is_s1_class and is_s2_class and node1 == node2) or \
+           (is_s1_class and is_s2_class and get_class_name_from_iri(node1) == get_class_name_from_iri(node2)) or \
            (isinstance(node1, Literal) and isinstance(node1, Literal) and node1 == node2)
 
 

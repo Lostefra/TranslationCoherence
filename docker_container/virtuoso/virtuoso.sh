@@ -127,26 +127,26 @@ else
 	echo "/ontologies does not exist"
 fi
 
-#Added by Andrea
-
 
 if [ -d "/usr/local/virtuoso-opensource/share/virtuoso/vad/ontologies" ]; 
 	then
-    if [ ! -f "/usr/local/virtuoso-opensource/share/virtuoso/vad/ontologies/.data_loaded" ] ;
-    then
-    	echo "Loading DB data - segment ontologies" ;
-    	echo "File in /usr/local/virtuoso-opensource/share/virtuoso/vad/ontologies: ";
-   		ls /usr/local/virtuoso-opensource/share/virtuoso/vad/ontologies
-        #TODO: Check this function call
-   		echo "ld_dir_all('/usr/local/virtuoso-opensource/share/virtuoso/vad/ontologies', '*.ttl', 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/');" > /load_data.sql
-		echo "rdf_loader_run();" >> /load_data.sql
-		echo "exec('checkpoint');" >> /load_data.sql
-		echo "WAIT_FOR_CHILDREN; " >> /load_data.sql
-		echo "$(cat /load_data.sql)"
-		virtuoso-t +wait && isql-v -U dba -P "$pwd" < /load_data.sql
-		kill $(ps aux | grep '[v]irtuoso-t' | awk '{print $2}')
-		echo "`date +%Y-%m-%dT%H:%M:%S%:z`" > /usr/local/virtuoso-opensource/share/virtuoso/vad/ontologies/.data_loaded
-	fi
+    echo "entro quiiiiiiiiiii"
+    #if [ ! -f "/usr/local/virtuoso-opensource/share/virtuoso/vad/ontologies/.data_loaded" ] ;
+    #then
+    echo "non entro quiiiiiiiiiii"
+	echo "Loading DB data - segment ontologies" ;
+	echo "File in /usr/local/virtuoso-opensource/share/virtuoso/vad/ontologies: ";
+		ls /usr/local/virtuoso-opensource/share/virtuoso/vad/ontologies
+    #TODO: Check this function call
+		echo "ld_dir_all('/usr/local/virtuoso-opensource/share/virtuoso/vad/ontologies', '*.ttl', 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/');" > /load_data.sql
+	echo "rdf_loader_run();" >> /load_data.sql
+	echo "exec('checkpoint');" >> /load_data.sql
+	echo "WAIT_FOR_CHILDREN; " >> /load_data.sql
+	echo "$(cat /load_data.sql)"
+	virtuoso-t +wait && isql-v -U dba -P "$pwd" < /load_data.sql
+	kill $(ps aux | grep '[v]irtuoso-t' | awk '{print $2}')
+	echo "`date +%Y-%m-%dT%H:%M:%S%:z`" > /usr/local/virtuoso-opensource/share/virtuoso/vad/ontologies/.data_loaded
+	#fi
 fi
 
 if [  -d "/linking" ]; then

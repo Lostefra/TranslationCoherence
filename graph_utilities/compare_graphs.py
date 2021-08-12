@@ -211,38 +211,21 @@ def compare_graphs(g1, g2):
         while len(frontiers) > 0:
             new_frontiers = set()
 
-            print("find equivalence")
             find_equivalence_relations(g1, g2, lemmas, n, result_graph, frontiers, new_frontiers)
             find_synonymy_relations(g1, g2, lemmas, n, result_graph, frontiers, new_frontiers)
-            print("-" * 150)  # #########################################################
-            print("negative verbs")
             negative_verbs(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_frontiers, mode=1)
             negative_verbs(g2, g1, n, result_graph, indexes, lemmas, frontiers, new_frontiers, mode=2)
-            print("-" * 150)  # #########################################################
-            print("class_subclass_equivalence")
             class_subclass_equivalence(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_frontiers)
-            print("-" * 150)  # #########################################################
-            print("check_multiples")
             check_multiples(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_frontiers)
-            
             new_frontiers -= old_frontiers
             frontiers = new_frontiers.copy()
             old_frontiers = old_frontiers.union(new_frontiers)
-            print("-" * 150)  # #########################################################
 
-        
-        print("-" * 150)  # #########################################################
-        print("differences:")
         find_binary_difference_relations(g1, g2, lemmas, n, result_graph, old_frontiers, frontiers)
-        print("-" * 150)  # #########################################################
-        print("synonymies:")
         find_synonymy_classes(g1, g2, lemmas, result_graph, frontiers)
-        print("-" * 150)  # #########################################################
 
-    # Last search to classifying remaining elements
-    print("all different relations & only in 1 graph")
+    # Last search to classify the remaining elements
     all_different_relations_and_only_in_1_graph(g1, g2, n, result_graph, lemmas)
-    print("-" * 150)  # #########################################################
 
     graph_bind(result_graph)
     return result_graph

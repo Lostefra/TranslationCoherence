@@ -231,7 +231,7 @@ def write_graph(g1, g2, result_graph, lang_1, lang_2, sentence, format='turtle')
             print(pad_prefix(s, graph), pad_prefix(p, graph), pad_prefix(o, graph))
 
     print("-" * 150)  # #########################################################
-    print("WRITING")
+    print("Serializing graphs...")
     result_graph_clean.serialize(destination=destination_result_graph, format=format)
     g1_clean.serialize(destination=destination_g1, format=format)
     g2_clean.serialize(destination=destination_g2, format=format)
