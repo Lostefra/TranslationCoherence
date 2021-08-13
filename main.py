@@ -37,4 +37,4 @@ print("-" * 150)  # #########################################################
 
 g1, g1_name, g2, g2_name, result_graph, rg_name = update_graph_iri(g1, g2, rg, lang_1, lang_2, sentence)
 apply_intensional_reification(g1, g2, result_graph)
-serialize_graph(g1, g1_name, g2, g2_name, result_graph, rg_name, format='xml')
+serialize_graph(g1, g1_name, g2, g2_name, result_graph, rg_name, format='pretty-xml')

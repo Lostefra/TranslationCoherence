@@ -233,7 +233,7 @@ def update_graph_iri(g1, g2, result_graph, lang_1, lang_2, sentence):
     return g1_clean, g1_name, g2_clean, g2_name, result_graph_clean, rg_name
 
 
-def serialize_graph(g1_clean, g1_name, g2_clean, g2_name, result_graph, rg_name, format='xml'):
+def serialize_graph(g1_clean, g1_name, g2_clean, g2_name, result_graph, rg_name, format='pretty-xml'):
     destination_result_graph = 'ontology/' + rg_name
     destination_g1 = 'ontology/' + g1_name
     destination_g2 = 'ontology/' + g2_name
