@@ -200,12 +200,12 @@ def write_graph(g1, g2, result_graph, lang_1, lang_2, sentence, format='xml'):
 
     lang_1 = lang_1.split("/")[1]
     lang_2 = lang_2.split("/")[1]
-    rg_name = lang_1 + '_VS_' + lang_2 + '__' + sentence
-    g1_name = lang_1 + '__' + sentence
-    g2_name = lang_2 + '__' + sentence
-    destination_result_graph = 'ontology/' + rg_name + '.owl'
-    destination_g1 = 'ontology/' + g1_name + '.owl'
-    destination_g2 = 'ontology/' + g2_name + '.owl'
+    rg_name = lang_1 + '_VS_' + lang_2 + '__' + sentence + ".owl"
+    g1_name = lang_1 + '__' + sentence + ".owl"
+    g2_name = lang_2 + '__' + sentence + ".owl"
+    destination_result_graph = 'ontology/' + rg_name
+    destination_g1 = 'ontology/' + g1_name
+    destination_g2 = 'ontology/' + g2_name
 
     transl_coher = Namespace(NAMESPACES["translation_coherence"])
     result_graph_clean = substitute_invalid_IRI(result_graph, "rg", g1_name, g2_name, g1, g2, transl_coher)
