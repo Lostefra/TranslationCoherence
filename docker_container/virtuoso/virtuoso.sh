@@ -138,6 +138,7 @@ if [ -d "/usr/local/virtuoso-opensource/share/virtuoso/vad/ontologies" ];
     #TODO: Check this function call
 	echo "ld_dir_all('/usr/local/virtuoso-opensource/share/virtuoso/vad/ontologies', '*.ttl', 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/');" > /load_data.sql
     echo "ld_dir_all('/usr/local/virtuoso-opensource/share/virtuoso/vad/ontologies', '*.owl', 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/');" > /load_data.sql
+	echo "ld_dir_all('/usr/local/virtuoso-opensource/share/virtuoso/vad/ontologies', '*.rdf', 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/');" > /load_data.sql
 	echo "rdf_loader_run();" >> /load_data.sql
 	echo "exec('checkpoint');" >> /load_data.sql
 	echo "WAIT_FOR_CHILDREN; " >> /load_data.sql
