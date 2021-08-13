@@ -1,5 +1,6 @@
 import rdflib
 from rdflib import Namespace, URIRef
+import datetime
 
 from utilities.constants import NAMESPACES
 from utilities.utility_functions import pad_prefix, prefix, change_prefix
@@ -233,6 +234,71 @@ def update_graph_iri(g1, g2, result_graph, lang_1, lang_2, sentence):
     return g1_clean, g1_name, g2_clean, g2_name, result_graph_clean, rg_name
 
 
+def add_annotations(graph, graph_name, mode):
+
+    graph_ontology = rdflib.term.URIRef(NAMESPACES['translation_coherence'] + graph_name)
+    # Ontology
+    graph.add((graph_ontology, constants.TYPE_PREDICATE, rdflib.term.URIRef(NAMESPACES['owl']+'Ontology')))
+    # Label
+    graph.add((graph_ontology,
+        rdflib.term.URIRef(NAMESPACES['rdfs']+'label'),
+        rdflib.term.Literal(graph_name.split(".")[0])))
+    # Title
+    graph.add((graph_ontology,
+        rdflib.term.URIRef(NAMESPACES['dc']+'title'),
+        rdflib.term.Literal(graph_name.split(".")[0])))
+    # Imports
+    for imported_ontology in constants.IMPORTED_ONTOLOGIES:
+        graph.add((graph_ontology,
+            rdflib.term.URIRef(NAMESPACES['owl']+'imports'),
+            rdflib.term.URIRef(NAMESPACES[imported_ontology])))
+    # Language
+    graph.add((graph_ontology,
+        rdflib.term.URIRef(NAMESPACES['dc']+'language'),
+        rdflib.term.URIRef('http://publications.europa.eu/resource/authority/language/ENG')))
+    # License
+    graph.add((graph_ontology,
+        rdflib.term.URIRef(NAMESPACES['dct']+'license'),
+        rdflib.term.URIRef('https://creativecommons.org/licenses/by-sa/4.0/')))
+    # Creators
+    creators = ['Andrea Lavista', 'Lorenzo Mario Amorosa', 'Michele Iannello']
+    for creator in creators:
+        graph.add((graph_ontology,
+            rdflib.term.URIRef(NAMESPACES['dc']+'creator'),
+            rdflib.term.Literal(creator)))
+    # Date
+    graph.add((graph_ontology,
+        rdflib.term.URIRef(NAMESPACES['dct']+'issued'),
+        rdflib.term.Literal('2021-08-13')))
+    graph.add((graph_ontology,
+        rdflib.term.URIRef(NAMESPACES['dct']+'modified'),
+        rdflib.term.Literal(datetime.date.today().strftime('%Y-%m-%d'))))
+    # Textual reference
+    if mode != 'rg':
+        sentence = graph.value(subject=rdflib.term.URIRef(NAMESPACES['fred'] + 'docuverse'),
+                                predicate = rdflib.term.URIRef(NAMESPACES['earmark'] + 'hasContent'))
+        # Comment
+        graph.add((graph_ontology,
+            rdflib.term.URIRef(NAMESPACES['rdfs']+'comment'),
+            rdflib.term.Literal(sentence)))
+        # Description
+        graph.add((graph_ontology,
+            rdflib.term.URIRef(NAMESPACES['dc']+'description'),
+            rdflib.term.Literal(sentence)))
+    else:
+        pass
+        ont1, ont2 = list(graph.objects(subject=graph_ontology,
+            predicate=rdflib.term.URIRef(NAMESPACES['translation_coherence_vocabulary']+'compareOntology')))
+        ont1, ont2 = str(ont1), str(ont2)
+        # Comment
+        graph.add((graph_ontology,
+            rdflib.term.URIRef(NAMESPACES['rdfs']+'comment'),
+            rdflib.term.Literal(f'This graph compares the ontologies {ont1} and {ont2}')))
+        # Description
+        graph.add((graph_ontology,
+            rdflib.term.URIRef(NAMESPACES['dc']+'description'),
+            rdflib.term.Literal(f'This graph compares the ontologies {ont1} and {ont2}')))
+        
 def serialize_graph(g1_clean, g1_name, g2_clean, g2_name, result_graph, rg_name, format='pretty-xml'):
     destination_result_graph = 'ontology/' + rg_name
     destination_g1 = 'ontology/' + g1_name

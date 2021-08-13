@@ -1,6 +1,7 @@
 import rdflib
 
 TEXTUAL_REFERENCE_PREFIX = "offset_"
+HAS_CONTENT_PREDICATE = rdflib.term.URIRef('http://www.essepuntato.it/2008/12/earmark#hasContent')
 LABEL_PREDICATE = rdflib.term.URIRef("http://www.w3.org/2000/01/rdf-schema#label")
 DENOTE_PREDICATE = rdflib.term.URIRef("http://ontologydesignpatterns.org/cp/owl/semiotics.owl#denotes")
 HAS_INTERPRETANT_PREDICATE = rdflib.term.URIRef(
@@ -23,12 +24,15 @@ NAMESPACES = {
     'quant': 'http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#',
     'owl': 'http://www.w3.org/2002/07/owl#',
     'rdf': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
-    'rdfs': 'http://www.w3.org/2000/01/rdf-schema',
+    'rdfs': 'http://www.w3.org/2000/01/rdf-schema#',
     'dul': 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#',
     'vn.role': 'http://www.ontologydesignpatterns.org/ont/vn/abox/role/',
     'boxer': 'http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#',
     'boxing': 'http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#',
     'dbpedia': 'http://dbpedia.org/resource/',
+    'dc': 'http://purl.org/dc/elements/1.1/',
+    'dct': 'http://purl.org/dc/terms/',
+    'earmark': 'http://www.essepuntato.it/2008/12/earmark#',
     'foaf': 'http://xmlns.com/foaf/0.1/',
     'schema': 'http://schema.org/',
     'coref': 'http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#',
@@ -55,6 +59,7 @@ NAMESPACES = {
     # 'en_sentence5': 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/en__sentence5/',
     # 'en_it_en_sentence5': 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/en_it_en__sentence5/',
 }
+IMPORTED_ONTOLOGIES = ['quant', 'owl', 'rdf', 'rdfs', 'dul', 'vn.role', 'boxer', 'boxing', 'dbpedia', 'foaf', 'schema', 'coref', 'time']
 UNWANTED = ["http://www.ontologydesignpatterns.org/ont/fred/pos.owl",
             "http://ontologydesignpatterns.org/cp/owl/semiotics.owl",
             "http://www.essepuntato.it/2008/12/earmark",

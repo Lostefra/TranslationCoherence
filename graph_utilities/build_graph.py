@@ -14,7 +14,7 @@ def clean_graph(g_in):
     g_out = Graph()
 
     for s, p, o in g_in:
-        if wanted_triplet(s, p, o):
+        if wanted_triplet(s, p, o) or p == constants.HAS_CONTENT_PREDICATE:
             g_out.add((s, p, o))
 
     print(len(g_out.all_nodes()), "nodes in the cleaned graph")
