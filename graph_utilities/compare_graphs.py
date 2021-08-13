@@ -183,12 +183,12 @@ def find_synonymy_classes(g1, g2, lemmas, result_graph, new_frontiers):
     out_frontiers_g1 = set([node for node in g1.all_nodes()]) - set([s for s in result_graph.subjects()])
     out_frontiers_g2 = set([node for node in g2.all_nodes()]) - set([o for o in result_graph.objects()])
     for node1 in out_frontiers_g1:
-        if is_class(node1, g1):
+        if is_class(node1, g1) and not str(node1).startswith(constants.OWL_PREFIX):
             for node2 in out_frontiers_g2:
-                if check_nodes_synonymy(g1, g2, lemmas, node1, node2) and is_class(node2, g2) and \
-                  not equivalence_classified(node1, node2, result_graph):
+                if is_class(node2, g2) and not str(node2).startswith(constants.OWL_PREFIX) and \
+                    not equivalence_classified(node1, node2, result_graph) and \
+                        check_nodes_synonymy(g1, g2, lemmas, node1, node2):
                     add_synonymy_relation(node1, node2, result_graph, new_frontiers)
-                    print("Synonym:", prefix(node1, g1), prefix(node2, g2))
 
 
 def compare_graphs(g1, g2):

@@ -1,7 +1,8 @@
+from graph_utilities.pattern_utility import apply_intensional_reification
 from utilities.utility_functions import pad_prefix
 from graph_utilities.build_graph import build_graph
 from graph_utilities.compare_graphs import compare_graphs
-from graph_utilities.write_graph import write_graph
+from graph_utilities.deploy_graph import serialize_graph, update_graph_iri
 
 lang_1 = "en/en"
 lang_2 = "it/en_it_en"
@@ -34,4 +35,6 @@ for p in sorted(set(graph.predicates())):
 
 print("-" * 150)  # #########################################################
 
-write_graph(g1, g2, rg, lang_1, lang_2, sentence)
+g1, g1_name, g2, g2_name, result_graph, rg_name = update_graph_iri(g1, g2, rg, lang_1, lang_2, sentence)
+apply_intensional_reification(g1, g2, result_graph)
+serialize_graph(g1, g1_name, g2, g2_name, result_graph, rg_name, format='xml')

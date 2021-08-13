@@ -194,7 +194,14 @@ def substitute_invalid_IRI(graph, mode, g1_name, g2_name, g1, g2, transl_coher):
     return graph
 
 
-def write_graph(g1, g2, result_graph, lang_1, lang_2, sentence, format='xml'):
+def remove_undesired_triples(graph):
+    for s, p, o in graph:
+        if str(s).startswith(constants.OWL_PREFIX) or str(s).startswith(constants.DUL_PREFIX) or \
+                str(o).startswith(constants.OWL_PREFIX) or str(o).startswith(constants.DUL_PREFIX):
+            graph.remove((s, p, o))
+
+
+def update_graph_iri(g1, g2, result_graph, lang_1, lang_2, sentence):
     # Write graph to file
     # complete_graph(g1, g2, result_graph)
 
@@ -203,14 +210,13 @@ def write_graph(g1, g2, result_graph, lang_1, lang_2, sentence, format='xml'):
     rg_name = lang_1 + '_VS_' + lang_2 + '__' + sentence + ".owl"
     g1_name = lang_1 + '__' + sentence + ".owl"
     g2_name = lang_2 + '__' + sentence + ".owl"
-    destination_result_graph = 'ontology/' + rg_name
-    destination_g1 = 'ontology/' + g1_name
-    destination_g2 = 'ontology/' + g2_name
 
     transl_coher = Namespace(NAMESPACES["translation_coherence"])
     result_graph_clean = substitute_invalid_IRI(result_graph, "rg", g1_name, g2_name, g1, g2, transl_coher)
     g1_clean = substitute_invalid_IRI(g1, "g1", g1_name, g2_name, g1, g2, transl_coher)
     g2_clean = substitute_invalid_IRI(g2, "g2", g1_name, g2_name, g1, g2, transl_coher)
+
+    remove_undesired_triples(result_graph_clean)
 
     result_graph_clean.add((transl_coher[rg_name], URIRef(str(constants.NAMESPACES["translation_coherence_vocabulary"]) + "compareOntology"), transl_coher[g1_name]))
     result_graph_clean.add((transl_coher[rg_name], URIRef(str(constants.NAMESPACES["translation_coherence_vocabulary"]) + "compareOntology"), transl_coher[g2_name]))
@@ -224,8 +230,15 @@ def write_graph(g1, g2, result_graph, lang_1, lang_2, sentence, format='xml'):
         for s, o in graph.subject_objects(predicate=p):
             print(pad_prefix(s, graph), pad_prefix(p, graph), pad_prefix(o, graph))
 
+    return g1_clean, g1_name, g2_clean, g2_name, result_graph_clean, rg_name
+
+
+def serialize_graph(g1_clean, g1_name, g2_clean, g2_name, result_graph, rg_name, format='xml'):
+    destination_result_graph = 'ontology/' + rg_name
+    destination_g1 = 'ontology/' + g1_name
+    destination_g2 = 'ontology/' + g2_name
     print("-" * 150)  # #########################################################
     print("Serializing graphs...")
-    result_graph_clean.serialize(destination=destination_result_graph, format=format)
+    result_graph.serialize(destination=destination_result_graph, format=format)
     g1_clean.serialize(destination=destination_g1, format=format)
     g2_clean.serialize(destination=destination_g2, format=format)

@@ -23,6 +23,7 @@ NAMESPACES = {
     'quant': 'http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#',
     'owl': 'http://www.w3.org/2002/07/owl#',
     'rdf': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
+    'rdfs': 'http://www.w3.org/2000/01/rdf-schema',
     'dul': 'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#',
     'vn.role': 'http://www.ontologydesignpatterns.org/ont/vn/abox/role/',
     'boxer': 'http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#',
@@ -62,6 +63,14 @@ UNWANTED = ["http://www.ontologydesignpatterns.org/ont/fred/pos.owl",
             # "http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl",
             TEXTUAL_REFERENCE_PREFIX,
             "ObjectProperty"]
+
+CLASS_CONCEPT_CLASS = rdflib.term.URIRef(NAMESPACES["translation_coherence_vocabulary"] + "ClassConcept")
+SEE_ALSO_PREDICATE = rdflib.term.URIRef("http://www.w3.org/2000/01/rdf-schema#seeAlso")
+DISJOINT_WITH_PREDICATE = rdflib.term.URIRef("http://www.w3.org/2002/07/owl#disjointWith")
+PARENT_CLASS_CONCEPT_PREDICATE = rdflib.term.URIRef(NAMESPACES["translation_coherence_vocabulary"] + "parentClassConcept")
+
+
 QUANT_PREFIX = NAMESPACES['quant']
 DUL_PREFIX = NAMESPACES['dul']
 BOXING_PREFIX = NAMESPACES["boxing"]
+OWL_PREFIX = NAMESPACES["owl"]
