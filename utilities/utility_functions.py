@@ -18,10 +18,13 @@ def prefix(el, graph):
 
 
 def change_prefix(node, new_prefix):
+    tmp = "/"
+    if new_prefix[-1] == '/':
+        tmp = ""
     if '#' in str(node):
-        return URIRef(new_prefix + "/" + str(node).split("#")[-1])
+        return URIRef(new_prefix + tmp + str(node).split("#")[-1])
     else:
-        return URIRef(new_prefix + "/" + str(node).split("/")[-1])
+        return URIRef(new_prefix + tmp + str(node).split("/")[-1])
 
 
 def word(el, graph):
