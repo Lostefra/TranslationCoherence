@@ -1,5 +1,8 @@
+import rdflib
+
 from utilities.utility_functions import prefix, add_equivalence_relation
 from utilities.wordnet_utility_functions import check_synonymy
+import utilities.constants as constants
 
 
 def negative_verbs(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_frontiers, mode):
@@ -29,6 +32,10 @@ def negative_verbs(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_fron
                     result_graph.add((n[expr2], n.involvesVerb, s2))
 
                     result_graph.add((n[expr1], n.differentExpression, n[expr2]))
+                    result_graph.add((n[expr1], constants.TYPE_PREDICATE,
+                                      rdflib.term.URIRef(constants.NAMESPACES["translation_coherence_vocabulary"] + "Expression")))
+                    result_graph.add((n[expr2], constants.TYPE_PREDICATE,
+                                      rdflib.term.URIRef(constants.NAMESPACES["translation_coherence_vocabulary"] + "Expression")))
 
                     add_equivalence_relation(o1, s2, result_graph, new_frontiers)
 

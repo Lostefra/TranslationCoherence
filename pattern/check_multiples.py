@@ -1,3 +1,4 @@
+import rdflib
 from rdflib.term import URIRef
 from utilities.utility_functions import prefix
 from utilities import constants
@@ -44,6 +45,10 @@ def check_multiples(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_fro
 							# "multiples_i" is a reification of a N-ary relationship
 							expr_1 = "expression_" + next(indexes["expressions"])
 							expr_2 = "expression_" + next(indexes["expressions"])
+							result_graph.add((n[expr_1], constants.TYPE_PREDICATE,
+											  rdflib.term.URIRef(constants.NAMESPACES["translation_coherence_vocabulary"] + "Expression")))
+							result_graph.add((n[expr_2], constants.TYPE_PREDICATE,
+											  rdflib.term.URIRef(constants.NAMESPACES["translation_coherence_vocabulary"] + "Expression")))
 							result_graph.add((n[expr_1], n.involvesNoun, node1))
 							result_graph.add((n[expr_1], n.involvesMultiple, s1))
 							result_graph.add((n[expr_2], n.involvesNoun, node2))
@@ -63,9 +68,13 @@ def check_multiples(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_fro
 							# "multiples_i" is a reification of a N-ary relationship
 							expr_1 = "expression_" + next(indexes["expressions"])
 							expr_2 = "expression_" + next(indexes["expressions"])
+							result_graph.add((n[expr_1], constants.TYPE_PREDICATE,
+											  rdflib.term.URIRef(constants.NAMESPACES["translation_coherence_vocabulary"] + "Expression")))
+							result_graph.add((n[expr_2], constants.TYPE_PREDICATE,
+											  rdflib.term.URIRef(constants.NAMESPACES["translation_coherence_vocabulary"] + "Expression")))
 							result_graph.add((n[expr_1], n.involvesNoun, node1))
 							for obj in objs:
-								result_graph.add((n[expr_1], n.involvesQuant, obj))
+								result_graph.add((n[expr_1], quant_predicate, obj))
 							result_graph.add((n[expr_2], n.involvesNoun, node2))
 							result_graph.add((n[expr_2], n.involvesMultiple, s2))
 							result_graph.add((n[expr_1], n.sameExpression, n[expr_2]))

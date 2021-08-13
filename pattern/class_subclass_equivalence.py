@@ -1,3 +1,5 @@
+import rdflib
+
 from utilities import constants
 from utilities.utility_functions import prefix, is_class, equivalence_classified, synonymy_classified, difference_classified, \
     check_nodes_equivalence, check_nodes_synonymy, add_equivalence_relation, add_synonymy_relation, add_binary_difference_relation
@@ -91,6 +93,11 @@ def add_hierarchy(classes_1, classes_2, indexes, n, result_graph, are_different)
     # "hierarchy_i" is the reification of a n-ary relation
     hierarchy_1 = "hierarchy_" + next(indexes["hierarchies"])
     hierarchy_2 = "hierarchy_" + next(indexes["hierarchies"])
+
+    result_graph.add((n[hierarchy_1], constants.TYPE_PREDICATE,
+                      rdflib.term.URIRef(constants.NAMESPACES["translation_coherence_vocabulary"] + "Hierarchy")))
+    result_graph.add((n[hierarchy_2], constants.TYPE_PREDICATE,
+                      rdflib.term.URIRef(constants.NAMESPACES["translation_coherence_vocabulary"] + "Hierarchy")))
     
     # Store class trees for printing
     h_classes_1, h_classes_2 = [], []

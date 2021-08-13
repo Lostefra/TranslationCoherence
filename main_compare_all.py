@@ -1,43 +1,16 @@
-from graph_utilities.pattern_utility import apply_intensional_reification
-from utilities.utility_functions import pad_prefix
-from graph_utilities.build_graph import build_graph
-from graph_utilities.compare_graphs import compare_graphs
-from graph_utilities.deploy_graph import serialize_graph, update_graph_iri, add_annotations
+from graph_utilities.compare_pair import compare_pair
+import os
 
-lang_1 = "en/en"
-lang_2 = "it/en_it_en"
-sentence = "sentence4"
+en_sentence = "EuroParl/Paragraph1/turtle/en/en_sentence"
 
-g1 = build_graph("EuroParl/Paragraph1/turtle/" + lang_1 + "_" + sentence + ".ttl")
-print(lang_1)
-print("Number of triplets:", len(g1))
-for s, p, o in g1:
-    print(pad_prefix(s, g1), pad_prefix(p, g1), pad_prefix(o, g1))
-
-print("-" * 150)  # #########################################################
-
-g2 = build_graph("EuroParl/Paragraph1/turtle/" + lang_2 + "_" + sentence + ".ttl")
-print(lang_2)
-print("Number of triplets:", len(g2))
-for s, p, o in g2:
-    print(pad_prefix(s, g2), pad_prefix(p, g2), pad_prefix(o, g2))
-
-print("-" * 150)  # #########################################################
-
-# Generate the knowledge graph containing the semantic comparison between g1, g2
-rg = compare_graphs(g1, g2)
-
-# Ordered printing:
-graph = rg
-for p in sorted(set(graph.predicates())):
-    for s, o in graph.subject_objects(predicate=p):
-        print(pad_prefix(s, graph), pad_prefix(p, graph), pad_prefix(o, graph))
-
-print("-" * 150)  # #########################################################
-
-g1, g1_name, g2, g2_name, result_graph, rg_name = update_graph_iri(g1, g2, rg, lang_1, lang_2, sentence)
-apply_intensional_reification(g1, g2, result_graph)
-add_annotations(g1, g1_name, 'g1')
-add_annotations(g2, g2_name, 'g2')
-add_annotations(result_graph, rg_name, 'rg')
-serialize_graph(g1, g1_name, g2, g2_name, result_graph, rg_name, format='pretty-xml')
+ontologies_dir = os.path.join("EuroParl", "Paragraph1", "turtle")
+for lang in os.listdir(ontologies_dir):
+    lang_dir = os.path.join(ontologies_dir, lang)
+    if os.path.isdir(lang_dir):
+        for file in os.listdir(lang_dir):
+            filename = os.path.join(lang_dir, file)
+            if not lang == "en" and filename.endswith(".ttl"):
+                lang_1 = "en/en"
+                lang_2 = lang + "/en_" + lang + "_en"
+                sentence = filename.split(".")[0][-1]
+                compare_pair(lang_1, en_sentence + sentence + ".ttl", lang_2, filename, "sentence" + sentence)

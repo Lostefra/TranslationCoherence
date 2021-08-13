@@ -223,13 +223,13 @@ def update_graph_iri(g1, g2, result_graph, lang_1, lang_2, sentence):
     result_graph_clean.add((transl_coher[rg_name], URIRef(str(constants.NAMESPACES["translation_coherence_vocabulary"]) + "compareOntology"), transl_coher[g2_name]))
     result_graph_clean.add((transl_coher[g1_name], URIRef(str(constants.NAMESPACES["translation_coherence_vocabulary"]) + "compareWith"), transl_coher[g2_name]))
 
-    print("-" * 150)  # #########################################################
-    print("Graph with valid IRIs:")
-    # Ordered printing:
-    graph = result_graph_clean
-    for p in sorted(set(graph.predicates())):
-        for s, o in graph.subject_objects(predicate=p):
-            print(pad_prefix(s, graph), pad_prefix(p, graph), pad_prefix(o, graph))
+    # print("-" * 150)  # #########################################################
+    # print("Graph with valid IRIs:")
+    # # Ordered printing:
+    # graph = result_graph_clean
+    # for p in sorted(set(graph.predicates())):
+    #     for s, o in graph.subject_objects(predicate=p):
+    #         print(pad_prefix(s, graph), pad_prefix(p, graph), pad_prefix(o, graph))
 
     return g1_clean, g1_name, g2_clean, g2_name, result_graph_clean, rg_name
 
