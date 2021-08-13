@@ -9,11 +9,12 @@ RUN apt-get update && apt-get install -y wget
 # RUN /bin/bash /download_release.sh ${KG_VERSION}
 
 # # Add ontologies
-# RUN mkdir /ontologies
+RUN mkdir /ontologies
 # ADD https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/vocabulary.ttl /ontologies
+ADD https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/translation_coherence.owl /ontologies
 
-COPY download_data.sh /download_data.sh
-RUN /bin/bash /download_data.sh
+# COPY download_data.sh /download_data.sh
+# RUN /bin/bash /download_data.sh
 
 # # Add DB Unico
 # RUN mkdir /d/cis

@@ -134,7 +134,7 @@ if [ -d "/usr/local/virtuoso-opensource/share/virtuoso/vad/ontologies" ];
     #then
 	echo "Loading DB data - segment ontologies" ;
 	echo "File in /usr/local/virtuoso-opensource/share/virtuoso/vad/ontologies: ";
-		ls /usr/local/virtuoso-opensource/share/virtuoso/vad/ontologies
+	ls /usr/local/virtuoso-opensource/share/virtuoso/vad/ontologies
     #TODO: Check this function call
 	echo "ld_dir_all('/usr/local/virtuoso-opensource/share/virtuoso/vad/ontologies', '*.ttl', 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/');" > /load_data.sql
     echo "ld_dir_all('/usr/local/virtuoso-opensource/share/virtuoso/vad/ontologies', '*.owl', 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/');" > /load_data.sql
