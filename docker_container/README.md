@@ -46,8 +46,14 @@ WHERE {
 }
 ```
 
-The resource http://localhost:8080/lodview/translation_coherence.owl/Expression can be used to visualise the **HTML page** of the class Expression, defined within the vocabulary.
+The resource
+```http://localhost:8080/lodview/translation_coherence.owl/Expression```
+can be used to visualise the **HTML page** of the class Expression, defined within the vocabulary.
 
-The resource http://localhost:8080/webvowl/#iri=https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/translation_coherence.owl can be used to visualise the vocabulary with the **VOWL** notation.
+The resource
+```http://localhost:8080/webvowl/#iri=https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/translation_coherence.owl```
+can be used to visualise the vocabulary with the **VOWL** notation.
 
-The resource http://localhost:9090/lode/extract?url=https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/translation_coherence.owl can be used to visualise the **documentation** about the vocabulary ontology as an HTML page.
+The resource
+```http://localhost:9090/lode/extract?url=https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/translation_coherence.owl```
+can be used to visualise the **documentation** about the vocabulary ontology as an HTML page.
