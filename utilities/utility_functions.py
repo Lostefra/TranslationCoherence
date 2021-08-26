@@ -128,7 +128,7 @@ def check_nodes_synonymy(g1, g2, lemmas, node1, node2):
 
 
 def check_nodes_binary_difference(g1, g2, lemmas, node1, node2):
-    return lemma(g1.label(node1)) != lemma(g1.label(node1)) and \
+    return lemma(g1.label(node1)) != lemma(g2.label(node2)) and \
            check_common_neighbourhood(g1, g2, lemmas, node1, node2, THRESHOLD_COMMON_NEIGHBOURS_FOR_BINARY_DIFFERENCE)
 
 
