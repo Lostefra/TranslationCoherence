@@ -55,7 +55,7 @@ def replace_s(g1, n1, g2, n2, graph, s, p, o):
         raise ValueError(str(s) + " is not present in the graphs g1 g2.")
 
 
-def substitute_invalid_IRI(graph, mode, g1_name, g2_name, g1, g2, transl_coher):
+def substitute_invalid_IRI(graph, rg_name, mode, g1_name, g2_name, g1, g2, transl_coher):
 
     for s, p, o in graph:
 
@@ -72,40 +72,43 @@ def substitute_invalid_IRI(graph, mode, g1_name, g2_name, g1, g2, transl_coher):
             # Handle different_expression pattern
             elif prefix(s, graph).startswith("transl_coher:expression_") and prefix(p, graph).startswith("transl_coher:") and prefix(o, graph).startswith("transl_coher:expression_"):
                 graph.remove((s, p, o))
-                graph.add((change_prefix(s, transl_coher[g1_name]), change_prefix(p, constants.NAMESPACES["translation_coherence_vocabulary"]),
-                           change_prefix(o, transl_coher[g2_name])))
+                graph.add((change_prefix(s, transl_coher[rg_name]), change_prefix(p, constants.NAMESPACES["translation_coherence_vocabulary"]),
+                           change_prefix(o, transl_coher[rg_name])))
             elif prefix(s, graph).startswith("transl_coher:expression_") and int(prefix(s, graph)[-1]) % 2 == 1 and prefix(p, graph).startswith("transl_coher:") and prefix(o, graph).startswith("fred:"):
                 graph.remove((s, p, o))
-                graph.add((change_prefix(s, transl_coher[g1_name]), change_prefix(p, constants.NAMESPACES["translation_coherence_vocabulary"]),
+                graph.add((change_prefix(s, transl_coher[rg_name]), change_prefix(p, constants.NAMESPACES["translation_coherence_vocabulary"]),
                            change_prefix(o, transl_coher[g1_name])))
             elif prefix(s, graph).startswith("transl_coher:expression_") and int(prefix(s, graph)[-1]) % 2 == 0 and prefix(p, graph).startswith("transl_coher:") and prefix(o, graph).startswith("fred:"):
                 graph.remove((s, p, o))
-                graph.add((change_prefix(s, transl_coher[g2_name]), change_prefix(p, constants.NAMESPACES["translation_coherence_vocabulary"]),
+                graph.add((change_prefix(s, transl_coher[rg_name]), change_prefix(p, constants.NAMESPACES["translation_coherence_vocabulary"]),
                            change_prefix(o, transl_coher[g2_name])))
             elif prefix(s, graph).startswith("transl_coher:expression_"):
                 graph.remove((s, p, o))
-                graph.add((change_prefix(s, constants.NAMESPACES["translation_coherence_vocabulary"]), p, o))
+                graph.add((change_prefix(s, transl_coher[rg_name]), p, o))
             # Handle similar_hierarchy pattern (isHierarchyMemberOf, hasHierarchyMember)
             elif prefix(s, graph).startswith("transl_coher:hierarchy_") and prefix(p, graph).startswith("transl_coher:") and prefix(o, graph).startswith("transl_coher:hierarchy_"):
                 graph.remove((s, p, o))
-                graph.add((change_prefix(s, transl_coher[g1_name]), change_prefix(p, constants.NAMESPACES["translation_coherence_vocabulary"]),
-                           change_prefix(o, transl_coher[g2_name])))
+                graph.add((change_prefix(s, transl_coher[rg_name]), change_prefix(p, constants.NAMESPACES["translation_coherence_vocabulary"]),
+                           change_prefix(o, transl_coher[rg_name])))
             elif prefix(o, graph).startswith("transl_coher:hierarchy_") and int(prefix(o, graph)[-1]) % 2 == 1 and prefix(p, graph).startswith("transl_coher:isHierarchyMemberOf") and prefix(s, graph).startswith("fred:"):
                 graph.remove((s, p, o))
                 graph.add((change_prefix(s, transl_coher[g1_name]), change_prefix(p, constants.NAMESPACES["translation_coherence_vocabulary"]),
-                           change_prefix(o, transl_coher[g1_name])))
+                           change_prefix(o, transl_coher[rg_name])))
             elif prefix(o, graph).startswith("transl_coher:hierarchy_") and int(prefix(o, graph)[-1]) % 2 == 0 and prefix(p, graph).startswith("transl_coher:isHierarchyMemberOf") and prefix(s, graph).startswith("fred:"):
                 graph.remove((s, p, o))
                 graph.add((change_prefix(s, transl_coher[g2_name]), change_prefix(p, constants.NAMESPACES["translation_coherence_vocabulary"]),
-                           change_prefix(o, transl_coher[g2_name])))
+                           change_prefix(o, transl_coher[rg_name])))
             elif prefix(s, graph).startswith("transl_coher:hierarchy_") and int(prefix(s, graph)[-1]) % 2 == 1 and prefix(p, graph).startswith("transl_coher:hasHierarchyMember") and prefix(o, graph).startswith("fred:"):
                 graph.remove((s, p, o))
-                graph.add((change_prefix(s, transl_coher[g1_name]), change_prefix(p, constants.NAMESPACES["translation_coherence_vocabulary"]),
+                graph.add((change_prefix(s, transl_coher[rg_name]), change_prefix(p, constants.NAMESPACES["translation_coherence_vocabulary"]),
                            change_prefix(o, transl_coher[g1_name])))
             elif prefix(s, graph).startswith("transl_coher:hierarchy_") and int(prefix(s, graph)[-1]) % 2 == 0 and prefix(p, graph).startswith("transl_coher:hasHierarchyMember") and prefix(o, graph).startswith("fred:"):
                 graph.remove((s, p, o))
-                graph.add((change_prefix(s, transl_coher[g2_name]), change_prefix(p, constants.NAMESPACES["translation_coherence_vocabulary"]),
+                graph.add((change_prefix(s, transl_coher[rg_name]), change_prefix(p, constants.NAMESPACES["translation_coherence_vocabulary"]),
                            change_prefix(o, transl_coher[g2_name])))
+            elif prefix(s, graph).startswith("transl_coher:hierarchy_"):
+                graph.remove((s, p, o))
+                graph.add((change_prefix(s, transl_coher[rg_name]), p, o))
             # Handle only_in pattern
             elif prefix(s, graph).startswith("fred:") and prefix(p, graph) == "transl_coher:onlyIn" and prefix(o, graph) == "transl_coher:g1":
                 graph.remove((s, p, o))
@@ -213,9 +216,9 @@ def update_graph_iri(g1, g2, result_graph, lang_1, lang_2, sentence):
     g2_name = lang_2 + '__' + sentence + ".owl"
 
     transl_coher = Namespace(NAMESPACES["translation_coherence"])
-    result_graph_clean = substitute_invalid_IRI(result_graph, "rg", g1_name, g2_name, g1, g2, transl_coher)
-    g1_clean = substitute_invalid_IRI(g1, "g1", g1_name, g2_name, g1, g2, transl_coher)
-    g2_clean = substitute_invalid_IRI(g2, "g2", g1_name, g2_name, g1, g2, transl_coher)
+    result_graph_clean = substitute_invalid_IRI(result_graph, rg_name, "rg", g1_name, g2_name, g1, g2, transl_coher)
+    g1_clean = substitute_invalid_IRI(g1, rg_name, "g1", g1_name, g2_name, g1, g2, transl_coher)
+    g2_clean = substitute_invalid_IRI(g2, rg_name, "g2", g1_name, g2_name, g1, g2, transl_coher)
 
     remove_undesired_triples(result_graph_clean)
 
