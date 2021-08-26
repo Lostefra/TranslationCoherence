@@ -1,13 +1,27 @@
 Competency questions:
 
-Quali sono le differenze tra i due grafi? (?s different ?o UNION ?s differentHierarcy ?o UNION ?s differentExpression ?o)
-Quali coppie di individui sono in relazione di sinonimia tra loro? (?s synonymy ?o AND NOT ?o type ClassConcept)
+1) Quali sono le differenze tra i due grafi? (?s different ?o UNION ?s differentHierarcy ?o UNION ?s differentExpression ?o)
+2) Quali coppie sono in relazione di sinonimia tra loro? (?s synonymy ?o AND NOT ?o type ClassConcept)
 Quali coppie classi sono in relazione di sinonimia tra loro?
-Quali sono le differenze fra le classi? (?s different ?o AND ?s type ClassConcept)
-Quali sono le differenze fra gli individui? (?s synonymy ?o AND ?s type ?c)
+3) Quali sono le differenze fra le classi? (possibile riformulazione: quali sono le differenze nella TBOX) (?s different ?o AND ?s type ClassConcept)
 Quali individui sono in relazione di differenza tra loro? (?s different ?o AND ?s type ?c)
 Quali classi sono in relazione di sinonimia tra loro? (?s synonymy ?o AND ?s type ClassConcept)
-Quali individui sono sinonimi tra loro? (?s synonymy ?o AND ?s type ?c)
-Quali sono le espressioni diverse tra loro? (?s differentExpression ?o)
+4) Quali individui sono sinonimi tra loro? (possibile riformulazione:quali sono le relazioni di sinonimia nella ABOX)(?s synonymy ?o AND ?s type ?c)
+5) Quali sono le espressioni diverse tra loro? (?s differentExpression ?o)
 Quali sono le gerarchie simili? (?s similarHierarcy ?o)
 Quali sono le gerarchie diverse? (?s differentHierarcy ?o)
+
+
+
+1) Quali sono le differenze tra i due grafi? (?s different ?o UNION ?s differentHierarcy ?o UNION ?s differentExpression ?o)
+2) Quali coppie sono in relazione di sinonimia tra loro? (?s synonymy ?o AND NOT ?o type ClassConcept)
+3) Quali sono le differenze fra le classi? (possibile riformulazione: quali sono le differenze nella TBOX) (?s different ?o AND ?s type ClassConcept)
+4) Quali individui sono sinonimi tra loro? (possibile riformulazione:quali sono le relazioni di sinonimia nella ABOX)(?s synonymy ?o AND ?s type ?c)
+5) Quali sono le espressioni diverse tra loro? (?s differentExpression ?o)
+
+
+1) select * where { ?s different ?o UNION ?s differentHierarcy ?o UNION ?s differentExpression ?o }
+2) select * where { ?s synonymy ?o }
+3) select * where { ?s different ?o AND ?s type ClassConcept UNION ?s differentHierarcy ?o}
+4) select * where { ?s synonymy ?o AND not ?s type ClassConcept AND not ?o type ClassConcept }
+5) select * where { ?s differentExpression ?o }
