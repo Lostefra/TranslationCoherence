@@ -1,6 +1,7 @@
 import rdflib
 
-from utilities.utility_functions import prefix, add_equivalence_relation
+from utilities.utility_functions import prefix, add_equivalence_relation, check_nodes_synonymy, check_nodes_equivalence, \
+    add_synonymy_relation
 from utilities.wordnet_utility_functions import check_synonymy
 import utilities.constants as constants
 
@@ -18,8 +19,10 @@ def negative_verbs(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_fron
             is_g1_frontier = s1 in frontiers_g1 or o1 in frontiers_g1
             for s2, p2, o2 in g2:
                 is_g2_frontier = s2 in frontiers_g2 or o2 in frontiers_g2
+                are_equivalent = check_nodes_equivalence(g1, g2, lemmas, o1, s2)
+                are_synonyms = check_nodes_synonymy(g1, g2, lemmas, o1, s2)
                 if (is_g1_frontier or is_g2_frontier) and \
-                        check_synonymy(lemmas[str(g1.label(o1))], lemmas[str(g2.label(s2))]) and \
+                        (are_equivalent or are_synonyms) and \
                         prefix(p2, g2) == "boxing:hasTruthValue" and prefix(o2, g2) == "boxing:False":
                     # "Expression_i" is a reification of a N-ary relationship
                     expr1 = "expression_" + next(indexes["expressions"])
@@ -37,5 +40,7 @@ def negative_verbs(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_fron
                     result_graph.add((n[expr2], constants.TYPE_PREDICATE,
                                       rdflib.term.URIRef(constants.NAMESPACES["translation_coherence_vocabulary"] + "Expression")))
 
-                    add_equivalence_relation(o1, s2, result_graph, new_frontiers)
-
+                    if are_equivalent:
+                        add_equivalence_relation(o1, s2, result_graph, new_frontiers)
+                    else:
+                        add_synonymy_relation(o1, s2, result_graph, new_frontiers)
