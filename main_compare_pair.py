@@ -5,8 +5,8 @@ from graph_utilities.compare_graphs import compare_graphs
 from graph_utilities.deploy_graph import serialize_graph, update_graph_iri, add_annotations
 
 lang_1 = "en/en"
-lang_2 = "cn/en_cn_en"
-sentence = "sentence2"
+lang_2 = "it/en_it_en"
+sentence = "sentence4"
 
 g1 = build_graph("EuroParl/Paragraph1/turtle/" + lang_1 + "_" + sentence + ".ttl")
 print(lang_1)
