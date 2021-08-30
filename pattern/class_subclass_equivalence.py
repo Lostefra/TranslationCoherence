@@ -79,13 +79,15 @@ def equivalent_classes(g1, g2, lemmas, node1, node2, classes_1, classes_2, index
     return True
 
 
-def different_classes(g1, g2, lemmas, node1, node2, classes_1, classes_2, result_graph, new_frontiers):
+def different_classes(g1, g2, lemmas, node1, node2, classes_1, classes_2, indexes, n, result_graph, new_frontiers):
     # Return true if all classes were pairwise related
     if len(classes_1) == len(classes_2):
         classes = list(zip(classes_1, classes_2))
         for class_1, class_2 in classes:
             add_binary_difference_relation(class_1, class_2, result_graph, new_frontiers)
 #            print("Different:", prefix(class_1, g1), prefix(class_2, g2))
+        if not hierarchy_classified(g1, g2, n, result_graph, classes_1, classes_2):
+            add_hierarchy(classes_1, classes_2, indexes, n, result_graph, True)
         return True
     return False
 
@@ -234,7 +236,7 @@ def class_subclass_equivalence(g1, g2, n, result_graph, indexes, lemmas, frontie
             pass
 
         # If different nodes, propagate to (equal-length list of) superclasses
-        elif are_different and different_classes(g1, g2, lemmas, node1, node2, classes_1, classes_2, result_graph, new_frontiers):
+        elif are_different and different_classes(g1, g2, lemmas, node1, node2, classes_1, classes_2, indexes, n, result_graph, new_frontiers):
             pass
     
         # Otherwise - if classes are not already classified in any hierarchy - search for equivalences/differences
