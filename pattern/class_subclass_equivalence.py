@@ -86,7 +86,8 @@ def different_classes(g1, g2, lemmas, node1, node2, classes_1, classes_2, indexe
         for class_1, class_2 in classes:
             add_binary_difference_relation(class_1, class_2, result_graph, new_frontiers)
 #            print("Different:", prefix(class_1, g1), prefix(class_2, g2))
-        if not hierarchy_classified(g1, g2, n, result_graph, classes_1, classes_2):
+        if not hierarchy_classified(g1, g2, n, result_graph, classes_1, classes_2) and (
+        len(classes_1)>1 or len(classes_2)>1):
             add_hierarchy(classes_1, classes_2, indexes, n, result_graph, True)
         return True
     return False
