@@ -6,7 +6,7 @@ SETTINGS_DIR=/settings
 mkdir -p $SETTINGS_DIR
 
 cd /data
-
+ 
 mkdir -p dumps
 
 if [ ! -f ./virtuoso.ini ];
