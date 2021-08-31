@@ -20,11 +20,11 @@ The following packages are required to run the scripts:
 - [spaCy](https://spacy.io/)
 - [nltk](https://www.nltk.org/)
 
-On UNIX systems (Linux+macOS) this can be easily achieved through:
+On UNIX systems (Linux+macOS) - assuming that the command ```python``` points to the installation of Python 3 to be used - this can be easily achieved through:
 ```
-pip install rdflib spacy nltk
+python -m pip install rdflib spacy nltk
 ```
-Otherwise, or in case of troubles, please refer to the documentation of each single package.
+Otherwise (e.g on Windows), or in case of troubles, please refer to the documentation of each single package.
 
 Before proceeding, we need to download the WordNet database using nltk (needed to recognize synonyms) and the spaCy model (needed to perform the *tokenization* of words). Both are one-off operations, i.e. they need to be run only once for all.
 Regarding spaCy, it is sufficient to run the following command:
