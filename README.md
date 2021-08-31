@@ -12,7 +12,7 @@ The attempts we made to address the problem of computing the semantic difference
 All the code is available on [GitHub](https://github.com/Lostefra/TranslationCoherence/).
 
 ## Instructions
-This tool runs on Python 3.
+This tool runs on Python 3.x. To install the latest version of the required packages, Python ≥ 3.7 is required.
 
 ### Install dependency packages
 The following packages are required to run the scripts:
@@ -20,10 +20,12 @@ The following packages are required to run the scripts:
 - [spaCy](https://spacy.io/)
 - [nltk](https://www.nltk.org/)
 
-On UNIX systems (Linux+macOS) - assuming that the command ```python``` points to the installation of Python 3 to be used - this can be easily achieved through:
+On UNIX systems (e.g. Linux, macOS) - assuming that the command ```python``` points to the installation of Python 3 to be used - this can be easily achieved through:
 ```
-python -m pip install rdflib spacy nltk
+python -m pip install -U pip setuptools wheel --user
+python -m pip install -U rdflib spacy nltk --user
 ```
+(where the first command installs packages required by spaCy, the second one installs the proper packages, the flag ```--user``` is used for a local installation, and the flag ```-U``` takes care of upgrading the specified packages to the newest available version)
 Otherwise (e.g on Windows), or in case of troubles, please refer to the documentation of each single package.
 
 Before proceeding, we need to download the WordNet database using nltk (needed to recognize synonyms) and the spaCy model (needed to perform the *tokenization* of words). Both are one-off operations, i.e. they need to be run only once for all.
