@@ -49,6 +49,9 @@ and make sure the current working directory is the root directory of the project
 cd TranslationCoherence
 ```
 
+### Inspecting the results
+To inspect the example results provided with this repository, please follow the instructions included in the README file inside subfolder [docker_container](https://github.com/Lostefra/TranslationCoherence/tree/main/docker_container).
+
 ### Deploy the tool
 There are two Python scripts that allow for the comparison of ontologies: ```main_compare_pair.py``` and ```main_compare_all.py```.
 As the names suggest, the first one is designed to run on two ontologies, while the second one takes the ontologies stored in [this folder](https://github.com/Lostefra/TranslationCoherence/tree/main/EuroParl/Paragraph1/turtle) and compares them all pairwise.
@@ -61,6 +64,3 @@ python main_compare_pair.py
 main_compare_all.py
 ```
 to compare them all at once.
-
-### Inspecting the results
-To inspect the results, please follow the instructions included in the README file inside subfolder [docker_container](https://github.com/Lostefra/TranslationCoherence/tree/main/docker_container).
