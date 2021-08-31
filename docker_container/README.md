@@ -23,11 +23,11 @@ The project relies on [Docker](https://www.docker.com/): before executing the fo
 
 To **build** the containers type the following command in the terminal having the root of the container as base folder:
 ```
-$> sudo docker-compose build
+sudo docker-compose build
 ```
 To **run** the containers type the following command in the terminal having the root of the container as base folder:
 ```
-$> sudo docker-compose up
+sudo docker-compose up
 ```
 
 ### Usage
