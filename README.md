@@ -12,31 +12,32 @@ The attempts we made to address the problem of computing the semantic difference
 All the code is available on [GitHub](https://github.com/Lostefra/TranslationCoherence/).
 
 ## Instructions
-This tool runs on Python 3.x. To install the latest version of the required packages, Python ≥ 3.7 is required.
+This tool runs on Python 3.x. We recommend to install the latest available version of the required packages (listed below in brackets), which requires **Python ≥ 3.7**.
 
-### Install dependency packages
+### Install dependency packages using pip
 The following packages are required to run the scripts:
-- [rdflib](https://rdflib.readthedocs.io/en/stable/)
-- [spaCy](https://spacy.io/)
-- [nltk](https://www.nltk.org/)
+- [RDFLib](https://rdflib.readthedocs.io/en/stable/) (6.0.0)
+- [spaCy](https://spacy.io/) (3.1.2)
+- [nltk](https://www.nltk.org/) (3.6.2)
 
-On UNIX systems (e.g. Linux, macOS) - assuming that the command ```python``` points to the installation of Python 3 to be used - this can be easily achieved through:
+Assuming that the command ```python``` points to the installation of Python 3 to be used, this can be easily achieved through:
 ```
 python -m pip install -U pip setuptools wheel --user
 python -m pip install -U rdflib spacy nltk --user
 ```
-(where the first command installs packages required by spaCy, the second one installs the proper packages, the flag ```--user``` is used for a local installation, and the flag ```-U``` takes care of upgrading the specified packages to the newest available version)
-Otherwise (e.g on Windows), or in case of troubles, please refer to the documentation of each single package.
+(where the first command installs packages required by ```spacy```, the flag ```--user``` is used for a local installation, and the flag ```-U``` takes care of upgrading the specified packages to the latest available version)
 
-Before proceeding, we need to download the WordNet database using nltk (needed to recognize synonyms) and the spaCy model (needed to perform the *tokenization* of words). Both are one-off operations, i.e. they need to be run only once for all.
-Regarding spaCy, it is sufficient to run the following command:
+In case of troubles, please refer to the documentation of each single package: [pip](https://pip.pypa.io/en/stable/), [rdflib](https://rdflib.readthedocs.io/en/stable/gettingstarted.html), [spacy](https://spacy.io/usage), [nltk](https://www.nltk.org/install.html).
+
+Before proceeding, we need to download the ```spacy``` model (needed to perform the *tokenization* of words):
 ```
 python -m spacy download en_core_web_sm
 ```
-while WordNet requires to open a **Python shell** and run the following line:
+and the [WordNet<sup>®</sup>](https://wordnet.princeton.edu/) database (needed to recognize synonyms) using ```nltk``` - which requires opening a **Python shell** and executing the command: 
 ```
 >>> nltk.download("wordnet")
 ```
+Both are _one-off operations_, i.e. they need to be run only once for all.
 
 ### Clone the repository
 To deploy TranslationCoherence, firstly clone the repository (or download it as a ```.zip``` archive):
