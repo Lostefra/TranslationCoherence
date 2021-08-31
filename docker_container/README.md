@@ -18,7 +18,7 @@ cd docker_container
 
 ### Build and run
 The project relies on [Docker](https://www.docker.com/): before executing the following commands make sure that:
-- Docker is installed (you can download the correct release [here](https://hub.docker.com/search?q=&type=edition&offering=community)
+- Docker is installed (you can download the correct release [here](https://hub.docker.com/search?q=&type=edition&offering=community)). Please note that both [Docker engine](https://docs.docker.com/engine/) and [Docker Compose](https://docs.docker.com/compose/) should be installed. 
 - the Docker daemon is running (see [this link](https://docs.docker.com/config/daemon/#check-whether-docker-is-running)).
 
 To **build** the containers type the following command in the terminal having the root of the container as base folder:
