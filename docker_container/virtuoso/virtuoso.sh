@@ -110,7 +110,7 @@ if [ -d "/usr/local/virtuoso-opensource/share/virtuoso/vad/ontologies" ];
 	echo "Loading DB data - segment ontologies" ;
 	echo "File in /usr/local/virtuoso-opensource/share/virtuoso/vad/ontologies: ";
 	ls /usr/local/virtuoso-opensource/share/virtuoso/vad/ontologies
-    echo "ld_dir_all('/usr/local/virtuoso-opensource/share/virtuoso/vad/ontologies', '*.owl', 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/');" > /load_data.sql
+    echo "ld_dir_all('/usr/local/virtuoso-opensource/share/virtuoso/vad/ontologies', '*.owl', 'https://w3id.org/stlab/ke/amiala/');" > /load_data.sql
 	echo "rdf_loader_run();" >> /load_data.sql
 	echo "exec('checkpoint');" >> /load_data.sql
 	echo "WAIT_FOR_CHILDREN; " >> /load_data.sql
