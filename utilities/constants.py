@@ -38,8 +38,8 @@ NAMESPACES = {
     'coref': 'http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#',
     'time': 'http://www.w3.org/2006/time#',
     'transl_coher': 'http://example.org/translation_coherence/',
-    'translation_coherence': 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/',
-    'translation_coherence_vocabulary': 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/translation_coherence.owl/',
+    'translation_coherence': 'https://w3id.org/stlab/ke/amiala/',
+    'translation_coherence_vocabulary': 'https://w3id.org/stlab/ke/amiala/translation_coherence/',
     # THE FOLLOWING PREFIXES ARE MADE FOR DEBUG REASONS
     # Sentence 1
     # 'en_sentence1': 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/en__sentence1/',
@@ -53,8 +53,8 @@ NAMESPACES = {
     # 'en_sentence3': 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/en__sentence3/',
     # 'en_it_en_sentence3': 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/en_it_en__sentence3/',
     # # Sentence 4
-    'en_sentence4': 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/en__sentence4/',
-    'en_it_en_sentence4': 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/en_it_en__sentence4/',
+    #'en_sentence4': 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/en__sentence4/',
+    #'en_it_en_sentence4': 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/en_it_en__sentence4/',
     # # Sentence 5
     # 'en_sentence5': 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/en__sentence5/',
     # 'en_it_en_sentence5': 'https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/en_it_en__sentence5/',
