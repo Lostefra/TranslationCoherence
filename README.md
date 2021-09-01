@@ -64,3 +64,7 @@ python main_compare_pair.py
 main_compare_all.py
 ```
 to compare them all at once.
+
+### Report
+
+For further information about our project, read our report at https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/translation_coherence_report.pdf.
