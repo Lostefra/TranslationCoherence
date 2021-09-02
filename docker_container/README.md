@@ -44,7 +44,7 @@ The following is an example of a SPARQL SELECT query that returns all the Object
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 SELECT DISTINCT ?p 
 WHERE {
-  GRAPH<https://w3id.org/stlab/ke/amiala/translation_coherence/>{
+  GRAPH<https://w3id.org/stlab/ke/amiala/>{
     ?p a owl:ObjectProperty
   }
 }
