@@ -53,20 +53,13 @@ It is possible to execute the query also through this [link](http://localhost:88
 
 #### LodView
 
-The resource
-```http://localhost:8080/lodview/translation_coherence.owl```
-can be used to visualise the **HTML page** of the vocabulary ontology, while
-```http://localhost:8080/lodview/translation_coherence/Expression```
-can be used to visualise the **HTML page** of the class `Expression`, defined within the vocabulary.
+The resource http://localhost:8080/lodview/translation_coherence.owl
+can be used to visualise the **HTML page** of the vocabulary ontology, while http://localhost:8080/lodview/translation_coherence/Expression can be used to visualise the **HTML page** of the class `Expression`, defined within the vocabulary.
 
 #### WebVowl
 
-The resource
-```http://localhost:8080/webvowl/#iri=https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/translation_coherence.owl```
-can be used to visualise the vocabulary with the **VOWL** notation (using the [WebVOWL](http://vowl.visualdataweb.org/webvowl.html) service).
+The resource http://localhost:8080/webvowl/#iri=https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/translation_coherence.owl can be used to visualise the vocabulary with the **VOWL** notation (using the [WebVOWL](http://vowl.visualdataweb.org/webvowl.html) service).
 
 #### LODE
 
-The resource
-```http://localhost:9090/lode/extract?url=https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/translation_coherence.owl```
-can be used to visualise the **documentation** about the vocabulary ontology (as an HTML page).
+The resource http://localhost:9090/lode/extract?url=https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/ontology/translation_coherence.owl can be used to visualise the **documentation** about the vocabulary ontology (as an HTML page).
