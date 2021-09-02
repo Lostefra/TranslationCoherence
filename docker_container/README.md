@@ -33,7 +33,7 @@ sudo docker-compose up
 ### Usage
 Once the containers are up and assuming that `localhost` is the reference host, users can access:
  - the SPARQL endpoint at http://localhost:8890/sparql;
- - LODE at http://localhost:9090/lode (not working ;
+ - LODE at http://localhost:9090/lode (not directly accessible: instructions are provided below);
  - LodView at http://localhost:8080/lodview.
 
 ### Examples
