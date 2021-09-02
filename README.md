@@ -67,4 +67,4 @@ to compare them all at once.
 
 ### Report
 
-For further information about our project, read our report at https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/translation_coherence_report.pdf.
+For further information about our project, read our report [here](https://github.com/Lostefra/TranslationCoherence/blob/main/report.pdf) or download it [here](https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/report.pdf).
