@@ -33,8 +33,9 @@ Before proceeding, we need to download the ```spacy``` model (needed to perform 
 ```
 python -m spacy download en_core_web_sm
 ```
-and the [WordNet<sup>®</sup>](https://wordnet.princeton.edu/) database (needed to recognize synonyms) using ```nltk``` - which requires opening a **Python shell** and executing the command: 
+and the [WordNet<sup>®</sup>](https://wordnet.princeton.edu/) database (needed to recognize synonyms) using ```nltk``` - which requires opening a **Python shell** and executing: 
 ```
+>>> import nltk
 >>> nltk.download("wordnet")
 ```
 Both are _one-off operations_, i.e. they need to be run only once for all.
