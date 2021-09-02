@@ -12,7 +12,7 @@ The attempts we made to address the problem of computing the semantic difference
 All the code is available on [GitHub](https://github.com/Lostefra/TranslationCoherence/).
 
 ## Instructions
-This tool runs on Python 3.x. We recommend to install the latest available version of the required packages (listed below in brackets), which requires **Python ≥ 3.7**.
+This tool runs on Python 3.x. The minimum required version is 3.5, but we recommend to install the latest available version of the required packages (listed below in brackets), which requires **Python ≥ 3.7**.
 
 ### Install dependency packages using pip
 The following packages are required to run the scripts:
