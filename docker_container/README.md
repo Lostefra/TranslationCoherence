@@ -48,8 +48,9 @@ WHERE {
     ?p a owl:ObjectProperty
   }
 }
-It is possible to execute the query also through this [link](http://localhost:8890/sparql/?default-graph-uri=&query=PREFIX+owl%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2002%2F07%2Fowl%23%3E%0D%0ASELECT+DISTINCT+%3Fp%0D%0AWHERE+%7B%0D%0A++GRAPH%3Chttps%3A%2F%2Fw3id.org%2Fstlab%2Fke%2Famiala%2F%3E%7B%0D%0A++++%3Fp+a+owl%3AObjectProperty%0D%0A++%7D%0D%0A%7D%0D%0A&should-sponge=&format=text%2Fhtml&timeout=0&debug=on&run=+Run+Query+).
 ```
+It is possible to execute the query also through this [link](http://localhost:8890/sparql/?default-graph-uri=&query=PREFIX+owl%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2002%2F07%2Fowl%23%3E%0D%0ASELECT+DISTINCT+%3Fp%0D%0AWHERE+%7B%0D%0A++GRAPH%3Chttps%3A%2F%2Fw3id.org%2Fstlab%2Fke%2Famiala%2F%3E%7B%0D%0A++++%3Fp+a+owl%3AObjectProperty%0D%0A++%7D%0D%0A%7D%0D%0A&should-sponge=&format=text%2Fhtml&timeout=0&debug=on&run=+Run+Query+).
+
 #### LodView
 
 The resource
