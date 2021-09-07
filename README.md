@@ -9,6 +9,10 @@ Once we have translated the sentences as described above, we employed the machin
 
 The attempts we made to address the problem of computing the semantic differences between a pair of ontologies are described in the following sections.
 
+### Report and code
+
+For further information about our project, read our report [here](https://github.com/Lostefra/TranslationCoherence/blob/main/report.pdf) or download it [here](https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/report.pdf).
+
 All the code is available on [GitHub](https://github.com/Lostefra/TranslationCoherence/).
 
 ## Instructions
@@ -65,7 +69,3 @@ python main_compare_pair.py
 main_compare_all.py
 ```
 to compare them all at once.
-
-### Report
-
-For further information about our project, read our report [here](https://github.com/Lostefra/TranslationCoherence/blob/main/report.pdf) or download it [here](https://raw.githubusercontent.com/Lostefra/TranslationCoherence/main/report.pdf).
