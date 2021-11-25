@@ -1,0 +1,146 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence195.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:zh_sentence195.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence195" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence195" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:consult_1 a ns1:Consult ;
+    rdfs:label "consulted" ;
+    vn.role:Agent ns1:Telephus ;
+    vn.role:Topic ns1:body_1,
+        "1"^^xsd:nonNegativeInteger .
+
+ns1:docuverse earmark:hasContent "In the ensuing fighting, Achilles provided a healing scar to Telephus; Telephus consulted one or one body, saying that the wounded should be wounded."^^xsd:string .
+
+ns1:ensue_1 a ns1:Ensue ;
+    rdfs:label "ensuing" ;
+    vn.role:Theme ns1:fighting_1 .
+
+ns1:healing_1 a ns1:Healing ;
+    rdfs:label "healing" ;
+    dul:associatedWith ns1:scar_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:provide_1 a ns1:Provide ;
+    rdfs:label "provided" ;
+    vn.role:Agent ns1:Achilles ;
+    vn.role:Recipient ns1:Telephus ;
+    vn.role:Theme ns1:scar_1 ;
+    ns1:in ns1:fighting_1 .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "saying" ;
+    vn.role:Agent ns1:Telephus ;
+    vn.role:Topic ns1:wound_2 .
+
+ns1:Achilles rdfs:label "Achilles" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Achilles .
+
+ns1:Body rdfs:label "body" ;
+    rdfs:subClassOf dul:Organism .
+
+ns1:Consult rdfs:label "consulted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Ensue rdfs:label "ensuing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Fighting rdfs:label "fighting" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:HealingScar a owl:Class ;
+    rdfs:label "healing scar" ;
+    dul:associatedWith ns1:Healing ;
+    rdfs:subClassOf ns1:Scar .
+
+ns1:Provide rdfs:label "provided" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Say rdfs:label "saying" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Scar a owl:Class ;
+    rdfs:label "scar" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Scar .
+
+ns1:body_1 a ns1:Body ;
+    rdfs:label "body" ;
+    dul:hasDataValue "1"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:one .
+
+ns1:wound_1 a ns1:Wound ;
+    rdfs:label "wounded" .
+
+ns1:wound_2 a ns1:Wound ;
+    rdfs:label "wounded" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Experiencer ns1:wound_1 .
+
+ns1:Healing a owl:Class ;
+    rdfs:label "healing" ;
+    rdfs:subClassOf dul:Process .
+
+ns1:Wound rdfs:label "wounded" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:fighting_1 a ns1:Fighting ;
+    rdfs:label "fighting" ;
+    quant:hasDeterminer quant:the .
+
+ns1:scar_1 a ns1:HealingScar ;
+    rdfs:label "scar" .
+
+ns1:Telephus rdfs:label "Telephus" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Telephus .
+

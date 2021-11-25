@@ -1,0 +1,131 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence236.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:de_sentence236.ttl a owl:Ontology ;
+    rdfs:label "de_sentence236" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence236" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In",
+        "in" .
+
+ns1:Of rdfs:label "their" .
+
+ns1:Quantity rdfs:label "many" .
+
+ns1:cet_1 rdfs:label "cets" .
+
+ns1:deposit_1 a ns1:AlsoDeposit ;
+    rdfs:label "deposited" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Destination ns1:temple_1 ;
+    vn.role:Theme ns1:gift_1 .
+
+ns1:docuverse earmark:hasContent "In this temple, many educational gifts, cets, rings and stones are also deposited, which are offered to the Achilles in their gratitude."^^xsd:string .
+
+ns1:event_1 a dul:Event ;
+    ns1:in ns1:temple_1 .
+
+ns1:offer_1 a ns1:Offer ;
+    rdfs:label "offered" ;
+    vn.role:Recipient ns1:Achilles ;
+    vn.role:Theme ns1:temple_1 ;
+    ns1:in ns1:gratitude_1 .
+
+ns1:ring_1 rdfs:label "rings" .
+
+ns1:stone_1 rdfs:label "stones" .
+
+ns1:thing_1 coref:coref ns1:Achilles .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoDeposit rdfs:subClassOf ns1:Deposit .
+
+ns1:Cet rdfs:label "cets" .
+
+ns1:Deposit rdfs:label "deposited" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Educational rdfs:label "educational" .
+
+ns1:EducationalGift rdfs:subClassOf ns1:Gift .
+
+ns1:Gift rdfs:label "gifts" .
+
+ns1:Gratitude rdfs:label "gratitude" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Offer rdfs:label "offered" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Ring rdfs:label "rings" .
+
+ns1:Stone rdfs:label "stones" .
+
+ns1:Temple rdfs:label "temple" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:gift_1 a ns1:Cet,
+        ns1:EducationalGift,
+        ns1:Ring,
+        ns1:Stone ;
+    rdfs:label "gifts" ;
+    dul:hasQuality ns1:Educational ;
+    quant:hasQuantifier quant:many,
+        quant:multiple .
+
+ns1:gratitude_1 a ns1:Gratitude ;
+    rdfs:label "gratitude" ;
+    ns1:gratitudeOf ns1:Achilles .
+
+ns1:Achilles a owl:Thing ;
+    rdfs:label "Achilles",
+        "their" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Achilles .
+
+ns1:temple_1 a ns1:Temple ;
+    rdfs:label "temple" ;
+    quant:hasDeterminer quant:this .
+

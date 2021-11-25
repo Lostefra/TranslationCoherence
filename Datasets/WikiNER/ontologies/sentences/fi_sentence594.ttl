@@ -1,0 +1,169 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence594.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence594.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence594" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence594" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "'s",
+        "his" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:begin_1 a ns1:Begin ;
+    rdfs:label "began" ;
+    vn.role:Agent ns1:work_1 ;
+    vn.role:Theme ns1:role_1 .
+
+ns1:docuverse earmark:hasContent "Rand's last fictional work marked a turning point in his life, his career as a writer, and began his role as a philosopher."^^xsd:string .
+
+ns1:mark_1 a ns1:Mark ;
+    rdfs:label "marked" ;
+    vn.role:Agent ns1:work_1 ;
+    vn.role:Theme ns1:point_1 .
+
+ns1:turning_1 a ns1:Turning ;
+    rdfs:label "turning" ;
+    dul:associatedWith ns1:point_1 ;
+    quant:hasDeterminer quant:a .
+
+dbpedia:Ayn_Rand a schema:Person .
+
+ns1:Begin rdfs:label "began" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Career rdfs:label "career" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Fictional a owl:Class ;
+    rdfs:label "fictional" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Fiction .
+
+ns1:FictionalWork a owl:Class ;
+    rdfs:label "Fictional Work" ;
+    dul:hasQuality ns1:Fictional ;
+    rdfs:subClassOf ns1:Work .
+
+ns1:Last rdfs:label "last" .
+
+ns1:LastFictionalWork a owl:Class ;
+    rdfs:label "Last Fictional Work" ;
+    rdfs:subClassOf ns1:FictionalWork .
+
+ns1:Life rdfs:label "life" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Mark rdfs:label "marked" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Philosopher a owl:Class ;
+    rdfs:label "philosopher" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Philosopher .
+
+ns1:Point a owl:Class ;
+    rdfs:label "point" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType time:Interval ;
+    owl:sameAs dbpedia:Ayn_Rand .
+
+ns1:Role rdfs:label "role" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:TurningPoint a owl:Class ;
+    rdfs:label "Turning Point" ;
+    dul:associatedWith ns1:Turning ;
+    rdfs:subClassOf ns1:Point .
+
+ns1:Work a owl:Class ;
+    rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Writer rdfs:label "writer" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:career_1 a ns1:Career ;
+    rdfs:label "career" ;
+    ns1:as ns1:writer_1 ;
+    ns1:careerOf ns1:male_1 .
+
+ns1:life_1 a ns1:Life ;
+    rdfs:label "life" ;
+    ns1:lifeOf ns1:male_1 .
+
+ns1:philosopher_1 a ns1:Philosopher ;
+    rdfs:label "philosopher" ;
+    quant:hasDeterminer quant:a .
+
+ns1:role_1 a ns1:Role ;
+    rdfs:label "role" ;
+    ns1:as ns1:philosopher_1 ;
+    ns1:roleOf ns1:male_1 .
+
+ns1:writer_1 a ns1:Writer ;
+    rdfs:label "writer" ;
+    quant:hasDeterminer quant:a .
+
+ns1:Turning a owl:Class ;
+    rdfs:label "turning" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:point_1 a ns1:TurningPoint ;
+    rdfs:label "point" ;
+    dul:associatedWith ns1:career_1 ;
+    ns1:in ns1:life_1 .
+
+ns1:work_1 a ns1:LastFictionalWork ;
+    rdfs:label "work" ;
+    dul:hasQuality ns1:Last ;
+    ns1:lastFictionalWorkOf ns1:Rand .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "his" .
+

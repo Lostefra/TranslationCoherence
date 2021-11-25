@@ -1,0 +1,146 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence596.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence596.ttl a owl:Ontology ;
+    rdfs:label "it_sentence596" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence596" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Be rdfs:label "is" .
+
+ns1:Eq rdfs:label "be" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:docuverse earmark:hasContent "It is also important to find out what will be the effects of enlargement of the Union on the Structural_Funds and the development of the most remote areas of the Union."^^xsd:string .
+
+ns1:find_1 a ns1:Find ;
+    rdfs:label "find" ;
+    dul:hasQuality ns1:Also,
+        ns1:Out ;
+    vn.role:Agent ns1:neuter_1 ;
+    vn.role:Theme ns1:development_1,
+        ns1:effect_1 ;
+    ns1:be ns1:important_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:Enlargement,
+        ns1:enlargement_1 .
+
+ns1:thing_1 rdfs:label "what" .
+
+ns1:Also rdfs:label "also" .
+
+ns1:Area rdfs:label "areas" .
+
+ns1:Development rdfs:label "development" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Find rdfs:label "find" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Important rdfs:label "important" .
+
+ns1:Most rdfs:label "most" .
+
+ns1:MostRemoteArea rdfs:subClassOf ns1:RemoteArea .
+
+ns1:Out rdfs:label "out" .
+
+ns1:Remote rdfs:label "remote" .
+
+ns1:RemoteArea rdfs:subClassOf ns1:Area .
+
+ns1:Structural_funds a owl:Class ;
+    rdfs:label "Structural Funds" ;
+    owl:equivalentClass dbpedia:Structural_Funds_and_Cohesion_Fund .
+
+ns1:area_1 a ns1:MostRemoteArea ;
+    rdfs:label "areas" ;
+    dul:hasQuality ns1:Most,
+        ns1:Remote ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:mostRemoteAreaOf ns1:Union .
+
+ns1:development_1 a ns1:Development ;
+    rdfs:label "development" ;
+    quant:hasDeterminer quant:the ;
+    ns1:developmentOf ns1:area_1 .
+
+ns1:effect_1 a owl:Thing,
+        ns1:Effect ;
+    rdfs:label "effects" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:effectOf ns1:Union,
+        ns1:enlargement_1 ;
+    ns1:on ns1:structural_funds_1 .
+
+ns1:important_1 a ns1:Important ;
+    rdfs:label "important" .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "It" .
+
+ns1:structural_funds_1 a ns1:Structural_funds ;
+    rdfs:label "Structural Funds" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+owl:Thing rdfs:label "It",
+        "what" ;
+    rdfs:subClassOf ns1:Effect .
+
+ns1:Effect rdfs:label "effects" .
+
+ns1:Enlargement rdfs:label "enlargement" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Union rdfs:label "Union" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:enlargement_1 a ns1:Enlargement ;
+    rdfs:label "enlargement" .
+

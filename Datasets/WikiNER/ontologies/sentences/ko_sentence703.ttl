@@ -1,0 +1,110 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "to" .
+
+translation_coherence:ko_sentence703.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence703" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence703" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence703.ttl/Significant> rdfs:label "significant" .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence703.ttl/bring_1> a <https://w3id.org/stlab/ke/amiala/ko_sentence703.ttl/Bring> ;
+    rdfs:label "brought" ;
+    vn.role:Agent <https://w3id.org/stlab/ke/amiala/ko_sentence703.ttl/drive_1> ;
+    vn.role:Destination <https://w3id.org/stlab/ke/amiala/ko_sentence703.ttl/Algeria> ;
+    vn.role:Theme <https://w3id.org/stlab/ke/amiala/ko_sentence703.ttl/change_1> .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence703.ttl/docuverse> earmark:hasContent "The modernization drive has brought significant population changes to Algeria."^^xsd:string .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence703.ttl/modernization_1> a <https://w3id.org/stlab/ke/amiala/ko_sentence703.ttl/Modernization> ;
+    rdfs:label "modernization" ;
+    dul:associatedWith <https://w3id.org/stlab/ke/amiala/ko_sentence703.ttl/drive_1> ;
+    quant:hasDeterminer quant:the .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence703.ttl/population_1> a <https://w3id.org/stlab/ke/amiala/ko_sentence703.ttl/Population> ;
+    rdfs:label "population" ;
+    dul:associatedWith <https://w3id.org/stlab/ke/amiala/ko_sentence703.ttl/change_1> .
+
+dbpedia:Algeria a schema:Country,
+        schema:Place .
+
+dbpedia:French_Algeria a schema:AdministrativeArea,
+        schema:Place .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence703.ttl/Algeria> rdfs:label "Algeria" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Algeria,
+        dbpedia:French_Algeria .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence703.ttl/Bring> rdfs:label "brought" ;
+    rdfs:subClassOf dul:Event .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence703.ttl/Change> rdfs:label "changes" .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence703.ttl/Drive> a owl:Class ;
+    rdfs:label "drive" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence703.ttl/ModernizationDrive> a owl:Class ;
+    rdfs:label "Modernization Drive" ;
+    dul:associatedWith <https://w3id.org/stlab/ke/amiala/ko_sentence703.ttl/Modernization> ;
+    rdfs:subClassOf <https://w3id.org/stlab/ke/amiala/ko_sentence703.ttl/Drive> .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence703.ttl/Population> rdfs:label "population" ;
+    rdfs:subClassOf dul:Collection .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence703.ttl/PopulationChange> rdfs:subClassOf <https://w3id.org/stlab/ke/amiala/ko_sentence703.ttl/Change> .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence703.ttl/SignificantPopulationChange> rdfs:subClassOf <https://w3id.org/stlab/ke/amiala/ko_sentence703.ttl/PopulationChange> .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence703.ttl/Modernization> a owl:Class ;
+    rdfs:label "modernization" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Modernization_theory .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence703.ttl/change_1> a <https://w3id.org/stlab/ke/amiala/ko_sentence703.ttl/SignificantPopulationChange> ;
+    rdfs:label "changes" ;
+    quant:hasQuantifier quant:multiple .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence703.ttl/drive_1> a <https://w3id.org/stlab/ke/amiala/ko_sentence703.ttl/ModernizationDrive> ;
+    rdfs:label "drive" .
+

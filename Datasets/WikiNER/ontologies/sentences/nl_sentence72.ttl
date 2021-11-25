@@ -1,0 +1,143 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence72.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Patient2 rdfs:label "to" .
+
+translation_coherence:nl_sentence72.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence72" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence72" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:By rdfs:label "by" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:To rdfs:label "to" .
+
+ns1:bind_1 a ns1:Bind ;
+    rdfs:label "bound" ;
+    vn.role:Agent ns1:neuter_1 ;
+    vn.role:Patient2 ns1:north_1 ;
+    ns1:bindBy ns1:Tenn ;
+    ns1:to ns1:Florida,
+        ns1:Gulf_of_mexico,
+        ns1:Mississippi,
+        ns1:east_1,
+        ns1:south_1,
+        ns1:west_1 .
+
+ns1:docuverse earmark:hasContent "It's bound by Tenn to the north, Georgia to the east, Florida and the Gulf_of_Mexico to the south, and Mississippi to the west."^^xsd:string .
+
+dbpedia:Florida a schema:AdministrativeArea,
+        schema:Place .
+
+dbpedia:Georgia_(U.S._state) a schema:AdministrativeArea,
+        schema:Place .
+
+dbpedia:Mississippi a schema:AdministrativeArea,
+        schema:Place .
+
+dbpedia:Tennessee a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:Bind rdfs:label "bound" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:East rdfs:label "east" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Florida rdfs:label "Florida" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:East_Florida,
+        dbpedia:Florida .
+
+ns1:Georgia rdfs:label "Georgia" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Georgia_(U.S._state),
+        dbpedia:North_Georgia_(U.S._state) .
+
+ns1:Gulf_of_mexico rdfs:label "Gulf of Mexico" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Gulf_of_Mexico .
+
+ns1:Mississippi rdfs:label "Mississippi" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Mississippi .
+
+ns1:North rdfs:label "north" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:South a owl:Class ;
+    rdfs:label "south" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> ;
+    owl:equivalentClass dbpedia:Southern_United_States .
+
+ns1:Tenn rdfs:label "Tenn" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Tennessee .
+
+ns1:West a owl:Class ;
+    rdfs:label "west" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> ;
+    owl:equivalentClass dbpedia:American_frontier .
+
+ns1:east_1 a ns1:East ;
+    rdfs:label "east" ;
+    quant:hasDeterminer quant:the .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "It" .
+
+ns1:north_1 a ns1:North ;
+    rdfs:label "north" ;
+    dul:associatedWith ns1:Georgia ;
+    quant:hasDeterminer quant:the .
+
+ns1:south_1 a ns1:South ;
+    rdfs:label "south" ;
+    quant:hasDeterminer quant:the .
+
+ns1:west_1 a ns1:West ;
+    rdfs:label "west" ;
+    quant:hasDeterminer quant:the .
+
+owl:Thing rdfs:label "It" .
+

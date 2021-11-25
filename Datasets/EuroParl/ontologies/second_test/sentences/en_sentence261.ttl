@@ -1,0 +1,272 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence261.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#-> rdfs:label "-" .
+
+translation_coherence:en_sentence261.ttl a owl:Ontology ;
+    rdfs:label "en_sentence261" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence261" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:By rdfs:label "by" .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of",
+        "our" .
+
+ns1:Rel rdfs:label "this" .
+
+ns1:So rdfs:label "so" .
+
+ns1:be_1 a ns1:Be ;
+    rdfs:label "is" ;
+    boxer:agent ns1:thing_1 ;
+    boxer:theme ns1:hope_1 .
+
+ns1:deal_1 rdfs:label "deal" ;
+    quant:hasDeterminer quant:a .
+
+ns1:docuverse earmark:hasContent "That is why we can only hope - and we should resolve all of this this week - that, in 2001, we will finally have Community regulations for the transport of dangerous goods by road so that we have a degree of legal certainty here and also so that our roads are a good deal safer."^^xsd:string .
+
+ns1:have_1 a ns1:FinallyHave ;
+    rdfs:label "have" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Finally ;
+    vn.role:Patient ns1:regulation_1 ;
+    ns1:finallyHaveBy ns1:road_1 ;
+    ns1:forTransportOf ns1:goods_1 ;
+    ns1:in "2001-01-01"^^xsd:date ;
+    ns1:so ns1:situation_3 .
+
+ns1:person_5 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:resolve_1 a ns1:Resolve ;
+    rdfs:label "resolve" ;
+    boxer:patient ns1:thing_2 ;
+    boxing:hasModality boxing:Necessary ;
+    dul:associatedWith ns1:week_1 ;
+    <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#-> ns1:thing_2 ;
+    vn.role:Actor ns1:person_4 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:thing_2 ;
+    ns1:entails ns1:situation_2 .
+
+ns1:transport_1 a ns1:Transport ;
+    rdfs:label "transport" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Also rdfs:label "also" .
+
+ns1:Be rdfs:label "is" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Certainty a owl:Class ;
+    rdfs:label "certainty" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Community rdfs:label "Community" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Community .
+
+ns1:Dangerous a owl:Class ;
+    rdfs:label "dangerous" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:DangerousGoods a owl:Class ;
+    rdfs:label "dangerous goods" ;
+    dul:hasQuality ns1:Dangerous ;
+    rdfs:subClassOf ns1:Goods ;
+    owl:equivalentClass dbpedia:Dangerous_goods .
+
+ns1:Degree rdfs:label "degree" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Finally rdfs:label "finally" .
+
+ns1:FinallyHave rdfs:label "finally have" ;
+    rdfs:subClassOf ns1:Have .
+
+ns1:GoodDeal rdfs:label "Good Deal" ;
+    rdfs:subClassOf ns1:Deal .
+
+ns1:Goods a owl:Class ;
+    rdfs:label "goods" .
+
+ns1:Here rdfs:label "here" .
+
+ns1:Hope rdfs:label "hope" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Legal a owl:Class ;
+    rdfs:label "legal" .
+
+ns1:LegalCertainty a owl:Class ;
+    rdfs:label "legal certainty" ;
+    dul:associatedWith ns1:Certainty ;
+    dul:hasModality ns1:Legal ;
+    owl:equivalentClass dbpedia:Legal_certainty .
+
+ns1:Only rdfs:label "only" .
+
+ns1:OnlyHope rdfs:label "only hope" ;
+    rdfs:subClassOf ns1:Hope .
+
+ns1:Reason rdfs:label "why" .
+
+ns1:Regulation rdfs:label "regulations" .
+
+ns1:Resolve rdfs:label "resolve" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Road rdfs:label "road" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Transport rdfs:label "transport" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Week rdfs:label "week" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:goods_1 a ns1:DangerousGoods ;
+    rdfs:label "goods" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:have_2 a ns1:Have ;
+    rdfs:label "have" ;
+    dul:hasQuality ns1:Also,
+        ns1:Here ;
+    vn.role:Agent ns1:person_6 ;
+    vn.role:Patient ns1:degree_1 ;
+    ns1:so ns1:situation_3 .
+
+ns1:hope_1 a ns1:OnlyHope ;
+    rdfs:label "hope" ;
+    boxing:hasModality boxing:Possible ;
+    dul:hasQuality ns1:Only ;
+    vn.role:Experiencer ns1:person_3 ;
+    ns1:reason_rel ns1:reason_1 .
+
+ns1:person_1 a ns1:Person .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "our" .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:person_4 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:person_6 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:reason_1 a ns1:Reason ;
+    rdfs:label "why" .
+
+ns1:regulation_1 a ns1:Regulation ;
+    rdfs:label "regulations" ;
+    dul:associatedWith ns1:Community ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:road_1 a ns1:GoodDeal,
+        ns1:Road ;
+    rdfs:label "road" ;
+    dul:hasQuality ns1:Good,
+        ns1:Safer ;
+    ns1:roadOf ns1:person_1,
+        ns1:person_2 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:thing_1,
+        ns1:thing_2 .
+
+ns1:week_1 a ns1:Week ;
+    rdfs:label "week" ;
+    dul:hasQuality ns1:Current ;
+    quant:hasDeterminer quant:that,
+        quant:this ;
+    quant:hasQuantifier quant:all .
+
+owl:Thing rdfs:label "That",
+        "all" .
+
+ns1:Deal rdfs:label "deal" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Good rdfs:label "good" .
+
+ns1:Have rdfs:label "Have",
+        "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Safer rdfs:label "safer" .
+
+ns1:certainty_1 a ns1:LegalCertainty ;
+    rdfs:label "certainty" .
+
+ns1:degree_1 a ns1:Degree ;
+    rdfs:label "degree" ;
+    quant:hasDeterminer quant:a ;
+    ns1:degreeOf ns1:certainty_1 .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:Deal,
+        ns1:Good,
+        ns1:Safer,
+        ns1:certainty_1,
+        ns1:degree_1,
+        ns1:have_2 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "That" .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "all" ;
+    ns1:thingOf ns1:thing_1 .
+
+ns1:Person rdfs:label "we" .
+

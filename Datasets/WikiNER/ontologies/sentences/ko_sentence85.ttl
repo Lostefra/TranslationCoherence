@@ -1,0 +1,114 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence85.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Patient2 rdfs:label "to" .
+
+translation_coherence:ko_sentence85.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence85" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence85" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:After rdfs:label "After" .
+
+ns1:docuverse earmark:hasContent "After civil war, the country was still mainly agriculture, tied to economic and cotton."^^xsd:string .
+
+ns1:tie_1 a ns1:Tie ;
+    rdfs:label "tied" ;
+    dul:associatedWith ns1:agriculture_1 ;
+    dul:hasQuality ns1:Mainly,
+        ns1:Still ;
+    vn.role:Patient1 ns1:country_1 ;
+    vn.role:Patient2 ns1:cotton_1 ;
+    ns1:after ns1:war_1 .
+
+dbpedia:American_Civil_War rdfs:subClassOf schema:Event .
+
+ns1:Agriculture a owl:Class ;
+    rdfs:label "agriculture" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Agriculture .
+
+ns1:Civil a owl:Class ;
+    rdfs:label "civil" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:CivilWar a owl:Class ;
+    rdfs:label "civil war" ;
+    dul:hasQuality ns1:Civil ;
+    rdfs:subClassOf ns1:War ;
+    owl:equivalentClass dbpedia:American_Civil_War .
+
+ns1:Cotton a owl:Class ;
+    rdfs:label "cotton" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Cotton .
+
+ns1:Country rdfs:label "country" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Economic rdfs:label "economic" ;
+    owl:sameAs dbpedia:Economy_of_the_United_States .
+
+ns1:Mainly rdfs:label "mainly" .
+
+ns1:Still rdfs:label "still" .
+
+ns1:Tie rdfs:label "tied" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:War a owl:Class ;
+    rdfs:label "war" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:agriculture_1 a ns1:Agriculture ;
+    rdfs:label "agriculture" .
+
+ns1:cotton_1 a ns1:Cotton ;
+    rdfs:label "cotton" ;
+    dul:hasQuality ns1:Economic .
+
+ns1:country_1 a ns1:Country ;
+    rdfs:label "country" ;
+    quant:hasDeterminer quant:the .
+
+ns1:war_1 a ns1:CivilWar ;
+    rdfs:label "war" .
+

@@ -1,0 +1,106 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence352.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence352.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence352" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence352" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "was" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:discredit_1 a ns1:Discredit ;
+    rdfs:label "discredit" ;
+    dul:associatedWith ns1:policy_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:docuverse earmark:hasContent "Mr. President, it's not my fault that I reminded my colleague, Mr. Evans, why Wales Objective_1 status. It was the discredit policy of his own Conservative_Party."^^xsd:string .
+
+ns1:neuter_1 rdfs:label "It" .
+
+dbpedia:Conservative_Party_(UK) rdfs:subClassOf schema:Organization .
+
+owl:Thing rdfs:label "It" ;
+    rdfs:subClassOf ns1:DiscreditPolicy .
+
+ns1:ConservativeParty rdfs:subClassOf dul:Organization .
+
+ns1:Conservative_party a owl:Class ;
+    rdfs:label "Conservative Party" ;
+    rdfs:subClassOf ns1:ConservativeParty ;
+    owl:equivalentClass dbpedia:Conservative_Party_(UK) .
+
+ns1:Own a owl:Class ;
+    rdfs:label "own" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:OwnConservative_party a owl:Class ;
+    rdfs:label "Own Conservative party" ;
+    dul:hasQuality ns1:Own ;
+    rdfs:subClassOf ns1:Conservative_party .
+
+ns1:Policy a owl:Class ;
+    rdfs:label "policy" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:conservative_party_1 a ns1:OwnConservative_party ;
+    rdfs:label "Conservative Party" ;
+    ns1:ownConservative_partyOf ns1:male_1 .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "his" .
+
+ns1:policy_1 a owl:Thing,
+        ns1:DiscreditPolicy ;
+    rdfs:label "policy" ;
+    ns1:discreditPolicyOf ns1:conservative_party_1 .
+
+ns1:Discredit a owl:Class ;
+    rdfs:label "discredit" ;
+    rdfs:subClassOf dul:Role .
+
+ns1:DiscreditPolicy a owl:Class ;
+    rdfs:label "discredit policy" ;
+    dul:associatedWith ns1:Discredit ;
+    rdfs:subClassOf ns1:Policy .
+

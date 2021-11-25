@@ -1,0 +1,132 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence118.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+foaf:Person rdfs:label "per" .
+
+translation_coherence:en_sentence118.ttl a owl:Ontology ;
+    rdfs:label "en_sentence118" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence118" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:From rdfs:label "from" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Innumberof rdfs:label "in the number of" .
+
+ns1:docuverse earmark:hasContent "Alabama ranks seventh in the number of deaths from lightning and ninth in the number of deaths from lightning strikes per capita."^^xsd:string .
+
+ns1:lightn_1 a dbpedia:Lightning,
+        ns1:Lightn ;
+    rdfs:label "lightning" ;
+    boxer:agent ns1:strike_1 .
+
+ns1:ninth_1 rdfs:label "ninth" .
+
+ns1:number_1 a ns1:Number ;
+    rdfs:label "number" ;
+    quant:hasDeterminer quant:the ;
+    ns1:inNumberOf ns1:death_2 .
+
+ns1:number_2 a ns1:Number ;
+    rdfs:label "number" ;
+    quant:hasDeterminer quant:the .
+
+ns1:rank_1 a ns1:Rank ;
+    rdfs:label "ranks" ;
+    vn.role:Agent ns1:Alabama ;
+    ns1:inNumberOf ns1:death_1 .
+
+dbpedia:Alabama a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:Alabama rdfs:label "Alabama" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:hasQuality ns1:Seventh ;
+    owl:sameAs dbpedia:Alabama .
+
+ns1:Capita rdfs:label "capita" .
+
+ns1:Lightn rdfs:label "lightning" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Lightning a owl:Class ;
+    rdfs:label "lightning" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Ninth rdfs:label "ninth" ;
+    rdfs:subClassOf dul:Role .
+
+ns1:Rank rdfs:label "ranks" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Seventh rdfs:label "seventh" .
+
+ns1:Strike rdfs:label "strikes" .
+
+ns1:capita_1 a ns1:Capita ;
+    rdfs:label "capita" .
+
+ns1:death_1 a ns1:Death ;
+    rdfs:label "deaths" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:from ns1:lightning_1 .
+
+ns1:death_2 a ns1:Death ;
+    rdfs:label "deaths" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:from ns1:strike_1 .
+
+ns1:lightning_1 a dbpedia:Lightning,
+        ns1:Lightning,
+        ns1:Ninth ;
+    rdfs:label "lightning" .
+
+ns1:Death rdfs:label "deaths" .
+
+ns1:Number rdfs:label "number" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:strike_1 a ns1:Strike ;
+    rdfs:label "strikes" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:per ns1:capita_1 .
+

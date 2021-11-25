@@ -1,0 +1,180 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence411.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence411.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence411" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence411" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "our" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Third rdfs:label "third" ;
+    owl:sameAs dbpedia:Higher_education .
+
+ns1:docuverse earmark:hasContent "The Social Fund certainly improved our third level institutions, funded our post-living programs and placed comprehensive schematics to fight youngsters and long-term literature, early literatures."^^xsd:string .
+
+ns1:fight_1 a ns1:Fight ;
+    rdfs:label "fight" ;
+    vn.role:Actor1 ns1:Social_fund ;
+    vn.role:Actor2 ns1:literature_1,
+        ns1:youngster_1 .
+
+ns1:fund_1 a ns1:Fund ;
+    rdfs:label "funded" ;
+    boxer:agent ns1:Social_fund ;
+    boxer:patient ns1:program_1 .
+
+ns1:improve_1 a ns1:CertainlyImprove ;
+    rdfs:label "improved" ;
+    dul:hasQuality ns1:Certainly ;
+    vn.role:Agent ns1:Social_fund ;
+    vn.role:Patient ns1:institution_1 .
+
+ns1:level_1 a ns1:Level ;
+    rdfs:label "level" ;
+    dul:associatedWith ns1:institution_1 .
+
+ns1:person_2 coref:coref ns1:person_3 .
+
+ns1:place_1 a ns1:Place ;
+    rdfs:label "placed" ;
+    vn.role:Agent ns1:Social_fund ;
+    vn.role:Theme ns1:schematic_1 .
+
+ns1:Certainly rdfs:label "certainly" .
+
+ns1:CertainlyImprove rdfs:subClassOf ns1:Improve .
+
+ns1:Comprehensive rdfs:label "comprehensive" .
+
+ns1:ComprehensiveSchematic rdfs:subClassOf ns1:Schematic .
+
+ns1:Early rdfs:label "early" .
+
+ns1:EarlyLiterature rdfs:subClassOf ns1:Literature .
+
+ns1:Fight rdfs:label "fight" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Fund rdfs:label "Fund",
+        "funded" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Improve rdfs:label "improved" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Institution rdfs:label "institutions" .
+
+ns1:Level rdfs:label "level" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:LevelInstitution rdfs:subClassOf ns1:Institution .
+
+ns1:Long-term a owl:Class ;
+    rdfs:label "long-term" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Long-termLiterature a owl:Class ;
+    rdfs:label "Long-term Literature" ;
+    dul:hasQuality ns1:Long-term ;
+    rdfs:subClassOf ns1:Literature .
+
+ns1:Place rdfs:label "placed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Post-living rdfs:label "post-living" .
+
+ns1:Post-livingProgram rdfs:subClassOf ns1:Program .
+
+ns1:Program rdfs:label "programs" .
+
+ns1:Schematic rdfs:label "schematics" .
+
+ns1:ThirdLevelInstitution rdfs:subClassOf ns1:LevelInstitution .
+
+ns1:Youngster rdfs:label "youngsters" .
+
+ns1:literature_1 a ns1:Long-termLiterature ;
+    rdfs:label "literature" ;
+    dul:associatedWith ns1:literature_2 .
+
+ns1:literature_2 a ns1:EarlyLiterature ;
+    rdfs:label "literatures" ;
+    dul:hasQuality ns1:Early ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:person_1 a ns1:Person .
+
+ns1:program_1 a ns1:Post-livingProgram ;
+    rdfs:label "programs" ;
+    dul:hasQuality ns1:Post-living ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:post-livingProgramOf ns1:person_3 .
+
+ns1:schematic_1 a ns1:ComprehensiveSchematic ;
+    rdfs:label "schematics" ;
+    dul:hasQuality ns1:Comprehensive ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:youngster_1 a ns1:Youngster ;
+    rdfs:label "youngsters" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Literature a owl:Class ;
+    rdfs:label "literature",
+        "literatures" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Literature .
+
+ns1:institution_1 a ns1:ThirdLevelInstitution ;
+    rdfs:label "institutions" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:thirdLevelInstitutionOf ns1:person_1,
+        ns1:person_3 .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "our" .
+
+ns1:Social_fund rdfs:label "Social Fund" ;
+    boxer:possibleType foaf:Organisation .
+

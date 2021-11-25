@@ -1,0 +1,128 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence354.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence354.ttl a owl:Ontology ;
+    rdfs:label "de_sentence354" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence354" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "its",
+        "of" .
+
+ns1:docuverse earmark:hasContent "I can tell you that the UK government is aware of its regulatory requirements for Objective_1 additionality."^^xsd:string .
+
+ns1:tell_1 a ns1:Tell ;
+    rdfs:label "tell" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Recipient ns1:person_2 ;
+    vn.role:Topic ns1:situation_1 .
+
+ns1:Government a owl:Class ;
+    rdfs:label "government" ;
+    rdfs:subClassOf dul:Organization ;
+    owl:equivalentClass dbpedia:Government_of_the_United_Kingdom .
+
+ns1:Objective_1 a dbpedia:Regional_policy_of_the_European_Union ;
+    rdfs:label "Objective 1" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Regulatory rdfs:label "regulatory" .
+
+ns1:RegulatoryRequirement rdfs:subClassOf ns1:Requirement .
+
+ns1:Requirement rdfs:label "requirements" .
+
+ns1:Tell rdfs:label "tell" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Uk rdfs:label "UK" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality owl:Thing,
+        ns1:Aware .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "you" .
+
+ns1:requirement_1 a ns1:RegulatoryRequirement ;
+    rdfs:label "requirements" ;
+    dul:hasQuality ns1:Regulatory ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:for ns1:additionality_1 ;
+    ns1:regulatoryRequirementOf ns1:government_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Possible ;
+    boxing:involves ns1:Additionality,
+        ns1:Aware,
+        ns1:additionality_1,
+        ns1:situation_2 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Aware,
+        ns1:government_1 ;
+    ns1:situationOf ns1:requirement_1 .
+
+ns1:Additionality a owl:Class ;
+    rdfs:label "additionality" ;
+    owl:equivalentClass dbpedia:Carbon_credit .
+
+ns1:Person rdfs:label "I",
+        "you" .
+
+ns1:additionality_1 a ns1:Additionality ;
+    rdfs:label "additionality" ;
+    dul:associatedWith ns1:Objective_1 .
+
+ns1:government_1 a ns1:Government ;
+    rdfs:label "government",
+        "its" ;
+    dul:associatedWith ns1:Uk ;
+    dul:hasQuality owl:Thing,
+        ns1:Aware .
+
+ns1:Aware rdfs:label "aware" .
+

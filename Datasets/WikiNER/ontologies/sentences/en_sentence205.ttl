@@ -1,0 +1,129 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence205.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence205.ttl a owl:Ontology ;
+    rdfs:label "en_sentence205" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence205" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Unless rdfs:label "unless" .
+
+ns1:determine_1 a ns1:CorrectlyDetermine ;
+    rdfs:label "determined" ;
+    dul:hasQuality ns1:Correctly ;
+    vn.role:Agent ns1:Calchas ;
+    vn.role:Theme ns1:source_1 .
+
+ns1:docuverse earmark:hasContent "The prophet Calchas correctly determined the source of the troubles but would not speak unless Achilles vowed to protect him."^^xsd:string .
+
+ns1:prophet_1 rdfs:label "prophet" .
+
+ns1:speak_1 a ns1:Speak ;
+    rdfs:label "speak" ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:source_1 ;
+    ns1:unless ns1:vow_1 .
+
+ns1:Calchas a ns1:Prophet ;
+    rdfs:label "Calchas",
+        "prophet" ;
+    boxer:possibleType foaf:Organisation ;
+    quant:hasDeterminer quant:the ;
+    owl:sameAs dbpedia:Calchas .
+
+ns1:Correctly rdfs:label "correctly" .
+
+ns1:CorrectlyDetermine rdfs:subClassOf ns1:Determine .
+
+ns1:Determine rdfs:label "determined" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Male rdfs:label "him" .
+
+ns1:Prophet a owl:Class ;
+    rdfs:label "Calchas",
+        "prophet" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Prophet .
+
+ns1:Protect rdfs:label "protect" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Source rdfs:label "source" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Speak rdfs:label "speak" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Trouble rdfs:label "troubles" .
+
+ns1:Vow rdfs:label "vowed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:protect_1 a ns1:Protect ;
+    rdfs:label "protect" ;
+    vn.role:Agent ns1:Achilles ;
+    vn.role:Theme ns1:Achilles .
+
+ns1:trouble_1 a ns1:Trouble ;
+    rdfs:label "troubles" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:vow_1 a ns1:Vow ;
+    rdfs:label "vowed" ;
+    boxer:agent ns1:Achilles ;
+    boxer:theme ns1:protect_1 ;
+    boxing:hasModality boxing:Necessary .
+
+ns1:source_1 a ns1:Source ;
+    rdfs:label "source" ;
+    quant:hasDeterminer quant:the ;
+    ns1:sourceOf ns1:trouble_1 .
+
+ns1:Achilles rdfs:label "Achilles" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Male ;
+    owl:sameAs dbpedia:Achilles .
+

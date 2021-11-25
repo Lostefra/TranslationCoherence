@@ -1,0 +1,248 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence469.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence469.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence469" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence469" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:After rdfs:label "after" .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:That rdfs:label "that" .
+
+ns1:continue_1 a ns1:Continue ;
+    rdfs:label "continuing" ;
+    vn.role:Agent ns1:cost_1 .
+
+ns1:docuverse earmark:hasContent "We therefore also request a real implementation exit strategy so that it can not only afford the necessary insurance for the continuing costs of taxpayers, but we have also avoided the provision of good funds after mixed."^^xsd:string .
+
+ns1:exit_1 a ns1:Exit ;
+    rdfs:label "exit" ;
+    dul:associatedWith ns1:strategy_1 .
+
+ns1:implementation_1 a ns1:Implementation ;
+    rdfs:label "implementation" ;
+    dul:associatedWith ns1:strategy_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:person_2 coref:coref ns1:person_1 .
+
+ns1:request_1 a ns1:ThereforeAlsoRequest ;
+    rdfs:label "request" ;
+    dul:hasQuality ns1:Also,
+        ns1:Therefore ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Proposition ns1:strategy_1 .
+
+boxing:Necessary rdfs:label "necessary" .
+
+ns1:Afford rdfs:label "afford" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:AlsoAvoid rdfs:subClassOf ns1:Avoid .
+
+ns1:AlsoRequest rdfs:label "Also Request" ;
+    rdfs:subClassOf ns1:Request .
+
+ns1:Avoid rdfs:label "avoided" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Continue rdfs:label "continuing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Cost rdfs:label "costs" .
+
+ns1:ExitStrategy a owl:Class ;
+    rdfs:label "Exit Strategy" ;
+    dul:associatedWith ns1:Exit ;
+    rdfs:subClassOf ns1:Strategy .
+
+ns1:Fund rdfs:label "funds" .
+
+ns1:Good rdfs:label "good" .
+
+ns1:GoodFund rdfs:subClassOf ns1:Fund .
+
+ns1:ImplementationExitStrategy a owl:Class ;
+    rdfs:label "Implementation Exit Strategy" ;
+    dul:associatedWith ns1:ImplementationExit ;
+    rdfs:subClassOf ns1:ExitStrategy .
+
+ns1:Insurance a owl:Class ;
+    rdfs:label "insurance" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Mixed rdfs:label "mixed" .
+
+ns1:Necessary a owl:Class .
+
+ns1:NecessaryInsurance rdfs:label "necessary insurance" ;
+    dul:associatedWith ns1:Insurance ;
+    dul:hasModality ns1:Necessary .
+
+ns1:Only rdfs:label "only" .
+
+ns1:OnlyAfford rdfs:label "only afford" ;
+    rdfs:subClassOf ns1:Afford .
+
+ns1:Person rdfs:label "We",
+        "we" .
+
+ns1:Provision rdfs:label "provision" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Real a owl:Class ;
+    rdfs:label "real" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:RealImplementation a owl:Class ;
+    dul:hasQuality ns1:Real ;
+    rdfs:subClassOf ns1:Implementation .
+
+ns1:RealImplementationExit a owl:Class ;
+    dul:associatedWith ns1:RealImplementation ;
+    rdfs:subClassOf ns1:ImplementationExit .
+
+ns1:RealImplementationExitStrategy a owl:Class ;
+    rdfs:label "Real Implementation Exit Strategy" ;
+    dul:associatedWith ns1:RealImplementationExit ;
+    rdfs:subClassOf ns1:ImplementationExitStrategy .
+
+ns1:Request rdfs:label "request" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:So rdfs:label "So",
+        "so" .
+
+ns1:Strategy a owl:Class ;
+    rdfs:label "strategy" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Taxpayer rdfs:label "taxpayers" .
+
+ns1:Therefore rdfs:label "therefore" .
+
+ns1:ThereforeAlsoRequest rdfs:label "Therefore Also Request" ;
+    rdfs:subClassOf ns1:AlsoRequest .
+
+ns1:afford_1 a ns1:OnlyAfford ;
+    rdfs:label "afford" ;
+    boxer:agent ns1:neuter_1 ;
+    boxer:patient ns1:insurance_1 ;
+    boxing:hasModality boxing:Possible ;
+    boxing:hasTruthValue boxing:False ;
+    dul:hasQuality ns1:Only .
+
+ns1:avoid_1 a ns1:AlsoAvoid ;
+    rdfs:label "avoided" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:provision_1 .
+
+ns1:insurance_1 a ns1:NecessaryInsurance ;
+    rdfs:label "insurance" ;
+    dul:hasQuality boxing:Necessary ;
+    quant:hasDeterminer quant:the ;
+    ns1:for ns1:cost_1 .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "it" .
+
+ns1:provision_1 a ns1:Provision ;
+    rdfs:label "provision" ;
+    quant:hasDeterminer quant:the ;
+    ns1:provisionOf ns1:fund_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:afford_1,
+        ns1:avoid_1,
+        ns1:fund_1,
+        ns1:taxpayer_1 .
+
+ns1:thing_1 a owl:Thing .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Also rdfs:label "Also",
+        "also" .
+
+ns1:ImplementationExit a owl:Class ;
+    dul:associatedWith ns1:Implementation ;
+    rdfs:subClassOf ns1:Exit .
+
+ns1:cost_1 a ns1:Cost ;
+    rdfs:label "costs" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:costOf ns1:taxpayer_1 .
+
+ns1:fund_1 a ns1:GoodFund ;
+    rdfs:label "funds" ;
+    dul:hasQuality ns1:Good ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:taxpayer_1 a ns1:Taxpayer ;
+    rdfs:label "taxpayers" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Exit a owl:Class ;
+    rdfs:label "exit" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Implementation a owl:Class ;
+    rdfs:label "implementation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "We",
+        "we" ;
+    dul:hasQuality ns1:Mixed .
+
+ns1:strategy_1 a ns1:RealImplementationExitStrategy ;
+    rdfs:label "strategy" ;
+    dul:hasQuality ns1:So ;
+    ns1:after ns1:thing_1 ;
+    ns1:that ns1:situation_1 .
+

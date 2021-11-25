@@ -1,0 +1,188 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence469.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Proposition rdfs:label "to" .
+
+translation_coherence:fi_sentence469.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence469" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence469" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:At rdfs:label "at" .
+
+ns1:In rdfs:label "in" .
+
+ns1:docuverse earmark:hasContent "Second, there is incomprehensible evidence, The Lord says that the wheels were in motion at a time when ehdoabo and Plutarch convinced that they were limited to the basement."^^xsd:string .
+
+ns1:evidence_1 rdfs:label "evidence" .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "says" ;
+    vn.role:Agent ns1:Lord ;
+    vn.role:Topic ns1:situation_2 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Evidence,
+        ns1:Incomprehensible,
+        ns1:IncomprehensibleEvidence,
+        ns1:there_1 ;
+    dul:hasQuality ns1:Second .
+
+ns1:time_1 a ns1:Time ;
+    rdfs:label "time" ;
+    dul:associatedWith ns1:when_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:wheel_1 a ns1:Wheel ;
+    rdfs:label "wheels" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:motion_1 .
+
+dbpedia:Plutarch rdfs:subClassOf schema:Person .
+
+owl:Thing rdfs:label "they" .
+
+ns1:Basement rdfs:label "basement" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Convince rdfs:label "convinced" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Ehdoabo rdfs:label "ehdoabo" .
+
+ns1:Lord rdfs:label "Lord" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Lord .
+
+ns1:Plutarch a owl:Class ;
+    rdfs:label "Plutarch" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Plutarch .
+
+ns1:Say rdfs:label "says" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Second rdfs:label "Second" .
+
+ns1:There rdfs:label "there" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Time a owl:Class ;
+    rdfs:label "time" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Time .
+
+ns1:TimeWhen rdfs:label "Time When" ;
+    rdfs:subClassOf ns1:When .
+
+ns1:Wheel rdfs:label "wheels" .
+
+ns1:When rdfs:label "when" .
+
+ns1:basement_1 a ns1:Basement ;
+    rdfs:label "basement" ;
+    quant:hasDeterminer quant:the .
+
+ns1:convince_1 a ns1:Convince ;
+    rdfs:label "convinced" ;
+    boxer:theme ns1:limit_1 ;
+    vn.role:Cause ns1:when_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Limit,
+        ns1:Motion,
+        ns1:convince_1,
+        ns1:ehdoabo_1,
+        ns1:limit_1,
+        ns1:motion_1,
+        ns1:plutarch_1,
+        ns1:when_1 ;
+    ns1:at ns1:when_1 .
+
+ns1:there_1 a ns1:IncomprehensibleEvidence,
+        ns1:There ;
+    rdfs:label "there" ;
+    dul:hasQuality ns1:Incomprehensible .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "they" .
+
+ns1:Evidence a owl:Class ;
+    rdfs:label "evidence" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:IncomprehensibleEvidence a owl:Class ;
+    rdfs:label "Incomprehensible Evidence" ;
+    dul:hasQuality ns1:Incomprehensible ;
+    rdfs:subClassOf ns1:Evidence .
+
+ns1:Limit rdfs:label "limited" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Motion a owl:Class ;
+    rdfs:label "motion" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Motion_(physics) .
+
+ns1:ehdoabo_1 a ns1:Ehdoabo ;
+    rdfs:label "ehdoabo" .
+
+ns1:limit_1 a ns1:Limit ;
+    rdfs:label "limited" ;
+    vn.role:Patient ns1:thing_1 ;
+    vn.role:Proposition ns1:basement_1 .
+
+ns1:motion_1 a ns1:Motion ;
+    rdfs:label "motion" .
+
+ns1:plutarch_1 a ns1:Plutarch ;
+    rdfs:label "Plutarch" .
+
+ns1:Incomprehensible a owl:Class ;
+    rdfs:label "incomprehensible" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:when_1 a ns1:TimeWhen ;
+    rdfs:label "when" ;
+    dul:associatedWith ns1:ehdoabo_1,
+        ns1:plutarch_1 .
+

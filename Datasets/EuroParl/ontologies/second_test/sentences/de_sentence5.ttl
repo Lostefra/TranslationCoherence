@@ -1,0 +1,204 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence5.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "on" .
+
+translation_coherence:de_sentence5.ttl a owl:Ontology ;
+    rdfs:label "de_sentence5" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence5" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-16" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:In rdfs:label "In",
+        "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "In the meantime, I would like to observe a minute silence, as several members have called on the names of all affected victims, in particular the terrible storms, in the various countries of the European_Union."^^xsd:string .
+
+ns1:like_1 a ns1:Like ;
+    rdfs:label "like" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Experiencer ns1:person_1 ;
+    ns1:as ns1:situation_3 ;
+    ns1:in ns1:country_1,
+        ns1:meantime_1 .
+
+ns1:minute_1 a ns1:Minute ;
+    rdfs:label "minute" ;
+    dul:associatedWith ns1:silence_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:observe_1 a ns1:Observe ;
+    rdfs:label "observe" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:silence_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:affect_1 ;
+    ns1:entails ns1:situation_2 .
+
+ns1:Affect rdfs:label "affected" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Call rdfs:label "called" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Country rdfs:label "countries" .
+
+ns1:European_union rdfs:label "European Union" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:European_Union .
+
+ns1:Like rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Meantime rdfs:label "meantime" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Member rdfs:label "members" .
+
+ns1:MinuteSilence a owl:Class ;
+    rdfs:label "minute silence" ;
+    dul:associatedWith ns1:Minute ;
+    rdfs:subClassOf ns1:Silence .
+
+ns1:Name rdfs:label "names" .
+
+ns1:Observe rdfs:label "observe" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Particular rdfs:label "particular" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Person rdfs:label "I" .
+
+ns1:Several rdfs:label "several" .
+
+ns1:SeveralMember rdfs:subClassOf ns1:Member .
+
+ns1:Silence a owl:Class ;
+    rdfs:label "silence" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Storm rdfs:label "storms" .
+
+ns1:Terrible rdfs:label "terrible" .
+
+ns1:TerribleStorm rdfs:subClassOf ns1:Storm .
+
+ns1:Various rdfs:label "various" .
+
+ns1:VariousCountry rdfs:subClassOf ns1:Country .
+
+ns1:Victim rdfs:label "victims" .
+
+ns1:call_1 a ns1:Call ;
+    rdfs:label "called" ;
+    vn.role:Agent ns1:member_1 ;
+    vn.role:Recipient ns1:name_1 .
+
+ns1:country_1 a ns1:VariousCountry ;
+    rdfs:label "countries" ;
+    dul:hasQuality ns1:Various ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:variousCountryOf ns1:European_union .
+
+ns1:meantime_1 a ns1:Meantime ;
+    rdfs:label "meantime" ;
+    quant:hasDeterminer quant:the .
+
+ns1:name_1 a ns1:Name ;
+    rdfs:label "names" ;
+    dul:associatedWith ns1:storm_1 ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:nameOf ns1:victim_1 .
+
+ns1:particular_1 a ns1:Particular ;
+    rdfs:label "particular" .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:affect_1,
+        ns1:victim_1 .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:affect_1,
+        ns1:call_1,
+        ns1:member_1,
+        ns1:victim_1 .
+
+ns1:storm_1 a ns1:TerribleStorm ;
+    rdfs:label "storms" ;
+    dul:hasQuality ns1:Terrible ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:particular_1 .
+
+ns1:Minute a owl:Class ;
+    rdfs:label "minute" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:member_1 a ns1:SeveralMember ;
+    rdfs:label "members" ;
+    dul:hasQuality ns1:Several ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:silence_1 a ns1:MinuteSilence ;
+    rdfs:label "silence" .
+
+ns1:affect_1 a ns1:Affect ;
+    rdfs:label "affected" .
+
+ns1:victim_1 a ns1:Victim ;
+    rdfs:label "victims" ;
+    quant:hasQuantifier quant:all,
+        quant:multiple .
+

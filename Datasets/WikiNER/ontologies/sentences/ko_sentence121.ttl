@@ -1,0 +1,145 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence121.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:ko_sentence121.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence121" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence121" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Few rdfs:label "few" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "News It's one of the few things in the world, with the heart of the spring weather season."^^xsd:string .
+
+ns1:heart_1 a ns1:Heart ;
+    rdfs:label "heart" ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:News ;
+    dul:associatedWith ns1:News ;
+    ns1:withHeartOf ns1:season_1 .
+
+ns1:spring_1 a ns1:Spring ;
+    rdfs:label "spring" ;
+    dul:associatedWith ns1:season_1,
+        ns1:weather_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:FewThing rdfs:subClassOf owl:Thing .
+
+ns1:Heart rdfs:label "heart" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Season a owl:Class ;
+    rdfs:label "season" ;
+    rdfs:subClassOf dul:TimeInterval ;
+    owl:equivalentClass dbpedia:Season .
+
+ns1:SpringWeatherSeason a owl:Class ;
+    rdfs:label "Spring Weather Season" ;
+    dul:associatedWith ns1:SpringWeather ;
+    rdfs:subClassOf ns1:WeatherSeason .
+
+ns1:Topic rdfs:label "News" .
+
+ns1:WeatherSeason a owl:Class ;
+    rdfs:label "weather season" ;
+    dul:associatedWith ns1:Weather ;
+    rdfs:subClassOf ns1:Season .
+
+ns1:World a owl:Class ;
+    rdfs:label "world" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:World .
+
+ns1:thing_1 a ns1:FewThing ;
+    rdfs:label "things" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:few,
+        quant:multiple,
+        quant:one ;
+    ns1:in ns1:world_1 .
+
+ns1:weather_1 a ns1:SpringWeather ;
+    rdfs:label "weather" ;
+    dul:associatedWith ns1:season_1 .
+
+ns1:world_1 a ns1:World ;
+    rdfs:label "world" ;
+    quant:hasDeterminer quant:the .
+
+owl:Thing rdfs:label "It",
+        "things" .
+
+ns1:News a ns1:Topic ;
+    rdfs:label "News" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasDataValue "1"^^xsd:nonNegativeInteger ;
+    dul:hasQuality owl:Thing ;
+    owl:sameAs dbpedia:News ;
+    ns1:topicOf ns1:thing_1 .
+
+ns1:Spring a owl:Class ;
+    rdfs:label "spring" ;
+    rdfs:subClassOf dul:TimeInterval ;
+    owl:equivalentClass dbpedia:Spring_(season) .
+
+ns1:SpringWeather a owl:Class ;
+    rdfs:label "Spring Weather" ;
+    dul:associatedWith ns1:Spring ;
+    rdfs:subClassOf ns1:Weather .
+
+ns1:Weather a owl:Class ;
+    rdfs:label "weather" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Weather .
+
+ns1:season_1 a ns1:SpringWeatherSeason ;
+    rdfs:label "season" .
+

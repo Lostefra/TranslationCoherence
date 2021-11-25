@@ -1,0 +1,197 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence765.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Emost> rdfs:label "most" .
+
+translation_coherence:fi_sentence765.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence765" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence765" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Like rdfs:label "Like" .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:Quantity rdfs:label "many" .
+
+ns1:docuverse earmark:hasContent "Like many Rand's capitalist experiences, he's a self-made man who started as a regular worker, showed talent, founded Rearden_Steel and made it America's most important.el company."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:found_1,
+        ns1:make_1,
+        ns1:man_1,
+        ns1:show_1,
+        ns1:start_1,
+        ns1:talent_1,
+        ns1:worker_1 ;
+    ns1:like ns1:experience_1 .
+
+dbpedia:Americas a schema:Continent,
+        schema:Place .
+
+dbpedia:Ayn_Rand a schema:Person .
+
+ns1:Capitalist rdfs:label "capitalist" ;
+    owl:sameAs dbpedia:Capitalism .
+
+ns1:CapitalistExperience rdfs:subClassOf ns1:Experience .
+
+ns1:Company a owl:Class ;
+    rdfs:label "company" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Experience rdfs:label "experiences" .
+
+ns1:Found rdfs:label "founded" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Important.el a owl:Class ;
+    rdfs:label "important.el" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Make rdfs:label "made" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Man rdfs:label "man" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Most rdfs:label "most" .
+
+ns1:MostImportant.elCompany a owl:Class ;
+    rdfs:label "Most Important.el Company" ;
+    rdfs:subClassOf ns1:Important.elCompany .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Ayn_Rand .
+
+ns1:Rearden_steel rdfs:label "Rearden Steel" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Atlas_Shrugged .
+
+ns1:Regular a owl:Class ;
+    rdfs:label "regular" .
+
+ns1:RegularWorker rdfs:label "Regular Worker" ;
+    dul:associatedWith ns1:Worker ;
+    dul:hasModality ns1:Regular .
+
+ns1:Self-made rdfs:label "self-made" .
+
+ns1:Self-madeMan rdfs:label "self-made man" ;
+    rdfs:subClassOf ns1:Man .
+
+ns1:Show rdfs:label "showed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Start rdfs:label "started" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Talent rdfs:label "talent" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Worker a owl:Class ;
+    rdfs:label "worker" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:company_1 a ns1:Important.elCompany,
+        ns1:MostImportant.elCompany ;
+    rdfs:label "company" ;
+    dul:hasQuality ns1:Most ;
+    ns1:mostAmong ns1:Important.elCompany ;
+    ns1:mostImportant.elCompanyOf ns1:America .
+
+ns1:experience_1 a ns1:CapitalistExperience ;
+    rdfs:label "experiences" ;
+    dul:hasQuality ns1:Capitalist ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:capitalistExperienceOf ns1:Rand .
+
+ns1:found_1 a ns1:Found ;
+    rdfs:label "founded" ;
+    vn.role:Agent ns1:man_1 ;
+    vn.role:Theme ns1:Rearden_steel .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "made" ;
+    vn.role:Agent ns1:man_1 ;
+    vn.role:Predicate ns1:company_1 ;
+    vn.role:Theme ns1:America .
+
+ns1:show_1 a ns1:Show ;
+    rdfs:label "showed" ;
+    vn.role:Agent ns1:man_1 ;
+    vn.role:Theme ns1:talent_1 .
+
+ns1:start_1 a ns1:Start ;
+    rdfs:label "started" ;
+    vn.role:Theme ns1:man_1 ;
+    ns1:as ns1:worker_1 .
+
+owl:Thing rdfs:label "it" .
+
+ns1:America rdfs:label "America" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:hasQuality owl:Thing ;
+    owl:sameAs dbpedia:Americas .
+
+ns1:talent_1 a ns1:Talent ;
+    rdfs:label "talent" .
+
+ns1:worker_1 a ns1:RegularWorker ;
+    rdfs:label "worker" ;
+    quant:hasDeterminer quant:a .
+
+ns1:Important.elCompany a owl:Class ;
+    rdfs:label "Important.el Company" ;
+    dul:hasQuality ns1:Important.el ;
+    rdfs:subClassOf ns1:Company .
+
+ns1:man_1 a ns1:Self-madeMan ;
+    rdfs:label "man" ;
+    dul:hasQuality ns1:Male,
+        ns1:Self-made ;
+    quant:hasDeterminer quant:a .
+

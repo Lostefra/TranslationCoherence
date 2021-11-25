@@ -1,0 +1,174 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence652.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Beneficiary rdfs:label "for" ;
+    owl:sameAs dbpedia:Mark_Sanford .
+
+vn.role:Location rdfs:label "after" .
+
+vn.role:Topic rdfs:label "about" .
+
+translation_coherence:nl_sentence652.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence652" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence652" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Where rdfs:label "where" .
+
+ns1:While rdfs:label "while" .
+
+ns1:determine_1 a ns1:Determine ;
+    rdfs:label "determined" ;
+    vn.role:Agent ns1:female_1 ;
+    vn.role:Theme ns1:understand_1 .
+
+ns1:docuverse earmark:hasContent "Republican South_Carolina_Governor Mark_Sanford wrote a review for Newsweek where he talked about how he was blown away after reading The Fountainhead and Atlas Shruge, while she's determined to understand the financials."^^xsd:string .
+
+ns1:write_1 a ns1:Write ;
+    rdfs:label "wrote" ;
+    vn.role:Agent ns1:Republican_south_carolina_governor_mark_sanford ;
+    vn.role:Beneficiary ns1:Newsweek ;
+    vn.role:Theme ns1:review_1 .
+
+dbpedia:Newsweek a schema:CreativeWork .
+
+ns1:Atlas_shruge rdfs:label "Atlas Shruge" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Away rdfs:label "away" .
+
+ns1:Blow rdfs:label "blown" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Female rdfs:label "she" .
+
+ns1:Financial rdfs:label "financials" .
+
+ns1:Fountainhead a owl:Class ;
+    rdfs:label "Fountainhead" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:The_Fountainhead .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Manner rdfs:label "how" .
+
+ns1:Newsweek rdfs:label "Newsweek" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Newsweek ;
+    ns1:where ns1:situation_1 .
+
+ns1:Read rdfs:label "reading" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Republican_south_carolina_governor_mark_sanford rdfs:label "Republican South Carolina Governor Mark Sanford" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Review rdfs:label "review" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Talk rdfs:label "talked" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Write rdfs:label "wrote" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:financial_1 a ns1:Financial ;
+    rdfs:label "financials" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:fountainhead_1 a ns1:Fountainhead ;
+    rdfs:label "Fountainhead" ;
+    quant:hasDeterminer quant:the .
+
+ns1:review_1 a ns1:Review ;
+    rdfs:label "review" ;
+    quant:hasDeterminer quant:a .
+
+ns1:talk_1 a ns1:Talk ;
+    rdfs:label "talked" ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Topic ns1:blow_1 ;
+    ns1:while ns1:situation_1 .
+
+ns1:understand_1 a ns1:Understand ;
+    rdfs:label "understand" ;
+    vn.role:Agent ns1:female_1 ;
+    vn.role:Proposition ns1:financial_1 .
+
+ns1:Determine rdfs:label "determined" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Understand rdfs:label "understand" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:blow_1 a ns1:Blow ;
+    rdfs:label "blown" ;
+    vn.role:Location ns1:read_1 ;
+    vn.role:Theme ns1:male_1 ;
+    ns1:manner_rel ns1:manner_1 .
+
+ns1:female_1 a ns1:Female ;
+    rdfs:label "she" .
+
+ns1:manner_1 a ns1:Manner ;
+    rdfs:label "how" .
+
+ns1:read_1 a ns1:Read ;
+    rdfs:label "reading" ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Theme ns1:Atlas_shruge,
+        ns1:fountainhead_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Determine,
+        ns1:Understand,
+        ns1:blow_1,
+        ns1:male_1,
+        ns1:manner_1,
+        ns1:read_1,
+        ns1:talk_1 .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "he" ;
+    dul:hasQuality ns1:Away .
+

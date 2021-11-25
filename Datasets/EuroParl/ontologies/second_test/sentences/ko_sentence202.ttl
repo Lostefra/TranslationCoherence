@@ -1,0 +1,162 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence202.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "like" .
+
+translation_coherence:ko_sentence202.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence202" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence202" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:From rdfs:label "from" .
+
+ns1:docuverse earmark:hasContent "You know, like seed racks, I came from the transit country, this problem plays a particularly important role."^^xsd:string .
+
+ns1:know_1 a ns1:Know ;
+    rdfs:label "know" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:seed_1 a ns1:Seed ;
+    rdfs:label "seed" ;
+    dul:associatedWith ns1:rack_1 .
+
+ns1:transit_1 a ns1:Transit ;
+    rdfs:label "transit" ;
+    dul:associatedWith ns1:country_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:Come rdfs:label "came" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Country a owl:Class ;
+    rdfs:label "country" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Important a owl:Class ;
+    rdfs:label "important" ;
+    dul:hasQuality ns1:Particularly ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ImportantRole a owl:Class ;
+    rdfs:label "Important Role" ;
+    dul:hasQuality ns1:Important ;
+    rdfs:subClassOf ns1:Role .
+
+ns1:Know rdfs:label "know" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Particularly rdfs:label "particularly" .
+
+ns1:ParticularlyImportantRole a owl:Class ;
+    rdfs:label "Particularly Important Role" ;
+    rdfs:subClassOf ns1:ImportantRole .
+
+ns1:Play rdfs:label "plays" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Problem a owl:Class ;
+    rdfs:label "problem" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Shakespearean_problem_play .
+
+ns1:Rack rdfs:label "racks" .
+
+ns1:Role a owl:Class ;
+    rdfs:label "role" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Seed rdfs:label "seed" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:SeedRack rdfs:subClassOf ns1:Rack .
+
+ns1:TransitCountry a owl:Class ;
+    rdfs:label "transit country" ;
+    dul:associatedWith ns1:Transit ;
+    rdfs:subClassOf ns1:Country .
+
+ns1:come_1 a ns1:Come ;
+    rdfs:label "came" ;
+    vn.role:Location ns1:rack_1 ;
+    vn.role:Theme ns1:person_2 ;
+    ns1:from ns1:country_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "You" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:play_1 a ns1:Play ;
+    rdfs:label "plays" ;
+    dul:associatedWith ns1:country_1 ;
+    vn.role:Agent ns1:problem_1 ;
+    vn.role:Theme ns1:role_1 .
+
+ns1:problem_1 a ns1:Problem ;
+    rdfs:label "problem" ;
+    quant:hasDeterminer quant:this .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:come_1,
+        ns1:play_1,
+        ns1:rack_1,
+        ns1:role_1 .
+
+ns1:Person rdfs:label "I",
+        "You" .
+
+ns1:Transit a owl:Class ;
+    rdfs:label "transit" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:role_1 a ns1:ParticularlyImportantRole ;
+    rdfs:label "role" ;
+    quant:hasDeterminer quant:a .
+
+ns1:country_1 a ns1:TransitCountry ;
+    rdfs:label "country" .
+
+ns1:rack_1 a ns1:SeedRack ;
+    rdfs:label "racks" ;
+    quant:hasQuantifier quant:multiple .
+

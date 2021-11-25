@@ -1,0 +1,90 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence134.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence134.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence134" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence134" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:call_1 a ns1:NowCall ;
+    rdfs:label "calls" ;
+    dul:hasQuality ns1:Now ;
+    vn.role:Agent ns1:Alabama ;
+    vn.role:Theme ns1:fourth_1 .
+
+ns1:docuverse earmark:hasContent "Alabama now calls fourth in the nation in auto-reportation."^^xsd:string .
+
+dbpedia:Alabama a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:Alabama rdfs:label "Alabama" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Alabama .
+
+ns1:Auto-reportation rdfs:label "auto-reportation" .
+
+ns1:Call rdfs:label "calls" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Fourth rdfs:label "fourth" ;
+    rdfs:subClassOf dul:Role .
+
+ns1:Nation rdfs:label "nation" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Now rdfs:label "now" .
+
+ns1:NowCall rdfs:subClassOf ns1:Call .
+
+ns1:auto-reportation_1 a ns1:Auto-reportation ;
+    rdfs:label "auto-reportation" .
+
+ns1:fourth_1 a ns1:Fourth ;
+    rdfs:label "fourth" ;
+    ns1:in ns1:auto-reportation_1,
+        ns1:nation_1 .
+
+ns1:nation_1 a ns1:Nation ;
+    rdfs:label "nation" ;
+    quant:hasDeterminer quant:the .
+

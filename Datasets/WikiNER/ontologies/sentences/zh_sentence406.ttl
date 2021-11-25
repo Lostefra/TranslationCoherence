@@ -1,0 +1,194 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence406.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "on" .
+
+vn.role:Patient2 rdfs:label "with" .
+
+translation_coherence:zh_sentence406.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence406" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence406" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "As" .
+
+ns1:Of rdfs:label "his",
+        "of",
+        "our" .
+
+ns1:docuverse earmark:hasContent "As he did not have the main body to protect Wah Lamon, he was associated with the well-known dream of his assassination, Lincoln left our United_States holy place on 14 April."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:have_1,
+        ns1:protect_1 ;
+    ns1:as ns1:situation_2 .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+dbpedia:United_States rdfs:subClassOf schema:Country,
+        schema:Place .
+
+ns1:Assassination a owl:Class ;
+    rdfs:label "assassination" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> ;
+    owl:equivalentClass dbpedia:Assassination .
+
+ns1:Associate rdfs:label "associated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Body a owl:Class ;
+    rdfs:label "body" ;
+    rdfs:subClassOf dul:Organism .
+
+ns1:Dream a owl:Class ;
+    rdfs:label "dream" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Holy rdfs:label "holy" .
+
+ns1:HolyPlace rdfs:label "Holy Place" ;
+    rdfs:subClassOf ns1:Place .
+
+ns1:Leave rdfs:label "left" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+
+ns1:Main a owl:Class ;
+    rdfs:label "main" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:MainBody a owl:Class ;
+    rdfs:label "main body" ;
+    dul:hasQuality ns1:Main ;
+    rdfs:subClassOf ns1:Body .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Place rdfs:label "place" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Protect rdfs:label "protect" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:UnitedStates rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:United_states a owl:Class ;
+    rdfs:label "United States" ;
+    rdfs:subClassOf ns1:UnitedStates ;
+    owl:equivalentClass dbpedia:United_States .
+
+ns1:Wah_lamon rdfs:label "Wah Lamon" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Well-known a owl:Class ;
+    rdfs:label "well-known" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Well-knownDream a owl:Class ;
+    rdfs:label "well-known dream" ;
+    dul:hasQuality ns1:Well-known ;
+    rdfs:subClassOf ns1:Dream .
+
+ns1:associate_1 a ns1:Associate ;
+    rdfs:label "associated" ;
+    vn.role:Patient1 ns1:male_1 ;
+    vn.role:Patient2 ns1:dream_1 .
+
+ns1:body_1 a ns1:MainBody ;
+    rdfs:label "body" ;
+    quant:hasDeterminer quant:the .
+
+ns1:dream_1 a ns1:Well-knownDream ;
+    rdfs:label "dream" ;
+    quant:hasDeterminer quant:the ;
+    ns1:well-knownDreamOf ns1:assassination_1 .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "have" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Patient ns1:body_1 .
+
+ns1:leave_1 a ns1:Leave ;
+    rdfs:label "left" ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Theme ns1:assassination_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "our" .
+
+ns1:place_1 a ns1:HolyPlace ;
+    rdfs:label "place" ;
+    dul:hasQuality ns1:Holy ;
+    vn.role:Agent ns1:united_states_1 ;
+    vn.role:Destination "0001-04-14"^^xsd:date ;
+    vn.role:Theme ns1:assassination_1 .
+
+ns1:protect_1 a ns1:Protect ;
+    rdfs:label "protect" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Theme ns1:Wah_lamon .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:associate_1,
+        ns1:leave_1,
+        ns1:place_1 .
+
+ns1:united_states_1 a ns1:United_states ;
+    rdfs:label "United States" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:united_statesOf ns1:person_1 .
+
+ns1:assassination_1 a ns1:Assassination ;
+    rdfs:label "assassination" ;
+    ns1:assassinationOf ns1:male_1 .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "he",
+        "his" .
+

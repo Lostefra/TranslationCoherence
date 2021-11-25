@@ -1,0 +1,132 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence619.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Ebest> rdfs:label "best" .
+
+translation_coherence:zh_sentence619.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence619" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence619" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rand a ns1:Evidence,
+        ns1:FirstBestEvidence ;
+    rdfs:label "Rand",
+        "evidence" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:First,
+        ns1:Less,
+        ns1:Much ;
+    quant:hasDeterminer quant:the ;
+    ns1:bestAmong ns1:Evidence ;
+    ns1:lessThan ns1:live_1 .
+
+ns1:Than rdfs:label "than" .
+
+ns1:docuverse earmark:hasContent "Rand the first best evidence, the owner is much less than we live and the views of the reviewers are uneven."^^xsd:string .
+
+ns1:evidence_1 rdfs:label "evidence" .
+
+ns1:owner_1 a ns1:Owner ;
+    rdfs:label "owner" ;
+    dul:hasQuality ns1:Much ;
+    quant:hasDeterminer quant:the ;
+    ns1:lessThan ns1:live_1 .
+
+ns1:view_1 a ns1:View ;
+    rdfs:label "views" ;
+    dul:hasQuality ns1:Uneven ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:much,
+        quant:multiple ;
+    ns1:viewOf ns1:reviewer_1 .
+
+ns1:Best a owl:Class ;
+    rdfs:label "best" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:BestEvidence a owl:Class ;
+    dul:hasQuality ns1:Best ;
+    rdfs:subClassOf ns1:Evidence .
+
+ns1:First rdfs:label "first" .
+
+ns1:FirstBestEvidence a owl:Class ;
+    rdfs:label "first best evidence" ;
+    rdfs:subClassOf ns1:BestEvidence,
+        ns1:Evidence .
+
+ns1:Less rdfs:label "less" .
+
+ns1:Live rdfs:label "live" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Owner rdfs:label "owner" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Reviewer rdfs:label "reviewers" .
+
+ns1:Uneven rdfs:label "uneven" .
+
+ns1:View rdfs:label "views" .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:reviewer_1 a ns1:Reviewer ;
+    rdfs:label "reviewers" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Much rdfs:label "much" .
+
+ns1:live_1 a ns1:Live ;
+    rdfs:label "live" ;
+    vn.role:Theme ns1:person_1 .
+
+ns1:Evidence a owl:Class ;
+    rdfs:label "Rand",
+        "evidence" ;
+    rdfs:subClassOf dul:Situation .
+

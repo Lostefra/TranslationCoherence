@@ -1,0 +1,143 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence710.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence710.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence710" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence710" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:After rdfs:label "after" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Near rdfs:label "near" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Particularly rdfs:label "particularly" .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "The issue of Amazigh_language and identity is of great importance, particularly after the extensive Carbil protest in 2001, and the resistance to local elections near Carbilley."^^xsd:string .
+
+ns1:issue_1 a ns1:Issue ;
+    rdfs:label "issue" ;
+    quant:hasDeterminer quant:the ;
+    ns1:issueOf ns1:identity_1,
+        ns1:importance_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Great,
+        ns1:GreatImportance,
+        ns1:Importance,
+        ns1:importance_1 ;
+    ns1:particularlyAfter ns1:protest_1,
+        ns1:resistance_1 .
+
+ns1:Amazigh_language rdfs:label "Amazigh language" ;
+    owl:sameAs dbpedia:Berber_languages .
+
+ns1:Carbil rdfs:label "Carbil" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:hasQuality ns1:Extensive .
+
+ns1:Carbilley rdfs:label "Carbilley" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Election rdfs:label "elections" .
+
+ns1:Identity a owl:Class ;
+    rdfs:label "identity" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Identity_(social_science) .
+
+ns1:Issue rdfs:label "issue" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Local rdfs:label "local" .
+
+ns1:LocalElection rdfs:subClassOf ns1:Election .
+
+ns1:Protest rdfs:label "protest" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Resistance rdfs:label "resistance" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:election_1 a ns1:LocalElection ;
+    rdfs:label "elections" ;
+    dul:hasQuality ns1:Local ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:identity_1 a ns1:Identity ;
+    rdfs:label "identity" ;
+    dul:hasQuality ns1:Amazigh_language .
+
+ns1:protest_1 a ns1:Protest ;
+    rdfs:label "protest" ;
+    dul:associatedWith ns1:Carbil ;
+    dul:hasQuality ns1:Extensive ;
+    ns1:in "2001-01-01"^^xsd:date .
+
+ns1:resistance_1 a ns1:Resistance ;
+    rdfs:label "resistance" ;
+    quant:hasDeterminer quant:the ;
+    ns1:near ns1:Carbilley ;
+    ns1:to ns1:election_1 .
+
+ns1:Extensive rdfs:label "extensive" .
+
+ns1:Great a owl:Class ;
+    rdfs:label "great" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:GreatImportance a owl:Class ;
+    rdfs:label "Great Importance" ;
+    dul:hasQuality ns1:Great ;
+    rdfs:subClassOf ns1:Importance .
+
+ns1:Importance a owl:Class ;
+    rdfs:label "importance" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:importance_1 a ns1:GreatImportance ;
+    rdfs:label "importance" .
+

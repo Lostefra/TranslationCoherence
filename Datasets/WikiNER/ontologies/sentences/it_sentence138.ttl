@@ -1,0 +1,109 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence138.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence138.ttl a owl:Ontology ;
+    rdfs:label "it_sentence138" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence138" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In",
+        "in" .
+
+ns1:Of rdfs:label "its" .
+
+ns1:With rdfs:label "with" .
+
+ns1:base_1 a ns1:AlsoBase ;
+    rdfs:label "based" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Theme1 ns1:merger_1 ;
+    ns1:in ns1:Birmingham .
+
+ns1:complete_1 a ns1:Complete ;
+    rdfs:label "completed" ;
+    vn.role:Agent ns1:Regions_financial ;
+    vn.role:Theme ns1:merger_1 ;
+    ns1:in "2006-11-01"^^xsd:date .
+
+ns1:docuverse earmark:hasContent "In November 2006, Regions_Financial completed its merger with AmSouth Bancorporation, which was also based in Birmingham."^^xsd:string .
+
+ns1:neuter_1 rdfs:label "its" .
+
+dbpedia:Birmingham a schema:City,
+        schema:Place .
+
+<http://dbpedia.org/resource/Birmingham,_Alabama> a schema:City,
+        schema:Place .
+
+owl:Thing rdfs:label "Regions Financial" .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoBase rdfs:subClassOf ns1:Base .
+
+ns1:Amsouth_bancorporation rdfs:label "AmSouth Bancorporation" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:AmSouth_Bancorporation .
+
+ns1:Base rdfs:label "based" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Birmingham rdfs:label "Birmingham" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Birmingham,
+        <http://dbpedia.org/resource/Birmingham,_Alabama> .
+
+ns1:Complete rdfs:label "completed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Merger rdfs:label "merger" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Regions_financial a owl:Thing ;
+    rdfs:label "Regions Financial" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Regions_Financial_Corporation .
+
+ns1:merger_1 a ns1:Merger ;
+    rdfs:label "merger" ;
+    ns1:mergerOf ns1:Regions_financial ;
+    ns1:with ns1:Amsouth_bancorporation .
+

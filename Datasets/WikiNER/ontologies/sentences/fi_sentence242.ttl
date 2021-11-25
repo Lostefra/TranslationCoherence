@@ -1,0 +1,178 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence242.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence242.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence242" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence242" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:depict_1 a ns1:Depict ;
+    rdfs:label "depicting" ;
+    vn.role:Agent ns1:structure_1 ;
+    vn.role:Theme ns1:scene_1 .
+
+ns1:docuverse earmark:hasContent "This elegant structure includes paintings and statues of Akilles, both in the main hall and in the lavage gardens, depicting the heroic and t.ic scenes of the Trojan_War."^^xsd:string .
+
+ns1:include_1 a ns1:Include ;
+    rdfs:label "includes" ;
+    vn.role:Agent ns1:structure_1 ;
+    vn.role:Theme ns1:painting_1,
+        ns1:statue_1 .
+
+ns1:lavage_1 a ns1:Lavage ;
+    rdfs:label "lavage" ;
+    dul:associatedWith ns1:garden_1 ;
+    quant:hasDeterminer quant:the .
+
+owl:Thing rdfs:label "both" .
+
+ns1:Akille a owl:Class ;
+    rdfs:label "Akilles" ;
+    owl:equivalentClass dbpedia:Achilles .
+
+ns1:Depict rdfs:label "depicting" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Elegant a owl:Class ;
+    rdfs:label "elegant" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ElegantStructure a owl:Class ;
+    rdfs:label "Elegant Structure" ;
+    dul:hasQuality ns1:Elegant ;
+    rdfs:subClassOf ns1:Structure .
+
+ns1:Garden rdfs:label "gardens" .
+
+ns1:Hall a owl:Class ;
+    rdfs:label "hall" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Heroic rdfs:label "heroic" .
+
+ns1:Include rdfs:label "includes" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Lavage rdfs:label "lavage" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:LavageGarden rdfs:subClassOf ns1:Garden .
+
+ns1:Main a owl:Class ;
+    rdfs:label "main" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:MainHall a owl:Class ;
+    rdfs:label "main hall" ;
+    dul:hasQuality ns1:Main ;
+    rdfs:subClassOf ns1:Hall .
+
+ns1:Painting rdfs:label "paintings" .
+
+ns1:Scene rdfs:label "scenes" .
+
+ns1:Statue rdfs:label "statues" .
+
+ns1:Structure a owl:Class ;
+    rdfs:label "structure" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:T.ic rdfs:label "t.ic" .
+
+ns1:T.icScene rdfs:subClassOf ns1:Scene .
+
+ns1:TrojanWar rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Trojan_war a owl:Class ;
+    rdfs:label "Trojan War" ;
+    rdfs:subClassOf ns1:TrojanWar ;
+    owl:equivalentClass dbpedia:Trojan_War .
+
+ns1:akille_1 a ns1:Akille ;
+    rdfs:label "Akilles" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:hall_1 a ns1:MainHall ;
+    rdfs:label "hall" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:both .
+
+ns1:painting_1 a ns1:Painting ;
+    rdfs:label "paintings" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:scene_1 a ns1:T.icScene ;
+    rdfs:label "scenes" ;
+    dul:hasQuality ns1:Heroic,
+        ns1:T.ic ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:t.icSceneOf ns1:trojan_war_1 .
+
+ns1:statue_1 a ns1:Statue ;
+    rdfs:label "statues" ;
+    dul:associatedWith ns1:thing_1 ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:statueOf ns1:akille_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "both" ;
+    ns1:in ns1:garden_1,
+        ns1:hall_1 .
+
+ns1:trojan_war_1 a ns1:Trojan_war ;
+    rdfs:label "Trojan War" ;
+    quant:hasDeterminer quant:the .
+
+ns1:garden_1 a ns1:LavageGarden ;
+    rdfs:label "gardens" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:structure_1 a ns1:ElegantStructure ;
+    rdfs:label "structure" ;
+    quant:hasDeterminer quant:this .
+

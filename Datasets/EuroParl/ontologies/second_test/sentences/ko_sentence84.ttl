@@ -1,0 +1,190 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence84.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence84.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence84" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence84" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Eq rdfs:label "are" .
+
+ns1:Of rdfs:label "of",
+        "your" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "This means all groups are everything with exceptions of unofficial members, but of course, they are not groups; Only your group thinks that we should progress as we suggest here."^^xsd:string .
+
+ns1:exception_1 a ns1:Exception ;
+    rdfs:label "exceptions" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:group_1 rdfs:label "groups" .
+
+ns1:group_2 rdfs:label "groups" .
+
+ns1:mean_1 a ns1:Mean ;
+    rdfs:label "means" ;
+    vn.role:Agent ns1:thing_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:thing_2 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:thing_2 .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves ns1:think_1 .
+
+ns1:situation_4 a ns1:Situation ;
+    boxing:involves ns1:progress_1,
+        ns1:think_1 .
+
+ns1:situation_5 a ns1:Situation ;
+    boxing:involves ns1:thing_2 ;
+    ns1:entails ns1:situation_6 .
+
+ns1:situation_7 a ns1:Situation ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves ns1:Group,
+        ns1:thing_3 ;
+    ns1:situationOf ns1:course_1 .
+
+ns1:Course rdfs:label "course" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Exception rdfs:label "exceptions" .
+
+ns1:Here rdfs:label "here" .
+
+ns1:Mean rdfs:label "means" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Member rdfs:label "members" .
+
+ns1:Suggest rdfs:label "suggest" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Think rdfs:label "thinks" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Unofficial rdfs:label "unofficial" .
+
+ns1:UnofficialMember rdfs:subClassOf ns1:Member .
+
+ns1:course_1 a ns1:Course ;
+    rdfs:label "course" .
+
+ns1:group_3 a ns1:Group ;
+    rdfs:label "group" ;
+    ns1:groupOf ns1:person_1 .
+
+ns1:member_1 a ns1:UnofficialMember ;
+    rdfs:label "members" ;
+    dul:hasQuality ns1:Unofficial ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "your" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:progress_2 a ns1:Progress ;
+    rdfs:label "progress" ;
+    boxer:agent ns1:person_2 ;
+    boxing:hasModality boxing:Necessary ;
+    ns1:as ns1:suggest_1 .
+
+ns1:situation_6 a ns1:Situation ;
+    boxing:involves ns1:thing_2 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "This" .
+
+ns1:thing_3 a owl:Thing,
+        ns1:Group ;
+    rdfs:label "they" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Progress rdfs:label "progress" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:progress_1 a ns1:Progress ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:group_3 ;
+    vn.role:Theme ns1:progress_2 ;
+    ns1:as ns1:suggest_1 .
+
+ns1:suggest_1 a ns1:Suggest ;
+    rdfs:label "suggest" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Here ;
+    vn.role:Agent ns1:person_3 .
+
+ns1:think_1 a ns1:Think ;
+    rdfs:label "thinks" ;
+    vn.role:Theme ns1:progress_1 .
+
+ns1:Person rdfs:label "we" .
+
+owl:Thing rdfs:label "This",
+        "everything",
+        "they" .
+
+ns1:Group rdfs:label "group",
+        "groups" ;
+    rdfs:subClassOf dul:Collection,
+        owl:Thing .
+
+ns1:thing_2 a owl:Thing,
+        ns1:Group ;
+    rdfs:label "everything" ;
+    quant:hasDeterminer quant:this ;
+    quant:hasQuantifier quant:all,
+        quant:multiple ;
+    ns1:withExceptionOf ns1:member_1 .
+

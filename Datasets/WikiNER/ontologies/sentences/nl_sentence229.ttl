@@ -1,0 +1,155 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence229.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence229.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence229" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence229" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Angry rdfs:label "angry" ;
+    owl:sameAs dbpedia:Anger .
+
+ns1:Eq rdfs:label "'re" .
+
+ns1:Of rdfs:label "his" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "Athena temporarily made Ajax so angry with grief and fear that he started killing sheep, thinking they're his comrades."^^xsd:string .
+
+ns1:make_1 a ns1:TemporarilyMake ;
+    rdfs:label "made" ;
+    dul:hasQuality ns1:Temporarily ;
+    vn.role:Agent ns1:Athena ;
+    vn.role:Theme ns1:Ajax,
+        ns1:fear_1 .
+
+ns1:thing_1 rdfs:label "they" .
+
+ns1:think_1 a dbpedia:Thought,
+        ns1:Think ;
+    rdfs:label "thinking" ;
+    vn.role:Agent ns1:Athena ;
+    vn.role:Theme ns1:situation_1 .
+
+owl:Thing rdfs:label "they" ;
+    rdfs:subClassOf ns1:Comrade .
+
+ns1:Ajax rdfs:label "Ajax" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality ns1:So ;
+    owl:sameAs dbpedia:Ajax_(mythology) ;
+    ns1:angryWith ns1:grief_1 .
+
+ns1:Fear a owl:Class ;
+    rdfs:label "fear" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> ;
+    owl:equivalentClass dbpedia:Fear .
+
+ns1:Grief a owl:Class ;
+    rdfs:label "grief" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> ;
+    owl:equivalentClass dbpedia:Grief .
+
+ns1:Kill rdfs:label "killing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Make rdfs:label "made" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Sheep rdfs:label "sheep" ;
+    rdfs:subClassOf dul:Organism .
+
+ns1:So rdfs:label "so" .
+
+ns1:Start rdfs:label "started" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Temporarily rdfs:label "temporarily" .
+
+ns1:TemporarilyMake rdfs:subClassOf ns1:Make .
+
+ns1:Think rdfs:label "thinking" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:comrade_1 a owl:Thing,
+        ns1:Comrade ;
+    rdfs:label "comrades" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:comradeOf ns1:male_1 .
+
+ns1:fear_1 a ns1:Fear ;
+    rdfs:label "fear" ;
+    boxer:theme ns1:start_1 .
+
+ns1:grief_1 a ns1:Grief ;
+    rdfs:label "grief" .
+
+ns1:kill_1 a dbpedia:Death,
+        ns1:Kill ;
+    rdfs:label "killing" ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Patient ns1:sheep_1 .
+
+ns1:sheep_1 a ns1:Sheep ;
+    rdfs:label "sheep" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Comrade,
+        ns1:comrade_1 .
+
+ns1:start_1 a ns1:Start ;
+    rdfs:label "started" ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Theme ns1:kill_1 .
+
+ns1:Athena rdfs:label "Athena" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Athena .
+
+ns1:Comrade rdfs:label "comrades" .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "he",
+        "his" .
+

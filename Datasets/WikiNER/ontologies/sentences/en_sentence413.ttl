@@ -1,0 +1,146 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence413.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Beneficiary rdfs:label "for" .
+
+vn.role:Destination rdfs:label "to" .
+
+vn.role:Source rdfs:label "from" .
+
+translation_coherence:en_sentence413.ttl a owl:Ontology ;
+    rdfs:label "en_sentence413" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence413" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Across rdfs:label "across" .
+
+ns1:Before rdfs:label "before" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Where rdfs:label "where" .
+
+ns1:docuverse earmark:hasContent "The President was taken across the street from the theater to the Petersen_House, where he lay in a coma for nine hours before dying."^^xsd:string .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "taken" ;
+    vn.role:Destination ns1:petersen_house_1 ;
+    vn.role:Source ns1:theater_1 ;
+    vn.role:Theme ns1:President ;
+    ns1:across ns1:street_1 .
+
+ns1:Coma a owl:Class ;
+    rdfs:label "coma" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Coma .
+
+ns1:Die rdfs:label "dying" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Hour rdfs:label "hours" .
+
+ns1:Lay rdfs:label "lay" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Petersen_house a owl:Class ;
+    rdfs:label "Petersen House" ;
+    owl:equivalentClass dbpedia:Petersen_House .
+
+ns1:President rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:President .
+
+ns1:Street rdfs:label "street" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Take rdfs:label "taken" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Theater rdfs:label "theater" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:lay_1 a ns1:Lay ;
+    rdfs:label "lay" ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Beneficiary ns1:hour_1 ;
+    ns1:before ns1:die_1 ;
+    ns1:in ns1:coma_1 .
+
+ns1:petersen_house_1 a ns1:Petersen_house ;
+    rdfs:label "Petersen House" ;
+    quant:hasDeterminer quant:the ;
+    ns1:where ns1:situation_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:coma_1,
+        ns1:die_1,
+        ns1:hour_1,
+        ns1:lay_1 .
+
+ns1:street_1 a ns1:Street ;
+    rdfs:label "street" ;
+    quant:hasDeterminer quant:the .
+
+ns1:theater_1 a ns1:Theater ;
+    rdfs:label "theater" ;
+    quant:hasDeterminer quant:the .
+
+ns1:coma_1 a ns1:Coma ;
+    rdfs:label "coma" ;
+    quant:hasDeterminer quant:a .
+
+ns1:die_1 a ns1:Die ;
+    rdfs:label "dying" ;
+    vn.role:Theme ns1:male_1 .
+
+ns1:hour_1 a ns1:Hour ;
+    rdfs:label "hours" ;
+    dul:hasDataValue "9"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple,
+        quant:nine .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "he" .
+

@@ -19,4 +19,5 @@ def compare_pair(lang_1, filename_1, lang_2, filename_2, sentence):
     add_annotations(g1, g1_name, 'g1')
     add_annotations(g2, g2_name, 'g2')
     add_annotations(result_graph, rg_name, 'rg')
-    serialize_graph(g1, g1_name, g2, g2_name, result_graph, rg_name, format='pretty-xml')
+    return g1, g1_name, g2, g2_name, result_graph, rg_name
+

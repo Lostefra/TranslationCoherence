@@ -1,0 +1,201 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence149.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:it_sentence149.ttl a owl:Ontology ;
+    rdfs:label "it_sentence149" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence149" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "For" .
+
+ns1:In rdfs:label "in" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Total rdfs:label "total" .
+
+ns1:docuverse earmark:hasContent "For example, the total sales tax rate in Mobile is 9% and there is an additional 1% restaurant fee, which means that a diner in Mobile would pay a 10% fee on a meal."^^xsd:string .
+
+ns1:fee_1 rdfs:label "fee" .
+
+ns1:mean_1 a ns1:Mean ;
+    rdfs:label "means" ;
+    vn.role:Agent ns1:there_1 ;
+    vn.role:Theme ns1:pay_1 .
+
+ns1:percent_1 rdfs:label "%" .
+
+ns1:percent_2 a ns1:Percent ;
+    rdfs:label "%" ;
+    dul:associatedWith ns1:restaurant_1,
+        ns1:there_1 ;
+    quant:hasDeterminer quant:an .
+
+ns1:percent_3 a ns1:Percent ;
+    rdfs:label "%" ;
+    dul:associatedWith ns1:fee_2 ;
+    quant:hasDeterminer quant:a .
+
+ns1:sale_1 a dbpedia:Sales_tax,
+        ns1:Sale ;
+    rdfs:label "sales" ;
+    dul:associatedWith ns1:rate_1 ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Percent,
+        ns1:rate_1 ;
+    ns1:for ns1:example_1 .
+
+ns1:tax_1 a ns1:Tax ;
+    rdfs:label "tax" ;
+    dul:associatedWith ns1:rate_1 .
+
+ns1:Additional rdfs:label "additional" .
+
+ns1:Diner a owl:Class ;
+    rdfs:label "diner" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Dinner .
+
+ns1:Example rdfs:label "example" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Meal rdfs:label "meal" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Mean rdfs:label "means" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Pay rdfs:label "pay" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:PercentFee rdfs:subClassOf ns1:Fee .
+
+ns1:PercentRestaurant rdfs:subClassOf ns1:Restaurant .
+
+ns1:PercentRestaurantFee rdfs:subClassOf ns1:RestaurantFee .
+
+ns1:Rate a owl:Class ;
+    rdfs:label "rate" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:RestaurantFee a owl:Class ;
+    rdfs:label "restaurant fee" ;
+    dul:associatedWith ns1:Restaurant ;
+    rdfs:subClassOf ns1:Fee .
+
+ns1:Sale rdfs:label "sales" .
+
+ns1:SaleTaxRate rdfs:subClassOf ns1:TaxRate .
+
+ns1:TaxRate a owl:Class ;
+    rdfs:label "tax rate" ;
+    dul:associatedWith ns1:Tax ;
+    rdfs:subClassOf ns1:Rate ;
+    owl:equivalentClass dbpedia:Tax .
+
+ns1:There rdfs:label "there" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:TotalSaleTaxRate rdfs:subClassOf ns1:SaleTaxRate .
+
+ns1:diner_1 a ns1:Diner ;
+    rdfs:label "diner" ;
+    quant:hasDeterminer quant:a ;
+    ns1:locatedIn ns1:Mobile .
+
+ns1:example_1 a ns1:Example ;
+    rdfs:label "example" .
+
+ns1:meal_1 a ns1:Meal ;
+    rdfs:label "meal" ;
+    quant:hasDeterminer quant:a .
+
+ns1:pay_1 a ns1:Pay ;
+    rdfs:label "pay" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:diner_1 ;
+    vn.role:Asset ns1:fee_2 ;
+    ns1:on ns1:meal_1 .
+
+ns1:restaurant_1 a ns1:PercentRestaurant ;
+    rdfs:label "restaurant" ;
+    dul:associatedWith ns1:there_1 .
+
+ns1:Fee a owl:Class ;
+    rdfs:label "Fee",
+        "fee" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Mobile rdfs:label "Mobile" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Restaurant a owl:Class ;
+    rdfs:label "restaurant" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Restaurant .
+
+ns1:Tax a owl:Class ;
+    rdfs:label "tax" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:fee_2 a ns1:PercentFee ;
+    rdfs:label "fee" ;
+    dul:hasDataValue "10"^^xsd:nonNegativeInteger .
+
+ns1:rate_1 a ns1:Percent,
+        ns1:TotalSaleTaxRate ;
+    rdfs:label "rate" ;
+    ns1:at "0001-01-09"^^xsd:date ;
+    ns1:locatedIn ns1:Mobile .
+
+ns1:there_1 a ns1:PercentRestaurantFee,
+        ns1:There ;
+    rdfs:label "there" ;
+    dul:hasDataValue "1"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:Additional .
+
+ns1:Percent rdfs:label "%" .
+

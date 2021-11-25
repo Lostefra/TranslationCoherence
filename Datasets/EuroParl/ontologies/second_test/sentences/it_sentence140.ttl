@@ -1,0 +1,132 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence140.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence140.ttl a owl:Ontology ;
+    rdfs:label "it_sentence140" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence140" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Entails rdfs:label "if" .
+
+ns1:Of rdfs:label "my" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:To rdfs:label "to" .
+
+ns1:cannot_1 a ns1:Cannot ;
+    rdfs:label "cannot" ;
+    boxer:agent ns1:person_1 ;
+    boxer:patient ns1:object_1 ;
+    dul:associatedWith ns1:President ;
+    ns1:to ns1:thing_1 .
+
+ns1:docuverse earmark:hasContent "Madam President, if the vote correctly shows how my group voted, I cannot object to this."^^xsd:string .
+
+ns1:person_2 coref:coref ns1:person_1 .
+
+ns1:show_1 a ns1:CorrectlyShow ;
+    rdfs:label "shows" ;
+    dul:hasQuality ns1:Correctly ;
+    vn.role:Agent ns1:vote_1 ;
+    vn.role:Theme ns1:vote_2 ;
+    ns1:entails ns1:vote_2 .
+
+ns1:Cannot rdfs:label "cannot" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Correctly rdfs:label "correctly" .
+
+ns1:CorrectlyShow rdfs:subClassOf ns1:Show .
+
+ns1:Group rdfs:label "group" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Madam rdfs:label "Madam" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Manner rdfs:label "how" .
+
+ns1:Object rdfs:label "object" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Person rdfs:label "I" .
+
+ns1:President rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith ns1:Madam ;
+    owl:sameAs dbpedia:President .
+
+ns1:Show rdfs:label "shows" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:group_1 a ns1:Group ;
+    rdfs:label "group" ;
+    ns1:groupOf ns1:person_1 .
+
+ns1:manner_1 a ns1:Manner ;
+    rdfs:label "how" .
+
+ns1:object_1 a ns1:Object ;
+    rdfs:label "object" .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "this" .
+
+ns1:vote_1 a ns1:Vote ;
+    rdfs:label "vote" ;
+    quant:hasDeterminer quant:the .
+
+owl:Thing rdfs:label "this" .
+
+ns1:Vote rdfs:label "vote",
+        "voted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:vote_2 a ns1:Vote ;
+    rdfs:label "voted" ;
+    vn.role:Agent ns1:group_1 ;
+    ns1:manner_rel ns1:manner_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I",
+        "my" .
+

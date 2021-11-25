@@ -1,0 +1,163 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence376.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence376.ttl a owl:Ontology ;
+    rdfs:label "en_sentence376" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence376" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Between rdfs:label "between" .
+
+ns1:Of rdfs:label "Our",
+        "of" .
+
+ns1:consider_1 a ns1:AlsoConsider ;
+    rdfs:label "considers" ;
+    boxer:theme ns1:situation_1 ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Agent ns1:Group ;
+    vn.role:Theme ns1:Group .
+
+ns1:docuverse earmark:hasContent "Our Group also considers it important to take greater account of remote and peripheral areas and wishes to increase interaction between towns and rural areas."^^xsd:string .
+
+ns1:wish_1 rdfs:label "wishes" .
+
+ns1:Account a owl:Class ;
+    rdfs:label "account" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoConsider rdfs:subClassOf ns1:Consider .
+
+ns1:Consider rdfs:label "considers" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Greater a owl:Class ;
+    rdfs:label "greater" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:GreaterAccount a owl:Class ;
+    rdfs:label "greater account" ;
+    dul:hasQuality ns1:Greater ;
+    rdfs:subClassOf ns1:Account .
+
+ns1:Important rdfs:label "important" .
+
+ns1:Increase rdfs:label "increase" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Interaction rdfs:label "interaction" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Peripheral rdfs:label "peripheral" .
+
+ns1:PeripheralArea rdfs:subClassOf ns1:Area .
+
+ns1:Remote rdfs:label "remote" .
+
+ns1:Rural rdfs:label "rural" .
+
+ns1:RuralArea rdfs:subClassOf ns1:Area .
+
+ns1:Take rdfs:label "take" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Town rdfs:label "towns" .
+
+ns1:Wish rdfs:label "wishes" .
+
+ns1:increase_1 a ns1:Increase ;
+    rdfs:label "increase" ;
+    vn.role:Agent ns1:Group ;
+    vn.role:Patient ns1:interaction_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "Our" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:account_1,
+        ns1:area_1,
+        ns1:area_2,
+        ns1:increase_1,
+        ns1:interaction_1,
+        ns1:take_1,
+        ns1:town_1 ;
+    dul:hasQuality ns1:Important .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "take" ;
+    vn.role:Agent ns1:Group ;
+    vn.role:Theme ns1:account_1 .
+
+ns1:Area rdfs:label "areas" .
+
+ns1:account_1 a ns1:GreaterAccount ;
+    rdfs:label "account" ;
+    ns1:greaterAccountOf ns1:area_1 .
+
+ns1:area_1 a ns1:PeripheralArea,
+        ns1:Wish ;
+    rdfs:label "areas" ;
+    dul:hasQuality ns1:Peripheral,
+        ns1:Remote ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:area_2 a ns1:RuralArea ;
+    rdfs:label "areas" ;
+    dul:hasQuality ns1:Rural ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:interaction_1 a ns1:Interaction ;
+    rdfs:label "interaction" ;
+    ns1:between ns1:area_2,
+        ns1:town_1 .
+
+ns1:town_1 a ns1:Town ;
+    rdfs:label "towns" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Group rdfs:label "Group",
+        "it"^^xsd:string ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality owl:Thing ;
+    ns1:of ns1:person_1 .
+

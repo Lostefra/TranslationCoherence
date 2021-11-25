@@ -1,0 +1,250 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence598.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Location rdfs:label "as" .
+
+translation_coherence:ko_sentence598.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence598" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence598" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Include rdfs:label "including" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Union rdfs:label "or" .
+
+ns1:disjunct_1 a ns1:Disjunct ;
+    boxing:involves ns1:Exercise,
+        ns1:Objective,
+        ns1:exercise_1 ;
+    ns1:union ns1:disjunct_2 .
+
+ns1:disjunct_3 a ns1:Disjunct ;
+    boxing:involves ns1:Description,
+        ns1:Excessive,
+        ns1:Station,
+        ns1:description_1,
+        ns1:station_1 ;
+    ns1:union ns1:disjunct_4 .
+
+ns1:docuverse earmark:hasContent "Critics, including some former NBI students and Branden himself, explained the culture of NBI as one of the intellectual property and the ran of excessive stations, some descriptions of NBI or as a whole objective exercise or religion."^^xsd:string .
+
+ns1:explain_1 a ns1:Explain ;
+    rdfs:label "explained" ;
+    vn.role:Agent ns1:critic_1 ;
+    vn.role:Topic ns1:culture_1 ;
+    ns1:as ns1:situation_1,
+        ns1:situation_2 .
+
+ns1:objective_1 a ns1:Objective ;
+    rdfs:label "objective" ;
+    dul:associatedWith ns1:exercise_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:religion_1 rdfs:label "religion" .
+
+ns1:Branden rdfs:label "Branden" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Male .
+
+ns1:Critic rdfs:label "Critics" .
+
+ns1:Culture a owl:Class ;
+    rdfs:label "culture" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Culture .
+
+ns1:ExcessiveStation rdfs:subClassOf ns1:Station .
+
+ns1:Explain rdfs:label "explained" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Intellectual a owl:Class ;
+    rdfs:label "intellectual" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:IntellectualProperty a owl:Class ;
+    rdfs:label "intellectual property" ;
+    dul:hasQuality ns1:Intellectual ;
+    rdfs:subClassOf ns1:Property ;
+    owl:equivalentClass dbpedia:Intellectual_property .
+
+ns1:Male rdfs:label "himself" .
+
+ns1:Nbi rdfs:label "NBI" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality ns1:Former .
+
+ns1:ObjectiveExercise a owl:Class ;
+    rdfs:label "objective exercise" ;
+    dul:associatedWith ns1:Objective ;
+    rdfs:subClassOf ns1:Exercise .
+
+ns1:Property a owl:Class ;
+    rdfs:label "property" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Run rdfs:label "ran" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Student rdfs:label "students" .
+
+ns1:The rdfs:label "the" .
+
+ns1:WholeObjective a owl:Class ;
+    dul:hasQuality ns1:Whole ;
+    rdfs:subClassOf ns1:Objective .
+
+ns1:WholeObjectiveExercise a owl:Class ;
+    rdfs:label "whole objective exercise" ;
+    dul:associatedWith ns1:WholeObjective ;
+    rdfs:subClassOf ns1:ObjectiveExercise .
+
+ns1:critic_1 a ns1:Critic ;
+    rdfs:label "Critics" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:include ns1:Branden,
+        ns1:student_1 .
+
+ns1:culture_1 a ns1:Culture ;
+    rdfs:label "culture" ;
+    quant:hasDeterminer quant:the ;
+    ns1:cultureOf ns1:student_1 .
+
+ns1:disjunct_2 a ns1:Disjunct ;
+    boxing:involves ns1:Religion,
+        ns1:exercise_1 .
+
+ns1:disjunct_4 a ns1:Disjunct ;
+    boxing:involves ns1:Exercise,
+        ns1:Objective,
+        ns1:Religion,
+        ns1:Whole,
+        ns1:exercise_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:description_1,
+        ns1:exercise_1,
+        ns1:property_1,
+        ns1:run_1,
+        ns1:station_1,
+        ns1:the_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:description_1,
+        ns1:exercise_1,
+        ns1:property_1,
+        ns1:run_1,
+        ns1:station_1,
+        ns1:the_1 .
+
+ns1:Description rdfs:label "descriptions" .
+
+ns1:Excessive rdfs:label "excessive" .
+
+ns1:Former rdfs:label "former" .
+
+ns1:Station rdfs:label "stations" .
+
+ns1:Whole a owl:Class ;
+    rdfs:label "whole" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:run_1 a ns1:Run ;
+    rdfs:label "ran" ;
+    vn.role:Location ns1:exercise_1 ;
+    vn.role:Theme ns1:property_1,
+        ns1:the_1 ;
+    ns1:runOf ns1:station_1 .
+
+ns1:Exercise a owl:Class ;
+    rdfs:label "exercise" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Religion a owl:Class ;
+    rdfs:label "religion" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Religion .
+
+ns1:property_1 a ns1:IntellectualProperty ;
+    rdfs:label "property" ;
+    dul:hasDataValue "1"^^xsd:nonNegativeInteger ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:one .
+
+ns1:student_1 a ns1:Student ;
+    rdfs:label "students" ;
+    dul:associatedWith ns1:Nbi ;
+    dul:hasQuality ns1:Former ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:the_1 a ns1:The ;
+    rdfs:label "the" .
+
+ns1:description_1 a ns1:Description ;
+    rdfs:label "descriptions" ;
+    quant:hasQuantifier quant:multiple,
+        quant:some ;
+    ns1:descriptionOf ns1:student_1 .
+
+ns1:station_1 a ns1:ExcessiveStation ;
+    rdfs:label "stations" ;
+    dul:associatedWith ns1:description_1 ;
+    dul:hasQuality ns1:Excessive ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Objective a owl:Class ;
+    rdfs:label "objective" ;
+    rdfs:subClassOf dul:Goal ;
+    owl:equivalentClass dbpedia:Objectivity_(philosophy) .
+
+ns1:exercise_1 a ns1:Religion,
+        ns1:WholeObjectiveExercise ;
+    rdfs:label "exercise" .
+

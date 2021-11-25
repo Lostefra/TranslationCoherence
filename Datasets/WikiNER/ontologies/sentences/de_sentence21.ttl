@@ -1,0 +1,146 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence21.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence21.ttl a owl:Ontology ;
+    rdfs:label "de_sentence21" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence21" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Despite rdfs:label "despite" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "This was despite the irreversibility of Goldman with him, his registered membership of the Republic of Guinea and never a archic organisation."^^xsd:string .
+
+ns1:organisation_1 rdfs:label "organisation" ;
+    quant:hasDeterminer quant:a .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Archic,
+        ns1:ArchicOrganisation,
+        ns1:Organisation,
+        ns1:thing_1 ;
+    ns1:despite ns1:irreversibility_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Archic,
+        ns1:ArchicOrganisation,
+        ns1:Organisation,
+        ns1:thing_1 ;
+    dul:hasQuality ns1:Never .
+
+owl:Thing rdfs:label "This" .
+
+ns1:Goldman rdfs:label "Goldman" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Guinea rdfs:label "Guinea" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Guinea .
+
+ns1:Irreversibility rdfs:label "irreversibility" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Male rdfs:label "him" .
+
+ns1:Membership a owl:Class ;
+    rdfs:label "membership" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Never rdfs:label "never" .
+
+ns1:Registered a owl:Class ;
+    rdfs:label "registered" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:RegisteredMembership a owl:Class ;
+    rdfs:label "Registered Membership" ;
+    dul:hasQuality ns1:Registered ;
+    rdfs:subClassOf ns1:Membership .
+
+ns1:Republic rdfs:label "Republic" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Guinea,
+        dbpedia:Republic ;
+    ns1:of ns1:Guinea .
+
+ns1:irreversibility_1 a ns1:Irreversibility ;
+    rdfs:label "irreversibility" ;
+    quant:hasDeterminer quant:the,
+        quant:this ;
+    ns1:irreversibilityOf ns1:Goldman ;
+    ns1:with ns1:male_1 .
+
+ns1:membership_1 a ns1:RegisteredMembership ;
+    rdfs:label "membership" ;
+    ns1:registeredMembershipOf ns1:Republic,
+        ns1:male_1 .
+
+dbpedia:Guinea a schema:Country,
+        schema:Place .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "him",
+        "his" ;
+    dul:associatedWith ns1:membership_1 .
+
+ns1:thing_1 a owl:Thing,
+        ns1:ArchicOrganisation ;
+    rdfs:label "This" .
+
+ns1:Archic a owl:Class ;
+    rdfs:label "archic" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ArchicOrganisation a owl:Class ;
+    rdfs:label "archic organisation" ;
+    dul:hasQuality ns1:Archic ;
+    rdfs:subClassOf ns1:Organisation .
+
+ns1:Organisation a owl:Class ;
+    rdfs:label "organisation" ;
+    rdfs:subClassOf dul:Organization .
+

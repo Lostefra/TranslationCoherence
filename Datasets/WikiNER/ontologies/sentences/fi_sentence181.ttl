@@ -1,0 +1,140 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence181.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:fi_sentence181.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence181" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence181" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Alabama_international_basic a ns1:Topic ;
+    rdfs:label "Alabama International Basic" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:By rdfs:label "by" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Secondary_education_overview a ns1:Topic ;
+    rdfs:label "Secondary Education Overview" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality ns1:Topic ;
+    ns1:topicBy ns1:board_1 ;
+    ns1:topicOf ns1:Alabama_state_board_of_education,
+        ns1:Local.veillance .
+
+ns1:board_2 rdfs:label "boards" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:city_1 a ns1:City ;
+    rdfs:label "city" ;
+    dul:associatedWith ns1:board_1,
+        ns1:training_1 .
+
+ns1:county_1 a ns1:County ;
+    rdfs:label "county" ;
+    dul:associatedWith ns1:board_1,
+        ns1:school_1 .
+
+ns1:docuverse earmark:hasContent "Alabama International Basic and Secondary_Education Overview of the Alabama_State_Board_of_Education and Local.veillance by 67 county school boards and 60 city training boards."^^xsd:string .
+
+ns1:Alabama_state_board_of_education rdfs:label "Alabama State Board of Education" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Alabama_State_Board_of_Education .
+
+ns1:CityTraining a owl:Class ;
+    rdfs:label "City Training" ;
+    dul:associatedWith ns1:City ;
+    rdfs:subClassOf ns1:Training .
+
+ns1:CityTrainingBoard rdfs:subClassOf ns1:TrainingBoard .
+
+ns1:CountySchool a owl:Class ;
+    rdfs:label "County School" ;
+    dul:associatedWith ns1:County ;
+    rdfs:subClassOf ns1:School .
+
+ns1:CountySchoolBoard rdfs:subClassOf ns1:SchoolBoard .
+
+ns1:Local.veillance rdfs:label "Local.veillance" ;
+    boxer:possibleType owl:Thing .
+
+ns1:School a owl:Class ;
+    rdfs:label "school" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:SchoolBoard rdfs:subClassOf ns1:Board .
+
+ns1:Training a owl:Class ;
+    rdfs:label "training" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:TrainingBoard rdfs:subClassOf ns1:Board .
+
+ns1:school_1 a ns1:CountySchool ;
+    rdfs:label "school" ;
+    dul:associatedWith ns1:board_1 .
+
+ns1:training_1 a ns1:CityTraining ;
+    rdfs:label "training" ;
+    dul:associatedWith ns1:board_1 .
+
+ns1:Board rdfs:label "boards" .
+
+ns1:City a owl:Class ;
+    rdfs:label "city" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:County a owl:Class ;
+    rdfs:label "county" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Topic rdfs:label "Alabama International Basic",
+        "Secondary Education Overview" .
+
+ns1:board_1 a ns1:CityTrainingBoard,
+        ns1:CountySchoolBoard ;
+    rdfs:label "boards" ;
+    dul:hasDataValue "60"^^xsd:nonNegativeInteger,
+        "67"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple .
+

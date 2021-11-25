@@ -1,0 +1,102 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence4.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Proposition rdfs:label "for" .
+
+translation_coherence:fi_sentence4.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence4" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence4" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:During rdfs:label "during" .
+
+ns1:Few rdfs:label "few" .
+
+ns1:Over rdfs:label "over" .
+
+ns1:ask_1 a ns1:Ask ;
+    rdfs:label "asked" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Proposition ns1:discussion_1 ;
+    ns1:during ns1:session_1 ;
+    ns1:over ns1:day_1 .
+
+ns1:docuverse earmark:hasContent "You have asked for a discussion over the next few days, during this session."^^xsd:string .
+
+ns1:Ask rdfs:label "asked" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Day rdfs:label "days" .
+
+ns1:Discussion a owl:Class ;
+    rdfs:label "discussion" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Conversation .
+
+ns1:FewDay rdfs:subClassOf ns1:Day .
+
+ns1:Next rdfs:label "next" .
+
+ns1:NextFewDay rdfs:subClassOf ns1:FewDay .
+
+ns1:Person rdfs:label "You" .
+
+ns1:Session rdfs:label "session" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:day_1 a ns1:NextFewDay ;
+    rdfs:label "days" ;
+    dul:hasQuality ns1:Next ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:few,
+        quant:multiple .
+
+ns1:discussion_1 a ns1:Discussion ;
+    rdfs:label "discussion" ;
+    quant:hasDeterminer quant:a .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "You" .
+
+ns1:session_1 a ns1:Session ;
+    rdfs:label "session" ;
+    quant:hasDeterminer quant:this .
+

@@ -1,0 +1,162 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence81.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence81.ttl a owl:Ontology ;
+    rdfs:label "de_sentence81" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence81" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:From rdfs:label "from" .
+
+ns1:Rel rdfs:label "(",
+        "," .
+
+ns1:Union rdfs:label "or" .
+
+ns1:believe_1 a ns1:Believe ;
+    rdfs:label "believe" ;
+    vn.role:Agent ns1:scientist_1 ;
+    vn.role:Theme ns1:come_1 .
+
+ns1:collection_1 rdfs:label "collection" .
+
+ns1:disjunct_1 a ns1:Disjunct ;
+    boxing:involves ns1:Trus,
+        ns1:trus_1 ;
+    ns1:union ns1:disjunct_2 .
+
+ns1:disjunct_3 a ns1:Disjunct ;
+    boxing:involves ns1:Collection,
+        ns1:Plant,
+        ns1:Reduction,
+        ns1:Trus,
+        ns1:plant_1,
+        ns1:reduction_1,
+        ns1:trus_1 ;
+    ns1:union ns1:disjunct_4 .
+
+ns1:docuverse earmark:hasContent "Scientists believe that the word comes from the Choctaw alba (plants or Heeds) and Amo (for reduction, tri or collection)."^^xsd:string .
+
+ns1:Alba rdfs:label "alba" .
+
+ns1:Amo rdfs:label "Amo" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Believe rdfs:label "believe" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Choctaw rdfs:label "Choctaw" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs <http://dbpedia.org/resource/Choctaw_County,_Alabama> .
+
+ns1:Come rdfs:label "comes" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Scientist rdfs:label "Scientists" .
+
+ns1:Word rdfs:label "word" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:alba_1 a ns1:Alba ;
+    rdfs:label "alba" ;
+    dul:associatedWith ns1:Choctaw,
+        ns1:heed_1,
+        ns1:plant_1 .
+
+ns1:come_1 a ns1:Come ;
+    rdfs:label "comes" ;
+    vn.role:Theme ns1:word_1 ;
+    ns1:for ns1:reduction_1 ;
+    ns1:from ns1:Amo,
+        ns1:alba_1 .
+
+ns1:disjunct_2 a ns1:Disjunct ;
+    boxing:involves ns1:Collection,
+        ns1:trus_1 .
+
+ns1:disjunct_4 a ns1:Disjunct ;
+    boxing:involves ns1:Collection,
+        ns1:Heed,
+        ns1:Reduction,
+        ns1:Trus,
+        ns1:heed_1,
+        ns1:reduction_1,
+        ns1:trus_1 .
+
+ns1:scientist_1 a ns1:Scientist ;
+    rdfs:label "Scientists" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:word_1 a ns1:Word ;
+    rdfs:label "word" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Heed rdfs:label "Heeds" .
+
+ns1:Plant rdfs:label "plants" .
+
+ns1:heed_1 a ns1:Heed ;
+    rdfs:label "Heeds" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:plant_1 a ns1:Plant ;
+    rdfs:label "plants" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Reduction rdfs:label "reduction" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:reduction_1 a ns1:Reduction ;
+    rdfs:label "reduction" ;
+    dul:associatedWith ns1:trus_1 .
+
+ns1:Collection rdfs:label "collection" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Trus rdfs:label "tri" .
+
+ns1:trus_1 a ns1:Collection,
+        ns1:Trus ;
+    rdfs:label "tri" ;
+    quant:hasQuantifier quant:multiple .
+

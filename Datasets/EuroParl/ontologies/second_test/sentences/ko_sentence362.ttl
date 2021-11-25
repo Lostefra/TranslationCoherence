@@ -1,0 +1,140 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence362.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence362.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence362" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence362" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:While rdfs:label "while" .
+
+ns1:commission_1 a ns1:Commission ;
+    rdfs:label "commission" ;
+    dul:associatedWith ns1:directory_1 .
+
+ns1:docuverse earmark:hasContent "You must have internal consistency of commission directories while respecting specific areas and local aspects of the committee."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "have" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Patient ns1:consistency_1 ;
+    ns1:while ns1:respect_1 .
+
+ns1:Area rdfs:label "areas" .
+
+ns1:Aspect rdfs:label "aspects" .
+
+ns1:Commission rdfs:label "commission" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:CommissionDirectory rdfs:subClassOf ns1:Directory .
+
+ns1:Committee rdfs:label "committee" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Consistency a owl:Class ;
+    rdfs:label "consistency" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Directory rdfs:label "directories" .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:InternalConsistency a owl:Class ;
+    rdfs:label "internal consistency" ;
+    dul:hasQuality ns1:Internal ;
+    rdfs:subClassOf ns1:Consistency .
+
+ns1:Local rdfs:label "local" .
+
+ns1:LocalAspect rdfs:subClassOf ns1:Aspect .
+
+ns1:Person rdfs:label "You" .
+
+ns1:Respect rdfs:label "respecting" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Specific rdfs:label "specific" .
+
+ns1:SpecificArea rdfs:subClassOf ns1:Area .
+
+ns1:area_1 a ns1:SpecificArea ;
+    rdfs:label "areas" ;
+    dul:hasQuality ns1:Specific ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:aspect_1 a ns1:LocalAspect ;
+    rdfs:label "aspects" ;
+    dul:hasQuality ns1:Local ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:localAspectOf ns1:committee_1 .
+
+ns1:committee_1 a ns1:Committee ;
+    rdfs:label "committee" ;
+    quant:hasDeterminer quant:the .
+
+ns1:consistency_1 a ns1:InternalConsistency ;
+    rdfs:label "consistency" ;
+    dul:hasQuality ns1:Internal ;
+    ns1:internalConsistencyOf ns1:directory_1 .
+
+ns1:respect_1 a ns1:Respect ;
+    rdfs:label "respecting" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Experiencer ns1:person_1 ;
+    vn.role:Theme ns1:area_1,
+        ns1:aspect_1 .
+
+ns1:Internal a owl:Class ;
+    rdfs:label "internal" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:directory_1 a ns1:CommissionDirectory ;
+    rdfs:label "directories" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "You" .
+

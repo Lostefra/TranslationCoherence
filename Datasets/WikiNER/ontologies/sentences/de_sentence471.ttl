@@ -1,0 +1,160 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%> .
+@prefix ns2: <https://w3id.org/stlab/ke/amiala/de_sentence471.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Oblique rdfs:label "in" .
+
+translation_coherence:de_sentence471.ttl a owl:Ontology ;
+    rdfs:label "de_sentence471" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence471" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns2:As rdfs:label "as" .
+
+ns2:Of rdfs:label "'s",
+        "his",
+        "of" .
+
+ns2:On rdfs:label "on" .
+
+ns2:Rel rdfs:label "," .
+
+ns2:With rdfs:label "with" .
+
+ns2:docuverse earmark:hasContent "Aristotle's influence Alexander_the_Great is seen in the latter's 's with him on his trip as a guest of zoologists, botanists and researchers."^^xsd:string .
+
+ns2:influence_1 a ns2:Influence ;
+    rdfs:label "influence" ;
+    dul:associatedWith ns2:alexander_the_great_1 .
+
+ns2:male_1 rdfs:label "his" .
+
+ns2:see_1 a ns2:See ;
+    rdfs:label "seen" ;
+    vn.role:Oblique ns1:27s_1 ;
+    vn.role:Stimulus ns2:alexander_the_great_1 ;
+    ns2:on ns2:trip_1 ;
+    ns2:with ns2:Aristotle .
+
+dbpedia:Alexander_the_Great rdfs:subClassOf schema:Person .
+
+dbpedia:Aristotle a schema:Person .
+
+ns1:27s rdfs:label "'s" .
+
+ns1:27s_1 a ns1:27s ;
+    rdfs:label "'s" ;
+    ns1:27sOf ns2:latter_1 .
+
+ns2:AlexanderTheGreat rdfs:subClassOf dul:Person .
+
+ns2:Alexander_the_great a owl:Class ;
+    rdfs:label "Alexander the Great" ;
+    rdfs:subClassOf ns2:AlexanderTheGreat ;
+    owl:equivalentClass dbpedia:Alexander_the_Great .
+
+ns2:Botanist rdfs:label "botanists" .
+
+ns2:Guest rdfs:label "guest" ;
+    rdfs:subClassOf dul:Person .
+
+ns2:InfluenceAlexander_the_great a owl:Class ;
+    rdfs:label "influence Alexander the Great" ;
+    dul:associatedWith ns2:Influence ;
+    rdfs:subClassOf ns2:Alexander_the_great .
+
+ns2:Latter rdfs:label "latter" ;
+    rdfs:subClassOf dul:Role .
+
+ns2:Male rdfs:label "Aristotle" .
+
+ns2:Researcher rdfs:label "researchers" .
+
+ns2:See rdfs:label "seen" ;
+    rdfs:subClassOf dul:Event .
+
+ns2:Trip rdfs:label "trip" ;
+    rdfs:subClassOf dul:Situation .
+
+ns2:Zoologist rdfs:label "zoologists" .
+
+ns2:botanist_1 a ns2:Botanist ;
+    rdfs:label "botanists" ;
+    quant:hasQuantifier quant:multiple .
+
+ns2:guest_1 a ns2:Guest ;
+    rdfs:label "guest" ;
+    dul:associatedWith ns2:botanist_1,
+        ns2:researcher_1 ;
+    quant:hasDeterminer quant:a ;
+    ns2:guestOf ns2:zoologist_1 .
+
+ns2:latter_1 a ns2:Latter ;
+    rdfs:label "latter" ;
+    quant:hasDeterminer quant:the .
+
+ns2:researcher_1 a ns2:Researcher ;
+    rdfs:label "researchers" ;
+    quant:hasQuantifier quant:multiple .
+
+ns2:trip_1 a ns2:Trip ;
+    rdfs:label "trip" ;
+    ns2:as ns2:guest_1 ;
+    ns2:tripOf ns2:Aristotle .
+
+ns2:zoologist_1 a dbpedia:Zoology,
+        ns2:Zoologist ;
+    rdfs:label "zoologists" ;
+    quant:hasQuantifier quant:multiple .
+
+ns2:Influence a owl:Class ;
+    rdfs:label "influence" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns2:alexander_the_great_1 a ns2:InfluenceAlexander_the_great ;
+    rdfs:label "Alexander the Great" ;
+    ns2:influenceAlexander_the_greatOf ns2:Aristotle .
+
+ns2:Aristotle a ns2:Male ;
+    rdfs:label "Aristotle" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Aristotle .
+

@@ -1,0 +1,131 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence332.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "outside" .
+
+translation_coherence:ko_sentence332.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence332" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence332" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "It is a young people who are gone, who are trained and seeking things outside the rural area, all the unfamiliar effects in that area."^^xsd:string .
+
+ns1:seek_1 a ns1:Seek ;
+    rdfs:label "seeking" ;
+    vn.role:Agent ns1:people_1 ;
+    vn.role:Location ns1:area_1 ;
+    vn.role:Theme ns1:thing_1 .
+
+ns1:train_1 a ns1:Train ;
+    rdfs:label "trained" ;
+    vn.role:Theme ns1:people_1 .
+
+ns1:Area a owl:Class ;
+    rdfs:label "area" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Effect rdfs:label "effects" .
+
+ns1:Go rdfs:label "gone" .
+
+ns1:People a owl:Class ;
+    rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:RuralArea a owl:Class ;
+    rdfs:label "Rural Area" ;
+    dul:hasQuality ns1:Rural ;
+    rdfs:subClassOf ns1:Area .
+
+ns1:Seek rdfs:label "seeking" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Train rdfs:label "trained" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Unfamiliar rdfs:label "unfamiliar" .
+
+ns1:UnfamiliarEffect rdfs:subClassOf ns1:Effect .
+
+ns1:Young a owl:Class ;
+    rdfs:label "young" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:YoungPeople a owl:Class ;
+    rdfs:label "Young People" ;
+    dul:hasQuality ns1:Young ;
+    rdfs:subClassOf ns1:People .
+
+ns1:effect_1 a ns1:UnfamiliarEffect ;
+    rdfs:label "effects" ;
+    dul:hasQuality ns1:Unfamiliar ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:area_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "things" ;
+    quant:hasQuantifier quant:multiple .
+
+owl:Thing rdfs:label "It",
+        "things" .
+
+ns1:Rural a owl:Class ;
+    rdfs:label "rural" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:area_1 a ns1:RuralArea ;
+    rdfs:label "area" ;
+    dul:associatedWith ns1:effect_1 ;
+    dul:hasQuality ns1:Rural ;
+    quant:hasDeterminer quant:the .
+
+ns1:people_1 a ns1:YoungPeople ;
+    rdfs:label "people" ;
+    dul:hasQuality owl:Thing,
+        ns1:Go ;
+    quant:hasDeterminer quant:a ;
+    quant:hasQuantifier quant:multiple .
+

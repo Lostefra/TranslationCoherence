@@ -1,0 +1,142 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence578.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence578.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence578" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence578" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Although rdfs:label "although" .
+
+ns1:At rdfs:label "At" .
+
+ns1:Of rdfs:label "her" .
+
+ns1:docuverse earmark:hasContent "At the same time, she also outlined and noted widely her philosophical statement, although the plan had never been completed."^^xsd:string .
+
+ns1:note_1 a ns1:Note ;
+    rdfs:label "noted" ;
+    dul:hasQuality ns1:Also,
+        ns1:Widely ;
+    vn.role:Agent ns1:female_1 ;
+    vn.role:Topic ns1:statement_1 ;
+    ns1:although ns1:complete_1 ;
+    ns1:at ns1:time_1 .
+
+ns1:outline_1 a ns1:AlsoOutline ;
+    rdfs:label "outlined" ;
+    boxer:agent ns1:female_1 ;
+    dul:hasQuality ns1:Also ;
+    ns1:at ns1:time_1 .
+
+ns1:AlsoOutline rdfs:subClassOf ns1:Outline .
+
+ns1:Complete rdfs:label "completed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Female rdfs:label "she" .
+
+ns1:Never rdfs:label "never" .
+
+ns1:Note rdfs:label "noted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Outline rdfs:label "outlined" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Philosophical a owl:Class ;
+    rdfs:label "philosophical" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Philosophy .
+
+ns1:PhilosophicalStatement a owl:Class ;
+    rdfs:label "philosophical statement" ;
+    dul:hasQuality ns1:Philosophical ;
+    rdfs:subClassOf ns1:Statement .
+
+ns1:Plan rdfs:label "plan" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Same a owl:Class ;
+    rdfs:label "same" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SameTime a owl:Class ;
+    rdfs:label "Same Time" ;
+    dul:hasQuality ns1:Same ;
+    rdfs:subClassOf ns1:Time .
+
+ns1:Statement a owl:Class ;
+    rdfs:label "statement" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> ;
+    owl:equivalentClass dbpedia:Statement_(logic) .
+
+ns1:Time a owl:Class ;
+    rdfs:label "time" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Time .
+
+ns1:Widely rdfs:label "widely" .
+
+ns1:complete_1 a ns1:Complete ;
+    rdfs:label "completed" ;
+    dul:hasQuality ns1:Never ;
+    vn.role:Theme ns1:plan_1 .
+
+ns1:plan_1 a ns1:Plan ;
+    rdfs:label "plan" ;
+    quant:hasDeterminer quant:the .
+
+ns1:statement_1 a ns1:PhilosophicalStatement ;
+    rdfs:label "statement" ;
+    ns1:philosophicalStatementOf ns1:female_1 .
+
+ns1:Also rdfs:label "also" .
+
+ns1:time_1 a ns1:SameTime ;
+    rdfs:label "time" ;
+    quant:hasDeterminer quant:the .
+
+ns1:female_1 a ns1:Female ;
+    rdfs:label "her",
+        "she" ;
+    coref:coref ns1:female_1 .
+

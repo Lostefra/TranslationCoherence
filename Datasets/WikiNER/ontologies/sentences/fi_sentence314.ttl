@@ -1,0 +1,136 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence314.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence314.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence314" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence314" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:docuverse earmark:hasContent "The case is famous for the fact that Lincoln uses a legal notice to prove that the witness is lying."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Famous,
+        ns1:case_1 ;
+    ns1:for ns1:fact_1 .
+
+ns1:Case a owl:Class ;
+    rdfs:label "case" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Precedent .
+
+ns1:Fact a owl:Class ;
+    rdfs:label "fact" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Fact .
+
+ns1:Legal a owl:Class ;
+    rdfs:label "legal" .
+
+ns1:LegalNotice rdfs:label "Legal Notice" ;
+    dul:associatedWith ns1:Notice ;
+    dul:hasModality ns1:Legal .
+
+ns1:Prove rdfs:label "prove" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Use rdfs:label "uses" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Witness a owl:Class ;
+    rdfs:label "witness" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Witness .
+
+ns1:case_1 a ns1:Case ;
+    rdfs:label "case" ;
+    dul:hasQuality ns1:Famous ;
+    quant:hasDeterminer quant:the ;
+    owl:sameAs ns1:notice_1 .
+
+ns1:fact_1 a ns1:Fact ;
+    rdfs:label "fact" ;
+    boxer:theme ns1:situation_2 ;
+    quant:hasDeterminer quant:the .
+
+ns1:prove_1 a ns1:Prove ;
+    rdfs:label "prove" ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Theme ns1:lie_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Lie,
+        ns1:lie_1,
+        ns1:notice_1,
+        ns1:prove_1,
+        ns1:use_1 .
+
+ns1:use_1 a ns1:Use ;
+    rdfs:label "uses" ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Theme ns1:notice_1 .
+
+ns1:witness_1 a ns1:Witness ;
+    rdfs:label "witness" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Famous rdfs:label "famous" .
+
+ns1:Lie rdfs:label "lying" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Notice a owl:Class ;
+    rdfs:label "notice" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:lie_1 a ns1:Lie ;
+    rdfs:label "lying" ;
+    vn.role:Agent ns1:witness_1 .
+
+ns1:notice_1 a ns1:LegalNotice,
+        ns1:Notice ;
+    rdfs:label "notice" ;
+    quant:hasDeterminer quant:a .
+

@@ -1,0 +1,165 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence513.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence513.ttl a owl:Ontology ;
+    rdfs:label "de_sentence513" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence513" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Because rdfs:label "because" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "its" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:cohesion_1 a ns1:Cohesion ;
+    rdfs:label "Cohesion" ;
+    dul:associatedWith ns1:policy_1 .
+
+ns1:disjunct_1 a ns1:Disjunct ;
+    boxing:involves ns1:Reliable,
+        ns1:standard_1 ;
+    ns1:union ns1:disjunct_2 .
+
+ns1:docuverse earmark:hasContent "Cohesion policy must be further strengthened because a Europe that completely ignores living standards in its regions cannot be reliable or sustainable."^^xsd:string .
+
+ns1:strengthen_1 a ns1:FurtherStrengthen ;
+    rdfs:label "strengthened" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Further ;
+    vn.role:Patient ns1:policy_1 ;
+    ns1:because ns1:ignore_1 .
+
+dbpedia:Europe a schema:Continent,
+        schema:Place .
+
+ns1:Cannot rdfs:label "cannot" .
+
+ns1:CohesionPolicy a owl:Class ;
+    rdfs:label "Cohesion Policy" ;
+    dul:associatedWith ns1:Cohesion ;
+    rdfs:subClassOf ns1:Policy .
+
+ns1:Completely rdfs:label "completely" .
+
+ns1:CompletelyIgnore rdfs:subClassOf ns1:Ignore .
+
+ns1:Europe rdfs:label "Europe" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:hasQuality owl:Thing ;
+    owl:sameAs dbpedia:Europe .
+
+ns1:Further rdfs:label "further" .
+
+ns1:FurtherStrengthen rdfs:subClassOf ns1:Strengthen .
+
+ns1:Ignore rdfs:label "ignores" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Live rdfs:label "living" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Policy a owl:Class ;
+    rdfs:label "policy" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Public_policy .
+
+ns1:Region rdfs:label "regions" .
+
+ns1:Standard rdfs:label "standards" .
+
+ns1:Strengthen rdfs:label "strengthened" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:That rdfs:label "that" .
+
+ns1:cannot_1 a ns1:Cannot ;
+    rdfs:label "cannot" .
+
+ns1:disjunct_2 a ns1:Disjunct ;
+    boxing:involves ns1:Sustainable,
+        ns1:standard_1 .
+
+ns1:ignore_1 a ns1:CompletelyIgnore ;
+    rdfs:label "ignores" ;
+    boxer:agent ns1:that_1 ;
+    boxer:theme ns1:live_1 ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Completely .
+
+ns1:live_1 a ns1:Live ;
+    rdfs:label "living" ;
+    vn.role:Theme ns1:standard_1 .
+
+ns1:region_1 a ns1:Region ;
+    rdfs:label "regions" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:regionOf ns1:that_1 .
+
+ns1:Cohesion a owl:Class ;
+    rdfs:label "Cohesion" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Reliable rdfs:label "reliable" .
+
+ns1:Sustainable rdfs:label "sustainable" ;
+    owl:sameAs dbpedia:Sustainability .
+
+ns1:policy_1 a ns1:CohesionPolicy ;
+    rdfs:label "policy" .
+
+ns1:that_1 a ns1:That ;
+    rdfs:label "its",
+        "that" ;
+    dul:associatedWith ns1:Europe ;
+    dul:hasQuality owl:Thing .
+
+ns1:standard_1 a dbpedia:Standard_of_living,
+        ns1:Standard ;
+    rdfs:label "standards" ;
+    dul:associatedWith ns1:cannot_1 ;
+    dul:hasQuality ns1:Reliable,
+        ns1:Sustainable ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:region_1 .
+

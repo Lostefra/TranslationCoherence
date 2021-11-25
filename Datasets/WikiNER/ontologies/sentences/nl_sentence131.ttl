@@ -1,0 +1,141 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence131.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence131.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence131" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence131" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:contain_1 a ns1:Contain ;
+    rdfs:label "contain" ;
+    vn.role:Location ns1:exhaust_1 ;
+    vn.role:Value ns1:poem_1 .
+
+ns1:cotton_1 rdfs:label "cottons" .
+
+ns1:cotton_2 rdfs:label "cottons" .
+
+ns1:docuverse earmark:hasContent "Alabama's agricultural exhausts contain poems and eggs, vegetarian, vegetarian objects, peanuts, cottons, cottons, grans and sorgums, sorceres, sorceres, sorceremons."^^xsd:string .
+
+ns1:egg_1 a dbpedia:Egg_(food) ;
+    rdfs:label "eggs" .
+
+ns1:gran_1 rdfs:label "grans" .
+
+ns1:object_1 rdfs:label "objects" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:peanut_1 a dbpedia:Peanut ;
+    rdfs:label "peanuts" .
+
+ns1:sorcere_1 rdfs:label "sorceres" .
+
+ns1:sorcere_2 rdfs:label "sorceres" .
+
+ns1:sorceremon_1 rdfs:label "sorceremons" .
+
+ns1:sorgum_1 rdfs:label "sorgums" .
+
+ns1:vegetarian_1 rdfs:label "vegetarian" .
+
+dbpedia:Alabama a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:Agricultural rdfs:label "agricultural" .
+
+ns1:AgriculturalExhaust rdfs:subClassOf ns1:Exhaust .
+
+ns1:Alabama rdfs:label "Alabama" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Alabama .
+
+ns1:Contain rdfs:label "contain" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Cotton rdfs:label "cottons" .
+
+ns1:Egg rdfs:label "eggs" .
+
+ns1:Exhaust rdfs:label "exhausts" .
+
+ns1:Gran rdfs:label "grans" .
+
+ns1:Object rdfs:label "objects" .
+
+ns1:Peanut rdfs:label "peanuts" .
+
+ns1:Poem rdfs:label "poems" .
+
+ns1:Sorcere rdfs:label "sorceres" .
+
+ns1:Sorceremon rdfs:label "sorceremons" .
+
+ns1:Sorgum rdfs:label "sorgums" .
+
+ns1:VegetarianObject rdfs:subClassOf ns1:Object .
+
+ns1:exhaust_1 a ns1:AgriculturalExhaust ;
+    rdfs:label "exhausts" ;
+    dul:hasQuality ns1:Agricultural ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:agriculturalExhaustOf ns1:Alabama .
+
+ns1:poem_1 a ns1:Cotton,
+        ns1:Egg,
+        ns1:Gran,
+        ns1:Peanut,
+        ns1:Poem,
+        ns1:Sorcere,
+        ns1:Sorceremon,
+        ns1:Sorgum,
+        ns1:Vegetarian,
+        ns1:VegetarianObject ;
+    rdfs:label "poems" ;
+    dul:hasQuality ns1:Vegetarian ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Vegetarian a owl:Class ;
+    rdfs:label "Vegetarian",
+        "vegetarian" ;
+    owl:equivalentClass dbpedia:Vegetarianism .
+

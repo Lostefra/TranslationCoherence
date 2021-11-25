@@ -1,0 +1,142 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence618.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence618.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence618" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence618" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:To rdfs:label "to" .
+
+ns1:consider_1 a ns1:Consider ;
+    rdfs:label "considered" ;
+    vn.role:Agent ns1:Rand ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:docuverse earmark:hasContent "Broadway trade reviews were mixed and Rand considered positive reviews embarrassing due to significant changes in the producer's script."^^xsd:string .
+
+ns1:script_1 a ns1:Script ;
+    rdfs:label "script" .
+
+ns1:trade_1 a ns1:Trade ;
+    rdfs:label "trade" ;
+    dul:associatedWith ns1:review_1,
+        ns1:situation_2 .
+
+ns1:Broadway rdfs:label "Broadway",
+        "reviews" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:hasQuality ns1:Mixed ;
+    owl:sameAs dbpedia:Broadway_theatre .
+
+ns1:Change rdfs:label "changes" .
+
+ns1:Consider rdfs:label "considered" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Embarrassing rdfs:label "embarrassing" .
+
+ns1:Positive rdfs:label "positive" .
+
+ns1:PositiveReview rdfs:subClassOf ns1:Review .
+
+ns1:Producer rdfs:label "producer" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Script rdfs:label "script" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Significant rdfs:label "significant" .
+
+ns1:SignificantChange rdfs:subClassOf ns1:Change .
+
+ns1:Trade rdfs:label "trade" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:TradeReview rdfs:subClassOf ns1:Review .
+
+ns1:producer_1 a ns1:Producer ;
+    rdfs:label "producer" ;
+    quant:hasDeterminer quant:the .
+
+ns1:review_1 a ns1:TradeReview ;
+    rdfs:label "reviews" ;
+    dul:associatedWith ns1:Broadway ;
+    dul:hasQuality ns1:Mixed ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Due,
+        ns1:change_1,
+        ns1:review_2 ;
+    ns1:to ns1:change_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Due,
+        ns1:review_2 ;
+    dul:hasQuality ns1:Embarrassing .
+
+ns1:Mixed rdfs:label "mixed" .
+
+ns1:Review rdfs:label "Broadway",
+        "reviews" .
+
+ns1:change_1 a ns1:SignificantChange ;
+    rdfs:label "changes" ;
+    dul:hasQuality ns1:Significant ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:inScriptOf ns1:producer_1 .
+
+ns1:review_2 a ns1:PositiveReview ;
+    rdfs:label "reviews" ;
+    dul:hasQuality ns1:Due,
+        ns1:Positive ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Due rdfs:label "due" .
+

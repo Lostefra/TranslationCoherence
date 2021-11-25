@@ -1,0 +1,150 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence798.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence798.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence798" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence798" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:At rdfs:label "at" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:Quantity rdfs:label "many" .
+
+ns1:docuverse earmark:hasContent "Boas used his positions at Columbia_University and the American_Museum_of_Natural_History to train and develop many generations of students."^^xsd:string .
+
+ns1:male_1 coref:coref ns1:Boas .
+
+ns1:use_1 a ns1:Use ;
+    rdfs:label "used" ;
+    boxer:theme ns1:situation_1,
+        ns1:situation_2 ;
+    vn.role:Agent ns1:Boas ;
+    vn.role:Theme ns1:american_museum_of_natural_history_1,
+        ns1:position_1 .
+
+dbpedia:American_Museum_of_Natural_History rdfs:subClassOf schema:Museum,
+        schema:Place .
+
+dbpedia:Columbia_University rdfs:subClassOf schema:CollegeOrUniversity,
+        schema:EducationalOrganization,
+        schema:Organization .
+
+ns1:American_museum_of_natural_history a owl:Class ;
+    rdfs:label "American Museum of Natural History" ;
+    owl:equivalentClass dbpedia:American_Museum_of_Natural_History .
+
+ns1:ColumbiaUniversity rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Columbia_university a owl:Class ;
+    rdfs:label "Columbia University" ;
+    rdfs:subClassOf ns1:ColumbiaUniversity ;
+    owl:equivalentClass dbpedia:Columbia_University .
+
+ns1:Develop rdfs:label "develop" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Generation rdfs:label "generations" .
+
+ns1:Male rdfs:label "Boas" .
+
+ns1:Position rdfs:label "positions" .
+
+ns1:Student rdfs:label "students" .
+
+ns1:Train rdfs:label "train" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Use rdfs:label "used" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:american_museum_of_natural_history_1 a ns1:American_museum_of_natural_history ;
+    rdfs:label "American Museum of Natural History" .
+
+ns1:columbia_university_1 a ns1:Columbia_university ;
+    rdfs:label "Columbia University" .
+
+ns1:position_1 a ns1:Position ;
+    rdfs:label "positions" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:at ns1:columbia_university_1 ;
+    ns1:positionOf ns1:Boas .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:develop_1,
+        ns1:generation_1,
+        ns1:student_1,
+        ns1:train_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:develop_1,
+        ns1:generation_1,
+        ns1:student_1,
+        ns1:train_1 .
+
+ns1:develop_1 a ns1:Develop ;
+    rdfs:label "develop" ;
+    vn.role:Agent ns1:Boas ;
+    vn.role:Product ns1:generation_1 .
+
+ns1:train_1 a ns1:Train ;
+    rdfs:label "train" ;
+    vn.role:Agent ns1:Boas ;
+    vn.role:Theme ns1:generation_1 .
+
+ns1:student_1 a ns1:Student ;
+    rdfs:label "students" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:generation_1 a ns1:Generation ;
+    rdfs:label "generations" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:many,
+        quant:multiple ;
+    ns1:generationOf ns1:student_1 .
+
+ns1:Boas a ns1:Male ;
+    rdfs:label "Boas",
+        "his" ;
+    boxer:possibleType foaf:Person .
+

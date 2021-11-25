@@ -1,0 +1,150 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence272.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "In" .
+
+translation_coherence:en_sentence272.ttl a owl:Ontology ;
+    rdfs:label "en_sentence272" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence272" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "In 1830, fearing a milk sickness outbreak, the family settled on public land in Macon_County, Ill.."^^xsd:string .
+
+ns1:fear_1 a ns1:Fear ;
+    rdfs:label "fearing" ;
+    vn.role:Experiencer ns1:thing_1 ;
+    vn.role:Theme ns1:outbreak_1 .
+
+ns1:milk_1 a ns1:Milk ;
+    rdfs:label "milk" ;
+    dul:associatedWith ns1:outbreak_1,
+        ns1:sickness_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:settle_1 a ns1:Settle ;
+    rdfs:label "settled" ;
+    vn.role:Location "1830-01-01"^^xsd:date ;
+    vn.role:Theme ns1:family_1 ;
+    ns1:on ns1:land_1 .
+
+ns1:Family rdfs:label "family" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Fear rdfs:label "fearing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Ill rdfs:label "Ill" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Land a owl:Class ;
+    rdfs:label "land" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Macon_county rdfs:label "Macon County" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Ill ;
+    owl:sameAs <http://dbpedia.org/resource/Macon_County,_Illinois> .
+
+ns1:MilkSicknessOutbreak a owl:Class ;
+    rdfs:label "milk sickness outbreak" ;
+    dul:associatedWith ns1:MilkSickness ;
+    rdfs:subClassOf ns1:SicknessOutbreak .
+
+ns1:Outbreak a owl:Class ;
+    rdfs:label "outbreak" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:PublicLand a owl:Class ;
+    rdfs:label "public land" ;
+    dul:hasQuality ns1:Public ;
+    rdfs:subClassOf ns1:Land .
+
+ns1:Settle rdfs:label "settled" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:SicknessOutbreak a owl:Class ;
+    rdfs:label "Sickness Outbreak" ;
+    dul:associatedWith ns1:Sickness ;
+    rdfs:subClassOf ns1:Outbreak .
+
+ns1:family_1 a ns1:Family ;
+    rdfs:label "family" ;
+    quant:hasDeterminer quant:the .
+
+ns1:land_1 a ns1:PublicLand ;
+    rdfs:label "land" ;
+    dul:hasQuality ns1:Public ;
+    ns1:locatedIn ns1:Macon_county .
+
+ns1:sickness_1 a ns1:MilkSickness ;
+    rdfs:label "sickness" ;
+    dul:associatedWith ns1:outbreak_1 .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:Milk a owl:Class ;
+    rdfs:label "milk" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:MilkSickness a owl:Class ;
+    rdfs:label "Milk Sickness" ;
+    dul:associatedWith ns1:Milk ;
+    rdfs:subClassOf dul:Situation,
+        ns1:Sickness ;
+    owl:equivalentClass dbpedia:Milk_sickness .
+
+ns1:Public a owl:Class ;
+    rdfs:label "public" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Sickness a owl:Class ;
+    rdfs:label "sickness" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:outbreak_1 a ns1:MilkSicknessOutbreak ;
+    rdfs:label "outbreak" .
+

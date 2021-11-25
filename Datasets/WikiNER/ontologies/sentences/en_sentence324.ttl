@@ -1,0 +1,148 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence324.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "across" .
+
+vn.role:Theme1 rdfs:label "by" .
+
+translation_coherence:en_sentence324.ttl a owl:Ontology ;
+    rdfs:label "en_sentence324" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence324" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:cause_1 a ns1:Cause ;
+    rdfs:label "caused" ;
+    vn.role:Theme1 ns1:debate_1 ;
+    vn.role:Theme2 ns1:danger_1 .
+
+ns1:create_1 a ns1:Create ;
+    rdfs:label "created" ;
+    vn.role:Agent ns1:The_speech ;
+    vn.role:Product ns1:image_1 .
+
+ns1:docuverse earmark:hasContent "The_speech created an evocative image of the danger of disunion caused by the slavery debate, and rallied Republicans across the north."^^xsd:string .
+
+ns1:rally_1 a ns1:Rally ;
+    rdfs:label "rallied" ;
+    vn.role:Agent ns1:The_speech ;
+    vn.role:Location ns1:north_1 ;
+    vn.role:Theme ns1:Republicans .
+
+ns1:slavery_1 a ns1:Slavery ;
+    rdfs:label "slavery" ;
+    dul:associatedWith ns1:debate_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:Cause rdfs:label "caused" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Create rdfs:label "created" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Danger rdfs:label "danger" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Debate a owl:Class ;
+    rdfs:label "debate" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Disunion rdfs:label "disunion" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Evocative a owl:Class ;
+    rdfs:label "evocative" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:EvocativeImage a owl:Class ;
+    rdfs:label "evocative image" ;
+    dul:hasQuality ns1:Evocative ;
+    rdfs:subClassOf ns1:Image .
+
+ns1:Image a owl:Class ;
+    rdfs:label "image" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:North rdfs:label "north" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Rally rdfs:label "rallied" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Republicans rdfs:label "Republicans" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:History_of_the_United_States_Republican_Party .
+
+ns1:SlaveryDebate a owl:Class ;
+    rdfs:label "slavery debate" ;
+    dul:associatedWith ns1:Slavery ;
+    rdfs:subClassOf ns1:Debate .
+
+ns1:disunion_1 a ns1:Disunion ;
+    rdfs:label "disunion" .
+
+ns1:image_1 a ns1:EvocativeImage ;
+    rdfs:label "image" ;
+    quant:hasDeterminer quant:an ;
+    ns1:evocativeImageOf ns1:danger_1 .
+
+ns1:north_1 a ns1:North ;
+    rdfs:label "north" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Slavery a owl:Class ;
+    rdfs:label "slavery" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Slavery .
+
+ns1:The_speech rdfs:label "The speech" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Gerald_Ratner .
+
+ns1:danger_1 a ns1:Danger ;
+    rdfs:label "danger" ;
+    quant:hasDeterminer quant:the ;
+    ns1:dangerOf ns1:disunion_1 .
+
+ns1:debate_1 a ns1:SlaveryDebate ;
+    rdfs:label "debate" .
+

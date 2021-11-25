@@ -1,0 +1,175 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence573.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme2 rdfs:label "to" .
+
+translation_coherence:en_sentence573.ttl a owl:Ontology ;
+    rdfs:label "en_sentence573" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence573" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Because rdfs:label "because" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "'",
+        "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "Once von Mises referred to Rand as the most courageous man in America, a compliment that particularly pleased her because he said' man' instead of' woman'."^^xsd:string .
+
+ns1:please_1 a dbpedia:The_Pleased,
+        ns1:ParticularlyPlease ;
+    rdfs:label "pleased" ;
+    dul:hasQuality ns1:Particularly ;
+    vn.role:Cause ns1:compliment_1 ;
+    vn.role:Experiencer ns1:Von_mises ;
+    ns1:because ns1:say_1 .
+
+ns1:refer_1 a ns1:Refer ;
+    rdfs:label "referred" ;
+    dul:hasQuality ns1:Once ;
+    vn.role:Theme1 ns1:Von_mises ;
+    vn.role:Theme2 ns1:Rand ;
+    ns1:as ns1:instead_1 .
+
+ns1:woman_1 a ns1:Woman ;
+    rdfs:label "woman" ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27_1> .
+
+dbpedia:Americas a schema:Continent,
+        schema:Place .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27> rdfs:label "'" .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27Woman%27> rdfs:subClassOf ns1:Woman%27 .
+
+ns1:America rdfs:label "America" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:compliment_1 ;
+    owl:sameAs dbpedia:Americas .
+
+ns1:Compliment rdfs:label "compliment" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Courageous a owl:Class ;
+    rdfs:label "courageous" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:CourageousMan a owl:Class ;
+    rdfs:label "courageous man" ;
+    dul:hasQuality ns1:Courageous ;
+    rdfs:subClassOf ns1:Man .
+
+ns1:Female rdfs:label "her" .
+
+ns1:Instead rdfs:label "instead" .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Most rdfs:label "most" .
+
+ns1:MostCourageousMan a owl:Class ;
+    rdfs:label "most courageous man" ;
+    rdfs:subClassOf ns1:CourageousMan .
+
+ns1:Once rdfs:label "Once" .
+
+ns1:Particularly rdfs:label "particularly" .
+
+ns1:ParticularlyPlease rdfs:subClassOf ns1:Please .
+
+ns1:Please rdfs:label "pleased" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Refer rdfs:label "referred" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Say rdfs:label "said" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Woman rdfs:label "woman" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Woman%27 rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27> .
+
+ns1:instead_1 a ns1:Instead ;
+    rdfs:label "instead" ;
+    ns1:insteadOf <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27_1>,
+        ns1:man_2 .
+
+ns1:man_1 a ns1:MostCourageousMan ;
+    rdfs:label "man" ;
+    dul:hasQuality ns1:Most ;
+    quant:hasDeterminer quant:the ;
+    ns1:locatedIn ns1:America .
+
+ns1:man_2 a ns1:Man ;
+    rdfs:label "man" ;
+    ns1:manOf ns1:man_1 .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "said" ;
+    vn.role:Agent ns1:Rand .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27_1> a <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27Woman%27> ;
+    rdfs:label "'" .
+
+ns1:Man a owl:Class ;
+    rdfs:label "Man",
+        "man" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Male .
+
+ns1:Von_mises rdfs:label "von Mises" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Female .
+
+ns1:compliment_1 a ns1:Compliment ;
+    rdfs:label "compliment" ;
+    quant:hasDeterminer quant:a .
+

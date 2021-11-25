@@ -1,0 +1,211 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence31.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:zh_sentence31.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence31" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence31" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:At rdfs:label "At" .
+
+ns1:During rdfs:label "during" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of",
+        "our",
+        "your" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "At the outset, I would like to express to you, Mr. President, that you have retained your words and that, during the first part of the new year, the number of television channels in our offices has actually increased."^^xsd:string .
+
+ns1:increase_1 a ns1:ActuallyIncrease ;
+    rdfs:label "increased" ;
+    dul:hasQuality ns1:Actually ;
+    vn.role:Patient ns1:number_1 ;
+    ns1:during ns1:part_1 .
+
+ns1:like_1 a ns1:Like ;
+    rdfs:label "like" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:associatedWith ns1:outset_1 ;
+    vn.role:Experiencer ns1:person_3 ;
+    vn.role:Theme ns1:express_1 .
+
+ns1:retain_1 a ns1:Retain ;
+    rdfs:label "retained" ;
+    boxer:agent ns1:person_5 ;
+    boxer:patient ns1:word_1 ;
+    ns1:at ns1:outset_1 .
+
+ns1:television_1 a ns1:Television ;
+    rdfs:label "television" ;
+    dul:associatedWith ns1:channel_1 .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> rdfs:label "Mr." ;
+    boxer:possibleType dul:Role .
+
+ns1:Actually rdfs:label "actually" .
+
+ns1:ActuallyIncrease rdfs:subClassOf ns1:Increase .
+
+ns1:Channel rdfs:label "channels" .
+
+ns1:Express rdfs:label "express" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:First a owl:Class ;
+    rdfs:label "first" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FirstPart a owl:Class ;
+    rdfs:label "first part" ;
+    dul:hasQuality ns1:First ;
+    rdfs:subClassOf ns1:Part .
+
+ns1:Increase rdfs:label "increased" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Like rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:New a owl:Class ;
+    rdfs:label "new" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:NewYear a owl:Class ;
+    rdfs:label "new year" ;
+    dul:hasQuality ns1:New ;
+    rdfs:subClassOf ns1:Year .
+
+ns1:Number rdfs:label "number" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Office rdfs:label "offices" .
+
+ns1:Outset rdfs:label "outset" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:Part a owl:Class ;
+    rdfs:label "part" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:President rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    owl:sameAs dbpedia:President .
+
+ns1:Retain rdfs:label "retained" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Television rdfs:label "television" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:TelevisionChannel rdfs:subClassOf ns1:Channel .
+
+ns1:Word rdfs:label "words" .
+
+ns1:Year a owl:Class ;
+    rdfs:label "year" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:express_1 a ns1:Express ;
+    rdfs:label "express" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_3 ;
+    vn.role:Recipient ns1:person_4 .
+
+ns1:number_1 a ns1:Number ;
+    rdfs:label "number" ;
+    quant:hasDeterminer quant:the ;
+    ns1:in ns1:office_1 ;
+    ns1:numberOf ns1:channel_1 .
+
+ns1:office_1 a ns1:Office ;
+    rdfs:label "offices" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:officeOf ns1:person_2 .
+
+ns1:part_1 a ns1:FirstPart ;
+    rdfs:label "part" ;
+    quant:hasDeterminer quant:the ;
+    ns1:firstPartOf ns1:year_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "your" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "our" .
+
+ns1:person_4 a ns1:Person ;
+    rdfs:label "you" ;
+    dul:associatedWith ns1:President .
+
+ns1:person_5 a ns1:Person ;
+    rdfs:label "you" .
+
+ns1:word_1 a dbpedia:In_Your_Words,
+        ns1:Word ;
+    rdfs:label "words" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:wordOf ns1:person_1 .
+
+ns1:year_1 a ns1:NewYear ;
+    rdfs:label "year" ;
+    quant:hasDeterminer quant:the .
+
+ns1:channel_1 a ns1:TelevisionChannel ;
+    rdfs:label "channels" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:outset_1 a ns1:Outset ;
+    rdfs:label "outset" ;
+    quant:hasDeterminer quant:the .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:Person rdfs:label "I",
+        "you" .
+

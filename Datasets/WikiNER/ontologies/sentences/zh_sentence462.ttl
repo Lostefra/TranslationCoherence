@@ -1,0 +1,124 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence462.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Predicate rdfs:label "for" .
+
+translation_coherence:zh_sentence462.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence462" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence462" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Quantity rdfs:label "Many" .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "Many Touratu names are in the modern period, such as cars used for fruits, and resistance to seeds."^^xsd:string .
+
+ns1:name_1 a ns1:Name ;
+    rdfs:label "names" ;
+    dul:associatedWith ns1:Touratu ;
+    quant:hasQuantifier quant:multiple ;
+    owl:sameAs ns1:period_1 ;
+    ns1:in ns1:period_1 .
+
+ns1:use_1 a ns1:Use ;
+    rdfs:label "used" ;
+    vn.role:Predicate ns1:fruit_1 ;
+    vn.role:Theme ns1:car_1 .
+
+ns1:Car rdfs:label "cars" .
+
+ns1:Fruit rdfs:label "fruits" .
+
+ns1:Modern a owl:Class ;
+    rdfs:label "modern" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ModernPeriod a owl:Class ;
+    rdfs:label "modern period" ;
+    dul:hasQuality ns1:Modern ;
+    rdfs:subClassOf ns1:Period .
+
+ns1:Name rdfs:label "names" .
+
+ns1:Resistance rdfs:label "resistance" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Seed rdfs:label "seeds" .
+
+ns1:Touratu rdfs:label "Touratu" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Use rdfs:label "used" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:fruit_1 a ns1:Fruit ;
+    rdfs:label "fruits" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:resistance_1 a ns1:Resistance ;
+    rdfs:label "resistance" ;
+    ns1:to ns1:seed_1 .
+
+ns1:seed_1 a ns1:Seed ;
+    rdfs:label "seeds" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Period a owl:Class ;
+    rdfs:label "period" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:car_1 a ns1:Car ;
+    rdfs:label "cars" ;
+    quant:hasDeterminer quant:such ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:period_1 a ns1:ModernPeriod,
+        ns1:Period ;
+    rdfs:label "period" ;
+    quant:hasDeterminer quant:the ;
+    ns1:as ns1:car_1,
+        ns1:resistance_1 .
+

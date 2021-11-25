@@ -1,0 +1,168 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence640.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence640.ttl a owl:Ontology ;
+    rdfs:label "en_sentence640" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence640" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "of",
+        "their" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:To rdfs:label "to" .
+
+ns1:business_1 a ns1:Business ;
+    rdfs:label "business" ;
+    dul:associatedWith ns1:situation_1,
+        ns1:world_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:docuverse earmark:hasContent "In the business world, Mark_Cuban, owner of the Dallas_Mavericks, and John P. Mackey, CEO of Whole_Foods, have said they consider Rand crucial to their success."^^xsd:string .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "said" ;
+    vn.role:Agent ns1:John_p._mackey,
+        ns1:Mark_cuban ;
+    vn.role:Topic ns1:consider_1 ;
+    ns1:in ns1:world_1 .
+
+dbpedia:Ayn_Rand a schema:Person .
+
+ns1:BusinessWorld a owl:Class ;
+    rdfs:label "Business World" ;
+    dul:associatedWith ns1:Business ;
+    rdfs:subClassOf ns1:World .
+
+ns1:Ceo rdfs:label "CEO" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Chief_executive_officer ;
+    ns1:of ns1:whole_foods_1 .
+
+ns1:Consider rdfs:label "consider" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Dallas_mavericks rdfs:label "Dallas Mavericks" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Dallas_Mavericks .
+
+ns1:John_p._mackey rdfs:label "John P. Mackey" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith ns1:Ceo .
+
+ns1:Mark_cuban rdfs:label "Mark Cuban" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith ns1:owner_1 ;
+    owl:sameAs dbpedia:Mark_Cuban .
+
+ns1:Owner rdfs:label "owner" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Say rdfs:label "said" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Success rdfs:label "success" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Whole_foods a owl:Class ;
+    rdfs:label "Whole Foods" ;
+    owl:equivalentClass dbpedia:Whole_Foods_Market .
+
+ns1:World a owl:Class ;
+    rdfs:label "world" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:consider_1 a ns1:Consider ;
+    rdfs:label "consider" ;
+    vn.role:Agent ns1:thing_3 ;
+    vn.role:Theme ns1:situation_1,
+        ns1:situation_2 .
+
+ns1:owner_1 a ns1:Owner ;
+    rdfs:label "owner" ;
+    ns1:ownerOf ns1:Dallas_mavericks .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Crucial,
+        ns1:Rand ;
+    ns1:to ns1:success_1 .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "their" .
+
+ns1:thing_3 a owl:Thing ;
+    rdfs:label "they" .
+
+ns1:whole_foods_1 a ns1:Whole_foods ;
+    rdfs:label "Whole Foods" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Business a owl:Class ;
+    rdfs:label "business" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Crucial ;
+    owl:sameAs dbpedia:Ayn_Rand .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Crucial,
+        ns1:Rand ;
+    ns1:to ns1:success_1 .
+
+ns1:success_1 a ns1:Success ;
+    rdfs:label "success" ;
+    ns1:successOf ns1:thing_1,
+        ns1:thing_2 .
+
+ns1:world_1 a ns1:BusinessWorld ;
+    rdfs:label "world" .
+
+ns1:Crucial rdfs:label "crucial" .
+
+owl:Thing rdfs:label "they" .
+

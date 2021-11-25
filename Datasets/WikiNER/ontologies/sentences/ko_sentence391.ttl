@@ -1,0 +1,120 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence391.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Stimulus rdfs:label "for" .
+
+translation_coherence:ko_sentence391.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence391" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence391" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In",
+        "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:die_1 a ns1:Die ;
+    rdfs:label "died" ;
+    vn.role:Theme ns1:slave_1 .
+
+ns1:docuverse earmark:hasContent "In this time, the victory of rebels was in hand, the slave died, the Lincoln was looking for the future."^^xsd:string .
+
+ns1:look_1 a ns1:Look ;
+    rdfs:label "looking" ;
+    vn.role:Experiencer ns1:Lincoln ;
+    vn.role:Stimulus ns1:future_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Hand,
+        ns1:hand_1 ;
+    ns1:in ns1:time_1 .
+
+ns1:victory_1 a ns1:Victory ;
+    rdfs:label "victory" ;
+    quant:hasDeterminer quant:the ;
+    ns1:in ns1:hand_1 ;
+    ns1:victoryOf ns1:rebel_1 .
+
+ns1:Die rdfs:label "died" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Future rdfs:label "future" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Look rdfs:label "looking" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Rebel rdfs:label "rebels" .
+
+ns1:Slave rdfs:label "slave" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Time rdfs:label "time" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Victory rdfs:label "victory" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:future_1 a ns1:Future ;
+    rdfs:label "future" ;
+    quant:hasDeterminer quant:the .
+
+ns1:rebel_1 a ns1:Rebel ;
+    rdfs:label "rebels" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:slave_1 a ns1:Slave ;
+    rdfs:label "slave" ;
+    quant:hasDeterminer quant:the .
+
+ns1:time_1 a ns1:Time ;
+    rdfs:label "time" ;
+    quant:hasDeterminer quant:this .
+
+ns1:Hand rdfs:label "hand" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:hand_1 a ns1:Hand ;
+    rdfs:label "hand" .
+

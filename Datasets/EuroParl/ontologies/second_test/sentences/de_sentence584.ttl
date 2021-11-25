@@ -1,0 +1,156 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence584.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence584.ttl a owl:Ontology ;
+    rdfs:label "de_sentence584" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence584" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:More rdfs:label "more" .
+
+ns1:Of rdfs:label "of",
+        "their" .
+
+ns1:be_1 a ns1:Be ;
+    rdfs:label "is" ;
+    boxer:agent ns1:conclusion_1 ;
+    boxer:theme ns1:situation_1 .
+
+ns1:docuverse earmark:hasContent "The negative conclusion is that major efforts to harmonise GDP and the productivity of European regions have been more efficient than in harmonising their unemployment."^^xsd:string .
+
+ns1:Be rdfs:label "is" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Conclusion a owl:Class ;
+    rdfs:label "conclusion" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Efficient rdfs:label "efficient" .
+
+ns1:Effort rdfs:label "efforts" .
+
+ns1:European rdfs:label "European" .
+
+ns1:EuropeanRegion rdfs:subClassOf ns1:Region .
+
+ns1:Gdp rdfs:label "GDP" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Gross_domestic_product .
+
+ns1:Major rdfs:label "major" .
+
+ns1:MajorEffort rdfs:subClassOf ns1:Effort .
+
+ns1:Negative a owl:Class ;
+    rdfs:label "negative" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:NegativeConclusion a owl:Class ;
+    rdfs:label "negative conclusion" ;
+    dul:hasQuality ns1:Negative ;
+    rdfs:subClassOf ns1:Conclusion .
+
+ns1:Productivity a owl:Class ;
+    rdfs:label "productivity" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Productivity .
+
+ns1:Region rdfs:label "regions" .
+
+ns1:Unemployment a owl:Class ;
+    rdfs:label "unemployment" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Unemployment .
+
+ns1:conclusion_1 a ns1:NegativeConclusion ;
+    rdfs:label "conclusion" ;
+    quant:hasDeterminer quant:the .
+
+ns1:harmonise_1 a ns1:Harmonise ;
+    rdfs:label "harmonise" ;
+    boxer:agent ns1:effort_1 ;
+    boxer:patient ns1:Gdp,
+        ns1:productivity_1 .
+
+ns1:harmonise_2 a ns1:Harmonise ;
+    rdfs:label "harmonising" ;
+    boxer:agent ns1:thing_2 ;
+    boxer:patient ns1:unemployment_1 .
+
+ns1:productivity_1 a ns1:Productivity ;
+    rdfs:label "productivity" ;
+    quant:hasDeterminer quant:the ;
+    ns1:productivityOf ns1:region_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:effort_1,
+        ns1:harmonise_1,
+        ns1:harmonise_2,
+        ns1:region_1 .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:thing_2 a owl:Thing .
+
+ns1:thing_3 a owl:Thing .
+
+ns1:unemployment_1 a ns1:Unemployment ;
+    rdfs:label "unemployment" .
+
+ns1:Harmonise rdfs:label "harmonise",
+        "harmonising" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:effort_1 a ns1:MajorEffort ;
+    rdfs:label "efforts" ;
+    dul:hasQuality ns1:Efficient,
+        ns1:Major ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:inUnemploymentOf ns1:thing_1 ;
+    ns1:more ns1:thing_3 .
+
+ns1:region_1 a ns1:EuropeanRegion ;
+    rdfs:label "regions" ;
+    dul:hasQuality ns1:European ;
+    quant:hasQuantifier quant:multiple .
+

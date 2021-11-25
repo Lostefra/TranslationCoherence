@@ -1,0 +1,219 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence148.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence148.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence148" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence148" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "As",
+        "as" .
+
+ns1:From rdfs:label "from" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:Quantity rdfs:label "many" .
+
+ns1:Where rdfs:label "where" .
+
+ns1:austrian_1 a ns1:Austrian ;
+    rdfs:label "Austrian" ;
+    ns1:as ns1:have_1 .
+
+ns1:docuverse earmark:hasContent "As an Austrian, I have another vibrant reminder, as I believe, we all do, from the catastrophe that cost so many people's lives last year in the Tauern_Tunnel, where subsequent work is destroyed in many tunnels."^^xsd:string .
+
+ns1:Austrian a owl:Class ;
+    rdfs:label "Austrian" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Austrians .
+
+ns1:Believe rdfs:label "believe" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Catastrophe rdfs:label "catastrophe" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Cost rdfs:label "cost" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Destroy rdfs:label "destroyed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Do rdfs:label "do" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Last rdfs:label "last" .
+
+ns1:Life rdfs:label "lives" .
+
+ns1:People rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:So rdfs:label "so" .
+
+ns1:Subsequent a owl:Class ;
+    rdfs:label "subsequent" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SubsequentWork a owl:Class ;
+    rdfs:label "Subsequent Work" ;
+    dul:hasQuality ns1:Subsequent ;
+    rdfs:subClassOf ns1:Work .
+
+ns1:Tauern_tunnel rdfs:label "Tauern Tunnel" ;
+    boxer:possibleType time:Interval ;
+    owl:sameAs dbpedia:Tauern_Railway_Tunnel ;
+    ns1:where ns1:destroy_1 .
+
+ns1:Tunnel rdfs:label "tunnels" .
+
+ns1:Vibrant a owl:Class ;
+    rdfs:label "vibrant" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:VibrantReminder a owl:Class ;
+    rdfs:label "Vibrant Reminder" ;
+    dul:hasQuality ns1:Vibrant ;
+    rdfs:subClassOf ns1:Reminder .
+
+ns1:Work a owl:Class ;
+    rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Year rdfs:label "year" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:believe_1 a ns1:Believe ;
+    rdfs:label "believe" ;
+    vn.role:Agent ns1:person_2 .
+
+ns1:cost_1 a ns1:Cost ;
+    rdfs:label "cost" ;
+    dul:associatedWith ns1:year_1 ;
+    dul:hasQuality ns1:Last ;
+    vn.role:Theme ns1:catastrophe_1 ;
+    vn.role:Value ns1:life_1 ;
+    ns1:in ns1:Tauern_tunnel .
+
+ns1:do_1 a ns1:Do ;
+    rdfs:label "do" ;
+    boxer:agent ns1:person_3 ;
+    ns1:from ns1:catastrophe_1 .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "have" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Patient ns1:reminder_1 ;
+    ns1:as ns1:situation_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:reminder_1 a ns1:Reminder ;
+    owl:differentFrom ns1:reminder_2 .
+
+ns1:reminder_2 a ns1:VibrantReminder ;
+    rdfs:label "reminder" ;
+    quant:hasDeterminer quant:an,
+        quant:another .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:believe_1,
+        ns1:cost_1,
+        ns1:destroy_1,
+        ns1:do_1,
+        ns1:life_1,
+        ns1:people_1,
+        ns1:tunnel_1,
+        ns1:work_1,
+        ns1:year_1 .
+
+ns1:Reminder a owl:Class ;
+    rdfs:label "reminder" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:catastrophe_1 a ns1:Catastrophe ;
+    rdfs:label "catastrophe" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:all .
+
+ns1:destroy_1 a ns1:Destroy ;
+    rdfs:label "destroyed" ;
+    vn.role:Patient ns1:work_1 ;
+    ns1:in ns1:tunnel_1 .
+
+ns1:life_1 a ns1:Life ;
+    rdfs:label "lives" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:lifeOf ns1:people_1 .
+
+ns1:people_1 a ns1:People ;
+    rdfs:label "people" ;
+    dul:hasQuality ns1:So ;
+    quant:hasQuantifier quant:many,
+        quant:multiple .
+
+ns1:tunnel_1 a ns1:Tunnel ;
+    rdfs:label "tunnels" ;
+    quant:hasQuantifier quant:many,
+        quant:multiple .
+
+ns1:work_1 a ns1:SubsequentWork ;
+    rdfs:label "work" .
+
+ns1:year_1 a ns1:Year ;
+    rdfs:label "year" .
+
+ns1:Person rdfs:label "I",
+        "we" .
+

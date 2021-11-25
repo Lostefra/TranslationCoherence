@@ -1,0 +1,133 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence671.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:zh_sentence671.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence671" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence671" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:In rdfs:label "In",
+        "in" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:Quantity rdfs:label "many" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:advocate_1 a ns1:HighlyAdvocate ;
+    rdfs:label "advocated" ;
+    dul:hasQuality ns1:Highly .
+
+ns1:docuverse earmark:hasContent "In his long-term and successful career in 50 years, he spent 400 motions, many of which were highly advocated, such as the Integral Office of 1949, Iwo_Jima Christmas."^^xsd:string .
+
+ns1:spend_1 a ns1:Spend ;
+    rdfs:label "spent" ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Theme ns1:motion_1 ;
+    ns1:in ns1:career_1 .
+
+ns1:Advocate rdfs:label "advocated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Career a owl:Class ;
+    rdfs:label "career" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Highly rdfs:label "highly" .
+
+ns1:HighlyAdvocate rdfs:subClassOf ns1:Advocate .
+
+ns1:Integral_office rdfs:label "Integral Office" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:Iwo_jima_christmas ;
+    ns1:of "1949-01-01"^^xsd:date .
+
+ns1:Iwo_jima_christmas rdfs:label "Iwo Jima Christmas" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Long-term rdfs:label "long-term" .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Motion rdfs:label "motions" .
+
+ns1:Spend rdfs:label "spent" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Successful a owl:Class ;
+    rdfs:label "successful" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SuccessfulCareer a owl:Class ;
+    rdfs:label "Successful Career" ;
+    dul:hasQuality ns1:Successful ;
+    rdfs:subClassOf ns1:Career .
+
+ns1:Year rdfs:label "years" .
+
+ns1:career_1 a ns1:SuccessfulCareer ;
+    rdfs:label "career" ;
+    dul:hasQuality ns1:Long-term ;
+    ns1:in ns1:year_1 ;
+    ns1:successfulCareerOf ns1:male_1 .
+
+ns1:motion_1 a ns1:Motion ;
+    rdfs:label "motions" ;
+    dul:hasDataValue "400"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:as ns1:Integral_office .
+
+ns1:year_1 a ns1:Year ;
+    rdfs:label "years" ;
+    dul:hasDataValue "50"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "he",
+        "his" ;
+    coref:coref ns1:male_1 .
+

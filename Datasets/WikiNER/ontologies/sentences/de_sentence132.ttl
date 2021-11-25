@@ -1,0 +1,227 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence132.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence132.ttl a owl:Ontology ;
+    rdfs:label "de_sentence132" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence132" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Industrial rdfs:label "industrial" ;
+    owl:sameAs dbpedia:Industry .
+
+ns1:Rel rdfs:label "(",
+        "," .
+
+ns1:car_1 a dbpedia:Car ;
+    rdfs:label "cars" .
+
+ns1:cast_1 a ns1:Cast ;
+    rdfs:label "cast" ;
+    dul:associatedWith ns1:iron_2 .
+
+ns1:clothing_1 rdfs:label "clothing" .
+
+ns1:docuverse earmark:hasContent "'industrial productions' include iron and steel products (including cast iron and steel tubes), paper, luchs and wood products, mining (mostly coal), plastic products, cars and trucks and clothing."^^xsd:string .
+
+ns1:include_1 a ns1:Include ;
+    rdfs:label "include" ;
+    vn.role:Agent <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27_1> ;
+    vn.role:Theme ns1:iron_1 .
+
+ns1:product_1 rdfs:label "products" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:production_1 a ns1:Production ;
+    rdfs:label "productions" ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27_1> ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:steel_1 a ns1:Steel ;
+    rdfs:label "steel" ;
+    dul:associatedWith ns1:iron_1 .
+
+ns1:steel_2 a ns1:Steel ;
+    rdfs:label "steel" ;
+    dul:associatedWith ns1:tube_1 .
+
+ns1:truck_1 a dbpedia:Truck ;
+    rdfs:label "trucks" .
+
+ns1:wood_1 a ns1:Wood ;
+    rdfs:label "wood" ;
+    dul:associatedWith ns1:product_2 .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27> rdfs:label "'" .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27IndustrialProduction%27> rdfs:subClassOf ns1:IndustrialProduction%27 .
+
+ns1:Car rdfs:label "cars" .
+
+ns1:Cast rdfs:label "cast" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:CastIron a owl:Class ;
+    rdfs:label "Cast Iron" ;
+    rdfs:subClassOf ns1:Iron ;
+    owl:equivalentClass dbpedia:Cast_iron .
+
+ns1:Clothing a owl:Class ;
+    rdfs:label "clothing" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Clothing .
+
+ns1:Coal a owl:Class ;
+    rdfs:label "coal" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Coal .
+
+ns1:Include rdfs:label "include",
+        "including" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:IndustrialProduction%27 rdfs:subClassOf ns1:Production%27 .
+
+ns1:Luch rdfs:label "luchs" .
+
+ns1:Mining a owl:Class ;
+    rdfs:label "mining" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#System> ;
+    owl:equivalentClass dbpedia:Mining .
+
+ns1:Mostly a owl:Class ;
+    rdfs:label "mostly" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:MostlyCoal a owl:Class ;
+    rdfs:label "Mostly Coal" ;
+    dul:hasQuality ns1:Mostly ;
+    rdfs:subClassOf ns1:Coal .
+
+ns1:Paper a owl:Class ;
+    rdfs:label "paper" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Paper .
+
+ns1:Plastic rdfs:label "plastic" ;
+    owl:sameAs dbpedia:Plastic .
+
+ns1:PlasticProduct rdfs:subClassOf ns1:Product .
+
+ns1:Production rdfs:label "productions" .
+
+ns1:Production%27 rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27> .
+
+ns1:SteelProduct rdfs:subClassOf ns1:Product .
+
+ns1:SteelTube rdfs:subClassOf ns1:Tube .
+
+ns1:Truck rdfs:label "trucks" .
+
+ns1:Tube rdfs:label "tubes" .
+
+ns1:Wood a owl:Class ;
+    rdfs:label "wood" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Wood .
+
+ns1:WoodProduct rdfs:subClassOf ns1:Product .
+
+ns1:coal_1 a ns1:MostlyCoal ;
+    rdfs:label "coal" .
+
+ns1:luch_1 a ns1:Luch ;
+    rdfs:label "luchs" ;
+    dul:associatedWith ns1:mining_1 ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:product_3 a ns1:Car,
+        ns1:Clothing,
+        ns1:PlasticProduct,
+        ns1:Truck ;
+    rdfs:label "products" ;
+    dul:hasQuality ns1:Plastic ;
+    quant:hasQuantifier quant:multiple .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27_1> a <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27IndustrialProduction%27> ;
+    rdfs:label "'" .
+
+ns1:Iron rdfs:label "Iron",
+        "iron" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Steel a owl:Class ;
+    rdfs:label "steel" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Steel .
+
+ns1:iron_1 a ns1:Iron,
+        ns1:SteelProduct ;
+    rdfs:label "iron" ;
+    ns1:include ns1:iron_2,
+        ns1:tube_1 .
+
+ns1:iron_2 a ns1:CastIron ;
+    rdfs:label "iron" ;
+    dul:associatedWith ns1:paper_1 .
+
+ns1:mining_1 a ns1:Mining ;
+    rdfs:label "mining" ;
+    dul:associatedWith ns1:coal_1,
+        ns1:product_3 .
+
+ns1:paper_1 a ns1:Paper ;
+    rdfs:label "paper" ;
+    dul:associatedWith ns1:luch_1,
+        ns1:product_2 .
+
+ns1:product_2 a ns1:WoodProduct ;
+    rdfs:label "products" ;
+    dul:associatedWith ns1:mining_1 ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:tube_1 a dbpedia:Tire,
+        ns1:SteelTube ;
+    rdfs:label "tubes" ;
+    dul:associatedWith ns1:paper_1 ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Product rdfs:label "products" .
+

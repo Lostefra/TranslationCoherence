@@ -1,0 +1,139 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence711.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence711.ttl a owl:Ontology ;
+    rdfs:label "en_sentence711" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence711" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Include rdfs:label "including" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "(" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "The government responded with concessions including naming of Tamazight (Berber) as a national language and teaching it in schools."^^xsd:string .
+
+ns1:respond_1 a ns1:Respond ;
+    rdfs:label "responded" ;
+    vn.role:Agent ns1:government_1 ;
+    ns1:with ns1:concession_1 .
+
+ns1:Berber rdfs:label "Berber" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Berbers .
+
+ns1:Concession rdfs:label "concessions" .
+
+ns1:Government rdfs:label "government" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Language a owl:Class ;
+    rdfs:label "language" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Naming rdfs:label "naming" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:NationalLanguage a owl:Class ;
+    rdfs:label "National Language" ;
+    dul:hasQuality ns1:National ;
+    rdfs:subClassOf ns1:Language ;
+    owl:equivalentClass dbpedia:National_language .
+
+ns1:Respond rdfs:label "responded" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:School rdfs:label "schools" .
+
+ns1:Teach rdfs:label "teaching" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:concession_1 a ns1:Concession ;
+    rdfs:label "concessions" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:include ns1:naming_1 .
+
+ns1:government_1 a ns1:Government ;
+    rdfs:label "government" ;
+    quant:hasDeterminer quant:the .
+
+ns1:language_1 a ns1:NationalLanguage ;
+    rdfs:label "language" ;
+    dul:hasQuality ns1:National ;
+    quant:hasDeterminer quant:a .
+
+ns1:naming_1 a ns1:Naming ;
+    rdfs:label "naming" ;
+    ns1:as ns1:language_1,
+        ns1:teach_1 ;
+    ns1:namingOf ns1:Tamazight .
+
+ns1:school_1 a ns1:School ;
+    rdfs:label "schools" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:teach_1 a ns1:Teach ;
+    rdfs:label "teaching" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Topic ns1:Tamazight ;
+    ns1:in ns1:school_1 .
+
+ns1:thing_1 a owl:Thing .
+
+owl:Thing rdfs:label "it" .
+
+ns1:National a owl:Class ;
+    rdfs:label "national" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Tamazight rdfs:label "Tamazight" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:Berber ;
+    dul:hasQuality owl:Thing ;
+    owl:sameAs dbpedia:Berber_languages .
+

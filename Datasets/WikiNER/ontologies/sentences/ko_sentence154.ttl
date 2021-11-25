@@ -1,0 +1,118 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence154.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Elowest> rdfs:label "lowest" .
+
+translation_coherence:ko_sentence154.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence154" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence154" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:Lowest rdfs:label "lowest" .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:docuverse earmark:hasContent "[Required] Ala. 's threshold is the lowest of 41 weeks, and Columbia_District has income tax."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "has" ;
+    vn.role:Agent ns1:Columbia_district ;
+    vn.role:Patient ns1:tax_1 .
+
+ns1:income_1 a ns1:Income ;
+    rdfs:label "income" ;
+    dul:associatedWith ns1:tax_1 .
+
+ns1:thing_2 a owl:Thing,
+        ns1:Threshold ;
+    ns1:lowestAmong owl:Thing ;
+    ns1:lowestOf ns1:week_1 ;
+    ns1:thresholdOf <https://w3id.org/stlab/ke/amiala/ko_sentence154.ttl/Ala.> .
+
+ns1:threshold_1 rdfs:label "threshold" .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5B_required_%5D> boxer:possibleType time:Interval .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence154.ttl/Ala.> rdfs:label "Ala." ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5B_required_%5D> .
+
+ns1:Columbia_district rdfs:label "Columbia District" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Columbia_District .
+
+ns1:Have rdfs:label "has" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:IncomeTax a owl:Class ;
+    rdfs:label "income tax" ;
+    dul:associatedWith ns1:Income ;
+    rdfs:subClassOf ns1:Tax ;
+    owl:equivalentClass dbpedia:Income_tax .
+
+ns1:Tax a owl:Class ;
+    rdfs:label "tax" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Threshold rdfs:label "threshold" ;
+    rdfs:subClassOf dul:Amount,
+        owl:Thing .
+
+ns1:Week rdfs:label "weeks" .
+
+ns1:week_1 a ns1:Week ;
+    rdfs:label "weeks" ;
+    dul:hasDataValue "41"^^xsd:nonNegativeInteger ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Income a owl:Class ;
+    rdfs:label "income" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:tax_1 a ns1:IncomeTax ;
+    rdfs:label "tax" .
+

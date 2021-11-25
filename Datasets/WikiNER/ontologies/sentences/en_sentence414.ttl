@@ -1,0 +1,103 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence414.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Stimulus rdfs:label "including" .
+
+translation_coherence:en_sentence414.ttl a owl:Ontology ;
+    rdfs:label "en_sentence414" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence414" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:attend_1 a ns1:Attend ;
+    rdfs:label "attended" ;
+    boxer:patient ns1:Lincoln ;
+    vn.role:Experiencer ns1:physician_1 ;
+    vn.role:Stimulus ns1:joseph_k._barnes_1 .
+
+ns1:docuverse earmark:hasContent "Several physicians attended Lincoln, including U.S._Army_Surgeon_General Joseph_K._Barnes of the Army_Medical_Museum."^^xsd:string .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+ns1:Army_medical_museum rdfs:label "Army Medical Museum" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:National_Museum_of_Health_and_Medicine .
+
+ns1:Attend rdfs:label "attended" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Joseph_k._barnes a owl:Class ;
+    rdfs:label "Joseph K. Barnes" ;
+    owl:equivalentClass dbpedia:Joseph_Barnes .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+
+ns1:Physician rdfs:label "physicians" .
+
+ns1:Several rdfs:label "Several" .
+
+ns1:SeveralPhysician rdfs:subClassOf ns1:Physician .
+
+ns1:U.s._army_surgeon_generalJoseph_k._barnes a owl:Class ;
+    rdfs:label "U.s. army surgeon general Joseph k. barnes" ;
+    dul:hasQuality ns1:U.s._army_surgeon_general ;
+    rdfs:subClassOf ns1:Joseph_k._barnes .
+
+ns1:joseph_k._barnes_1 a ns1:U.s._army_surgeon_generalJoseph_k._barnes ;
+    rdfs:label "Joseph K. Barnes" ;
+    dul:hasQuality ns1:U.s._army_surgeon_general ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:u.s._army_surgeon_generalJoseph_k._barnesOf ns1:Army_medical_museum .
+
+ns1:physician_1 a dbpedia:Physician,
+        ns1:SeveralPhysician ;
+    rdfs:label "physicians" ;
+    dul:hasQuality ns1:Several ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:U.s._army_surgeon_general a owl:Class ;
+    rdfs:label "U.S. Army Surgeon General" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Surgeon_General_of_the_United_States_Army .
+

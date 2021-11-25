@@ -1,0 +1,180 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence449.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme rdfs:label "on" .
+
+translation_coherence:de_sentence449.ttl a owl:Ontology ;
+    rdfs:label "de_sentence449" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence449" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Although rdfs:label "Although" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:deduction_1 a ns1:Deduction ;
+    rdfs:label "deduction" ;
+    dul:associatedWith ns1:system_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:docuverse earmark:hasContent "Even the logic had difficulties; Although he had a reasonable design of a deduction system, he could never create one and instead rely on his dialectic."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "had" ;
+    vn.role:Agent ns1:logic_1 ;
+    vn.role:Patient ns1:difficulty_1 .
+
+ns1:have_2 a ns1:Have ;
+    rdfs:label "had" ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Patient ns1:design_1 ;
+    ns1:although ns1:situation_1 .
+
+ns1:Create rdfs:label "create" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:DeductionSystem a owl:Class ;
+    rdfs:label "deduction system" ;
+    dul:associatedWith ns1:Deduction ;
+    rdfs:subClassOf ns1:System ;
+    owl:equivalentClass dbpedia:Formal_system .
+
+ns1:Design a owl:Class ;
+    rdfs:label "design" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Dialectic a owl:Class ;
+    rdfs:label "dialectic" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> ;
+    owl:equivalentClass dbpedia:Dialectic .
+
+ns1:Difficulty rdfs:label "difficulties" .
+
+ns1:Even rdfs:label "Even" .
+
+ns1:Instead rdfs:label "instead" .
+
+ns1:InsteadRely rdfs:label "instead rely" ;
+    rdfs:subClassOf ns1:Rely .
+
+ns1:Logic a owl:Class ;
+    rdfs:label "logic" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> ;
+    owl:equivalentClass dbpedia:Logic .
+
+ns1:Male rdfs:label "he" .
+
+ns1:NeverCreate rdfs:label "never create" ;
+    rdfs:subClassOf ns1:Create .
+
+ns1:Reasonable a owl:Class ;
+    rdfs:label "reasonable" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Reason .
+
+ns1:ReasonableDesign a owl:Class ;
+    rdfs:label "reasonable design" ;
+    dul:hasQuality ns1:Reasonable ;
+    rdfs:subClassOf ns1:Design .
+
+ns1:Rely rdfs:label "rely" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:System a owl:Class ;
+    rdfs:label "system" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:create_1 a ns1:NeverCreate ;
+    rdfs:label "create" ;
+    boxing:hasModality boxing:Possible ;
+    dul:hasQuality ns1:Never ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Product "1"^^xsd:nonNegativeInteger .
+
+ns1:design_1 a ns1:ReasonableDesign ;
+    rdfs:label "design" ;
+    quant:hasDeterminer quant:a ;
+    ns1:reasonableDesignOf ns1:system_1 .
+
+ns1:dialectic_1 a ns1:Dialectic ;
+    rdfs:label "dialectic" ;
+    quant:hasQuantifier quant:one ;
+    ns1:dialecticOf ns1:male_1 .
+
+ns1:difficulty_1 a ns1:Difficulty ;
+    rdfs:label "difficulties" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:logic_1 a ns1:Logic ;
+    rdfs:label "logic" ;
+    dul:hasQuality ns1:Even ;
+    quant:hasDeterminer quant:the .
+
+ns1:rely_1 a ns1:InsteadRely ;
+    rdfs:label "rely" ;
+    boxing:hasModality boxing:Possible ;
+    dul:hasQuality ns1:Instead,
+        ns1:Never ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Theme ns1:dialectic_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:create_1,
+        ns1:rely_1,
+        "1"^^xsd:nonNegativeInteger .
+
+ns1:Deduction a owl:Class ;
+    rdfs:label "deduction" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Have rdfs:label "had" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Never rdfs:label "never" .
+
+ns1:system_1 a ns1:DeductionSystem ;
+    rdfs:label "system" .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "he",
+        "his" .
+

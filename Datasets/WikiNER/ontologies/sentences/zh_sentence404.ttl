@@ -1,0 +1,153 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence404.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "to" .
+
+translation_coherence:zh_sentence404.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence404" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence404" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Against rdfs:label "against" .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:change_1 a ns1:Change ;
+    rdfs:label "changed" ;
+    vn.role:Agent ns1:Bobo_lesotho ;
+    vn.role:Theme ns1:plan_1 .
+
+ns1:commit_1 a ns1:Commit ;
+    rdfs:label "committed" ;
+    vn.role:Destination ns1:assassination_1 ;
+    vn.role:Theme ns1:Bobo_lesotho .
+
+ns1:docuverse earmark:hasContent "In his speech of 11 April, Lincoln promoted the right to vote against blacks, a simplicant Bobo Lesotho changed his plan and was committed to the assassination of the President."^^xsd:string .
+
+ns1:promote_1 a ns1:Promote ;
+    rdfs:label "promoted" ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Theme ns1:right_1 ;
+    ns1:in ns1:speech_1 .
+
+ns1:vote_1 a ns1:Vote ;
+    rdfs:label "vote" ;
+    vn.role:Agent ns1:right_1 ;
+    ns1:against ns1:black_1 .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+ns1:Assassination a owl:Class ;
+    rdfs:label "assassination" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> ;
+    owl:equivalentClass dbpedia:Assassination_of_John_F._Kennedy .
+
+ns1:Black rdfs:label "blacks" .
+
+ns1:Change rdfs:label "changed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Commit rdfs:label "committed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Male rdfs:label "Lincoln" .
+
+ns1:Plan rdfs:label "plan" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:President rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:President,
+        dbpedia:President_of_the_United_States .
+
+ns1:Promote rdfs:label "promoted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Right a owl:Class ;
+    rdfs:label "right" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Suffrage .
+
+ns1:Simplicant rdfs:label "simplicant" .
+
+ns1:Speech rdfs:label "speech" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Vote rdfs:label "vote" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:assassination_1 a ns1:Assassination ;
+    rdfs:label "assassination" ;
+    quant:hasDeterminer quant:the ;
+    ns1:assassinationOf ns1:President .
+
+ns1:black_1 a ns1:Black ;
+    rdfs:label "blacks" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:male_1 rdfs:label "his" ;
+    coref:coref ns1:male_1 .
+
+ns1:plan_1 a ns1:Plan ;
+    rdfs:label "plan" ;
+    ns1:planOf ns1:Lincoln .
+
+ns1:speech_1 a ns1:Speech ;
+    rdfs:label "speech" ;
+    ns1:speechOf ns1:Lincoln,
+        "0001-04-11"^^xsd:date .
+
+ns1:Bobo_lesotho rdfs:label "Bobo Lesotho" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality ns1:Simplicant .
+
+ns1:right_1 a ns1:Right ;
+    rdfs:label "right" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Lincoln a ns1:Male ;
+    rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+

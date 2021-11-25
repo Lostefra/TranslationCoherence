@@ -1,0 +1,104 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence461.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence461.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence461" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence461" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "are" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Point rdfs:label "points" .
+
+ns1:catch_1 a ns1:Catch,
+        ns1:MostVaikuttapressivePoint ;
+    rdfs:label "catch" ;
+    dul:hasQuality ns1:Most,
+        ns1:Vaikuttapressive ;
+    quant:hasDeterminer quant:the ;
+    ns1:catchOf ns1:fisherman_1 .
+
+ns1:docuverse earmark:hasContent "The most vaikuttapressive points are the maritime life and the catch of fishermen."^^xsd:string .
+
+ns1:point_1 rdfs:label "points" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    owl:sameAs ns1:life_1 .
+
+ns1:Fisherman a owl:Class ;
+    rdfs:label "fishermen" ;
+    owl:equivalentClass dbpedia:Fishing .
+
+ns1:Maritime a owl:Class ;
+    rdfs:label "maritime" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Most rdfs:label "most" .
+
+ns1:MostVaikuttapressivePoint rdfs:subClassOf ns1:Catch,
+        ns1:MaritimeLife .
+
+ns1:Vaikuttapressive rdfs:label "vaikuttapressive" .
+
+ns1:fisherman_1 a ns1:Fisherman ;
+    rdfs:label "fishermen" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:life_1 a ns1:Life,
+        ns1:MaritimeLife ;
+    rdfs:label "life" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Catch rdfs:label "catch" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Life a owl:Class ;
+    rdfs:label "life" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:MaritimeLife a owl:Class ;
+    rdfs:label "Maritime Life" ;
+    dul:hasQuality ns1:Maritime ;
+    rdfs:subClassOf ns1:Life ;
+    owl:equivalentClass dbpedia:Maritime_Life .
+

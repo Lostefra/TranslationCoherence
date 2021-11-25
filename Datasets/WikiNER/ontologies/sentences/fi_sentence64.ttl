@@ -1,0 +1,154 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence64.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence64.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence64" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence64" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:describe_1 a ns1:Describe ;
+    rdfs:label "described" ;
+    vn.role:Theme ns1:almost_1 ;
+    ns1:in ns1:study_1 .
+
+ns1:docuverse earmark:hasContent "Almost all the features described in the first study of the Canner, especially autistic solitude and similarity, are still typical of autistic disorder."^^xsd:string .
+
+ns1:feature_1 rdfs:label "features" .
+
+ns1:similarity_1 rdfs:label "similarity" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:disorder_1,
+        ns1:situation_2 ;
+    dul:hasQuality ns1:Still .
+
+ns1:solitude_1 rdfs:label "solitude" .
+
+ns1:Almost rdfs:label "Almost" .
+
+ns1:AutisticDisorder a owl:Class ;
+    rdfs:label "autistic disorder" ;
+    rdfs:subClassOf ns1:Disorder ;
+    owl:equivalentClass dbpedia:Autism .
+
+ns1:AutisticSolitude a owl:Class ;
+    rdfs:label "Autistic Solitude" ;
+    dul:hasQuality ns1:Autistic ;
+    rdfs:subClassOf ns1:Solitude .
+
+ns1:Canner a ns1:EspeciallyAutisticSolitude,
+        ns1:Similarity ;
+    rdfs:label "Canner",
+        "similarity",
+        "solitude" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality ns1:Autistic .
+
+ns1:Describe rdfs:label "described" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Disorder rdfs:label "disorder" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Especially rdfs:label "especially" .
+
+ns1:EspeciallyAutisticSolitude a owl:Class ;
+    rdfs:label "especially autistic solitude" ;
+    rdfs:subClassOf ns1:AutisticSolitude .
+
+ns1:Feature rdfs:label "features" .
+
+ns1:First a owl:Class ;
+    rdfs:label "first" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FirstStudy a owl:Class ;
+    rdfs:label "first study" ;
+    dul:hasQuality ns1:First ;
+    rdfs:subClassOf ns1:Study .
+
+ns1:Similarity rdfs:label "Canner",
+        "similarity" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Solitude a owl:Class ;
+    rdfs:label "Canner",
+        "solitude" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Still rdfs:label "still" .
+
+ns1:Study a owl:Class ;
+    rdfs:label "study" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Typical,
+        ns1:almost_1 ;
+    ns1:situationOf ns1:disorder_1 .
+
+ns1:study_1 a ns1:FirstStudy ;
+    rdfs:label "study" ;
+    quant:hasDeterminer quant:the ;
+    ns1:firstStudyOf ns1:Canner .
+
+ns1:Typical rdfs:label "typical" .
+
+ns1:almost_1 a ns1:Almost,
+        ns1:Feature ;
+    rdfs:label "Almost" ;
+    dul:hasQuality ns1:Typical ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:disorder_1 a ns1:AutisticDisorder ;
+    rdfs:label "disorder" ;
+    dul:hasQuality ns1:Autistic .
+
+ns1:Autistic a owl:Class ;
+    rdfs:label "autistic" ;
+    dul:hasQuality ns1:Especially ;
+    rdfs:subClassOf dul:Quality .
+

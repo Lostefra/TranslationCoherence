@@ -1,0 +1,177 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence98.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "in" .
+
+vn.role:Source rdfs:label "After" .
+
+translation_coherence:en_sentence98.ttl a owl:Ontology ;
+    rdfs:label "en_sentence98" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence98" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "'s",
+        "of",
+        "their" .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "After 1972, the state 's white voters shifted much of their support to Republican candidates in presidential elections (as also occurred in neighboring southern states)."^^xsd:string .
+
+ns1:shift_1 a ns1:Shift ;
+    rdfs:label "shifted" ;
+    vn.role:Agent ns1:voter_1 ;
+    vn.role:Source "1972-01-01"^^xsd:date ;
+    vn.role:Theme ns1:much_1 ;
+    ns1:as ns1:occur_1 ;
+    ns1:in ns1:election_1 .
+
+ns1:thing_1 coref:coref ns1:state_1 .
+
+dbpedia:Republican_Party_(United_States) a schema:Organization .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoOccur rdfs:subClassOf ns1:Occur .
+
+ns1:Candidate rdfs:label "candidates" .
+
+ns1:Election rdfs:label "elections" .
+
+ns1:Much rdfs:label "much" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:Neighbor rdfs:label "neighboring" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Occur rdfs:label "occurred" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Presidential rdfs:label "presidential" ;
+    owl:sameAs dbpedia:United_States_presidential_election .
+
+ns1:PresidentialElection rdfs:subClassOf ns1:Election .
+
+ns1:Republican rdfs:label "Republican" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Republican_Party_(United_States) .
+
+ns1:Shift rdfs:label "shifted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Southern rdfs:label "southern" ;
+    owl:sameAs dbpedia:Southern_United_States .
+
+ns1:SouthernState rdfs:subClassOf ns1:State .
+
+ns1:Support a owl:Class ;
+    rdfs:label "support" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Abortion-rights_movements .
+
+ns1:Voter rdfs:label "voters" .
+
+ns1:White rdfs:label "white" ;
+    owl:sameAs dbpedia:White_people .
+
+ns1:WhiteVoter rdfs:subClassOf ns1:Voter .
+
+ns1:candidate_1 a <http://dbpedia.org/resource/United_States_presidential_election,_2008>,
+        ns1:Candidate ;
+    rdfs:label "candidates" ;
+    dul:associatedWith ns1:Republican ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:election_1 a ns1:PresidentialElection ;
+    rdfs:label "elections" ;
+    dul:hasQuality ns1:Presidential ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:much_1 a ns1:Much ;
+    rdfs:label "much" ;
+    ns1:muchOf ns1:support_1 .
+
+ns1:neighbor_1 a ns1:Neighbor ;
+    rdfs:label "neighboring" ;
+    vn.role:Theme1 ns1:thing_2 ;
+    vn.role:Theme2 ns1:state_2 .
+
+ns1:occur_1 a ns1:AlsoOccur ;
+    rdfs:label "occurred" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Location ns1:neighbor_1 ;
+    vn.role:Theme ns1:thing_2 .
+
+ns1:state_2 a ns1:SouthernState ;
+    rdfs:label "states" ;
+    dul:hasQuality ns1:Southern ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:support_1 a ns1:Support ;
+    rdfs:label "support" ;
+    quant:hasQuantifier quant:much ;
+    ns1:supportOf ns1:state_1 ;
+    ns1:to ns1:candidate_1 .
+
+ns1:voter_1 a ns1:WhiteVoter ;
+    rdfs:label "voters" ;
+    dul:hasQuality ns1:White ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:whiteVoterOf ns1:state_1 .
+
+ns1:State a owl:Class ;
+    rdfs:label "state",
+        "states" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> ;
+    owl:equivalentClass dbpedia:U.S._state .
+
+ns1:thing_2 a owl:Thing .
+
+ns1:state_1 a owl:Thing,
+        ns1:State ;
+    rdfs:label "state",
+        "their" ;
+    quant:hasDeterminer quant:the .
+

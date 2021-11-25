@@ -1,0 +1,168 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence598.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:nl_sentence598.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence598" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence598" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:For rdfs:label "for" .
+
+ns1:Include rdfs:label "including" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:With rdfs:label "with" .
+
+ns1:describe_1 a ns1:Describe ;
+    rdfs:label "described" ;
+    vn.role:Theme ns1:critician_1 .
+
+ns1:description_1 a ns1:Description ;
+    rdfs:label "description" ;
+    quant:hasDeterminer quant:a .
+
+ns1:docuverse earmark:hasContent "Criticians, including former NBI students and Branden himself, have described the culture of NBI as one of the intellectual conformity and overwhelming retribution for Rand, with a description of the NBI."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "have" ;
+    vn.role:Agent ns1:critician_1 ;
+    vn.role:Patient ns1:culture_1 ;
+    ns1:withDescriptionOf ns1:student_1 .
+
+dbpedia:Ayn_Rand a schema:Person .
+
+ns1:Branden rdfs:label "Branden" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Male .
+
+ns1:Conformity a owl:Class ;
+    rdfs:label "conformity" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Conformity .
+
+ns1:Critician rdfs:label "Criticians" .
+
+ns1:Culture a owl:Class ;
+    rdfs:label "culture" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Culture .
+
+ns1:Describe rdfs:label "described" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Description rdfs:label "description" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Intellectual a owl:Class ;
+    rdfs:label "intellectual" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Intelligence .
+
+ns1:IntellectualConformity a owl:Class ;
+    rdfs:label "intellectual conformity" ;
+    dul:hasQuality ns1:Intellectual ;
+    rdfs:subClassOf ns1:Conformity .
+
+ns1:Male rdfs:label "himself" .
+
+ns1:Nbi rdfs:label "NBI" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality ns1:Former .
+
+ns1:Overwhelming a owl:Class ;
+    rdfs:label "overwhelming" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:OverwhelmingRetribution a owl:Class ;
+    rdfs:label "overwhelming retribution" ;
+    dul:hasQuality ns1:Overwhelming ;
+    rdfs:subClassOf ns1:Retribution .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Ayn_Rand .
+
+ns1:Retribution a owl:Class ;
+    rdfs:label "retribution" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Punishment .
+
+ns1:Student rdfs:label "students" .
+
+ns1:conformity_1 a ns1:IntellectualConformity ;
+    rdfs:label "conformity" ;
+    dul:hasDataValue "1"^^xsd:nonNegativeInteger ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:one .
+
+ns1:culture_1 a ns1:Culture ;
+    rdfs:label "culture" ;
+    quant:hasDeterminer quant:the ;
+    ns1:as ns1:conformity_1,
+        ns1:retribution_1 ;
+    ns1:cultureOf ns1:student_1 .
+
+ns1:retribution_1 a ns1:OverwhelmingRetribution ;
+    rdfs:label "retribution" ;
+    ns1:for ns1:Rand .
+
+ns1:Former rdfs:label "former" .
+
+ns1:critician_1 a ns1:Critician ;
+    rdfs:label "Criticians" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:include ns1:Branden,
+        ns1:student_1 .
+
+ns1:student_1 a ns1:Student ;
+    rdfs:label "students" ;
+    dul:associatedWith ns1:Nbi ;
+    dul:hasQuality ns1:Former ;
+    quant:hasQuantifier quant:multiple .
+

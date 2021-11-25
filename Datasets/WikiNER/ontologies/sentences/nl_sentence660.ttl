@@ -1,0 +1,137 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence660.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Proposition rdfs:label "to" .
+
+translation_coherence:nl_sentence660.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence660" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence660" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:co-itt_1 a ns1:Co-itt ;
+    rdfs:label "co-itts" ;
+    boxer:agent ns1:Sciabarra ;
+    boxer:patient ns1:journal_1,
+        ns1:journal_of_ayn_rand_studies_1 .
+
+ns1:dedicate_1 a ns1:Dedicate ;
+    rdfs:label "dedicated" ;
+    vn.role:Proposition ns1:philosophy_1,
+        ns1:work_1 ;
+    vn.role:Theme ns1:journal_1,
+        ns1:journal_of_ayn_rand_studies_1 .
+
+ns1:docuverse earmark:hasContent "Sciabarra co-itts the Journal_of_Ayn_Rand_Studies, a non-partian peer-reviewed journal, dedicated to Rand's philosophy and literary work."^^xsd:string .
+
+ns1:Co-itt rdfs:label "co-itts" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Dedicate rdfs:label "dedicated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Journal a owl:Class ;
+    rdfs:label "journal" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Journal_of_ayn_rand_studies a owl:Class ;
+    rdfs:label "Journal of Ayn Rand Studies" ;
+    owl:equivalentClass dbpedia:The_Journal_of_Ayn_Rand_Studies .
+
+ns1:LiteraryWork a owl:Class ;
+    rdfs:label "Literary Work" ;
+    dul:hasQuality ns1:Literary ;
+    rdfs:subClassOf ns1:Work .
+
+ns1:Non-partian rdfs:label "non-partian" .
+
+ns1:Non-partianPeer-reviewedJournal a owl:Class ;
+    rdfs:label "non-partian peer-reviewed journal" ;
+    rdfs:subClassOf ns1:Peer-reviewedJournal .
+
+ns1:Peer-reviewed a owl:Class ;
+    rdfs:label "peer-reviewed" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Peer_review .
+
+ns1:Peer-reviewedJournal a owl:Class ;
+    rdfs:label "peer-reviewed journal" ;
+    dul:hasQuality ns1:Peer-reviewed ;
+    rdfs:subClassOf ns1:Journal .
+
+ns1:Philosophy a owl:Class ;
+    rdfs:label "philosophy" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Philosophy .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Sciabarra rdfs:label "Sciabarra" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Work a owl:Class ;
+    rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:philosophy_1 a ns1:Philosophy ;
+    rdfs:label "philosophy" ;
+    ns1:philosophyOf ns1:Rand .
+
+ns1:work_1 a ns1:LiteraryWork ;
+    rdfs:label "work" ;
+    dul:hasQuality ns1:Literary .
+
+ns1:Literary a owl:Class ;
+    rdfs:label "literary" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:journal_1 a ns1:Non-partianPeer-reviewedJournal ;
+    rdfs:label "journal" ;
+    dul:hasQuality ns1:Non-partian ;
+    quant:hasDeterminer quant:a .
+
+ns1:journal_of_ayn_rand_studies_1 a ns1:Journal_of_ayn_rand_studies ;
+    rdfs:label "Journal of Ayn Rand Studies" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+

@@ -1,0 +1,163 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence249.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence249.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence249" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence249" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "'s",
+        "his",
+        "of" .
+
+ns1:ask_1 a ns1:Ask ;
+    rdfs:label "asks" ;
+    dul:hasQuality ns1:But ;
+    vn.role:Agent ns1:Achilles ;
+    vn.role:Patient ns1:odysseus_1 .
+
+ns1:docuverse earmark:hasContent "But Achilles asks his son 's evil Odysseus in the Troy_War, and Odysseus tells the hero action of Neoptolemus, Achilles is full of satisfaction."^^xsd:string .
+
+ns1:hero_1 a ns1:Hero ;
+    rdfs:label "hero" ;
+    dul:associatedWith ns1:action_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:male_1 rdfs:label "his" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Achilles,
+        ns1:Full,
+        ns1:satisfaction_1 ;
+    dul:associatedWith ns1:Neoptolemus ;
+    ns1:situationOf ns1:satisfaction_1 .
+
+ns1:tell_1 a ns1:Tell ;
+    rdfs:label "tells" ;
+    vn.role:Agent ns1:Odysseus ;
+    vn.role:Topic ns1:action_1 .
+
+dbpedia:Jesus rdfs:subClassOf schema:Person .
+
+ns1:Action a owl:Class ;
+    rdfs:label "action" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Ask rdfs:label "asks" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:But rdfs:label "But" .
+
+ns1:EvilOdysseus a owl:Class ;
+    rdfs:label "Evil Odysseus" ;
+    dul:hasQuality ns1:Evil ;
+    rdfs:subClassOf ns1:Odysseus .
+
+ns1:HeroAction a owl:Class ;
+    rdfs:label "Hero Action" ;
+    dul:associatedWith ns1:Hero ;
+    rdfs:subClassOf ns1:Action .
+
+ns1:Male rdfs:label "Achilles" .
+
+ns1:Satisfaction rdfs:label "satisfaction" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Son a owl:Class ;
+    rdfs:label "son" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Jesus .
+
+ns1:Tell rdfs:label "tells" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Troy_war rdfs:label "Troy War" ;
+    boxer:possibleType time:Interval ;
+    owl:sameAs dbpedia:Trojan_War .
+
+ns1:odysseus_1 a ns1:EvilOdysseus ;
+    rdfs:label "Odysseus" ;
+    dul:hasQuality ns1:Evil ;
+    ns1:evilOdysseusOf ns1:son_1 ;
+    ns1:in ns1:Troy_war .
+
+ns1:son_1 a ns1:Son ;
+    rdfs:label "Odysseus"^^xsd:string,
+        "son" ;
+    ns1:sonOf ns1:Achilles .
+
+ns1:Evil a owl:Class ;
+    rdfs:label "evil" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Evil .
+
+ns1:Full rdfs:label "full" .
+
+ns1:Hero a owl:Class ;
+    rdfs:label "hero" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Greek_hero_cult .
+
+ns1:Neoptolemus rdfs:label "Neoptolemus" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Neoptolemus .
+
+ns1:Odysseus a owl:Class ;
+    rdfs:label "Odysseus" ;
+    boxer:possibleType foaf:Organisation ;
+    rdfs:subClassOf dul:Personification ;
+    owl:equivalentClass dbpedia:Odysseus .
+
+ns1:action_1 a ns1:HeroAction ;
+    rdfs:label "action" ;
+    ns1:heroActionOf ns1:Neoptolemus .
+
+ns1:satisfaction_1 a ns1:Satisfaction ;
+    rdfs:label "satisfaction" .
+
+ns1:Achilles a ns1:Male ;
+    rdfs:label "Achilles" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Full ;
+    owl:sameAs dbpedia:Achilles .
+

@@ -1,0 +1,173 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence702.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence702.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence702" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence702" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:By rdfs:label "by" .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "In",
+        "in" .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:Other rdfs:label "other" .
+
+ns1:Over rdfs:label "over" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Than rdfs:label "than" .
+
+ns1:docuverse earmark:hasContent "In Algeria, there is little tolerance for dissatisfaction, the State's control over the media and the consolidation of illegal acts by political parties other than the National Law in 1976."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:act_1,
+        ns1:dissatisfaction_1,
+        ns1:party_1,
+        ns1:there_1,
+        "1976-01-01"^^xsd:date ;
+    ns1:locatedIn ns1:Algeria .
+
+ns1:tolerance_1 rdfs:label "tolerance" .
+
+dbpedia:Algeria a schema:Country,
+        schema:Place .
+
+ns1:Act rdfs:label "acts" .
+
+ns1:Algeria rdfs:label "Algeria" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Algeria .
+
+ns1:Consolidation rdfs:label "consolidation" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Control a owl:Class ;
+    rdfs:label "control" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Social_control .
+
+ns1:Dissatisfaction rdfs:label "dissatisfaction" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Illegal rdfs:label "illegal" ;
+    owl:sameAs dbpedia:Law .
+
+ns1:IllegalAct rdfs:subClassOf ns1:Act .
+
+ns1:Little a owl:Class ;
+    rdfs:label "little" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:LittleTolerance a owl:Class ;
+    rdfs:label "Little Tolerance" ;
+    dul:hasQuality ns1:Little ;
+    rdfs:subClassOf ns1:Tolerance .
+
+ns1:Media rdfs:label "media" .
+
+ns1:National_law rdfs:label "National Law" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Law .
+
+ns1:Party rdfs:label "parties" .
+
+ns1:Political rdfs:label "political" ;
+    owl:sameAs dbpedia:Political_party .
+
+ns1:PoliticalParty rdfs:subClassOf ns1:Party .
+
+ns1:State rdfs:label "State" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:State_(polity) .
+
+ns1:There rdfs:label "there" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Tolerance a owl:Class ;
+    rdfs:label "tolerance" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Toleration .
+
+ns1:consolidation_1 a ns1:Consolidation ;
+    rdfs:label "consolidation" ;
+    quant:hasDeterminer quant:the ;
+    ns1:consolidationOf ns1:act_1 .
+
+ns1:control_1 a ns1:Control ;
+    rdfs:label "control" ;
+    ns1:controlOf ns1:State ;
+    ns1:over ns1:media_1 .
+
+ns1:media_1 a ns1:Media ;
+    rdfs:label "media" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:there_1 a ns1:LittleTolerance,
+        ns1:There ;
+    rdfs:label "there" ;
+    ns1:for ns1:dissatisfaction_1 .
+
+ns1:act_1 a ns1:IllegalAct ;
+    rdfs:label "acts" ;
+    dul:hasQuality ns1:Illegal ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:illegalActBy ns1:party_1 ;
+    ns1:in "1976-01-01"^^xsd:date ;
+    ns1:otherThan ns1:National_law .
+
+ns1:dissatisfaction_1 a ns1:Dissatisfaction ;
+    rdfs:label "dissatisfaction" ;
+    dul:associatedWith ns1:consolidation_1,
+        ns1:control_1 .
+
+ns1:party_1 a ns1:PoliticalParty ;
+    rdfs:label "parties" ;
+    dul:hasQuality ns1:Political ;
+    quant:hasQuantifier quant:multiple .
+

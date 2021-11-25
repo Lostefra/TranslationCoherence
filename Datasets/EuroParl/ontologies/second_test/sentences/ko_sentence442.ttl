@@ -1,0 +1,221 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence442.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "to" .
+
+vn.role:Theme1 rdfs:label "by" .
+
+translation_coherence:ko_sentence442.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence442" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence442" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Union rdfs:label "or" .
+
+ns1:Whenever rdfs:label "whenever" .
+
+ns1:accident_1 rdfs:label "accidents" .
+
+ns1:disjunct_1 a ns1:Disjunct ;
+    boxing:involves ns1:Disaster,
+        ns1:Natural,
+        ns1:disaster_1 ;
+    ns1:union ns1:disjunct_2 .
+
+ns1:docuverse earmark:hasContent "I also think we should be guaranteed, or request a member country, it is some publicity given to the European aid whenever it is used to recover damage caused by natural disasters or accidents."^^xsd:string .
+
+ns1:give_1 a ns1:Give ;
+    rdfs:label "given" ;
+    vn.role:Recipient ns1:aid_1 ;
+    vn.role:Theme ns1:publicity_1 ;
+    ns1:whenever ns1:use_1 .
+
+ns1:member_1 a ns1:Member ;
+    rdfs:label "it"^^xsd:string,
+        "member" ;
+    dul:associatedWith ns1:country_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:think_1 a ns1:AlsoThink ;
+    rdfs:label "think" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:situation_2 .
+
+ns1:Aid a owl:Class ;
+    rdfs:label "aid" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoThink rdfs:label "Also Think" ;
+    rdfs:subClassOf ns1:Think .
+
+ns1:Cause rdfs:label "caused" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Country a owl:Class ;
+    rdfs:label "country" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Damage rdfs:label "damage" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:EuropeanAid a owl:Class ;
+    rdfs:label "European Aid" ;
+    dul:hasQuality ns1:European ;
+    rdfs:subClassOf ns1:Aid .
+
+ns1:Give rdfs:label "given" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Guarantee rdfs:label "guaranteed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:MemberCountry a owl:Class ;
+    rdfs:label "Member Country" ;
+    dul:associatedWith ns1:Member ;
+    rdfs:subClassOf ns1:Country .
+
+ns1:NaturalDisaster rdfs:subClassOf ns1:Disaster .
+
+ns1:Publicity rdfs:label "publicity" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Recover rdfs:label "recover" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Request rdfs:label "request" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Think rdfs:label "think" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Use rdfs:label "used" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:aid_1 a ns1:EuropeanAid ;
+    rdfs:label "aid" ;
+    dul:hasQuality ns1:European ;
+    quant:hasDeterminer quant:the .
+
+ns1:cause_1 a ns1:Cause ;
+    rdfs:label "caused" ;
+    vn.role:Theme1 ns1:disaster_1 ;
+    vn.role:Theme2 ns1:damage_1 .
+
+ns1:disjunct_2 a ns1:Disjunct ;
+    boxing:involves ns1:Accident,
+        ns1:disaster_1 .
+
+ns1:guarantee_1 a ns1:Guarantee ;
+    rdfs:label "guaranteed" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Theme ns1:person_2 ;
+    ns1:union ns1:request_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:recover_1 a ns1:Recover ;
+    rdfs:label "recover" ;
+    vn.role:Agent ns1:publicity_1 ;
+    vn.role:Theme ns1:damage_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:cause_1,
+        ns1:damage_1,
+        ns1:disaster_1,
+        ns1:recover_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:country_1,
+        ns1:guarantee_1,
+        ns1:request_1 .
+
+ns1:use_1 a ns1:Use ;
+    rdfs:label "used" ;
+    boxer:theme ns1:situation_1 ;
+    vn.role:Theme ns1:publicity_1 .
+
+ns1:Accident rdfs:label "accidents" .
+
+ns1:Disaster rdfs:label "disasters" .
+
+ns1:European a owl:Class ;
+    rdfs:label "European" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Member a owl:Class ;
+    rdfs:label "member" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Natural rdfs:label "natural" .
+
+ns1:Person rdfs:label "I",
+        "we" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:request_1 a ns1:Request ;
+    rdfs:label "request" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Proposition ns1:country_1 .
+
+ns1:country_1 a ns1:MemberCountry ;
+    rdfs:label "country" .
+
+ns1:damage_1 a ns1:Damage ;
+    rdfs:label "damage" .
+
+ns1:publicity_1 a ns1:Publicity ;
+    rdfs:label "publicity" ;
+    dul:hasQuality owl:Thing ;
+    quant:hasQuantifier quant:some .
+
+ns1:disaster_1 a ns1:Accident,
+        ns1:NaturalDisaster ;
+    rdfs:label "disasters" ;
+    dul:hasQuality ns1:Natural ;
+    quant:hasQuantifier quant:multiple .
+

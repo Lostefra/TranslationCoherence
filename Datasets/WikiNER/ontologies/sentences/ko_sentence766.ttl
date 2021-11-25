@@ -1,0 +1,90 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence766.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence766.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence766" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence766" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:avenue_1 a ns1:MostImportantAvenue ;
+    rdfs:label "avenue" ;
+    dul:hasQuality ns1:Most,
+        ns1:Topic ;
+    quant:hasDeterminer quant:the ;
+    ns1:mostImportantAvenueOf ns1:Books,
+        ns1:President .
+
+ns1:docuverse earmark:hasContent "The most important avenue of the President and Books of Taggart_Transcontinental."^^xsd:string .
+
+ns1:Avenue a owl:Class ;
+    rdfs:label "avenue" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Books rdfs:label "Books" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Book ;
+    ns1:of ns1:Taggart_transcontinental .
+
+ns1:Important a owl:Class ;
+    rdfs:label "important" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ImportantAvenue a owl:Class ;
+    rdfs:label "Important Avenue" ;
+    dul:hasQuality ns1:Important ;
+    rdfs:subClassOf ns1:Avenue .
+
+ns1:Most rdfs:label "most" .
+
+ns1:MostImportantAvenue a owl:Class ;
+    rdfs:label "most important avenue" ;
+    rdfs:subClassOf ns1:ImportantAvenue .
+
+ns1:President rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:President .
+
+ns1:Taggart_transcontinental rdfs:label "Taggart Transcontinental" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Atlas_Shrugged .
+

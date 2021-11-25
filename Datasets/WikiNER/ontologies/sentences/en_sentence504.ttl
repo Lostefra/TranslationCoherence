@@ -1,0 +1,127 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence504.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "in" .
+
+translation_coherence:en_sentence504.ttl a owl:Ontology ;
+    rdfs:label "en_sentence504" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence504" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Through rdfs:label "through" .
+
+ns1:Under rdfs:label "under" .
+
+ns1:broadcast_1 a ns1:Broadcast ;
+    rdfs:label "broadcast" ;
+    dul:associatedWith ns1:duty_1 .
+
+ns1:do_1 a ns1:Do ;
+    rdfs:label "do" ;
+    boxer:agent ns1:contract_1 ;
+    ns1:through "2014-01-01"^^xsd:date .
+
+ns1:docuverse earmark:hasContent "ABC once again took over broadcast duties in 1976; it is under contract to do so through the year 2014."^^xsd:string .
+
+ns1:take_1 a ns1:OnceAgainTake ;
+    rdfs:label "took" ;
+    dul:hasQuality ns1:Again,
+        ns1:Once,
+        ns1:Over ;
+    vn.role:Agent ns1:Abc ;
+    vn.role:Location "1976-01-01"^^xsd:date ;
+    vn.role:Value ns1:duty_1 .
+
+ns1:year_1 a ns1:Year ;
+    rdfs:label "year" ;
+    quant:hasDeterminer quant:the ;
+    ns1:at "2014-01-01"^^xsd:date .
+
+dbpedia:American_Broadcasting_Company a schema:Organization .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Abc rdfs:label "ABC" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality owl:Thing ;
+    owl:sameAs dbpedia:American_Broadcasting_Company ;
+    ns1:under ns1:contract_1 .
+
+ns1:Again rdfs:label "again" .
+
+ns1:AgainTake rdfs:subClassOf ns1:Take .
+
+ns1:Broadcast rdfs:label "broadcast" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:BroadcastDuty rdfs:subClassOf ns1:Duty .
+
+ns1:Contract rdfs:label "contract" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic>,
+        dul:InformationEntity .
+
+ns1:Do rdfs:label "do" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Duty rdfs:label "duties" .
+
+ns1:Once rdfs:label "once" .
+
+ns1:OnceAgainTake rdfs:subClassOf ns1:AgainTake .
+
+ns1:Over rdfs:label "over" .
+
+ns1:So rdfs:label "so" .
+
+ns1:Take rdfs:label "took" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Year rdfs:label "year" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:contract_1 a ns1:Contract ;
+    rdfs:label "contract" ;
+    dul:hasQuality ns1:So .
+
+ns1:duty_1 a ns1:BroadcastDuty ;
+    rdfs:label "duties" ;
+    quant:hasQuantifier quant:multiple .
+

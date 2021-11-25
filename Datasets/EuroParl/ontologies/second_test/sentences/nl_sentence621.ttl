@@ -1,0 +1,167 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence621.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Oblique rdfs:label "to" .
+
+translation_coherence:nl_sentence621.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence621" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence621" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Entails rdfs:label "if" .
+
+ns1:In rdfs:label "In",
+        "in" .
+
+ns1:Noteq rdfs:label "other" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:come_1 a ns1:Come ;
+    rdfs:label "comes" ;
+    dul:hasQuality ns1:Up ;
+    vn.role:Theme ns1:thing_2 ;
+    ns1:entails ns1:take_1 .
+
+ns1:docuverse earmark:hasContent "The situation varies to a huge degree in the regions. In other words, what it takes is a number of sealed measures if anything comes up."^^xsd:string .
+
+ns1:number_1 rdfs:label "number" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:measure_1,
+        ns1:thing_1 ;
+    ns1:in ns1:word_1 .
+
+ns1:vary_1 a ns1:Vary ;
+    rdfs:label "varies" ;
+    vn.role:Oblique ns1:degree_1 ;
+    vn.role:Patient ns1:situation_2 .
+
+ns1:Come rdfs:label "comes" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Degree a owl:Class ;
+    rdfs:label "degree" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Huge a owl:Class ;
+    rdfs:label "huge" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:HugeDegree a owl:Class ;
+    rdfs:label "Huge Degree" ;
+    dul:hasQuality ns1:Huge ;
+    rdfs:subClassOf ns1:Degree .
+
+ns1:Measure rdfs:label "measures" .
+
+ns1:Number rdfs:label "number" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Region rdfs:label "regions" .
+
+ns1:Sealed rdfs:label "sealed" .
+
+ns1:SealedMeasure rdfs:subClassOf ns1:Measure .
+
+ns1:Take rdfs:label "takes" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Up rdfs:label "up" .
+
+ns1:Vary rdfs:label "varies" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:degree_1 a ns1:HugeDegree ;
+    rdfs:label "degree" ;
+    quant:hasDeterminer quant:a ;
+    ns1:in ns1:region_1 .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "it" .
+
+ns1:region_1 a ns1:Region ;
+    rdfs:label "regions" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:situation_2 a ns1:Situation ;
+    rdfs:label "situation" ;
+    quant:hasDeterminer quant:the .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "takes" ;
+    vn.role:Agent ns1:neuter_1 ;
+    vn.role:Theme ns1:thing_1 .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "anything" .
+
+ns1:word_1 a ns1:Word ;
+    rdfs:label "other" ;
+    owl:differentFrom ns1:word_2 .
+
+ns1:word_2 a ns1:Word ;
+    rdfs:label "words" ;
+    quant:hasDeterminer quant:other ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Situation rdfs:label "situation" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Word rdfs:label "other",
+        "words" .
+
+ns1:measure_1 a ns1:SealedMeasure ;
+    rdfs:label "measures" ;
+    dul:hasQuality ns1:Sealed ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:thing_1 a owl:Thing,
+        ns1:Number ;
+    rdfs:label "what" ;
+    quant:hasDeterminer quant:a ;
+    ns1:thingOf ns1:measure_1 .
+
+owl:Thing rdfs:label "anything",
+        "it",
+        "what" .
+

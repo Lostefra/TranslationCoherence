@@ -1,0 +1,98 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence699.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence699.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence699" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence699" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Theme rdfs:label "possible" .
+
+ns1:docuverse earmark:hasContent "Mr. Belen expressed the hope that the sub-group would be implemented as soon as possible."^^xsd:string .
+
+ns1:express_1 a ns1:Express ;
+    rdfs:label "expressed" ;
+    vn.role:Agent ns1:Belen ;
+    vn.role:Theme ns1:hope_1 .
+
+ns1:thing_2 a owl:Thing ;
+    boxer:theme ns1:thing_1 .
+
+ns1:As rdfs:label "as" .
+
+ns1:Belen rdfs:label "Belen" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> .
+
+ns1:Express rdfs:label "expressed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Hope rdfs:label "hope" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Implement rdfs:label "implemented" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Sub-group rdfs:label "sub-group" .
+
+ns1:hope_1 a ns1:Hope ;
+    rdfs:label "hope" ;
+    boxer:theme ns1:implement_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:implement_1 a ns1:Implement ;
+    rdfs:label "implemented" ;
+    boxing:hasModality boxing:Necessary,
+        boxing:Possible ;
+    dul:hasQuality ns1:As ;
+    vn.role:Theme ns1:sub-group_1 ;
+    ns1:as ns1:thing_1 .
+
+ns1:sub-group_1 a ns1:Sub-group ;
+    rdfs:label "sub-group" ;
+    quant:hasDeterminer quant:the .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> rdfs:label "Mr." ;
+    boxer:possibleType dul:Role .
+
+ns1:thing_1 a owl:Thing .
+

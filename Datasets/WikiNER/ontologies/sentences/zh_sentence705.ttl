@@ -1,0 +1,143 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence705.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:zh_sentence705.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence705" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence705" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:To rdfs:label "to" .
+
+ns1:compel_1 a ns1:Compel ;
+    rdfs:label "compelled" ;
+    boxer:theme ns1:put_1 ;
+    vn.role:Agent ns1:protest_1 .
+
+ns1:docuverse earmark:hasContent "The large-scale protests in two refugee camps in the fall of 1988 compelled Benjad to put an end to party rule."^^xsd:string .
+
+ns1:fall_1 a ns1:Fall ;
+    rdfs:label "fall" ;
+    quant:hasDeterminer quant:the .
+
+ns1:party_1 a ns1:Party ;
+    rdfs:label "party" ;
+    dul:associatedWith ns1:rule_1 .
+
+ns1:refugee_1 a ns1:Refugee ;
+    rdfs:label "refugee" ;
+    dul:associatedWith ns1:camp_1 ;
+    quant:hasQuantifier quant:two .
+
+ns1:Benjad rdfs:label "Benjad" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Camp rdfs:label "camps" .
+
+ns1:Compel rdfs:label "compelled" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:End rdfs:label "end" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Fall rdfs:label "fall" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Large-scale rdfs:label "large-scale" .
+
+ns1:Large-scaleProtest rdfs:subClassOf ns1:Protest .
+
+ns1:PartyRule a owl:Class ;
+    rdfs:label "party rule" ;
+    dul:associatedWith ns1:Party ;
+    rdfs:subClassOf ns1:Rule .
+
+ns1:Protest rdfs:label "protests" .
+
+ns1:Put rdfs:label "put" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Refugee a owl:Class ;
+    rdfs:label "refugee" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Palestinian_refugees .
+
+ns1:RefugeeCamp rdfs:subClassOf ns1:Camp .
+
+ns1:Rule a owl:Class ;
+    rdfs:label "rule" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:end_1 a ns1:End ;
+    rdfs:label "end" ;
+    quant:hasDeterminer quant:an ;
+    ns1:to ns1:rule_1 .
+
+ns1:protest_1 a ns1:Large-scaleProtest ;
+    rdfs:label "protests" ;
+    dul:hasQuality ns1:Large-scale ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:camp_1 .
+
+ns1:put_1 a ns1:Put ;
+    rdfs:label "put" ;
+    vn.role:Agent ns1:Benjad ;
+    vn.role:Theme ns1:end_1 .
+
+ns1:Party a owl:Class ;
+    rdfs:label "party" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:camp_1 a ns1:RefugeeCamp ;
+    rdfs:label "camps" ;
+    dul:hasDataValue "2"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:inFallOf "1988-01-01"^^xsd:date .
+
+ns1:rule_1 a ns1:PartyRule ;
+    rdfs:label "rule" .
+

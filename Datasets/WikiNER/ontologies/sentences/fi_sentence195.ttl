@@ -1,0 +1,121 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence195.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence195.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence195" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence195" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "As" .
+
+ns1:docuverse earmark:hasContent "As a result, Achilles gave Telephus a wound that would not heal. Telephus negotiated an oracle that said the wounded would heal."^^xsd:string .
+
+ns1:give_1 a ns1:Give ;
+    rdfs:label "gave" ;
+    vn.role:Agent ns1:Achilles ;
+    vn.role:Recipient ns1:Telephus ;
+    vn.role:Theme ns1:wound_1 ;
+    ns1:as ns1:result_1 .
+
+ns1:heal_1 a ns1:Heal ;
+    rdfs:label "heal" ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Patient ns1:wound_1 .
+
+ns1:negotiate_1 a ns1:Negotiate ;
+    rdfs:label "negotiated" ;
+    boxer:patient ns1:oracle_1 ;
+    vn.role:Actor ns1:Telephus .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "said" ;
+    vn.role:Agent ns1:oracle_1 ;
+    vn.role:Topic ns1:heal_2 .
+
+ns1:Achilles rdfs:label "Achilles" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Achilles .
+
+ns1:Give rdfs:label "gave" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Negotiate rdfs:label "negotiated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Oracle a owl:Class ;
+    rdfs:label "oracle" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> ;
+    owl:equivalentClass dbpedia:Oracle .
+
+ns1:Result rdfs:label "result" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Say rdfs:label "said" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Wound rdfs:label "wound" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:heal_2 a ns1:Heal ;
+    rdfs:label "heal" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Patient ns1:wound_1 .
+
+ns1:result_1 a ns1:Result ;
+    rdfs:label "result" ;
+    quant:hasDeterminer quant:a .
+
+ns1:Heal rdfs:label "heal" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Telephus rdfs:label "Telephus" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Telephus .
+
+ns1:oracle_1 a ns1:Oracle ;
+    rdfs:label "oracle" ;
+    quant:hasDeterminer quant:an .
+
+ns1:wound_1 a ns1:Wound ;
+    rdfs:label "wound" ;
+    quant:hasDeterminer quant:a .
+

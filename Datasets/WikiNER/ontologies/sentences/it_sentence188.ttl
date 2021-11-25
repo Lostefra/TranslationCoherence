@@ -1,0 +1,107 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence188.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Source rdfs:label "from" .
+
+translation_coherence:it_sentence188.ttl a owl:Ontology ;
+    rdfs:label "it_sentence188" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence188" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "For" .
+
+ns1:Of rdfs:label "his" .
+
+ns1:docuverse earmark:hasContent "For this reason, the two gods retreated from pursuit, and his wife Peleus."^^xsd:string .
+
+ns1:retreat_1 a ns1:Retreat ;
+    rdfs:label "retreated" ;
+    vn.role:Agent ns1:god_1 ;
+    vn.role:Source ns1:pursuit_1,
+        ns1:wife_1 ;
+    ns1:for ns1:reason_1 .
+
+ns1:God rdfs:label "gods" .
+
+ns1:Peleus a owl:Class ;
+    rdfs:label "Peleus" ;
+    rdfs:subClassOf dul:Personification ;
+    owl:equivalentClass dbpedia:Peleus .
+
+ns1:Pursuit rdfs:label "pursuit" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Reason rdfs:label "reason" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Retreat rdfs:label "retreated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Wife rdfs:label "wife" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:god_1 a ns1:God ;
+    rdfs:label "gods" ;
+    dul:hasDataValue "2"^^xsd:nonNegativeInteger ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple,
+        quant:two .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "his" .
+
+ns1:peleus_1 a ns1:Peleus ;
+    rdfs:label "Peleus" .
+
+ns1:pursuit_1 a ns1:Pursuit ;
+    rdfs:label "pursuit" .
+
+ns1:reason_1 a ns1:Reason ;
+    rdfs:label "reason" ;
+    quant:hasDeterminer quant:this .
+
+ns1:wife_1 a ns1:Wife ;
+    rdfs:label "wife" ;
+    dul:associatedWith ns1:peleus_1 ;
+    ns1:wifeOf ns1:male_1 .
+

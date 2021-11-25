@@ -1,0 +1,143 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence492.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme2 rdfs:label "for" .
+
+translation_coherence:en_sentence492.ttl a owl:Ontology ;
+    rdfs:label "en_sentence492" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence492" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:After rdfs:label "after" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "In support of the American effort in World_War_II, the statuettes were made of plaster and were traded in for gold ones after the war had ended."^^xsd:string .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "made" ;
+    vn.role:Theme ns1:statuette_1 ;
+    ns1:inSupportOf ns1:effort_1 ;
+    ns1:makeOf ns1:plaster_1 .
+
+ns1:support_1 a ns1:Support ;
+    rdfs:label "support" .
+
+ns1:trade_1 a ns1:Trade ;
+    rdfs:label "traded" ;
+    dul:hasQuality ns1:In ;
+    vn.role:Theme1 ns1:statuette_1 ;
+    vn.role:Theme2 ns1:one_1 ;
+    ns1:after ns1:end_1 .
+
+ns1:AmericanEffort a owl:Class ;
+    rdfs:label "American effort" ;
+    dul:hasQuality ns1:American ;
+    rdfs:subClassOf ns1:Effort .
+
+ns1:Effort a owl:Class ;
+    rdfs:label "effort" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:End rdfs:label "ended" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Gold rdfs:label "gold" .
+
+ns1:GoldOne rdfs:subClassOf ns1:One .
+
+ns1:In rdfs:label "In",
+        "in" .
+
+ns1:Make rdfs:label "made" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:One rdfs:label "ones" .
+
+ns1:Plaster rdfs:label "plaster" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Statuette rdfs:label "statuettes" .
+
+ns1:Support rdfs:label "support" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Trade rdfs:label "traded" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:War rdfs:label "war" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:World_war_ii rdfs:label "World War II" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:World_War_II .
+
+ns1:effort_1 a ns1:AmericanEffort ;
+    rdfs:label "effort" ;
+    dul:hasQuality ns1:American ;
+    quant:hasDeterminer quant:the ;
+    ns1:in ns1:World_war_ii .
+
+ns1:end_1 a ns1:End ;
+    rdfs:label "ended" ;
+    vn.role:Theme ns1:war_1 .
+
+ns1:one_1 a ns1:GoldOne ;
+    rdfs:label "ones" ;
+    dul:hasQuality ns1:Gold ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:plaster_1 a ns1:Plaster ;
+    rdfs:label "plaster" .
+
+ns1:war_1 a ns1:War ;
+    rdfs:label "war" ;
+    quant:hasDeterminer quant:the .
+
+ns1:American a owl:Class ;
+    rdfs:label "American" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:statuette_1 a ns1:Statuette ;
+    rdfs:label "statuettes" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+

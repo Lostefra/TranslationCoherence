@@ -1,0 +1,102 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence617.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence617.ttl a owl:Ontology ;
+    rdfs:label "en_sentence617" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence617" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "her" .
+
+ns1:docuverse earmark:hasContent "The first reviews Rand received were for her play Night_of_January_16."^^xsd:string .
+
+ns1:female_1 rdfs:label "her" .
+
+ns1:receive_1 a ns1:Receive ;
+    rdfs:label "received" ;
+    vn.role:Agent ns1:Rand ;
+    vn.role:Theme ns1:review_1 .
+
+dbpedia:Ayn_Rand a schema:Person .
+
+ns1:Female rdfs:label "Rand" .
+
+ns1:First rdfs:label "first" ;
+    owl:sameAs dbpedia:First-person_narrative .
+
+ns1:FirstReview rdfs:subClassOf ns1:Review .
+
+ns1:Night_of_january_16 a dbpedia:Night_of_January_16th ;
+    rdfs:label "Night of January 16" .
+
+ns1:Play a owl:Class ;
+    rdfs:label "play" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Play_(theatre) .
+
+ns1:Receive rdfs:label "received" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Review rdfs:label "reviews" .
+
+ns1:night_of_january_16_1 a ns1:Night_of_january_16 ;
+    rdfs:label "Night of January 16" .
+
+ns1:play_1 a ns1:Play ;
+    rdfs:label "play" ;
+    dul:associatedWith ns1:night_of_january_16_1 ;
+    ns1:playOf ns1:Rand .
+
+ns1:review_1 a dbpedia:Literary_criticism,
+        ns1:FirstReview ;
+    rdfs:label "reviews" ;
+    dul:hasQuality ns1:First ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:for ns1:play_1 .
+
+ns1:Rand a ns1:Female ;
+    rdfs:label "Rand" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Ayn_Rand .
+

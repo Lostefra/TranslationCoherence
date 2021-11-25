@@ -1,0 +1,109 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence700.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Source rdfs:label "in" .
+
+translation_coherence:fi_sentence700.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence700" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence700" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "His" .
+
+ns1:ally_1 rdfs:label "ally" .
+
+ns1:defense_1 a ns1:Defense ;
+    rdfs:label "defense" ;
+    dul:associatedWith ns1:Houari_boumedienne .
+
+ns1:docuverse earmark:hasContent "His en ally and defense minister Houari_Boumedienne was ousted in 1965."^^xsd:string .
+
+ns1:minister_1 rdfs:label "minister" .
+
+ns1:oust_1 a <http://dbpedia.org/resource/2013_Egyptian_coup_d'état>,
+        ns1:Oust ;
+    rdfs:label "ousted" ;
+    vn.role:Source "1965-01-01"^^xsd:date ;
+    vn.role:Theme ns1:Houari_boumedienne .
+
+ns1:Ally a owl:Class ;
+    rdfs:label "Houari Boumedienne",
+        "ally" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:DefenseMinister a owl:Class ;
+    rdfs:label "Defense Minister" ;
+    dul:associatedWith ns1:Defense ;
+    rdfs:subClassOf ns1:Minister .
+
+ns1:En rdfs:label "en" .
+
+ns1:EnAlly a owl:Class ;
+    rdfs:label "en ally" ;
+    rdfs:subClassOf ns1:Ally .
+
+ns1:Minister a owl:Class ;
+    rdfs:label "Houari Boumedienne",
+        "minister" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Oust rdfs:label "ousted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "His" .
+
+ns1:Defense a owl:Class ;
+    rdfs:label "Houari Boumedienne",
+        "defense" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Houari_boumedienne a ns1:DefenseMinister,
+        ns1:EnAlly ;
+    rdfs:label "Houari Boumedienne",
+        "ally",
+        "defense",
+        "minister" ;
+    boxer:possibleType owl:Thing ;
+    dul:hasQuality ns1:En ;
+    owl:sameAs dbpedia:Houari_Boumediene ;
+    ns1:defenseMinisterOf ns1:male_1 .
+

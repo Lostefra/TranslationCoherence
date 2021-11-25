@@ -1,0 +1,124 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence306.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence306.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence306" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence306" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:That rdfs:label "that" .
+
+ns1:ask_1 a ns1:Ask ;
+    rdfs:label "ask" ;
+    dul:hasQuality ns1:Finally ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Patient ns1:fundraise_1 ;
+    ns1:in ns1:way_1 ;
+    ns1:that ns1:be_1 .
+
+ns1:docuverse earmark:hasContent "Finally, we ask that the committee will be spending the structure fundraising in a transparent way."^^xsd:string .
+
+ns1:Ask rdfs:label "ask" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Be rdfs:label "be" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Committee rdfs:label "committee" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Finally rdfs:label "Finally" .
+
+ns1:Fundraise rdfs:label "fundraising" .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Spend rdfs:label "spending" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Structure rdfs:label "structure" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Transparent a owl:Class ;
+    rdfs:label "transparent" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:TransparentWay a owl:Class ;
+    rdfs:label "transparent way" ;
+    dul:hasQuality ns1:Transparent ;
+    rdfs:subClassOf ns1:Way .
+
+ns1:Way a owl:Class ;
+    rdfs:label "way" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:be_1 a ns1:Be ;
+    rdfs:label "be" ;
+    boxer:agent ns1:committee_1 ;
+    boxer:theme ns1:spend_1 ;
+    boxing:hasModality boxing:Necessary .
+
+ns1:fundraise_1 a ns1:Fundraise ;
+    rdfs:label "fundraising" .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:spend_1 a ns1:Spend ;
+    rdfs:label "spending" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:committee_1 ;
+    vn.role:Theme ns1:structure_1 .
+
+ns1:structure_1 a ns1:Structure ;
+    rdfs:label "structure" ;
+    quant:hasDeterminer quant:the .
+
+ns1:way_1 a ns1:TransparentWay ;
+    rdfs:label "way" ;
+    quant:hasDeterminer quant:a .
+
+ns1:committee_1 a ns1:Committee ;
+    rdfs:label "committee" ;
+    quant:hasDeterminer quant:the .
+

@@ -1,0 +1,146 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence25.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence25.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence25" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence25" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Noteq rdfs:label "other" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:culminate_1 a ns1:Culminate ;
+    rdfs:label "culminated" ;
+    boxer:agent ns1:ruler_1 ;
+    ns1:in ns1:rebellion_1 .
+
+ns1:docuverse earmark:hasContent "However, Bolsheviks quickly resist the rulers and other separatists, which culminated in the 1921 rebellion of Kronstadt, which the new Government had repressed."^^xsd:string .
+
+ns1:repress_1 a dbpedia:Political_repression_in_the_Soviet_Union,
+        ns1:Repress ;
+    rdfs:label "repressed" ;
+    vn.role:Agent ns1:government_1 ;
+    vn.role:Patient ns1:Kronstadt .
+
+ns1:resist_1 a ns1:QuicklyResist ;
+    rdfs:label "resist" ;
+    boxer:agent ns1:bolshevik_1 ;
+    boxer:patient ns1:ruler_1 ;
+    dul:hasQuality ns1:However,
+        ns1:Quickly .
+
+ns1:separatist_2 a dbpedia:Separatism ;
+    rdfs:label "separatists" .
+
+ns1:Bolshevik a owl:Class ;
+    rdfs:label "Bolsheviks" ;
+    owl:equivalentClass dbpedia:Bolshevik,
+        dbpedia:Bolsheviks .
+
+ns1:Culminate rdfs:label "culminated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Government a owl:Class ;
+    rdfs:label "Government" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:However rdfs:label "However" .
+
+ns1:New a owl:Class ;
+    rdfs:label "new" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:NewGovernment a owl:Class ;
+    rdfs:label "new Government" ;
+    dul:hasQuality ns1:New ;
+    rdfs:subClassOf ns1:Government ;
+    owl:equivalentClass dbpedia:Bolsheviks .
+
+ns1:Quickly rdfs:label "quickly" .
+
+ns1:QuicklyResist rdfs:label "quickly resist" ;
+    rdfs:subClassOf ns1:Resist .
+
+ns1:Rebellion a owl:Class ;
+    rdfs:label "rebellion" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Rebellion .
+
+ns1:Repress rdfs:label "repressed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Resist a owl:Class ;
+    rdfs:label "resist" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Resistance_movement .
+
+ns1:Ruler rdfs:label "rulers" .
+
+ns1:Separatist rdfs:label "separatists" .
+
+ns1:bolshevik_1 a ns1:Bolshevik ;
+    rdfs:label "Bolsheviks" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:government_1 a ns1:NewGovernment ;
+    rdfs:label "Government" ;
+    quant:hasDeterminer quant:the .
+
+ns1:rebellion_1 a ns1:Rebellion ;
+    rdfs:label "rebellion" ;
+    quant:hasDeterminer quant:the ;
+    ns1:at "1921-01-01"^^xsd:date ;
+    ns1:rebellionOf ns1:Kronstadt .
+
+ns1:Kronstadt rdfs:label "Kronstadt" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Kronstadt_rebellion .
+
+ns1:ruler_1 a ns1:Ruler,
+        ns1:Separatist ;
+    rdfs:label "rulers" ;
+    quant:hasDeterminer quant:other,
+        quant:the ;
+    quant:hasQuantifier quant:multiple .
+

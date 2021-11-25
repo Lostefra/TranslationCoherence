@@ -1,0 +1,183 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence194.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme rdfs:label "with" .
+
+translation_coherence:en_sentence194.ttl a owl:Ontology ;
+    rdfs:label "en_sentence194" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence194" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:March rdfs:label "March" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Though rdfs:label "though" .
+
+ns1:consider_1 a ns1:Consider ;
+    rdfs:label "Considering" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Theme ns1:situation_3 .
+
+ns1:deal_1 a ns1:Deal ;
+    rdfs:label "dealing" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:proposal_1 .
+
+ns1:docuverse earmark:hasContent "Considering that it is only today that we are dealing with a Commission proposal first made on 19 March 1998, even though Parliament responded relatively quickly, this time lag is a little too long."^^xsd:string .
+
+ns1:little_1 rdfs:label "little" .
+
+ns1:make_1 a ns1:FirstMake ;
+    rdfs:label "made" ;
+    dul:hasQuality ns1:Even,
+        ns1:First ;
+    vn.role:Theme ns1:proposal_1 ;
+    ns1:march "1998-01-01"^^xsd:date ;
+    ns1:on "0001-01-19"^^xsd:date ;
+    ns1:though ns1:respond_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Today,
+        ns1:today_1 ;
+    dul:hasQuality ns1:Only .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Little,
+        ns1:lag_1 ;
+    dul:hasQuality ns1:Long,
+        ns1:Too .
+
+ns1:time_1 a ns1:Time ;
+    rdfs:label "time" ;
+    dul:associatedWith ns1:lag_1 ;
+    quant:hasDeterminer quant:this .
+
+ns1:Commission rdfs:label "Commission" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Consider rdfs:label "Considering" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Deal rdfs:label "dealing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Even rdfs:label "even" .
+
+ns1:First rdfs:label "first" .
+
+ns1:FirstMake rdfs:subClassOf ns1:Make .
+
+ns1:Lag a owl:Class ;
+    rdfs:label "lag" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Long rdfs:label "long" .
+
+ns1:Make rdfs:label "made" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Parliament rdfs:label "Parliament" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Parliament .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Proposal rdfs:label "proposal" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Quickly rdfs:label "quickly" .
+
+ns1:Relatively rdfs:label "relatively" .
+
+ns1:Respond rdfs:label "responded" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:TimeLag a owl:Class ;
+    rdfs:label "Time Lag" ;
+    dul:associatedWith ns1:Time ;
+    rdfs:subClassOf ns1:Lag .
+
+ns1:Too rdfs:label "too" .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:respond_1 a ns1:Respond ;
+    rdfs:label "responded" ;
+    dul:hasQuality ns1:Quickly,
+        ns1:Relatively ;
+    vn.role:Agent ns1:Parliament .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves ns1:Only,
+        ns1:Today,
+        ns1:today_1 .
+
+ns1:thing_1 a owl:Thing .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Little rdfs:label "little" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:Only rdfs:label "only" .
+
+ns1:Time a owl:Class ;
+    rdfs:label "time" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:lag_1 a ns1:Little,
+        ns1:TimeLag ;
+    rdfs:label "lag" ;
+    quant:hasDeterminer quant:a .
+
+ns1:proposal_1 a ns1:Proposal ;
+    rdfs:label "proposal" ;
+    dul:associatedWith ns1:Commission .
+
+ns1:today_1 a ns1:Today ;
+    rdfs:label "today" ;
+    dul:hasQuality owl:Thing .
+
+ns1:Today rdfs:label "today" ;
+    rdfs:subClassOf dul:TimeInterval .
+

@@ -1,0 +1,151 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence539.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme2 rdfs:label "on" .
+
+translation_coherence:zh_sentence539.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence539" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence539" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Inconsiderwith rdfs:label "considered within each objective in accordance with" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Since rdfs:label "since" .
+
+ns1:Why rdfs:label "why" .
+
+ns1:accordance_1 a ns1:Accordance ;
+    rdfs:label "accordance" .
+
+ns1:be_1 a ns1:Be ;
+    rdfs:label "are" ;
+    boxer:agent ns1:thing_1 .
+
+ns1:docuverse earmark:hasContent "These are why guidelines are based on thematic priorities, since they must be considered within each objective in accordance with the specific circumstances of each Member State and region."^^xsd:string .
+
+ns1:region_1 rdfs:label "region" .
+
+ns1:thing_2 coref:coref ns1:thing_1 .
+
+owl:Thing rdfs:label "These",
+        "they" .
+
+ns1:Accordance rdfs:label "accordance" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Base rdfs:label "based" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Be rdfs:label "are",
+        "be" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Circumstance rdfs:label "circumstances" .
+
+ns1:Consider rdfs:label "considered" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Guideline rdfs:label "guidelines" .
+
+ns1:Member_state a ns1:Region ;
+    rdfs:label "Member State",
+        "region" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Objective rdfs:label "objective" ;
+    rdfs:subClassOf dul:Goal .
+
+ns1:Priority rdfs:label "priorities" .
+
+ns1:Region rdfs:label "Member State",
+        "region" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Specific rdfs:label "specific" .
+
+ns1:SpecificCircumstance rdfs:subClassOf ns1:Circumstance .
+
+ns1:Thematic rdfs:label "thematic" .
+
+ns1:ThematicPriority rdfs:subClassOf ns1:Priority .
+
+ns1:base_1 a ns1:Base ;
+    rdfs:label "based" ;
+    vn.role:Theme1 ns1:guideline_1 ;
+    vn.role:Theme2 ns1:priority_1 ;
+    ns1:since ns1:consider_1 .
+
+ns1:circumstance_1 a ns1:SpecificCircumstance ;
+    rdfs:label "circumstances" ;
+    dul:hasQuality ns1:Specific ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:specificCircumstanceOf ns1:Member_state .
+
+ns1:consider_1 a ns1:Consider ;
+    rdfs:label "considered" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Theme ns1:thing_1 ;
+    ns1:inConsiderWith ns1:circumstance_1 ;
+    ns1:within ns1:objective_1 .
+
+ns1:guideline_1 a ns1:Guideline ;
+    rdfs:label "guidelines" ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:objective_1 a ns1:Objective ;
+    rdfs:label "objective" ;
+    quant:hasQuantifier quant:each .
+
+ns1:priority_1 a ns1:ThematicPriority ;
+    rdfs:label "priorities" ;
+    dul:hasQuality ns1:Thematic ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "These",
+        "they" ;
+    dul:hasQuality ns1:Topic ;
+    ns1:why ns1:base_1 .
+

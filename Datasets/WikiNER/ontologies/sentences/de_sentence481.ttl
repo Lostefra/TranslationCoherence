@@ -1,0 +1,102 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence481.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence481.ttl a owl:Ontology ;
+    rdfs:label "de_sentence481" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence481" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:art_1 a ns1:Art ;
+    rdfs:label "art" ;
+    dul:associatedWith ns1:direction_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:docuverse earmark:hasContent "The Academy_Award_for_Best_Art_Direction recognises the performance in the art direction of a film."^^xsd:string .
+
+ns1:recognise_1 a ns1:Recognise ;
+    rdfs:label "recognises" ;
+    boxer:agent ns1:Academy_award_for_best_art_direction ;
+    boxer:patient ns1:performance_1 ;
+    ns1:in ns1:direction_1 .
+
+ns1:Academy_award_for_best_art_direction rdfs:label "Academy Award for Best Art Direction" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Academy_Award_for_Best_Production_Design .
+
+ns1:ArtDirection a owl:Class ;
+    rdfs:label "art direction" ;
+    dul:associatedWith ns1:Art ;
+    rdfs:subClassOf ns1:Direction .
+
+ns1:Direction a owl:Class ;
+    rdfs:label "direction" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Film rdfs:label "film" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity>,
+        dul:InformationEntity .
+
+ns1:Performance rdfs:label "performance" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Recognise rdfs:label "recognises" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:film_1 a ns1:Film ;
+    rdfs:label "film" ;
+    quant:hasDeterminer quant:a .
+
+ns1:performance_1 a ns1:Performance ;
+    rdfs:label "performance" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Art a owl:Class ;
+    rdfs:label "art" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:direction_1 a ns1:ArtDirection ;
+    rdfs:label "direction" ;
+    ns1:artDirectionOf ns1:film_1 .
+

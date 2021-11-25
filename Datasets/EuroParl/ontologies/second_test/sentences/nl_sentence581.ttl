@@ -1,0 +1,96 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence581.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence581.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence581" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence581" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "The sixth report of the European_commission gives very valuable conclusions."^^xsd:string .
+
+ns1:give_1 a ns1:Give ;
+    rdfs:label "gives" ;
+    vn.role:Agent ns1:report_1 ;
+    vn.role:Theme ns1:conclusion_1 .
+
+ns1:Conclusion rdfs:label "conclusions" .
+
+ns1:European_commission rdfs:label "European commission" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:European_Commission .
+
+ns1:Give rdfs:label "gives" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Report a owl:Class ;
+    rdfs:label "report" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Sixth a owl:Class ;
+    rdfs:label "sixth" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SixthReport a owl:Class ;
+    rdfs:label "Sixth Report" ;
+    dul:hasQuality ns1:Sixth ;
+    rdfs:subClassOf ns1:Report .
+
+ns1:Valuable rdfs:label "valuable" ;
+    dul:hasQuality ns1:Very .
+
+ns1:ValuableConclusion rdfs:subClassOf ns1:Conclusion .
+
+ns1:Very rdfs:label "very" .
+
+ns1:VeryValuableConclusion rdfs:subClassOf ns1:ValuableConclusion .
+
+ns1:conclusion_1 a ns1:VeryValuableConclusion ;
+    rdfs:label "conclusions" ;
+    dul:hasQuality ns1:Valuable ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:report_1 a ns1:SixthReport ;
+    rdfs:label "report" ;
+    quant:hasDeterminer quant:the ;
+    ns1:sixthReportOf ns1:European_commission .
+

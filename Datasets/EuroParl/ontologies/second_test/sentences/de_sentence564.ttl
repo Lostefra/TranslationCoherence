@@ -1,0 +1,242 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence564.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Emost> rdfs:label "most" .
+
+vn.role:Cause rdfs:label "by" .
+
+translation_coherence:de_sentence564.ttl a owl:Ontology ;
+    rdfs:label "de_sentence564" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence564" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Especially rdfs:label "especially" .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Then rdfs:label "then" .
+
+ns1:affect_1 a ns1:Affect ;
+    rdfs:label "affected" ;
+    vn.role:Cause ns1:storm_1 ;
+    vn.role:Experiencer ns1:region_1 .
+
+ns1:docuverse earmark:hasContent "I would like to remind you that tomorrow the Commission approved the Objective_2 regional plans for France, Sweden, Austria and Luxembourg. We then have an appropriate instrument for work, especially in most regions affected by the storms."^^xsd:string .
+
+ns1:like_1 a ns1:Like ;
+    rdfs:label "like" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Experiencer ns1:person_1 ;
+    vn.role:Theme ns1:remind_1 .
+
+ns1:plan_1 rdfs:label "plans" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple,
+        quant:objective_2 .
+
+ns1:tomorrow_1 rdfs:label "tomorrow" .
+
+dbpedia:Austria a schema:Country,
+        schema:Place .
+
+dbpedia:France a schema:Country,
+        schema:Place .
+
+dbpedia:Luxembourg a schema:Country,
+        schema:Place .
+
+dbpedia:Sweden a schema:Country,
+        schema:Place .
+
+ns1:Affect rdfs:label "affected" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Appropriate a owl:Class ;
+    rdfs:label "appropriate" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:AppropriateInstrument a owl:Class ;
+    rdfs:label "Appropriate Instrument" ;
+    dul:hasQuality ns1:Appropriate ;
+    rdfs:subClassOf ns1:Instrument .
+
+ns1:Approve rdfs:label "approved" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Austria a ns1:Objective_2RegionalPlan ;
+    rdfs:label "Austria",
+        "plans" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Sweden ;
+    owl:sameAs dbpedia:Austria .
+
+ns1:Commission a ns1:Tomorrow ;
+    rdfs:label "Commission",
+        "tomorrow" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality ns1:The .
+
+ns1:France rdfs:label "France" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:France .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Instrument a owl:Class ;
+    rdfs:label "instrument" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Like rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Most rdfs:label "most" .
+
+ns1:MostRegion rdfs:subClassOf ns1:Region .
+
+ns1:Objective_2 a dbpedia:Regional_policy_of_the_European_Union ;
+    rdfs:label "Objective 2" .
+
+ns1:Plan rdfs:label "Austria",
+        "Luxembourg",
+        "Sweden",
+        "plans" .
+
+ns1:Regional rdfs:label "regional" .
+
+ns1:RegionalPlan rdfs:subClassOf ns1:Plan .
+
+ns1:Remind rdfs:label "remind" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Storm rdfs:label "storms" .
+
+ns1:The rdfs:label "the" .
+
+ns1:ThenHave rdfs:label "Then Have" ;
+    rdfs:subClassOf ns1:Have .
+
+ns1:Tomorrow rdfs:label "Commission",
+        "tomorrow" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:Work rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:approve_1 a ns1:Approve ;
+    rdfs:label "approved" ;
+    vn.role:Agent ns1:Commission ;
+    vn.role:Theme ns1:Luxembourg ;
+    ns1:then ns1:have_1 .
+
+ns1:have_1 a ns1:ThenHave ;
+    rdfs:label "have" ;
+    vn.role:Agent ns1:person_3 ;
+    vn.role:Patient ns1:instrument_1 ;
+    ns1:especiallyIn ns1:region_1 .
+
+ns1:instrument_1 a ns1:AppropriateInstrument ;
+    rdfs:label "instrument" ;
+    quant:hasDeterminer quant:an ;
+    ns1:for ns1:work_1 .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "you" .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "We" .
+
+ns1:remind_1 a ns1:Remind ;
+    rdfs:label "remind" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Recipient ns1:person_2 ;
+    vn.role:Topic ns1:situation_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Luxembourg,
+        ns1:approve_1 .
+
+ns1:storm_1 a ns1:Storm ;
+    rdfs:label "storms" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "work" .
+
+ns1:Luxembourg a ns1:Objective_2RegionalPlan ;
+    rdfs:label "Luxembourg",
+        "plans" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Austria,
+        ns1:Sweden ;
+    dul:hasQuality ns1:Objective_2,
+        ns1:Regional ;
+    owl:sameAs dbpedia:Luxembourg ;
+    ns1:for ns1:France .
+
+ns1:Sweden a ns1:Objective_2RegionalPlan ;
+    rdfs:label "Sweden",
+        "plans" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Sweden .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:region_1 a ns1:MostRegion,
+        ns1:Region ;
+    rdfs:label "regions" ;
+    dul:hasQuality ns1:Most ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:mostAmong ns1:Region .
+
+ns1:Objective_2RegionalPlan rdfs:subClassOf ns1:RegionalPlan .
+
+ns1:Person rdfs:label "I",
+        "We",
+        "you" .
+
+ns1:Region rdfs:label "regions" .
+

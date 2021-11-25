@@ -1,0 +1,83 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "in" .
+
+translation_coherence:fi_sentence100.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence100" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence100" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+<https://w3id.org/stlab/ke/amiala/fi_sentence100.ttl/docuverse> earmark:hasContent "Democracy remains the majority in both parliaments."^^xsd:string .
+
+<https://w3id.org/stlab/ke/amiala/fi_sentence100.ttl/remain_1> a <https://w3id.org/stlab/ke/amiala/fi_sentence100.ttl/Remain> ;
+    rdfs:label "remains" ;
+    boxer:patient <https://w3id.org/stlab/ke/amiala/fi_sentence100.ttl/majority_1> ;
+    vn.role:Location <https://w3id.org/stlab/ke/amiala/fi_sentence100.ttl/parliament_1> ;
+    vn.role:Theme <https://w3id.org/stlab/ke/amiala/fi_sentence100.ttl/democracy_1> .
+
+<https://w3id.org/stlab/ke/amiala/fi_sentence100.ttl/Democracy> a owl:Class ;
+    rdfs:label "Democracy" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> ;
+    owl:equivalentClass dbpedia:Democracy .
+
+<https://w3id.org/stlab/ke/amiala/fi_sentence100.ttl/Majority> a owl:Class ;
+    rdfs:label "majority" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Majority .
+
+<https://w3id.org/stlab/ke/amiala/fi_sentence100.ttl/Parliament> rdfs:label "parliaments" .
+
+<https://w3id.org/stlab/ke/amiala/fi_sentence100.ttl/Remain> rdfs:label "remains" ;
+    rdfs:subClassOf dul:Event .
+
+<https://w3id.org/stlab/ke/amiala/fi_sentence100.ttl/democracy_1> a <https://w3id.org/stlab/ke/amiala/fi_sentence100.ttl/Democracy> ;
+    rdfs:label "Democracy" .
+
+<https://w3id.org/stlab/ke/amiala/fi_sentence100.ttl/majority_1> a <https://w3id.org/stlab/ke/amiala/fi_sentence100.ttl/Majority> ;
+    rdfs:label "majority" ;
+    quant:hasDeterminer quant:the .
+
+<https://w3id.org/stlab/ke/amiala/fi_sentence100.ttl/parliament_1> a dbpedia:Parliament,
+        <https://w3id.org/stlab/ke/amiala/fi_sentence100.ttl/Parliament> ;
+    rdfs:label "parliaments" ;
+    quant:hasQuantifier quant:both,
+        quant:multiple .
+

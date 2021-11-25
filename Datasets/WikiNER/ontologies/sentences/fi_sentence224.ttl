@@ -1,0 +1,117 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence224.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Elargest> rdfs:label "largest" .
+
+translation_coherence:fi_sentence224.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence224" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence224" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "Priam means the end of the war and the alliance with the world's largest warrior."^^xsd:string .
+
+ns1:mean_1 a ns1:Mean ;
+    rdfs:label "means" ;
+    vn.role:Agent ns1:Priam ;
+    vn.role:Theme ns1:end_1 .
+
+ns1:warrior_1 a ns1:LargestWarrior,
+        ns1:Warrior ;
+    rdfs:label "warrior" ;
+    ns1:largestAmong ns1:Warrior .
+
+ns1:Alliance rdfs:label "alliance" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:End rdfs:label "end" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Largest a owl:Class ;
+    rdfs:label "largest" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:LargestWarrior a owl:Class ;
+    rdfs:label "Largest Warrior" ;
+    dul:hasQuality ns1:Largest ;
+    rdfs:subClassOf ns1:Warrior .
+
+ns1:Mean rdfs:label "means" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Priam rdfs:label "Priam" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Priam .
+
+ns1:War rdfs:label "war" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:World rdfs:label "world" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:alliance_1 a ns1:Alliance ;
+    rdfs:label "alliance" ;
+    quant:hasDeterminer quant:the ;
+    ns1:withLargestWarriorOf ns1:world_1 .
+
+ns1:end_1 a ns1:End ;
+    rdfs:label "end" ;
+    quant:hasDeterminer quant:the ;
+    ns1:endOf ns1:alliance_1,
+        ns1:war_1 .
+
+ns1:war_1 a ns1:War ;
+    rdfs:label "war" ;
+    quant:hasDeterminer quant:the .
+
+ns1:world_1 a ns1:World ;
+    rdfs:label "world" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Warrior a owl:Class ;
+    rdfs:label "warrior" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Warrior .
+

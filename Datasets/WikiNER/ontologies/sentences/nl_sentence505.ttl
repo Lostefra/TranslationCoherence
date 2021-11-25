@@ -1,0 +1,182 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence505.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Destination rdfs:label "to" .
+
+vn.role:Location rdfs:label "in" .
+
+translation_coherence:nl_sentence505.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence505" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence505" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:After rdfs:label "After" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:With rdfs:label "with" .
+
+ns1:campaign_1 a ns1:Campaign ;
+    rdfs:label "campaigned" ;
+    boxer:patient ns1:ceremony_1 ;
+    ns1:after ns1:year_1 ;
+    ns1:with ns1:oscar_1 .
+
+ns1:disjunct_1 a ns1:Disjunct ;
+    boxing:involves "0001-04-01"^^xsd:date ;
+    ns1:union ns1:disjunct_2 .
+
+ns1:disjunct_3 a ns1:Disjunct ;
+    boxing:involves ns1:Late,
+        "0001-03-01"^^xsd:date ;
+    ns1:union ns1:disjunct_4 .
+
+ns1:disrupt_1 a ns1:Disrupt ;
+    rdfs:label "disrupt" ;
+    boxer:agent ns1:ceremony_1 ;
+    boxer:patient ns1:lobby_1 .
+
+ns1:docuverse earmark:hasContent "After over 60 years of being held in March or early April, the ceremonies were moved to late February or early March in 2004 to disrupt the intense lobby and campaigned with Oscars in the movies."^^xsd:string .
+
+ns1:early_1 a ns1:Early ;
+    rdfs:label "early" ;
+    ns1:at "0001-03-01"^^xsd:date,
+        "0001-04-01"^^xsd:date .
+
+ns1:hold_1 a ns1:Hold ;
+    rdfs:label "held" ;
+    vn.role:Location "0001-04-01"^^xsd:date ;
+    vn.role:Value ns1:year_1 .
+
+ns1:late_1 a ns1:Late ;
+    rdfs:label "late" ;
+    dul:hasQuality ns1:Early ;
+    ns1:at "0001-02-01"^^xsd:date,
+        "0001-03-01"^^xsd:date .
+
+ns1:move_1 a ns1:Move ;
+    rdfs:label "moved" ;
+    vn.role:Destination "0001-03-01"^^xsd:date ;
+    vn.role:Theme ns1:ceremony_1 ;
+    ns1:after ns1:year_1 ;
+    ns1:in "2004-01-01"^^xsd:date .
+
+ns1:Campaign rdfs:label "campaigned" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Ceremony rdfs:label "ceremonies" .
+
+ns1:Disrupt rdfs:label "disrupt" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Hold rdfs:label "held" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Intense a owl:Class ;
+    rdfs:label "intense" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:IntenseLobby a owl:Class ;
+    rdfs:label "intense lobby" ;
+    dul:hasQuality ns1:Intense ;
+    rdfs:subClassOf ns1:Lobby .
+
+ns1:Move rdfs:label "moved" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Movie rdfs:label "movies" .
+
+ns1:Oscar a owl:Class ;
+    rdfs:label "Oscars" ;
+    owl:equivalentClass dbpedia:Academy_Awards .
+
+ns1:Over rdfs:label "over" .
+
+ns1:Year rdfs:label "years" .
+
+ns1:disjunct_2 a ns1:Disjunct ;
+    boxing:involves ns1:Early,
+        "0001-04-01"^^xsd:date .
+
+ns1:disjunct_4 a ns1:Disjunct ;
+    boxing:involves ns1:Early,
+        "0001-03-01"^^xsd:date .
+
+ns1:movie_1 a ns1:Movie ;
+    rdfs:label "movies" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:oscar_1 a ns1:Oscar ;
+    rdfs:label "Oscars" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:movie_1 .
+
+ns1:Late rdfs:label "late" .
+
+ns1:Lobby a owl:Class ;
+    rdfs:label "lobby" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:lobby_1 a ns1:IntenseLobby,
+        ns1:Lobby ;
+    rdfs:label "lobby" ;
+    quant:hasDeterminer quant:the .
+
+ns1:ceremony_1 a ns1:Ceremony ;
+    rdfs:label "ceremonies" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    owl:sameAs ns1:lobby_1 .
+
+ns1:year_1 a ns1:Year ;
+    rdfs:label "years" ;
+    dul:hasDataValue "60"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:Over ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Early rdfs:label "Early",
+        "early" .
+

@@ -1,0 +1,159 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence449.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence449.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence449" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence449" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "his" .
+
+ns1:build_1 a ns1:ActuallyBuild ;
+    rdfs:label "build" ;
+    boxing:hasModality boxing:Possible ;
+    dul:hasQuality ns1:Actually ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Product ns1:determine_2,
+        "1"^^xsd:nonNegativeInteger .
+
+ns1:determine_1 a ns1:Determine ;
+    rdfs:label "determining" ;
+    vn.role:Agent ns1:concept_1 ;
+    vn.role:Theme ns1:system_1 .
+
+ns1:docuverse earmark:hasContent "Plato suffered logic and difficulties. He has a reasonable concept of determining system, but he could actually build and restructure one instead of his determining."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "has" ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Patient ns1:concept_1 .
+
+ns1:restructure_1 a ns1:Restructure ;
+    rdfs:label "restructure" ;
+    boxer:agent ns1:male_1 ;
+    boxer:patient ns1:determine_2,
+        "1"^^xsd:nonNegativeInteger ;
+    boxing:hasModality boxing:Possible ;
+    dul:hasQuality ns1:Actually .
+
+ns1:suffer_1 a ns1:Suffer ;
+    rdfs:label "suffered" ;
+    vn.role:Experiencer ns1:Plato ;
+    vn.role:Theme ns1:difficulty_1,
+        ns1:logic_1 .
+
+dbpedia:Plato a schema:Person .
+
+ns1:ActuallyBuild rdfs:label "actually build" ;
+    rdfs:subClassOf ns1:Build .
+
+ns1:Build rdfs:label "build" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Concept a owl:Class ;
+    rdfs:label "concept" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Concept .
+
+ns1:Difficulty rdfs:label "difficulties" .
+
+ns1:Have rdfs:label "has" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Logic a owl:Class ;
+    rdfs:label "logic" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> ;
+    owl:equivalentClass dbpedia:Logic .
+
+ns1:Male rdfs:label "He" .
+
+ns1:Plato rdfs:label "Plato" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Plato .
+
+ns1:Reasonable a owl:Class ;
+    rdfs:label "reasonable" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Reason .
+
+ns1:ReasonableConcept a owl:Class ;
+    rdfs:label "reasonable concept" ;
+    dul:hasQuality ns1:Reasonable ;
+    rdfs:subClassOf ns1:Concept .
+
+ns1:Restructure rdfs:label "restructure" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Suffer rdfs:label "suffered" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:System a owl:Class ;
+    rdfs:label "system" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:System .
+
+ns1:difficulty_1 a ns1:Difficulty ;
+    rdfs:label "difficulties" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:logic_1 a ns1:Logic ;
+    rdfs:label "logic" .
+
+ns1:system_1 a ns1:System ;
+    rdfs:label "system" .
+
+ns1:Actually rdfs:label "actually" .
+
+ns1:Determine rdfs:label "determining" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:concept_1 a ns1:ReasonableConcept ;
+    rdfs:label "concept" ;
+    quant:hasDeterminer quant:a .
+
+ns1:determine_2 a ns1:Determine ;
+    rdfs:label "determining" ;
+    ns1:determineOf ns1:male_1 .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "He",
+        "his" .
+

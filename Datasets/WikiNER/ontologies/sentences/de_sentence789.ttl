@@ -1,0 +1,173 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence789.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence789.ttl a owl:Ontology ;
+    rdfs:label "de_sentence789" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence789" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "their" .
+
+ns1:On rdfs:label "on" .
+
+ns1:docuverse earmark:hasContent "Malinowski and Radcliffe-Brasilien have an impact on the fact that they have built up actively trained students and aggressive institutions to further develop their programmatic ambitions."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "have" ;
+    vn.role:Agent ns1:Malinowski,
+        ns1:Radcliffe-brasilien ;
+    vn.role:Patient ns1:impact_1 .
+
+ns1:Actively rdfs:label "actively" .
+
+ns1:ActivelyTrainedStudent rdfs:subClassOf ns1:TrainedStudent .
+
+ns1:Aggressive rdfs:label "aggressive" .
+
+ns1:AggressiveInstitution rdfs:subClassOf ns1:Institution .
+
+ns1:Ambition rdfs:label "ambitions" .
+
+ns1:Build rdfs:label "built" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Develop rdfs:label "develop" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Fact rdfs:label "fact" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Further rdfs:label "further" .
+
+ns1:FurtherDevelop rdfs:label "Further Develop" ;
+    rdfs:subClassOf ns1:Develop .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Impact rdfs:label "impact" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Institution rdfs:label "institutions" .
+
+ns1:Malinowski rdfs:label "Malinowski" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Programmatic rdfs:label "programmatic" .
+
+ns1:ProgrammaticAmbition rdfs:subClassOf ns1:Ambition .
+
+ns1:Radcliffe-brasilien rdfs:label "Radcliffe-Brasilien" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Student rdfs:label "students" .
+
+ns1:Trained rdfs:label "trained" ;
+    dul:hasQuality ns1:Actively .
+
+ns1:TrainedStudent rdfs:subClassOf ns1:Student .
+
+ns1:Up rdfs:label "up" .
+
+ns1:ambition_1 a ns1:ProgrammaticAmbition ;
+    rdfs:label "ambitions" ;
+    dul:hasQuality ns1:Programmatic ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:programmaticAmbitionOf ns1:thing_1,
+        ns1:thing_2 .
+
+ns1:fact_1 a ns1:Fact ;
+    rdfs:label "fact" ;
+    boxer:theme ns1:situation_1,
+        ns1:situation_2 ;
+    quant:hasDeterminer quant:the .
+
+ns1:impact_1 a ns1:Impact ;
+    rdfs:label "impact" ;
+    quant:hasDeterminer quant:an ;
+    ns1:on ns1:fact_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:build_1,
+        ns1:develop_1,
+        ns1:institution_1,
+        ns1:student_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:build_1,
+        ns1:develop_1,
+        ns1:institution_1,
+        ns1:student_1 .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "their" .
+
+ns1:thing_3 a owl:Thing ;
+    rdfs:label "they" .
+
+ns1:build_1 a ns1:Build ;
+    rdfs:label "built" ;
+    dul:hasQuality ns1:Up ;
+    vn.role:Agent ns1:thing_3 ;
+    vn.role:Product ns1:institution_1,
+        ns1:student_1 .
+
+ns1:develop_1 a ns1:FurtherDevelop ;
+    rdfs:label "develop" ;
+    dul:hasQuality ns1:Further ;
+    vn.role:Agent ns1:institution_1 ;
+    vn.role:Product ns1:ambition_1 .
+
+owl:Thing rdfs:label "they" .
+
+ns1:student_1 a ns1:ActivelyTrainedStudent ;
+    rdfs:label "students" ;
+    dul:hasQuality ns1:Trained ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:institution_1 a dbpedia:Institution,
+        ns1:AggressiveInstitution ;
+    rdfs:label "institutions" ;
+    dul:hasQuality ns1:Aggressive ;
+    quant:hasQuantifier quant:multiple .
+

@@ -1,0 +1,103 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence440.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Oblique rdfs:label "to" .
+
+translation_coherence:it_sentence440.ttl a owl:Ontology ;
+    rdfs:label "it_sentence440" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence440" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:When rdfs:label "When" .
+
+ns1:complete_1 a ns1:Complete ;
+    rdfs:label "completed" ;
+    vn.role:Theme ns1:I-80 ;
+    ns1:in "1969-01-01"^^xsd:date ;
+    ns1:when ns1:move_1 .
+
+ns1:docuverse earmark:hasContent "When I-80 was completed in 1969, the head was moved to the current site."^^xsd:string .
+
+dbpedia:Interstate_80 a schema:Place .
+
+ns1:Complete rdfs:label "completed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Current a owl:Class ;
+    rdfs:label "current" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:CurrentSite a owl:Class ;
+    rdfs:label "Current Site" ;
+    dul:hasQuality ns1:Current ;
+    rdfs:subClassOf ns1:Site .
+
+ns1:Head rdfs:label "head" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:I-80 rdfs:label "I-80" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Interstate_80 .
+
+ns1:Move rdfs:label "moved" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:head_1 a ns1:Head ;
+    rdfs:label "head" ;
+    quant:hasDeterminer quant:the ;
+    owl:sameAs ns1:site_1 .
+
+ns1:move_1 a ns1:Move ;
+    rdfs:label "moved" ;
+    vn.role:Oblique ns1:site_1 ;
+    vn.role:Theme ns1:head_1 .
+
+ns1:Site a owl:Class ;
+    rdfs:label "site" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:site_1 a ns1:CurrentSite,
+        ns1:Site ;
+    rdfs:label "site" ;
+    quant:hasDeterminer quant:the .
+

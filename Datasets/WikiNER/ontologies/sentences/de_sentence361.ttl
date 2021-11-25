@@ -1,0 +1,168 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence361.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Source rdfs:label "despite" .
+
+translation_coherence:de_sentence361.ttl a owl:Ontology ;
+    rdfs:label "de_sentence361" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence361" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:After rdfs:label "After" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:docuverse earmark:hasContent "After Mr. Burnside was rejected in the tax exemption in December, Joseph_hooker took office despite his history of loose talks and criticised former commanders."^^xsd:string .
+
+ns1:male_1 coref:coref ns1:Burnside .
+
+ns1:reject_1 a ns1:Reject ;
+    rdfs:label "rejected" ;
+    vn.role:Proposition ns1:Burnside ;
+    ns1:after ns1:situation_1 ;
+    ns1:in ns1:exemption_1 .
+
+ns1:tax_1 a ns1:Tax ;
+    rdfs:label "tax" ;
+    dul:associatedWith ns1:exemption_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:Commander rdfs:label "commanders" .
+
+ns1:Criticise rdfs:label "criticised" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Exemption a owl:Class ;
+    rdfs:label "exemption" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Former rdfs:label "former" .
+
+ns1:FormerCommander rdfs:subClassOf ns1:Commander .
+
+ns1:History rdfs:label "history" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Loose rdfs:label "loose" .
+
+ns1:LooseTalk rdfs:subClassOf ns1:Talk .
+
+ns1:Office rdfs:label "office" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Reject rdfs:label "rejected" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Take rdfs:label "took" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Talk rdfs:label "talks" .
+
+ns1:TaxExemption a owl:Class ;
+    rdfs:label "tax exemption" ;
+    dul:associatedWith ns1:Tax ;
+    rdfs:subClassOf ns1:Exemption .
+
+ns1:criticise_1 a ns1:Criticise ;
+    rdfs:label "criticised" ;
+    boxer:agent ns1:Joseph_hooker ;
+    boxer:patient ns1:commander_1 .
+
+ns1:history_1 a ns1:History ;
+    rdfs:label "history" ;
+    ns1:historyOf ns1:Burnside,
+        ns1:talk_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:commander_1,
+        ns1:criticise_1,
+        ns1:office_1,
+        ns1:take_1,
+        ns1:talk_1 .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "took" ;
+    vn.role:Agent ns1:Joseph_hooker ;
+    vn.role:Source ns1:history_1 ;
+    vn.role:Theme ns1:office_1 .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> a ns1:Male ;
+    rdfs:label "Mr." ;
+    boxer:possibleType dul:Role .
+
+ns1:Joseph_hooker rdfs:label "Joseph hooker" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Joseph_Hooker .
+
+ns1:Male rdfs:label "Burnside",
+        "Mr." .
+
+ns1:Tax a owl:Class ;
+    rdfs:label "tax" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:commander_1 a ns1:FormerCommander ;
+    rdfs:label "commanders" ;
+    dul:hasQuality ns1:Former ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:exemption_1 a ns1:TaxExemption ;
+    rdfs:label "exemption" ;
+    ns1:in "0001-12-01"^^xsd:date .
+
+ns1:office_1 a ns1:Office ;
+    rdfs:label "office" .
+
+ns1:talk_1 a ns1:LooseTalk ;
+    rdfs:label "talks" ;
+    dul:hasQuality ns1:Loose ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Burnside a ns1:Male ;
+    rdfs:label "Burnside",
+        "his" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> .
+

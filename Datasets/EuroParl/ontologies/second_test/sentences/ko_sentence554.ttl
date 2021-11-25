@@ -1,0 +1,119 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence554.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:ko_sentence554.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence554" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence554" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "Schroedter, a section of the instructions related to urban and rural development, pointing that the urban development was not considered."^^xsd:string .
+
+ns1:point_1 a ns1:Point ;
+    rdfs:label "pointing" ;
+    boxer:theme ns1:consider_1 ;
+    vn.role:Agent ns1:Schroedter .
+
+ns1:relate_1 a ns1:Relate ;
+    rdfs:label "related" ;
+    vn.role:Recipient ns1:development_1 ;
+    vn.role:Topic ns1:section_1 .
+
+ns1:Consider rdfs:label "considered" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Development a owl:Class ;
+    rdfs:label "Development",
+        "development" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Instruction rdfs:label "instructions" .
+
+ns1:Point rdfs:label "pointing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Relate rdfs:label "related" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:RuralDevelopment a owl:Class ;
+    rdfs:label "rural development" ;
+    dul:hasQuality ns1:Rural ;
+    rdfs:subClassOf ns1:Development .
+
+ns1:Schroedter rdfs:label "Schroedter" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith ns1:section_1 .
+
+ns1:Section rdfs:label "section" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Urban rdfs:label "Urban",
+        "urban" .
+
+ns1:consider_1 a ns1:Consider ;
+    rdfs:label "considered" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Theme ns1:development_1 .
+
+ns1:instruction_1 a ns1:Instruction ;
+    rdfs:label "instructions" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Rural a owl:Class ;
+    rdfs:label "rural" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:development_1 a ns1:RuralDevelopment ;
+    rdfs:label "development" ;
+    dul:hasQuality ns1:Rural,
+        ns1:Urban .
+
+ns1:section_1 a ns1:Section ;
+    rdfs:label "section" ;
+    quant:hasDeterminer quant:a ;
+    ns1:sectionOf ns1:instruction_1 .
+

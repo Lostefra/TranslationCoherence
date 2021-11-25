@@ -1,0 +1,109 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence192.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence192.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence192" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence192" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "But none of the sources for Statius make a reference to this general invulnerability."^^xsd:string .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "make" ;
+    dul:hasQuality ns1:But ;
+    vn.role:Agent ns1:none_1 ;
+    vn.role:Theme ns1:reference_1 ;
+    ns1:to ns1:invulnerability_1 .
+
+ns1:But rdfs:label "But" .
+
+ns1:General a owl:Class ;
+    rdfs:label "general" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:GeneralInvulnerability a owl:Class ;
+    rdfs:label "general invulnerability" ;
+    dul:hasQuality ns1:General ;
+    rdfs:subClassOf ns1:Invulnerability .
+
+ns1:Invulnerability a owl:Class ;
+    rdfs:label "invulnerability" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Make rdfs:label "make" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:None rdfs:label "none" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Reference rdfs:label "reference" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Source rdfs:label "sources" .
+
+ns1:Statius rdfs:label "Statius" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Statius .
+
+ns1:invulnerability_1 a ns1:GeneralInvulnerability ;
+    rdfs:label "invulnerability" ;
+    quant:hasDeterminer quant:this .
+
+ns1:none_1 a ns1:None ;
+    rdfs:label "none" ;
+    ns1:noneOf ns1:source_1 .
+
+ns1:reference_1 a ns1:Reference ;
+    rdfs:label "reference" ;
+    quant:hasDeterminer quant:a .
+
+ns1:source_1 a ns1:Source ;
+    rdfs:label "sources" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:for ns1:Statius .
+

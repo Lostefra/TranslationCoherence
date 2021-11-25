@@ -1,0 +1,128 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence114.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence114.ttl a owl:Ontology ;
+    rdfs:label "en_sentence114" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence114" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Throughout rdfs:label "throughout" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "Generally, Alabama has very hot summers and mild winters with copious precipitation throughout the year."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "has" ;
+    dul:hasQuality ns1:Generally ;
+    vn.role:Agent ns1:Alabama ;
+    vn.role:Patient ns1:summer_1,
+        ns1:winter_1 ;
+    ns1:throughout ns1:year_1 .
+
+dbpedia:Alabama a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:Alabama rdfs:label "Alabama" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Alabama .
+
+ns1:CopiousPrecipitation a owl:Class ;
+    rdfs:label "copious precipitation" ;
+    dul:hasQuality ns1:Copious ;
+    rdfs:subClassOf ns1:Precipitation .
+
+ns1:Generally rdfs:label "Generally" .
+
+ns1:Have rdfs:label "has" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Hot rdfs:label "hot" ;
+    dul:hasQuality ns1:Very ;
+    owl:sameAs dbpedia:Temperature .
+
+ns1:HotSummer rdfs:subClassOf ns1:Summer .
+
+ns1:Mild rdfs:label "mild" .
+
+ns1:MildWinter rdfs:subClassOf ns1:Winter .
+
+ns1:Precipitation a owl:Class ;
+    rdfs:label "precipitation" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Precipitation .
+
+ns1:Summer rdfs:label "summers" .
+
+ns1:Very rdfs:label "very" .
+
+ns1:VeryHotSummer rdfs:subClassOf ns1:HotSummer .
+
+ns1:Winter rdfs:label "winters" .
+
+ns1:Year rdfs:label "year" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:precipitation_1 a ns1:CopiousPrecipitation ;
+    rdfs:label "precipitation" ;
+    dul:hasQuality ns1:Copious .
+
+ns1:summer_1 a dbpedia:Summer,
+        ns1:VeryHotSummer ;
+    rdfs:label "summers" ;
+    dul:hasQuality ns1:Hot ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:winter_1 a dbpedia:Winter,
+        ns1:MildWinter ;
+    rdfs:label "winters" ;
+    dul:hasQuality ns1:Mild ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:with ns1:precipitation_1 .
+
+ns1:year_1 a ns1:Year ;
+    rdfs:label "year" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Copious a owl:Class ;
+    rdfs:label "copious" ;
+    rdfs:subClassOf dul:Quality .
+

@@ -1,0 +1,163 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence5.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Patient2 rdfs:label "with" .
+
+translation_coherence:ko_sentence5.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence5" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence5" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:First rdfs:label "first" .
+
+ns1:From rdfs:label "From" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:With rdfs:label "with" .
+
+ns1:class_1 a ns1:Class ;
+    rdfs:label "class" ;
+    dul:associatedWith ns1:movement_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:docuverse earmark:hasContent "From 1860 to 1939, the classic age of the scholar is associated with the struggle of the Spanish_civil_war era with the first class movement of the nineth century."^^xsd:string .
+
+ns1:to_1 a ns1:To ;
+    rdfs:label "to" ;
+    boxer:agent "1939-01-01"^^xsd:date ;
+    boxer:theme ns1:associate_1 ;
+    ns1:from "1860-01-01"^^xsd:date .
+
+dbpedia:Spanish_Civil_War a schema:Event .
+
+ns1:Age a owl:Class ;
+    rdfs:label "age" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Associate rdfs:label "associated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Class rdfs:label "class" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:ClassMovement rdfs:label "class movement" ;
+    rdfs:subClassOf ns1:Movement .
+
+ns1:Classic a owl:Class ;
+    rdfs:label "classic" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ClassicAge a owl:Class ;
+    rdfs:label "Classic Age" ;
+    dul:hasQuality ns1:Classic ;
+    rdfs:subClassOf ns1:Age .
+
+ns1:Era rdfs:label "era" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:FirstClassMovement rdfs:label "First Class Movement" ;
+    rdfs:subClassOf ns1:ClassMovement .
+
+ns1:Movement rdfs:label "movement" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Nineth a owl:Class ;
+    rdfs:label "nineth" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:NinethCentury a owl:Class ;
+    rdfs:label "nineth century" ;
+    dul:hasQuality ns1:Nineth ;
+    rdfs:subClassOf ns1:Century ;
+    owl:equivalentClass dbpedia:9th_century .
+
+ns1:Scholar rdfs:label "scholar" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Spanish_civil_war rdfs:label "Spanish civil war" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Spanish_Civil_War .
+
+ns1:Struggle rdfs:label "struggle" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:To rdfs:label "to" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:age_1 a ns1:ClassicAge ;
+    rdfs:label "age" ;
+    quant:hasDeterminer quant:the ;
+    ns1:classicAgeOf ns1:scholar_1 .
+
+ns1:associate_1 a ns1:Associate ;
+    rdfs:label "associated" ;
+    vn.role:Patient1 ns1:age_1 ;
+    vn.role:Patient2 ns1:struggle_1 .
+
+ns1:era_1 a ns1:Era ;
+    rdfs:label "era" ;
+    dul:associatedWith ns1:Spanish_civil_war .
+
+ns1:scholar_1 a ns1:Scholar ;
+    rdfs:label "scholar" ;
+    quant:hasDeterminer quant:the ;
+    owl:sameAs ns1:century_1 .
+
+ns1:struggle_1 a ns1:Struggle ;
+    rdfs:label "struggle" ;
+    quant:hasDeterminer quant:the ;
+    ns1:struggleOf ns1:era_1 ;
+    ns1:with ns1:movement_1 .
+
+ns1:Century a owl:Class ;
+    rdfs:label "century" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:century_1 a ns1:Century,
+        ns1:NinethCentury ;
+    rdfs:label "century" ;
+    quant:hasDeterminer quant:the .
+
+ns1:movement_1 a ns1:FirstClassMovement ;
+    rdfs:label "movement" ;
+    ns1:firstClassMovementOf ns1:century_1 .
+

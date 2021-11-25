@@ -1,0 +1,127 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence351.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence351.ttl a owl:Ontology ;
+    rdfs:label "en_sentence351" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence351" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "Missouri, Kentucky and Md. threatened secession, but neither they nor the slave state of Del. seceded."^^xsd:string .
+
+ns1:secede_1 a dbpedia:Secession,
+        ns1:Secede ;
+    rdfs:label "seceded" ;
+    boxer:agent ns1:state_1,
+        ns1:thing_1 ;
+    boxing:hasTruthValue boxing:False ;
+    dul:hasQuality ns1:Neither .
+
+ns1:threaten_1 a ns1:Threaten ;
+    rdfs:label "threatened" ;
+    vn.role:Cause ns1:Missouri ;
+    vn.role:Experiencer ns1:secession_1 .
+
+dbpedia:Kentucky a schema:AdministrativeArea,
+        schema:Place .
+
+dbpedia:Missouri a schema:AdministrativeArea,
+        schema:Place .
+
+owl:Thing rdfs:label "they" .
+
+<https://w3id.org/stlab/ke/amiala/en_sentence351.ttl/Del.> rdfs:label "Del." ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Kentucky rdfs:label "Kentucky" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Kentucky .
+
+<https://w3id.org/stlab/ke/amiala/en_sentence351.ttl/Md.> rdfs:label "Md." ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Missouri rdfs:label "Missouri" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Kentucky,
+        <https://w3id.org/stlab/ke/amiala/en_sentence351.ttl/Md.> ;
+    owl:sameAs dbpedia:Missouri .
+
+ns1:Neither rdfs:label "neither" .
+
+ns1:Secede rdfs:label "seceded" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Secession a owl:Class ;
+    rdfs:label "secession" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Secession .
+
+ns1:Slave a owl:Class ;
+    rdfs:label "slave" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SlaveState a owl:Class ;
+    rdfs:label "Slave State" ;
+    dul:hasQuality ns1:Slave ;
+    rdfs:subClassOf ns1:State ;
+    owl:equivalentClass dbpedia:Slave_and_free_states .
+
+ns1:State a owl:Class ;
+    rdfs:label "state" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Threaten rdfs:label "threatened" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:secession_1 a ns1:Secession ;
+    rdfs:label "secession" .
+
+ns1:state_1 a ns1:SlaveState ;
+    rdfs:label "state" ;
+    quant:hasDeterminer quant:the ;
+    ns1:slaveStateOf <https://w3id.org/stlab/ke/amiala/en_sentence351.ttl/Del.> .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "they" .
+

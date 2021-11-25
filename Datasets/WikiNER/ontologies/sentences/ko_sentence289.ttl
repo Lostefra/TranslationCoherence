@@ -1,0 +1,233 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence289.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "into" .
+
+translation_coherence:ko_sentence289.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence289" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence289" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Later rdfs:label "Later" .
+
+ns1:Of rdfs:label "her" .
+
+ns1:Rel rdfs:label "(" .
+
+ns1:anode_1 a ns1:Anode ;
+    rdfs:label "anode" ;
+    dul:associatedWith ns1:disorder_1 ;
+    quant:hasDeterminer quant:this .
+
+ns1:docuverse earmark:hasContent "Later in life, Maria Todd Lincoln found that her husband and son can not overcome stress. And this (pre-existing anode disorder) eventually led the roberg Lincoln to put her into the mental health pelvis in 1875."^^xsd:string .
+
+ns1:female_1 rdfs:label "her" .
+
+ns1:find_1 a ns1:Find ;
+    rdfs:label "found" ;
+    vn.role:Agent ns1:Maria_todd_lincoln ;
+    vn.role:Theme ns1:overcome_1 ;
+    ns1:laterIn ns1:life_1 .
+
+ns1:health_1 a ns1:Health ;
+    rdfs:label "health" ;
+    dul:associatedWith ns1:pelvis_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:lead_1 a ns1:EventuallyLead ;
+    rdfs:label "led" ;
+    boxer:theme ns1:put_1 ;
+    dul:hasQuality ns1:And,
+        ns1:Eventually ;
+    vn.role:Agent ns1:thing_1 .
+
+ns1:roberg_1 a ns1:Roberg ;
+    rdfs:label "roberg" ;
+    dul:associatedWith ns1:lincoln_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:son_1 rdfs:label "son" .
+
+owl:Thing rdfs:label "this" .
+
+ns1:And rdfs:label "And",
+        "and" .
+
+ns1:AnodeDisorder a owl:Class ;
+    rdfs:label "Anode Disorder" ;
+    dul:associatedWith ns1:Anode ;
+    rdfs:subClassOf ns1:Disorder .
+
+ns1:Disorder a owl:Class ;
+    rdfs:label "disorder" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Eventually rdfs:label "eventually" .
+
+ns1:EventuallyLead rdfs:subClassOf ns1:Lead .
+
+ns1:Female rdfs:label "Maria Todd Lincoln" .
+
+ns1:Find rdfs:label "found" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:HealthPelvis a owl:Class ;
+    rdfs:label "Health Pelvis" ;
+    dul:associatedWith ns1:Health ;
+    rdfs:subClassOf ns1:Pelvis .
+
+ns1:Husband rdfs:label "husband" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Lead rdfs:label "led" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Life rdfs:label "life" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Mental a owl:Class ;
+    rdfs:label "mental" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:MentalHealth a owl:Class ;
+    dul:hasQuality ns1:Mental ;
+    rdfs:subClassOf dul:Situation,
+        ns1:Health .
+
+ns1:MentalHealthPelvis a owl:Class ;
+    rdfs:label "Mental Health Pelvis" ;
+    dul:associatedWith ns1:MentalHealth ;
+    rdfs:subClassOf ns1:HealthPelvis .
+
+ns1:Overcome rdfs:label "overcome" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Pelvis a owl:Class ;
+    rdfs:label "pelvis" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Pelvis .
+
+ns1:Pre-existing a owl:Class ;
+    rdfs:label "pre-existing" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Pre-existingAnode a owl:Class ;
+    dul:hasQuality ns1:Pre-existing ;
+    rdfs:subClassOf ns1:Anode .
+
+ns1:Pre-existingAnodeDisorder a owl:Class ;
+    rdfs:label "pre-existing anode disorder" ;
+    dul:associatedWith ns1:Pre-existingAnode ;
+    rdfs:subClassOf ns1:AnodeDisorder .
+
+ns1:Put rdfs:label "put" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Roberg a owl:Class ;
+    rdfs:label "roberg" ;
+    owl:equivalentClass dbpedia:Lars_Roberg .
+
+ns1:RobergLincoln rdfs:label "roberg Lincoln" ;
+    rdfs:subClassOf ns1:Lincoln .
+
+ns1:Son rdfs:label "son" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Stress rdfs:label "stress" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:husband_1 a ns1:Husband,
+        ns1:Son ;
+    rdfs:label "husband" ;
+    ns1:sonOf ns1:Maria_todd_lincoln .
+
+ns1:life_1 a ns1:Life ;
+    rdfs:label "life" .
+
+ns1:overcome_1 a ns1:Overcome ;
+    rdfs:label "overcome" ;
+    boxing:hasModality boxing:Possible ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Theme1 ns1:husband_1 ;
+    vn.role:Theme2 ns1:stress_1 .
+
+ns1:put_1 a ns1:Put ;
+    rdfs:label "put" ;
+    vn.role:Agent ns1:lincoln_1 ;
+    vn.role:Destination ns1:pelvis_1 ;
+    vn.role:Theme ns1:Maria_todd_lincoln .
+
+ns1:stress_1 a ns1:Stress ;
+    rdfs:label "stress" .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "this" ;
+    dul:associatedWith ns1:disorder_1 .
+
+ns1:disorder_1 a ns1:Pre-existingAnodeDisorder ;
+    rdfs:label "disorder" .
+
+ns1:lincoln_1 a ns1:RobergLincoln ;
+    rdfs:label "Lincoln" .
+
+ns1:pelvis_1 a ns1:MentalHealthPelvis ;
+    rdfs:label "pelvis" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in "1875-01-01"^^xsd:date .
+
+ns1:Anode a owl:Class ;
+    rdfs:label "anode" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Anode .
+
+ns1:Health a owl:Class ;
+    rdfs:label "health" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Maria_todd_lincoln a ns1:Female ;
+    rdfs:label "Maria Todd Lincoln" ;
+    boxer:possibleType foaf:Person .
+

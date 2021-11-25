@@ -1,0 +1,218 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence428.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence428.ttl a owl:Ontology ;
+    rdfs:label "de_sentence428" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence428" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:argue_1 a ns1:Argue ;
+    rdfs:label "argued" ;
+    vn.role:Actor ns1:Lincoln,
+        ns1:whig_1 ;
+    vn.role:Theme ns1:situation_1,
+        ns1:situation_2 .
+
+ns1:docuverse earmark:hasContent "Recognising that all men have been freely created, Lincoln and the Whigs argued that this freedom has made economic progress, expanded education, the area and the ability of the nation to absorb the growing population of immigrants."^^xsd:string .
+
+ns1:grow_1 a ns1:Grow ;
+    rdfs:label "growing" ;
+    vn.role:Agent ns1:population_1 .
+
+ns1:recognise_1 a ns1:Recognise ;
+    rdfs:label "Recognising" ;
+    boxer:agent ns1:thing_1 ;
+    boxer:theme ns1:create_1 .
+
+ns1:Ability rdfs:label "ability" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Absorb rdfs:label "absorb" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Area rdfs:label "area" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Argue rdfs:label "argued" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Create rdfs:label "created" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Economic a owl:Class ;
+    rdfs:label "economic" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:EconomicProgress a owl:Class ;
+    rdfs:label "economic progress" ;
+    dul:hasQuality ns1:Economic ;
+    rdfs:subClassOf ns1:Progress .
+
+ns1:Education rdfs:label "education" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Expand rdfs:label "expanded" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Freedom rdfs:label "freedom" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Freely rdfs:label "freely" .
+
+ns1:FreelyCreate rdfs:subClassOf ns1:Create .
+
+ns1:Grow rdfs:label "growing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Immigrant rdfs:label "immigrants" .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Make rdfs:label "made" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Man rdfs:label "men" .
+
+ns1:Nation rdfs:label "nation" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Population rdfs:label "population" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Progress a owl:Class ;
+    rdfs:label "progress" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Recognise rdfs:label "Recognising" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Whig a owl:Class ;
+    rdfs:label "Whigs" ;
+    owl:equivalentClass dbpedia:Whigs_(British_political_party) .
+
+ns1:create_1 a ns1:FreelyCreate ;
+    rdfs:label "created" ;
+    dul:hasQuality ns1:Freely ;
+    vn.role:Product ns1:man_1 .
+
+ns1:freedom_1 a ns1:Freedom ;
+    rdfs:label "freedom" ;
+    quant:hasDeterminer quant:this .
+
+ns1:man_1 a ns1:Man ;
+    rdfs:label "men" ;
+    quant:hasQuantifier quant:all,
+        quant:multiple .
+
+ns1:nation_1 a ns1:Nation ;
+    rdfs:label "nation" ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:absorb_1,
+        ns1:education_1,
+        ns1:expand_1,
+        ns1:immigrant_1,
+        ns1:make_1,
+        ns1:progress_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:absorb_1,
+        ns1:education_1,
+        ns1:expand_1,
+        ns1:immigrant_1,
+        ns1:make_1,
+        ns1:progress_1 .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:whig_1 a ns1:Whig ;
+    rdfs:label "Whigs" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:ability_1 a ns1:Ability ;
+    rdfs:label "ability" ;
+    quant:hasDeterminer quant:the ;
+    ns1:abilityOf ns1:nation_1 .
+
+ns1:absorb_1 a ns1:Absorb ;
+    rdfs:label "absorb" ;
+    boxer:agent ns1:ability_1,
+        ns1:area_1 ;
+    boxer:patient ns1:population_1 .
+
+ns1:area_1 a ns1:Area ;
+    rdfs:label "area" ;
+    quant:hasDeterminer quant:the .
+
+ns1:expand_1 a ns1:Expand ;
+    rdfs:label "expanded" ;
+    vn.role:Patient ns1:education_1 .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "made" ;
+    vn.role:Agent ns1:freedom_1 ;
+    vn.role:Theme ns1:progress_1 .
+
+ns1:population_1 a ns1:Population ;
+    rdfs:label "population" ;
+    quant:hasDeterminer quant:the ;
+    ns1:populationOf ns1:immigrant_1 .
+
+ns1:immigrant_1 a ns1:Immigrant ;
+    rdfs:label "immigrants" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:progress_1 a ns1:EconomicProgress ;
+    rdfs:label "progress" ;
+    dul:associatedWith ns1:education_1 .
+
+ns1:education_1 a ns1:Education ;
+    rdfs:label "education" ;
+    dul:associatedWith ns1:ability_1,
+        ns1:area_1 .
+

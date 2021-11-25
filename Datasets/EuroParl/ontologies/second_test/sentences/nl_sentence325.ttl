@@ -1,0 +1,178 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence325.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Beneficiary rdfs:label "for" .
+
+translation_coherence:nl_sentence325.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence325" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence325" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "But the lack of specific guidelines here is mostly regrettable, as the idea of setting up Social Fund's assistance to the labor strategy for the first time in the 2,000-06 program."^^xsd:string .
+
+ns1:labor_1 a ns1:Labor ;
+    rdfs:label "labor" ;
+    dul:associatedWith ns1:strategy_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:set_1 a ns1:Set ;
+    rdfs:label "setting" ;
+    dul:hasQuality ns1:Up ;
+    vn.role:Agent ns1:idea_1 ;
+    vn.role:Beneficiary ns1:time_1 ;
+    vn.role:Product ns1:assistance_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Mostly,
+        ns1:Regrettable,
+        ns1:lack_1 ;
+    dul:hasQuality ns1:But ;
+    ns1:as ns1:idea_1 .
+
+ns1:2%2C000-06 rdfs:label "2,000-06" .
+
+ns1:2%2C000-06Program rdfs:subClassOf ns1:Program .
+
+ns1:Assistance rdfs:label "assistance" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:But rdfs:label "But" .
+
+ns1:First a owl:Class ;
+    rdfs:label "first" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FirstTime a owl:Class ;
+    rdfs:label "first time" ;
+    dul:hasQuality ns1:First ;
+    rdfs:subClassOf ns1:Time .
+
+ns1:Guideline rdfs:label "guidelines" .
+
+ns1:Here rdfs:label "here" .
+
+ns1:Idea rdfs:label "idea" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:LaborStrategy a owl:Class ;
+    rdfs:label "labor strategy" ;
+    dul:associatedWith ns1:Labor ;
+    rdfs:subClassOf ns1:Strategy .
+
+ns1:Lack rdfs:label "lack" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Program rdfs:label "program" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Set rdfs:label "setting" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Social_fund rdfs:label "Social Fund" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Specific rdfs:label "specific" .
+
+ns1:SpecificGuideline rdfs:subClassOf ns1:Guideline .
+
+ns1:Strategy a owl:Class ;
+    rdfs:label "strategy" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Time a owl:Class ;
+    rdfs:label "time" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Up rdfs:label "up" .
+
+ns1:assistance_1 a ns1:Assistance ;
+    rdfs:label "assistance" ;
+    ns1:assistanceOf ns1:Social_fund ;
+    ns1:to ns1:strategy_1 .
+
+ns1:guideline_1 a ns1:SpecificGuideline ;
+    rdfs:label "guidelines" ;
+    dul:hasQuality ns1:Here,
+        ns1:Specific ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:lack_1 a ns1:Lack ;
+    rdfs:label "lack" ;
+    dul:hasQuality ns1:Regrettable ;
+    quant:hasDeterminer quant:the ;
+    ns1:lackOf ns1:guideline_1 .
+
+ns1:program_1 a ns1:2%2C000-06Program ;
+    rdfs:label "program" ;
+    dul:hasQuality ns1:2%2C000-06 ;
+    quant:hasDeterminer quant:the .
+
+ns1:time_1 a ns1:FirstTime ;
+    rdfs:label "time" ;
+    quant:hasDeterminer quant:the ;
+    ns1:in ns1:program_1 .
+
+ns1:Labor a owl:Class ;
+    rdfs:label "labor" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Employment .
+
+ns1:Mostly rdfs:label "mostly" .
+
+ns1:Regrettable rdfs:label "regrettable" ;
+    dul:hasQuality ns1:Mostly .
+
+ns1:idea_1 a ns1:Idea ;
+    rdfs:label "idea" ;
+    quant:hasDeterminer quant:the .
+
+ns1:strategy_1 a ns1:LaborStrategy ;
+    rdfs:label "strategy" .
+

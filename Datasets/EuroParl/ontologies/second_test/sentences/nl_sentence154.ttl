@@ -1,0 +1,199 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence154.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+vn.role:Source rdfs:label "in" .
+
+translation_coherence:nl_sentence154.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence154" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence154" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "our" .
+
+ns1:docuverse earmark:hasContent "We also need to check this out and make sure that our rules are transferred by the Member States in good time and more importantly, we need to make sure they're assigned afterwards."^^xsd:string .
+
+ns1:more_1 rdfs:label "more" .
+
+ns1:need_1 a ns1:AlsoNeed ;
+    rdfs:label "need" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Experiencer ns1:person_2 ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:need_2 a ns1:Need ;
+    rdfs:label "need" ;
+    vn.role:Experiencer ns1:person_3 ;
+    vn.role:Theme ns1:situation_2 .
+
+owl:Thing rdfs:label "they" .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoNeed rdfs:label "Also Need" ;
+    rdfs:subClassOf ns1:Need .
+
+ns1:Check rdfs:label "check" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Good a owl:Class ;
+    rdfs:label "good" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:GoodTime a owl:Class ;
+    rdfs:label "good time" ;
+    dul:hasQuality ns1:Good ;
+    rdfs:subClassOf ns1:Time .
+
+ns1:Importantly rdfs:label "importantly" .
+
+ns1:Member_states rdfs:label "Member States" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:More rdfs:label "more" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Out rdfs:label "out" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Rule rdfs:label "rules" .
+
+ns1:Time a owl:Class ;
+    rdfs:label "time" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Transfer rdfs:label "transferred" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:check_1 a ns1:Check ;
+    rdfs:label "check" ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Location ns1:out_1 .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "make" ;
+    vn.role:Agent ns1:person_2 .
+
+ns1:make_2 a ns1:Make ;
+    rdfs:label "make" ;
+    vn.role:Agent ns1:person_3 .
+
+ns1:out_1 a ns1:Out ;
+    rdfs:label "out" ;
+    quant:hasDeterminer quant:this .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "our" .
+
+ns1:rule_1 a ns1:Rule ;
+    rdfs:label "rules" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:ruleOf ns1:person_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:check_1,
+        ns1:make_1,
+        ns1:sure_1,
+        ns1:time_1,
+        ns1:transfer_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Afterwards,
+        ns1:Assign,
+        ns1:assign_1,
+        ns1:make_2,
+        ns1:sure_2 .
+
+ns1:sure_1 a ns1:Sure ;
+    rdfs:label "sure" ;
+    boxer:agent ns1:person_2 ;
+    boxer:theme ns1:transfer_1 .
+
+ns1:sure_2 a ns1:Sure ;
+    rdfs:label "sure" ;
+    boxer:agent ns1:person_3 ;
+    boxer:theme ns1:assign_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "they" .
+
+ns1:Afterwards rdfs:label "afterwards" .
+
+ns1:Assign rdfs:label "assigned" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Make rdfs:label "Make",
+        "make" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Need rdfs:label "Need",
+        "need" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Sure rdfs:label "sure" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:assign_1 a ns1:Assign ;
+    rdfs:label "assigned" ;
+    dul:hasQuality ns1:Afterwards ;
+    vn.role:Agent ns1:thing_1 .
+
+ns1:time_1 a ns1:GoodTime,
+        ns1:More ;
+    rdfs:label "time" .
+
+ns1:transfer_1 a ns1:Transfer ;
+    rdfs:label "transferred" ;
+    dul:hasQuality ns1:Importantly ;
+    vn.role:Agent ns1:Member_states ;
+    vn.role:Source ns1:time_1 ;
+    vn.role:Theme ns1:rule_1 .
+
+ns1:Person rdfs:label "We",
+        "we" .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "We" .
+

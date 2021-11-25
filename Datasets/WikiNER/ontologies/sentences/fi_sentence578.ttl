@@ -1,0 +1,146 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence578.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Source rdfs:label "although" .
+
+translation_coherence:fi_sentence578.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence578" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence578" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:await_1 a ns1:AlsoAwait ;
+    rdfs:label "awaited" ;
+    boxer:agent ns1:Rand ;
+    dul:hasQuality ns1:Also .
+
+ns1:docuverse earmark:hasContent "Rand also awaited and took extensive notes of his philosophy of nonfiction treatment, although the plan was never made."^^xsd:string .
+
+ns1:nonfiction_1 a ns1:Nonfiction ;
+    rdfs:label "nonfiction" ;
+    dul:associatedWith ns1:treatment_1 .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "took" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Agent ns1:Rand ;
+    vn.role:Source ns1:make_1 ;
+    vn.role:Theme ns1:note_1 .
+
+dbpedia:Ayn_Rand a schema:Person .
+
+ns1:AlsoAwait rdfs:subClassOf ns1:Await .
+
+ns1:Await rdfs:label "awaited" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Extensive rdfs:label "extensive" .
+
+ns1:ExtensiveNote rdfs:subClassOf ns1:Note .
+
+ns1:Make rdfs:label "made" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Never rdfs:label "never" .
+
+ns1:NeverMake rdfs:subClassOf ns1:Make .
+
+ns1:NonfictionTreatment a owl:Class ;
+    rdfs:label "Nonfiction Treatment" ;
+    dul:associatedWith ns1:Nonfiction ;
+    rdfs:subClassOf ns1:Treatment .
+
+ns1:Note rdfs:label "notes" .
+
+ns1:Philosophy a owl:Class ;
+    rdfs:label "philosophy" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Philosophy .
+
+ns1:Plan rdfs:label "plan" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Take rdfs:label "took" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Treatment a owl:Class ;
+    rdfs:label "treatment" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:make_1 a ns1:NeverMake ;
+    rdfs:label "made" ;
+    dul:hasQuality ns1:Never ;
+    vn.role:Theme ns1:plan_1 .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "his" .
+
+ns1:note_1 a ns1:ExtensiveNote ;
+    rdfs:label "notes" ;
+    dul:hasQuality ns1:Extensive ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:extensiveNoteOf ns1:philosophy_1 .
+
+ns1:philosophy_1 a ns1:Philosophy ;
+    rdfs:label "philosophy" ;
+    ns1:philosophyOf ns1:male_1,
+        ns1:treatment_1 .
+
+ns1:plan_1 a ns1:Plan ;
+    rdfs:label "plan" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Also rdfs:label "also" .
+
+ns1:Nonfiction a owl:Class ;
+    rdfs:label "nonfiction" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Non-fiction .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType time:Interval ;
+    owl:sameAs dbpedia:Ayn_Rand .
+
+ns1:treatment_1 a ns1:NonfictionTreatment ;
+    rdfs:label "treatment" .
+

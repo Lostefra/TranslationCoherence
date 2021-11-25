@@ -1,0 +1,108 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence420.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence420.ttl a owl:Ontology ;
+    rdfs:label "en_sentence420" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence420" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Lincoln a ns1:StrongSupporter ;
+    rdfs:label "Lincoln",
+        "supporter" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Abraham_Lincoln,
+        ns1:supporter_1 ;
+    ns1:strongSupporterOf ns1:version_1 .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "Lincoln was a strong supporter of the American Whig version of liberal capitalism."^^xsd:string .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+ns1:American_whig rdfs:label "American Whig" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Capitalism a owl:Class ;
+    rdfs:label "capitalism" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#System> ;
+    owl:equivalentClass dbpedia:Capitalism .
+
+ns1:Liberal a owl:Class ;
+    rdfs:label "liberal" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Liberalism .
+
+ns1:LiberalCapitalism a owl:Class ;
+    rdfs:label "liberal capitalism" ;
+    dul:hasQuality ns1:Liberal ;
+    rdfs:subClassOf ns1:Capitalism ;
+    owl:equivalentClass dbpedia:Economic_liberalism .
+
+ns1:Strong a owl:Class ;
+    rdfs:label "strong" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:StrongSupporter a owl:Class ;
+    rdfs:label "Strong Supporter" ;
+    dul:hasQuality ns1:Strong ;
+    rdfs:subClassOf ns1:Supporter .
+
+ns1:Version rdfs:label "version" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:capitalism_1 a ns1:LiberalCapitalism ;
+    rdfs:label "capitalism" .
+
+ns1:supporter_1 a ns1:Supporter ;
+    rdfs:label "supporter" ;
+    quant:hasDeterminer quant:a .
+
+ns1:version_1 a ns1:Version ;
+    rdfs:label "version" ;
+    dul:associatedWith ns1:American_whig ;
+    ns1:versionOf ns1:capitalism_1 .
+
+ns1:Supporter a owl:Class ;
+    rdfs:label "Lincoln",
+        "supporter" ;
+    rdfs:subClassOf dul:Person .
+

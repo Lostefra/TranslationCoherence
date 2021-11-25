@@ -1,0 +1,106 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence268.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence268.ttl a owl:Ontology ;
+    rdfs:label "en_sentence268" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence268" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:concern_1 a ns1:Concern ;
+    rdfs:label "concerned" ;
+    vn.role:Experiencer ns1:prerequisite_1 ;
+    ns1:loc_rel ns1:location_1 .
+
+ns1:docuverse earmark:hasContent "This is also important where the prerequisites for the internal market are concerned."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Important,
+        ns1:thing_1 ;
+    dul:hasQuality ns1:Also ;
+    ns1:loc_rel ns1:location_1 .
+
+owl:Thing rdfs:label "This" .
+
+ns1:Also rdfs:label "also" .
+
+ns1:Concern rdfs:label "concerned" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:InternalMarket a owl:Class ;
+    rdfs:label "internal market" ;
+    dul:hasQuality ns1:Internal ;
+    rdfs:subClassOf ns1:Market .
+
+ns1:Location rdfs:label "where" .
+
+ns1:Market a owl:Class ;
+    rdfs:label "market" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Prerequisite rdfs:label "prerequisites" .
+
+ns1:market_1 a ns1:InternalMarket ;
+    rdfs:label "market" ;
+    dul:hasQuality ns1:Internal ;
+    quant:hasDeterminer quant:the .
+
+ns1:prerequisite_1 a ns1:Prerequisite ;
+    rdfs:label "prerequisites" ;
+    quant:hasDeterminer quant:the,
+        quant:this ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:for ns1:market_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "This" ;
+    dul:hasQuality ns1:Important .
+
+ns1:Important rdfs:label "important" .
+
+ns1:Internal a owl:Class ;
+    rdfs:label "internal" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:location_1 a ns1:Location ;
+    rdfs:label "where" .
+

@@ -1,0 +1,213 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence431.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Location rdfs:label "which" .
+
+translation_coherence:fi_sentence431.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence431" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence431" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:To rdfs:label "to" .
+
+ns1:When rdfs:label "when" ;
+    owl:sameAs dbpedia:When_We_On .
+
+ns1:docuverse earmark:hasContent "I would like to publicly say that we come to an age when we are asked to master programming for the years 2000-2006, which should not be a routine time for good reason that we have two major challenges."^^xsd:string .
+
+ns1:like_1 a ns1:Like ;
+    rdfs:label "like" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Experiencer ns1:person_1 ;
+    vn.role:Theme ns1:say_1 .
+
+ns1:2000-2006 rdfs:label "2000-2006" .
+
+ns1:Age rdfs:label "age" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Ask rdfs:label "asked" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Challenge rdfs:label "challenges" .
+
+ns1:Come rdfs:label "come" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Good a owl:Class ;
+    rdfs:label "good" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:GoodReason a owl:Class ;
+    rdfs:label "Good Reason" ;
+    dul:hasQuality ns1:Good ;
+    rdfs:subClassOf ns1:Reason .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Like rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Major rdfs:label "major" .
+
+ns1:MajorChallenge rdfs:subClassOf ns1:Challenge .
+
+ns1:Master rdfs:label "master" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Programming rdfs:label "programming" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Publicly rdfs:label "publicly" .
+
+ns1:PubliclySay rdfs:label "Publicly Say" ;
+    rdfs:subClassOf ns1:Say .
+
+ns1:Reason a owl:Class ;
+    rdfs:label "reason" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Routine a owl:Class ;
+    rdfs:label "routine" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:RoutineTime a owl:Class ;
+    rdfs:label "routine time" ;
+    dul:hasQuality ns1:Routine ;
+    rdfs:subClassOf ns1:Time .
+
+ns1:Say rdfs:label "say" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Time a owl:Class ;
+    rdfs:label "time" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Year rdfs:label "years" .
+
+ns1:age_1 a ns1:Age ;
+    rdfs:label "age" ;
+    quant:hasDeterminer quant:an .
+
+ns1:ask_1 a ns1:Ask ;
+    rdfs:label "asked" ;
+    boxer:theme ns1:master_1 ;
+    vn.role:Patient ns1:person_3 .
+
+ns1:come_1 a ns1:Come ;
+    rdfs:label "come" ;
+    vn.role:Location ns1:situation_1 ;
+    vn.role:Theme ns1:person_2 ;
+    ns1:to ns1:age_1 ;
+    ns1:when ns1:ask_1 .
+
+ns1:master_1 a ns1:Master ;
+    rdfs:label "master" ;
+    boxer:agent ns1:person_3 ;
+    boxer:patient ns1:programming_1 ;
+    ns1:for ns1:year_1 .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:person_4 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:programming_1 a ns1:Programming ;
+    rdfs:label "programming" .
+
+ns1:say_1 a ns1:PubliclySay ;
+    rdfs:label "say" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Publicly ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Topic ns1:come_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves ns1:challenge_1,
+        ns1:have_1,
+        ns1:reason_1,
+        ns1:time_1 .
+
+ns1:time_1 a ns1:RoutineTime ;
+    rdfs:label "time" ;
+    quant:hasDeterminer quant:a ;
+    quant:hasQuantifier quant:2000-2006 ;
+    ns1:for ns1:reason_1 .
+
+ns1:year_1 a ns1:Year ;
+    rdfs:label "years" ;
+    dul:hasQuality ns1:2000-2006 ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:challenge_1 a ns1:MajorChallenge ;
+    rdfs:label "challenges" ;
+    dul:hasDataValue "2"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:Major ;
+    quant:hasQuantifier quant:multiple,
+        quant:two .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "have" ;
+    vn.role:Agent ns1:person_4 ;
+    vn.role:Patient ns1:challenge_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:reason_1 a ns1:GoodReason ;
+    rdfs:label "reason" ;
+    boxer:theme ns1:have_1 .
+
+ns1:Person rdfs:label "I",
+        "we" .
+

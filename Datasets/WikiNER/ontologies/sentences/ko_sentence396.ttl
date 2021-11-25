@@ -1,0 +1,133 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence396.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence396.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence396" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence396" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:docuverse earmark:hasContent "Gettysburg_address is a small world that ignores his prediction of Lincoln, or remember what we say here."^^xsd:string .
+
+ns1:ignore_1 a ns1:Ignore ;
+    rdfs:label "ignores" ;
+    boxer:agent ns1:Gettysburg_address ;
+    boxer:patient ns1:prediction_1 ;
+    ns1:union ns1:say_1 .
+
+ns1:remember_1 a ns1:Remember ;
+    rdfs:label "remember" ;
+    vn.role:Agent ns1:Gettysburg_address ;
+    vn.role:Theme ns1:thing_1 .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+ns1:Here rdfs:label "here" .
+
+ns1:Ignore rdfs:label "ignores" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Prediction rdfs:label "prediction" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Remember rdfs:label "remember" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Say rdfs:label "say" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Small a owl:Class ;
+    rdfs:label "small" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SmallWorld a owl:Class ;
+    rdfs:label "Small World" ;
+    dul:hasQuality ns1:Small ;
+    rdfs:subClassOf ns1:World .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "his" .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:prediction_1 a ns1:Prediction ;
+    rdfs:label "prediction" ;
+    ns1:predictionOf ns1:Lincoln,
+        ns1:male_1 .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "say" ;
+    dul:hasQuality ns1:Here ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Topic ns1:thing_1 .
+
+ns1:world_1 a ns1:World ;
+    rdfs:label "world" ;
+    quant:hasDeterminer quant:a .
+
+owl:Thing rdfs:label "what" .
+
+ns1:Gettysburg_address a ns1:SmallWorld ;
+    rdfs:label "Gettysburg address",
+        "world" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Gettysburg_Address,
+        ns1:world_1 .
+
+ns1:World a owl:Class ;
+    rdfs:label "Gettysburg address",
+        "world" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "what" .
+

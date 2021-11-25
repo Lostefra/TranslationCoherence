@@ -1,0 +1,164 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence691.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "in" .
+
+translation_coherence:it_sentence691.ttl a owl:Ontology ;
+    rdfs:label "it_sentence691" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence691" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Union rdfs:label "or" .
+
+ns1:disjunct_1 a ns1:Disjunct ;
+    boxing:involves ns1:Stagnation,
+        ns1:stagnation_1 ;
+    ns1:union ns1:disjunct_2 .
+
+ns1:docuverse earmark:hasContent "Colteau, at least we must recognize that there is growth, and that we are not working in a stagnation or recession period, as has happened in the past."^^xsd:string .
+
+ns1:growth_1 rdfs:label "growth" .
+
+ns1:period_1 rdfs:label "period" .
+
+ns1:recession_1 a ns1:Recession ;
+    rdfs:label "recession" ;
+    dul:associatedWith ns1:stagnation_1 .
+
+ns1:recognize_1 a ns1:Recognize ;
+    rdfs:label "recognize" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:associatedWith ns1:Colteau ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:Colteau rdfs:label "Colteau" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Happen rdfs:label "happened" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Past rdfs:label "past" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:RecessionPeriod a owl:Class ;
+    rdfs:label "recession period" ;
+    dul:associatedWith ns1:Recession ;
+    rdfs:subClassOf ns1:Period .
+
+ns1:Recognize rdfs:label "recognize" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:There rdfs:label "there" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Work rdfs:label "working" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:disjunct_2 a ns1:Disjunct ;
+    boxing:involves ns1:Period,
+        ns1:Recession,
+        ns1:stagnation_1 .
+
+ns1:past_1 a ns1:Past ;
+    rdfs:label "past" ;
+    quant:hasDeterminer quant:the .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:Growth,
+        ns1:happen_1,
+        ns1:stagnation_1,
+        ns1:there_1,
+        ns1:work_1 .
+
+ns1:there_1 a ns1:Growth,
+        ns1:There ;
+    rdfs:label "there" .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "working" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Actor ns1:person_2 ;
+    ns1:as ns1:happen_1 ;
+    ns1:in ns1:stagnation_1 .
+
+ns1:Growth rdfs:label "growth" ;
+    rdfs:subClassOf dul:Process .
+
+ns1:Period a owl:Class ;
+    rdfs:label "period" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Stagnation rdfs:label "stagnation" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:happen_1 a ns1:Happen ;
+    rdfs:label "happened" ;
+    vn.role:Location ns1:past_1 ;
+    vn.role:Theme ns1:thing_1 .
+
+ns1:Recession a owl:Class ;
+    rdfs:label "recession" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Recession .
+
+ns1:stagnation_1 a ns1:RecessionPeriod,
+        ns1:Stagnation ;
+    rdfs:label "stagnation" ;
+    quant:hasDeterminer quant:a .
+

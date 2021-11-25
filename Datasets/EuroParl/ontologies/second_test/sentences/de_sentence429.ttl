@@ -1,0 +1,220 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence429.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence429.ttl a owl:Ontology ;
+    rdfs:label "de_sentence429" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence429" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:More rdfs:label "more" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "I shared the regret that the Parliament is more involved in these guidelines lately, as the procedure for negotiations with the States is far more advanced so far, that I cannot see this report with any kind of immediate effect, which I believe is a pact."^^xsd:string .
+
+ns1:pact_1 rdfs:label "pact" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:report_1 a ns1:Report ;
+    rdfs:label "report" ;
+    quant:hasDeterminer quant:this ;
+    ns1:withKindPactOf ns1:effect_1 .
+
+ns1:share_1 a ns1:Share ;
+    rdfs:label "shared" ;
+    boxer:agent ns1:person_1 ;
+    boxer:patient ns1:regret_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:kind_1 ;
+    ns1:entails ns1:situation_2 .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves ns1:Involve ;
+    dul:hasQuality ns1:Lately .
+
+ns1:situation_4 a ns1:Situation ;
+    boxing:involves ns1:Advanced,
+        ns1:Far,
+        ns1:procedure_1 ;
+    dul:hasQuality ns1:Far,
+        ns1:So .
+
+ns1:Believe rdfs:label "believe" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Effect a owl:Class ;
+    rdfs:label "effect" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Guideline rdfs:label "guidelines" .
+
+ns1:Immediate a owl:Class ;
+    rdfs:label "immediate" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ImmediateEffect a owl:Class ;
+    rdfs:label "Immediate Effect" ;
+    dul:hasQuality ns1:Immediate ;
+    rdfs:subClassOf ns1:Effect .
+
+ns1:Kind rdfs:label "kind" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Lately rdfs:label "lately" .
+
+ns1:Negotiation rdfs:label "negotiations" .
+
+ns1:Parliament rdfs:label "Parliament" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality ns1:Involve ;
+    owl:sameAs dbpedia:Parliament .
+
+ns1:Procedure rdfs:label "procedure" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Regret rdfs:label "regret" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Report rdfs:label "report" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:See rdfs:label "see" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Share rdfs:label "shared" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:So rdfs:label "so" .
+
+ns1:States rdfs:label "States" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:believe_1 a ns1:Believe ;
+    rdfs:label "believe" ;
+    vn.role:Theme ns1:situation_5 .
+
+ns1:guideline_1 a ns1:Guideline ;
+    rdfs:label "guidelines" ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:regret_1 a ns1:Regret ;
+    rdfs:label "regret" ;
+    boxer:theme ns1:situation_5 ;
+    quant:hasDeterminer quant:the .
+
+ns1:see_1 a ns1:See ;
+    rdfs:label "see" .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:effect_1,
+        ns1:kind_1 .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:thing_2 a owl:Thing .
+
+ns1:Pact rdfs:label "pact" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic>,
+        dul:InformationEntity .
+
+ns1:negotiation_1 a ns1:Negotiation ;
+    rdfs:label "negotiations" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:with ns1:States .
+
+ns1:procedure_1 a ns1:Procedure ;
+    rdfs:label "procedure" ;
+    dul:hasQuality ns1:Advanced ;
+    quant:hasDeterminer quant:the ;
+    ns1:for ns1:negotiation_1 ;
+    ns1:more ns1:thing_2 .
+
+ns1:situation_5 a ns1:Situation ;
+    boxing:involves ns1:Advanced,
+        ns1:Far,
+        ns1:Involve,
+        ns1:Pact,
+        ns1:Parliament,
+        ns1:believe_1,
+        ns1:effect_1,
+        ns1:kind_1,
+        ns1:negotiation_1,
+        ns1:procedure_1,
+        ns1:see_1 ;
+    ns1:in ns1:guideline_1 ;
+    ns1:more ns1:thing_1 .
+
+ns1:Advanced rdfs:label "advanced" ;
+    dul:hasQuality ns1:Far .
+
+ns1:Involve rdfs:label "involved" .
+
+ns1:Person rdfs:label "I" .
+
+ns1:effect_1 a ns1:ImmediateEffect ;
+    rdfs:label "effect" .
+
+ns1:kind_1 a ns1:Kind,
+        ns1:Pact ;
+    rdfs:label "kind" ;
+    quant:hasDeterminer quant:a ;
+    quant:hasQuantifier quant:any .
+
+ns1:Far rdfs:label "far" .
+

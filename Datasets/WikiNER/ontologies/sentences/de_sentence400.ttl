@@ -1,0 +1,110 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence400.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%28> rdfs:label "(" .
+
+translation_coherence:de_sentence400.ttl a owl:Ontology ;
+    rdfs:label "de_sentence400" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence400" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Under rdfs:label "under" .
+
+ns1:docuverse earmark:hasContent "Lincoln signed 1861 the second and third Morrill (the first one was under James_Buchanan."^^xsd:string .
+
+ns1:first_1 a ns1:First ;
+    rdfs:label "first" ;
+    dul:hasDataValue "1"^^xsd:nonNegativeInteger ;
+    ns1:under ns1:James_buchanan .
+
+ns1:sign_1 a ns1:Sign ;
+    rdfs:label "signed" ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Destination "1861"^^xsd:nonNegativeInteger ;
+    vn.role:Theme ns1:morrill_1 .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+dbpedia:James_Buchanan a schema:Person .
+
+ns1:First rdfs:label "first" .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+
+ns1:Morrill a owl:Class ;
+    rdfs:label "Morrill" ;
+    owl:equivalentClass dbpedia:Justin_Smith_Morrill .
+
+ns1:Second rdfs:label "second" ;
+    owl:sameAs dbpedia:2nd_United_States_Congress .
+
+ns1:Sign rdfs:label "signed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Third a owl:Class ;
+    rdfs:label "third" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:3rd_United_States_Congress .
+
+ns1:ThirdMorrill a owl:Class ;
+    rdfs:label "Third Morrill" ;
+    dul:hasQuality ns1:Third ;
+    rdfs:subClassOf ns1:Morrill .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:James_buchanan,
+        ns1:morrill_1,
+        "1"^^xsd:nonNegativeInteger .
+
+ns1:James_buchanan rdfs:label "James Buchanan" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:James_Buchanan .
+
+ns1:morrill_1 a ns1:ThirdMorrill ;
+    rdfs:label "Morrill" ;
+    boxing:parentheticAssociation ns1:situation_1 ;
+    dul:hasQuality ns1:Second ;
+    quant:hasDeterminer quant:the .
+

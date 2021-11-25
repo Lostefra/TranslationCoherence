@@ -1,0 +1,192 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence455.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence455.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence455" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence455" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:At rdfs:label "at" .
+
+ns1:Few rdfs:label "few" .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "In the past few years, Italy has had problems using the Structural_Funds, especially because of excessive bureaucracy, insufficient information, and a lack of economic and social operators at the local level."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "had" ;
+    dul:hasQuality ns1:Especially ;
+    vn.role:Agent ns1:Italy ;
+    vn.role:Patient ns1:problem_1 ;
+    ns1:haveOf ns1:bureaucracy_1 ;
+    ns1:in ns1:year_1 .
+
+ns1:use_1 a ns1:Use ;
+    rdfs:label "using" ;
+    vn.role:Agent ns1:problem_1 ;
+    vn.role:Theme ns1:structural_funds_1 .
+
+dbpedia:Italy a schema:Country,
+        schema:Place .
+
+ns1:Bureaucracy a owl:Class ;
+    rdfs:label "bureaucracy" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Bureaucracy .
+
+ns1:Economic rdfs:label "economic" .
+
+ns1:Especially rdfs:label "especially" .
+
+ns1:Excessive a owl:Class ;
+    rdfs:label "excessive" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ExcessiveBureaucracy a owl:Class ;
+    rdfs:label "excessive bureaucracy" ;
+    dul:hasQuality ns1:Excessive ;
+    rdfs:subClassOf ns1:Bureaucracy .
+
+ns1:FewYear rdfs:subClassOf ns1:Year .
+
+ns1:Have rdfs:label "had" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Information a owl:Class ;
+    rdfs:label "information" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Insufficient a owl:Class ;
+    rdfs:label "insufficient" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:InsufficientInformation a owl:Class ;
+    rdfs:label "insufficient information" ;
+    dul:hasQuality ns1:Insufficient ;
+    rdfs:subClassOf ns1:Information .
+
+ns1:Italy rdfs:label "Italy" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Italy .
+
+ns1:Lack rdfs:label "lack" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Level a owl:Class ;
+    rdfs:label "level" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:LocalLevel a owl:Class ;
+    rdfs:label "Local Level" ;
+    dul:hasQuality ns1:Local ;
+    rdfs:subClassOf ns1:Level .
+
+ns1:Operator rdfs:label "operators" .
+
+ns1:Past rdfs:label "past" .
+
+ns1:PastFewYear rdfs:subClassOf ns1:FewYear .
+
+ns1:Problem rdfs:label "problems" .
+
+ns1:Social rdfs:label "social" .
+
+ns1:SocialOperator rdfs:subClassOf ns1:Operator .
+
+ns1:Structural_funds a owl:Class ;
+    rdfs:label "Structural Funds" ;
+    owl:equivalentClass dbpedia:Structural_Funds_and_Cohesion_Fund .
+
+ns1:Use rdfs:label "using" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Year rdfs:label "years" .
+
+ns1:bureaucracy_1 a ns1:ExcessiveBureaucracy ;
+    rdfs:label "bureaucracy" ;
+    dul:associatedWith ns1:information_1,
+        ns1:lack_1 .
+
+ns1:information_1 a ns1:InsufficientInformation ;
+    rdfs:label "information" .
+
+ns1:lack_1 a ns1:Lack ;
+    rdfs:label "lack" ;
+    quant:hasDeterminer quant:a ;
+    ns1:lackOf ns1:operator_1 .
+
+ns1:level_1 a ns1:LocalLevel ;
+    rdfs:label "level" ;
+    dul:hasQuality ns1:Local ;
+    quant:hasDeterminer quant:the .
+
+ns1:operator_1 a ns1:SocialOperator ;
+    rdfs:label "operators" ;
+    dul:hasQuality ns1:Economic,
+        ns1:Social ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:at ns1:level_1 .
+
+ns1:structural_funds_1 a ns1:Structural_funds ;
+    rdfs:label "Structural Funds" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:year_1 a ns1:PastFewYear ;
+    rdfs:label "years" ;
+    dul:hasQuality ns1:Past ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:few,
+        quant:multiple .
+
+ns1:Local a owl:Class ;
+    rdfs:label "local" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:problem_1 a ns1:Problem ;
+    rdfs:label "problems" ;
+    quant:hasQuantifier quant:multiple .
+

@@ -1,0 +1,307 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence646.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence646.ttl a owl:Ontology ;
+    rdfs:label "de_sentence646" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence646" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Across rdfs:label "across" .
+
+ns1:As rdfs:label "As",
+        "as" .
+
+ns1:Eq rdfs:label "are" .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Policy rdfs:label "policies" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Through rdfs:label "through" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:competitiveness_1 a ns1:Competitiveness ;
+    rdfs:label "competitiveness" ;
+    quant:hasDeterminer quant:the ;
+    ns1:competitivenessOf ns1:region_1 .
+
+ns1:development_1 rdfs:label "development" .
+
+ns1:docuverse earmark:hasContent "As all politicians across Europe are in the process of reducing unemployment, a critical question is whether the applied policies are the right or whether it would not be useful to increase the competitiveness of the regions through appropriate measures such as enhanced support for research and development, improvement of infrastructure and increasing the level of training."^^xsd:string .
+
+ns1:policy_1 a dbpedia:Policy ;
+    rdfs:label "policies" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:politician_1 ;
+    ns1:entails ns1:situation_2 .
+
+ns1:situation_4 a ns1:Situation ;
+    boxing:involves ns1:politician_1,
+        ns1:reduce_1,
+        ns1:unemployment_1 ;
+    ns1:as ns1:be_1 .
+
+dbpedia:Europe a schema:Continent,
+        schema:Place .
+
+ns1:Applied rdfs:label "applied" .
+
+ns1:AppliedPolicy rdfs:subClassOf ns1:Right .
+
+ns1:Appropriate rdfs:label "appropriate" .
+
+ns1:AppropriateMeasure rdfs:subClassOf ns1:Measure .
+
+ns1:Be rdfs:label "Be",
+        "is" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Competitiveness rdfs:label "competitiveness" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Critical a owl:Class ;
+    rdfs:label "critical" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Critical_theory .
+
+ns1:CriticalQuestion a owl:Class ;
+    rdfs:label "critical question" ;
+    dul:hasQuality ns1:Critical ;
+    rdfs:subClassOf ns1:Question .
+
+ns1:Development a owl:Class ;
+    rdfs:label "development" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Research_and_development .
+
+ns1:Enhanced a owl:Class ;
+    rdfs:label "enhanced" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:EnhancedSupport a owl:Class ;
+    rdfs:label "enhanced support" ;
+    dul:hasQuality ns1:Enhanced ;
+    rdfs:subClassOf ns1:Support .
+
+ns1:Improvement rdfs:label "improvement" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Infrastructure a owl:Class ;
+    rdfs:label "infrastructure" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Infrastructure .
+
+ns1:Level rdfs:label "level" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Measure rdfs:label "measures" .
+
+ns1:Politician rdfs:label "politicians" .
+
+ns1:Process a owl:Class ;
+    rdfs:label "process" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Systems_engineering .
+
+ns1:Reduce rdfs:label "reducing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Region rdfs:label "regions" .
+
+ns1:Research rdfs:label "research" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Support a owl:Class ;
+    rdfs:label "support" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Training a owl:Class ;
+    rdfs:label "training" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Training .
+
+ns1:Unemployment a owl:Class ;
+    rdfs:label "unemployment" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Unemployment .
+
+ns1:Useful rdfs:label "useful" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:be_1 a ns1:Be ;
+    rdfs:label "is" ;
+    boxer:agent ns1:question_1 ;
+    boxer:theme ns1:situation_3 .
+
+ns1:increase_1 a ns1:Increase ;
+    rdfs:label "increase" ;
+    vn.role:Agent ns1:Europe ;
+    ns1:through ns1:measure_1 .
+
+ns1:level_1 a ns1:Level ;
+    rdfs:label "level" ;
+    quant:hasDeterminer quant:the ;
+    ns1:levelOf ns1:training_1 .
+
+ns1:reduce_1 a dbpedia:Reductionism,
+        ns1:Reduce ;
+    rdfs:label "reducing" ;
+    vn.role:Agent ns1:process_1 ;
+    vn.role:Patient ns1:unemployment_1 .
+
+ns1:region_1 a ns1:Region ;
+    rdfs:label "regions" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:right_1 a ns1:AppliedPolicy,
+        ns1:Right ;
+    rdfs:label "right" ;
+    dul:hasQuality ns1:Applied ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Europe,
+        ns1:politician_1 .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves ns1:Right,
+        ns1:improvement_1,
+        ns1:increase_1,
+        ns1:increase_2,
+        ns1:infrastructure_1,
+        ns1:measure_1,
+        ns1:research_1,
+        ns1:right_1,
+        ns1:support_1,
+        ns1:thing_1,
+        ns1:training_1,
+        ns1:useful_1 ;
+    ns1:union ns1:useful_1 .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Increase rdfs:label "increase",
+        "increasing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Question a owl:Class ;
+    rdfs:label "question" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:improvement_1 a ns1:Improvement ;
+    rdfs:label "improvement" ;
+    ns1:improvementOf ns1:infrastructure_1 .
+
+ns1:increase_2 a ns1:Increase ;
+    rdfs:label "increasing" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Patient ns1:level_1 .
+
+ns1:infrastructure_1 a ns1:Infrastructure ;
+    rdfs:label "infrastructure" .
+
+ns1:measure_1 a ns1:AppropriateMeasure ;
+    rdfs:label "measures" ;
+    dul:hasQuality ns1:Appropriate ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:as ns1:support_1 .
+
+ns1:process_1 a ns1:Process ;
+    rdfs:label "process" ;
+    quant:hasDeterminer quant:the .
+
+ns1:question_1 a ns1:CriticalQuestion,
+        ns1:Question ;
+    rdfs:label "question" ;
+    quant:hasDeterminer quant:a .
+
+ns1:research_1 a ns1:Development,
+        ns1:Research ;
+    rdfs:label "research" .
+
+ns1:support_1 a ns1:EnhancedSupport ;
+    rdfs:label "support" ;
+    dul:associatedWith ns1:improvement_1,
+        ns1:increase_2 ;
+    quant:hasDeterminer quant:such ;
+    ns1:for ns1:research_1 .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:training_1 a ns1:Training ;
+    rdfs:label "training" .
+
+ns1:unemployment_1 a ns1:Unemployment ;
+    rdfs:label "unemployment" .
+
+ns1:useful_1 a ns1:Useful ;
+    rdfs:label "useful" ;
+    boxer:agent ns1:Europe ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:hasTruthValue boxing:False .
+
+ns1:Right rdfs:label "right" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:politician_1 a ns1:Politician ;
+    rdfs:label "politicians" ;
+    quant:hasQuantifier quant:all,
+        quant:multiple ;
+    ns1:across ns1:Europe ;
+    ns1:in ns1:process_1 .
+
+ns1:Europe rdfs:label "Europe" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:hasQuality owl:Thing ;
+    owl:sameAs dbpedia:Europe,
+        ns1:question_1 .
+

@@ -1,0 +1,134 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence636.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "on" .
+
+translation_coherence:en_sentence636.ttl a owl:Ontology ;
+    rdfs:label "en_sentence636" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence636" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:About rdfs:label "about" .
+
+ns1:By rdfs:label "by" .
+
+ns1:Noteq rdfs:label "other" .
+
+ns1:Of rdfs:label "her" .
+
+ns1:appear_1 a ns1:AlsoAppear ;
+    rdfs:label "appeared" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Location ns1:list_1 ;
+    vn.role:Theme ns1:book_1 .
+
+ns1:docuverse earmark:hasContent "Books by other authors about Rand and her philosophy also appeared on the nonfiction list."^^xsd:string .
+
+ns1:female_1 rdfs:label "her" .
+
+ns1:nonfiction_1 a ns1:Nonfiction ;
+    rdfs:label "nonfiction" ;
+    dul:associatedWith ns1:list_1 ;
+    quant:hasDeterminer quant:the .
+
+dbpedia:Ayn_Rand a schema:Person .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoAppear rdfs:subClassOf ns1:Appear .
+
+ns1:Appear rdfs:label "appeared" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Book rdfs:label "Books" .
+
+ns1:Female rdfs:label "Rand" .
+
+ns1:List a owl:Class ;
+    rdfs:label "list" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:NonfictionList a owl:Class ;
+    rdfs:label "nonfiction list" ;
+    dul:associatedWith ns1:Nonfiction ;
+    rdfs:subClassOf ns1:List .
+
+ns1:Philosophy a owl:Class ;
+    rdfs:label "philosophy" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Philosophy .
+
+ns1:author_1 a ns1:Author ;
+    rdfs:label "other" ;
+    owl:differentFrom ns1:author_2 .
+
+ns1:author_2 a ns1:Author ;
+    rdfs:label "authors" ;
+    quant:hasDeterminer quant:other ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:book_1 a ns1:Book ;
+    rdfs:label "Books" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:about ns1:Rand,
+        ns1:philosophy_1 ;
+    ns1:bookBy ns1:author_1 .
+
+ns1:philosophy_1 a ns1:Philosophy ;
+    rdfs:label "philosophy" ;
+    ns1:philosophyOf ns1:Rand .
+
+ns1:Author rdfs:label "authors",
+        "other" .
+
+ns1:Nonfiction a owl:Class ;
+    rdfs:label "nonfiction" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Non-fiction .
+
+ns1:Rand a ns1:Female ;
+    rdfs:label "Rand" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Ayn_Rand .
+
+ns1:list_1 a ns1:NonfictionList ;
+    rdfs:label "list" .
+

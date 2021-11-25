@@ -1,3 +1,4 @@
+import os
 import utilities.constants as constants
 import spacy
 from rdflib.term import Literal, URIRef
@@ -179,3 +180,41 @@ def synonymy_classified(node1, node2, result_graph):
 
 def difference_classified(node1, node2, result_graph):
     return (node1, constants.GENERIC_DIFFERENCE_PREDICATE, node2) in result_graph
+
+
+def check_valid_ontology(file_path):
+    valid = True
+    http_error_500 = "<h2>HTTP ERROR: 500</h2>"
+    ontology_file = open(file_path, "r")
+    file_content = ontology_file.read()
+    if file_content == "":
+        valid = False
+    if http_error_500 in file_content:
+        valid = False
+    return valid
+
+
+def get_ids_valid_ontologies(folders):
+    valid_ids = set()
+    first = True
+    for folder in folders:
+        ontologies = os.listdir(folder)
+        for ontology in ontologies:
+            id_sentence = int(ontology.split("sentence")[1].split(".")[0])
+            if first and check_valid_ontology(folder + ontology):
+                valid_ids.add(id_sentence)
+            if not first and not check_valid_ontology(folder + ontology):
+                if id_sentence in valid_ids:
+                    valid_ids.remove(id_sentence)
+        first = False
+    return sorted(list(valid_ids))
+
+
+def get_categories_from_range(lengths, groups):
+    x = []
+    for i, upper_bound in enumerate(groups):
+        if not len(x):
+            x.append(str(min(lengths)) + "-" + str(upper_bound))
+        else:
+            x.append(str(groups[i - 1] + 1) + "-" + str(upper_bound))
+    return x

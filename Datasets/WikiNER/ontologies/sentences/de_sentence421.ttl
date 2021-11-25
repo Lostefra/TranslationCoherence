@@ -1,0 +1,135 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence421.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence421.ttl a owl:Ontology ;
+    rdfs:label "de_sentence421" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence421" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:disjunct_1 a ns1:Disjunct ;
+    boxing:involves ns1:Impact,
+        ns1:Strong,
+        ns1:impact_1 ;
+    ns1:union ns1:disjunct_2 .
+
+ns1:docuverse earmark:hasContent "Some people who have a strong or direct impact on the moral and mental development and perspectives of Lincoln."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "have" ;
+    vn.role:Agent ns1:people_1 ;
+    vn.role:Patient ns1:impact_1 .
+
+ns1:perspective_1 rdfs:label "perspectives" .
+
+ns1:Development a owl:Class ;
+    rdfs:label "development" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:DirectImpact a owl:Class ;
+    rdfs:label "Direct Impact" ;
+    dul:hasQuality ns1:Direct ;
+    rdfs:subClassOf ns1:Impact .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Mental a owl:Class ;
+    rdfs:label "mental" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:MentalDevelopment a owl:Class ;
+    rdfs:label "Mental Development" ;
+    dul:hasQuality ns1:Mental ;
+    rdfs:subClassOf ns1:Development .
+
+ns1:Moral rdfs:label "moral" ;
+    owl:sameAs dbpedia:Morality .
+
+ns1:People rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Perspective rdfs:label "perspectives" .
+
+ns1:development_1 a ns1:MentalDevelopment,
+        ns1:Perspective ;
+    rdfs:label "development" ;
+    dul:hasQuality ns1:Moral ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:mentalDevelopmentOf ns1:Lincoln .
+
+ns1:disjunct_2 a ns1:Disjunct ;
+    boxing:involves ns1:Direct,
+        ns1:Impact,
+        ns1:impact_1 .
+
+ns1:people_1 a ns1:People ;
+    rdfs:label "people" ;
+    dul:hasQuality ns1:Topic ;
+    quant:hasQuantifier quant:multiple,
+        quant:some .
+
+ns1:Strong rdfs:label "strong" .
+
+ns1:Direct a owl:Class ;
+    rdfs:label "direct" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Impact a owl:Class ;
+    rdfs:label "impact" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:impact_1 a ns1:DirectImpact ;
+    rdfs:label "impact" ;
+    dul:hasQuality ns1:Direct,
+        ns1:Strong ;
+    quant:hasDeterminer quant:a ;
+    ns1:on ns1:development_1 .
+

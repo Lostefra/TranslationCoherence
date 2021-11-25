@@ -1,0 +1,118 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence136.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Elargest> rdfs:label "largest" .
+
+translation_coherence:ko_sentence136.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence136" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence136" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence136.ttl/Ala.> rdfs:label "Ala." ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Uab a ns1:Area,
+        ns1:Employer,
+        ns1:LargestArea,
+        ns1:LargestEmployer ;
+    rdfs:label "UAB" ;
+    boxer:possibleType foaf:Organisation ;
+    quant:hasDeterminer quant:the ;
+    owl:sameAs dbpedia:Autonomous_University_of_Barcelona ;
+    ns1:inLargestAreaWith ns1:manpower_1 ;
+    ns1:largestAmong ns1:Area,
+        ns1:Employer .
+
+ns1:With rdfs:label "with" .
+
+ns1:area_1 rdfs:label "area" .
+
+ns1:docuverse earmark:hasContent "UAB is now the largest employer and the largest area in Ala. with about 20,000 manpower."^^xsd:string .
+
+ns1:employer_1 rdfs:label "employer" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:About,
+        ns1:Manpower,
+        ns1:manpower_1 ;
+    dul:hasQuality ns1:Now .
+
+ns1:LargestArea a owl:Class ;
+    rdfs:label "Largest Area" ;
+    dul:hasQuality ns1:Largest ;
+    rdfs:subClassOf ns1:Area .
+
+ns1:LargestEmployer a owl:Class ;
+    rdfs:label "Largest Employer" ;
+    dul:hasQuality ns1:Largest ;
+    rdfs:subClassOf ns1:Employer .
+
+ns1:Now rdfs:label "now" .
+
+ns1:About rdfs:label "about" .
+
+ns1:Largest a owl:Class ;
+    rdfs:label "largest" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Manpower rdfs:label "manpower" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:manpower_1 a ns1:Manpower ;
+    rdfs:label "manpower" ;
+    dul:hasDataValue "20000"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:About ;
+    quant:hasQuantifier quant:20%2C000 .
+
+ns1:Area a owl:Class ;
+    rdfs:label "area" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Employer a owl:Class ;
+    rdfs:label "employer" ;
+    rdfs:subClassOf dul:Person .
+

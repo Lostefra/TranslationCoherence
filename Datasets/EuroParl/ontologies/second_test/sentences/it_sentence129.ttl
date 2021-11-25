@@ -1,0 +1,170 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence129.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence129.ttl a owl:Ontology ;
+    rdfs:label "it_sentence129" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence129" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Inlightof rdfs:label "in the light of" .
+
+ns1:Of rdfs:label "of",
+        "their" .
+
+ns1:docuverse earmark:hasContent "It's important. It would be useful for the record of Parliament to indicate how people perceive what we have just done in the light of their political analysis."^^xsd:string .
+
+ns1:light_1 a ns1:Light ;
+    rdfs:label "light" ;
+    quant:hasDeterminer quant:the .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "It" ;
+    dul:hasQuality ns1:Important .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:indicate_1,
+        ns1:situation_1 ;
+    dul:hasQuality ns1:Useful .
+
+ns1:thing_1 coref:coref ns1:people_1 .
+
+ns1:Analysis a owl:Class ;
+    rdfs:label "analysis" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Do rdfs:label "done" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Important rdfs:label "important" .
+
+ns1:Indicate rdfs:label "indicate" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Just rdfs:label "just" .
+
+ns1:JustDo rdfs:subClassOf ns1:Do .
+
+ns1:Light rdfs:label "light" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Manner rdfs:label "how" .
+
+ns1:Parliament rdfs:label "Parliament" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Parliament .
+
+ns1:People rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Perceive rdfs:label "perceive" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Political a owl:Class ;
+    rdfs:label "political" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:PoliticalAnalysis a owl:Class ;
+    rdfs:label "political analysis" ;
+    dul:hasQuality ns1:Political ;
+    rdfs:subClassOf ns1:Analysis .
+
+ns1:Record rdfs:label "record" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Useful rdfs:label "useful" .
+
+ns1:analysis_1 a ns1:PoliticalAnalysis ;
+    rdfs:label "analysis" ;
+    ns1:politicalAnalysisOf ns1:people_1 .
+
+ns1:do_1 a ns1:JustDo ;
+    rdfs:label "done" ;
+    boxer:agent ns1:person_1 ;
+    boxer:patient ns1:thing_2 ;
+    dul:hasQuality ns1:Just ;
+    ns1:inLightOf ns1:analysis_1 .
+
+ns1:indicate_1 a ns1:Indicate ;
+    rdfs:label "indicate" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Cause ns1:record_1 ;
+    vn.role:Topic ns1:situation_1 .
+
+ns1:perceive_1 a ns1:Perceive ;
+    rdfs:label "perceive" ;
+    vn.role:Experiencer ns1:people_1 ;
+    vn.role:Stimulus ns1:thing_2 ;
+    ns1:manner_rel ns1:manner_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:record_1 a ns1:Record ;
+    rdfs:label "record" ;
+    quant:hasDeterminer quant:the ;
+    ns1:recordOf ns1:Parliament .
+
+ns1:manner_1 a ns1:Manner ;
+    rdfs:label "how" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:do_1,
+        ns1:manner_1,
+        ns1:people_1,
+        ns1:perceive_1,
+        ns1:thing_2 .
+
+owl:Thing rdfs:label "It",
+        "what" .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "what" .
+
+ns1:people_1 a owl:Thing,
+        ns1:People ;
+    rdfs:label "people",
+        "their" ;
+    quant:hasQuantifier quant:multiple .
+

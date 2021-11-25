@@ -1,0 +1,99 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence313.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence313.ttl a owl:Ontology ;
+    rdfs:label "de_sentence313" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence313" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:More rdfs:label "more" .
+
+ns1:On rdfs:label "on" .
+
+ns1:docuverse earmark:hasContent "poverty and prosperity that are more dependent on the livelihood."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Dependent,
+        ns1:poverty_1 ;
+    ns1:more ns1:thing_2 ;
+    ns1:on ns1:livelihood_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Dependent,
+        ns1:prosperity_1 ;
+    ns1:more ns1:thing_1 ;
+    ns1:on ns1:livelihood_1 .
+
+ns1:Livelihood a owl:Class ;
+    rdfs:label "livelihood" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Livelihood .
+
+ns1:Poverty a owl:Class ;
+    rdfs:label "poverty" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Poverty .
+
+ns1:Prosperity a owl:Class ;
+    rdfs:label "prosperity" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Prosperity .
+
+ns1:poverty_1 a ns1:Poverty ;
+    rdfs:label "poverty" ;
+    dul:hasQuality ns1:Dependent,
+        ns1:Topic .
+
+ns1:prosperity_1 a ns1:Prosperity ;
+    rdfs:label "prosperity" ;
+    dul:hasQuality ns1:Dependent,
+        ns1:Topic .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:thing_2 a owl:Thing .
+
+ns1:livelihood_1 a ns1:Livelihood ;
+    rdfs:label "livelihood" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Dependent rdfs:label "dependent" .
+

@@ -1,0 +1,197 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence74.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "to" .
+
+vn.role:Source rdfs:label "from" .
+
+translation_coherence:nl_sentence74.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence74" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence74" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:After rdfs:label "After" .
+
+ns1:As rdfs:label "as" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "After World_War_II, Alabama growth experiences as the economy of the state transferred from agriculture to various interests in violent production, mineral extraction, education and technology."^^xsd:string .
+
+ns1:experience_1 a ns1:Experience ;
+    rdfs:label "experiences" ;
+    vn.role:Experiencer ns1:growth_1 ;
+    ns1:after ns1:World_war_ii ;
+    ns1:as ns1:economy_1 .
+
+ns1:mineral_1 a ns1:Mineral ;
+    rdfs:label "mineral" ;
+    dul:associatedWith ns1:extraction_1 .
+
+ns1:transfer_1 a ns1:Transfer ;
+    rdfs:label "transferred" ;
+    vn.role:Destination ns1:interest_1 ;
+    vn.role:Source ns1:agriculture_1 ;
+    vn.role:Theme ns1:state_1 .
+
+dbpedia:Alabama a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:Agriculture a owl:Class ;
+    rdfs:label "agriculture" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Agriculture .
+
+ns1:Alabama rdfs:label "Alabama" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Alabama .
+
+ns1:Economy a owl:Class ;
+    rdfs:label "economy" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#System> ;
+    owl:equivalentClass dbpedia:Economy .
+
+ns1:Education a owl:Class ;
+    rdfs:label "education" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Education .
+
+ns1:Experience rdfs:label "experiences" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Extraction a owl:Class ;
+    rdfs:label "extraction" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Growth a owl:Class ;
+    rdfs:label "growth" ;
+    rdfs:subClassOf dul:Process ;
+    owl:equivalentClass dbpedia:Economic_growth .
+
+ns1:Interest rdfs:label "interests" .
+
+ns1:MineralExtraction a owl:Class ;
+    rdfs:label "mineral extraction" ;
+    dul:associatedWith ns1:Mineral ;
+    rdfs:subClassOf ns1:Extraction ;
+    owl:equivalentClass dbpedia:Natural_resource .
+
+ns1:Production a owl:Class ;
+    rdfs:label "production" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Production_(economics) .
+
+ns1:State a owl:Class ;
+    rdfs:label "state" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> ;
+    owl:equivalentClass dbpedia:State_(polity) .
+
+ns1:Technology a owl:Class ;
+    rdfs:label "technology" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Technology .
+
+ns1:Transfer rdfs:label "transferred" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Various rdfs:label "various" .
+
+ns1:VariousInterest rdfs:subClassOf ns1:Interest .
+
+ns1:Violent a owl:Class ;
+    rdfs:label "violent" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ViolentProduction a owl:Class ;
+    rdfs:label "violent production" ;
+    dul:hasQuality ns1:Violent ;
+    rdfs:subClassOf ns1:Production .
+
+ns1:World_war_ii rdfs:label "World War II" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:World_War_II .
+
+ns1:agriculture_1 a ns1:Agriculture ;
+    rdfs:label "agriculture" .
+
+ns1:economy_1 a ns1:Economy ;
+    rdfs:label "economy" ;
+    quant:hasDeterminer quant:the ;
+    ns1:economyOf ns1:state_1 .
+
+ns1:education_1 a ns1:Education ;
+    rdfs:label "education" .
+
+ns1:growth_1 a ns1:Growth ;
+    rdfs:label "growth" ;
+    dul:associatedWith ns1:Alabama .
+
+ns1:interest_1 a ns1:VariousInterest ;
+    rdfs:label "interests" ;
+    dul:associatedWith ns1:extraction_1 ;
+    dul:hasQuality ns1:Various ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:production_1 .
+
+ns1:production_1 a ns1:ViolentProduction ;
+    rdfs:label "production" .
+
+ns1:technology_1 a ns1:Technology ;
+    rdfs:label "technology" .
+
+ns1:Mineral a owl:Class ;
+    rdfs:label "mineral" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Mineral .
+
+ns1:extraction_1 a ns1:MineralExtraction ;
+    rdfs:label "extraction" ;
+    dul:associatedWith ns1:education_1,
+        ns1:technology_1 .
+
+ns1:state_1 a ns1:State ;
+    rdfs:label "state" ;
+    quant:hasDeterminer quant:the .
+

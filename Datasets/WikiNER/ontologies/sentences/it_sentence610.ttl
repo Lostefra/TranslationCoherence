@@ -1,0 +1,158 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence610.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence610.ttl a owl:Ontology ;
+    rdfs:label "it_sentence610" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence610" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:For rdfs:label "for" .
+
+ns1:Just rdfs:label "just" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "(" .
+
+ns1:argue_1 a ns1:AlsoArgue ;
+    rdfs:label "argued" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Actor ns1:Rand ;
+    ns1:as ns1:guide_1 ;
+    ns1:for ns1:selfishness_1 .
+
+ns1:docuverse earmark:hasContent "Rand also argued for rational selfishness (the interest of rational self), as the only just moral principle guide."^^xsd:string .
+
+ns1:principle_1 a ns1:Principle ;
+    rdfs:label "principle" ;
+    dul:associatedWith ns1:guide_1 ;
+    quant:hasDeterminer quant:the .
+
+dbpedia:Ayn_Rand a schema:Person .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoArgue rdfs:subClassOf ns1:Argue .
+
+ns1:Argue rdfs:label "argued" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Guide a owl:Class ;
+    rdfs:label "guide" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Interest rdfs:label "interest" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:JustMoralPrinciple a owl:Class ;
+    rdfs:subClassOf ns1:MoralPrinciple .
+
+ns1:JustMoralPrincipleGuide a owl:Class ;
+    rdfs:label "just moral principle guide" ;
+    dul:associatedWith ns1:JustMoralPrinciple ;
+    rdfs:subClassOf ns1:MoralPrincipleGuide .
+
+ns1:Moral a owl:Class ;
+    rdfs:label "moral" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:MoralPrincipleGuide a owl:Class ;
+    rdfs:label "Moral Principle Guide" ;
+    dul:associatedWith ns1:MoralPrinciple ;
+    rdfs:subClassOf ns1:PrincipleGuide .
+
+ns1:PrincipleGuide a owl:Class ;
+    rdfs:label "principle guide" ;
+    dul:associatedWith ns1:Principle ;
+    rdfs:subClassOf ns1:Guide .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Ayn_Rand .
+
+ns1:RationalSelf rdfs:label "rational self" ;
+    rdfs:subClassOf ns1:Self .
+
+ns1:RationalSelfishness a owl:Class ;
+    rdfs:label "Rational Selfishness" ;
+    dul:hasQuality ns1:Rational ;
+    rdfs:subClassOf ns1:Selfishness ;
+    owl:equivalentClass dbpedia:Rational_egoism .
+
+ns1:Self rdfs:label "self" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Selfishness a owl:Class ;
+    rdfs:label "selfishness" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:interest_1 a ns1:Interest ;
+    rdfs:label "interest" ;
+    quant:hasDeterminer quant:the ;
+    ns1:interestOf ns1:self_1 .
+
+ns1:self_1 a ns1:RationalSelf ;
+    rdfs:label "self" ;
+    dul:hasQuality ns1:Rational .
+
+ns1:selfishness_1 a ns1:RationalSelfishness ;
+    rdfs:label "selfishness" ;
+    dul:associatedWith ns1:interest_1 .
+
+ns1:MoralPrinciple a owl:Class ;
+    dul:hasQuality ns1:Moral ;
+    rdfs:subClassOf dul:InformationEntity,
+        ns1:Principle .
+
+ns1:Rational a owl:Class ;
+    rdfs:label "rational" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:guide_1 a ns1:JustMoralPrincipleGuide ;
+    rdfs:label "guide" .
+
+ns1:Principle a owl:Class ;
+    rdfs:label "principle" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Morality .
+

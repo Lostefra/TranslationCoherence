@@ -1,0 +1,107 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence480.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Eoldest> rdfs:label "oldest" .
+
+translation_coherence:nl_sentence480.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence480" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence480" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "are" .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:academy_awards_1 rdfs:label "Academy Awards" .
+
+ns1:docuverse earmark:hasContent "The Academy_Awards are the oldest prize for performance in motion photos."^^xsd:string .
+
+ns1:motion_1 a ns1:Motion ;
+    rdfs:label "motion" ;
+    dul:associatedWith ns1:photo_1 .
+
+ns1:prize_1 a ns1:Academy_awards,
+        ns1:OldestPrize,
+        ns1:Prize ;
+    rdfs:label "prize" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:for ns1:performance_1 ;
+    ns1:oldestAmong ns1:Prize .
+
+ns1:Academy_awards a owl:Class ;
+    rdfs:label "Academy Awards" ;
+    rdfs:subClassOf ns1:OldestPrize ;
+    owl:equivalentClass dbpedia:Academy_Awards .
+
+ns1:Motion rdfs:label "motion" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:MotionPhoto rdfs:subClassOf ns1:Photo .
+
+ns1:Oldest a owl:Class ;
+    rdfs:label "oldest" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Performance rdfs:label "performance" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Photo rdfs:label "photos" .
+
+ns1:performance_1 a ns1:Performance ;
+    rdfs:label "performance" ;
+    ns1:in ns1:photo_1 .
+
+ns1:OldestPrize a owl:Class ;
+    rdfs:label "Oldest Prize" ;
+    dul:hasQuality ns1:Oldest ;
+    rdfs:subClassOf ns1:Prize .
+
+ns1:photo_1 a ns1:MotionPhoto ;
+    rdfs:label "photos" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Prize a owl:Class ;
+    rdfs:label "prize" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+

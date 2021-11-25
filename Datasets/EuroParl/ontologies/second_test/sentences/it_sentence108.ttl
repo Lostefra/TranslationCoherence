@@ -1,0 +1,155 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence108.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Source rdfs:label "because" .
+
+vn.role:Theme rdfs:label "with" .
+
+translation_coherence:it_sentence108.ttl a owl:Ontology ;
+    rdfs:label "it_sentence108" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence108" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Entails rdfs:label "if" .
+
+ns1:In rdfs:label "in" .
+
+ns1:docuverse earmark:hasContent "I do not know whether this information is correct, but the EPP-ED Group, in any case, would be grateful if this article had been removed because Parliament has already dealt with this issue several times."^^xsd:string .
+
+ns1:know_1 a ns1:Know ;
+    rdfs:label "know" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:situation_2 .
+
+ns1:remove_1 a ns1:Remove ;
+    rdfs:label "removed" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Source ns1:deal_1 ;
+    vn.role:Theme ns1:article_1 ;
+    ns1:entails ns1:deal_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:Epp-ed_group,
+        ns1:Grateful ;
+    ns1:in ns1:case_1 .
+
+ns1:Already rdfs:label "already" .
+
+ns1:AlreadyDeal rdfs:subClassOf ns1:Deal .
+
+ns1:Article rdfs:label "article" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Case rdfs:label "case" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Deal rdfs:label "dealt" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Epp-ed_group rdfs:label "EPP-ED Group" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality ns1:Grateful .
+
+ns1:Information rdfs:label "information" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Issue rdfs:label "issue" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Know rdfs:label "know" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Parliament rdfs:label "Parliament" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Parliament .
+
+ns1:Person rdfs:label "I" .
+
+ns1:Remove rdfs:label "removed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Several rdfs:label "several" ;
+    dul:hasQuality ns1:Already .
+
+ns1:Time rdfs:label "times" .
+
+ns1:article_1 a ns1:Article ;
+    rdfs:label "article" ;
+    quant:hasDeterminer quant:this .
+
+ns1:case_1 a ns1:Case ;
+    rdfs:label "case" ;
+    quant:hasQuantifier quant:any .
+
+ns1:information_1 a ns1:Information ;
+    rdfs:label "information" ;
+    dul:hasQuality ns1:Correct ;
+    quant:hasDeterminer quant:this .
+
+ns1:issue_1 a ns1:Issue ;
+    rdfs:label "issue" ;
+    quant:hasDeterminer quant:this .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Correct,
+        ns1:information_1 .
+
+ns1:time_1 a ns1:Time ;
+    rdfs:label "times" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Correct rdfs:label "correct" .
+
+ns1:Grateful rdfs:label "grateful" .
+
+ns1:deal_1 a ns1:AlreadyDeal ;
+    rdfs:label "dealt" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:associatedWith ns1:time_1 ;
+    dul:hasQuality ns1:Several ;
+    vn.role:Agent ns1:Parliament ;
+    vn.role:Theme ns1:issue_1 .
+

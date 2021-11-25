@@ -1,0 +1,123 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence137.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Beneficiary rdfs:label "for" .
+
+vn.role:Source rdfs:label "into" .
+
+translation_coherence:zh_sentence137.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence137" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence137" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "Of",
+        "of" .
+
+ns1:docuverse earmark:hasContent "Of course, any further explanation will be taken into account for a minute of meeting tomorrow."^^xsd:string .
+
+ns1:meeting_1 a ns1:Meeting ;
+    rdfs:label "meeting" ;
+    dul:associatedWith ns1:tomorrow_1 .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "taken" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Beneficiary ns1:minute_1 ;
+    vn.role:Source ns1:account_1 ;
+    vn.role:Theme ns1:explanation_1 ;
+    ns1:takeOf ns1:course_1 .
+
+ns1:Account rdfs:label "account" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Course rdfs:label "course" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Explanation a owl:Class ;
+    rdfs:label "explanation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Further a owl:Class ;
+    rdfs:label "further" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FurtherExplanation a owl:Class ;
+    rdfs:label "Further Explanation" ;
+    dul:hasQuality ns1:Further ;
+    rdfs:subClassOf ns1:Explanation .
+
+ns1:MeetingTomorrow a owl:Class ;
+    rdfs:label "meeting tomorrow" ;
+    dul:associatedWith ns1:Meeting ;
+    rdfs:subClassOf ns1:Tomorrow .
+
+ns1:Minute rdfs:label "minute" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:Take rdfs:label "taken" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Tomorrow a owl:Class ;
+    rdfs:label "tomorrow" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:account_1 a ns1:Account ;
+    rdfs:label "account" .
+
+ns1:course_1 a ns1:Course ;
+    rdfs:label "course" .
+
+ns1:explanation_1 a ns1:FurtherExplanation ;
+    rdfs:label "explanation" ;
+    quant:hasQuantifier quant:any .
+
+ns1:minute_1 a ns1:Minute ;
+    rdfs:label "minute" ;
+    quant:hasDeterminer quant:a ;
+    ns1:minuteOf ns1:tomorrow_1 .
+
+ns1:Meeting a owl:Class ;
+    rdfs:label "meeting" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:tomorrow_1 a ns1:MeetingTomorrow ;
+    rdfs:label "tomorrow" .
+

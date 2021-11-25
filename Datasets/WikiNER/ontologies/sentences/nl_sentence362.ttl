@@ -1,0 +1,121 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence362.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:nl_sentence362.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence362" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence362" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Agent rdfs:label "by" .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "his" .
+
+ns1:continue_1 a ns1:Continue ;
+    rdfs:label "continued" ;
+    vn.role:Agent ns1:troops_1 ;
+    vn.role:Predicate ns1:command_1 .
+
+ns1:docuverse earmark:hasContent "Hooker was rerouted by Lee in the Battle_of_Chancellorsville in May 1863, but his troops continued to command for two months."^^xsd:string .
+
+ns1:male_1 coref:coref ns1:Hooker .
+
+ns1:reroute_1 a ns1:Reroute ;
+    rdfs:label "rerouted" ;
+    boxer:agent ns1:Lee ;
+    boxer:patient ns1:Hooker ;
+    ns1:in "1863-05-01"^^xsd:date ;
+    ns1:locatedIn ns1:Battle_of_chancellorsville .
+
+dbpedia:Battle_of_Chancellorsville a schema:Event .
+
+dbpedia:Robert_E._Lee a schema:Person .
+
+ns1:Battle_of_chancellorsville rdfs:label "Battle of Chancellorsville" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Battle_of_Chancellorsville .
+
+ns1:Command rdfs:label "command" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Continue rdfs:label "continued" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Lee rdfs:label "Lee" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Robert_E._Lee .
+
+ns1:Male rdfs:label "Hooker" .
+
+ns1:Month rdfs:label "months" .
+
+ns1:Reroute rdfs:label "rerouted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Troops rdfs:label "troops" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:command_1 a ns1:Command ;
+    rdfs:label "command" ;
+    vn.role:Agent ns1:troops_1 ;
+    ns1:for ns1:month_1 .
+
+ns1:month_1 a ns1:Month ;
+    rdfs:label "months" ;
+    dul:hasDataValue "2"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple,
+        quant:two .
+
+ns1:troops_1 a ns1:Troops ;
+    rdfs:label "troops" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:troopsOf ns1:Hooker .
+
+ns1:Hooker a ns1:Male ;
+    rdfs:label "Hooker",
+        "his" ;
+    boxer:possibleType foaf:Person .
+

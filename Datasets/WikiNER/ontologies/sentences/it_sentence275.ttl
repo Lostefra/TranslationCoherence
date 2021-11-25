@@ -1,0 +1,123 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence275.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence275.ttl a owl:Ontology ;
+    rdfs:label "it_sentence275" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence275" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Because rdfs:label "because" .
+
+ns1:For rdfs:label "for" .
+
+ns1:avoid_1 a ns1:Avoid ;
+    rdfs:label "avoided" ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Theme ns1:hunting_1 ;
+    ns1:because ns1:like_1 .
+
+ns1:docuverse earmark:hasContent "Lincoln avoided hunting and fishing because he did not like to kill animals, even for food."^^xsd:string .
+
+ns1:Animal rdfs:label "animals" .
+
+ns1:Avoid rdfs:label "avoided" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Even rdfs:label "even" .
+
+ns1:Fishing a owl:Class ;
+    rdfs:label "fishing" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Fishing .
+
+ns1:Food rdfs:label "food" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Hunting a owl:Class ;
+    rdfs:label "hunting" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Hunting .
+
+ns1:Like rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Male rdfs:label "he" .
+
+ns1:fishing_1 a ns1:Fishing ;
+    rdfs:label "fishing" .
+
+ns1:food_1 a ns1:Food ;
+    rdfs:label "food" .
+
+ns1:hunting_1 a ns1:Hunting ;
+    rdfs:label "hunting" .
+
+ns1:kill_1 a ns1:Kill ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Patient ns1:animal_1 ;
+    vn.role:Theme ns1:fishing_1 ;
+    ns1:because ns1:like_1 .
+
+ns1:kill_2 a ns1:Kill ;
+    rdfs:label "kill" ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Patient ns1:animal_1 .
+
+ns1:Kill rdfs:label "kill" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:animal_1 a ns1:Animal ;
+    rdfs:label "animals" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:like_1 a ns1:Like ;
+    rdfs:label "like" ;
+    boxing:hasTruthValue boxing:False ;
+    dul:hasQuality ns1:Even ;
+    vn.role:Experiencer ns1:Lincoln ;
+    vn.role:Theme ns1:kill_1,
+        ns1:kill_2 ;
+    ns1:evenFor ns1:food_1 .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Male .
+

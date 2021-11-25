@@ -1,0 +1,168 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence194.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme rdfs:label "with" .
+
+translation_coherence:zh_sentence194.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence194" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence194" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Although rdfs:label "although" .
+
+ns1:For rdfs:label "for" .
+
+ns1:Into rdfs:label "into" .
+
+ns1:March rdfs:label "March" .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:On rdfs:label "on" .
+
+ns1:deal_1 a ns1:OnlyDeal ;
+    rdfs:label "deal" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Only ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:proposal_1 ;
+    ns1:although ns1:situation_1 ;
+    ns1:for ns1:time_1 .
+
+ns1:docuverse earmark:hasContent "Taking into account today, we will only deal with the Commission's proposal for the first time on 19 March 1998, although the Parliament's response is relatively rapid, this time is too long."^^xsd:string .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "Taking" ;
+    dul:associatedWith ns1:today_1 ;
+    vn.role:Agent ns1:thing_1 ;
+    ns1:into ns1:account_1 .
+
+ns1:Account rdfs:label "account" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Commission rdfs:label "Commission" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Deal rdfs:label "deal" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:First a owl:Class ;
+    rdfs:label "first" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FirstTime a owl:Class ;
+    rdfs:label "First Time" ;
+    dul:hasQuality ns1:First ;
+    rdfs:subClassOf ns1:Time .
+
+ns1:Only rdfs:label "only" .
+
+ns1:OnlyDeal rdfs:label "Only Deal" ;
+    rdfs:subClassOf ns1:Deal .
+
+ns1:Parliament rdfs:label "Parliament" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Parliament .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Proposal rdfs:label "proposal" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Response rdfs:label "response" ;
+    rdfs:subClassOf dul:Process .
+
+ns1:Take rdfs:label "Taking" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Time a owl:Class ;
+    rdfs:label "time" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Today rdfs:label "today" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:account_1 a ns1:Account ;
+    rdfs:label "account" .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:proposal_1 a ns1:Proposal ;
+    rdfs:label "proposal" ;
+    ns1:proposalOf ns1:Commission .
+
+ns1:response_1 a ns1:Response ;
+    rdfs:label "response" ;
+    dul:hasQuality ns1:Rapid ;
+    ns1:responseOf ns1:Parliament .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:Long,
+        ns1:Rapid,
+        ns1:Relatively,
+        ns1:Too,
+        ns1:response_1,
+        ns1:time_1 .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:today_1 a ns1:Today ;
+    rdfs:label "today" .
+
+ns1:Long rdfs:label "long" .
+
+ns1:Rapid rdfs:label "rapid" ;
+    dul:hasQuality ns1:Relatively .
+
+ns1:Relatively rdfs:label "relatively" .
+
+ns1:Too rdfs:label "too" .
+
+ns1:time_1 a ns1:FirstTime ;
+    rdfs:label "time" ;
+    dul:hasQuality ns1:Long,
+        ns1:Too ;
+    quant:hasDeterminer quant:the ;
+    ns1:march "1998-01-01"^^xsd:date ;
+    ns1:on "0001-01-19"^^xsd:date .
+

@@ -1,0 +1,176 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence5.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Patient2 rdfs:label "with" .
+
+translation_coherence:it_sentence5.ttl a owl:Ontology ;
+    rdfs:label "it_sentence5" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence5" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Against rdfs:label "against" .
+
+ns1:From rdfs:label "from" .
+
+ns1:Of rdfs:label "His",
+        "of" .
+
+ns1:To rdfs:label "to" .
+
+ns1:associate_1 a ns1:Associate ;
+    rdfs:label "associated" ;
+    vn.role:Patient1 ns1:period_1 ;
+    vn.role:Patient2 ns1:movement_1 .
+
+ns1:demarcate_1 a ns1:Demarcate ;
+    rdfs:label "demarcate" ;
+    boxer:agent ns1:scholar_1 ;
+    boxer:patient ns1:period_1 ;
+    ns1:from "1860-01-01"^^xsd:date ;
+    ns1:to "1939-01-01"^^xsd:date .
+
+ns1:docuverse earmark:hasContent "His classical period, which scholars demarcate from 1860 to 1939, is associated with the movements of the working class of the nineteenth century and the struggles of the Spanish_Civil_War against fascism."^^xsd:string .
+
+ns1:work_1 a dbpedia:Proletariat,
+        ns1:Work ;
+    rdfs:label "working" ;
+    vn.role:Actor ns1:class_1 .
+
+dbpedia:Spanish_Civil_War rdfs:subClassOf schema:Event .
+
+ns1:Associate rdfs:label "associated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Century a owl:Class ;
+    rdfs:label "century" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Class rdfs:label "class" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Classical a owl:Class ;
+    rdfs:label "classical" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ClassicalPeriod a owl:Class ;
+    rdfs:label "Classical Period" ;
+    dul:hasQuality ns1:Classical ;
+    rdfs:subClassOf ns1:Period ;
+    owl:equivalentClass dbpedia:Classical_antiquity .
+
+ns1:Demarcate rdfs:label "demarcate" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Fascism a owl:Class ;
+    rdfs:label "fascism" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> ;
+    owl:equivalentClass dbpedia:Fascism .
+
+ns1:Movement rdfs:label "movements" .
+
+ns1:Nineteenth a owl:Class ;
+    rdfs:label "nineteenth" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:NineteenthCentury a owl:Class ;
+    rdfs:label "Nineteenth Century" ;
+    dul:hasQuality ns1:Nineteenth ;
+    rdfs:subClassOf ns1:Century .
+
+ns1:Period a owl:Class ;
+    rdfs:label "period" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Scholar rdfs:label "scholars" .
+
+ns1:SpanishCivilWar rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Spanish_civil_war a owl:Class ;
+    rdfs:label "Spanish Civil War" ;
+    rdfs:subClassOf ns1:SpanishCivilWar ;
+    owl:equivalentClass dbpedia:Spanish_Civil_War .
+
+ns1:Struggle rdfs:label "struggles" .
+
+ns1:Work rdfs:label "working" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:century_1 a ns1:NineteenthCentury ;
+    rdfs:label "century" ;
+    quant:hasDeterminer quant:the .
+
+ns1:fascism_1 a ns1:Fascism ;
+    rdfs:label "fascism" .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "His" .
+
+ns1:movement_1 a dbpedia:Social_movement,
+        ns1:Movement ;
+    rdfs:label "movements" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:movementOf ns1:class_1 .
+
+ns1:scholar_1 a dbpedia:Scholasticism,
+        ns1:Scholar ;
+    rdfs:label "scholars" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:spanish_civil_war_1 a ns1:Spanish_civil_war ;
+    rdfs:label "Spanish Civil War" ;
+    quant:hasDeterminer quant:the ;
+    ns1:against ns1:fascism_1 .
+
+ns1:struggle_1 a ns1:Struggle ;
+    rdfs:label "struggles" ;
+    ns1:struggleOf ns1:spanish_civil_war_1 .
+
+ns1:class_1 a ns1:Class ;
+    rdfs:label "class" ;
+    quant:hasDeterminer quant:the ;
+    ns1:classOf ns1:century_1,
+        ns1:struggle_1 .
+
+ns1:period_1 a ns1:ClassicalPeriod ;
+    rdfs:label "period" ;
+    ns1:classicalPeriodOf ns1:male_1 .
+

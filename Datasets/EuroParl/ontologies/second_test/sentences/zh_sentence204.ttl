@@ -1,0 +1,168 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence204.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "to" .
+
+vn.role:Source rdfs:label "in" .
+
+translation_coherence:zh_sentence204.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence204" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence204" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:believe_1 a ns1:Believe ;
+    rdfs:label "believe" ;
+    dul:hasQuality ns1:However ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:docuverse earmark:hasContent "However, I believe that we should do everything possible to transport dangerous goods to a minimum in all countries, whether in transit or in transit."^^xsd:string .
+
+ns1:whether_1 rdfs:label "whether" .
+
+boxing:Possible rdfs:label "possible" ;
+    rdfs:subClassOf dul:Event .
+
+owl:Thing rdfs:label "everything" .
+
+ns1:Believe rdfs:label "believe" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Country rdfs:label "countries" .
+
+ns1:Dangerous a owl:Class ;
+    rdfs:label "dangerous" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:DangerousGoods a owl:Class ;
+    rdfs:label "Dangerous Goods" ;
+    dul:hasQuality ns1:Dangerous ;
+    rdfs:subClassOf ns1:Goods ;
+    owl:equivalentClass dbpedia:Dangerous_goods .
+
+ns1:Do rdfs:label "do" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Goods a owl:Class ;
+    rdfs:label "goods" .
+
+ns1:However rdfs:label "However" .
+
+ns1:Minimum rdfs:label "minimum" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:Transport rdfs:label "transport" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Whether rdfs:label "whether" .
+
+ns1:do_1 a ns1:Do ;
+    rdfs:label "do" ;
+    boxer:agent ns1:person_2 ;
+    boxer:patient ns1:thing_1 ;
+    boxing:hasModality boxing:Necessary .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:possible_1 a boxing:Possible ;
+    rdfs:label "possible" ;
+    boxer:agent ns1:thing_1 ;
+    boxer:theme ns1:situation_1 ;
+    boxing:hasModality boxing:Necessary .
+
+ns1:transport_1 a ns1:Transport ;
+    rdfs:label "transport" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Destination ns1:minimum_1 ;
+    vn.role:Source ns1:transit_2 ;
+    vn.role:Theme ns1:goods_1 .
+
+ns1:Person rdfs:label "I",
+        "we" .
+
+ns1:Transit rdfs:label "transit" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:country_1 a ns1:Country ;
+    rdfs:label "countries" ;
+    quant:hasQuantifier quant:all,
+        quant:multiple .
+
+ns1:goods_1 a ns1:DangerousGoods ;
+    rdfs:label "goods" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:minimum_1 a ns1:Minimum,
+        ns1:Whether ;
+    rdfs:label "minimum" ;
+    quant:hasDeterminer quant:a ;
+    ns1:in ns1:country_1,
+        ns1:transit_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:country_1,
+        ns1:do_1,
+        ns1:goods_1,
+        ns1:minimum_1,
+        ns1:possible_1,
+        ns1:thing_1,
+        ns1:transit_1,
+        ns1:transit_2,
+        ns1:transport_1 .
+
+ns1:transit_1 a ns1:Transit ;
+    rdfs:label "transit" .
+
+ns1:transit_2 a ns1:Transit ;
+    rdfs:label "transit" .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "everything" .
+

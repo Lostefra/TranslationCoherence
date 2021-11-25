@@ -1,0 +1,107 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence403.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:en_sentence403.ttl a owl:Ontology ;
+    rdfs:label "en_sentence403" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence403" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Before rdfs:label "before" .
+
+ns1:During rdfs:label "during" .
+
+ns1:be_1 a ns1:Be ;
+    rdfs:label "was" ;
+    boxer:agent ns1:proclamation_1 ;
+    ns1:before "50"^^xsd:nonNegativeInteger ;
+    ns1:during ns1:James_madison_ .
+
+ns1:docuverse earmark:hasContent "The last such proclamation was during James Madison_'s presidency fifty years before."^^xsd:string .
+
+ns1:presidency_1 a ns1:Presidency,
+        ns1:Year ;
+    rdfs:label "presidency" ;
+    dul:hasDataValue "50"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:year_1 rdfs:label "years" .
+
+ns1:Be rdfs:label "was" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:James_madison_ rdfs:label "James Madison " ;
+    boxer:possibleType foaf:Person .
+
+ns1:Last rdfs:label "last" .
+
+ns1:LastSuchProclamation a owl:Class ;
+    rdfs:label "last such proclamation" ;
+    rdfs:subClassOf ns1:SuchProclamation .
+
+ns1:Presidency a owl:Class ;
+    rdfs:label "presidency" ;
+    rdfs:subClassOf dul:TimeInterval ;
+    owl:equivalentClass dbpedia:President_of_the_United_States .
+
+ns1:Proclamation a owl:Class ;
+    rdfs:label "proclamation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> ;
+    owl:equivalentClass dbpedia:Emancipation_Proclamation .
+
+ns1:Such a owl:Class ;
+    rdfs:label "such" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SuchProclamation a owl:Class ;
+    rdfs:label "such proclamation" ;
+    dul:hasQuality ns1:Such ;
+    rdfs:subClassOf ns1:Proclamation .
+
+ns1:Year rdfs:label "years" .
+
+ns1:proclamation_1 a ns1:LastSuchProclamation ;
+    rdfs:label "proclamation" ;
+    dul:hasQuality ns1:Last ;
+    quant:hasDeterminer quant:such,
+        quant:the .
+

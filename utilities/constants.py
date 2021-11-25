@@ -14,10 +14,29 @@ STARTING_POINT_PREDICATE = rdflib.term.URIRef('http://example.org/translation_co
 SYNONYMY_PREDICATE = rdflib.term.URIRef('http://example.org/translation_coherence/synonymy')
 GENERIC_DIFFERENCE_PREDICATE = rdflib.term.URIRef('http://example.org/translation_coherence/different')
 DIFFERENT_CONTEXT_PREDICATE = rdflib.term.URIRef('http://example.org/translation_coherence/differentContext')
+ONLY_IN_PREDICATE = rdflib.term.URIRef('http://example.org/translation_coherence/onlyIn')
 
 TYPE_PREDICATE = rdflib.term.URIRef('http://www.w3.org/1999/02/22-rdf-syntax-ns#type')
 CLASS_OBJECT = rdflib.term.URIRef('http://www.w3.org/2002/07/owl#Class')
 SUBCLASS_PREDICATE = rdflib.term.URIRef('http://www.w3.org/2000/01/rdf-schema#subClassOf')
+
+# Semantic types used for statistical analysis
+SEMANTIC_TYPES_PREFIXES = ["http://www.ontologydesignpatterns.org/ont/dul/DUL.owl",
+"http://www.ontologydesignpatterns.org/ont/d0.owl", "http://schema.org/"]
+SEMANTIC_TYPES = ['http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Event',
+                  'http://www.ontologydesignpatterns.org/ont/d0.owl#Activity',
+                  'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Situation',
+                  'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Quality',
+                  'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationEntity',
+                  'http://www.ontologydesignpatterns.org/ont/d0.owl#Topic',
+                  'http://www.ontologydesignpatterns.org/ont/d0.owl#Location',
+                  'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject',
+                  'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description',
+                  'http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic',
+                  'http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval']
+SEMANTIC_METRIC_PREDICATES = [EQUIVALENCE_PREDICATE, SYNONYMY_PREDICATE, GENERIC_DIFFERENCE_PREDICATE,
+                              DIFFERENT_CONTEXT_PREDICATE, ONLY_IN_PREDICATE]
+
 
 NAMESPACES = {
     'fred': 'http://www.ontologydesignpatterns.org/ont/fred/domain.owl#',
@@ -65,6 +84,7 @@ UNWANTED = ["http://www.ontologydesignpatterns.org/ont/fred/pos.owl",
             "http://www.essepuntato.it/2008/12/earmark",
             "http://www.ontologydesignpatterns.org/ont/cnlp/dependencies.owl",
             "http://www.ontologydesignpatterns.org/ont/vn/data",
+            "http://www.w3.org/2006/03/wn",
             # "http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl",
             TEXTUAL_REFERENCE_PREFIX,
             "ObjectProperty"]
@@ -79,3 +99,5 @@ QUANT_PREFIX = NAMESPACES['quant']
 DUL_PREFIX = NAMESPACES['dul']
 BOXING_PREFIX = NAMESPACES["boxing"]
 OWL_PREFIX = NAMESPACES["owl"]
+VNROLE_PREFIX = NAMESPACES["vn.role"]
+DBPEDIA_PREFIX = NAMESPACES["dbpedia"]

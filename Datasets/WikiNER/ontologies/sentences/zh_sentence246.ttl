@@ -1,0 +1,175 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence246.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:zh_sentence246.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence246" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence246" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "her",
+        "their" .
+
+ns1:While rdfs:label "while" .
+
+ns1:With rdfs:label "with" .
+
+ns1:arrange_1 a ns1:Arrange ;
+    rdfs:label "arranged" ;
+    vn.role:Agent ns1:Odysseus ;
+    ns1:for ns1:vigilance_1 ;
+    ns1:in ns1:story_1 ;
+    ns1:while ns1:flee_1 ;
+    ns1:with ns1:woman_1 .
+
+ns1:docuverse earmark:hasContent "In another story, Odysseus arranged for her vigilance with Lendes women, while women fleeing the darkness were ready to be defended by the courts, thereby giving up their status."^^xsd:string .
+
+ns1:give_1 a ns1:TherebyGive ;
+    rdfs:label "giving" ;
+    dul:hasQuality ns1:Thereby,
+        ns1:Up ;
+    vn.role:Agent ns1:Odysseus ;
+    vn.role:Theme ns1:status_1 .
+
+ns1:ready_1 a ns1:Ready ;
+    rdfs:label "ready" ;
+    vn.role:Agent ns1:woman_2 ;
+    vn.role:Product ns1:defend_1 .
+
+ns1:thing_1 coref:coref ns1:flee_1 .
+
+ns1:Arrange rdfs:label "arranged" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Court rdfs:label "courts" .
+
+ns1:Darkness rdfs:label "darkness" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Defend rdfs:label "defended" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Flee rdfs:label "fleeing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Give rdfs:label "giving" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Lendes rdfs:label "Lendes" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Ready rdfs:label "ready" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Status rdfs:label "status" ;
+    rdfs:subClassOf dul:Role .
+
+ns1:Thereby rdfs:label "thereby" .
+
+ns1:TherebyGive rdfs:subClassOf ns1:Give .
+
+ns1:Up rdfs:label "up" .
+
+ns1:Vigilance rdfs:label "vigilance" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:court_1 a ns1:Court ;
+    rdfs:label "courts" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:darkness_1 a ns1:Darkness ;
+    rdfs:label "darkness" ;
+    quant:hasDeterminer quant:the .
+
+ns1:defend_1 a ns1:Defend ;
+    rdfs:label "defended" ;
+    vn.role:Agent ns1:court_1 ;
+    vn.role:Theme ns1:woman_2 .
+
+ns1:female_1 a ns1:Female ;
+    rdfs:label "her" .
+
+ns1:status_1 a ns1:Status ;
+    rdfs:label "status" ;
+    ns1:statusOf ns1:flee_1 .
+
+ns1:story_1 a ns1:Story ;
+    owl:differentFrom ns1:story_2 .
+
+ns1:story_2 a ns1:Story ;
+    rdfs:label "story" ;
+    quant:hasDeterminer quant:another .
+
+ns1:vigilance_1 a ns1:Vigilance ;
+    rdfs:label "vigilance" ;
+    ns1:vigilanceOf ns1:female_1 .
+
+ns1:woman_1 a ns1:Woman ;
+    rdfs:label "women" ;
+    dul:associatedWith ns1:Lendes ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Odysseus rdfs:label "Odysseus" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Odysseus .
+
+ns1:Story rdfs:label "story" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Woman rdfs:label "women" .
+
+ns1:flee_1 a owl:Thing,
+        ns1:Flee ;
+    rdfs:label "fleeing",
+        "their" ;
+    boxer:patient ns1:darkness_1 ;
+    vn.role:Theme ns1:woman_2 .
+
+ns1:woman_2 a ns1:Woman ;
+    rdfs:label "women" ;
+    quant:hasQuantifier quant:multiple .
+

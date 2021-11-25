@@ -1,0 +1,87 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence262.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence262.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence262" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence262" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Thomas_lincoln a ns1:RespectedCitizen ;
+    rdfs:label "Thomas Lincoln",
+        "citizen" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Thomas_Lincoln,
+        ns1:citizen_1 ;
+    ns1:respectedCitizenOf ns1:Kentucky .
+
+ns1:docuverse earmark:hasContent "Thomas_Lincoln was a respected citizen of national Kentucky."^^xsd:string .
+
+dbpedia:Kentucky a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:Kentucky rdfs:label "Kentucky" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:hasQuality ns1:National ;
+    owl:sameAs dbpedia:Kentucky .
+
+ns1:National rdfs:label "national" .
+
+ns1:Respected a owl:Class ;
+    rdfs:label "respected" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:RespectedCitizen a owl:Class ;
+    rdfs:label "Respected Citizen" ;
+    dul:hasQuality ns1:Respected ;
+    rdfs:subClassOf ns1:Citizen .
+
+ns1:citizen_1 a ns1:Citizen ;
+    rdfs:label "citizen" ;
+    quant:hasDeterminer quant:a .
+
+ns1:Citizen a owl:Class ;
+    rdfs:label "Thomas Lincoln",
+        "citizen" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Citizenship_in_the_United_States .
+

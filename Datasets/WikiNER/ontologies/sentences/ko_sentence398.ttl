@@ -1,0 +1,143 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence398.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence398.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence398" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence398" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Intermof rdfs:label "in terms of" .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:approve_1 a ns1:Approve ;
+    rdfs:label "approves" ;
+    dul:hasQuality ns1:Absolutely ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Theme ns1:war_2 .
+
+ns1:docuverse earmark:hasContent "Absolutely, 1861 Lincoln approves war in legal aspects, and then in terms of national obligations to ensure the Republic of the country's government."^^xsd:string .
+
+ns1:ensure_1 a ns1:Ensure ;
+    rdfs:label "ensure" ;
+    vn.role:Cause ns1:obligation_1 ;
+    vn.role:Theme ns1:Republic .
+
+ns1:term_1 a ns1:Term ;
+    rdfs:label "terms" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:then_1 rdfs:label "then" .
+
+ns1:Absolutely rdfs:label "Absolutely" .
+
+ns1:Approve rdfs:label "approves" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Aspect rdfs:label "aspects" .
+
+ns1:Country rdfs:label "country" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Ensure rdfs:label "ensure" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Government a owl:Class ;
+    rdfs:label "government" ;
+    rdfs:subClassOf dul:Organization ;
+    owl:equivalentClass dbpedia:Government .
+
+ns1:Legal rdfs:label "legal" .
+
+ns1:LegalAspect rdfs:subClassOf ns1:Aspect .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    ns1:at "1861-01-01"^^xsd:date .
+
+ns1:National rdfs:label "national" .
+
+ns1:NationalObligation rdfs:subClassOf ns1:Obligation .
+
+ns1:Obligation rdfs:label "obligations" .
+
+ns1:Republic rdfs:label "Republic" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Republic ;
+    ns1:of ns1:government_1 .
+
+ns1:Term rdfs:label "terms" .
+
+ns1:Then rdfs:label "then" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:War a owl:Class ;
+    rdfs:label "war" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:War .
+
+ns1:aspect_1 a ns1:LegalAspect ;
+    rdfs:label "aspects" ;
+    dul:hasQuality ns1:Legal ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:country_1 a ns1:Country ;
+    rdfs:label "country" ;
+    quant:hasDeterminer quant:the .
+
+ns1:government_1 a ns1:Government ;
+    rdfs:label "government" ;
+    ns1:governmentOf ns1:country_1 .
+
+ns1:war_2 a ns1:Then,
+        ns1:War ;
+    rdfs:label "war" ;
+    ns1:in ns1:aspect_1 ;
+    ns1:inTermOf ns1:obligation_1 .
+
+ns1:obligation_1 a ns1:NationalObligation ;
+    rdfs:label "obligations" ;
+    dul:hasQuality ns1:National ;
+    quant:hasQuantifier quant:multiple .
+

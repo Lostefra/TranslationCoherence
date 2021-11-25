@@ -1,0 +1,195 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence377.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "in" .
+
+translation_coherence:ko_sentence377.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence377" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence377" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Against rdfs:label "against" .
+
+ns1:Excessive rdfs:label "excessive" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of",
+        "their" .
+
+ns1:call_1 a ns1:Call ;
+    rdfs:label "calling" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:reduction_1 .
+
+ns1:control_1 a ns1:Control ;
+    rdfs:label "control" ;
+    dul:associatedWith ns1:union_1 .
+
+ns1:docuverse earmark:hasContent "We are against the central management of excessive control unions and their member country movements and we are calling the reduction in bureaucracy that has rooted in program drafts and implementations."^^xsd:string .
+
+ns1:member_1 a ns1:Member ;
+    rdfs:label "member" ;
+    dul:associatedWith ns1:country_1,
+        ns1:movement_1 .
+
+ns1:person_2 coref:coref ns1:person_1 .
+
+ns1:program_1 a ns1:Program ;
+    rdfs:label "program" ;
+    dul:associatedWith ns1:draft_1 .
+
+ns1:root_1 a ns1:Root ;
+    rdfs:label "rooted" ;
+    vn.role:Agent ns1:reduction_1 ;
+    vn.role:Location ns1:draft_1,
+        ns1:implementation_1 .
+
+ns1:Bureaucracy a owl:Class ;
+    rdfs:label "bureaucracy" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Bureaucracy .
+
+ns1:Call rdfs:label "calling" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Central a owl:Class ;
+    rdfs:label "central" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:CentralManagement a owl:Class ;
+    rdfs:label "central management" ;
+    dul:hasQuality ns1:Central ;
+    rdfs:subClassOf ns1:Management .
+
+ns1:Control rdfs:label "control" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:ControlUnion rdfs:subClassOf ns1:Union .
+
+ns1:Country a owl:Class ;
+    rdfs:label "country" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:CountryMovement rdfs:subClassOf ns1:Movement .
+
+ns1:Draft rdfs:label "drafts" .
+
+ns1:ExcessiveControlUnion rdfs:subClassOf ns1:ControlUnion .
+
+ns1:Implementation rdfs:label "implementations" .
+
+ns1:Management a owl:Class ;
+    rdfs:label "management" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:MemberCountry a owl:Class ;
+    rdfs:label "member country" ;
+    dul:associatedWith ns1:Member ;
+    rdfs:subClassOf ns1:Country .
+
+ns1:MemberCountryMovement rdfs:subClassOf ns1:CountryMovement .
+
+ns1:Movement rdfs:label "movements" .
+
+ns1:Person rdfs:label "We",
+        "we" .
+
+ns1:Program rdfs:label "program" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:ProgramDraft rdfs:subClassOf ns1:Draft .
+
+ns1:Reduction rdfs:label "reduction" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Root rdfs:label "rooted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Union rdfs:label "unions" .
+
+ns1:bureaucracy_1 a ns1:Bureaucracy ;
+    rdfs:label "bureaucracy" .
+
+ns1:country_1 a ns1:MemberCountry ;
+    rdfs:label "country" ;
+    dul:associatedWith ns1:movement_1 .
+
+ns1:implementation_1 a ns1:Implementation ;
+    rdfs:label "implementations" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:management_1 a ns1:CentralManagement ;
+    rdfs:label "management" ;
+    quant:hasDeterminer quant:the ;
+    ns1:centralManagementOf ns1:union_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "their" .
+
+ns1:Member a owl:Class ;
+    rdfs:label "member" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:draft_1 a ns1:ProgramDraft ;
+    rdfs:label "drafts" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "We",
+        "we" ;
+    ns1:against ns1:management_1,
+        ns1:movement_1 .
+
+ns1:reduction_1 a ns1:Reduction ;
+    rdfs:label "reduction" ;
+    quant:hasDeterminer quant:the ;
+    ns1:in ns1:bureaucracy_1 .
+
+ns1:union_1 a ns1:ExcessiveControlUnion ;
+    rdfs:label "unions" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:movement_1 a ns1:MemberCountryMovement ;
+    rdfs:label "movements" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:memberCountryMovementOf ns1:thing_1 .
+

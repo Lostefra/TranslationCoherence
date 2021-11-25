@@ -1,0 +1,198 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence162.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Destination rdfs:label "at" .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:en_sentence162.ttl a owl:Ontology ;
+    rdfs:label "en_sentence162" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence162" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Noteq rdfs:label "other" .
+
+ns1:Of rdfs:label "'s",
+        "its",
+        "of" .
+
+ns1:docuverse earmark:hasContent "The rapporteur has pointed out to the House that in its common position the Council has accepted six of Parliament's ten amendments put forward at first reading and that the substance of Parliament's other amendments has been retained."^^xsd:string .
+
+ns1:neuter_1 coref:coref ns1:House .
+
+ns1:point_1 a ns1:Point ;
+    rdfs:label "pointed" ;
+    boxer:theme ns1:situation_1 ;
+    dul:hasQuality ns1:Out ;
+    vn.role:Agent ns1:rapporteur_1 ;
+    vn.role:Recipient ns1:House .
+
+ns1:retain_1 a ns1:Retain ;
+    rdfs:label "retained" ;
+    boxer:agent ns1:rapporteur_1 ;
+    boxer:patient ns1:thing_1 .
+
+ns1:Accept rdfs:label "accepted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Be rdfs:label "been" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Common a owl:Class ;
+    rdfs:label "common" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:CommonPosition a owl:Class ;
+    rdfs:label "common position" ;
+    dul:hasQuality ns1:Common ;
+    rdfs:subClassOf ns1:Position .
+
+ns1:First a owl:Class ;
+    rdfs:label "first" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FirstReading a owl:Class ;
+    rdfs:label "First Reading" ;
+    dul:hasQuality ns1:First ;
+    rdfs:subClassOf ns1:Reading .
+
+ns1:Forward rdfs:label "forward" .
+
+ns1:Out rdfs:label "out" .
+
+ns1:Point rdfs:label "pointed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Position a owl:Class ;
+    rdfs:label "position" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Put rdfs:label "put" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Rapporteur rdfs:label "rapporteur" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Reading a owl:Class ;
+    rdfs:label "reading" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Retain rdfs:label "retained" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Substance rdfs:label "substance" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:accept_1 a ns1:Accept ;
+    rdfs:label "accepted" ;
+    vn.role:Agent ns1:Council ;
+    vn.role:Theme ns1:amendment_1 ;
+    ns1:in ns1:position_1 .
+
+ns1:amendment_2 a ns1:Amendment ;
+    rdfs:label "amendments" ;
+    quant:hasDeterminer quant:other ;
+    quant:hasQuantifier quant:multiple ;
+    owl:differentFrom ns1:amendment_1 ;
+    ns1:amendmentOf ns1:Parliament .
+
+ns1:be_1 a ns1:Be ;
+    rdfs:label "been" ;
+    boxer:agent ns1:substance_1 .
+
+ns1:position_1 a ns1:CommonPosition ;
+    rdfs:label "position" ;
+    ns1:commonPositionOf ns1:Council .
+
+ns1:put_1 a ns1:Put ;
+    rdfs:label "put" ;
+    vn.role:Agent ns1:amendment_1 ;
+    vn.role:Destination ns1:reading_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:accept_1,
+        ns1:amendment_1,
+        ns1:be_1,
+        ns1:put_1,
+        ns1:reading_1 .
+
+ns1:substance_1 a ns1:Substance ;
+    rdfs:label "substance" ;
+    quant:hasDeterminer quant:the ;
+    ns1:substanceOf ns1:amendment_2 .
+
+ns1:thing_1 a owl:Thing .
+
+owl:Thing rdfs:label "Council" .
+
+ns1:Amendment rdfs:label "amendments" .
+
+ns1:Council a owl:Thing ;
+    rdfs:label "Council" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:House rdfs:label "House",
+        "its" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:House .
+
+ns1:Parliament rdfs:label "Parliament" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Parliament .
+
+ns1:rapporteur_1 a ns1:Rapporteur ;
+    rdfs:label "rapporteur" ;
+    quant:hasDeterminer quant:the .
+
+ns1:reading_1 a ns1:FirstReading ;
+    rdfs:label "reading" .
+
+ns1:amendment_1 a ns1:Amendment ;
+    rdfs:label "amendments" ;
+    dul:hasDataValue "6"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:Forward ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:amendmentOf ns1:Parliament .
+

@@ -1,0 +1,133 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence98.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:fi_sentence98.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence98" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence98" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:After rdfs:label "After" .
+
+ns1:Amount rdfs:label "much" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:docuverse earmark:hasContent "After 1972, the state's white voters gave much support to Republican candidates in the presidential election."^^xsd:string .
+
+ns1:give_1 a ns1:Give ;
+    rdfs:label "gave" ;
+    vn.role:Agent ns1:voter_1 ;
+    vn.role:Recipient ns1:candidate_1 ;
+    vn.role:Theme ns1:support_1 ;
+    ns1:after "1972-01-01"^^xsd:date ;
+    ns1:in ns1:election_1 .
+
+dbpedia:Republican_Party_(United_States) a schema:Organization .
+
+ns1:Candidate rdfs:label "candidates" .
+
+ns1:Election a owl:Class ;
+    rdfs:label "election" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Give rdfs:label "gave" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:PresidentialElection a owl:Class ;
+    rdfs:label "Presidential Election" ;
+    dul:hasQuality ns1:Presidential ;
+    rdfs:subClassOf ns1:Election ;
+    owl:equivalentClass <http://dbpedia.org/resource/United_States_presidential_election,_2012> .
+
+ns1:Republican rdfs:label "Republican" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Republican_Party_(United_States) .
+
+ns1:State a owl:Class ;
+    rdfs:label "state" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> ;
+    owl:equivalentClass dbpedia:U.S._state .
+
+ns1:Support a owl:Class ;
+    rdfs:label "support" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Abortion-rights_movements .
+
+ns1:Voter rdfs:label "voters" .
+
+ns1:White rdfs:label "white" ;
+    owl:sameAs dbpedia:White_people .
+
+ns1:WhiteVoter rdfs:subClassOf ns1:Voter .
+
+ns1:candidate_1 a <http://dbpedia.org/resource/United_States_presidential_election,_2008>,
+        ns1:Candidate ;
+    rdfs:label "candidates" ;
+    dul:associatedWith ns1:Republican ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:election_1 a ns1:PresidentialElection ;
+    rdfs:label "election" ;
+    dul:hasQuality ns1:Presidential ;
+    quant:hasDeterminer quant:the .
+
+ns1:state_1 a ns1:State ;
+    rdfs:label "state" ;
+    quant:hasDeterminer quant:the .
+
+ns1:support_1 a ns1:Support ;
+    rdfs:label "support" ;
+    quant:hasQuantifier quant:much .
+
+ns1:voter_1 a ns1:WhiteVoter ;
+    rdfs:label "voters" ;
+    dul:hasQuality ns1:White ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:whiteVoterOf ns1:state_1 .
+
+ns1:Presidential a owl:Class ;
+    rdfs:label "presidential" ;
+    rdfs:subClassOf dul:Quality .
+

@@ -1,0 +1,162 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence768.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence768.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence768" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence768" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:destroy_1 a ns1:Destroy ;
+    rdfs:label "destroys" ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Patient ns1:thing_1 .
+
+ns1:docuverse earmark:hasContent "Not the end of his mercy, the man of virtue, the perfect man   and his will not fit this end (and he destroys this, his ideal, for wicked sake)."^^xsd:string .
+
+ns1:fit_1 a ns1:Fit ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:end_1 ;
+    vn.role:Patient ns1:end_1 .
+
+ns1:fit_2 a ns1:Fit ;
+    rdfs:label "fit" ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:man_2 ;
+    vn.role:Patient ns1:end_1 .
+
+ns1:his_1 rdfs:label "his" .
+
+owl:Thing rdfs:label "this" .
+
+ns1:Destroy rdfs:label "destroys" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:End rdfs:label "end" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:His rdfs:label "his" .
+
+ns1:Ideal rdfs:label "ideal" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Mercy rdfs:label "mercy" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Perfect rdfs:label "perfect" .
+
+ns1:PerfectMan rdfs:label "Perfect Man" ;
+    rdfs:subClassOf ns1:Man .
+
+ns1:Sake a owl:Class ;
+    rdfs:label "sake" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Virtue a owl:Class ;
+    rdfs:label "virtue" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Virtue .
+
+ns1:WickedSake a owl:Class ;
+    rdfs:label "wicked sake" ;
+    dul:hasQuality ns1:Wicked ;
+    rdfs:subClassOf ns1:Sake .
+
+ns1:ideal_1 a ns1:Ideal ;
+    rdfs:label "ideal" ;
+    quant:hasDeterminer quant:this ;
+    ns1:for ns1:sake_1 ;
+    ns1:idealOf ns1:male_1 .
+
+ns1:man_1 a ns1:Man ;
+    rdfs:label "man" ;
+    quant:hasDeterminer quant:the ;
+    ns1:manOf ns1:virtue_1 .
+
+ns1:man_2 a ns1:His,
+        ns1:PerfectMan ;
+    rdfs:label "man" ;
+    dul:hasQuality ns1:Perfect ;
+    quant:hasDeterminer quant:the .
+
+ns1:mercy_1 a ns1:Mercy ;
+    rdfs:label "mercy" ;
+    dul:associatedWith ns1:man_1 ;
+    ns1:mercyOf ns1:male_1 .
+
+ns1:sake_1 a ns1:WickedSake ;
+    rdfs:label "sake" ;
+    dul:hasQuality ns1:Wicked .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "this" ;
+    dul:associatedWith ns1:ideal_1 .
+
+ns1:virtue_1 a ns1:Virtue ;
+    rdfs:label "virtue" .
+
+ns1:Fit rdfs:label "fit" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Man rdfs:label "Man",
+        "man" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Wicked a owl:Class ;
+    rdfs:label "wicked" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:end_1 a ns1:End ;
+    rdfs:label "end" ;
+    quant:hasDeterminer quant:the ;
+    ns1:endOf ns1:mercy_1 .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "his" .
+

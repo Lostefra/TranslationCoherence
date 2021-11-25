@@ -85,7 +85,7 @@ def find_starting_points(g1, g2, lemmas, n, result_graph):
 
     for node_1 in g1.all_nodes():
         if (str(node_1).startswith(constants.QUANT_PREFIX) or str(node_1).startswith(constants.DUL_PREFIX) or
-                str(node_1).startswith(constants.BOXING_PREFIX)) and node_1 in g2.all_nodes():
+                str(node_1).startswith(constants.BOXING_PREFIX) or str(node_1).startswith(constants.VNROLE_PREFIX)) and node_1 in g2.all_nodes():
             starting_points = starting_points + [(node_1, node_1)]
         else:
             label = lemmas[str(g1.label(node_1))]
@@ -213,10 +213,10 @@ def compare_graphs(g1, g2):
 
             find_equivalence_relations(g1, g2, lemmas, n, result_graph, frontiers, new_frontiers)
             find_synonymy_relations(g1, g2, lemmas, n, result_graph, frontiers, new_frontiers)
-            negative_verbs(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_frontiers, mode=1)
-            negative_verbs(g2, g1, n, result_graph, indexes, lemmas, frontiers, new_frontiers, mode=2)
+            #negative_verbs(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_frontiers, mode=1)
+            #negative_verbs(g2, g1, n, result_graph, indexes, lemmas, frontiers, new_frontiers, mode=2)
             class_subclass_equivalence(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_frontiers)
-            check_multiples(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_frontiers)
+            #check_multiples(g1, g2, n, result_graph, indexes, lemmas, frontiers, new_frontiers)
             new_frontiers -= old_frontiers
             frontiers = new_frontiers.copy()
             old_frontiers = old_frontiers.union(new_frontiers)

@@ -1,0 +1,119 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence279.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "In" .
+
+translation_coherence:fi_sentence279.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence279" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence279" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:From rdfs:label "from" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "In 1840, Lincoln was engaged to Mary_Todd from a rich family of slaves in Lexington, Kent.y."^^xsd:string .
+
+ns1:engage_1 a ns1:Engage ;
+    rdfs:label "engaged" ;
+    vn.role:Destination "1840-01-01"^^xsd:date ;
+    vn.role:Theme ns1:Lincoln ;
+    ns1:from ns1:family_1 ;
+    ns1:to ns1:Mary_todd .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+<http://dbpedia.org/resource/Lexington,_Kentucky> a schema:City,
+        schema:Place .
+
+ns1:Engage rdfs:label "engaged" ;
+    rdfs:subClassOf dul:Event .
+
+<https://w3id.org/stlab/ke/amiala/fi_sentence279.ttl/Kent.y.> rdfs:label "Kent.y." ;
+    boxer:possibleType owl:Thing .
+
+ns1:Lexington rdfs:label "Lexington" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith <https://w3id.org/stlab/ke/amiala/fi_sentence279.ttl/Kent.y.> ;
+    owl:sameAs <http://dbpedia.org/resource/Lexington,_Kentucky> .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Abraham_Lincoln,
+        ns1:family_1 .
+
+ns1:Mary_todd rdfs:label "Mary Todd" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Mary_Todd_Lincoln .
+
+ns1:Rich a owl:Class ;
+    rdfs:label "rich" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:RichFamily a owl:Class ;
+    rdfs:label "Rich Family" ;
+    dul:hasQuality ns1:Rich ;
+    rdfs:subClassOf ns1:Family .
+
+ns1:Slave rdfs:label "slaves" .
+
+ns1:slave_1 a dbpedia:Slavery_in_the_United_States,
+        ns1:Slave ;
+    rdfs:label "slaves" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:locatedIn ns1:Lexington .
+
+ns1:Family a owl:Class ;
+    rdfs:label "family" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:family_1 a ns1:Family,
+        ns1:RichFamily ;
+    rdfs:label "family" ;
+    quant:hasDeterminer quant:a ;
+    ns1:richFamilyOf ns1:slave_1 .
+

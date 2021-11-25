@@ -1,0 +1,127 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence242.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence242.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence242" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence242" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:depict_1 a ns1:Depict ;
+    rdfs:label "depicts" ;
+    vn.role:Agent ns1:structure_1 ;
+    vn.role:Theme ns1:landscape_1 .
+
+ns1:docuverse earmark:hasContent "This elite structure depicts the heroic and tragic landscapes of the Trojan_war in the main halls and in the Ladens."^^xsd:string .
+
+ns1:elite_1 a ns1:Elite ;
+    rdfs:label "elite" ;
+    dul:associatedWith ns1:structure_1 ;
+    quant:hasDeterminer quant:this .
+
+ns1:Depict rdfs:label "depicts" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:EliteStructure a owl:Class ;
+    rdfs:label "elite structure" ;
+    dul:associatedWith ns1:Elite ;
+    rdfs:subClassOf ns1:Structure .
+
+ns1:Hall rdfs:label "halls" .
+
+ns1:Heroic rdfs:label "heroic" ;
+    owl:sameAs dbpedia:Epic_poetry .
+
+ns1:Ladens rdfs:label "Ladens" ;
+    boxer:possibleType time:Interval .
+
+ns1:Landscape rdfs:label "landscapes" .
+
+ns1:Main rdfs:label "main" .
+
+ns1:MainHall rdfs:subClassOf ns1:Hall .
+
+ns1:Structure a owl:Class ;
+    rdfs:label "structure" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Tragic rdfs:label "tragic" ;
+    owl:sameAs dbpedia:Tragedy .
+
+ns1:TragicLandscape rdfs:subClassOf ns1:Landscape .
+
+ns1:TrojanWar rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Trojan_war a owl:Class ;
+    rdfs:label "Trojan war" ;
+    rdfs:subClassOf ns1:TrojanWar ;
+    owl:equivalentClass dbpedia:Trojan_War .
+
+ns1:hall_1 a ns1:MainHall ;
+    rdfs:label "halls" ;
+    dul:hasQuality ns1:Main ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:landscape_1 a ns1:TragicLandscape ;
+    rdfs:label "landscapes" ;
+    dul:hasQuality ns1:Heroic,
+        ns1:Tragic ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:tragicLandscapeOf ns1:trojan_war_1 .
+
+ns1:trojan_war_1 a ns1:Trojan_war ;
+    rdfs:label "Trojan war" ;
+    quant:hasDeterminer quant:the ;
+    ns1:in ns1:Ladens,
+        ns1:hall_1 .
+
+ns1:Elite a owl:Class ;
+    rdfs:label "elite" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:structure_1 a ns1:EliteStructure ;
+    rdfs:label "structure" .
+

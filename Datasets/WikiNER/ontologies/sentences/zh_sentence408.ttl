@@ -1,0 +1,160 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence408.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:zh_sentence408.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence408" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence408" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:At rdfs:label "At" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "(",
+        "," .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "At the beginning of the massacrer, Booth was in the box with the aim of using a single craft, a celestine, 44 gigawa (11mm) to be hit."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:11mm_1,
+        ns1:Booth,
+        ns1:aim_1,
+        ns1:beginning_1,
+        ns1:box_1,
+        ns1:celestine_1,
+        ns1:craft_1,
+        ns1:gigawa_1,
+        ns1:massacrer_1 ;
+    ns1:at ns1:beginning_1 .
+
+ns1:use_1 a ns1:Use ;
+    rdfs:label "using" ;
+    boxer:theme ns1:hit_1 ;
+    vn.role:Agent ns1:aim_1 ;
+    vn.role:Theme ns1:craft_1 .
+
+ns1:11mm rdfs:label "11mm" .
+
+ns1:Aim rdfs:label "aim" ;
+    rdfs:subClassOf dul:Goal .
+
+ns1:Beginning rdfs:label "beginning" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Booth rdfs:label "Booth" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs ns1:craft_1 ;
+    ns1:inSituationWith ns1:aim_1 .
+
+ns1:Box rdfs:label "box" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Celestine rdfs:label "celestine" .
+
+ns1:Gigawa rdfs:label "gigawa" .
+
+ns1:Hit rdfs:label "hit" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Massacrer rdfs:label "massacrer" .
+
+ns1:Single a owl:Class ;
+    rdfs:label "single" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SingleCraft a owl:Class ;
+    rdfs:label "single craft" ;
+    dul:hasQuality ns1:Single ;
+    rdfs:subClassOf ns1:Craft .
+
+ns1:Use rdfs:label "using" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:box_1 a ns1:Box ;
+    rdfs:label "box" ;
+    quant:hasDeterminer quant:the .
+
+ns1:hit_1 a ns1:Hit ;
+    rdfs:label "hit" ;
+    vn.role:Theme ns1:aim_1 .
+
+ns1:11mm_1 a ns1:11mm ;
+    rdfs:label "11mm" .
+
+ns1:Craft a owl:Class ;
+    rdfs:label "craft" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:beginning_1 a ns1:Beginning ;
+    rdfs:label "beginning" ;
+    quant:hasDeterminer quant:the ;
+    ns1:beginningOf ns1:massacrer_1 .
+
+ns1:celestine_1 a ns1:Celestine ;
+    rdfs:label "celestine" ;
+    dul:associatedWith ns1:gigawa_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:gigawa_1 a ns1:Gigawa ;
+    rdfs:label "gigawa" ;
+    dul:associatedWith ns1:11mm_1 ;
+    dul:hasDataValue "44"^^xsd:nonNegativeInteger .
+
+ns1:massacrer_1 a ns1:Massacrer ;
+    rdfs:label "massacrer" ;
+    quant:hasDeterminer quant:the .
+
+ns1:craft_1 a ns1:Craft,
+        ns1:SingleCraft ;
+    rdfs:label "craft" ;
+    dul:associatedWith ns1:celestine_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:aim_1 a ns1:Aim ;
+    rdfs:label "aim" ;
+    quant:hasDeterminer quant:the .
+

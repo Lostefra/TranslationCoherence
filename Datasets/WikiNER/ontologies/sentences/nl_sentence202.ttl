@@ -1,0 +1,125 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence202.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Experiencer rdfs:label "by" .
+
+vn.role:Predicate rdfs:label "as" .
+
+translation_coherence:nl_sentence202.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence202" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence202" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:docuverse earmark:hasContent "Old writers treated Troilus as the epitome of a dead child grieving by his parents."^^xsd:string .
+
+ns1:grieve_1 a ns1:Grieve ;
+    rdfs:label "grieving" ;
+    vn.role:Cause ns1:writer_1 ;
+    vn.role:Experiencer ns1:parent_1 .
+
+ns1:treat_1 a ns1:Treat ;
+    rdfs:label "treated" ;
+    vn.role:Agent ns1:writer_1 ;
+    vn.role:Predicate ns1:epitome_1 ;
+    vn.role:Theme ns1:troilus_1 .
+
+ns1:Child a owl:Class ;
+    rdfs:label "child" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Dead a owl:Class ;
+    rdfs:label "dead" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:DeadChild a owl:Class ;
+    rdfs:label "dead child" ;
+    dul:hasQuality ns1:Dead ;
+    rdfs:subClassOf ns1:Child .
+
+ns1:Epitome rdfs:label "epitome" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Grieve rdfs:label "grieving" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Old rdfs:label "Old" .
+
+ns1:OldWriter rdfs:subClassOf ns1:Writer .
+
+ns1:Parent rdfs:label "parents" .
+
+ns1:Treat rdfs:label "treated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Troilus a owl:Class ;
+    rdfs:label "Troilus" ;
+    owl:equivalentClass dbpedia:Troilus_and_Criseyde .
+
+ns1:Writer rdfs:label "writers" .
+
+ns1:child_1 a ns1:DeadChild ;
+    rdfs:label "child" ;
+    quant:hasDeterminer quant:a .
+
+ns1:epitome_1 a ns1:Epitome ;
+    rdfs:label "epitome" ;
+    quant:hasDeterminer quant:the ;
+    ns1:epitomeOf ns1:child_1 .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "his" .
+
+ns1:parent_1 a ns1:Parent ;
+    rdfs:label "parents" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:parentOf ns1:male_1 .
+
+ns1:troilus_1 a ns1:Troilus ;
+    rdfs:label "Troilus" .
+
+ns1:writer_1 a ns1:OldWriter ;
+    rdfs:label "writers" ;
+    dul:hasQuality ns1:Old ;
+    quant:hasQuantifier quant:multiple .
+

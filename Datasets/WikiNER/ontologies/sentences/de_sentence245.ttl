@@ -1,0 +1,147 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence245.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Oblique rdfs:label "in" .
+
+translation_coherence:de_sentence245.ttl a owl:Ontology ;
+    rdfs:label "de_sentence245" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence245" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "'s",
+        "its",
+        "of" .
+
+ns1:To rdfs:label "to" .
+
+ns1:Under rdfs:label "under" .
+
+ns1:docuverse earmark:hasContent "Odysseus is going to Skyros in the form of a paired women's clothing and jewellery and provides protection and spion under its goods."^^xsd:string .
+
+ns1:go_1 a ns1:Go ;
+    rdfs:label "going" ;
+    vn.role:Oblique ns1:form_1 ;
+    vn.role:Theme ns1:Odysseus ;
+    ns1:to ns1:skyro_1 .
+
+ns1:jewellery_1 rdfs:label "jewellery" .
+
+ns1:neuter_1 coref:coref ns1:skyro_1 .
+
+ns1:provide_1 a ns1:Provide ;
+    rdfs:label "provides" ;
+    vn.role:Agent ns1:Odysseus ;
+    vn.role:Theme ns1:protection_1 ;
+    ns1:under ns1:goods_1 .
+
+ns1:spion_1 rdfs:label "spion" .
+
+ns1:Clothing a owl:Class ;
+    rdfs:label "clothing" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Clothing .
+
+ns1:Form rdfs:label "form" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Go rdfs:label "going" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Goods rdfs:label "goods" .
+
+ns1:Jewellery a owl:Class ;
+    rdfs:label "jewellery" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Jewellery .
+
+ns1:Paired rdfs:label "paired" .
+
+ns1:PairedWoman rdfs:subClassOf ns1:Woman .
+
+ns1:Protection rdfs:label "protection" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Provide rdfs:label "provides" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Skyro a owl:Class ;
+    rdfs:label "Skyros" ;
+    owl:equivalentClass dbpedia:Skyros .
+
+ns1:Spion rdfs:label "spion" .
+
+ns1:Woman rdfs:label "women" .
+
+ns1:clothing_1 a ns1:Clothing,
+        ns1:Jewellery ;
+    rdfs:label "clothing" ;
+    ns1:jewelleryOf ns1:woman_1 .
+
+ns1:form_1 a ns1:Form ;
+    rdfs:label "form" ;
+    quant:hasDeterminer quant:the ;
+    ns1:formOf ns1:clothing_1 .
+
+ns1:goods_1 a ns1:Goods ;
+    rdfs:label "goods" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:goodsOf ns1:skyro_1 .
+
+ns1:protection_1 a ns1:Protection,
+        ns1:Spion ;
+    rdfs:label "protection" .
+
+ns1:woman_1 a ns1:PairedWoman ;
+    rdfs:label "women" ;
+    dul:hasQuality ns1:Paired ;
+    quant:hasDeterminer quant:a ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Odysseus rdfs:label "Odysseus" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Odysseus .
+
+ns1:skyro_1 a owl:Thing,
+        ns1:Skyro ;
+    rdfs:label "Skyros",
+        "its" ;
+    quant:hasQuantifier quant:multiple .
+

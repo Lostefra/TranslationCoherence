@@ -1,0 +1,122 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence248.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:de_sentence248.ttl a owl:Ontology ;
+    rdfs:label "de_sentence248" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence248" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "'s",
+        "our" .
+
+ns1:To rdfs:label "to" .
+
+ns1:adopt_1 a ns1:Adopt ;
+    rdfs:label "adopted" ;
+    vn.role:Agent ns1:Committee ;
+    vn.role:Theme ns1:report_1 .
+
+ns1:docuverse earmark:hasContent "I have therefore submitted some changes to Mr Koch's in-depth report, which was adopted by our Committee."^^xsd:string .
+
+ns1:submit_1 a ns1:ThereforeSubmit ;
+    rdfs:label "submitted" ;
+    dul:hasQuality ns1:Therefore ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Theme ns1:change_1 .
+
+ns1:Adopt rdfs:label "adopted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Change rdfs:label "changes" .
+
+ns1:Committee rdfs:label "Committee" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Committee ;
+    ns1:of ns1:person_1 .
+
+ns1:In-depth a owl:Class ;
+    rdfs:label "in-depth" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:In-depthReport a owl:Class ;
+    rdfs:label "in-depth report" ;
+    dul:hasQuality ns1:In-depth ;
+    rdfs:subClassOf ns1:Report .
+
+ns1:Koch rdfs:label "Koch" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> .
+
+ns1:Report a owl:Class ;
+    rdfs:label "report" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Submit rdfs:label "submitted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Therefore rdfs:label "therefore" .
+
+ns1:ThereforeSubmit rdfs:subClassOf ns1:Submit .
+
+ns1:change_1 a ns1:Change ;
+    rdfs:label "changes" ;
+    quant:hasQuantifier quant:multiple,
+        quant:some ;
+    ns1:to ns1:report_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "our" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "I" .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> rdfs:label "Mr" ;
+    boxer:possibleType dul:Role .
+
+ns1:Person rdfs:label "I" .
+
+ns1:report_1 a ns1:In-depthReport ;
+    rdfs:label "report" ;
+    ns1:in-depthReportOf ns1:Koch .
+

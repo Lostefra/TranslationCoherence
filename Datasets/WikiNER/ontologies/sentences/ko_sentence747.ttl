@@ -1,0 +1,130 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence747.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence747.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence747" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence747" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "(",
+        "," .
+
+ns1:co-formed_1 rdfs:label "co-formed" .
+
+ns1:docuverse earmark:hasContent "Kabyle_Language, the most spoken Berber_language of the country teaches teaching and partially co-formed (some limitations) in some of Kabylia."^^xsd:string .
+
+ns1:speak_1 a dbpedia:Speech,
+        ns1:Speak ;
+    rdfs:label "spoken" ;
+    boxer:patient ns1:berber_language_1 .
+
+ns1:teach_1 a ns1:Teach ;
+    rdfs:label "teaches" ;
+    vn.role:Agent ns1:Kabyle_language ;
+    vn.role:Topic ns1:teaching_1 ;
+    ns1:inThingOf ns1:Kabylia .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "some" .
+
+owl:Thing rdfs:label "some" .
+
+ns1:Berber_language a owl:Class ;
+    rdfs:label "Berber language" ;
+    owl:equivalentClass dbpedia:Berber_languages .
+
+ns1:Co-formed rdfs:label "co-formed" .
+
+ns1:Country rdfs:label "country" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Kabyle_language rdfs:label "Kabyle Language" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:berber_language_1 ;
+    owl:sameAs dbpedia:Kabyle_language .
+
+ns1:Kabylia rdfs:label "Kabylia" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Kabylie .
+
+ns1:Limitation rdfs:label "limitations" .
+
+ns1:Most rdfs:label "most" .
+
+ns1:Partially rdfs:label "partially" .
+
+ns1:PartiallyCo-formed rdfs:label "Partially Co-formed" ;
+    rdfs:subClassOf ns1:Co-formed .
+
+ns1:Speak rdfs:label "spoken" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Teach rdfs:label "teaches" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Teaching rdfs:label "teaching" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:country_1 a ns1:Country ;
+    rdfs:label "country" ;
+    quant:hasDeterminer quant:the .
+
+ns1:limitation_1 a ns1:Limitation ;
+    rdfs:label "limitations" ;
+    quant:hasQuantifier quant:multiple,
+        quant:some .
+
+ns1:teaching_1 a ns1:PartiallyCo-formed,
+        ns1:Teaching ;
+    rdfs:label "teaching" ;
+    dul:associatedWith ns1:limitation_1 ;
+    dul:hasQuality ns1:Partially .
+
+ns1:berber_language_1 a ns1:Berber_language ;
+    rdfs:label "Berber language" ;
+    dul:hasQuality ns1:Most ;
+    quant:hasDeterminer quant:the ;
+    ns1:berber_languageOf ns1:country_1 .
+

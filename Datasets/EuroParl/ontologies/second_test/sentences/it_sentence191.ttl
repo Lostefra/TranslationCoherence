@@ -1,0 +1,159 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence191.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence191.ttl a owl:Ontology ;
+    rdfs:label "it_sentence191" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence191" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Although rdfs:label "although" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:To rdfs:label "to" .
+
+ns1:congratulate_1 a ns1:Congratulate ;
+    rdfs:label "congratulate" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Theme ns1:Koch ;
+    ns1:on ns1:report_1 .
+
+ns1:docuverse earmark:hasContent "Mr President, I should like first of all to congratulate Mr Koch on his reports which, although technical, are of great importance to safety."^^xsd:string .
+
+ns1:like_1 a ns1:Like ;
+    rdfs:label "like" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:associatedWith ns1:President ;
+    vn.role:Experiencer ns1:person_1 ;
+    vn.role:Theme ns1:first_1 .
+
+ns1:male_1 coref:coref ns1:President .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:importance_1,
+        ns1:safety_1 ;
+    ns1:although ns1:technical_1 .
+
+ns1:Congratulate rdfs:label "congratulate" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:First rdfs:label "first" ;
+    rdfs:subClassOf dul:Role .
+
+ns1:Great a owl:Class ;
+    rdfs:label "great" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:GreatImportance a owl:Class ;
+    rdfs:label "great importance" ;
+    dul:hasQuality ns1:Great ;
+    rdfs:subClassOf ns1:Importance .
+
+ns1:Importance a owl:Class ;
+    rdfs:label "importance" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Like rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Person rdfs:label "I" .
+
+ns1:Report rdfs:label "reports" .
+
+ns1:Safety rdfs:label "safety" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Technical rdfs:label "technical" .
+
+ns1:first_1 a ns1:First ;
+    rdfs:label "first" ;
+    ns1:firstOf ns1:thing_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:report_1 a ns1:Report ;
+    rdfs:label "reports" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:reportOf ns1:Koch,
+        ns1:importance_1 .
+
+ns1:technical_1 a ns1:Technical ;
+    rdfs:label "technical" .
+
+owl:Thing rdfs:label "all" .
+
+ns1:Koch a ns1:Male ;
+    rdfs:label "Koch" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> .
+
+ns1:Male rdfs:label "Koch",
+        "Mr" .
+
+ns1:President rdfs:label "President",
+        "his" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    owl:sameAs dbpedia:President .
+
+ns1:importance_1 a ns1:GreatImportance ;
+    rdfs:label "importance" ;
+    ns1:to ns1:safety_1 .
+
+ns1:safety_1 a ns1:Safety ;
+    rdfs:label "safety" .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "all" .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> a ns1:Male ;
+    rdfs:label "Mr" ;
+    boxer:possibleType dul:Role .
+

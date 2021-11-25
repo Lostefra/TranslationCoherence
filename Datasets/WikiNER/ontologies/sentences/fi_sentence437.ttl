@@ -1,0 +1,169 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence437.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "In" .
+
+translation_coherence:fi_sentence437.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence437" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence437" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:Rel rdfs:label "(",
+        "," .
+
+ns1:Where rdfs:label "where" .
+
+ns1:adult_1 a ns1:Adult ;
+    rdfs:label "adult" ;
+    dul:associatedWith ns1:hometown_1 ;
+    quant:hasDeterminer quant:an .
+
+ns1:docuverse earmark:hasContent "In addition, New_Salem__Illinois (rebuilding an early adult hometown of Lincoln), Ford's theater and Petersen_House (where he died) remain museums."^^xsd:string .
+
+ns1:petersen_house_1 rdfs:label "Petersen House" .
+
+ns1:remain_1 a ns1:Remain ;
+    rdfs:label "remain" ;
+    boxer:patient ns1:museum_1 ;
+    vn.role:Location ns1:addition_1 ;
+    vn.role:Theme ns1:New_salem__illinois .
+
+<http://dbpedia.org/resource/Lincoln,_Nebraska> a schema:City,
+        schema:Place .
+
+ns1:Addition rdfs:label "addition" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:AdultHometown a owl:Class ;
+    rdfs:label "Adult Hometown" ;
+    dul:associatedWith ns1:Adult ;
+    rdfs:subClassOf ns1:Hometown .
+
+ns1:Die rdfs:label "died" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Early a owl:Class ;
+    rdfs:label "early" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:EarlyAdult a owl:Class ;
+    dul:hasQuality ns1:Early ;
+    rdfs:subClassOf ns1:Adult .
+
+ns1:EarlyAdultHometown a owl:Class ;
+    rdfs:label "early adult hometown" ;
+    dul:associatedWith ns1:EarlyAdult ;
+    rdfs:subClassOf ns1:AdultHometown .
+
+ns1:Ford rdfs:label "Ford" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Hometown a owl:Class ;
+    rdfs:label "hometown" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs <http://dbpedia.org/resource/Lincoln,_Nebraska> .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Museum rdfs:label "museums" .
+
+ns1:New_salem__illinois rdfs:label "New Salem  Illinois" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:rebuild_1 ;
+    owl:sameAs <http://dbpedia.org/resource/Lincoln's_New_Salem> .
+
+ns1:Petersen_house a owl:Class ;
+    rdfs:label "Petersen House" ;
+    owl:equivalentClass dbpedia:Petersen_House .
+
+ns1:Rebuild rdfs:label "rebuilding" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Remain rdfs:label "remain" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Theater a owl:Class ;
+    rdfs:label "theater" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass <http://dbpedia.org/resource/Ford's_Theatre> .
+
+ns1:addition_1 a ns1:Addition ;
+    rdfs:label "addition" .
+
+ns1:die_1 a ns1:Die ;
+    rdfs:label "died" ;
+    vn.role:Theme ns1:male_1 .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "he" .
+
+ns1:museum_1 a ns1:Museum ;
+    rdfs:label "museums" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:rebuild_1 a ns1:Rebuild ;
+    rdfs:label "rebuilding" ;
+    dul:associatedWith ns1:theater_1 ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Product ns1:hometown_1 .
+
+ns1:theater_1 a ns1:Petersen_house,
+        ns1:Theater ;
+    rdfs:label "theater" ;
+    ns1:petersen_houseOf ns1:Ford ;
+    ns1:where ns1:die_1 .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:hometown_1 a ns1:EarlyAdultHometown ;
+    rdfs:label "hometown" ;
+    ns1:earlyAdultHometownOf ns1:Lincoln .
+
+ns1:Adult a owl:Class ;
+    rdfs:label "adult" ;
+    rdfs:subClassOf dul:Person .
+

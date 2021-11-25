@@ -1,0 +1,128 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence378.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:fi_sentence378.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence378" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence378" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "Projects funded with Union support have been reduced too often by slow decision-making and complex administrative processes."^^xsd:string .
+
+ns1:fund_1 a ns1:Fund ;
+    rdfs:label "funded" ;
+    boxer:patient ns1:project_1 ;
+    ns1:with ns1:support_1 .
+
+ns1:reduce_1 a ns1:Reduce ;
+    rdfs:label "reduced" ;
+    dul:hasQuality ns1:Often,
+        ns1:Too ;
+    vn.role:Agent ns1:decision-making_1,
+        ns1:process_1 ;
+    vn.role:Patient ns1:project_1 .
+
+ns1:Administrative rdfs:label "administrative" ;
+    owl:sameAs dbpedia:Management .
+
+ns1:AdministrativeProcess rdfs:subClassOf ns1:Process .
+
+ns1:Complex rdfs:label "complex" ;
+    owl:sameAs dbpedia:Complexity .
+
+ns1:ComplexAdministrativeProcess rdfs:subClassOf ns1:AdministrativeProcess .
+
+ns1:Decision-making a owl:Class ;
+    rdfs:label "decision-making" ;
+    owl:equivalentClass dbpedia:Decision-making .
+
+ns1:Fund rdfs:label "funded" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Often rdfs:label "often" .
+
+ns1:Process rdfs:label "processes" .
+
+ns1:Project a owl:Class ;
+    rdfs:label "Projects" ;
+    owl:equivalentClass dbpedia:Project .
+
+ns1:Reduce rdfs:label "reduced" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Slow a owl:Class ;
+    rdfs:label "slow" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SlowDecision-making a owl:Class ;
+    rdfs:label "Slow Decision-making" ;
+    dul:hasQuality ns1:Slow ;
+    rdfs:subClassOf ns1:Decision-making .
+
+ns1:Support rdfs:label "support" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Too rdfs:label "too" .
+
+ns1:Union rdfs:label "Union" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:decision-making_1 a ns1:SlowDecision-making ;
+    rdfs:label "decision-making" .
+
+ns1:process_1 a dbpedia:Business_process,
+        ns1:ComplexAdministrativeProcess ;
+    rdfs:label "processes" ;
+    dul:hasQuality ns1:Administrative,
+        ns1:Complex ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:support_1 a ns1:Support ;
+    rdfs:label "support" ;
+    dul:associatedWith ns1:Union .
+
+ns1:project_1 a ns1:Project ;
+    rdfs:label "Projects" ;
+    quant:hasQuantifier quant:multiple .
+

@@ -1,0 +1,171 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence460.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence460.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence460" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence460" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:contain_1 a ns1:Contain ;
+    rdfs:label "contains" ;
+    vn.role:Location ns1:work_1 ;
+    vn.role:Value ns1:explanation_1,
+        ns1:observation_1,
+        ns1:origin_1 .
+
+ns1:docuverse earmark:hasContent "The work reflecting this study, such as the history of the animals, the birth of human beings and the parts of the animal, contains some observations and explanations, and the origin and error of the day."^^xsd:string .
+
+ns1:error_1 rdfs:label "error" .
+
+ns1:reflect_1 a ns1:Reflect ;
+    rdfs:label "reflecting" ;
+    boxer:patient ns1:study_1 ;
+    vn.role:Experiencer ns1:work_1 .
+
+ns1:Animal rdfs:label "animals" .
+
+ns1:Being rdfs:label "beings" .
+
+ns1:Birth rdfs:label "birth" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:Contain rdfs:label "contains" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Day rdfs:label "day" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:Error rdfs:label "error" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Explanation rdfs:label "explanations" .
+
+ns1:History rdfs:label "history" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Human rdfs:label "human" ;
+    owl:sameAs dbpedia:Human .
+
+ns1:HumanBeing rdfs:subClassOf ns1:Being .
+
+ns1:Observation rdfs:label "observations" .
+
+ns1:Origin a owl:Class ;
+    rdfs:label "origin" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> ;
+    owl:equivalentClass dbpedia:Abiogenesis .
+
+ns1:Part rdfs:label "parts" .
+
+ns1:Reflect rdfs:label "reflecting" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Study rdfs:label "study" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Work rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:being_1 a dbpedia:Human,
+        ns1:HumanBeing ;
+    rdfs:label "beings" ;
+    dul:hasQuality ns1:Human ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:birth_1 a ns1:Birth ;
+    rdfs:label "birth" ;
+    quant:hasDeterminer quant:the ;
+    ns1:birthOf ns1:being_1 .
+
+ns1:day_1 a ns1:Day ;
+    rdfs:label "day" ;
+    quant:hasDeterminer quant:the .
+
+ns1:explanation_1 a ns1:Explanation ;
+    rdfs:label "explanations" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:history_1 a ns1:History ;
+    rdfs:label "history" ;
+    dul:associatedWith ns1:birth_1,
+        ns1:part_1 ;
+    quant:hasDeterminer quant:such,
+        quant:the ;
+    ns1:historyOf ns1:animal_1 .
+
+ns1:observation_1 a dbpedia:Observation,
+        ns1:Observation ;
+    rdfs:label "observations" ;
+    quant:hasQuantifier quant:multiple,
+        quant:some .
+
+ns1:origin_1 a ns1:Error,
+        ns1:Origin ;
+    rdfs:label "origin" ;
+    quant:hasDeterminer quant:the ;
+    ns1:originOf ns1:day_1 .
+
+ns1:part_1 a ns1:Part ;
+    rdfs:label "parts" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:partOf ns1:animal_1 .
+
+ns1:study_1 a ns1:Study ;
+    rdfs:label "study" ;
+    quant:hasDeterminer quant:this ;
+    ns1:as ns1:history_1 .
+
+ns1:animal_1 a ns1:Animal ;
+    rdfs:label "animals" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "work" ;
+    quant:hasDeterminer quant:the .
+

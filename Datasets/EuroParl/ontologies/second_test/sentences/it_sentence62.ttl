@@ -1,0 +1,215 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence62.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:it_sentence62.ttl a owl:Ontology ;
+    rdfs:label "it_sentence62" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence62" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "'s",
+        "his",
+        "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:To rdfs:label "to" .
+
+ns1:approve_1 a ns1:UnanimouslyApprove ;
+    rdfs:label "approved" ;
+    dul:hasQuality ns1:Unanimously ;
+    vn.role:Agent ns1:Conference_of_presidents ;
+    vn.role:Theme ns1:Party .
+
+ns1:docuverse earmark:hasContent "Madam President, the presentation of the Prodi_Commission's political programme for the whole legislature was initially proposed by the Group of the Party of European Socialism, unanimously approved by the September Conference_of_Presidents and which was explicitly welcomed by President Prodi, who reiterated his commitment to his inaugural speech."^^xsd:string .
+
+ns1:propose_1 a ns1:InitiallyPropose ;
+    rdfs:label "proposed" ;
+    dul:hasQuality ns1:Initially ;
+    vn.role:Agent ns1:Group ;
+    vn.role:Theme ns1:Madam_president .
+
+ns1:reiterate_1 a ns1:Reiterate ;
+    rdfs:label "reiterated" ;
+    vn.role:Agent ns1:Group ;
+    vn.role:Topic ns1:commitment_1 .
+
+ns1:welcome_1 a ns1:ExplicitlyWelcome ;
+    rdfs:label "welcomed" ;
+    dul:hasQuality ns1:Explicitly ;
+    vn.role:Agent ns1:Prodi ;
+    vn.role:Theme ns1:Party .
+
+dbpedia:Party_of_European_Socialists a schema:Organization .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#President> rdfs:label "President" ;
+    boxer:possibleType dul:Role ;
+    owl:sameAs dbpedia:President .
+
+ns1:Approve rdfs:label "approved" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Commitment rdfs:label "commitment" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Conference_of_presidents rdfs:label "Conference of Presidents" ;
+    boxer:possibleType time:Interval ;
+    owl:sameAs dbpedia:Conference_of_Presidents_of_the_European_Parliament ;
+    ns1:at "0001-09-01"^^xsd:date .
+
+ns1:European_socialism rdfs:label "European Socialism" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Party_of_European_Socialists .
+
+ns1:Explicitly rdfs:label "explicitly" .
+
+ns1:ExplicitlyWelcome rdfs:subClassOf ns1:Welcome .
+
+ns1:Inaugural a owl:Class ;
+    rdfs:label "inaugural" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:InauguralSpeech a owl:Class ;
+    rdfs:label "inaugural speech" ;
+    dul:hasQuality ns1:Inaugural ;
+    rdfs:subClassOf ns1:Speech .
+
+ns1:Initially rdfs:label "initially" .
+
+ns1:InitiallyPropose rdfs:subClassOf ns1:Propose .
+
+ns1:Legislature a owl:Class ;
+    rdfs:label "legislature" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Legislature .
+
+ns1:Madam_president rdfs:label "Madam President" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith ns1:presentation_1 .
+
+ns1:Political a owl:Class ;
+    rdfs:label "political" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:PoliticalProgramme a owl:Class ;
+    rdfs:label "political programme" ;
+    dul:hasQuality ns1:Political ;
+    rdfs:subClassOf ns1:Programme .
+
+ns1:Presentation rdfs:label "presentation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Prodi rdfs:label "Prodi" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#President> .
+
+ns1:Prodi_commission rdfs:label "Prodi Commission" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Prodi_Commission .
+
+ns1:Programme a owl:Class ;
+    rdfs:label "programme" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Propose rdfs:label "proposed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Reiterate rdfs:label "reiterated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Speech a owl:Class ;
+    rdfs:label "speech" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Unanimously rdfs:label "unanimously" .
+
+ns1:UnanimouslyApprove rdfs:subClassOf ns1:Approve .
+
+ns1:Welcome rdfs:label "welcomed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Whole a owl:Class ;
+    rdfs:label "whole" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:WholeLegislature a owl:Class ;
+    rdfs:label "Whole Legislature" ;
+    dul:hasQuality ns1:Whole ;
+    rdfs:subClassOf ns1:Legislature .
+
+ns1:commitment_1 a ns1:Commitment ;
+    rdfs:label "commitment" ;
+    ns1:commitmentOf ns1:male_1 ;
+    ns1:to ns1:speech_1 .
+
+ns1:legislature_1 a ns1:WholeLegislature ;
+    rdfs:label "legislature" ;
+    quant:hasDeterminer quant:the .
+
+ns1:presentation_1 a ns1:Presentation ;
+    rdfs:label "presentation" ;
+    quant:hasDeterminer quant:the ;
+    ns1:presentationOf ns1:programme_1 .
+
+ns1:programme_1 a ns1:PoliticalProgramme ;
+    rdfs:label "programme" ;
+    ns1:for ns1:legislature_1 ;
+    ns1:politicalProgrammeOf ns1:Prodi_commission .
+
+ns1:speech_1 a ns1:InauguralSpeech ;
+    rdfs:label "speech" ;
+    ns1:inauguralSpeechOf ns1:male_1 .
+
+ns1:Group rdfs:label "Group" ;
+    boxer:possibleType foaf:Organisation ;
+    ns1:of ns1:Party .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "his" .
+
+ns1:Party rdfs:label "Party" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Triumph_Heritage_Empowerment_Party ;
+    ns1:of ns1:European_socialism .
+

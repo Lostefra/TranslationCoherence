@@ -1,0 +1,134 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix fred: <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence411.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fred: rdfs:label ":"^^xsd:string .
+
+vn.role:Theme rdfs:label "in" .
+
+translation_coherence:it_sentence411.ttl a owl:Ontology ;
+    rdfs:label "it_sentence411" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence411" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:At rdfs:label "at" .
+
+ns1:Despite rdfs:label "despite" .
+
+ns1:Rel rdfs:label "(" .
+
+ns1:docuverse earmark:hasContent "(Latin: So always at tyrants) and fled, despite suffering a broken leg in the jump."^^xsd:string .
+
+ns1:flee_1 a ns1:Flee ;
+    rdfs:label "fled" ;
+    vn.role:Theme ns1:thing_4 ;
+    ns1:despite ns1:suffer_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Always,
+        ns1:_1 ;
+    dul:hasQuality ns1:So ;
+    ns1:at ns1:tyrant_1 .
+
+ns1:thing_2 a ns1:ThingThing ;
+    dul:associatedWith ns1:_1 .
+
+dbpedia:Latin a schema:Language .
+
+ns1:BrokenLeg a owl:Class ;
+    rdfs:label "Broken Leg" ;
+    dul:hasQuality ns1:Broken ;
+    rdfs:subClassOf ns1:Leg .
+
+ns1:Flee rdfs:label "fled" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Jump rdfs:label "jump" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Latin rdfs:label "Latin" ;
+    boxer:possibleType owl:Thing ;
+    dul:hasQuality ns1:Always ;
+    owl:sameAs dbpedia:Latin .
+
+ns1:Leg a owl:Class ;
+    rdfs:label "leg" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:So rdfs:label "So" .
+
+ns1:Suffer rdfs:label "suffering" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Tyrant rdfs:label "tyrants" .
+
+ns1:jump_1 a ns1:Jump ;
+    rdfs:label "jump" ;
+    quant:hasDeterminer quant:the .
+
+ns1:leg_1 a ns1:BrokenLeg ;
+    rdfs:label "leg" ;
+    dul:hasQuality ns1:Broken ;
+    quant:hasDeterminer quant:a .
+
+ns1:suffer_1 a ns1:Suffer ;
+    rdfs:label "suffering" ;
+    vn.role:Experiencer ns1:thing_4 ;
+    vn.role:Predicate ns1:leg_1 ;
+    vn.role:Theme ns1:jump_1 .
+
+ns1:tyrant_1 a ns1:Tyrant ;
+    rdfs:label "tyrants" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Broken a owl:Class ;
+    rdfs:label "broken" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ThingThing rdfs:subClassOf owl:Thing .
+
+ns1:_1 dul:associatedWith ns1:Latin ;
+    dul:hasQuality ns1:Always .
+
+ns1:thing_4 a ns1:ThingThing .
+
+ns1:Always rdfs:label "always" .
+

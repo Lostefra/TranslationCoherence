@@ -1,0 +1,131 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence62.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence62.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence62" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence62" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:With rdfs:label "with" .
+
+ns1:consumer_1 a ns1:Consumer ;
+    rdfs:label "consumer" ;
+    dul:associatedWith ns1:society_1 .
+
+ns1:create_1 a ns1:Create ;
+    rdfs:label "creating" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Product ns1:society_1 .
+
+ns1:docuverse earmark:hasContent "The University is popular with Ivan_Illich, and the school is experiencing obstacles for self-learning and instead of creating consumer society."^^xsd:string .
+
+ns1:experience_1 a ns1:Experience ;
+    rdfs:label "experiencing" ;
+    vn.role:Experiencer ns1:school_1 ;
+    vn.role:Stimulus ns1:obstacle_1 ;
+    ns1:experienceOf ns1:thing_1 ;
+    ns1:for ns1:self-learning_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Popular,
+        ns1:University ;
+    ns1:with ns1:Ivan_illich .
+
+ns1:ConsumerSociety a owl:Class ;
+    rdfs:label "Consumer Society" ;
+    dul:associatedWith ns1:Consumer ;
+    rdfs:subClassOf ns1:Society ;
+    owl:equivalentClass dbpedia:Consumerism .
+
+ns1:Create rdfs:label "creating" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Experience rdfs:label "experiencing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Ivan_illich rdfs:label "Ivan Illich" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Ivan_Illich .
+
+ns1:Obstacle rdfs:label "obstacles" .
+
+ns1:School rdfs:label "school" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Self-learning a owl:Class ;
+    rdfs:label "self-learning" ;
+    owl:equivalentClass dbpedia:Autodidacticism .
+
+ns1:Society a owl:Class ;
+    rdfs:label "society" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:University rdfs:label "University" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality ns1:Popular ;
+    owl:sameAs dbpedia:University .
+
+ns1:obstacle_1 a ns1:Obstacle ;
+    rdfs:label "obstacles" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:school_1 a ns1:School ;
+    rdfs:label "school" ;
+    quant:hasDeterminer quant:the .
+
+ns1:self-learning_1 a ns1:Self-learning ;
+    rdfs:label "self-learning" .
+
+ns1:Consumer a owl:Class ;
+    rdfs:label "consumer" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Popular rdfs:label "popular" .
+
+ns1:society_1 a ns1:ConsumerSociety ;
+    rdfs:label "society" .
+
+ns1:thing_1 a owl:Thing .
+

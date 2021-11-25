@@ -1,0 +1,192 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence306.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence306.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence306" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence306" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:Han_illinois_newspaper rdfs:label "Han Illinois Newspaper" ;
+    boxer:possibleType foaf:Person .
+
+ns1:In rdfs:label "in" .
+
+ns1:Inlossof rdfs:label "in the loss of" .
+
+ns1:Of rdfs:label "his",
+        "its" .
+
+ns1:On rdfs:label "on" .
+
+ns1:To rdfs:label "to" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:alia_1 a ns1:Alia ;
+    boxer:agent ns1:result_1 ;
+    boxer:patient ns1:Sty ;
+    ns1:to ns1:Sty .
+
+ns1:alia_2 a ns1:Alia ;
+    rdfs:label "alias" ;
+    boxer:agent ns1:result_1 ;
+    boxer:patient ns1:Sty ;
+    ns1:to ns1:Sty .
+
+ns1:docuverse earmark:hasContent "The parliament does not want to resolve or even deprive it, and its introduction results in the loss of political support for Lincoln on his earth; Han Illinois Newspaper alias him to Sty Lincoln."^^xsd:string .
+
+ns1:introduction_1 a ns1:Introduction ;
+    rdfs:label "introduction" ;
+    dul:associatedWith ns1:result_1 .
+
+ns1:loss_1 a ns1:Loss ;
+    rdfs:label "loss" ;
+    quant:hasDeterminer quant:the ;
+    ns1:on ns1:earth_1 .
+
+ns1:male_1 rdfs:label "his" .
+
+ns1:want_1 a ns1:Want ;
+    rdfs:label "want" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Experiencer ns1:parliament_1 ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:Deprive rdfs:label "deprive" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Earth rdfs:label "earth" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Even rdfs:label "even" .
+
+ns1:EvenDeprive rdfs:label "Even Deprive" ;
+    rdfs:subClassOf ns1:Deprive .
+
+ns1:Introduction rdfs:label "introduction" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:IntroductionResult rdfs:subClassOf ns1:Result .
+
+ns1:Lincoln a ns1:Male ;
+    rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Loss rdfs:label "loss" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Parliament rdfs:label "parliament" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Political a owl:Class ;
+    rdfs:label "political" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:PoliticalSupport a owl:Class ;
+    rdfs:label "Political Support" ;
+    dul:hasQuality ns1:Political ;
+    rdfs:subClassOf ns1:Support .
+
+ns1:Resolve rdfs:label "resolve" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Result rdfs:label "results" .
+
+ns1:Support a owl:Class ;
+    rdfs:label "support" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Want rdfs:label "want" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:earth_1 a ns1:Earth ;
+    rdfs:label "earth" ;
+    ns1:earthOf ns1:Sty .
+
+ns1:resolve_1 a ns1:Resolve ;
+    rdfs:label "resolve" ;
+    boxer:patient ns1:neuter_1 ;
+    vn.role:Actor ns1:parliament_1 ;
+    ns1:union ns1:deprive_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:deprive_1,
+        ns1:resolve_1 .
+
+ns1:support_1 a ns1:PoliticalSupport ;
+    rdfs:label "support" ;
+    ns1:for ns1:Sty .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Alia rdfs:label "alias" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Male rdfs:label "Lincoln",
+        "Sty" .
+
+ns1:deprive_1 a ns1:EvenDeprive ;
+    rdfs:label "deprive" ;
+    dul:hasQuality ns1:Even ;
+    vn.role:Agent ns1:parliament_1 ;
+    vn.role:Source ns1:neuter_1 .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "it",
+        "its" .
+
+ns1:parliament_1 a ns1:Parliament ;
+    rdfs:label "parliament" ;
+    quant:hasDeterminer quant:the .
+
+ns1:result_1 a ns1:IntroductionResult ;
+    rdfs:label "results" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:inLossOf ns1:support_1 ;
+    ns1:introductionResultOf ns1:neuter_1 .
+
+ns1:Sty a ns1:Male ;
+    rdfs:label "Sty" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith ns1:Lincoln .
+

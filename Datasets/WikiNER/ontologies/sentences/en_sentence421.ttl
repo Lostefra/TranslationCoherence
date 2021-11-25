@@ -1,0 +1,128 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence421.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence421.ttl a owl:Ontology ;
+    rdfs:label "en_sentence421" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence421" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:docuverse earmark:hasContent "There were few people who strongly or directly influenced Lincoln 's moral and intellectual development and perspectives."^^xsd:string .
+
+ns1:influence_1 a ns1:DirectlyInfluence,
+        ns1:Influence ;
+    rdfs:label "influenced" ;
+    dul:hasQuality ns1:Directly,
+        ns1:Strongly ;
+    vn.role:Agent ns1:there_1 ;
+    vn.role:Patient ns1:development_1 .
+
+ns1:people_1 rdfs:label "people" ;
+    quant:hasQuantifier quant:few,
+        quant:multiple .
+
+ns1:perspective_1 a dbpedia:Point_of_view_(philosophy) ;
+    rdfs:label "perspectives" .
+
+ns1:Development a owl:Class ;
+    rdfs:label "development" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Directly rdfs:label "directly" .
+
+ns1:DirectlyInfluence rdfs:subClassOf ns1:Influence .
+
+ns1:FewPeople a owl:Class ;
+    rdfs:label "few people" ;
+    dul:hasQuality ns1:Few ;
+    rdfs:subClassOf ns1:People .
+
+ns1:Intellectual a owl:Class ;
+    rdfs:label "intellectual" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Intellectualism .
+
+ns1:IntellectualDevelopment a owl:Class ;
+    rdfs:label "Intellectual Development" ;
+    dul:hasQuality ns1:Intellectual ;
+    rdfs:subClassOf ns1:Development ;
+    owl:equivalentClass <http://dbpedia.org/resource/Piaget's_theory_of_cognitive_development> .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Moral rdfs:label "moral" ;
+    owl:sameAs dbpedia:Morality .
+
+ns1:People a owl:Class ;
+    rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Person .
+
+ns1:Perspective rdfs:label "perspectives" .
+
+ns1:Strongly rdfs:label "strongly" .
+
+ns1:There rdfs:label "There" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:development_1 a ns1:IntellectualDevelopment,
+        ns1:Perspective ;
+    rdfs:label "development" ;
+    dul:hasQuality ns1:Moral ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:perspectiveOf ns1:Lincoln .
+
+ns1:there_1 a ns1:FewPeople,
+        ns1:There ;
+    rdfs:label "There" ;
+    dul:hasQuality ns1:Few .
+
+ns1:Few a owl:Class ;
+    rdfs:label "few" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Influence rdfs:label "influenced" ;
+    rdfs:subClassOf dul:Event .
+

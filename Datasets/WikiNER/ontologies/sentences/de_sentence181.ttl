@@ -1,0 +1,146 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence181.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:de_sentence181.ttl a owl:Ontology ;
+    rdfs:label "de_sentence181" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence181" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Public_basic a ns1:Overview ;
+    rdfs:label "Public Basic",
+        "overview" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Secondary_education a ns1:Overview ;
+    rdfs:label "Secondary Education",
+        "overview" ;
+    boxer:possibleType foaf:Organisation ;
+    quant:hasDeterminer quant:an ;
+    owl:sameAs dbpedia:Secondary_education ;
+    ns1:locatedIn ns1:Arizona ;
+    ns1:overviewOf ns1:State_education_council .
+
+ns1:district_1 a ns1:District ;
+    rdfs:label "district" ;
+    dul:associatedWith ns1:school_1 .
+
+ns1:docuverse earmark:hasContent "Public Basic and Secondary_Education in Arizona is an overview of the State Education Council of Arizona and the local supervision of 67 district schools and 60 educational institutions."^^xsd:string .
+
+ns1:overview_1 rdfs:label "overview" .
+
+dbpedia:Arizona a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:District a owl:Class ;
+    rdfs:label "district" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> ;
+    owl:equivalentClass dbpedia:School_district,
+        dbpedia:State_school .
+
+ns1:DistrictSchool rdfs:subClassOf ns1:School .
+
+ns1:Educational rdfs:label "educational" .
+
+ns1:EducationalInstitution rdfs:subClassOf ns1:Institution .
+
+ns1:Institution rdfs:label "institutions" .
+
+ns1:LocalSupervision a owl:Class ;
+    rdfs:label "local supervision" ;
+    dul:hasQuality ns1:Local ;
+    rdfs:subClassOf ns1:Supervision .
+
+ns1:School rdfs:label "schools" .
+
+ns1:State_education_council rdfs:label "State Education Council" ;
+    boxer:possibleType foaf:Organisation ;
+    ns1:of ns1:Arizona,
+        ns1:supervision_1 .
+
+ns1:institution_1 a dbpedia:Educational_institution,
+        ns1:EducationalInstitution ;
+    rdfs:label "institutions" ;
+    dul:hasDataValue "60"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:Educational ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Arizona rdfs:label "Arizona" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place>,
+        foaf:Organisation ;
+    owl:sameAs dbpedia:Arizona,
+        ns1:supervision_1 .
+
+ns1:Local a owl:Class ;
+    rdfs:label "local" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Local_government .
+
+ns1:Overview rdfs:label "Public Basic",
+        "Secondary Education",
+        "overview" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Supervision a owl:Class ;
+    rdfs:label "supervision" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:school_1 a dbpedia:Education_in_the_United_States,
+        ns1:DistrictSchool ;
+    rdfs:label "schools" ;
+    dul:hasDataValue "67"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:supervision_1 a ns1:LocalSupervision,
+        ns1:Supervision ;
+    rdfs:label "supervision" ;
+    dul:hasQuality ns1:Local ;
+    quant:hasDeterminer quant:the ;
+    ns1:localSupervisionOf ns1:institution_1,
+        ns1:school_1 .
+

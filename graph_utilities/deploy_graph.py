@@ -200,8 +200,10 @@ def substitute_invalid_IRI(graph, rg_name, mode, g1_name, g2_name, g1, g2, trans
 
 def remove_undesired_triples(graph):
     for s, p, o in graph:
-        if str(s).startswith(constants.OWL_PREFIX) or str(s).startswith(constants.DUL_PREFIX) or \
-                str(o).startswith(constants.OWL_PREFIX) or str(o).startswith(constants.DUL_PREFIX):
+        # if str(s).startswith(constants.OWL_PREFIX) or str(s).startswith(constants.DUL_PREFIX) or \
+        #        str(o).startswith(constants.OWL_PREFIX) or str(o).startswith(constants.DUL_PREFIX) or \
+        if (str(s).startswith(NAMESPACES["translation_coherence"]) and "docuverse" in str(s)) or \
+                (str(o).startswith(NAMESPACES["translation_coherence"]) and "docuverse" in str(o)):
             graph.remove((s, p, o))
 
 
@@ -211,9 +213,9 @@ def update_graph_iri(g1, g2, result_graph, lang_1, lang_2, sentence):
 
     lang_1 = lang_1.split("/")[1]
     lang_2 = lang_2.split("/")[1]
-    rg_name = lang_1 + '_VS_' + lang_2 + '__' + sentence + ".owl"
-    g1_name = lang_1 + '__' + sentence + ".owl"
-    g2_name = lang_2 + '__' + sentence + ".owl"
+    rg_name = lang_1 + '_VS_' + lang_2 + '_' + sentence + ".ttl"
+    g1_name = lang_1 + '_' + sentence + ".ttl"
+    g2_name = lang_2 + '_' + sentence + ".ttl"
 
     transl_coher = Namespace(NAMESPACES["translation_coherence"])
     result_graph_clean = substitute_invalid_IRI(result_graph, rg_name, "rg", g1_name, g2_name, g1, g2, transl_coher)
@@ -301,11 +303,13 @@ def add_annotations(graph, graph_name, mode):
         graph.add((graph_ontology,
             rdflib.term.URIRef(NAMESPACES['dc']+'description'),
             rdflib.term.Literal(f'This graph compares the ontologies {ont1} and {ont2}')))
-        
-def serialize_graph(g1_clean, g1_name, g2_clean, g2_name, result_graph, rg_name, format='pretty-xml'):
-    destination_result_graph = 'ontology/' + rg_name
-    destination_g1 = 'ontology/' + g1_name
-    destination_g2 = 'ontology/' + g2_name
+
+
+def serialize_graph(g1_clean, g1_name, g2_clean, g2_name, sentences_graphs_path, result_graph, rg_name,
+                    result_graph_path, format='turtle'):
+    destination_result_graph = result_graph_path + rg_name
+    destination_g1 = sentences_graphs_path + g1_name
+    destination_g2 = sentences_graphs_path + g2_name
     print("-" * 150)  # #########################################################
     print("Serializing graphs...")
     result_graph.serialize(destination=destination_result_graph, format=format)

@@ -1,0 +1,115 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence596.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence596.ttl a owl:Ontology ;
+    rdfs:label "de_sentence596" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence596" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:docuverse earmark:hasContent "Collective members gave presentations for NBI and wrote articles for the objects they handle."^^xsd:string .
+
+ns1:give_1 a ns1:Give ;
+    rdfs:label "gave" ;
+    vn.role:Agent ns1:member_1 ;
+    vn.role:Theme ns1:presentation_1 .
+
+ns1:handle_1 a ns1:Handle ;
+    rdfs:label "handle" ;
+    vn.role:Agent ns1:member_1 ;
+    vn.role:Theme ns1:object_1 .
+
+ns1:thing_1 coref:coref ns1:member_1 .
+
+ns1:write_1 a ns1:Write ;
+    rdfs:label "wrote" ;
+    vn.role:Agent ns1:member_1 ;
+    vn.role:Theme ns1:article_1 .
+
+owl:Thing rdfs:label "they" .
+
+ns1:Article rdfs:label "articles" .
+
+ns1:Collective rdfs:label "Collective" .
+
+ns1:CollectiveMember rdfs:subClassOf ns1:Member .
+
+ns1:Give rdfs:label "gave" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Handle rdfs:label "handle" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Member rdfs:label "members" .
+
+ns1:Nbi rdfs:label "NBI" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Object rdfs:label "objects" .
+
+ns1:Presentation rdfs:label "presentations" .
+
+ns1:Write rdfs:label "wrote" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:article_1 a ns1:Article ;
+    rdfs:label "articles" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:for ns1:object_1 .
+
+ns1:presentation_1 a ns1:Presentation ;
+    rdfs:label "presentations" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:for ns1:Nbi .
+
+ns1:object_1 a ns1:Object ;
+    rdfs:label "objects" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:member_1 a owl:Thing,
+        ns1:CollectiveMember ;
+    rdfs:label "members",
+        "they" ;
+    dul:hasQuality ns1:Collective ;
+    quant:hasQuantifier quant:multiple .
+

@@ -1,0 +1,142 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence56.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence56.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence56" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence56" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Before rdfs:label "before" .
+
+ns1:Eq rdfs:label "was" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:defend_1 a ns1:Defend ;
+    rdfs:label "defending" ;
+    dul:associatedWith ns1:woman_1 ;
+    dul:hasQuality ns1:Thus ;
+    vn.role:Agent ns1:united_states_1 ;
+    ns1:before ns1:public_1 ;
+    ns1:in ns1:fact_1 .
+
+ns1:docuverse earmark:hasContent "Thus, she was the first and the only woman, in fact the United_States, defending homosexuality before the general public."^^xsd:string .
+
+ns1:female_1 rdfs:label "she" .
+
+ns1:first_1 a ns1:First ;
+    rdfs:label "first" .
+
+ns1:homosexuality_1 a ns1:Homosexuality ;
+    rdfs:label "homosexuality" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:woman_1 ;
+    ns1:entails ns1:situation_2 .
+
+dbpedia:United_States rdfs:subClassOf schema:Country,
+        schema:Place .
+
+ns1:Defend rdfs:label "defending" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Fact rdfs:label "fact" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Female rdfs:label "she" ;
+    rdfs:subClassOf ns1:First,
+        ns1:Woman .
+
+ns1:General a owl:Class ;
+    rdfs:label "general" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:GeneralPublic a owl:Class ;
+    rdfs:label "general public" ;
+    dul:hasQuality ns1:General ;
+    rdfs:subClassOf ns1:Public .
+
+ns1:Homosexuality a owl:Class ;
+    rdfs:label "homosexuality" ;
+    rdfs:subClassOf dul:Process ;
+    owl:equivalentClass dbpedia:Homosexuality .
+
+ns1:Public a owl:Class ;
+    rdfs:label "public" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Thus rdfs:label "Thus" .
+
+ns1:UnitedStates rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:United_states a owl:Class ;
+    rdfs:label "United States" ;
+    rdfs:subClassOf ns1:UnitedStates ;
+    owl:equivalentClass dbpedia:United_States .
+
+ns1:fact_1 a ns1:Fact ;
+    rdfs:label "fact" .
+
+ns1:public_1 a ns1:GeneralPublic ;
+    rdfs:label "public" ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:woman_1 .
+
+ns1:united_states_1 a ns1:United_states ;
+    rdfs:label "United States" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:First rdfs:label "first" ;
+    rdfs:subClassOf dul:Role .
+
+ns1:Woman rdfs:label "woman" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:woman_1 a ns1:Female,
+        ns1:Woman ;
+    rdfs:label "woman" ;
+    quant:hasDeterminer quant:the .
+

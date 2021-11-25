@@ -1,0 +1,145 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence371.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme1 rdfs:label "by" .
+
+translation_coherence:zh_sentence371.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence371" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence371" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:By rdfs:label "by" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:To rdfs:label "to" .
+
+ns1:cause_1 a ns1:Cause ;
+    rdfs:label "caused" ;
+    vn.role:Theme1 ns1:Saint_helena ;
+    vn.role:Theme2 ns1:damage_1 ;
+    ns1:in "0001-03-01"^^xsd:date ;
+    ns1:to ns1:sea_1 .
+
+ns1:docuverse earmark:hasContent "The total damage caused by Saint_Helena to the sea by Georgia in March exceeded  million, as a result of the overall estimate."^^xsd:string .
+
+ns1:exceed_1 a ns1:Exceed ;
+    rdfs:label "exceeded" ;
+    vn.role:Theme1 ns1:damage_1 ;
+    vn.role:Theme2 "1000000"^^xsd:nonNegativeInteger ;
+    ns1:as ns1:result_1 .
+
+dbpedia:Georgia_(country) a schema:Country,
+        schema:Place .
+
+dbpedia:Saint_Helena a schema:Country,
+        schema:Place .
+
+ns1:Cause rdfs:label "caused" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Damage a owl:Class ;
+    rdfs:label "damage" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Estimate a owl:Class ;
+    rdfs:label "estimate" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Exceed rdfs:label "exceeded" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Georgia rdfs:label "Georgia" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Georgia_(country) .
+
+ns1:Overall a owl:Class ;
+    rdfs:label "overall" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:OverallEstimate a owl:Class ;
+    rdfs:label "overall estimate" ;
+    dul:hasQuality ns1:Overall ;
+    rdfs:subClassOf ns1:Estimate .
+
+ns1:Result rdfs:label "result" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Saint_helena rdfs:label "Saint Helena" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Saint_Helena,
+        <http://dbpedia.org/resource/Saint_Helena,_Ascension_and_Tristan_da_Cunha> .
+
+ns1:Sea rdfs:label "sea" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Total a owl:Class ;
+    rdfs:label "total" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:TotalDamage a owl:Class ;
+    rdfs:label "total damage" ;
+    dul:hasQuality ns1:Total ;
+    rdfs:subClassOf ns1:Damage .
+
+ns1:estimate_1 a ns1:OverallEstimate ;
+    rdfs:label "estimate" ;
+    quant:hasDeterminer quant:the .
+
+ns1:result_1 a ns1:Result ;
+    rdfs:label "result" ;
+    quant:hasDeterminer quant:a ;
+    quant:hasQuantifier quant:million ;
+    ns1:resultOf ns1:estimate_1 .
+
+ns1:sea_1 a ns1:Sea ;
+    rdfs:label "sea" ;
+    quant:hasDeterminer quant:the ;
+    ns1:seaBy ns1:Georgia .
+
+ns1:damage_1 a ns1:TotalDamage ;
+    rdfs:label "damage" ;
+    quant:hasDeterminer quant:the .
+

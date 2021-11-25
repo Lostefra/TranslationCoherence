@@ -5,10 +5,10 @@ from graph_utilities.compare_graphs import compare_graphs
 from graph_utilities.deploy_graph import serialize_graph, update_graph_iri, add_annotations
 
 lang_1 = "en/en"
-lang_2 = "it/en_it_en"
-sentence = "sentence4"
+lang_2 = "de/de"
+sentence = "sentence1"
 
-g1 = build_graph("EuroParl/Paragraph1/turtle/" + lang_1 + "_" + sentence + ".ttl")
+g1 = build_graph("EuroParl/ontologies/first_test/" + lang_1 + "_" + sentence + ".ttl")
 print(lang_1)
 print("Number of triplets:", len(g1))
 for s, p, o in g1:
@@ -16,7 +16,7 @@ for s, p, o in g1:
 
 print("-" * 150)  # #########################################################
 
-g2 = build_graph("EuroParl/Paragraph1/turtle/" + lang_2 + "_" + sentence + ".ttl")
+g2 = build_graph("EuroParl/ontologies/first_test/" + lang_2 + "_" + sentence + ".ttl")
 print(lang_2)
 print("Number of triplets:", len(g2))
 for s, p, o in g2:
@@ -35,9 +35,9 @@ for p in sorted(set(graph.predicates())):
 
 print("-" * 150)  # #########################################################
 
-g1, g1_name, g2, g2_name, result_graph, rg_name = update_graph_iri(g1, g2, rg, lang_1, lang_2, sentence)
-apply_intensional_reification(g1, g2, result_graph)
-add_annotations(g1, g1_name, 'g1')
-add_annotations(g2, g2_name, 'g2')
-add_annotations(result_graph, rg_name, 'rg')
-serialize_graph(g1, g1_name, g2, g2_name, result_graph, rg_name, format='pretty-xml')
+# g1, g1_name, g2, g2_name, result_graph, rg_name = update_graph_iri(g1, g2, rg, lang_1, lang_2, sentence)
+# apply_intensional_reification(g1, g2, result_graph)
+# add_annotations(g1, g1_name, 'g1')
+# add_annotations(g2, g2_name, 'g2')
+# add_annotations(result_graph, rg_name, 'rg')
+# serialize_graph(g1, g1_name, g2, g2_name, 'EuroParl/ontologies/c/', result_graph, rg_name, 'EuroParl/ontologies/c/', format='ttl')

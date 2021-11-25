@@ -1,0 +1,133 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence681.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+vn.role:Location rdfs:label "of" .
+
+translation_coherence:zh_sentence681.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence681" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence681" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Particularly rdfs:label "particularly" .
+
+ns1:While rdfs:label "while" .
+
+ns1:docuverse earmark:hasContent "Berbagers seized the opportunity offered by the Purice War to stand independently of the cartel, while the Kingdom of Burer had begun to emerge, particularly in Noyya."^^xsd:string .
+
+ns1:offer_1 a ns1:Offer ;
+    rdfs:label "offered" ;
+    vn.role:Agent ns1:Purice_war ;
+    vn.role:Theme ns1:opportunity_1 ;
+    ns1:particularlyIn ns1:Noyya ;
+    ns1:while ns1:begin_1 .
+
+ns1:seize_1 a ns1:Seize ;
+    rdfs:label "seized" ;
+    vn.role:Agent ns1:Berbagers ;
+    vn.role:Theme ns1:opportunity_1 .
+
+ns1:stand_1 a ns1:Stand ;
+    rdfs:label "stand" ;
+    vn.role:Agent ns1:opportunity_1 ;
+    vn.role:Location ns1:cartel_1 .
+
+ns1:Begin rdfs:label "begun" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Berbagers rdfs:label "Berbagers" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Burer rdfs:label "Burer" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Cartel a owl:Class ;
+    rdfs:label "cartel" ;
+    rdfs:subClassOf dul:Organization ;
+    owl:equivalentClass dbpedia:Cartel .
+
+ns1:Emerge rdfs:label "emerge" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Noyya rdfs:label "Noyya" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Offer rdfs:label "offered" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Opportunity rdfs:label "opportunity" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Purice_war rdfs:label "Purice War" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Seize rdfs:label "seized" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Stand rdfs:label "stand" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:begin_1 a ns1:Begin ;
+    rdfs:label "begun" ;
+    vn.role:Agent ns1:Kingdom ;
+    vn.role:Theme ns1:emerge_1 .
+
+ns1:cartel_1 a ns1:Cartel ;
+    rdfs:label "cartel" ;
+    quant:hasDeterminer quant:the .
+
+ns1:emerge_1 a ns1:Emerge ;
+    rdfs:label "emerge" ;
+    vn.role:Theme ns1:Kingdom .
+
+ns1:Kingdom rdfs:label "Kingdom" ;
+    boxer:possibleType foaf:Organisation ;
+    ns1:of ns1:Burer .
+
+ns1:opportunity_1 a ns1:Opportunity ;
+    rdfs:label "opportunity" ;
+    quant:hasDeterminer quant:the .
+

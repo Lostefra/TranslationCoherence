@@ -1,0 +1,160 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence592.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Estrongest> rdfs:label "strongest" .
+
+vn.role:Location rdfs:label "while" .
+
+translation_coherence:it_sentence592.ttl a owl:Ontology ;
+    rdfs:label "it_sentence592" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence592" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Faster rdfs:label "faster" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Quantity rdfs:label "many" .
+
+ns1:Than rdfs:label "than" .
+
+ns1:continue_1 a ns1:AlsoContinue ;
+    rdfs:label "continue" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Agent ns1:centre_1 ;
+    vn.role:Predicate ns1:grow_1 .
+
+ns1:docuverse earmark:hasContent "The strongest regional centres also continue to grow faster than the general European average, while many regions in southern and northern Europe are growing considerably slower."^^xsd:string .
+
+dbpedia:Europe a schema:Continent,
+        schema:Place .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoContinue rdfs:label "also continue" ;
+    rdfs:subClassOf ns1:Continue .
+
+ns1:Average a owl:Class ;
+    rdfs:label "average" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Centre rdfs:label "centres" .
+
+ns1:Considerably rdfs:label "considerably" .
+
+ns1:Continue rdfs:label "continue" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Europe rdfs:label "Europe" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:hasQuality ns1:Northern,
+        ns1:Southern ;
+    owl:sameAs dbpedia:Europe .
+
+ns1:EuropeanAverage a owl:Class ;
+    rdfs:label "European Average" ;
+    dul:hasQuality ns1:European ;
+    rdfs:subClassOf ns1:Average .
+
+ns1:General rdfs:label "general" .
+
+ns1:GeneralEuropeanAverage a owl:Class ;
+    rdfs:label "General European Average" ;
+    rdfs:subClassOf ns1:EuropeanAverage .
+
+ns1:Northern rdfs:label "northern" ;
+    owl:sameAs dbpedia:Northern_Europe .
+
+ns1:Region rdfs:label "regions" .
+
+ns1:Regional rdfs:label "regional" .
+
+ns1:Slower rdfs:label "slower" .
+
+ns1:Southern rdfs:label "southern" .
+
+ns1:Strongest rdfs:label "strongest" .
+
+ns1:StrongestRegionalCentre rdfs:subClassOf ns1:RegionalCentre .
+
+ns1:average_1 a ns1:GeneralEuropeanAverage ;
+    rdfs:label "average" ;
+    dul:hasQuality ns1:European,
+        ns1:General ;
+    quant:hasDeterminer quant:the .
+
+ns1:grow_1 a ns1:Grow ;
+    rdfs:label "grow" ;
+    vn.role:Location ns1:grow_2 ;
+    vn.role:Theme ns1:centre_1 ;
+    ns1:fasterThan ns1:average_1 .
+
+ns1:grow_2 a ns1:Grow ;
+    rdfs:label "growing" ;
+    vn.role:Agent ns1:region_1 .
+
+ns1:region_1 a ns1:Region ;
+    rdfs:label "regions" ;
+    dul:hasQuality ns1:Considerably,
+        ns1:Slower ;
+    quant:hasQuantifier quant:many,
+        quant:multiple ;
+    ns1:locatedIn ns1:Europe .
+
+ns1:European a owl:Class ;
+    rdfs:label "European" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Grow rdfs:label "grow",
+        "growing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:centre_1 a ns1:RegionalCentre,
+        ns1:StrongestRegionalCentre ;
+    rdfs:label "centres" ;
+    dul:hasQuality ns1:Regional,
+        ns1:Strongest ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:strongestAmong ns1:RegionalCentre .
+
+ns1:RegionalCentre rdfs:subClassOf ns1:Centre .
+

@@ -1,0 +1,181 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence321.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence321.ttl a owl:Ontology ;
+    rdfs:label "de_sentence321" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence321" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Although rdfs:label "although" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:be_1 a ns1:Be ;
+    rdfs:label "am" ;
+    boxer:agent ns1:person_3 ;
+    boxer:theme ns1:situation_2 ;
+    dul:hasQuality ns1:Longer,
+        ns1:No ;
+    ns1:although ns1:person_4 .
+
+ns1:docuverse earmark:hasContent "I think I am a Whig, but others say there is no Whigs, and I am aungs, although I no longer oppose the expansion of slavery he said."^^xsd:string .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "say" ;
+    vn.role:Agent ns1:other_1 ;
+    vn.role:Topic ns1:situation_1 .
+
+ns1:think_1 a ns1:Think ;
+    rdfs:label "think" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:situation_3 .
+
+ns1:whig_1 rdfs:label "Whig" .
+
+ns1:whig_2 rdfs:label "Whigs" .
+
+ns1:Aung rdfs:label "aungs" .
+
+ns1:Be rdfs:label "am" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Expansion rdfs:label "expansion" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Longer rdfs:label "longer" .
+
+ns1:Male rdfs:label "he" .
+
+ns1:No rdfs:label "No",
+        "no" .
+
+ns1:Oppose rdfs:label "oppose" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Other rdfs:label "others" .
+
+ns1:Slavery a owl:Class ;
+    rdfs:label "slavery" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Slavery .
+
+ns1:There rdfs:label "there" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Think rdfs:label "think" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "he" .
+
+ns1:oppose_1 a ns1:Oppose ;
+    rdfs:label "oppose" ;
+    vn.role:Agent ns1:aung_1 ;
+    vn.role:Patient ns1:expansion_1 .
+
+ns1:other_1 a ns1:Other ;
+    rdfs:label "others" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:person_2 a ns1:Person,
+        ns1:Whig ;
+    rdfs:label "I" ;
+    quant:hasDeterminer quant:a .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:person_4 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:say_2 a ns1:Say ;
+    rdfs:label "said" ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Topic ns1:expansion_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Whig,
+        ns1:there_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:aung_1,
+        ns1:oppose_1,
+        ns1:say_2,
+        ns1:slavery_1 .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves ns1:Whig,
+        ns1:person_2 .
+
+ns1:there_1 a ns1:There,
+        ns1:Whig ;
+    rdfs:label "there" ;
+    quant:hasQuantifier quant:multiple,
+        quant:no .
+
+ns1:Say rdfs:label "said",
+        "say" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:aung_1 a ns1:Aung ;
+    rdfs:label "aungs" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:expansion_1 a ns1:Expansion ;
+    rdfs:label "expansion" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:no ;
+    ns1:expansionOf ns1:slavery_1 .
+
+ns1:slavery_1 a ns1:Slavery ;
+    rdfs:label "slavery" .
+
+ns1:Person rdfs:label "I" .
+
+ns1:Whig a owl:Class ;
+    rdfs:label "Whig",
+        "Whigs" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Whigs_(British_political_party) .
+

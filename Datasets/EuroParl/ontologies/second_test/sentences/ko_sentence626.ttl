@@ -1,0 +1,137 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence626.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "In" .
+
+translation_coherence:ko_sentence626.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence626" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence626" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:On rdfs:label "on" .
+
+ns1:desire_1 a ns1:Desire ;
+    rdfs:label "desired" ;
+    vn.role:Theme ns1:effect_1 .
+
+ns1:docuverse earmark:hasContent "In the sixth periodic reports on the Earth, one draws hesitant conclusion that this incentive does not always have the desired effect."^^xsd:string .
+
+ns1:draw_1 a ns1:Draw ;
+    rdfs:label "draws" ;
+    vn.role:Agent "1"^^xsd:nonNegativeInteger ;
+    vn.role:Destination ns1:report_1 ;
+    vn.role:Theme ns1:conclusion_1 .
+
+ns1:Always rdfs:label "always" .
+
+ns1:AlwaysHave rdfs:label "Always Have" ;
+    rdfs:subClassOf ns1:Have .
+
+ns1:Conclusion a owl:Class ;
+    rdfs:label "conclusion" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Desire rdfs:label "desired" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Draw rdfs:label "draws" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Earth rdfs:label "Earth" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Earth .
+
+ns1:Effect rdfs:label "effect" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Hesitant a owl:Class ;
+    rdfs:label "hesitant" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:HesitantConclusion a owl:Class ;
+    rdfs:label "hesitant conclusion" ;
+    dul:hasQuality ns1:Hesitant ;
+    rdfs:subClassOf ns1:Conclusion .
+
+ns1:Incentive rdfs:label "incentive" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Periodic rdfs:label "periodic" .
+
+ns1:PeriodicReport rdfs:subClassOf ns1:Report .
+
+ns1:Report rdfs:label "reports" .
+
+ns1:Sixth rdfs:label "sixth" .
+
+ns1:SixthPeriodicReport rdfs:subClassOf ns1:PeriodicReport .
+
+ns1:conclusion_1 a ns1:HesitantConclusion ;
+    rdfs:label "conclusion" ;
+    boxer:theme ns1:have_1 ;
+    quant:hasQuantifier quant:one .
+
+ns1:have_1 a ns1:AlwaysHave ;
+    rdfs:label "have" ;
+    boxing:hasTruthValue boxing:False ;
+    dul:hasQuality ns1:Always ;
+    vn.role:Agent ns1:incentive_1 ;
+    vn.role:Patient ns1:effect_1 .
+
+ns1:incentive_1 a ns1:Incentive ;
+    rdfs:label "incentive" ;
+    quant:hasDeterminer quant:this .
+
+ns1:report_1 a ns1:SixthPeriodicReport ;
+    rdfs:label "reports" ;
+    dul:hasQuality ns1:Periodic,
+        ns1:Sixth ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:on ns1:Earth .
+
+ns1:effect_1 a ns1:Effect ;
+    rdfs:label "effect" ;
+    quant:hasDeterminer quant:the .
+

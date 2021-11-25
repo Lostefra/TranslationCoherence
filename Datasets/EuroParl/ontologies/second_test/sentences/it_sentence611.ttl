@@ -1,0 +1,169 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence611.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence611.ttl a owl:Ontology ;
+    rdfs:label "it_sentence611" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence611" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Only rdfs:label "only" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:development_1 a ns1:Development ;
+    rdfs:label "development" ;
+    dul:associatedWith ns1:employment_1 .
+
+ns1:docuverse earmark:hasContent "The general objectives of the Structural_Funds, such as job creation, equal opportunities, increased employment and development sustainability, are mentioned only in the passage."^^xsd:string .
+
+ns1:increase_1 a ns1:Increase ;
+    rdfs:label "increased" ;
+    vn.role:Agent ns1:objective_1 ;
+    vn.role:Patient ns1:employment_1 .
+
+ns1:job_1 a ns1:Job ;
+    rdfs:label "job" ;
+    dul:associatedWith ns1:creation_1 ;
+    quant:hasDeterminer quant:such .
+
+ns1:mention_1 a ns1:Mention ;
+    rdfs:label "mentioned" ;
+    vn.role:Topic ns1:objective_1 ;
+    ns1:onlyIn ns1:passage_1 .
+
+ns1:sustainability_1 rdfs:label "sustainability" .
+
+ns1:Creation a owl:Class ;
+    rdfs:label "creation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:DevelopmentSustainability a owl:Class ;
+    rdfs:label "development sustainability" ;
+    dul:associatedWith ns1:Development ;
+    rdfs:subClassOf ns1:Sustainability .
+
+ns1:Employment a owl:Class ;
+    rdfs:label "employment" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Employment .
+
+ns1:Equal rdfs:label "equal" .
+
+ns1:EqualOpportunity rdfs:subClassOf ns1:Opportunity .
+
+ns1:General rdfs:label "general" .
+
+ns1:GeneralObjective rdfs:subClassOf ns1:Objective .
+
+ns1:Increase rdfs:label "increased" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:JobCreation a owl:Class ;
+    rdfs:label "job creation" ;
+    dul:associatedWith ns1:Job ;
+    rdfs:subClassOf ns1:Creation ;
+    owl:equivalentClass dbpedia:Unemployment .
+
+ns1:Mention rdfs:label "mentioned" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Objective rdfs:label "objectives" .
+
+ns1:Opportunity rdfs:label "opportunities" .
+
+ns1:Passage rdfs:label "passage" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Structural_funds a owl:Class ;
+    rdfs:label "Structural Funds" ;
+    owl:equivalentClass dbpedia:Structural_Funds_and_Cohesion_Fund .
+
+ns1:Sustainability a owl:Class ;
+    rdfs:label "sustainability" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Sustainability .
+
+ns1:opportunity_1 a dbpedia:Equal_opportunity,
+        ns1:EqualOpportunity ;
+    rdfs:label "opportunities" ;
+    dul:hasQuality ns1:Equal ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:passage_1 a ns1:Passage ;
+    rdfs:label "passage" ;
+    quant:hasDeterminer quant:the .
+
+ns1:structural_funds_1 a ns1:Structural_funds ;
+    rdfs:label "Structural Funds" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Development a owl:Class ;
+    rdfs:label "development" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Economic_development .
+
+ns1:Job a owl:Class ;
+    rdfs:label "job" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:creation_1 a ns1:JobCreation ;
+    rdfs:label "creation" ;
+    dul:associatedWith ns1:opportunity_1 .
+
+ns1:employment_1 a ns1:DevelopmentSustainability,
+        ns1:Employment ;
+    rdfs:label "employment" .
+
+ns1:objective_1 a ns1:GeneralObjective ;
+    rdfs:label "objectives" ;
+    dul:hasQuality ns1:General ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:as ns1:creation_1 ;
+    ns1:generalObjectiveOf ns1:structural_funds_1 .
+

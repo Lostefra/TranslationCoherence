@@ -1,0 +1,139 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence29.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "to" .
+
+vn.role:Source rdfs:label "in" .
+
+translation_coherence:en_sentence29.ttl a owl:Ontology ;
+    rdfs:label "en_sentence29" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence29" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "its" .
+
+ns1:anarchist_1 a ns1:Anarchist ;
+    rdfs:label "anarchist" ;
+    dul:associatedWith ns1:vote_1 .
+
+ns1:bring_1 a ns1:Bring ;
+    rdfs:label "bring" ;
+    dul:hasQuality ns1:But ;
+    vn.role:Agent ns1:vote_1 ;
+    vn.role:Destination ns1:power_1 ;
+    vn.role:Source "1936-01-01"^^xsd:date ;
+    vn.role:Theme ns1:front_1 .
+
+ns1:change_1 a ns1:Change ;
+    rdfs:label "changed" ;
+    boxer:patient ns1:policy_1 ;
+    dul:hasQuality ns1:But ;
+    vn.role:Agent ns1:Cnt ;
+    vn.role:Source "1936-01-01"^^xsd:date .
+
+ns1:docuverse earmark:hasContent "But in 1936, the CNT changed its policy and anarchist votes helped bring the popular front back to power."^^xsd:string .
+
+ns1:neuter_1 rdfs:label "its" .
+
+owl:Thing rdfs:label "CNT" .
+
+ns1:Anarchist a owl:Class ;
+    rdfs:label "anarchist" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Anarchism .
+
+ns1:AnarchistVote rdfs:subClassOf ns1:Vote .
+
+ns1:Bring rdfs:label "bring" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Change rdfs:label "changed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Front a owl:Class ;
+    rdfs:label "front" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Policy a owl:Class ;
+    rdfs:label "policy" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Policy .
+
+ns1:Popular a owl:Class ;
+    rdfs:label "popular" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:PopularFront a owl:Class ;
+    rdfs:label "Popular Front" ;
+    dul:hasQuality ns1:Popular ;
+    rdfs:subClassOf ns1:Front ;
+    owl:equivalentClass dbpedia:Popular_front .
+
+ns1:Power a owl:Class ;
+    rdfs:label "power" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Power_(social_and_political) .
+
+ns1:Vote rdfs:label "votes" .
+
+ns1:front_1 a ns1:PopularFront ;
+    rdfs:label "front" ;
+    quant:hasDeterminer quant:the .
+
+ns1:policy_1 a ns1:Policy ;
+    rdfs:label "policy" ;
+    ns1:policyOf ns1:Cnt .
+
+ns1:power_1 a ns1:Power ;
+    rdfs:label "power" .
+
+ns1:But rdfs:label "But" .
+
+ns1:Cnt a owl:Thing ;
+    rdfs:label "CNT" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Confederación_Nacional_del_Trabajo .
+
+ns1:vote_1 a dbpedia:Voting,
+        ns1:AnarchistVote ;
+    rdfs:label "votes" ;
+    quant:hasQuantifier quant:multiple .
+

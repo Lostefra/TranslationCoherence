@@ -1,0 +1,214 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence664.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Oblique rdfs:label "in" .
+
+translation_coherence:de_sentence664.ttl a owl:Ontology ;
+    rdfs:label "de_sentence664" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence664" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Union rdfs:label "or" .
+
+ns1:Where rdfs:label "where" .
+
+ns1:disjunct_1 a ns1:Disjunct ;
+    boxing:involves ns1:Company,
+        ns1:company_2 ;
+    ns1:union ns1:disjunct_2 .
+
+ns1:docuverse earmark:hasContent "I mean not only the company's own responsibility but the foundation. I mean the attitude where a person wants to come in life is a worker, the owner of a company or an official."^^xsd:string .
+
+ns1:foundation_1 rdfs:label "foundation" .
+
+ns1:mean_2 a ns1:Mean ;
+    rdfs:label "mean" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:responsibility_1 .
+
+ns1:mean_3 a ns1:Mean ;
+    rdfs:label "mean" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:situation_3 .
+
+ns1:person_2 coref:coref ns1:person_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:mean_1 ;
+    ns1:entails ns1:situation_2 .
+
+ns1:worker_1 rdfs:label "worker" .
+
+ns1:Attitude rdfs:label "attitude" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Come rdfs:label "come" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Foundation rdfs:label "foundation" ;
+    rdfs:subClassOf dul:Description,
+        owl:Thing .
+
+ns1:Life rdfs:label "life" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Own a owl:Class ;
+    rdfs:label "own" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:OwnResponsibility a owl:Class ;
+    rdfs:label "own responsibility" ;
+    dul:hasQuality ns1:Own ;
+    rdfs:subClassOf owl:Thing,
+        ns1:Responsibility .
+
+ns1:Owner a owl:Class ;
+    rdfs:label "owner" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Ownership .
+
+ns1:Responsibility a owl:Class ;
+    rdfs:label "responsibility" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Moral_responsibility .
+
+ns1:Want rdfs:label "wants" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Worker rdfs:label "worker" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:attitude_1 a ns1:Attitude,
+        ns1:Worker ;
+    rdfs:label "attitude" ;
+    dul:associatedWith ns1:owner_1 ;
+    quant:hasDeterminer quant:a,
+        quant:the ;
+    ns1:where ns1:want_1 .
+
+ns1:company_1 a ns1:Company ;
+    rdfs:label "company" ;
+    quant:hasDeterminer quant:the .
+
+ns1:disjunct_2 a ns1:Disjunct ;
+    boxing:involves ns1:Official,
+        ns1:official_1 .
+
+ns1:owner_1 a ns1:Owner ;
+    rdfs:label "owner" ;
+    quant:hasDeterminer quant:the ;
+    ns1:ownerOf ns1:company_2,
+        ns1:official_1 .
+
+ns1:responsibility_1 a ns1:Foundation,
+        ns1:OwnResponsibility ;
+    rdfs:label "responsibility" ;
+    quant:hasDeterminer quant:the ;
+    ns1:foundationOf ns1:company_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:mean_1,
+        ns1:thing_1 .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves ns1:attitude_1,
+        ns1:come_1,
+        ns1:company_2,
+        ns1:life_1,
+        ns1:official_1,
+        ns1:person_3,
+        ns1:want_1 .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:Official rdfs:label "official" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Person a owl:Class ;
+    rdfs:label "I",
+        "person" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Person .
+
+ns1:come_1 a ns1:Come ;
+    rdfs:label "come" ;
+    vn.role:Oblique ns1:life_1 ;
+    vn.role:Theme ns1:person_3 .
+
+ns1:life_1 a ns1:Life ;
+    rdfs:label "life" .
+
+ns1:mean_1 a ns1:Mean ;
+    boxing:hasTruthValue boxing:False .
+
+ns1:want_1 a ns1:Want ;
+    rdfs:label "wants" ;
+    vn.role:Experiencer ns1:person_3 ;
+    vn.role:Theme ns1:come_1 .
+
+ns1:Company a owl:Class ;
+    rdfs:label "company" ;
+    rdfs:subClassOf dul:Organization ;
+    owl:equivalentClass dbpedia:Company .
+
+ns1:Mean rdfs:label "mean" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:company_2 a ns1:Company ;
+    rdfs:label "company" ;
+    quant:hasDeterminer quant:a .
+
+ns1:official_1 a ns1:Official ;
+    rdfs:label "official" ;
+    quant:hasDeterminer quant:an .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "person" ;
+    quant:hasDeterminer quant:a .
+

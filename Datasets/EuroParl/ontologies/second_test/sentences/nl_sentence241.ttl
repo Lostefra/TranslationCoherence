@@ -1,0 +1,188 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence241.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:nl_sentence241.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence241" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence241" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Between rdfs:label "between" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:That rdfs:label "that" .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "One final amendment is intended to ensure that tanks and tankers are employed between January 1st, 1997, and the entrance to power of this guideline can be used that they are construed and maintained in accordance."^^xsd:string .
+
+ns1:intend_1 a ns1:Intend ;
+    rdfs:label "intended" ;
+    boxer:theme ns1:ensure_1 ;
+    vn.role:Theme ns1:amendment_1 .
+
+owl:Thing rdfs:label "they" .
+
+ns1:Accordance rdfs:label "accordance" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Amendment a owl:Class ;
+    rdfs:label "amendment" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Construe rdfs:label "construed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Employ rdfs:label "employed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Ensure rdfs:label "ensure" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Entrance rdfs:label "entrance" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:FinalAmendment a owl:Class ;
+    rdfs:label "Final Amendment" ;
+    dul:hasQuality ns1:Final ;
+    rdfs:subClassOf ns1:Amendment .
+
+ns1:Guideline rdfs:label "guideline" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Intend rdfs:label "intended" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Maintain rdfs:label "maintained" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Power rdfs:label "power" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Tank rdfs:label "tanks" .
+
+ns1:Tanker rdfs:label "tankers" .
+
+ns1:Use rdfs:label "used" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:construe_1 a ns1:Construe ;
+    rdfs:label "construed" ;
+    vn.role:Theme1 ns1:thing_1 .
+
+ns1:employ_1 a ns1:Employ ;
+    rdfs:label "employed" ;
+    dul:associatedWith "1997-01-01"^^xsd:date ;
+    vn.role:Theme ns1:tank_1,
+        ns1:tanker_1 ;
+    ns1:between "0001-01-01"^^xsd:date .
+
+ns1:ensure_1 a ns1:Ensure ;
+    rdfs:label "ensure" ;
+    vn.role:Cause ns1:amendment_1 ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:entrance_1 a ns1:Entrance ;
+    rdfs:label "entrance" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:1st ;
+    ns1:entranceOf ns1:guideline_1 ;
+    ns1:to ns1:power_1 .
+
+ns1:guideline_1 a ns1:Guideline ;
+    rdfs:label "guideline" ;
+    quant:hasDeterminer quant:this .
+
+ns1:maintain_1 a ns1:Maintain ;
+    rdfs:label "maintained" ;
+    vn.role:Theme ns1:thing_1 ;
+    ns1:in ns1:accordance_1 .
+
+ns1:use_1 a ns1:Use ;
+    rdfs:label "used" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Theme ns1:entrance_1 ;
+    ns1:that ns1:situation_1 .
+
+ns1:Final a owl:Class ;
+    rdfs:label "final" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:accordance_1 a ns1:Accordance ;
+    rdfs:label "accordance" .
+
+ns1:amendment_1 a ns1:FinalAmendment ;
+    rdfs:label "amendment" ;
+    dul:hasDataValue "1"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:Final ;
+    quant:hasQuantifier quant:one .
+
+ns1:power_1 a ns1:Power ;
+    rdfs:label "power" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Possible ;
+    boxing:involves ns1:accordance_1,
+        ns1:construe_1,
+        ns1:employ_1,
+        ns1:maintain_1,
+        ns1:power_1,
+        ns1:tank_1,
+        ns1:tanker_1,
+        ns1:use_1 .
+
+ns1:tank_1 a ns1:Tank ;
+    rdfs:label "tanks" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:tanker_1 a ns1:Tanker ;
+    rdfs:label "tankers" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "they" .
+

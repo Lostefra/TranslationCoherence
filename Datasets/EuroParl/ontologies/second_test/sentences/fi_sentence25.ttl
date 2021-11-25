@@ -1,0 +1,129 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence25.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "in" .
+
+translation_coherence:fi_sentence25.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence25" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence25" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+<https://w3id.org/stlab/ke/amiala/fi_sentence25.ttl/Alexander_ni.in.> a owl:Thing ;
+    rdfs:label "Alexander Ni.in." ;
+    boxer:possibleType foaf:Person .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "Madam President, I should pay attention to the situation in which this parliament has always shown interest. This is Alexander Ni.in."^^xsd:string .
+
+ns1:pay_1 a ns1:Pay ;
+    rdfs:label "pay" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:associatedWith ns1:President ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Asset ns1:attention_1 ;
+    ns1:to ns1:situation_1 .
+
+ns1:show_1 a ns1:AlwaysShow ;
+    rdfs:label "shown" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Always ;
+    vn.role:Agent ns1:parliament_1 ;
+    vn.role:Patient ns1:interest_1 ;
+    vn.role:Recipient ns1:situation_1 .
+
+ns1:thing_1 rdfs:label "This" .
+
+ns1:Always rdfs:label "always" .
+
+ns1:AlwaysShow rdfs:subClassOf ns1:Show .
+
+ns1:Attention rdfs:label "attention" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Interest rdfs:label "interest" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Madam rdfs:label "Madam" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Parliament rdfs:label "parliament" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Pay rdfs:label "pay" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Person rdfs:label "I" .
+
+ns1:President rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith ns1:Madam ;
+    owl:sameAs dbpedia:President .
+
+ns1:Show rdfs:label "shown" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Situation rdfs:label "situation" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:attention_1 a ns1:Attention ;
+    rdfs:label "attention" .
+
+ns1:interest_1 a ns1:Interest ;
+    rdfs:label "interest" .
+
+ns1:parliament_1 a ns1:Parliament ;
+    rdfs:label "parliament" ;
+    quant:hasDeterminer quant:this .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+owl:Thing rdfs:label "This" .
+
+ns1:situation_1 a ns1:Situation ;
+    rdfs:label "situation" ;
+    quant:hasDeterminer quant:the .
+

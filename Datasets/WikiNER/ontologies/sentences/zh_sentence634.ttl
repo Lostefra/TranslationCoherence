@@ -1,0 +1,145 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence634.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:zh_sentence634.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence634" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence634" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Under rdfs:label "under" .
+
+ns1:With rdfs:label "with" .
+
+ns1:book_1 a ns1:Book ;
+    rdfs:label "Book" ;
+    dul:associatedWith ns1:shop_1,
+        ns1:situation_1 .
+
+ns1:continue_1 a ns1:Continue ;
+    rdfs:label "continue" ;
+    vn.role:Agent ns1:shop_1 ;
+    vn.role:Predicate ns1:situation_1 .
+
+ns1:docuverse earmark:hasContent "Book shops continue to be widely sold and readed, with 2,500 million copies sold as of 2007, reaching 8000,000 copies annually under the Aung_San_Suu_Kyi Institute."^^xsd:string .
+
+ns1:reach_1 a ns1:Reach ;
+    rdfs:label "reaching" ;
+    vn.role:Agent ns1:shop_1 ;
+    vn.role:Theme ns1:copy_2 ;
+    ns1:under ns1:Aung_san_suu_kyi_institute .
+
+ns1:Annually rdfs:label "annually" .
+
+ns1:Aung_san_suu_kyi_institute rdfs:label "Aung San Suu Kyi Institute" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Book a owl:Class ;
+    rdfs:label "Book" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Book .
+
+ns1:BookShop rdfs:subClassOf ns1:Shop .
+
+ns1:Continue rdfs:label "continue" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Reach rdfs:label "reaching" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Read rdfs:label "readed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Shop rdfs:label "shops" .
+
+ns1:Widely rdfs:label "widely" .
+
+ns1:WidelySell rdfs:subClassOf ns1:Sell .
+
+ns1:copy_2 a ns1:Copy ;
+    rdfs:label "copies" ;
+    dul:hasDataValue "8000000"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:Annually ;
+    quant:hasQuantifier quant:8000%2C000,
+        quant:multiple .
+
+ns1:read_1 a ns1:Read ;
+    rdfs:label "readed" ;
+    vn.role:Theme ns1:shop_1 ;
+    ns1:with ns1:copy_1 .
+
+ns1:sell_1 a ns1:WidelySell ;
+    rdfs:label "sold" ;
+    dul:hasQuality ns1:Widely ;
+    vn.role:Theme ns1:shop_1 ;
+    ns1:with ns1:copy_1 .
+
+ns1:sell_2 a ns1:Sell ;
+    rdfs:label "sold" ;
+    vn.role:Theme ns1:copy_1 ;
+    ns1:sellOf "2007-01-01"^^xsd:date .
+
+ns1:Copy rdfs:label "copies" .
+
+ns1:Sell rdfs:label "sold" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:copy_1,
+        ns1:read_1,
+        ns1:sell_1,
+        ns1:sell_2,
+        "2007-01-01"^^xsd:date .
+
+ns1:copy_1 a ns1:Copy ;
+    rdfs:label "copies" ;
+    dul:hasDataValue "2500000000"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:2%2C500,
+        quant:million,
+        quant:multiple .
+
+ns1:shop_1 a ns1:BookShop ;
+    rdfs:label "shops" ;
+    quant:hasQuantifier quant:multiple .
+

@@ -1,0 +1,157 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence37.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence37.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence37" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence37" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "its" .
+
+ns1:On rdfs:label "on" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "Mr. President, you can tell me why the Parliament does not comply with its legislation on health and security that it actually adopt?"^^xsd:string .
+
+ns1:neuter_1 rdfs:label "its" .
+
+ns1:tell_1 a ns1:Tell ;
+    rdfs:label "tell" ;
+    boxing:hasModality boxing:Possible ;
+    dul:associatedWith ns1:President ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Recipient ns1:person_2 ;
+    vn.role:Topic ns1:situation_1 .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> a ns1:Topic ;
+    rdfs:label "Mr." ;
+    boxer:possibleType dul:Role .
+
+ns1:Actually rdfs:label "actually" .
+
+ns1:ActuallyAdopt rdfs:label "actually adopt" ;
+    rdfs:subClassOf ns1:Adopt .
+
+ns1:Adopt rdfs:label "adopt" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Comply rdfs:label "comply" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Health rdfs:label "health" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Legislation rdfs:label "legislation" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:President a ns1:Topic ;
+    rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    owl:sameAs dbpedia:President .
+
+ns1:Reason rdfs:label "why" .
+
+ns1:Security rdfs:label "security" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Tell a owl:Class ;
+    rdfs:label "tell" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Fearless_(Taylor_Swift_album) .
+
+ns1:adopt_1 a ns1:ActuallyAdopt ;
+    rdfs:label "adopt" ;
+    boxing:hasTruthValue boxing:False ;
+    dul:hasQuality ns1:Actually ;
+    vn.role:Agent ns1:Parliament ;
+    vn.role:Theme ns1:security_1 .
+
+ns1:comply_1 a ns1:Comply ;
+    rdfs:label "comply" ;
+    boxer:agent ns1:Parliament ;
+    boxing:hasTruthValue boxing:False ;
+    ns1:reason_rel ns1:reason_1 ;
+    ns1:with ns1:legislation_1,
+        ns1:security_1 .
+
+ns1:legislation_1 a ns1:Legislation ;
+    rdfs:label "legislation" ;
+    ns1:legislationOf ns1:Parliament ;
+    ns1:on ns1:health_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "you" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "me" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Possible ;
+    boxing:involves ns1:adopt_1,
+        ns1:comply_1,
+        ns1:health_1,
+        ns1:reason_1,
+        ns1:security_1 .
+
+owl:Thing rdfs:label "Parliament" .
+
+ns1:Person rdfs:label "me",
+        "you" .
+
+ns1:Topic rdfs:label "Mr.",
+        "President" .
+
+ns1:health_1 a ns1:Health ;
+    rdfs:label "health" .
+
+ns1:reason_1 a ns1:Reason ;
+    rdfs:label "why" .
+
+ns1:Parliament a owl:Thing ;
+    rdfs:label "Parliament" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Parliament .
+
+ns1:security_1 a ns1:Security ;
+    rdfs:label "security" .
+

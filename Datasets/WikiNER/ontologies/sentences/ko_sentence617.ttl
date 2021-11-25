@@ -1,0 +1,111 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence617.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence617.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence617" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence617" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:During rdfs:label "during" .
+
+ns1:Of rdfs:label "her",
+        "of" .
+
+ns1:docuverse earmark:hasContent "The first review ran was received during her theater night of January 16."^^xsd:string .
+
+ns1:receive_1 a ns1:Receive ;
+    rdfs:label "received" ;
+    vn.role:Theme ns1:review_1 ;
+    ns1:during ns1:night_1 .
+
+ns1:run_1 a ns1:Run ;
+    rdfs:label "ran" ;
+    vn.role:Theme ns1:review_1 .
+
+ns1:theater_1 a ns1:Theater ;
+    rdfs:label "theater" ;
+    dul:associatedWith ns1:night_1 .
+
+ns1:First a owl:Class ;
+    rdfs:label "first" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FirstReview a owl:Class ;
+    rdfs:label "First Review" ;
+    dul:hasQuality ns1:First ;
+    rdfs:subClassOf ns1:Review .
+
+ns1:Night a owl:Class ;
+    rdfs:label "night" ;
+    rdfs:subClassOf dul:TimeInterval ;
+    owl:equivalentClass dbpedia:Night_of_January_16th .
+
+ns1:Receive rdfs:label "received" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Review a owl:Class ;
+    rdfs:label "review" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Run rdfs:label "ran" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:TheaterNight a owl:Class ;
+    rdfs:label "Theater Night" ;
+    dul:associatedWith ns1:Theater ;
+    rdfs:subClassOf ns1:Night .
+
+ns1:female_1 a ns1:Female ;
+    rdfs:label "her" .
+
+ns1:Theater a owl:Class ;
+    rdfs:label "theater" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:night_1 a ns1:TheaterNight ;
+    rdfs:label "night" ;
+    ns1:theaterNightOf ns1:female_1,
+        "0001-01-16"^^xsd:date .
+
+ns1:review_1 a ns1:FirstReview ;
+    rdfs:label "review" ;
+    quant:hasDeterminer quant:the .
+

@@ -1,0 +1,102 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence213.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Predicate rdfs:label "in" .
+
+translation_coherence:fi_sentence213.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence213" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence213" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Few rdfs:label "few" .
+
+ns1:Margarine a ns1:Topic ;
+    rdfs:label "Margarine" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Margarine .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "Margarine and a few pounds of paint, which in principle do not pose any risk."^^xsd:string .
+
+ns1:pose_1 a ns1:Pose ;
+    rdfs:label "pose" ;
+    boxer:patient ns1:risk_1 ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:pound_1 ;
+    vn.role:Predicate ns1:principle_1 .
+
+ns1:FewPound rdfs:subClassOf ns1:Pound .
+
+ns1:Paint rdfs:label "paint" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Pose rdfs:label "pose" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Pound rdfs:label "pounds" .
+
+ns1:Principle rdfs:label "principle" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Risk rdfs:label "risk" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:paint_1 a ns1:Paint ;
+    rdfs:label "paint" .
+
+ns1:pound_1 a ns1:FewPound ;
+    rdfs:label "pounds" ;
+    dul:hasQuality ns1:Topic ;
+    quant:hasDeterminer quant:a ;
+    quant:hasQuantifier quant:few,
+        quant:multiple ;
+    ns1:fewPoundOf ns1:paint_1 .
+
+ns1:principle_1 a ns1:Principle ;
+    rdfs:label "principle" .
+
+ns1:risk_1 a ns1:Risk ;
+    rdfs:label "risk" ;
+    quant:hasQuantifier quant:any .
+
+ns1:Topic rdfs:label "Margarine" .
+

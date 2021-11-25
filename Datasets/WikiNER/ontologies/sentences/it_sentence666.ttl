@@ -1,0 +1,89 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence666.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:it_sentence666.ttl a owl:Ontology ;
+    rdfs:label "it_sentence666" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence666" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Alain_connes rdfs:label "Alain Connes" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasDataValue "1"^^xsd:nonNegativeInteger ;
+    owl:sameAs dbpedia:Alain_Connes ;
+    ns1:of ns1:specialist_1 .
+
+ns1:Of rdfs:label "'",
+        "of" .
+
+ns1:docuverse earmark:hasContent "Alain_Connes is one of the main specialists of the operators' algebras."^^xsd:string .
+
+ns1:Algebra rdfs:label "algebras" .
+
+ns1:Main rdfs:label "main" .
+
+ns1:MainSpecialist rdfs:subClassOf ns1:Specialist .
+
+ns1:Operator rdfs:label "operators" .
+
+ns1:Specialist rdfs:label "specialists" .
+
+ns1:algebra_1 a dbpedia:Algebra_over_a_field,
+        ns1:Algebra ;
+    rdfs:label "algebras" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:algebraOf ns1:operator_1 .
+
+ns1:operator_1 a dbpedia:Linear_map,
+        ns1:Operator ;
+    rdfs:label "operators" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:specialist_1 a ns1:MainSpecialist ;
+    rdfs:label "specialists" ;
+    dul:hasQuality ns1:Main ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple,
+        quant:one ;
+    ns1:mainSpecialistOf ns1:algebra_1 .
+

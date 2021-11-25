@@ -1,0 +1,151 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence509.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence509.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence509" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence509" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:At rdfs:label "at" .
+
+ns1:During rdfs:label "during" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Since rdfs:label "Since" .
+
+ns1:docuverse earmark:hasContent "Since 2002, celebrities have been seen at the Academy_Awards in hybrid vehicles, during the telecast of the 79th Academy Awards in 2007, Leonardo_DiCaprio and former vice-presidents that were executed in the state of Alrecrecreciatology, and the state."^^xsd:string .
+
+ns1:execute_1 a ns1:Execute ;
+    rdfs:label "executed" ;
+    vn.role:Patient ns1:vice-president_1 ;
+    ns1:inStateOf ns1:Alrecrecreciatology .
+
+ns1:see_1 a ns1:See ;
+    rdfs:label "seen" ;
+    vn.role:Theme ns1:celebrity_1 ;
+    ns1:at ns1:academy_awards_1 ;
+    ns1:during ns1:telecast_1 ;
+    ns1:since "2002-01-01"^^xsd:date .
+
+dbpedia:Leonardo_DiCaprio a schema:Person .
+
+ns1:79th rdfs:label "79th" .
+
+ns1:Alrecrecreciatology rdfs:label "Alrecrecreciatology" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Celebrity rdfs:label "celebrities" .
+
+ns1:Execute rdfs:label "executed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Former rdfs:label "former" .
+
+ns1:FormerVice-president rdfs:subClassOf ns1:Vice-president .
+
+ns1:Hybrid rdfs:label "hybrid" ;
+    owl:sameAs dbpedia:Hybrid_vehicle .
+
+ns1:HybridVehicle rdfs:subClassOf ns1:Vehicle .
+
+ns1:Leonardo_dicaprio rdfs:label "Leonardo DiCaprio" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Leonardo_DiCaprio .
+
+ns1:See rdfs:label "seen" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:State rdfs:label "state" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Telecast rdfs:label "telecast" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Vehicle rdfs:label "vehicles" .
+
+ns1:Vice-president rdfs:label "vice-presidents" .
+
+ns1:academy_awards_1 a ns1:Academy_awards ;
+    rdfs:label "Academy Awards" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:vehicle_1 .
+
+ns1:celebrity_1 a ns1:Celebrity ;
+    rdfs:label "celebrities" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:state_1 a ns1:State ;
+    rdfs:label "state" ;
+    quant:hasDeterminer quant:the .
+
+ns1:telecast_1 a ns1:Telecast ;
+    rdfs:label "telecast" ;
+    quant:hasDeterminer quant:the ;
+    ns1:telecastOf ns1:Academy_awards,
+        ns1:state_1 .
+
+ns1:vehicle_1 a dbpedia:Hybrid_vehicle,
+        ns1:HybridVehicle ;
+    rdfs:label "vehicles" ;
+    dul:hasQuality ns1:Hybrid ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Academy_awards a owl:Class ;
+    rdfs:label "Academy Awards" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:Leonardo_dicaprio,
+        ns1:vice-president_1 ;
+    dul:hasQuality ns1:79th ;
+    owl:equivalentClass dbpedia:Academy_Award,
+        dbpedia:Academy_Awards ;
+    ns1:in "2007-01-01"^^xsd:date .
+
+ns1:vice-president_1 a ns1:FormerVice-president ;
+    rdfs:label "vice-presidents" ;
+    dul:hasQuality ns1:Former ;
+    quant:hasQuantifier quant:multiple .
+

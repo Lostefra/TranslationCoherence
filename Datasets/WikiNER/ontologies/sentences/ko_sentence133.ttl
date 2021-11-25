@@ -1,0 +1,125 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence133.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Elargest> rdfs:label "largest" .
+
+translation_coherence:ko_sentence133.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence133" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence133" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Ala a ns1:Part ;
+    rdfs:label "Ala",
+        "part" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality owl:Thing,
+        ns1:Topic ;
+    ns1:partOf ns1:corridor_1 .
+
+ns1:In rdfs:label "in" .
+
+ns1:Largest rdfs:label "largest" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "Ala. It is part of the largest industrial growth corridor in the country."^^xsd:string .
+
+ns1:growth_1 a ns1:Growth ;
+    rdfs:label "growth" ;
+    dul:associatedWith ns1:corridor_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:part_1 rdfs:label "part" .
+
+owl:Thing rdfs:label "It" .
+
+ns1:Corridor a owl:Class ;
+    rdfs:label "corridor" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Country rdfs:label "country" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:GrowthCorridor a owl:Class ;
+    rdfs:label "Growth Corridor" ;
+    dul:associatedWith ns1:Growth ;
+    rdfs:subClassOf ns1:Corridor .
+
+ns1:Industrial a owl:Class ;
+    rdfs:label "industrial" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Industry .
+
+ns1:LargestIndustrialGrowth a owl:Class ;
+    rdfs:subClassOf ns1:IndustrialGrowth .
+
+ns1:LargestIndustrialGrowthCorridor a owl:Class ;
+    rdfs:label "largest industrial growth corridor" ;
+    dul:associatedWith ns1:LargestIndustrialGrowth ;
+    rdfs:subClassOf ns1:IndustrialGrowthCorridor .
+
+ns1:Part rdfs:label "Ala",
+        "part" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:country_1 a ns1:Country ;
+    rdfs:label "country" ;
+    quant:hasDeterminer quant:the .
+
+ns1:IndustrialGrowth a owl:Class ;
+    dul:hasQuality ns1:Industrial ;
+    rdfs:subClassOf ns1:Growth .
+
+ns1:corridor_1 a ns1:IndustrialGrowthCorridor,
+        ns1:LargestIndustrialGrowthCorridor ;
+    rdfs:label "corridor" ;
+    ns1:in ns1:country_1 ;
+    ns1:largestAmong ns1:IndustrialGrowthCorridor .
+
+ns1:Growth a owl:Class ;
+    rdfs:label "growth" ;
+    rdfs:subClassOf dul:Process .
+
+ns1:IndustrialGrowthCorridor a owl:Class ;
+    rdfs:label "industrial growth corridor" ;
+    dul:associatedWith ns1:IndustrialGrowth ;
+    rdfs:subClassOf ns1:GrowthCorridor .
+

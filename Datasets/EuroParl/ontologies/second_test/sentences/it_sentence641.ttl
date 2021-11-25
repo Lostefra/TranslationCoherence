@@ -1,0 +1,173 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence641.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence641.ttl a owl:Ontology ;
+    rdfs:label "it_sentence641" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence641" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:After rdfs:label "after" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Only rdfs:label "only" .
+
+ns1:President a ns1:Topic ;
+    rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister>,
+        ns1:Commissioner ;
+    owl:sameAs dbpedia:President .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "Mr President, Mr Commissioner, after a careful examination of this report, we cannot escape the conclusion that the stated objective of structural policy has been achieved only in part."^^xsd:string .
+
+ns1:examination_1 a ns1:CarefulExamination ;
+    rdfs:label "examination" ;
+    quant:hasDeterminer quant:a ;
+    ns1:after ns1:escape_1 ;
+    ns1:carefulExaminationOf ns1:report_1 .
+
+ns1:Achieve rdfs:label "achieved" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Careful a owl:Class ;
+    rdfs:label "careful" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:CarefulExamination a owl:Class ;
+    rdfs:label "careful examination" ;
+    dul:hasQuality ns1:Careful ;
+    rdfs:subClassOf ns1:Examination .
+
+ns1:Conclusion rdfs:label "conclusion" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Escape rdfs:label "escape" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Examination a owl:Class ;
+    rdfs:label "examination" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Objective a owl:Class ;
+    rdfs:label "objective" ;
+    rdfs:subClassOf dul:Goal .
+
+ns1:Part rdfs:label "part" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Policy a owl:Class ;
+    rdfs:label "policy" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Report rdfs:label "report" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Stated a owl:Class ;
+    rdfs:label "stated" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:StatedObjective a owl:Class ;
+    rdfs:label "Stated Objective" ;
+    dul:hasQuality ns1:Stated ;
+    rdfs:subClassOf ns1:Objective .
+
+ns1:Structural a owl:Class ;
+    rdfs:label "structural" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:StructuralPolicy a owl:Class ;
+    rdfs:label "structural policy" ;
+    dul:hasQuality ns1:Structural ;
+    rdfs:subClassOf ns1:Policy .
+
+ns1:achieve_1 a ns1:Achieve ;
+    rdfs:label "achieved" ;
+    vn.role:Theme ns1:objective_1 ;
+    ns1:onlyIn ns1:part_1 .
+
+ns1:conclusion_1 a ns1:Conclusion ;
+    rdfs:label "conclusion" ;
+    boxer:theme ns1:achieve_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:escape_1 a ns1:Escape ;
+    rdfs:label "escape" ;
+    boxer:patient ns1:conclusion_1 ;
+    dul:associatedWith ns1:Commissioner ;
+    vn.role:Theme ns1:person_1 .
+
+ns1:objective_1 a ns1:StatedObjective ;
+    rdfs:label "objective" ;
+    quant:hasDeterminer quant:the ;
+    ns1:statedObjectiveOf ns1:policy_1 .
+
+ns1:part_1 a ns1:Part ;
+    rdfs:label "part" .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:policy_1 a ns1:StructuralPolicy ;
+    rdfs:label "policy" .
+
+ns1:report_1 a ns1:Report ;
+    rdfs:label "report" ;
+    quant:hasDeterminer quant:this .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> a ns1:Topic ;
+    rdfs:label "Mr" ;
+    boxer:possibleType dul:Role .
+
+ns1:Commissioner rdfs:label "Commissioner" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    owl:sameAs dbpedia:Commissioner .
+
+ns1:Topic rdfs:label "Mr",
+        "President" .
+

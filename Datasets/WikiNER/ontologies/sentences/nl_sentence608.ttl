@@ -1,0 +1,100 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence608.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "In" .
+
+translation_coherence:nl_sentence608.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence608" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence608" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "her" .
+
+ns1:To rdfs:label "to" .
+
+ns1:call_1 a ns1:Call ;
+    rdfs:label "called" ;
+    vn.role:Agent ns1:Rand_leonard_peikoff ;
+    vn.role:Recipient ns1:will_1 ;
+    vn.role:Topic ns1:heir_1 ;
+    ns1:to ns1:estate_1 .
+
+ns1:docuverse earmark:hasContent "In her will, Rand Leonard_Peikoff called the heir to her estate."^^xsd:string .
+
+ns1:Call rdfs:label "called" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Estate a owl:Class ;
+    rdfs:label "estate" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Estate_(law) .
+
+ns1:Female rdfs:label "Rand Leonard Peikoff" .
+
+ns1:Heir a owl:Class ;
+    rdfs:label "heir" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Inheritance .
+
+ns1:Will a owl:Class ;
+    rdfs:label "will" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Will_and_testament .
+
+ns1:estate_1 a ns1:Estate ;
+    rdfs:label "estate" ;
+    ns1:estateOf ns1:Rand_leonard_peikoff .
+
+ns1:female_1 rdfs:label "her" ;
+    coref:coref ns1:female_1 .
+
+ns1:heir_1 a ns1:Heir ;
+    rdfs:label "heir" ;
+    quant:hasDeterminer quant:the .
+
+ns1:will_1 a ns1:Will ;
+    rdfs:label "will" ;
+    ns1:willOf ns1:Rand_leonard_peikoff .
+
+ns1:Rand_leonard_peikoff a ns1:Female ;
+    rdfs:label "Rand Leonard Peikoff" ;
+    boxer:possibleType foaf:Person .
+

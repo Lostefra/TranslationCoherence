@@ -1,0 +1,184 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence62.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:en_sentence62.ttl a owl:Ontology ;
+    rdfs:label "en_sentence62" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence62" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:argue_1 a ns1:Argue ;
+    rdfs:label "argued" ;
+    vn.role:Actor ns1:Ivan_illich ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:consumer_1 a ns1:Consumer ;
+    rdfs:label "consumer" ;
+    dul:associatedWith ns1:society_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:docuverse earmark:hasContent "The term deschooling was popularized by Ivan_Illich, who argued that the school as an institution is dysfunctional for self-determined learning and serves the creation of a consumer society instead."^^xsd:string .
+
+ns1:popularize_1 a ns1:Popularize ;
+    rdfs:label "popularized" ;
+    vn.role:Agent ns1:Ivan_illich ;
+    vn.role:Patient ns1:deschooling_1 .
+
+ns1:serve_1 a ns1:Serve ;
+    rdfs:label "serves" ;
+    dul:hasQuality ns1:Instead ;
+    vn.role:Agent ns1:Ivan_illich ;
+    vn.role:Theme ns1:creation_1 .
+
+ns1:term_1 a ns1:Term ;
+    rdfs:label "term" ;
+    dul:associatedWith ns1:deschooling_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:Argue rdfs:label "argued" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:ConsumerSociety a owl:Class ;
+    rdfs:label "consumer society" ;
+    dul:associatedWith ns1:Consumer ;
+    rdfs:subClassOf ns1:Society ;
+    owl:equivalentClass dbpedia:Consumerism .
+
+ns1:Creation a owl:Class ;
+    rdfs:label "creation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Creation_myth .
+
+ns1:Deschooling a owl:Class ;
+    rdfs:label "deschooling" ;
+    owl:equivalentClass dbpedia:Deschooling .
+
+ns1:Instead rdfs:label "instead" .
+
+ns1:Institution a owl:Class ;
+    rdfs:label "institution" ;
+    rdfs:subClassOf dul:Organization ;
+    owl:equivalentClass dbpedia:Institution .
+
+ns1:Learning a owl:Class ;
+    rdfs:label "learning" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> ;
+    owl:equivalentClass dbpedia:Learning .
+
+ns1:Popularize rdfs:label "popularized" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:School rdfs:label "school" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Self-determined a owl:Class ;
+    rdfs:label "self-determined" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Self-determinedLearning a owl:Class ;
+    rdfs:label "Self-determined Learning" ;
+    dul:hasQuality ns1:Self-determined ;
+    rdfs:subClassOf ns1:Learning .
+
+ns1:Serve rdfs:label "serves" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Society a owl:Class ;
+    rdfs:label "society" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:TermDeschooling a owl:Class ;
+    rdfs:label "term deschooling" ;
+    dul:associatedWith ns1:Term ;
+    rdfs:subClassOf ns1:Deschooling .
+
+ns1:creation_1 a ns1:Creation ;
+    rdfs:label "creation" ;
+    quant:hasDeterminer quant:the ;
+    ns1:creationOf ns1:society_1 .
+
+ns1:school_1 a ns1:School ;
+    rdfs:label "school" ;
+    dul:hasQuality ns1:Dysfunctional ;
+    quant:hasDeterminer quant:the ;
+    ns1:as ns1:institution_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Dysfunctional,
+        ns1:institution_1,
+        ns1:learning_1,
+        ns1:school_1 ;
+    ns1:for ns1:learning_1 .
+
+ns1:Consumer a owl:Class ;
+    rdfs:label "consumer" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Dysfunctional rdfs:label "dysfunctional" .
+
+ns1:Term a owl:Class ;
+    rdfs:label "term" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:deschooling_1 a ns1:TermDeschooling ;
+    rdfs:label "deschooling" .
+
+ns1:institution_1 a ns1:Institution ;
+    rdfs:label "institution" ;
+    quant:hasDeterminer quant:an .
+
+ns1:learning_1 a ns1:Self-determinedLearning ;
+    rdfs:label "learning" .
+
+ns1:society_1 a ns1:ConsumerSociety ;
+    rdfs:label "society" .
+
+ns1:Ivan_illich rdfs:label "Ivan Illich" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Ivan_Illich .
+

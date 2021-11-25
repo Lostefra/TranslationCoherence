@@ -1,0 +1,116 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence446.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Destination rdfs:label "to" .
+
+vn.role:Predicate rdfs:label "as" .
+
+translation_coherence:it_sentence446.ttl a owl:Ontology ;
+    rdfs:label "it_sentence446" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence446" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:From rdfs:label "From" .
+
+ns1:Of rdfs:label "his" .
+
+ns1:docuverse earmark:hasContent "From 335 BC he returned to Athens, establishing his school there known as the Lycee."^^xsd:string .
+
+ns1:establish_1 a ns1:Establish ;
+    rdfs:label "establishing" ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Theme ns1:school_1 .
+
+ns1:know_1 a ns1:Know ;
+    rdfs:label "known" ;
+    vn.role:Predicate ns1:Lycee ;
+    vn.role:Theme ns1:school_1 .
+
+ns1:return_1 a ns1:Return ;
+    rdfs:label "returned" ;
+    vn.role:Destination ns1:Athens ;
+    vn.role:Patient ns1:male_1 ;
+    ns1:from ns1:Bc .
+
+dbpedia:Athens a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:Athens rdfs:label "Athens" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Athens .
+
+ns1:Bc rdfs:label "BC" ;
+    boxer:possibleType time:Interval ;
+    dul:hasDataValue "335"^^xsd:nonNegativeInteger ;
+    owl:sameAs dbpedia:335_BC .
+
+ns1:Establish rdfs:label "establishing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Know rdfs:label "known" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Lycee rdfs:label "Lycee" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Lyceum .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Return rdfs:label "returned" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:School rdfs:label "school" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:There rdfs:label "there" .
+
+ns1:school_1 a ns1:School ;
+    rdfs:label "school" ;
+    dul:hasQuality ns1:There ;
+    ns1:schoolOf ns1:male_1 .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "he",
+        "his" ;
+    coref:coref ns1:male_1 .
+

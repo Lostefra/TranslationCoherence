@@ -1,0 +1,132 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence478.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+vn.role:Theme2 rdfs:label "on" .
+
+translation_coherence:nl_sentence478.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence478" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence478" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "their" .
+
+ns1:achieve_1 a ns1:Achieve ;
+    rdfs:label "achieved" ;
+    boxing:hasModality boxing:Possible ;
+    dul:hasQuality ns1:Only ;
+    vn.role:Agent ns1:coordinate_1 ;
+    vn.role:Theme ns1:object_1 .
+
+ns1:base_1 a ns1:Base ;
+    rdfs:label "based" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Theme1 ns1:coordinate_1 ;
+    vn.role:Theme2 ns1:guideline_1 .
+
+ns1:docuverse earmark:hasContent "These policy objects can only be achieved by their careful coordinates and organization based on good thought-out and sensitive guidelines."^^xsd:string .
+
+ns1:organization_1 rdfs:label "organization" .
+
+ns1:policy_1 a ns1:Policy ;
+    rdfs:label "policy" ;
+    dul:associatedWith ns1:object_1 ;
+    quant:hasDeterminer quant:these .
+
+ns1:Achieve rdfs:label "achieved" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Base rdfs:label "based" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Careful rdfs:label "careful" .
+
+ns1:CarefulCoordinate rdfs:subClassOf ns1:Coordinate .
+
+ns1:Coordinate rdfs:label "coordinates" .
+
+ns1:Good rdfs:label "good" ;
+    owl:sameAs dbpedia:Value_(ethics) .
+
+ns1:Guideline rdfs:label "guidelines" .
+
+ns1:Object rdfs:label "objects" .
+
+ns1:Only rdfs:label "only" .
+
+ns1:Organization a owl:Class ;
+    rdfs:label "organization" ;
+    rdfs:subClassOf dul:Organization ;
+    owl:equivalentClass dbpedia:Organization .
+
+ns1:Policy rdfs:label "policy" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:PolicyObject rdfs:subClassOf ns1:Object .
+
+ns1:Sensitive rdfs:label "sensitive" .
+
+ns1:SensitiveGuideline rdfs:subClassOf ns1:Guideline .
+
+ns1:Thought-out rdfs:label "thought-out" .
+
+ns1:guideline_1 a ns1:SensitiveGuideline ;
+    rdfs:label "guidelines" ;
+    dul:hasQuality ns1:Good,
+        ns1:Sensitive,
+        ns1:Thought-out ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "their" .
+
+ns1:coordinate_1 a ns1:CarefulCoordinate,
+        ns1:Organization ;
+    rdfs:label "coordinates" ;
+    dul:hasQuality ns1:Careful ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:organizationOf ns1:thing_1 .
+
+ns1:object_1 a ns1:PolicyObject ;
+    rdfs:label "objects" ;
+    quant:hasQuantifier quant:multiple .
+

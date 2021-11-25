@@ -1,0 +1,231 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence531.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence531.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence531" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence531" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Amount rdfs:label "much" .
+
+ns1:By rdfs:label "by" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Quantity rdfs:label "many" .
+
+ns1:That rdfs:label "that" .
+
+ns1:be_2 a ns1:Be ;
+    rdfs:label "is" ;
+    boxer:agent ns1:priority_1 ;
+    boxer:theme ns1:situation_4 .
+
+ns1:docuverse earmark:hasContent "Another priority that many of you have emphasized, especially Mr. Puerta, but others were not to mention them in any priority position, is to strengthen social cohen and employment, especially by increasing staff profiles much more than before."^^xsd:string .
+
+ns1:employment_1 rdfs:label "employment" .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "you" .
+
+ns1:priority_3 a ns1:Priority ;
+    rdfs:label "priority" ;
+    dul:associatedWith ns1:position_1 ;
+    quant:hasQuantifier quant:any .
+
+ns1:situation_1 a ns1:Situation ;
+    ns1:entails ns1:situation_2 .
+
+ns1:thing_1 coref:coref ns1:other_1 .
+
+owl:Thing rdfs:label "them" .
+
+ns1:Before rdfs:label "before" .
+
+ns1:Cohen a owl:Class ;
+    rdfs:label "cohen" .
+
+ns1:Emphasize rdfs:label "emphasized" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Employment a owl:Class ;
+    rdfs:label "employment" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Employment .
+
+ns1:Especially rdfs:label "Especially",
+        "especially" .
+
+ns1:Increase rdfs:label "increasing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Mention rdfs:label "mention" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:More rdfs:label "more" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Other rdfs:label "others" .
+
+ns1:Person rdfs:label "you" .
+
+ns1:Position rdfs:label "position" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:PriorityPosition rdfs:label "priority position" ;
+    rdfs:subClassOf ns1:Position .
+
+ns1:Profile rdfs:label "profiles" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Social a owl:Class ;
+    rdfs:label "social" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SocialCohen a owl:Class ;
+    rdfs:label "Social Cohen" ;
+    dul:hasQuality ns1:Social ;
+    rdfs:subClassOf ns1:Cohen .
+
+ns1:Staff a owl:Class ;
+    rdfs:label "staff" ;
+    rdfs:subClassOf dul:Organization ;
+    owl:equivalentClass dbpedia:Employment .
+
+ns1:Strengthen rdfs:label "strengthen" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:be_1 a ns1:Be ;
+    rdfs:label "were" ;
+    boxer:agent ns1:other_1 ;
+    boxer:theme ns1:mention_1 .
+
+ns1:cohen_1 a ns1:Employment,
+        ns1:SocialCohen ;
+    rdfs:label "cohen" .
+
+ns1:emphasize_1 a ns1:Emphasize ;
+    rdfs:label "emphasized" ;
+    vn.role:Theme ns1:Puerta .
+
+ns1:priority_2 a ns1:Priority ;
+    rdfs:label "priority" ;
+    quant:hasDeterminer quant:another .
+
+ns1:profile_1 a ns1:Profile ;
+    rdfs:label "profiles" ;
+    boxer:agent ns1:staff_1 ;
+    boxer:patient ns1:more_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:position_1 .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves ns1:Puerta,
+        ns1:be_1,
+        ns1:emphasize_1,
+        ns1:mention_1,
+        ns1:other_1,
+        ns1:position_1 .
+
+ns1:situation_4 a ns1:Situation ;
+    boxing:involves ns1:cohen_1,
+        ns1:increase_1,
+        ns1:more_1,
+        ns1:profile_1,
+        ns1:staff_1,
+        ns1:strengthen_1 .
+
+ns1:strengthen_1 a ns1:Strengthen ;
+    rdfs:label "strengthen" ;
+    vn.role:Agent ns1:priority_1 ;
+    ns1:especiallyBy ns1:increase_1 .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> rdfs:label "Mr." ;
+    boxer:possibleType dul:Role .
+
+ns1:Be rdfs:label "is",
+        "were" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Puerta rdfs:label "Puerta" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    dul:hasQuality ns1:Especially ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> .
+
+ns1:increase_1 a ns1:Increase ;
+    rdfs:label "increasing" ;
+    vn.role:Agent ns1:priority_1 ;
+    vn.role:Patient ns1:staff_1 .
+
+ns1:mention_1 a ns1:Mention ;
+    rdfs:label "mention" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:other_1 ;
+    vn.role:Topic ns1:other_1 ;
+    ns1:in ns1:position_1 .
+
+ns1:more_1 a ns1:More ;
+    rdfs:label "more" ;
+    dul:hasQuality ns1:Before .
+
+ns1:Priority rdfs:label "priority" ;
+    rdfs:subClassOf dul:Role .
+
+ns1:priority_1 a ns1:Priority ;
+    owl:differentFrom ns1:priority_2 ;
+    ns1:that ns1:situation_3 .
+
+ns1:staff_1 a ns1:Staff ;
+    rdfs:label "staff" .
+
+ns1:position_1 a ns1:PriorityPosition ;
+    rdfs:label "position" .
+
+ns1:other_1 a owl:Thing,
+        ns1:Other ;
+    rdfs:label "others",
+        "them" ;
+    quant:hasQuantifier quant:multiple .
+

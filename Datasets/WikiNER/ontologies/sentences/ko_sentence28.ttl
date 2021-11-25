@@ -1,0 +1,212 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence28.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Estrongest> rdfs:label "strongest" .
+
+vn.role:Theme rdfs:label "in" .
+
+translation_coherence:ko_sentence28.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence28" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence28" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "was" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Onrulerof rdfs:label "on the ruler of" .
+
+ns1:Strongest rdfs:label "strongest" .
+
+ns1:archstar_1 a ns1:Archstar ;
+    rdfs:label "archstar" ;
+    dul:associatedWith ns1:tradition_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:docuverse earmark:hasContent "The Italian_anarchists performed the key role of the event organization Arditi_del_Popolo, which was the strongest in the archstar tradition and the region, and succeeded in the action such as repelling black shirt on the ruler of the Parma in August 1922."^^xsd:string .
+
+ns1:event_1 a dul:Event ;
+    rdfs:label "event" ;
+    dul:associatedWith ns1:Arditi_del_popolo ;
+    quant:hasDeterminer quant:the .
+
+ns1:organization_1 rdfs:label "organization" .
+
+ns1:perform_1 a ns1:Perform ;
+    rdfs:label "performed" ;
+    vn.role:Agent ns1:Italian_anarchists ;
+    vn.role:Theme ns1:role_1 .
+
+ns1:repel_1 a ns1:Repel ;
+    rdfs:label "repelling" ;
+    vn.role:Cause ns1:action_1 ;
+    vn.role:Experiencer ns1:shirt_1 ;
+    ns1:in "1922-08-01"^^xsd:date .
+
+ns1:ruler_1 a ns1:Ruler ;
+    rdfs:label "ruler" ;
+    quant:hasDeterminer quant:the .
+
+ns1:succeed_1 a ns1:Succeed ;
+    rdfs:label "succeeded" ;
+    vn.role:Agent ns1:Italian_anarchists ;
+    vn.role:Theme ns1:action_1 .
+
+dbpedia:Parma a schema:Place .
+
+ns1:Action rdfs:label "action" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:ArchstarTradition a owl:Class ;
+    rdfs:label "Archstar Tradition" ;
+    dul:associatedWith ns1:Archstar ;
+    rdfs:subClassOf ns1:Tradition .
+
+ns1:BlackShirt a owl:Class ;
+    rdfs:label "black shirt" ;
+    dul:hasQuality ns1:Black ;
+    rdfs:subClassOf ns1:Shirt .
+
+ns1:Event a owl:Class ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:EventOrganization a owl:Class ;
+    rdfs:label "Event Organization" ;
+    dul:associatedWith ns1:Event ;
+    rdfs:subClassOf owl:Thing,
+        ns1:Organization .
+
+ns1:Key a owl:Class ;
+    rdfs:label "key" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:KeyRole a owl:Class ;
+    rdfs:label "key role" ;
+    dul:hasQuality ns1:Key ;
+    rdfs:subClassOf ns1:Role .
+
+ns1:Organization a owl:Class ;
+    rdfs:label "Arditi del Popolo",
+        "organization" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Parma rdfs:label "Parma" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Parma .
+
+ns1:Perform rdfs:label "performed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Region rdfs:label "region" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Repel rdfs:label "repelling" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Role a owl:Class ;
+    rdfs:label "role" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Ruler rdfs:label "ruler" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Shirt a owl:Class ;
+    rdfs:label "shirt" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Succeed rdfs:label "succeeded" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Tradition a owl:Class ;
+    rdfs:label "tradition" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:region_1 a ns1:Region ;
+    rdfs:label "region" ;
+    quant:hasDeterminer quant:the .
+
+ns1:role_1 a ns1:KeyRole ;
+    rdfs:label "role" ;
+    quant:hasDeterminer quant:the ;
+    ns1:keyRoleOf ns1:Arditi_del_popolo .
+
+ns1:shirt_1 a ns1:BlackShirt ;
+    rdfs:label "shirt" ;
+    dul:hasQuality ns1:Black ;
+    quant:hasDeterminer quant:such ;
+    ns1:onRulerOf ns1:Parma .
+
+ns1:Archstar a owl:Class ;
+    rdfs:label "archstar" .
+
+ns1:Arditi_del_popolo a owl:Thing,
+        ns1:EventOrganization ;
+    rdfs:label "Arditi del Popolo",
+        "event",
+        "organization" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Arditi_del_Popolo ;
+    ns1:strongestAmong owl:Thing ;
+    ns1:strongestIn ns1:region_1,
+        ns1:tradition_1 .
+
+ns1:Black a owl:Class ;
+    rdfs:label "black" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Italian_anarchists rdfs:label "Italian anarchists" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Anarchism_in_Italy .
+
+ns1:action_1 a ns1:Action ;
+    rdfs:label "action" ;
+    quant:hasDeterminer quant:the .
+
+ns1:tradition_1 a ns1:ArchstarTradition ;
+    rdfs:label "tradition" .
+
+dul:Event rdfs:label "Arditi del Popolo",
+        "event" .
+

@@ -1,0 +1,102 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence700.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+vn.role:Source rdfs:label "in" .
+
+translation_coherence:nl_sentence700.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence700" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence700" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:docuverse earmark:hasContent "He was transferred by his former ally and Secretary of Defense, Houari Boumene in 1965."^^xsd:string .
+
+ns1:transfer_1 a ns1:Transfer ;
+    rdfs:label "transferred" ;
+    vn.role:Agent ns1:Houari_boumene,
+        ns1:ally_1 ;
+    vn.role:Source "1965-01-01"^^xsd:date ;
+    vn.role:Theme ns1:male_1 .
+
+ns1:Ally a owl:Class ;
+    rdfs:label "ally" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Defense rdfs:label "Defense" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Former a owl:Class ;
+    rdfs:label "former" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FormerAlly a owl:Class ;
+    rdfs:label "former ally" ;
+    dul:hasQuality ns1:Former ;
+    rdfs:subClassOf ns1:Ally .
+
+ns1:Houari_boumene rdfs:label "Houari Boumene" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith ns1:Secretary ;
+    dul:hasRole ns1:Secretary ;
+    ns1:of ns1:Defense .
+
+ns1:Male rdfs:label "He" .
+
+ns1:Transfer rdfs:label "transferred" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:ally_1 a ns1:FormerAlly ;
+    rdfs:label "ally" ;
+    ns1:formerAllyOf ns1:male_1 .
+
+ns1:Secretary rdfs:label "Secretary" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Secretary .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "He",
+        "his" ;
+    coref:coref ns1:male_1 .
+

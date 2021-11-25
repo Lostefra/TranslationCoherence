@@ -1,0 +1,122 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence176.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence176.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence176" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence176" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Because rdfs:label "Because" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "Because these safety consultants cannot afford, it will be a big problem that currently reveals this rule."^^xsd:string .
+
+ns1:reveal_1 a ns1:CurrentlyReveal ;
+    rdfs:label "reveals" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:associatedWith ns1:safety_1 ;
+    dul:hasQuality ns1:Currently ;
+    vn.role:Agent ns1:problem_1 ;
+    vn.role:Theme ns1:rule_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:event_1 ;
+    ns1:because ns1:afford_1 .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Afford rdfs:label "afford" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Big a owl:Class ;
+    rdfs:label "big" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:BigProblem a owl:Class ;
+    rdfs:label "Big Problem" ;
+    dul:hasQuality ns1:Big ;
+    rdfs:subClassOf ns1:Problem .
+
+ns1:Consultant rdfs:label "consultants" .
+
+ns1:Currently rdfs:label "currently" .
+
+ns1:CurrentlyReveal rdfs:subClassOf ns1:Reveal .
+
+ns1:Problem a owl:Class ;
+    rdfs:label "problem" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Reveal rdfs:label "reveals" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Rule rdfs:label "rule" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Safety rdfs:label "safety" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:afford_1 a ns1:Afford ;
+    rdfs:label "afford" ;
+    boxer:agent ns1:consultant_1 ;
+    boxer:patient ns1:safety_1 ;
+    boxing:hasModality boxing:Necessary .
+
+ns1:consultant_1 a ns1:Consultant ;
+    rdfs:label "consultants" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:event_1 a dul:Event .
+
+ns1:problem_1 a ns1:BigProblem ;
+    rdfs:label "problem" ;
+    dul:hasQuality owl:Thing ;
+    quant:hasDeterminer quant:a .
+
+ns1:rule_1 a ns1:Rule ;
+    rdfs:label "rule" ;
+    quant:hasDeterminer quant:this .
+
+ns1:safety_1 a ns1:Safety ;
+    rdfs:label "safety" ;
+    quant:hasDeterminer quant:these .
+

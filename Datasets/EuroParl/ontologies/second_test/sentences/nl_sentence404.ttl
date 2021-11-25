@@ -1,0 +1,182 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence404.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence404.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence404" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence404" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Between rdfs:label "between" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "Members of the United_States have to suture larger interests to integrated strategys for reliving relationships between cities and land. This last point is of particular interest."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "have" ;
+    boxer:theme ns1:situation_1 ;
+    vn.role:Agent ns1:member_1 .
+
+ns1:land_1 rdfs:label "land" .
+
+ns1:point_1 a ns1:LastPoint ;
+    rdfs:label "point" ;
+    dul:hasQuality ns1:Last ;
+    quant:hasDeterminer quant:this ;
+    ns1:lastPointOf ns1:interest_2 .
+
+dbpedia:United_States rdfs:subClassOf schema:Country,
+        schema:Place .
+
+ns1:City rdfs:label "cities" .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Integrated rdfs:label "integrated" .
+
+ns1:IntegratedStrategy rdfs:subClassOf ns1:Strategy .
+
+ns1:Land rdfs:label "land" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Larger rdfs:label "larger" .
+
+ns1:LargerInterest rdfs:subClassOf ns1:Interest .
+
+ns1:LastPoint a owl:Class ;
+    rdfs:label "Last Point" ;
+    dul:hasQuality ns1:Last ;
+    rdfs:subClassOf ns1:Point .
+
+ns1:Member rdfs:label "Members" .
+
+ns1:Particular rdfs:label "particular" .
+
+ns1:ParticularInterest rdfs:label "Particular Interest" ;
+    rdfs:subClassOf ns1:Interest .
+
+ns1:Point a owl:Class ;
+    rdfs:label "point" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Relationship rdfs:label "relationships" .
+
+ns1:Relive rdfs:label "reliving" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Strategy rdfs:label "strategys" .
+
+ns1:Suture a owl:Class ;
+    rdfs:label "suture" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Ammonoidea .
+
+ns1:UnitedStates rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:United_states a owl:Class ;
+    rdfs:label "United States" ;
+    rdfs:subClassOf ns1:UnitedStates ;
+    owl:equivalentClass dbpedia:United_States .
+
+ns1:interest_2 a ns1:ParticularInterest ;
+    rdfs:label "interest" ;
+    dul:hasQuality ns1:Particular .
+
+ns1:relive_1 a ns1:Relive ;
+    rdfs:label "reliving" ;
+    boxer:agent ns1:strategy_1 ;
+    boxer:patient ns1:relationship_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:city_1,
+        ns1:interest_1,
+        ns1:relationship_1,
+        ns1:relive_1,
+        ns1:strategy_1,
+        ns1:suture_1 .
+
+ns1:suture_1 a ns1:Suture ;
+    rdfs:label "suture" ;
+    boxer:agent ns1:member_1 ;
+    boxer:patient ns1:interest_1 .
+
+ns1:united_states_1 a ns1:United_states ;
+    rdfs:label "United States" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Interest rdfs:label "interest",
+        "interests" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Last a owl:Class ;
+    rdfs:label "last" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:city_1 a ns1:City,
+        ns1:Land ;
+    rdfs:label "cities" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:interest_1 a ns1:LargerInterest ;
+    rdfs:label "interests" ;
+    dul:hasQuality ns1:Larger ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:to ns1:strategy_1 .
+
+ns1:member_1 a ns1:Member ;
+    rdfs:label "Members" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:memberOf ns1:united_states_1 .
+
+ns1:relationship_1 a ns1:Relationship ;
+    rdfs:label "relationships" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:between ns1:city_1 .
+
+ns1:strategy_1 a ns1:IntegratedStrategy ;
+    rdfs:label "strategys" ;
+    dul:hasQuality ns1:Integrated ;
+    quant:hasQuantifier quant:multiple .
+

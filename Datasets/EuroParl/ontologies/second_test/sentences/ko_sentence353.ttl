@@ -1,0 +1,179 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence353.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence353.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence353" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence353" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:By rdfs:label "by" .
+
+ns1:From rdfs:label "from" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "He also imposes all the rules regarding the additions he can lead to stern Letter from Commissioner Wulf-Mathies regarding the regulatory requirements by Mr Hague, President of Wales."^^xsd:string .
+
+ns1:impose_1 a ns1:AlsoImpose ;
+    rdfs:label "imposes" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Theme ns1:rule_1 .
+
+ns1:lead_1 a ns1:Lead ;
+    rdfs:label "lead" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Destination ns1:addition_1 ;
+    ns1:to ns1:letter_1 .
+
+ns1:regard_1 a ns1:Regard ;
+    rdfs:label "regarding" ;
+    vn.role:Experiencer ns1:rule_1 ;
+    vn.role:Stimulus ns1:addition_1 .
+
+ns1:regard_2 a ns1:Regard ;
+    rdfs:label "regarding" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Experiencer ns1:letter_1 ;
+    vn.role:Stimulus ns1:requirement_1 .
+
+dbpedia:The_Hague a schema:City,
+        schema:Place .
+
+dbpedia:Wales a schema:Country,
+        schema:Place .
+
+ns1:Addition rdfs:label "additions" .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoImpose rdfs:subClassOf ns1:Impose .
+
+ns1:Hague rdfs:label "Hague" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister>,
+        ns1:President ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    owl:sameAs dbpedia:The_Hague .
+
+ns1:Impose rdfs:label "imposes" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Lead rdfs:label "lead" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Letter a owl:Class ;
+    rdfs:label "Letter" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Male rdfs:label "He" .
+
+ns1:President rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:President ;
+    ns1:of ns1:Wales .
+
+ns1:Regulatory rdfs:label "regulatory" ;
+    owl:sameAs dbpedia:Regulation .
+
+ns1:RegulatoryRequirement rdfs:subClassOf ns1:Requirement .
+
+ns1:Requirement rdfs:label "requirements" .
+
+ns1:Rule rdfs:label "rules" .
+
+ns1:Stern a owl:Class ;
+    rdfs:label "stern" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SternLetter a owl:Class ;
+    rdfs:label "Stern Letter" ;
+    dul:hasQuality ns1:Stern ;
+    rdfs:subClassOf ns1:Letter .
+
+ns1:Wales rdfs:label "Wales" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Wales .
+
+ns1:Wulf-mathies rdfs:label "Wulf-Mathies" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Commissioner> ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Commissioner> .
+
+ns1:requirement_1 a ns1:RegulatoryRequirement ;
+    rdfs:label "requirements" ;
+    dul:hasQuality ns1:Regulatory ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Commissioner> rdfs:label "Commissioner" ;
+    boxer:possibleType dul:Role ;
+    owl:sameAs dbpedia:Commissioner .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> rdfs:label "Mr" ;
+    boxer:possibleType dul:Role .
+
+ns1:Regard rdfs:label "regarding" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:addition_1 a ns1:Addition ;
+    rdfs:label "additions" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:letter_1 a ns1:SternLetter ;
+    rdfs:label "Letter" ;
+    ns1:from ns1:Wulf-mathies ;
+    ns1:sternLetterBy ns1:Hague .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "He" .
+
+ns1:rule_1 a ns1:Rule ;
+    rdfs:label "rules" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+

@@ -1,0 +1,143 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence470.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:zh_sentence470.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence470" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence470" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Similar rdfs:label "similar" .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "Fourthly, the list of statements made by the ancient library in the Andresoon language is similar to what we currently have."^^xsd:string .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "made" ;
+    vn.role:Agent ns1:library_1 ;
+    vn.role:Theme ns1:statement_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:have_1,
+        ns1:list_1,
+        ns1:thing_1 ;
+    dul:hasQuality ns1:Fourthly .
+
+owl:Thing rdfs:label "what" .
+
+ns1:Ancient a owl:Class ;
+    rdfs:label "ancient" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:AncientLibrary a owl:Class ;
+    rdfs:label "Ancient Library" ;
+    dul:hasQuality ns1:Ancient ;
+    rdfs:subClassOf ns1:Library .
+
+ns1:Andresoon rdfs:label "Andresoon" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Currently rdfs:label "currently" .
+
+ns1:CurrentlyHave rdfs:label "Currently Have" ;
+    rdfs:subClassOf ns1:Have .
+
+ns1:Fourthly rdfs:label "Fourthly" .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Language a owl:Class ;
+    rdfs:label "language" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Language .
+
+ns1:Library a owl:Class ;
+    rdfs:label "library" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:List rdfs:label "list" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Make rdfs:label "made" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Statement rdfs:label "statements" .
+
+ns1:have_1 a ns1:CurrentlyHave ;
+    rdfs:label "have" ;
+    dul:hasQuality ns1:Currently ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Patient ns1:thing_1 .
+
+ns1:language_1 a ns1:Language ;
+    rdfs:label "language" ;
+    dul:associatedWith ns1:Andresoon .
+
+ns1:library_1 a ns1:AncientLibrary ;
+    rdfs:label "library" ;
+    quant:hasDeterminer quant:the ;
+    ns1:in ns1:language_1 .
+
+ns1:list_1 a ns1:List ;
+    rdfs:label "list" ;
+    quant:hasDeterminer quant:the ;
+    ns1:listOf ns1:statement_1 ;
+    ns1:similarTo ns1:thing_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:statement_1 a ns1:Statement ;
+    rdfs:label "statements" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "what" .
+

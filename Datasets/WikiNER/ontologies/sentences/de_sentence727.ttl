@@ -1,0 +1,194 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence727.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence727.ttl a owl:Ontology ;
+    rdfs:label "de_sentence727" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence727" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Between rdfs:label "between" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "its" .
+
+ns1:To rdfs:label "to" .
+
+ns1:With rdfs:label "with" .
+
+ns1:create_1 a ns1:Create ;
+    rdfs:label "created" ;
+    vn.role:Agent ns1:tension_1 ;
+    vn.role:Product ns1:obstacle_1 .
+
+ns1:docuverse earmark:hasContent "tensions between Algeria and Morocco with regard to the Western_Sahara have created major obstacles to tightening the Maghreb Union, which was established in nominal terms in 1989, but has little practical weight with its coastal neighbours."^^xsd:string .
+
+ns1:establish_1 a ns1:Establish ;
+    rdfs:label "established" ;
+    vn.role:Theme ns1:Maghreb_union ;
+    ns1:in ns1:term_1,
+        "1989-01-01"^^xsd:date .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "has" ;
+    vn.role:Agent ns1:Maghreb_union ;
+    vn.role:Patient ns1:weight_1 .
+
+ns1:neuter_1 rdfs:label "its" .
+
+ns1:regard_1 a ns1:Regard ;
+    rdfs:label "regard" .
+
+ns1:tighten_1 a ns1:Tighten ;
+    rdfs:label "tightening" ;
+    vn.role:Agent ns1:obstacle_1 ;
+    vn.role:Patient ns1:Maghreb_union .
+
+dbpedia:Algeria a schema:Country,
+        schema:Place .
+
+dbpedia:Morocco a schema:Country,
+        schema:Place .
+
+dbpedia:Western_Sahara a schema:Country,
+        schema:Place .
+
+owl:Thing rdfs:label "Algeria" .
+
+ns1:Coastal rdfs:label "coastal" .
+
+ns1:CoastalNeighbour rdfs:subClassOf ns1:Neighbour .
+
+ns1:Create rdfs:label "created" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Establish rdfs:label "established" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Have rdfs:label "has",
+        "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Little rdfs:label "little" .
+
+ns1:LittlePracticalWeight a owl:Class ;
+    rdfs:label "Little Practical Weight" ;
+    rdfs:subClassOf ns1:PracticalWeight .
+
+ns1:Major rdfs:label "major" .
+
+ns1:MajorObstacle rdfs:subClassOf ns1:Obstacle .
+
+ns1:Morocco rdfs:label "Morocco" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Morocco .
+
+ns1:Neighbour rdfs:label "neighbours" .
+
+ns1:Nominal rdfs:label "nominal" .
+
+ns1:NominalTerm rdfs:subClassOf ns1:Term .
+
+ns1:Obstacle rdfs:label "obstacles" .
+
+ns1:Practical a owl:Class ;
+    rdfs:label "practical" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:PracticalWeight a owl:Class ;
+    rdfs:label "practical weight" ;
+    dul:hasQuality ns1:Practical ;
+    rdfs:subClassOf ns1:Weight .
+
+ns1:Regard rdfs:label "regard" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Tension rdfs:label "tensions" .
+
+ns1:Term rdfs:label "terms" .
+
+ns1:Tighten rdfs:label "tightening" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Weight a owl:Class ;
+    rdfs:label "weight" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Western_sahara rdfs:label "Western Sahara" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Western_Sahara .
+
+ns1:neighbour_1 a ns1:CoastalNeighbour ;
+    rdfs:label "neighbours" ;
+    dul:hasQuality ns1:Coastal ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:coastalNeighbourOf ns1:Algeria .
+
+ns1:tension_1 a ns1:Tension ;
+    rdfs:label "tensions" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:between ns1:Algeria,
+        ns1:Morocco ;
+    ns1:withRegardTo ns1:Western_sahara .
+
+ns1:term_1 a ns1:NominalTerm ;
+    rdfs:label "terms" ;
+    dul:hasQuality ns1:Nominal ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:weight_1 a ns1:LittlePracticalWeight ;
+    rdfs:label "weight" ;
+    dul:hasQuality ns1:Little ;
+    ns1:with ns1:neighbour_1 .
+
+ns1:Algeria a owl:Thing ;
+    rdfs:label "Algeria" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Algeria .
+
+ns1:obstacle_1 a ns1:MajorObstacle ;
+    rdfs:label "obstacles" ;
+    dul:hasQuality ns1:Major ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Maghreb_union rdfs:label "Maghreb Union" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+

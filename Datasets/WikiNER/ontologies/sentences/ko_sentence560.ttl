@@ -1,0 +1,135 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence560.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Beneficiary rdfs:label "For" .
+
+translation_coherence:ko_sentence560.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence560" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence560" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:About rdfs:label "about" .
+
+ns1:Of rdfs:label "her",
+        "of" .
+
+ns1:actress_1 rdfs:label "actress" .
+
+ns1:become_1 a ns1:Become ;
+    rdfs:label "became" ;
+    boxer:agent ns1:Pola_negri ;
+    boxer:patient ns1:work_1 .
+
+ns1:docuverse earmark:hasContent "For one of her missions, she wrote an essay about the actress Pola_Negri, which became her first published work."^^xsd:string .
+
+ns1:write_1 a ns1:Write ;
+    rdfs:label "wrote" ;
+    vn.role:Agent ns1:female_1 ;
+    vn.role:Beneficiary ns1:mission_1 ;
+    vn.role:Theme ns1:essay_1 .
+
+ns1:Actress rdfs:label "Pola Negri",
+        "actress" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Become rdfs:label "became" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Essay rdfs:label "essay" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Female rdfs:label "she" .
+
+ns1:First rdfs:label "first" .
+
+ns1:FirstPublishedWork a owl:Class ;
+    rdfs:label "first published work" ;
+    rdfs:subClassOf ns1:PublishedWork .
+
+ns1:Mission rdfs:label "missions" .
+
+ns1:Published a owl:Class ;
+    rdfs:label "published" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:PublishedWork a owl:Class ;
+    rdfs:label "published work" ;
+    dul:hasQuality ns1:Published ;
+    rdfs:subClassOf ns1:Work .
+
+ns1:Work a owl:Class ;
+    rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Write rdfs:label "wrote" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:essay_1 a ns1:Essay ;
+    rdfs:label "essay" ;
+    quant:hasDeterminer quant:an ;
+    ns1:about ns1:Pola_negri .
+
+ns1:mission_1 a ns1:Mission ;
+    rdfs:label "missions" ;
+    dul:hasDataValue "1"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple,
+        quant:one ;
+    ns1:missionOf ns1:female_1 .
+
+ns1:work_1 a ns1:FirstPublishedWork ;
+    rdfs:label "work" ;
+    dul:hasQuality ns1:First ;
+    ns1:firstPublishedWorkOf ns1:female_1 .
+
+ns1:Pola_negri a ns1:Actress ;
+    rdfs:label "Pola Negri",
+        "actress" ;
+    boxer:possibleType owl:Thing ;
+    quant:hasDeterminer quant:the ;
+    owl:sameAs dbpedia:Pola_Negri .
+
+ns1:female_1 a ns1:Female ;
+    rdfs:label "her",
+        "she" ;
+    coref:coref ns1:female_1 .
+

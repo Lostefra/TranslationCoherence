@@ -1,0 +1,209 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence307.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "In" .
+
+vn.role:Location rdfs:label "before" .
+
+translation_coherence:ko_sentence307.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence307" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence307" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of",
+        "their" .
+
+ns1:come_1 a ns1:Come ;
+    rdfs:label "come" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Location ns1:lawyer_1 ;
+    vn.role:Theme ns1:kind_1 .
+
+ns1:docuverse earmark:hasContent "In the spring field, Lincoln sets the majority of their energy to make life practice law, processing all kinds of business that can come before prairie lawyers."^^xsd:string .
+
+ns1:life_1 a ns1:Life ;
+    rdfs:label "life" ;
+    dul:associatedWith ns1:law_1,
+        ns1:practice_1 .
+
+ns1:majority_1 a ns1:Majority ;
+    rdfs:label "majority" ;
+    quant:hasDeterminer quant:the ;
+    ns1:majorityOf ns1:energy_1 .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "make" .
+
+ns1:prairie_1 a ns1:Prairie ;
+    rdfs:label "prairie" ;
+    dul:associatedWith ns1:lawyer_1 .
+
+ns1:process_1 a ns1:Process ;
+    rdfs:label "processing" ;
+    boxer:agent ns1:Lincoln ;
+    boxer:patient ns1:kind_1 .
+
+ns1:set_1 a ns1:Set ;
+    rdfs:label "sets" ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Destination ns1:field_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:kind_1 ;
+    ns1:entails ns1:situation_2 .
+
+ns1:spring_1 a ns1:Spring ;
+    rdfs:label "spring" ;
+    dul:associatedWith ns1:field_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:Business rdfs:label "business" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Come rdfs:label "come" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Energy a owl:Class ;
+    rdfs:label "energy" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> ;
+    owl:equivalentClass dbpedia:Energy_law .
+
+ns1:Field a owl:Class ;
+    rdfs:label "field" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Kind rdfs:label "kinds" .
+
+ns1:Law a owl:Class ;
+    rdfs:label "law" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Law .
+
+ns1:Lawyer rdfs:label "lawyers" .
+
+ns1:LifePracticeLaw a owl:Class ;
+    rdfs:label "life practice law" ;
+    dul:associatedWith ns1:LifePractice ;
+    rdfs:subClassOf ns1:PracticeLaw .
+
+ns1:Majority rdfs:label "majority" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Make rdfs:label "make" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:PracticeLaw a owl:Class ;
+    rdfs:label "practice law" ;
+    dul:associatedWith ns1:Practice ;
+    rdfs:subClassOf ns1:Law .
+
+ns1:Prairie rdfs:label "prairie" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location>,
+        dul:Collection .
+
+ns1:PrairieLawyer rdfs:subClassOf ns1:Lawyer .
+
+ns1:Process rdfs:label "processing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Set rdfs:label "sets" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:SpringField a owl:Class ;
+    rdfs:label "spring field" ;
+    dul:associatedWith ns1:Spring ;
+    rdfs:subClassOf ns1:Field .
+
+ns1:energy_1 a ns1:Energy ;
+    rdfs:label "energy" ;
+    ns1:energyOf ns1:thing_1 .
+
+ns1:practice_1 a ns1:LifePractice ;
+    rdfs:label "practice" ;
+    dul:associatedWith ns1:law_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:business_1,
+        ns1:kind_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "their" .
+
+ns1:Life a owl:Class ;
+    rdfs:label "life" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Life .
+
+ns1:LifePractice a owl:Class ;
+    rdfs:label "life practice" ;
+    dul:associatedWith ns1:Life ;
+    rdfs:subClassOf ns1:Practice .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Practice a owl:Class ;
+    rdfs:label "practice" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Spring a owl:Class ;
+    rdfs:label "spring" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:business_1 a ns1:Business ;
+    rdfs:label "business" .
+
+ns1:field_1 a ns1:SpringField ;
+    rdfs:label "field" .
+
+ns1:law_1 a ns1:LifePracticeLaw ;
+    rdfs:label "law" .
+
+ns1:lawyer_1 a ns1:PrairieLawyer ;
+    rdfs:label "lawyers" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:kind_1 a ns1:Kind ;
+    rdfs:label "kinds" ;
+    quant:hasQuantifier quant:all,
+        quant:multiple ;
+    ns1:kindOf ns1:business_1 .
+

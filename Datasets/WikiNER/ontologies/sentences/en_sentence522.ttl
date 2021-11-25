@@ -1,0 +1,145 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence522.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Egreatest> rdfs:label "greatest" .
+
+vn.role:Predicate rdfs:label "as" .
+
+translation_coherence:en_sentence522.ttl a owl:Ontology ;
+    rdfs:label "en_sentence522" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence522" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:That rdfs:label "that" .
+
+ns1:academy_awards_1 a ns1:Academy_awards ;
+    rdfs:label "Academy Awards" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:characterize_1 a ns1:Characterize ;
+    rdfs:label "characterized" ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Predicate ns1:scheme_1 .
+
+ns1:docuverse earmark:hasContent "He characterized the Academy_Awards as the greatest promotion scheme that any industry ever devised for itself."^^xsd:string .
+
+ns1:industry_1 a ns1:Industry ;
+    rdfs:label "industry" ;
+    quant:hasQuantifier quant:any .
+
+ns1:promotion_1 a ns1:Promotion ;
+    rdfs:label "promotion" ;
+    dul:associatedWith ns1:scheme_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_1 a ns1:Situation ;
+    ns1:entails ns1:situation_2 .
+
+owl:Thing rdfs:label "itself" .
+
+ns1:Academy_awards a owl:Class ;
+    rdfs:label "Academy Awards" ;
+    owl:equivalentClass dbpedia:Academy_Awards .
+
+ns1:Characterize rdfs:label "characterized" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Devise rdfs:label "devised" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Ever rdfs:label "ever" .
+
+ns1:EverDevise rdfs:subClassOf ns1:Devise .
+
+ns1:Greatest a owl:Class ;
+    rdfs:label "greatest" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:GreatestPromotion a owl:Class ;
+    dul:hasQuality ns1:Greatest ;
+    rdfs:subClassOf ns1:Promotion .
+
+ns1:GreatestPromotionScheme a owl:Class ;
+    rdfs:label "greatest promotion scheme" ;
+    dul:associatedWith ns1:GreatestPromotion ;
+    rdfs:subClassOf ns1:PromotionScheme .
+
+ns1:Industry rdfs:label "industry" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Male rdfs:label "He" .
+
+ns1:Scheme a owl:Class ;
+    rdfs:label "scheme" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:devise_1 a ns1:EverDevise ;
+    rdfs:label "devised" ;
+    dul:hasQuality ns1:Ever ;
+    ns1:for ns1:neuter_1 .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "He" .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "itself" .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:scheme_1 .
+
+ns1:Promotion a owl:Class ;
+    rdfs:label "promotion" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:PromotionScheme a owl:Class ;
+    rdfs:label "promotion scheme" ;
+    dul:associatedWith ns1:Promotion ;
+    rdfs:subClassOf ns1:Scheme .
+
+ns1:scheme_1 a ns1:GreatestPromotionScheme,
+        ns1:PromotionScheme ;
+    rdfs:label "scheme" ;
+    ns1:greatestAmong ns1:PromotionScheme ;
+    ns1:that ns1:devise_1 .
+

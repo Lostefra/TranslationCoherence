@@ -1,0 +1,203 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence177.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence177.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence177" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence177" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:During rdfs:label "during" .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:To rdfs:label "to" .
+
+ns1:When rdfs:label "when" .
+
+ns1:docuverse earmark:hasContent "In the 1950s and 1960s, Alabama's politics received national and international attention during the U.S. Civil_Rights_Movement, when the Whites were bureaucratically and sometimes violently opposed to protests for election and social reforms."^^xsd:string .
+
+ns1:receive_1 a ns1:Receive ;
+    rdfs:label "received" ;
+    vn.role:Agent ns1:politics_1 ;
+    vn.role:Theme ns1:attention_1 ;
+    ns1:during ns1:civil_rights_movement_1 ;
+    ns1:in ns1:195x-xx-xx,
+        ns1:196x-xx-xx ;
+    ns1:when ns1:situation_3 .
+
+dbpedia:Alabama a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:Alabama rdfs:label "Alabama" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Alabama .
+
+ns1:Attention a owl:Class ;
+    rdfs:label "attention" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:CivilRightsMovement rdfs:subClassOf dul:Collection .
+
+ns1:Civil_rights_movement a owl:Class ;
+    rdfs:label "Civil Rights Movement" ;
+    rdfs:subClassOf ns1:CivilRightsMovement ;
+    owl:equivalentClass <http://dbpedia.org/resource/African-American_Civil_Rights_Movement_(1954–68)> .
+
+ns1:InternationalAttention a owl:Class ;
+    rdfs:label "international attention" ;
+    dul:hasQuality ns1:International ;
+    rdfs:subClassOf ns1:Attention .
+
+ns1:National rdfs:label "national" .
+
+ns1:Politics a owl:Class ;
+    rdfs:label "politics" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Politics .
+
+ns1:Receive rdfs:label "received" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:SocialReform rdfs:subClassOf ns1:Reform .
+
+<https://w3id.org/stlab/ke/amiala/fi_sentence177.ttl/U.s.> rdfs:label "U.S." ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Whites a owl:Class ;
+    rdfs:label "Whites" ;
+    owl:equivalentClass dbpedia:White,
+        dbpedia:White_people .
+
+ns1:attention_1 a ns1:InternationalAttention ;
+    rdfs:label "attention" ;
+    dul:hasQuality ns1:International,
+        ns1:National .
+
+ns1:civil_rights_movement_1 a ns1:Civil_rights_movement ;
+    rdfs:label "Civil Rights Movement" ;
+    dul:associatedWith <https://w3id.org/stlab/ke/amiala/fi_sentence177.ttl/U.s.> .
+
+ns1:politics_1 a ns1:Politics ;
+    rdfs:label "politics" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:politicsOf ns1:Alabama .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Oppose,
+        ns1:whites_1 ;
+    dul:hasQuality ns1:Bureaucratically,
+        ns1:Violently ;
+    ns1:to ns1:protest_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Oppose,
+        ns1:whites_1 ;
+    dul:hasQuality ns1:Sometimes,
+        ns1:Violently ;
+    ns1:to ns1:protest_1 .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves ns1:Bureaucratically,
+        ns1:Election,
+        ns1:Oppose,
+        ns1:Protest,
+        ns1:Reform,
+        ns1:Social,
+        ns1:Sometimes,
+        ns1:Violently,
+        ns1:election_1,
+        ns1:protest_1,
+        ns1:reform_1,
+        ns1:situation_1,
+        ns1:situation_2 .
+
+ns1:Bureaucratically rdfs:label "bureaucratically" ;
+    owl:sameAs dbpedia:Bureaucracy .
+
+ns1:Election a owl:Class ;
+    rdfs:label "election" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Election .
+
+ns1:International a owl:Class ;
+    rdfs:label "international" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:International_law .
+
+ns1:Protest rdfs:label "protests" .
+
+ns1:Reform rdfs:label "reforms" .
+
+ns1:Social rdfs:label "social" ;
+    owl:sameAs dbpedia:Society .
+
+ns1:Sometimes rdfs:label "sometimes" .
+
+ns1:election_1 a ns1:Election ;
+    rdfs:label "election" .
+
+ns1:reform_1 a ns1:SocialReform ;
+    rdfs:label "reforms" ;
+    dul:hasQuality ns1:Social ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:whites_1 a ns1:Whites ;
+    rdfs:label "Whites" ;
+    dul:hasQuality ns1:Oppose ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Violently rdfs:label "violently" ;
+    owl:sameAs dbpedia:Violence .
+
+ns1:protest_1 a dbpedia:Protest,
+        ns1:Protest ;
+    rdfs:label "protests" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:for ns1:election_1,
+        ns1:reform_1 .
+
+ns1:Oppose rdfs:label "opposed" .
+

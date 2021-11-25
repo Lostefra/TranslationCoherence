@@ -1,0 +1,178 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence140.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:ko_sentence140.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence140" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence140" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:center_1 a ns1:Center ;
+    rdfs:label "center" ;
+    dul:associatedWith ns1:campus_1 .
+
+ns1:center_2 rdfs:label "center" .
+
+ns1:datum_1 a ns1:Datum ;
+    rdfs:label "data" ;
+    dul:associatedWith ns1:campus_1 ;
+    quant:hasQuantifier quant:million,
+        quant:multiple .
+
+ns1:docuverse earmark:hasContent "The_city has still published Bank Wells_Fargo, which includes the main operations of Wachovia and the current local headquarters, operating center campus and  million data center."^^xsd:string .
+
+ns1:include_1 a ns1:Include ;
+    rdfs:label "includes" ;
+    vn.role:Agent ns1:Bank_wells_fargo ;
+    vn.role:Theme ns1:operation_1 .
+
+ns1:operate_1 a ns1:Operate ;
+    rdfs:label "operating" ;
+    vn.role:Patient ns1:campus_1 .
+
+ns1:publish_1 a ns1:StillPublish ;
+    rdfs:label "published" ;
+    dul:hasQuality ns1:Still ;
+    vn.role:Agent ns1:the_city_1 ;
+    vn.role:Product ns1:Bank_wells_fargo .
+
+dbpedia:Carole_King rdfs:subClassOf schema:MusicGroup,
+        schema:Person .
+
+ns1:Campus a owl:Class ;
+    rdfs:label "campus" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:CenterCampus a owl:Class ;
+    rdfs:label "center campus" ;
+    dul:associatedWith ns1:Center ;
+    rdfs:subClassOf ns1:Campus .
+
+ns1:Current rdfs:label "current" .
+
+ns1:CurrentLocalHeadquarters a owl:Class ;
+    rdfs:label "Current Local Headquarters" ;
+    rdfs:subClassOf ns1:LocalHeadquarters .
+
+ns1:Datum rdfs:label "data" .
+
+ns1:DatumCenter rdfs:subClassOf ns1:Center .
+
+ns1:Headquarters a owl:Class ;
+    rdfs:label "headquarters" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Include rdfs:label "includes" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:LocalHeadquarters a owl:Class ;
+    rdfs:label "local headquarters" ;
+    dul:hasQuality ns1:Local ;
+    rdfs:subClassOf ns1:Headquarters .
+
+ns1:Main rdfs:label "main" .
+
+ns1:MainOperation rdfs:subClassOf ns1:Operation .
+
+ns1:Operate rdfs:label "operating" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Operation rdfs:label "operations" .
+
+ns1:Publish rdfs:label "published" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Still rdfs:label "still" .
+
+ns1:StillPublish rdfs:subClassOf ns1:Publish .
+
+ns1:TheCity rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:The_city a owl:Class ;
+    rdfs:label "The city" ;
+    rdfs:subClassOf ns1:TheCity ;
+    owl:equivalentClass dbpedia:Carole_King .
+
+ns1:Wachovia rdfs:label "Wachovia" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Wachovia .
+
+ns1:headquarters_1 a ns1:CurrentLocalHeadquarters ;
+    rdfs:label "headquarters" ;
+    dul:hasQuality ns1:Current,
+        ns1:Local ;
+    quant:hasDeterminer quant:the .
+
+ns1:operation_1 a ns1:MainOperation ;
+    rdfs:label "operations" ;
+    dul:associatedWith ns1:campus_1 ;
+    dul:hasQuality ns1:Main ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:mainOperationOf ns1:Wachovia,
+        ns1:headquarters_1 .
+
+ns1:the_city_1 a ns1:The_city ;
+    rdfs:label "The city" .
+
+ns1:Bank_wells_fargo rdfs:label "Bank Wells Fargo" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Local a owl:Class ;
+    rdfs:label "local" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Center a owl:Class ;
+    rdfs:label "Center",
+        "center" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> ;
+    owl:equivalentClass dbpedia:Data_center .
+
+ns1:campus_1 a ns1:CenterCampus,
+        ns1:DatumCenter ;
+    rdfs:label "campus" ;
+    dul:hasDataValue "1000000"^^xsd:nonNegativeInteger .
+

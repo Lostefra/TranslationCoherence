@@ -1,0 +1,186 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence94.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+foaf:Person rdfs:label "per" .
+
+translation_coherence:en_sentence94.ttl a owl:Ontology ;
+    rdfs:label "en_sentence94" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence94" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:about_1 a ns1:About ;
+    rdfs:label "about" ;
+    dul:hasDataValue "25"^^xsd:nonNegativeInteger ;
+    ns1:per ns1:cent_1 .
+
+ns1:docuverse earmark:hasContent "A 1960 study noted that because of rural domination, A minority of about 25 per cent of the total state population is in majority control of the Alabama_legislature."^^xsd:string .
+
+ns1:majority_1 a ns1:Majority ;
+    rdfs:label "majority" ;
+    dul:associatedWith ns1:control_1 .
+
+ns1:note_1 a ns1:Note ;
+    rdfs:label "noted" ;
+    vn.role:Agent ns1:study_1 ;
+    vn.role:Topic ns1:situation_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:control_1 ;
+    dul:hasQuality ns1:Because .
+
+ns1:state_1 a ns1:State ;
+    rdfs:label "state" ;
+    dul:associatedWith ns1:population_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:About rdfs:label "about" .
+
+ns1:Alabama_legislature rdfs:label "Alabama legislature" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Alabama_Legislature .
+
+ns1:Because rdfs:label "because" .
+
+ns1:Cent rdfs:label "cent" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:Control a owl:Class ;
+    rdfs:label "control" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Domination a owl:Class ;
+    rdfs:label "domination" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:MajorityControl a owl:Class ;
+    rdfs:label "majority control" ;
+    dul:associatedWith ns1:Majority ;
+    rdfs:subClassOf ns1:Control .
+
+ns1:Minority a owl:Class ;
+    rdfs:label "minority" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Minority_group .
+
+ns1:Note rdfs:label "noted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Population a owl:Class ;
+    rdfs:label "population" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:RuralDomination a owl:Class ;
+    rdfs:label "Rural Domination" ;
+    dul:hasQuality ns1:Rural ;
+    rdfs:subClassOf ns1:Domination .
+
+ns1:StatePopulation a owl:Class ;
+    rdfs:label "State Population" ;
+    dul:associatedWith ns1:State ;
+    rdfs:subClassOf ns1:Population .
+
+ns1:Study rdfs:label "study" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Total a owl:Class ;
+    rdfs:label "total" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:TotalState a owl:Class ;
+    dul:hasQuality ns1:Total ;
+    rdfs:subClassOf ns1:State .
+
+ns1:TotalStatePopulation a owl:Class ;
+    rdfs:label "total state population" ;
+    dul:associatedWith ns1:TotalState ;
+    rdfs:subClassOf ns1:StatePopulation .
+
+ns1:minority_1 a ns1:Minority ;
+    rdfs:label "minority" ;
+    quant:hasDeterminer quant:a ;
+    ns1:inMajorityControlOf ns1:Alabama_legislature ;
+    ns1:minorityOf ns1:population_1,
+        "25"^^xsd:nonNegativeInteger .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:cent_1,
+        ns1:control_1,
+        ns1:domination_1,
+        ns1:minority_1,
+        "25"^^xsd:nonNegativeInteger ;
+    ns1:situationOf ns1:domination_1 .
+
+ns1:study_1 a ns1:Study ;
+    rdfs:label "study" ;
+    quant:hasDeterminer quant:a ;
+    ns1:at "1960-01-01"^^xsd:date .
+
+ns1:Majority a owl:Class ;
+    rdfs:label "majority" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Rural a owl:Class ;
+    rdfs:label "rural" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:cent_1 a ns1:Cent ;
+    rdfs:label "cent" .
+
+ns1:domination_1 a ns1:RuralDomination ;
+    rdfs:label "domination" ;
+    dul:hasQuality ns1:Rural .
+
+ns1:population_1 a ns1:TotalStatePopulation ;
+    rdfs:label "population" .
+
+ns1:State a owl:Class ;
+    rdfs:label "state" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:control_1 a ns1:MajorityControl ;
+    rdfs:label "control" .
+

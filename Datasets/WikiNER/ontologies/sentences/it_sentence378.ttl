@@ -1,0 +1,161 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix fred: <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence378.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fred: rdfs:label ":"^^xsd:string .
+
+translation_coherence:it_sentence378.ttl a owl:Ontology ;
+    rdfs:label "it_sentence378" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence378" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:More rdfs:label "more" .
+
+ns1:Of rdfs:label "my" .
+
+ns1:Than rdfs:label "than" .
+
+ns1:docuverse earmark:hasContent "Lincoln said later: I have never, in my life, felt more confident that I was doing well, than I do not sign this paper."^^xsd:string .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "said" ;
+    boxing:declaration ns1:situation_1 ;
+    dul:hasQuality ns1:Later ;
+    vn.role:Agent ns1:Lincoln .
+
+ns1:Confident rdfs:label "confident" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Feel rdfs:label "felt" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Later rdfs:label "later" .
+
+ns1:Life rdfs:label "life" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Never rdfs:label "never" .
+
+ns1:Paper rdfs:label "paper" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Say rdfs:label "said" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:confident_1 a ns1:Confident ;
+    rdfs:label "confident" ;
+    boxer:agent ns1:person_2 ;
+    boxer:theme ns1:do_1 ;
+    ns1:more ns1:thing_1 ;
+    ns1:than ns1:sign_1 .
+
+ns1:feel_1 a ns1:Feel ;
+    rdfs:label "felt" ;
+    vn.role:Agent ns1:person_2 .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "have" ;
+    dul:hasQuality ns1:Never ;
+    vn.role:Agent ns1:person_2 ;
+    ns1:in ns1:life_1 .
+
+ns1:life_1 a ns1:Life ;
+    rdfs:label "life" ;
+    ns1:lifeOf ns1:person_1 .
+
+ns1:paper_1 a ns1:Paper ;
+    rdfs:label "paper" ;
+    quant:hasDeterminer quant:this .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "my" .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:person_4 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Do,
+        ns1:Sign,
+        ns1:Well,
+        ns1:confident_1,
+        ns1:do_1,
+        ns1:feel_1,
+        ns1:have_1,
+        ns1:sign_1 .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:Do rdfs:label "Do",
+        "doing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Sign rdfs:label "sign" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Well rdfs:label "well" .
+
+ns1:do_1 a ns1:Do ;
+    rdfs:label "doing" ;
+    boxer:agent ns1:person_3 ;
+    dul:hasQuality ns1:Well .
+
+ns1:sign_1 a ns1:Sign ;
+    rdfs:label "sign" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:person_4 ;
+    vn.role:Theme ns1:paper_1 .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:Person rdfs:label "I" .
+

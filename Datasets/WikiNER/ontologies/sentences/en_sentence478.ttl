@@ -1,0 +1,122 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence478.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Destination rdfs:label "including" .
+
+translation_coherence:en_sentence478.ttl a owl:Ontology ;
+    rdfs:label "en_sentence478" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence478" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:First rdfs:label "first" .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "Arthur_Fiedler and the Boston_Pops_Orchestra recorded the work for RCA Victor, including one of the first stereo recordings of the music."^^xsd:string .
+
+ns1:record_1 a dbpedia:Sound_recording_and_reproduction,
+        ns1:Record ;
+    rdfs:label "recorded" ;
+    vn.role:Agent ns1:Arthur_fiedler,
+        ns1:Boston_pops_orchestra ;
+    vn.role:Destination ns1:recording_1 ;
+    vn.role:Theme ns1:work_1 .
+
+ns1:stereo_1 a ns1:Stereo ;
+    rdfs:label "stereo" ;
+    dul:associatedWith ns1:recording_1 ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:one .
+
+dbpedia:RCA_Records a schema:Organization .
+
+ns1:Arthur_fiedler rdfs:label "Arthur Fiedler" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Arthur_Fiedler .
+
+ns1:Boston_pops_orchestra rdfs:label "Boston Pops Orchestra" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Boston_Pops_Orchestra .
+
+ns1:FirstStereoRecording rdfs:subClassOf ns1:StereoRecording .
+
+ns1:Music rdfs:label "music" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Rca_victor rdfs:label "RCA Victor" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:RCA_Records .
+
+ns1:Record rdfs:label "recorded" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Recording rdfs:label "recordings" .
+
+ns1:Stereo a owl:Class ;
+    rdfs:label "stereo" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Stereophonic_sound .
+
+ns1:StereoRecording rdfs:subClassOf ns1:Recording .
+
+ns1:Work rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:music_1 a ns1:Music ;
+    rdfs:label "music" ;
+    quant:hasDeterminer quant:the .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "work" ;
+    quant:hasDeterminer quant:the ;
+    ns1:for ns1:Rca_victor .
+
+ns1:recording_1 a dbpedia:Sound_recording_and_reproduction,
+        ns1:FirstStereoRecording ;
+    rdfs:label "recordings" ;
+    dul:hasDataValue "1"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:firstStereoRecordingOf ns1:music_1 .
+

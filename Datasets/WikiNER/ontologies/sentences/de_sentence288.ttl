@@ -1,0 +1,117 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence288.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence288.ttl a owl:Ontology ;
+    rdfs:label "de_sentence288" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence288" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" ;
+    owl:sameAs dbpedia:Robert_Todd_Lincoln .
+
+ns1:Of rdfs:label "'s",
+        "his" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:die_1 a ns1:Die ;
+    rdfs:label "died" ;
+    vn.role:Theme ns1:enlargement_1,
+        ns1:his_1 ;
+    ns1:in "1985-12-01"^^xsd:date .
+
+ns1:docuverse earmark:hasContent "His (and through enlargement, his father 's) last known relatives, Robert_Todd_Lincoln Beck, died in December 1985."^^xsd:string .
+
+ns1:know_1 a ns1:Know ;
+    rdfs:label "known" ;
+    vn.role:Theme ns1:relative_1 .
+
+ns1:Die rdfs:label "died" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Enlargement a owl:Class ;
+    rdfs:label "enlargement" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Father rdfs:label "father" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:His rdfs:label "His" .
+
+ns1:Know rdfs:label "known" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Last rdfs:label "last" .
+
+ns1:Relative rdfs:label "relatives" .
+
+ns1:Robert_todd_lincoln_beck rdfs:label "Robert Todd Lincoln Beck" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Through rdfs:label "through" .
+
+ns1:ThroughEnlargement a owl:Class ;
+    rdfs:label "Through Enlargement" ;
+    rdfs:subClassOf ns1:Enlargement .
+
+ns1:enlargement_1 a ns1:ThroughEnlargement ;
+    rdfs:label "enlargement" ;
+    dul:associatedWith ns1:relative_1 ;
+    dul:hasQuality ns1:Through .
+
+ns1:father_1 a ns1:Father ;
+    rdfs:label "father" ;
+    ns1:fatherOf ns1:male_1 .
+
+ns1:his_1 a ns1:His ;
+    rdfs:label "His" ;
+    dul:associatedWith ns1:relative_1 .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "his" .
+
+ns1:relative_1 a ns1:Relative ;
+    rdfs:label "relatives" ;
+    dul:associatedWith ns1:Robert_todd_lincoln_beck ;
+    dul:hasQuality ns1:Last ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:relativeOf ns1:father_1 .
+

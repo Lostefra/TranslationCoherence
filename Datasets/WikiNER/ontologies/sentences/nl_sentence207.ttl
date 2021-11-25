@@ -1,0 +1,151 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence207.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Destination rdfs:label "to" .
+
+translation_coherence:nl_sentence207.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence207" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence207" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Noteq rdfs:label "other" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:With rdfs:label "with" .
+
+ns1:agree_1 a ns1:Agree ;
+    rdfs:label "agreed" ;
+    vn.role:Actor ns1:Agamnon .
+
+ns1:docuverse earmark:hasContent "Agamnon agreed and sent Odysseus and two other staff chiefs, Ajax and Phoenix, to Achilles with the offer of Briseis and other gifts."^^xsd:string .
+
+ns1:gift_1 a ns1:Gift ;
+    rdfs:label "other" ;
+    owl:differentFrom ns1:gift_2 .
+
+ns1:offer_1 a ns1:Offer ;
+    rdfs:label "offer" ;
+    quant:hasDeterminer quant:the .
+
+ns1:send_1 a ns1:Send ;
+    rdfs:label "sent" ;
+    vn.role:Agent ns1:Agamnon ;
+    vn.role:Destination ns1:achille_1 ;
+    vn.role:Theme ns1:Odysseus,
+        ns1:chief_1 .
+
+ns1:staff_1 a ns1:Staff ;
+    rdfs:label "staff" ;
+    dul:associatedWith ns1:chief_2 ;
+    quant:hasDeterminer quant:other ;
+    quant:hasQuantifier quant:two .
+
+ns1:Achille a owl:Class ;
+    rdfs:label "Achilles" ;
+    owl:equivalentClass dbpedia:Achilles .
+
+ns1:Agree rdfs:label "agreed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Briseis rdfs:label "Briseis" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Briseis .
+
+ns1:Odysseus rdfs:label "Odysseus" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:Ajax,
+        ns1:Phoenix ;
+    owl:sameAs dbpedia:Odysseus .
+
+ns1:Offer rdfs:label "offer" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Send rdfs:label "sent" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Staff rdfs:label "staff" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:StaffChief rdfs:subClassOf ns1:Chief .
+
+ns1:achille_1 a ns1:Achille ;
+    rdfs:label "Achilles" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:withOfferOf ns1:Briseis .
+
+ns1:chief_1 a ns1:Chief ;
+    rdfs:label "other" ;
+    dul:associatedWith ns1:Ajax,
+        ns1:Phoenix ;
+    dul:hasDataValue "2"^^xsd:nonNegativeInteger ;
+    owl:differentFrom ns1:chief_2 .
+
+ns1:gift_2 a ns1:Gift ;
+    rdfs:label "gifts" ;
+    quant:hasDeterminer quant:other ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Agamnon rdfs:label "Agamnon" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Ajax rdfs:label "Ajax" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Ajax_(mythology) .
+
+ns1:Chief rdfs:label "chiefs",
+        "other" .
+
+ns1:Gift rdfs:label "gifts",
+        "other" .
+
+ns1:Phoenix rdfs:label "Phoenix" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Phoenix_(mythology) .
+
+ns1:chief_2 a ns1:StaffChief ;
+    rdfs:label "chiefs" ;
+    quant:hasQuantifier quant:multiple .
+

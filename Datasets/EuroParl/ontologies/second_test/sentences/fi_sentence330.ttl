@@ -1,0 +1,172 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence330.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence330.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence330" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence330" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Very rdfs:label "very" .
+
+ns1:aggravate_1 a ns1:Aggravate ;
+    rdfs:label "aggravates" ;
+    vn.role:Cause ns1:lack_1 ;
+    vn.role:Experiencer ns1:deportation_1 .
+
+ns1:docuverse earmark:hasContent "This lack of infrastructure and services networks and, in general, a very low employment rate, which is seasonal and lacks diversity, aggravates rural deportation."^^xsd:string .
+
+ns1:employment_1 a ns1:Employment ;
+    rdfs:label "employment" ;
+    dul:associatedWith ns1:rate_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:lack_2 a ns1:Lack ;
+    rdfs:label "lacks" ;
+    boxer:agent ns1:rate_1 ;
+    boxer:patient ns1:diversity_1 .
+
+ns1:network_1 rdfs:label "networks" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:service_1 a ns1:Service ;
+    rdfs:label "services" ;
+    dul:associatedWith ns1:infrastructure_1 ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Aggravate rdfs:label "aggravates" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Deportation a owl:Class ;
+    rdfs:label "deportation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Diversity rdfs:label "diversity" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:EmploymentRate a owl:Class ;
+    rdfs:label "Employment Rate" ;
+    dul:associatedWith ns1:Employment ;
+    rdfs:subClassOf ns1:Rate .
+
+ns1:General rdfs:label "general" .
+
+ns1:Infrastructure a owl:Class ;
+    rdfs:label "infrastructure" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Infrastructure .
+
+ns1:Low a owl:Class ;
+    rdfs:label "low" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:LowEmploymentRate a owl:Class ;
+    rdfs:label "Low Employment Rate" ;
+    dul:associatedWith ns1:LowEmployment ;
+    rdfs:subClassOf ns1:EmploymentRate .
+
+ns1:Network rdfs:label "networks" .
+
+ns1:Rate a owl:Class ;
+    rdfs:label "rate" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:RuralDeportation a owl:Class ;
+    rdfs:label "Rural Deportation" ;
+    dul:hasQuality ns1:Rural ;
+    rdfs:subClassOf ns1:Deportation .
+
+ns1:Seasonal rdfs:label "seasonal" .
+
+ns1:Service rdfs:label "services" .
+
+ns1:ServiceNetwork rdfs:subClassOf ns1:Network .
+
+ns1:VeryLowEmployment a owl:Class ;
+    rdfs:subClassOf ns1:LowEmployment .
+
+ns1:VeryLowEmploymentRate a owl:Class ;
+    rdfs:label "very low employment rate" ;
+    dul:associatedWith ns1:VeryLowEmployment ;
+    rdfs:subClassOf ns1:LowEmploymentRate .
+
+ns1:deportation_1 a ns1:RuralDeportation ;
+    rdfs:label "deportation" ;
+    dul:hasQuality ns1:Rural .
+
+ns1:diversity_1 a ns1:Diversity ;
+    rdfs:label "diversity" .
+
+ns1:lack_1 a ns1:Lack ;
+    rdfs:label "lack" ;
+    dul:associatedWith ns1:rate_1 ;
+    dul:hasQuality ns1:General ;
+    quant:hasDeterminer quant:this ;
+    ns1:lackOf ns1:infrastructure_1 .
+
+ns1:Lack rdfs:label "lack",
+        "lacks" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:LowEmployment a owl:Class ;
+    dul:hasQuality ns1:Low ;
+    rdfs:subClassOf ns1:Employment .
+
+ns1:Rural a owl:Class ;
+    rdfs:label "rural" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:infrastructure_1 a ns1:Infrastructure,
+        ns1:ServiceNetwork ;
+    rdfs:label "infrastructure" .
+
+ns1:Employment a owl:Class ;
+    rdfs:label "employment" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Employment .
+
+ns1:rate_1 a ns1:VeryLowEmploymentRate ;
+    rdfs:label "rate" ;
+    dul:hasQuality ns1:Seasonal .
+

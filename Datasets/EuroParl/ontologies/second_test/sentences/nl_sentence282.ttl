@@ -1,0 +1,165 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence282.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence282.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence282" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence282" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "been" .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Theme rdfs:label "necessary" .
+
+ns1:docuverse earmark:hasContent "We regret that the European_Committee_for_Standardisation has not been able, in the required time, to the amendment of the supplies necessary for the required harmony in Europe."^^xsd:string .
+
+ns1:european_committee_for_standardisation_1 rdfs:label "European Committee for Standardisation" .
+
+ns1:regret_1 a ns1:Regret ;
+    rdfs:label "regret" ;
+    vn.role:Experiencer ns1:person_1 ;
+    vn.role:Theme ns1:able_1 .
+
+ns1:require_1 a ns1:Require ;
+    rdfs:label "required" ;
+    vn.role:Patient ns1:harmony_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves ns1:Europe,
+        ns1:able_1,
+        ns1:able_2,
+        ns1:amendment_1,
+        ns1:harmony_1,
+        ns1:supplies_1,
+        ns1:thing_1,
+        ns1:time_1 .
+
+dbpedia:Europe a schema:Continent,
+        schema:Place .
+
+ns1:European_committee_for_standardisation a owl:Class ;
+    rdfs:label "European Committee for Standardisation" ;
+    rdfs:subClassOf ns1:Amendment ;
+    owl:equivalentClass dbpedia:European_Committee_for_Standardization .
+
+ns1:Harmony a owl:Class ;
+    rdfs:label "harmony" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Harmony .
+
+ns1:Person rdfs:label "We" .
+
+ns1:Regret rdfs:label "regret" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Require rdfs:label "required" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Required a owl:Class ;
+    rdfs:label "required" .
+
+ns1:RequiredTime a owl:Class ;
+    rdfs:label "Required Time" ;
+    dul:associatedWith ns1:Time ;
+    dul:hasModality ns1:Required ;
+    rdfs:subClassOf ns1:Time .
+
+ns1:Supplies rdfs:label "supplies" .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "We" .
+
+ns1:thing_1 a owl:Thing ;
+    boxer:theme ns1:supplies_1 ;
+    ns1:for ns1:harmony_1 .
+
+ns1:Able rdfs:label "able" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Amendment rdfs:label "amendment" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Europe rdfs:label "Europe" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Europe .
+
+ns1:Time a owl:Class ;
+    rdfs:label "time" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Time .
+
+ns1:able_1 a ns1:Able ;
+    boxer:agent ns1:amendment_1 ;
+    boxer:theme ns1:able_2 ;
+    boxing:hasTruthValue boxing:False ;
+    ns1:in ns1:time_1 .
+
+ns1:able_2 a ns1:Able ;
+    rdfs:label "able" ;
+    boxer:agent ns1:amendment_1 ;
+    ns1:in ns1:time_1 .
+
+ns1:amendment_1 a ns1:Amendment,
+        ns1:European_committee_for_standardisation ;
+    rdfs:label "amendment" ;
+    quant:hasDeterminer quant:the ;
+    ns1:amendmentOf ns1:supplies_1 .
+
+ns1:harmony_1 a ns1:Harmony ;
+    rdfs:label "harmony" ;
+    quant:hasDeterminer quant:the ;
+    ns1:locatedIn ns1:Europe .
+
+ns1:supplies_1 a ns1:Supplies ;
+    rdfs:label "supplies" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:time_1 a ns1:RequiredTime ;
+    rdfs:label "time" ;
+    quant:hasDeterminer quant:the .
+

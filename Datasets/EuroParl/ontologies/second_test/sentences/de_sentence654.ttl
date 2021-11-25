@@ -1,0 +1,174 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix fred: <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence654.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fred: rdfs:label ":"^^xsd:string .
+
+vn.role:Destination rdfs:label "to" .
+
+vn.role:Source rdfs:label "in" .
+
+translation_coherence:de_sentence654.ttl a owl:Ontology ;
+    rdfs:label "de_sentence654" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence654" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In" .
+
+ns1:Noteq rdfs:label "other" .
+
+ns1:Of rdfs:label "my",
+        "of" .
+
+ns1:coup_1 a ns1:Coup ;
+    rdfs:label "coup" ;
+    dul:associatedWith ns1:chapeau_1,
+        ns1:d%27e_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:docuverse earmark:hasContent "In this context, French speakers would speak of a coup d'e chapeau: in other words I will take my hate to the EU."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Eu,
+        ns1:chapeau_1,
+        ns1:context_1,
+        ns1:hate_1,
+        ns1:person_1,
+        ns1:speak_1,
+        ns1:take_1,
+        ns1:word_1,
+        ns1:word_2 ;
+    ns1:in ns1:context_1 .
+
+dbpedia:French_language a schema:Language .
+
+ns1:Chapeau rdfs:label "chapeau" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Context rdfs:label "context" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Coup rdfs:label "coup" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:CoupD%27e rdfs:subClassOf ns1:D%27e .
+
+ns1:CoupD%27eChapeau rdfs:subClassOf ns1:D%27eChapeau .
+
+ns1:D%27e rdfs:label "d'e" .
+
+ns1:D%27eChapeau rdfs:subClassOf ns1:Chapeau .
+
+ns1:French rdfs:label "French" ;
+    owl:sameAs dbpedia:French_language .
+
+ns1:FrenchSpeaker rdfs:subClassOf ns1:Speaker .
+
+ns1:Hate rdfs:label "hate" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Speak rdfs:label "speak" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Speaker rdfs:label "speakers" .
+
+ns1:Take rdfs:label "take" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:d%27e_1 a ns1:CoupD%27e ;
+    rdfs:label "d'e" ;
+    dul:associatedWith ns1:chapeau_1 .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:speak_1 a ns1:Speak ;
+    rdfs:label "speak" ;
+    boxing:declaration ns1:take_1 ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:speaker_1 ;
+    ns1:speakOf ns1:chapeau_1 .
+
+ns1:speaker_1 a ns1:FrenchSpeaker ;
+    rdfs:label "speakers" ;
+    dul:hasQuality ns1:French ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Eu rdfs:label "EU" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:European_Union .
+
+ns1:Person rdfs:label "I" .
+
+ns1:Word rdfs:label "other",
+        "words" .
+
+ns1:context_1 a ns1:Context ;
+    rdfs:label "context" ;
+    quant:hasDeterminer quant:this .
+
+ns1:hate_1 a ns1:Hate ;
+    rdfs:label "hate" ;
+    ns1:hateOf ns1:person_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "my" .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "take" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Destination ns1:Eu ;
+    vn.role:Source ns1:word_1 ;
+    vn.role:Theme ns1:hate_1 .
+
+ns1:word_1 a ns1:Word ;
+    rdfs:label "other" ;
+    owl:differentFrom ns1:word_2 .
+
+ns1:word_2 a ns1:Word ;
+    rdfs:label "words" ;
+    quant:hasDeterminer quant:other ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:chapeau_1 a ns1:CoupD%27eChapeau ;
+    rdfs:label "chapeau" .
+

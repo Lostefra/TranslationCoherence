@@ -1,0 +1,160 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence462.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme rdfs:label "with" .
+
+translation_coherence:en_sentence462.ttl a owl:Ontology ;
+    rdfs:label "en_sentence462" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence462" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:When rdfs:label "when" ;
+    owl:sameAs dbpedia:When_We_On .
+
+ns1:docuverse earmark:hasContent "The report itself is well-intentioned but, as so often when we deal with these issues, lacks clarity of purpose and a sound basis for operability."^^xsd:string .
+
+ns1:lack_1 a ns1:Lack ;
+    rdfs:label "lacks" ;
+    boxer:agent ns1:report_1 ;
+    boxer:patient ns1:clarity_1 .
+
+ns1:neuter_1 coref:coref ns1:report_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Report,
+        ns1:report_1 ;
+    ns1:when ns1:deal_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Report,
+        ns1:report_1 ;
+    dul:hasQuality ns1:As,
+        ns1:Often,
+        ns1:So ;
+    ns1:when ns1:deal_1 .
+
+owl:Thing rdfs:label "itself" ;
+    rdfs:subClassOf ns1:Report .
+
+ns1:As rdfs:label "as" .
+
+ns1:Basis a owl:Class ;
+    rdfs:label "basis" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Clarity rdfs:label "clarity" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Deal rdfs:label "deal" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Issue rdfs:label "issues" .
+
+ns1:Lack rdfs:label "lacks" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Often rdfs:label "often" .
+
+ns1:Operability rdfs:label "operability" .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Purpose rdfs:label "purpose" ;
+    rdfs:subClassOf dul:Goal .
+
+ns1:So rdfs:label "so" .
+
+ns1:Sound a owl:Class ;
+    rdfs:label "sound" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SoundBasis a owl:Class ;
+    rdfs:label "Sound Basis" ;
+    dul:hasQuality ns1:Sound ;
+    rdfs:subClassOf ns1:Basis .
+
+ns1:Well-intentioned rdfs:label "well-intentioned" .
+
+ns1:basis_1 a ns1:SoundBasis ;
+    rdfs:label "basis" ;
+    quant:hasDeterminer quant:a ;
+    ns1:for ns1:operability_1 .
+
+ns1:clarity_1 a ns1:Clarity ;
+    rdfs:label "clarity" ;
+    ns1:clarityOf ns1:basis_1,
+        ns1:purpose_1 .
+
+ns1:issue_1 a ns1:Issue ;
+    rdfs:label "issues" ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:operability_1 a ns1:Operability ;
+    rdfs:label "operability" .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:purpose_1 a ns1:Purpose ;
+    rdfs:label "purpose" .
+
+ns1:deal_1 a ns1:Deal ;
+    rdfs:label "deal" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:issue_1 .
+
+ns1:Report rdfs:label "report" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:report_1 a owl:Thing,
+        ns1:Report ;
+    rdfs:label "itself",
+        "report" ;
+    dul:hasQuality ns1:Well-intentioned ;
+    quant:hasDeterminer quant:the .
+

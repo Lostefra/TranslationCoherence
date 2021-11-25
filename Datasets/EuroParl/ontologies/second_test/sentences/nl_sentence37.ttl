@@ -1,0 +1,161 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence37.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence37.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence37" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence37" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Rel rdfs:label "," .
+
+ns1:That rdfs:label "that" .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "Madam President, can you tell me why this parliament doesn't keep itself to health and security law that it's really going to pass?"^^xsd:string .
+
+ns1:law_1 rdfs:label "law" .
+
+ns1:security_1 a ns1:Security ;
+    rdfs:label "security" ;
+    dul:associatedWith ns1:health_1 .
+
+ns1:tell_1 a ns1:Tell ;
+    rdfs:label "tell" ;
+    dul:associatedWith ns1:President ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Recipient ns1:person_2 ;
+    vn.role:Topic ns1:keep_1 .
+
+ns1:Go rdfs:label "going" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Health rdfs:label "health" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Keep rdfs:label "keep" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Law a owl:Class ;
+    rdfs:label "law" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Madam rdfs:label "Madam" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Parliament a owl:Class ;
+    rdfs:label "parliament" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Parliament .
+
+ns1:Pass rdfs:label "pass" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:President rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith ns1:Madam ;
+    owl:sameAs dbpedia:President .
+
+ns1:Really rdfs:label "really" .
+
+ns1:ReallyGo rdfs:subClassOf ns1:Go .
+
+ns1:Reason rdfs:label "why" .
+
+ns1:SecurityLaw a owl:Class ;
+    rdfs:label "Security Law" ;
+    dul:associatedWith ns1:Security ;
+    rdfs:subClassOf ns1:Law .
+
+ns1:Tell a owl:Class ;
+    rdfs:label "tell" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:You_Tell_Me_Why .
+
+ns1:go_1 a ns1:ReallyGo ;
+    rdfs:label "going" ;
+    boxer:theme ns1:pass_1 ;
+    boxing:hasTruthValue boxing:False ;
+    dul:hasQuality ns1:Really ;
+    vn.role:Theme ns1:neuter_1 .
+
+ns1:keep_1 a ns1:Keep ;
+    rdfs:label "keep" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:parliament_1 ;
+    vn.role:Location ns1:reason_1 ;
+    vn.role:Theme ns1:neuter_1 ;
+    ns1:to ns1:health_1 .
+
+ns1:parliament_1 a ns1:Parliament ;
+    rdfs:label "parliament" ;
+    quant:hasDeterminer quant:this .
+
+ns1:pass_1 a ns1:Pass ;
+    rdfs:label "pass" ;
+    vn.role:Theme ns1:neuter_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "you" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "me" .
+
+ns1:reason_1 a ns1:Reason ;
+    rdfs:label "why" .
+
+owl:Thing rdfs:label "itself" .
+
+ns1:Person rdfs:label "me",
+        "you" .
+
+ns1:Security a owl:Class ;
+    rdfs:label "security" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:health_1 a ns1:Health,
+        ns1:SecurityLaw ;
+    rdfs:label "health" ;
+    ns1:that ns1:go_1 .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "itself" .
+

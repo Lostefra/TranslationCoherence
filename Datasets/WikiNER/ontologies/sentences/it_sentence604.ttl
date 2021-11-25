@@ -1,0 +1,116 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence604.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme rdfs:label "in" .
+
+translation_coherence:it_sentence604.ttl a owl:Ontology ;
+    rdfs:label "it_sentence604" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence604" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "A heavy smoker, Rand suffered surgery for lung cancer in 1974."^^xsd:string .
+
+ns1:lung_1 a ns1:Lung ;
+    rdfs:label "lung" ;
+    dul:associatedWith ns1:cancer_1 .
+
+ns1:suffer_1 a ns1:Suffer ;
+    rdfs:label "suffered" ;
+    vn.role:Experiencer ns1:smoker_1 ;
+    vn.role:Predicate ns1:surgery_1 ;
+    vn.role:Theme "1974-01-01"^^xsd:date .
+
+ns1:Cancer a owl:Class ;
+    rdfs:label "cancer" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Heavy a owl:Class ;
+    rdfs:label "heavy" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:HeavySmoker a owl:Class ;
+    rdfs:label "heavy smoker" ;
+    dul:hasQuality ns1:Heavy ;
+    rdfs:subClassOf ns1:Smoker ;
+    owl:equivalentClass dbpedia:Tobacco_smoking .
+
+ns1:LungCancer a owl:Class ;
+    rdfs:label "lung cancer" ;
+    dul:associatedWith ns1:Lung ;
+    rdfs:subClassOf ns1:Cancer ;
+    owl:equivalentClass dbpedia:Lung_cancer .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType time:Interval .
+
+ns1:Smoker a owl:Class ;
+    rdfs:label "smoker" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Tobacco_smoking .
+
+ns1:Suffer rdfs:label "suffered" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Surgery a owl:Class ;
+    rdfs:label "surgery" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Surgery .
+
+ns1:smoker_1 a ns1:HeavySmoker ;
+    rdfs:label "smoker" ;
+    dul:associatedWith ns1:Rand ;
+    quant:hasDeterminer quant:a .
+
+ns1:surgery_1 a ns1:Surgery ;
+    rdfs:label "surgery" ;
+    ns1:for ns1:cancer_1 .
+
+ns1:Lung a owl:Class ;
+    rdfs:label "lung" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:cancer_1 a ns1:LungCancer ;
+    rdfs:label "cancer" .
+

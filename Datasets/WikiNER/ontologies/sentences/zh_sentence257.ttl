@@ -1,0 +1,114 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence257.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme rdfs:label "in" .
+
+translation_coherence:zh_sentence257.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence257" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence257" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:destroy_1 a ns1:Destroy ;
+    rdfs:label "destroying" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Patient ns1:Tentaffair .
+
+ns1:docuverse earmark:hasContent "Lincoln succeeded in destroying Tentaffair, the marks of the 1861 British war."^^xsd:string .
+
+ns1:succeed_1 a ns1:Succeed ;
+    rdfs:label "succeeded" ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Theme ns1:thing_1 .
+
+dbpedia:British_Empire rdfs:subClassOf schema:Country,
+        schema:Place .
+
+<http://dbpedia.org/resource/Lincoln,_England> a schema:City,
+        schema:Place .
+
+ns1:BritishWar a owl:Class ;
+    rdfs:label "British war" ;
+    dul:hasQuality ns1:British ;
+    rdfs:subClassOf ns1:War .
+
+ns1:Destroy rdfs:label "destroying" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs <http://dbpedia.org/resource/Lincoln,_England> .
+
+ns1:Mark rdfs:label "marks" .
+
+ns1:Succeed rdfs:label "succeeded" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Tentaffair rdfs:label "Tentaffair" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:mark_1 .
+
+ns1:War a owl:Class ;
+    rdfs:label "war" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:mark_1 a ns1:Mark ;
+    rdfs:label "marks" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:markOf ns1:war_1 .
+
+ns1:war_1 a ns1:BritishWar ;
+    rdfs:label "war" ;
+    dul:hasQuality ns1:British ;
+    quant:hasDeterminer quant:the ;
+    ns1:at "1861-01-01"^^xsd:date .
+
+ns1:British a owl:Class ;
+    rdfs:label "British" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:British_Empire .
+
+ns1:thing_1 a owl:Thing .
+

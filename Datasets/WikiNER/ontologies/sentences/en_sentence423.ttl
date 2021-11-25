@@ -1,0 +1,164 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence423.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:en_sentence423.ttl a owl:Ontology ;
+    rdfs:label "en_sentence423" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence423" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:docuverse earmark:hasContent "Lacking a formal education, Lincoln 's personal philosophy was shaped by an amazingly retentive memory and a passion for reading and learning."^^xsd:string .
+
+ns1:lack_1 a ns1:Lack ;
+    rdfs:label "Lacking" ;
+    boxer:agent ns1:thing_1 ;
+    boxer:patient ns1:education_1 .
+
+ns1:learning_1 rdfs:label "learning" .
+
+ns1:shape_1 a ns1:Shape ;
+    rdfs:label "shaped" ;
+    vn.role:Agent ns1:memory_1,
+        ns1:passion_1 ;
+    vn.role:Theme ns1:philosophy_1 .
+
+ns1:Amazingly rdfs:label "amazingly" .
+
+ns1:AmazinglyRetentiveMemory a owl:Class ;
+    rdfs:label "amazingly retentive memory" ;
+    rdfs:subClassOf ns1:RetentiveMemory .
+
+ns1:Education a owl:Class ;
+    rdfs:label "education" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Education .
+
+ns1:Formal a owl:Class ;
+    rdfs:label "formal" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FormalEducation a owl:Class ;
+    rdfs:label "Formal Education" ;
+    dul:hasQuality ns1:Formal ;
+    rdfs:subClassOf ns1:Education ;
+    owl:equivalentClass dbpedia:Education .
+
+ns1:Lack rdfs:label "Lacking" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Learning a owl:Class ;
+    rdfs:label "learning" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> ;
+    owl:equivalentClass dbpedia:Learning .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Memory a owl:Class ;
+    rdfs:label "memory" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Memory .
+
+ns1:Passion a owl:Class ;
+    rdfs:label "passion" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> ;
+    owl:equivalentClass dbpedia:Passion_(emotion) .
+
+ns1:Personal a owl:Class ;
+    rdfs:label "personal" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:PersonalPhilosophy a owl:Class ;
+    rdfs:label "personal philosophy" ;
+    dul:hasQuality ns1:Personal ;
+    rdfs:subClassOf ns1:Philosophy .
+
+ns1:Philosophy a owl:Class ;
+    rdfs:label "philosophy" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Philosophy .
+
+ns1:Reading a owl:Class ;
+    rdfs:label "reading" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> ;
+    owl:equivalentClass dbpedia:Reading_(process) .
+
+ns1:Retentive a owl:Class ;
+    rdfs:label "retentive" ;
+    dul:hasQuality ns1:Amazingly ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:RetentiveMemory a owl:Class ;
+    rdfs:label "Retentive Memory" ;
+    dul:hasQuality ns1:Retentive ;
+    rdfs:subClassOf ns1:Memory .
+
+ns1:Shape rdfs:label "shaped" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:education_1 a ns1:FormalEducation ;
+    rdfs:label "education" ;
+    quant:hasDeterminer quant:a .
+
+ns1:memory_1 a ns1:AmazinglyRetentiveMemory ;
+    rdfs:label "memory" ;
+    quant:hasDeterminer quant:an .
+
+ns1:passion_1 a ns1:Passion ;
+    rdfs:label "passion" ;
+    quant:hasDeterminer quant:a ;
+    ns1:for ns1:reading_1 .
+
+ns1:philosophy_1 a ns1:PersonalPhilosophy ;
+    rdfs:label "philosophy" ;
+    ns1:personalPhilosophyOf ns1:Lincoln .
+
+ns1:reading_1 a ns1:Learning,
+        ns1:Reading ;
+    rdfs:label "reading" .
+
+ns1:thing_1 a owl:Thing .
+

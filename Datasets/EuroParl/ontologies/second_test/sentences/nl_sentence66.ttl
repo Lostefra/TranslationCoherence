@@ -1,0 +1,144 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence66.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Topic rdfs:label "of" .
+
+translation_coherence:nl_sentence66.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence66" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence66" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:At rdfs:label "At" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Theme rdfs:label "possible" .
+
+ns1:docuverse earmark:hasContent "At this end, I should like to remind you of the resolution of September 15, who recommended that the proposal will be presented as soon as possible."^^xsd:string .
+
+ns1:like_1 a ns1:Like ;
+    rdfs:label "like" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Experiencer ns1:person_1 ;
+    vn.role:Theme ns1:situation_1 ;
+    ns1:at ns1:end_1 .
+
+ns1:thing_1 a owl:Thing ;
+    boxer:theme ns1:thing_2 .
+
+ns1:End rdfs:label "end" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Like rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Proposal rdfs:label "proposal" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Recommend rdfs:label "recommended" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Remind rdfs:label "remind" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Resolution rdfs:label "resolution" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Soon rdfs:label "soon" .
+
+ns1:end_1 a ns1:End ;
+    rdfs:label "end" ;
+    quant:hasDeterminer quant:this .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "you" .
+
+ns1:proposal_1 a ns1:Proposal ;
+    rdfs:label "proposal" ;
+    quant:hasDeterminer quant:the .
+
+ns1:recommend_1 a ns1:Recommend ;
+    rdfs:label "recommended" ;
+    vn.role:Agent ns1:resolution_1 ;
+    vn.role:Topic ns1:present_1 .
+
+ns1:remind_1 a ns1:Remind ;
+    rdfs:label "remind" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Recipient ns1:person_2 ;
+    vn.role:Topic ns1:resolution_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:As,
+        ns1:Present,
+        ns1:Soon,
+        ns1:present_1,
+        ns1:recommend_1,
+        ns1:remind_1 .
+
+ns1:As rdfs:label "As",
+        "as" .
+
+ns1:Person rdfs:label "I",
+        "you" .
+
+ns1:Present rdfs:label "presented" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:present_1 a ns1:Present ;
+    rdfs:label "presented" ;
+    boxing:hasModality boxing:Necessary,
+        boxing:Possible ;
+    dul:hasQuality ns1:As ;
+    vn.role:Theme ns1:proposal_1 ;
+    ns1:soonAs ns1:thing_2 .
+
+ns1:resolution_1 a ns1:Resolution ;
+    rdfs:label "resolution" ;
+    quant:hasDeterminer quant:the ;
+    ns1:resolutionOf "0001-09-15"^^xsd:date .
+
+ns1:thing_2 a owl:Thing .
+

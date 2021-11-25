@@ -1,0 +1,151 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence46.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Ebest> rdfs:label "best" .
+
+vn.role:Theme2 rdfs:label "to" .
+
+translation_coherence:ko_sentence46.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence46" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence46" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "'",
+        "our" .
+
+ns1:With rdfs:label "with" .
+
+ns1:do_1 a ns1:Do ;
+    rdfs:label "do" ;
+    boxer:agent ns1:person_3 ;
+    boxer:theme ns1:ensure_1 ;
+    boxing:hasModality boxing:Necessary .
+
+ns1:docuverse earmark:hasContent "I also refer to Quaestors' universities and I will do our best to ensure that we comply with our own vote."^^xsd:string .
+
+ns1:person_4 coref:coref ns1:person_3 .
+
+ns1:refer_1 a ns1:AlsoRefer ;
+    rdfs:label "refer" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Theme1 ns1:person_3 ;
+    vn.role:Theme2 ns1:university_1 .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoRefer rdfs:label "Also Refer" ;
+    rdfs:subClassOf ns1:Refer .
+
+ns1:Best rdfs:label "best" .
+
+ns1:Comply rdfs:label "comply" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Do rdfs:label "do" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Ensure rdfs:label "ensure" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Own a owl:Class ;
+    rdfs:label "own" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:OwnVote a owl:Class ;
+    rdfs:label "Own Vote" ;
+    dul:hasQuality ns1:Own ;
+    rdfs:subClassOf ns1:Vote .
+
+ns1:Quaestor rdfs:label "Quaestors" .
+
+ns1:Refer rdfs:label "refer" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:University rdfs:label "universities" .
+
+ns1:Vote a owl:Class ;
+    rdfs:label "vote" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:comply_1 a ns1:Comply ;
+    rdfs:label "comply" ;
+    boxer:agent ns1:person_5 ;
+    ns1:with ns1:vote_1 .
+
+ns1:ensure_1 a ns1:Ensure ;
+    rdfs:label "ensure" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Cause ns1:thing_2 ;
+    vn.role:Theme ns1:comply_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "our" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "our" .
+
+ns1:person_5 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:quaestor_1 a ns1:Quaestor ;
+    rdfs:label "Quaestors" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:thing_2 a owl:Thing ;
+    dul:hasQuality ns1:Best ;
+    ns1:bestAmong owl:Thing ;
+    ns1:thingOf ns1:person_1 .
+
+ns1:university_1 a ns1:University ;
+    rdfs:label "universities" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:universityOf ns1:quaestor_1 .
+
+ns1:vote_1 a ns1:OwnVote ;
+    rdfs:label "vote" ;
+    ns1:ownVoteOf ns1:person_2 .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:Person rdfs:label "I",
+        "we" .
+

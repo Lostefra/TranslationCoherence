@@ -1,0 +1,197 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence430.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Beneficiary rdfs:label "for" .
+
+vn.role:Stimulus rdfs:label "to" .
+
+translation_coherence:it_sentence430.ttl a owl:Ontology ;
+    rdfs:label "it_sentence430" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence430" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "As" .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Therefore rdfs:label "therefore" .
+
+ns1:docuverse earmark:hasContent "As a result, I believe that we must look to the future and establish guidelines for medium-term review in 2003, and therefore have an influence on the second stage of programming scheduled for 2003."^^xsd:string .
+
+ns1:result_1 a ns1:Result ;
+    rdfs:label "result" ;
+    quant:hasDeterminer quant:a ;
+    ns1:as ns1:believe_1 .
+
+ns1:schedule_1 a ns1:Schedule ;
+    rdfs:label "scheduled" ;
+    vn.role:Beneficiary "2003-01-01"^^xsd:date ;
+    vn.role:Product ns1:programming_1 .
+
+ns1:Believe rdfs:label "believe" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Establish rdfs:label "establish" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Future rdfs:label "future" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Guideline rdfs:label "guidelines" .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Influence rdfs:label "influence" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Look rdfs:label "look" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Medium-term a owl:Class ;
+    rdfs:label "medium-term" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Medium-termReview a owl:Class ;
+    rdfs:label "medium-term review" ;
+    dul:hasQuality ns1:Medium-term ;
+    rdfs:subClassOf ns1:Review .
+
+ns1:Programming rdfs:label "programming" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Result rdfs:label "result" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Review a owl:Class ;
+    rdfs:label "review" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Schedule rdfs:label "scheduled" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Second a owl:Class ;
+    rdfs:label "second" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SecondStage a owl:Class ;
+    rdfs:label "second stage" ;
+    dul:hasQuality ns1:Second ;
+    rdfs:subClassOf ns1:Stage .
+
+ns1:Stage a owl:Class ;
+    rdfs:label "stage" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:ThereforeHave rdfs:label "Therefore Have" ;
+    rdfs:subClassOf ns1:Have .
+
+ns1:believe_1 a ns1:Believe ;
+    rdfs:label "believe" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:establish_1 a ns1:Establish ;
+    rdfs:label "establish" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Theme ns1:guideline_1 ;
+    ns1:in "2003-01-01"^^xsd:date ;
+    ns1:therefore ns1:have_1 .
+
+ns1:future_1 a ns1:Future ;
+    rdfs:label "future" ;
+    quant:hasDeterminer quant:the .
+
+ns1:have_1 a ns1:ThereforeHave ;
+    rdfs:label "have" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Patient ns1:influence_1 ;
+    ns1:on ns1:stage_1 .
+
+ns1:influence_1 a ns1:Influence ;
+    rdfs:label "influence" ;
+    quant:hasDeterminer quant:an .
+
+ns1:look_1 a ns1:Look ;
+    rdfs:label "look" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Experiencer ns1:person_2 ;
+    vn.role:Stimulus ns1:future_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:establish_1,
+        ns1:guideline_1,
+        ns1:look_1,
+        ns1:review_1,
+        "2003-01-01"^^xsd:date .
+
+ns1:stage_1 a ns1:SecondStage ;
+    rdfs:label "stage" ;
+    quant:hasDeterminer quant:the ;
+    ns1:secondStageOf ns1:programming_1 .
+
+ns1:Person rdfs:label "I",
+        "we" .
+
+ns1:guideline_1 a ns1:Guideline ;
+    rdfs:label "guidelines" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:for ns1:review_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:programming_1 a ns1:Programming ;
+    rdfs:label "programming" .
+
+ns1:review_1 a ns1:Medium-termReview ;
+    rdfs:label "review" .
+

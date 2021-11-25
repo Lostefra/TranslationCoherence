@@ -1,0 +1,150 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence154.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5D_1> rdfs:label "]" .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Elowest> rdfs:label "lowest" .
+
+translation_coherence:zh_sentence154.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence154" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence154" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Ala a <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5D> ;
+    rdfs:label "Ala",
+        "]" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5B> ;
+    dul:hasDataValue "1"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:Topic ;
+    quant:hasQuantifier quant:one .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:In rdfs:label "in" .
+
+ns1:docuverse earmark:hasContent "[One] Ala. The threshold is the lowest income tax in 41 states and Colombian areas."^^xsd:string .
+
+ns1:income_1 a ns1:Income ;
+    rdfs:label "income" ;
+    dul:associatedWith ns1:tax_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_1 a ns1:Situation ;
+    ns1:entails ns1:situation_2 .
+
+ns1:threshold_1 rdfs:label "threshold" .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5B> a <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5D> ;
+    rdfs:label "[",
+        "]" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasDataValue "1"^^xsd:nonNegativeInteger .
+
+ns1:Area rdfs:label "areas" .
+
+ns1:Colombian rdfs:label "Colombian" ;
+    owl:sameAs dbpedia:Colombians .
+
+ns1:ColombianArea rdfs:subClassOf ns1:Area .
+
+ns1:Lowest a owl:Class ;
+    rdfs:label "lowest" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:LowestIncome a owl:Class ;
+    dul:hasQuality ns1:Lowest ;
+    rdfs:subClassOf ns1:Income .
+
+ns1:State rdfs:label "states" .
+
+ns1:Tax a owl:Class ;
+    rdfs:label "tax" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Threshold rdfs:label "threshold" ;
+    rdfs:subClassOf dul:Amount,
+        ns1:LowestIncomeTax .
+
+ns1:area_1 a ns1:ColombianArea ;
+    rdfs:label "areas" ;
+    dul:hasQuality ns1:Colombian ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:tax_1 .
+
+ns1:state_1 a ns1:State ;
+    rdfs:label "states" ;
+    dul:hasDataValue "41"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5D> rdfs:label "Ala",
+        "[",
+        "]" .
+
+ns1:LowestIncomeTax a owl:Class ;
+    rdfs:label "lowest income tax" ;
+    dul:associatedWith ns1:LowestIncome ;
+    rdfs:subClassOf ns1:IncomeTax .
+
+ns1:tax_1 a ns1:IncomeTax,
+        ns1:LowestIncomeTax,
+        ns1:Threshold ;
+    rdfs:label "tax" ;
+    quant:hasDeterminer quant:the ;
+    ns1:in ns1:area_1,
+        ns1:state_1 ;
+    ns1:lowestAmong ns1:IncomeTax .
+
+ns1:Income a owl:Class ;
+    rdfs:label "income" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:IncomeTax a owl:Class ;
+    rdfs:label "income tax" ;
+    dul:associatedWith ns1:Income ;
+    rdfs:subClassOf dul:Description,
+        ns1:Tax ;
+    owl:equivalentClass dbpedia:Income_tax .
+

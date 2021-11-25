@@ -1,0 +1,154 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence448.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "to" .
+
+translation_coherence:en_sentence448.ttl a owl:Ontology ;
+    rdfs:label "en_sentence448" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence448" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "his" .
+
+ns1:ask_1 a ns1:Ask ;
+    rdfs:label "asked" ;
+    vn.role:Agent ns1:Aristotle ;
+    vn.role:Topic ns1:bury_1 ;
+    ns1:in ns1:will_1 .
+
+ns1:chief_1 a ns1:Chief ;
+    rdfs:label "chief" ;
+    dul:associatedWith ns1:executor_1 .
+
+ns1:docuverse earmark:hasContent "Aristotle named chief executor his student Antipater and left a will in which he asked to be buried next to his wife."^^xsd:string .
+
+ns1:leave_1 a ns1:Leave ;
+    rdfs:label "left" ;
+    vn.role:Agent ns1:Aristotle ;
+    vn.role:Theme ns1:will_1 .
+
+ns1:male_1 rdfs:label "his" .
+
+ns1:name_1 a ns1:Name ;
+    rdfs:label "named" ;
+    vn.role:Agent ns1:Aristotle ;
+    vn.role:Predicate ns1:antipater_1 ;
+    vn.role:Theme ns1:executor_1 .
+
+ns1:student_1 a ns1:Student ;
+    rdfs:label "student" ;
+    dul:associatedWith ns1:antipater_1 .
+
+dbpedia:Aristotle a schema:Person .
+
+ns1:Antipater a owl:Class ;
+    rdfs:label "Antipater" ;
+    owl:equivalentClass dbpedia:Antipater .
+
+ns1:Ask rdfs:label "asked" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Bury rdfs:label "buried" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:ChiefExecutor a owl:Class ;
+    rdfs:label "chief executor" ;
+    dul:associatedWith ns1:Chief ;
+    rdfs:subClassOf ns1:Executor .
+
+ns1:Executor a owl:Class ;
+    rdfs:label "executor" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Leave rdfs:label "left" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Male rdfs:label "Aristotle" .
+
+ns1:Name rdfs:label "named" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:StudentAntipater a owl:Class ;
+    rdfs:label "Student Antipater" ;
+    dul:associatedWith ns1:Student ;
+    rdfs:subClassOf ns1:Antipater .
+
+ns1:Wife rdfs:label "wife" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Will rdfs:label "will" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:bury_1 a ns1:Bury ;
+    rdfs:label "buried" ;
+    vn.role:Destination ns1:wife_1 ;
+    vn.role:Theme ns1:Aristotle .
+
+ns1:wife_1 a ns1:Wife ;
+    rdfs:label "wife" ;
+    ns1:wifeOf ns1:Aristotle .
+
+ns1:Chief a owl:Class ;
+    rdfs:label "chief" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Student a owl:Class ;
+    rdfs:label "student" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:antipater_1 a ns1:StudentAntipater ;
+    rdfs:label "Antipater" ;
+    ns1:studentAntipaterOf ns1:Aristotle .
+
+ns1:executor_1 a ns1:ChiefExecutor ;
+    rdfs:label "executor" .
+
+ns1:will_1 a ns1:Will ;
+    rdfs:label "will" ;
+    quant:hasDeterminer quant:a .
+
+ns1:Aristotle a ns1:Male ;
+    rdfs:label "Aristotle" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Aristotle .
+

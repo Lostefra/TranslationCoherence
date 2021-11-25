@@ -1,0 +1,97 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence184.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence184.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence184" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence184" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "The importance of road safety is.ed in this network."^^xsd:string .
+
+ns1:is.ed_1 a ns1:Is.ed ;
+    rdfs:label "is.ed" ;
+    boxer:patient ns1:importance_1 ;
+    ns1:in ns1:network_1 .
+
+ns1:road_1 a ns1:Road ;
+    rdfs:label "road" ;
+    dul:associatedWith ns1:safety_1 .
+
+ns1:Importance rdfs:label "importance" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Is.ed rdfs:label "is.ed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Network a owl:Class ;
+    rdfs:label "network" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#System> ;
+    owl:equivalentClass dbpedia:Computer_network .
+
+ns1:RoadSafety a owl:Class ;
+    rdfs:label "road safety" ;
+    dul:associatedWith ns1:Road ;
+    rdfs:subClassOf ns1:Safety .
+
+ns1:Safety a owl:Class ;
+    rdfs:label "safety" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:importance_1 a ns1:Importance ;
+    rdfs:label "importance" ;
+    quant:hasDeterminer quant:the ;
+    ns1:importanceOf ns1:safety_1 .
+
+ns1:network_1 a ns1:Network ;
+    rdfs:label "network" ;
+    quant:hasDeterminer quant:this .
+
+ns1:Road a owl:Class ;
+    rdfs:label "road" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:safety_1 a ns1:RoadSafety ;
+    rdfs:label "safety" .
+

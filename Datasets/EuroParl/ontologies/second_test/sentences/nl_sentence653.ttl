@@ -1,0 +1,122 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence653.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "ago" .
+
+translation_coherence:nl_sentence653.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence653" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence653" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Through rdfs:label "through" .
+
+ns1:When rdfs:label "when" .
+
+ns1:docuverse earmark:hasContent "I remember how Portugal and Greece used to be when I first drove through those countries 20 years ago."^^xsd:string .
+
+ns1:person_2 coref:coref ns1:person_1 .
+
+ns1:remember_1 a ns1:Remember ;
+    rdfs:label "remember" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:use_1 .
+
+ns1:Be rdfs:label "be" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Country rdfs:label "countries" .
+
+ns1:Drive rdfs:label "drove" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:First rdfs:label "first" .
+
+ns1:FirstDrive rdfs:subClassOf ns1:Drive .
+
+ns1:Manner rdfs:label "how" .
+
+ns1:Person rdfs:label "I" .
+
+ns1:Remember rdfs:label "remember" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Use rdfs:label "used" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Year rdfs:label "years" .
+
+ns1:be_1 a ns1:Be ;
+    rdfs:label "be" ;
+    boxer:agent ns1:Portugal_greece ;
+    ns1:when ns1:drive_1 .
+
+ns1:country_1 a ns1:Country ;
+    rdfs:label "countries" ;
+    quant:hasDeterminer quant:those ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:drive_1 a ns1:FirstDrive ;
+    rdfs:label "drove" ;
+    dul:hasQuality ns1:First ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Location ns1:year_1 ;
+    ns1:through ns1:country_1 .
+
+ns1:manner_1 a ns1:Manner ;
+    rdfs:label "how" .
+
+ns1:use_1 a ns1:Use ;
+    rdfs:label "used" ;
+    vn.role:Agent ns1:Portugal_greece ;
+    vn.role:Recipient ns1:be_1 ;
+    ns1:manner_rel ns1:manner_1 .
+
+ns1:year_1 a ns1:Year ;
+    rdfs:label "years" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:at "0001-01-20"^^xsd:date .
+
+ns1:Portugal_greece rdfs:label "Portugal and Greece" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+

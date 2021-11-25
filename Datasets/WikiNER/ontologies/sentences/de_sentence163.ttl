@@ -1,0 +1,135 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence163.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:de_sentence163.ttl a owl:Ontology ;
+    rdfs:label "de_sentence163" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence163" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Agent rdfs:label "by" .
+
+ns1:Around rdfs:label "around" .
+
+ns1:approve_1 a ns1:Approve ;
+    rdfs:label "approved" ;
+    boxer:agent ns1:legislature_1 ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Often ;
+    vn.role:Agent ns1:referendum_1 ;
+    vn.role:Theme ns1:change_1 .
+
+ns1:docuverse earmark:hasContent "Any political changes proposed around the state must be approved by the entire legal legislature and, often, by the state referendum."^^xsd:string .
+
+ns1:propose_1 a ns1:Propose ;
+    rdfs:label "proposed" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Theme ns1:change_1 ;
+    ns1:around ns1:state_1 .
+
+ns1:state_2 a ns1:State ;
+    rdfs:label "state" ;
+    dul:associatedWith ns1:referendum_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:Approve rdfs:label "approved" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Change rdfs:label "changes" .
+
+ns1:Entire rdfs:label "entire" .
+
+ns1:EntireLegalLegislature a owl:Class ;
+    rdfs:label "Entire Legal Legislature" ;
+    rdfs:subClassOf ns1:LegalLegislature .
+
+ns1:Legal a owl:Class ;
+    rdfs:label "legal" .
+
+ns1:LegalLegislature a owl:Class ;
+    rdfs:label "Legal Legislature" ;
+    dul:associatedWith ns1:Legislature ;
+    dul:hasModality ns1:Legal .
+
+ns1:Legislature a owl:Class ;
+    rdfs:label "legislature" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Legislature .
+
+ns1:Often rdfs:label "often" .
+
+ns1:Political rdfs:label "political" .
+
+ns1:PoliticalChange rdfs:subClassOf ns1:Change .
+
+ns1:Propose rdfs:label "proposed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Referendum a owl:Class ;
+    rdfs:label "referendum" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Referendum .
+
+ns1:StateReferendum rdfs:label "State Referendum" ;
+    rdfs:subClassOf ns1:Referendum .
+
+ns1:legislature_1 a ns1:EntireLegalLegislature ;
+    rdfs:label "legislature" ;
+    dul:hasQuality ns1:Entire ;
+    quant:hasDeterminer quant:the .
+
+ns1:state_1 a ns1:State ;
+    rdfs:label "state" ;
+    quant:hasDeterminer quant:the .
+
+ns1:State rdfs:label "state" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:change_1 a ns1:PoliticalChange ;
+    rdfs:label "changes" ;
+    dul:hasQuality ns1:Political ;
+    quant:hasQuantifier quant:any,
+        quant:multiple .
+
+ns1:referendum_1 a ns1:StateReferendum ;
+    rdfs:label "referendum" .
+

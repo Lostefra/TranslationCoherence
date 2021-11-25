@@ -1,0 +1,91 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence335.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:nl_sentence335.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence335" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence335" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:docuverse earmark:hasContent "Agriculture only provides 5.5% work in Union."^^xsd:string .
+
+ns1:percent_1 a ns1:Percent ;
+    rdfs:label "%" ;
+    dul:associatedWith ns1:work_1 .
+
+ns1:provide_1 a ns1:OnlyProvide ;
+    rdfs:label "provides" ;
+    dul:hasQuality ns1:Only ;
+    vn.role:Agent ns1:Agriculture ;
+    vn.role:Theme ns1:work_1 ;
+    ns1:locatedIn ns1:Union .
+
+ns1:Agriculture rdfs:label "Agriculture" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Agriculture .
+
+ns1:Only rdfs:label "only" .
+
+ns1:OnlyProvide rdfs:subClassOf ns1:Provide .
+
+ns1:Percent rdfs:label "%" .
+
+ns1:PercentWork rdfs:subClassOf ns1:Work .
+
+ns1:Provide rdfs:label "provides" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Union rdfs:label "Union" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Trade_union .
+
+ns1:Work a owl:Class ;
+    rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Employment .
+
+ns1:work_1 a ns1:PercentWork ;
+    rdfs:label "work" ;
+    dul:hasDataValue "5.5"^^xsd:nonNegativeInteger .
+

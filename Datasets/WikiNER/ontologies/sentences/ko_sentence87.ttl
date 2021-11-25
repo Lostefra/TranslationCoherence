@@ -1,0 +1,99 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence87.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence87.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence87" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence87" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Voting rdfs:label "Voting" ;
+    boxer:possibleType owl:Thing ;
+    ns1:at "1965-01-01"^^xsd:date .
+
+ns1:docuverse earmark:hasContent "The act of Voting 1965 also protects the rage of poor white."^^xsd:string .
+
+ns1:protect_1 a ns1:AlsoProtect ;
+    rdfs:label "protects" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Agent ns1:act_1 ;
+    vn.role:Theme ns1:rage_1 .
+
+ns1:Act rdfs:label "act" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoProtect rdfs:subClassOf ns1:Protect .
+
+ns1:Poor rdfs:label "poor" .
+
+ns1:PoorWhite a owl:Class ;
+    rdfs:label "Poor White" ;
+    rdfs:subClassOf ns1:White ;
+    owl:equivalentClass dbpedia:Poor_White .
+
+ns1:Protect rdfs:label "protects" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Rage rdfs:label "rage" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:White a owl:Class ;
+    rdfs:label "white" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:White_people .
+
+ns1:act_1 a ns1:Act ;
+    rdfs:label "act" ;
+    quant:hasDeterminer quant:the ;
+    ns1:actOf "1965-01-01"^^xsd:date .
+
+ns1:rage_1 a ns1:Rage ;
+    rdfs:label "rage" ;
+    quant:hasDeterminer quant:the ;
+    ns1:rageOf ns1:white_1 .
+
+ns1:white_1 a ns1:PoorWhite ;
+    rdfs:label "white" ;
+    dul:hasQuality ns1:Poor .
+

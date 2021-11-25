@@ -1,0 +1,152 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence390.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme rdfs:label "with" .
+
+translation_coherence:en_sentence390.ttl a owl:Ontology ;
+    rdfs:label "en_sentence390" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence390" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "his" .
+
+ns1:docuverse earmark:hasContent "Lincoln provided Grant with new replacements and mobilized his party to support Grant and win local support for the war effort."^^xsd:string .
+
+ns1:male_1 coref:coref ns1:Lincoln .
+
+ns1:mobilize_1 a ns1:Mobilize ;
+    rdfs:label "mobilized" ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Patient ns1:party_1 .
+
+ns1:provide_1 a ns1:Provide ;
+    rdfs:label "provided" ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Recipient ns1:Grant ;
+    vn.role:Theme ns1:replacement_1 .
+
+ns1:support_1 a ns1:Support ;
+    rdfs:label "support" ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Beneficiary ns1:Grant .
+
+ns1:war_1 a ns1:War ;
+    rdfs:label "war" ;
+    dul:associatedWith ns1:effort_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:win_1 a ns1:Win ;
+    rdfs:label "win" ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Theme ns1:support_2 .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+ns1:Effort a owl:Class ;
+    rdfs:label "effort" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Local rdfs:label "local" .
+
+ns1:LocalSupport rdfs:label "Local Support" ;
+    rdfs:subClassOf ns1:Support .
+
+ns1:Male rdfs:label "Lincoln" .
+
+ns1:Mobilize rdfs:label "mobilized" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:New rdfs:label "new" .
+
+ns1:NewReplacement rdfs:subClassOf ns1:Replacement .
+
+ns1:Party rdfs:label "party" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Provide rdfs:label "provided" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Replacement rdfs:label "replacements" .
+
+ns1:WarEffort a owl:Class ;
+    rdfs:label "war effort" ;
+    dul:associatedWith ns1:War ;
+    rdfs:subClassOf ns1:Effort .
+
+ns1:Win rdfs:label "win" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:party_1 a ns1:Party ;
+    rdfs:label "party" ;
+    ns1:partyOf ns1:Lincoln .
+
+ns1:replacement_1 a ns1:NewReplacement ;
+    rdfs:label "replacements" ;
+    dul:hasQuality ns1:New ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:support_2 a ns1:LocalSupport ;
+    rdfs:label "support" ;
+    dul:hasQuality ns1:Local ;
+    ns1:for ns1:effort_1 .
+
+ns1:Grant rdfs:label "Grant" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Support rdfs:label "support" ;
+    rdfs:subClassOf dul:Event,
+        dul:Situation .
+
+ns1:War a owl:Class ;
+    rdfs:label "war" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:effort_1 a ns1:WarEffort ;
+    rdfs:label "effort" .
+
+ns1:Lincoln a ns1:Male ;
+    rdfs:label "Lincoln",
+        "his" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+

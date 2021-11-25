@@ -1,0 +1,121 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence149.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence149.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence149" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence149" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Between rdfs:label "between" .
+
+ns1:Few rdfs:label "few" .
+
+ns1:For rdfs:label "for" .
+
+ns1:Sustained rdfs:label "Sustained" .
+
+ns1:block_1 a ns1:Block ;
+    rdfs:label "blocking" ;
+    vn.role:Agent ns1:project_1 ;
+    vn.role:Theme ns1:route_1 .
+
+ns1:docuverse earmark:hasContent "Sustained innovation projects for a few months, blocking this important route between Europe and South."^^xsd:string .
+
+ns1:innovation_1 a ns1:Innovation ;
+    rdfs:label "innovation" ;
+    dul:associatedWith ns1:project_1 .
+
+dbpedia:Europe a schema:Continent,
+        schema:Place .
+
+ns1:Block rdfs:label "blocking" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Europe rdfs:label "Europe" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Europe .
+
+ns1:FewMonth rdfs:subClassOf ns1:Month .
+
+ns1:Important a owl:Class ;
+    rdfs:label "important" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ImportantRoute a owl:Class ;
+    rdfs:label "important route" ;
+    dul:hasQuality ns1:Important ;
+    rdfs:subClassOf ns1:Route .
+
+ns1:Innovation rdfs:label "innovation" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:InnovationProject rdfs:subClassOf ns1:Project .
+
+ns1:Month rdfs:label "months" .
+
+ns1:Project rdfs:label "projects" .
+
+ns1:Route a owl:Class ;
+    rdfs:label "route" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:South rdfs:label "South" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:SustainedInnovationProject rdfs:subClassOf ns1:InnovationProject .
+
+ns1:month_1 a ns1:FewMonth ;
+    rdfs:label "months" ;
+    quant:hasDeterminer quant:a ;
+    quant:hasQuantifier quant:few,
+        quant:multiple .
+
+ns1:route_1 a ns1:ImportantRoute ;
+    rdfs:label "route" ;
+    quant:hasDeterminer quant:this ;
+    ns1:between ns1:Europe,
+        ns1:South .
+
+ns1:project_1 a ns1:SustainedInnovationProject ;
+    rdfs:label "projects" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:for ns1:month_1 .
+

@@ -1,0 +1,175 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence468.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:de_sentence468.ttl a owl:Ontology ;
+    rdfs:label "de_sentence468" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence468" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Too rdfs:label "too" .
+
+ns1:docuverse earmark:hasContent "First, the condition of the texts for them is much too good to have suffered significant damage, followed by Apellicon 's in expert attempt to repair them."^^xsd:string .
+
+ns1:expert_1 a ns1:Expert ;
+    rdfs:label "expert" ;
+    dul:associatedWith ns1:attempt_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s_1>,
+        ns1:attempt_1,
+        ns1:damage_1,
+        ns1:follow_1,
+        ns1:good_1,
+        ns1:repair_1,
+        ns1:suffer_1 ;
+    dul:hasQuality ns1:First .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s> rdfs:label "'s" .
+
+ns1:Apellicon rdfs:label "Apellicon" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Apellicon_of_Teos .
+
+ns1:Attempt a owl:Class ;
+    rdfs:label "attempt" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Condition rdfs:label "condition" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Damage a owl:Class ;
+    rdfs:label "damage" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:ExpertAttempt a owl:Class ;
+    rdfs:label "Expert Attempt" ;
+    dul:associatedWith ns1:Expert ;
+    rdfs:subClassOf ns1:Attempt .
+
+ns1:First rdfs:label "First" .
+
+ns1:Follow rdfs:label "followed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Good rdfs:label "good" .
+
+ns1:Much rdfs:label "much" .
+
+ns1:Repair rdfs:label "repair" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Significant a owl:Class ;
+    rdfs:label "significant" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SignificantDamage a owl:Class ;
+    rdfs:label "Significant Damage" ;
+    dul:hasQuality ns1:Significant ;
+    rdfs:subClassOf ns1:Damage .
+
+ns1:Suffer rdfs:label "suffered" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Text rdfs:label "texts" .
+
+ns1:follow_1 a ns1:Follow ;
+    rdfs:label "followed" ;
+    vn.role:Agent <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s_1> ;
+    vn.role:Theme ns1:condition_1 .
+
+ns1:repair_1 a ns1:Repair ;
+    rdfs:label "repair" ;
+    boxer:agent ns1:attempt_1 ;
+    boxer:patient ns1:thing_2 .
+
+ns1:suffer_1 a ns1:Suffer ;
+    rdfs:label "suffered" ;
+    dul:hasQuality ns1:Much ;
+    vn.role:Experiencer ns1:condition_1 ;
+    vn.role:Theme ns1:damage_1 ;
+    ns1:too ns1:good_1 .
+
+ns1:text_1 a ns1:Text ;
+    rdfs:label "texts" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:for ns1:thing_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "them" .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "them" .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s_1> a <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s> ;
+    rdfs:label "'s" ;
+    dul:associatedWith ns1:Apellicon ;
+    ns1:in ns1:attempt_1 .
+
+owl:Thing rdfs:label "them" .
+
+ns1:Expert a owl:Class ;
+    rdfs:label "expert" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:condition_1 a ns1:Condition ;
+    rdfs:label "condition" ;
+    quant:hasDeterminer quant:the ;
+    ns1:conditionOf ns1:text_1 .
+
+ns1:damage_1 a ns1:SignificantDamage ;
+    rdfs:label "damage" ;
+    quant:hasQuantifier quant:much .
+
+ns1:good_1 a ns1:Good ;
+    rdfs:label "good" .
+
+ns1:attempt_1 a ns1:ExpertAttempt ;
+    rdfs:label "attempt" .
+

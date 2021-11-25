@@ -1,0 +1,149 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence266.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:de_sentence266.ttl a owl:Ontology ;
+    rdfs:label "de_sentence266" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence266" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Be rdfs:label "was" .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:With rdfs:label "with" .
+
+ns1:accept_1 a ns1:Accept ;
+    rdfs:label "accept" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:father_1 ;
+    vn.role:Theme ns1:slavery_1 ;
+    ns1:for ns1:reason_1 .
+
+ns1:compete_1 a ns1:Compete ;
+    rdfs:label "compete" ;
+    dul:hasQuality ns1:Economically ;
+    vn.role:Actor ns1:father_1,
+        ns1:neuter_1 ;
+    ns1:be ns1:hard_1 ;
+    ns1:economicallyWith ns1:farm_1 .
+
+ns1:docuverse earmark:hasContent "Abraham 's father who did not accept slavery for religious reasons, and it was hard to compete economically with farms operated by slaves."^^xsd:string .
+
+ns1:operate_1 a ns1:Operate ;
+    vn.role:Agent ns1:slave_1 ;
+    vn.role:Patient ns1:farm_1 .
+
+ns1:operate_2 a ns1:Operate ;
+    rdfs:label "operated" ;
+    vn.role:Agent ns1:slave_1 ;
+    vn.role:Patient ns1:farm_1 .
+
+dbpedia:Abraham a schema:Person .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Abraham rdfs:label "Abraham" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Abraham .
+
+ns1:Accept rdfs:label "accept" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Compete rdfs:label "compete" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Economically rdfs:label "economically" .
+
+ns1:Farm rdfs:label "farms" .
+
+ns1:Father rdfs:label "father" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Hard rdfs:label "hard" .
+
+ns1:Reason rdfs:label "reasons" .
+
+ns1:Religious rdfs:label "religious" ;
+    owl:sameAs dbpedia:Religion .
+
+ns1:ReligiousReason rdfs:subClassOf ns1:Reason .
+
+ns1:Slave rdfs:label "slaves" .
+
+ns1:Slavery a owl:Class ;
+    rdfs:label "slavery" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Slavery .
+
+ns1:hard_1 a ns1:Hard ;
+    rdfs:label "hard" .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "it" .
+
+ns1:reason_1 a ns1:ReligiousReason ;
+    rdfs:label "reasons" ;
+    dul:hasQuality ns1:Religious ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:slavery_1 a ns1:Slavery ;
+    rdfs:label "slavery" .
+
+ns1:Operate rdfs:label "operated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:father_1 a ns1:Father ;
+    rdfs:label "father" ;
+    ns1:fatherOf ns1:Abraham .
+
+ns1:slave_1 a dbpedia:Slavery,
+        ns1:Slave ;
+    rdfs:label "slaves" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:farm_1 a ns1:Farm ;
+    rdfs:label "farms" ;
+    quant:hasQuantifier quant:multiple .
+

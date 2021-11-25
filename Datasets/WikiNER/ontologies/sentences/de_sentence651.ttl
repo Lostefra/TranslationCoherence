@@ -1,0 +1,158 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence651.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence651.ttl a owl:Ontology ;
+    rdfs:label "de_sentence651" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence651" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:At rdfs:label "At" .
+
+ns1:Eq rdfs:label "are" .
+
+ns1:Figure rdfs:label "figures" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:call_1 a ns1:Call ;
+    rdfs:label "call" ;
+    vn.role:Agent ns1:member_1 ;
+    vn.role:Theme ns1:edge_1 .
+
+ns1:docuverse earmark:hasContent "At the same time, the political figures that call the edge are the most conservative or Lebanese members of the United_States."^^xsd:string .
+
+ns1:figure_1 rdfs:label "figures" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:disjunct_1,
+        ns1:disjunct_2,
+        ns1:member_1,
+        ns1:time_1,
+        ns1:united_states_1 ;
+    ns1:at ns1:time_1 .
+
+dbpedia:Lebanon a schema:Country,
+        schema:Place .
+
+dbpedia:United_States rdfs:subClassOf schema:Country,
+        schema:Place .
+
+ns1:Call rdfs:label "call" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Edge rdfs:label "edge" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Most rdfs:label "most" .
+
+ns1:Political rdfs:label "political" .
+
+ns1:PoliticalFigure rdfs:subClassOf ns1:LebaneseMember .
+
+ns1:Same a owl:Class ;
+    rdfs:label "same" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SameTime a owl:Class ;
+    rdfs:label "Same Time" ;
+    dul:hasQuality ns1:Same ;
+    rdfs:subClassOf ns1:Time .
+
+ns1:Time a owl:Class ;
+    rdfs:label "time" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:UnitedStates rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:United_states a owl:Class ;
+    rdfs:label "United States" ;
+    rdfs:subClassOf ns1:UnitedStates ;
+    owl:equivalentClass dbpedia:United_States .
+
+ns1:disjunct_1 a ns1:Disjunct ;
+    boxing:involves ns1:Conservative,
+        ns1:Member,
+        ns1:member_1 ;
+    ns1:union ns1:disjunct_2 .
+
+ns1:edge_1 a ns1:Edge ;
+    rdfs:label "edge" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Conservative rdfs:label "conservative" ;
+    owl:sameAs dbpedia:Conservatism .
+
+ns1:Lebanese rdfs:label "Lebanese" ;
+    owl:sameAs dbpedia:Lebanon .
+
+ns1:LebaneseMember rdfs:subClassOf ns1:Member .
+
+ns1:disjunct_2 a ns1:Disjunct ;
+    boxing:involves ns1:Lebanese,
+        ns1:Member,
+        ns1:member_1 .
+
+ns1:time_1 a ns1:SameTime ;
+    rdfs:label "time" ;
+    quant:hasDeterminer quant:the .
+
+ns1:united_states_1 a ns1:United_states ;
+    rdfs:label "United States" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Member rdfs:label "members" .
+
+ns1:member_1 a ns1:LebaneseMember,
+        ns1:PoliticalFigure ;
+    rdfs:label "members" ;
+    dul:hasQuality ns1:Conservative,
+        ns1:Lebanese,
+        ns1:Most,
+        ns1:Political ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:lebaneseMemberOf ns1:united_states_1 .
+

@@ -1,0 +1,123 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence150.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Oblique rdfs:label "to" .
+
+translation_coherence:de_sentence150.ttl a owl:Ontology ;
+    rdfs:label "de_sentence150" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence150" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:From rdfs:label "from" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Quantity rdfs:label "many" .
+
+ns1:docuverse earmark:hasContent "The traffic that had to be diluted for this reason varied from many thousand people in the EU to the border."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "had" ;
+    boxer:theme ns1:dilute_1 ;
+    vn.role:Agent ns1:traffic_1 .
+
+ns1:vary_1 a ns1:Vary ;
+    rdfs:label "varied" ;
+    vn.role:Oblique ns1:border_1 ;
+    vn.role:Patient ns1:traffic_1 ;
+    ns1:from ns1:people_1 .
+
+ns1:Border rdfs:label "border" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Dilute rdfs:label "diluted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Eu rdfs:label "EU" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:European_Union .
+
+ns1:Have rdfs:label "had" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:People a owl:Class ;
+    rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Person .
+
+ns1:Reason rdfs:label "reason" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Traffic rdfs:label "traffic" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Vary rdfs:label "varied" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:border_1 a ns1:Border ;
+    rdfs:label "border" ;
+    quant:hasDeterminer quant:the .
+
+ns1:dilute_1 a ns1:Dilute ;
+    rdfs:label "diluted" ;
+    vn.role:Patient ns1:traffic_1 ;
+    ns1:for ns1:reason_1 .
+
+ns1:people_1 a ns1:People ;
+    rdfs:label "people" ;
+    dul:hasDataValue "1000"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:many,
+        quant:multiple,
+        quant:thousand ;
+    ns1:in ns1:Eu .
+
+ns1:reason_1 a ns1:Reason ;
+    rdfs:label "reason" ;
+    quant:hasDeterminer quant:this .
+
+ns1:traffic_1 a ns1:Traffic ;
+    rdfs:label "traffic" ;
+    quant:hasDeterminer quant:the .
+

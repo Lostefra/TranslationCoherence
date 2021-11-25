@@ -1,0 +1,124 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence791.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence791.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence791" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence791" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Noteq rdfs:label "other" .
+
+ns1:Quantity rdfs:label "many" .
+
+ns1:With rdfs:label "with" .
+
+ns1:contribute_1 a ns1:Contribute ;
+    rdfs:label "contributed" ;
+    dul:associatedWith ns1:today_1 ;
+    vn.role:Agent ns1:United_kingdom_of_great_britain_and_northern_ireland ;
+    ns1:in ns1:direction_1 .
+
+ns1:docuverse earmark:hasContent "Today, the United_Kingdom_of_Great_Britain_and_Northern_Ireland has international contacts with many other social doctrines and has contributed in many directions."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "has" ;
+    dul:associatedWith ns1:today_1 ;
+    vn.role:Agent ns1:United_kingdom_of_great_britain_and_northern_ireland ;
+    vn.role:Patient ns1:contact_1 .
+
+dbpedia:United_Kingdom a schema:Country,
+        schema:Place .
+
+ns1:Contact rdfs:label "contacts" .
+
+ns1:Contribute rdfs:label "contributed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Direction rdfs:label "directions" .
+
+ns1:Have rdfs:label "has" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:International rdfs:label "international" .
+
+ns1:InternationalContact rdfs:subClassOf ns1:Contact .
+
+ns1:Social rdfs:label "social" .
+
+ns1:SocialDoctrine rdfs:subClassOf ns1:Doctrine .
+
+ns1:Today rdfs:label "Today" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:contact_1 a ns1:InternationalContact ;
+    rdfs:label "contacts" ;
+    dul:hasQuality ns1:International ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:with ns1:doctrine_1 .
+
+ns1:direction_1 a ns1:Direction ;
+    rdfs:label "directions" ;
+    quant:hasQuantifier quant:many,
+        quant:multiple .
+
+ns1:doctrine_1 a ns1:Doctrine ;
+    rdfs:label "other" ;
+    owl:differentFrom ns1:doctrine_2 .
+
+ns1:doctrine_2 a ns1:SocialDoctrine ;
+    rdfs:label "doctrines" ;
+    dul:hasQuality ns1:Social ;
+    quant:hasDeterminer quant:other ;
+    quant:hasQuantifier quant:many,
+        quant:multiple .
+
+ns1:Doctrine rdfs:label "doctrines",
+        "other" .
+
+ns1:United_kingdom_of_great_britain_and_northern_ireland rdfs:label "United Kingdom of Great Britain and Northern Ireland" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:United_Kingdom .
+
+ns1:today_1 a ns1:Today ;
+    rdfs:label "Today" .
+

@@ -1,0 +1,119 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence73.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "in" .
+
+translation_coherence:nl_sentence73.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence73" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence73" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:call_1 a ns1:Call ;
+    rdfs:label "calls" ;
+    dul:hasQuality ns1:30th ;
+    vn.role:Agent ns1:Alabama ;
+    vn.role:Recipient ns1:call_2,
+        ns1:territory_1 .
+
+ns1:docuverse earmark:hasContent "Alabama calls 30th in total territory and calls second in the size of his domestic waterways."^^xsd:string .
+
+ns1:size_1 a ns1:Size ;
+    rdfs:label "size" ;
+    quant:hasDeterminer quant:the .
+
+dbpedia:Alabama a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:30th rdfs:label "30th" .
+
+ns1:Alabama rdfs:label "Alabama" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Alabama .
+
+ns1:Domestic rdfs:label "domestic" .
+
+ns1:DomesticWaterway rdfs:subClassOf ns1:Waterway .
+
+ns1:Second rdfs:label "second" .
+
+ns1:Size rdfs:label "size" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Territory a owl:Class ;
+    rdfs:label "territory" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Total a owl:Class ;
+    rdfs:label "total" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:TotalTerritory a owl:Class ;
+    rdfs:label "Total Territory" ;
+    dul:hasQuality ns1:Total ;
+    rdfs:subClassOf ns1:Territory .
+
+ns1:Waterway rdfs:label "waterways" .
+
+ns1:call_2 a ns1:Call ;
+    rdfs:label "calls" ;
+    dul:hasQuality ns1:Second ;
+    ns1:inSizeOf ns1:waterway_1 .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "his" .
+
+ns1:territory_1 a ns1:TotalTerritory ;
+    rdfs:label "territory" .
+
+ns1:waterway_1 a ns1:DomesticWaterway ;
+    rdfs:label "waterways" ;
+    dul:hasQuality ns1:Domestic ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:domesticWaterwayOf ns1:male_1 .
+
+ns1:Call rdfs:label "calls" ;
+    rdfs:subClassOf dul:Event .
+

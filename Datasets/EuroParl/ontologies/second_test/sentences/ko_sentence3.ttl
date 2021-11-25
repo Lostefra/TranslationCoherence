@@ -1,0 +1,198 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence3.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%2C> rdfs:label "," .
+
+vn.role:Theme rdfs:label "in" .
+
+translation_coherence:ko_sentence3.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence3" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence3" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Dreaded rdfs:label "dreaded" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "However, as you see, the dreaded 'millennium bug' failed in the material, and still people in the number of countries suffered a series of truly romantic disasters."^^xsd:string .
+
+ns1:millennium_1 a ns1:Millennium ;
+    rdfs:label "millennium" ;
+    dul:associatedWith ns1:bug_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:bug_1,
+        ns1:country_1,
+        ns1:disaster_1,
+        ns1:fail_1,
+        ns1:material_1,
+        ns1:number_1,
+        ns1:people_1,
+        ns1:see_1,
+        ns1:series_1 ;
+    dul:hasQuality ns1:However .
+
+ns1:suffer_1 a ns1:Suffer ;
+    rdfs:label "suffered" ;
+    vn.role:Experiencer ns1:people_1 ;
+    vn.role:Theme ns1:series_1 .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27> rdfs:label "'" .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27MillenniumBug> rdfs:subClassOf ns1:MillenniumBug .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27_1> a <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27> ;
+    rdfs:label "'" .
+
+ns1:Bug a owl:Class ;
+    rdfs:label "bug" ;
+    rdfs:subClassOf dul:Organism .
+
+ns1:Country rdfs:label "countries" .
+
+ns1:Disaster rdfs:label "disasters" .
+
+ns1:Dreaded%27MillenniumBug rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27MillenniumBug> .
+
+ns1:Fail rdfs:label "failed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:However rdfs:label "However" .
+
+ns1:Material rdfs:label "material" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:MillenniumBug a owl:Class ;
+    rdfs:label "Millennium Bug" ;
+    dul:associatedWith ns1:Millennium ;
+    rdfs:subClassOf ns1:Bug ;
+    owl:equivalentClass dbpedia:Year_2000_problem .
+
+ns1:Number rdfs:label "number" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:People a owl:Class ;
+    rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Person rdfs:label "you" .
+
+ns1:Romantic rdfs:label "romantic" ;
+    dul:hasQuality ns1:Truly .
+
+ns1:RomanticDisaster rdfs:subClassOf ns1:Disaster .
+
+ns1:See rdfs:label "see" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Series rdfs:label "series" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Still a owl:Class ;
+    rdfs:label "still" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:StillPeople a owl:Class ;
+    rdfs:label "Still People" ;
+    dul:hasQuality ns1:Still ;
+    rdfs:subClassOf ns1:People .
+
+ns1:Suffer rdfs:label "suffered" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Truly rdfs:label "truly" .
+
+ns1:TrulyRomanticDisaster rdfs:subClassOf ns1:RomanticDisaster .
+
+ns1:fail_1 a ns1:Fail ;
+    rdfs:label "failed" ;
+    vn.role:Agent <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27_1> ;
+    vn.role:Theme ns1:material_1 ;
+    ns1:as ns1:see_1 .
+
+ns1:number_1 a ns1:Number ;
+    rdfs:label "number" ;
+    quant:hasDeterminer quant:the .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "you" .
+
+ns1:Millennium a owl:Class ;
+    rdfs:label "millennium" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:country_1 a ns1:Country ;
+    rdfs:label "countries" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:disaster_1 a ns1:TrulyRomanticDisaster ;
+    rdfs:label "disasters" ;
+    dul:hasQuality ns1:Romantic ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:material_1 a ns1:Material ;
+    rdfs:label "material" ;
+    quant:hasDeterminer quant:the .
+
+ns1:people_1 a ns1:StillPeople ;
+    rdfs:label "people" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:inNumberOf ns1:country_1 .
+
+ns1:see_1 a ns1:See ;
+    rdfs:label "see" ;
+    dul:associatedWith ns1:bug_1 ;
+    vn.role:Agent ns1:person_1 .
+
+ns1:series_1 a ns1:Series ;
+    rdfs:label "series" ;
+    quant:hasDeterminer quant:a ;
+    ns1:seriesOf ns1:disaster_1 .
+
+ns1:bug_1 a ns1:Dreaded%27MillenniumBug ;
+    rdfs:label "bug" ;
+    quant:hasQuantifier quant:multiple .
+

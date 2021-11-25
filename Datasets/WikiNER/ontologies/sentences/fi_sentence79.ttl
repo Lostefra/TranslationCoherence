@@ -1,0 +1,114 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence79.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence79.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence79" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence79" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Although rdfs:label "Although" .
+
+ns1:Of rdfs:label "its",
+        "of" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "Although The origins of the industry can be seen, and sources disagree with its content."^^xsd:string .
+
+ns1:neuter_1 coref:coref ns1:industry_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:disagree_1,
+        ns1:see_1,
+        ns1:source_1 ;
+    ns1:although ns1:situation_2 .
+
+ns1:Content rdfs:label "content" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Disagree rdfs:label "disagree" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Industry rdfs:label "industry" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Origin rdfs:label "origins" .
+
+ns1:See rdfs:label "seen" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Source rdfs:label "sources" .
+
+ns1:content_1 a ns1:Content ;
+    rdfs:label "content" ;
+    ns1:contentOf ns1:industry_1 .
+
+ns1:disagree_1 a ns1:Disagree ;
+    rdfs:label "disagree" ;
+    vn.role:Actor ns1:source_1 ;
+    ns1:with ns1:content_1 .
+
+ns1:event_1 a dul:Event .
+
+ns1:origin_1 a ns1:Origin ;
+    rdfs:label "origins" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:originOf ns1:industry_1 .
+
+ns1:see_1 a ns1:See ;
+    rdfs:label "seen" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Theme ns1:origin_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:event_1 .
+
+ns1:source_1 a ns1:Source ;
+    rdfs:label "sources" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:industry_1 a owl:Thing,
+        ns1:Industry ;
+    rdfs:label "industry",
+        "its" ;
+    quant:hasDeterminer quant:the .
+

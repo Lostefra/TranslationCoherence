@@ -1,0 +1,138 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence449.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:fi_sentence449.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence449" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence449" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "its" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Towards rdfs:label "towards" .
+
+ns1:docuverse earmark:hasContent "The report presents its place on a political level. This is one step towards sustainable development and employment."^^xsd:string .
+
+ns1:employment_1 rdfs:label "employment" .
+
+ns1:neuter_1 coref:coref ns1:report_1 .
+
+ns1:present_1 a ns1:Present ;
+    rdfs:label "presents" ;
+    vn.role:Agent ns1:report_1 ;
+    vn.role:Theme ns1:place_1 ;
+    ns1:on ns1:level_1 .
+
+ns1:step_1 rdfs:label "step" .
+
+ns1:thing_1 a owl:Thing,
+        ns1:Step ;
+    rdfs:label "This" ;
+    dul:hasDataValue "1"^^xsd:nonNegativeInteger ;
+    quant:hasDeterminer quant:this ;
+    quant:hasQuantifier quant:one ;
+    ns1:towards ns1:development_1 .
+
+ns1:Development a owl:Class ;
+    rdfs:label "development" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Employment rdfs:label "employment" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Level a owl:Class ;
+    rdfs:label "level" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Place rdfs:label "place" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Political a owl:Class ;
+    rdfs:label "political" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:PoliticalLevel a owl:Class ;
+    rdfs:label "Political Level" ;
+    dul:hasQuality ns1:Political ;
+    rdfs:subClassOf ns1:Level .
+
+ns1:Present rdfs:label "presents" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Report rdfs:label "report" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Step rdfs:label "step" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Sustainable a owl:Class ;
+    rdfs:label "sustainable" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SustainableDevelopment a owl:Class ;
+    rdfs:label "Sustainable Development" ;
+    dul:hasQuality ns1:Sustainable ;
+    rdfs:subClassOf ns1:Development ;
+    owl:equivalentClass dbpedia:Sustainable_development .
+
+ns1:development_1 a ns1:Employment,
+        ns1:SustainableDevelopment ;
+    rdfs:label "development" .
+
+ns1:level_1 a ns1:PoliticalLevel ;
+    rdfs:label "level" ;
+    quant:hasDeterminer quant:a .
+
+ns1:place_1 a ns1:Place ;
+    rdfs:label "place" ;
+    ns1:placeOf ns1:report_1 .
+
+owl:Thing rdfs:label "This" .
+
+ns1:report_1 a owl:Thing,
+        ns1:Report ;
+    rdfs:label "its",
+        "report" ;
+    quant:hasDeterminer quant:the .
+

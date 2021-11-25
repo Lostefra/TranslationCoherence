@@ -1,0 +1,160 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence159.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Predicate rdfs:label "for" .
+
+translation_coherence:ko_sentence159.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence159" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence159" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "his",
+        "its",
+        "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "President Mardam, I would like to thank Mr Koch for his report, In its mind, the problem of transport safety. The report is shown in a matter where the inspection requirements for safety advisors working in the field of roads, railroads and inland waterways."^^xsd:string .
+
+ns1:event_1 a dul:Event ;
+    dul:associatedWith ns1:Mardam ;
+    ns1:in ns1:mind_1 .
+
+ns1:like_1 a ns1:Like ;
+    rdfs:label "like" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:associatedWith ns1:Mardam ;
+    vn.role:Experiencer ns1:person_1 ;
+    vn.role:Theme ns1:thank_1 .
+
+ns1:male_1 coref:coref ns1:Mardam .
+
+ns1:transport_1 a ns1:Transport ;
+    rdfs:label "transport" ;
+    dul:associatedWith ns1:safety_1 .
+
+ns1:Koch rdfs:label "Koch" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> .
+
+ns1:Like rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Mind rdfs:label "mind" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Person rdfs:label "I" .
+
+ns1:Problem rdfs:label "problem" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Report rdfs:label "report" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Safety a owl:Class ;
+    rdfs:label "Safety",
+        "safety" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Thank rdfs:label "thank" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:TransportSafety a owl:Class ;
+    rdfs:label "Transport Safety" ;
+    dul:associatedWith ns1:Transport ;
+    rdfs:subClassOf ns1:Safety .
+
+ns1:mind_1 a ns1:Mind ;
+    rdfs:label "mind" ;
+    dul:associatedWith ns1:problem_1 ;
+    ns1:mindOf ns1:neuter_1 .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "its" .
+
+ns1:problem_1 a ns1:Problem ;
+    rdfs:label "problem" ;
+    quant:hasDeterminer quant:the ;
+    ns1:problemOf ns1:safety_1 .
+
+ns1:report_1 a ns1:Report ;
+    rdfs:label "report" ;
+    ns1:reportOf ns1:Mardam .
+
+ns1:thank_1 a ns1:Thank ;
+    rdfs:label "thank" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Predicate ns1:report_1 ;
+    vn.role:Theme ns1:Koch .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> rdfs:label "Mr" ;
+    boxer:possibleType dul:Role .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#President> a ns1:Male ;
+    rdfs:label "President" ;
+    boxer:possibleType dul:Role ;
+    owl:sameAs dbpedia:President .
+
+ns1:Male rdfs:label "Mardam",
+        "President" .
+
+ns1:Transport a owl:Class ;
+    rdfs:label "transport" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Transport .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:safety_1 a ns1:TransportSafety ;
+    rdfs:label "safety" .
+
+ns1:Mardam a ns1:Male ;
+    rdfs:label "Mardam",
+        "his" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#President> ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#President> .
+

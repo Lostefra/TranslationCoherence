@@ -1,0 +1,141 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence625.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence625.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence625" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence625" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In" .
+
+ns1:author_1 a ns1:Author ;
+    rdfs:label "author" ;
+    dul:associatedWith ns1:whittaker_chambers_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:docuverse earmark:hasContent "In the national review, the conservative author Whittaker_Chambers says book sophomoric and notable silly."^^xsd:string .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "says" ;
+    vn.role:Agent ns1:whittaker_chambers_1 ;
+    vn.role:Topic ns1:book_1 ;
+    ns1:in ns1:review_1 .
+
+ns1:silly_1 rdfs:label "silly" .
+
+dbpedia:National_Review rdfs:subClassOf schema:CreativeWork .
+
+ns1:AuthorWhittaker_chambers a owl:Class ;
+    rdfs:label "Author Whittaker chambers" ;
+    dul:associatedWith ns1:Author ;
+    rdfs:subClassOf ns1:Whittaker_chambers .
+
+ns1:Book rdfs:label "book" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Conservative a owl:Class ;
+    rdfs:label "conservative" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Conservatism_in_the_United_States .
+
+ns1:ConservativeAuthor a owl:Class ;
+    dul:hasQuality ns1:Conservative ;
+    rdfs:subClassOf ns1:Author .
+
+ns1:ConservativeAuthorWhittaker_chambers a owl:Class ;
+    rdfs:label "conservative author Whittaker Chambers" ;
+    dul:associatedWith ns1:ConservativeAuthor ;
+    rdfs:subClassOf ns1:AuthorWhittaker_chambers .
+
+ns1:NationalReview a owl:Class ;
+    rdfs:label "national review" ;
+    dul:hasQuality ns1:National ;
+    rdfs:subClassOf ns1:Review ;
+    owl:equivalentClass dbpedia:National_Review .
+
+ns1:Notable a owl:Class ;
+    rdfs:label "notable" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:NotableSilly a owl:Class ;
+    rdfs:label "Notable Silly" ;
+    dul:hasQuality ns1:Notable ;
+    rdfs:subClassOf ns1:Silly .
+
+ns1:Review a owl:Class ;
+    rdfs:label "review" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Say rdfs:label "says" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Silly a owl:Class ;
+    rdfs:label "silly" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Sophomoric rdfs:label "sophomoric" .
+
+ns1:Whittaker_chambers a owl:Class ;
+    rdfs:label "Whittaker Chambers" ;
+    owl:equivalentClass dbpedia:Whittaker_Chambers .
+
+ns1:book_1 a ns1:Book,
+        ns1:NotableSilly ;
+    rdfs:label "book" ;
+    dul:hasQuality ns1:Sophomoric .
+
+ns1:review_1 a ns1:NationalReview ;
+    rdfs:label "review" ;
+    dul:hasQuality ns1:National ;
+    quant:hasDeterminer quant:the .
+
+ns1:National a owl:Class ;
+    rdfs:label "national" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:whittaker_chambers_1 a ns1:ConservativeAuthorWhittaker_chambers ;
+    rdfs:label "Whittaker Chambers" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Author a owl:Class ;
+    rdfs:label "author" ;
+    rdfs:subClassOf dul:Person .
+

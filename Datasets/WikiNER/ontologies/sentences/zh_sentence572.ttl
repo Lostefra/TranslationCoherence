@@ -1,0 +1,141 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence572.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence572.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence572" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence572" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Despite rdfs:label "Despite" .
+
+ns1:Of rdfs:label "'s",
+        "her",
+        "of" .
+
+ns1:Throughout rdfs:label "throughout" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "Despite her philosophical differences with them, Rand strongly endorsed the man's books throughout her career, both of whom expressed admiration."^^xsd:string .
+
+ns1:endorse_1 a ns1:StronglyEndorse ;
+    rdfs:label "endorsed" ;
+    dul:hasQuality ns1:Strongly ;
+    vn.role:Agent ns1:Rand ;
+    vn.role:Destination ns1:book_1 ;
+    ns1:despite ns1:difference_1 ;
+    ns1:throughout ns1:career_1 .
+
+ns1:express_1 a ns1:Express ;
+    rdfs:label "expressed" ;
+    vn.role:Agent ns1:thing_2 ;
+    vn.role:Theme ns1:admiration_1 .
+
+ns1:Admiration rdfs:label "admiration" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Book rdfs:label "books" .
+
+ns1:Career rdfs:label "career" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Difference rdfs:label "differences" .
+
+ns1:Endorse rdfs:label "endorsed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Express rdfs:label "expressed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Female rdfs:label "Rand" .
+
+ns1:Man rdfs:label "man" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Philosophical rdfs:label "philosophical" .
+
+ns1:PhilosophicalDifference rdfs:subClassOf ns1:Difference .
+
+ns1:Strongly rdfs:label "strongly" .
+
+ns1:StronglyEndorse rdfs:subClassOf ns1:Endorse .
+
+ns1:admiration_1 a ns1:Admiration ;
+    rdfs:label "admiration" ;
+    quant:hasQuantifier quant:both .
+
+ns1:book_1 a ns1:Book ;
+    rdfs:label "books" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:bookOf ns1:man_1 .
+
+ns1:difference_1 a ns1:PhilosophicalDifference ;
+    rdfs:label "differences" ;
+    dul:hasQuality ns1:Philosophical ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:philosophicalDifferenceOf ns1:Rand ;
+    ns1:with ns1:thing_1 .
+
+ns1:female_1 rdfs:label "her" ;
+    coref:coref ns1:female_1 .
+
+ns1:man_1 a ns1:Man ;
+    rdfs:label "man" ;
+    quant:hasDeterminer quant:the .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "them" .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "both" ;
+    ns1:thingOf ns1:career_1 .
+
+owl:Thing rdfs:label "both",
+        "them" .
+
+ns1:career_1 a ns1:Career ;
+    rdfs:label "career" ;
+    ns1:careerOf ns1:Rand .
+
+ns1:Rand a ns1:Female ;
+    rdfs:label "Rand" ;
+    boxer:possibleType foaf:Person .
+

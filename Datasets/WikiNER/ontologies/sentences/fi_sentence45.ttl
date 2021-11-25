@@ -1,0 +1,176 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence45.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Etunnetuliest> rdfs:label "tunnetuliest" .
+
+translation_coherence:fi_sentence45.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence45" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence45" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:anarchism_2 rdfs:label "anarchism" .
+
+ns1:call_1 a ns1:Call ;
+    rdfs:label "called" ;
+    vn.role:Predicate ns1:egoism_1 ;
+    vn.role:Theme ns1:form_1 .
+
+ns1:disjunct_1 a ns1:Disjunct ;
+    boxing:involves ns1:Egoism,
+        ns1:egoism_1 ;
+    ns1:union ns1:disjunct_2 .
+
+ns1:docuverse earmark:hasContent "The most extreme form of individual anarchism, called egoism or egoistic anarchism, was revealed in one of the  tunnetuliest and most well-known supporters of individualistic anarchism."^^xsd:string .
+
+ns1:reveal_1 a ns1:Reveal ;
+    rdfs:label "revealed" ;
+    vn.role:Theme ns1:form_1 ;
+    ns1:in ns1:supporter_1 .
+
+ns1:Call rdfs:label "called" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:EgoisticAnarchism rdfs:label "Egoistic Anarchism" ;
+    rdfs:subClassOf ns1:Anarchism .
+
+ns1:Extreme a owl:Class ;
+    rdfs:label "extreme" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ExtremeForm a owl:Class ;
+    rdfs:label "extreme form" ;
+    dul:hasQuality ns1:Extreme ;
+    rdfs:subClassOf ns1:Form .
+
+ns1:Form a owl:Class ;
+    rdfs:label "form" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Individual a owl:Class ;
+    rdfs:label "individual" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:IndividualAnarchism a owl:Class ;
+    rdfs:label "individual anarchism" ;
+    dul:hasQuality ns1:Individual ;
+    rdfs:subClassOf ns1:Anarchism ;
+    owl:equivalentClass dbpedia:Individualist_anarchism .
+
+ns1:Individualistic rdfs:label "individualistic" .
+
+ns1:IndividualisticAnarchism a owl:Class ;
+    rdfs:label "individualistic anarchism" ;
+    rdfs:subClassOf ns1:Anarchism ;
+    owl:equivalentClass dbpedia:Individualist_anarchism .
+
+ns1:MostExtremeForm a owl:Class ;
+    rdfs:label "Most Extreme Form" ;
+    rdfs:subClassOf ns1:ExtremeForm .
+
+ns1:MostWell-knownSupporter rdfs:subClassOf ns1:Supporter .
+
+ns1:Reveal rdfs:label "revealed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Tunnetuliest rdfs:label "tunnetuliest" .
+
+ns1:Well-known rdfs:label "well-known" .
+
+ns1:anarchism_1 a ns1:IndividualAnarchism ;
+    rdfs:label "anarchism" .
+
+ns1:anarchism_3 a ns1:IndividualisticAnarchism ;
+    rdfs:label "anarchism" ;
+    dul:hasQuality ns1:Individualistic .
+
+ns1:disjunct_2 a ns1:Disjunct ;
+    boxing:involves ns1:Anarchism,
+        ns1:Egoistic,
+        ns1:egoism_1 .
+
+ns1:supporter_1 a ns1:MostWell-knownSupporter,
+        ns1:Supporter ;
+    rdfs:label "supporters" ;
+    dul:hasDataValue "1"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:Most,
+        ns1:Tunnetuliest,
+        ns1:Well-known ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple,
+        quant:one ;
+    ns1:mostWell-knownSupporterOf ns1:anarchism_3 ;
+    ns1:tunnetuliestAmong ns1:Supporter .
+
+ns1:Egoism a owl:Class ;
+    rdfs:label "egoism" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Egoist_anarchism .
+
+ns1:Egoistic rdfs:label "egoistic" ;
+    owl:sameAs dbpedia:Egotism .
+
+ns1:Most rdfs:label "most" .
+
+ns1:form_1 a ns1:MostExtremeForm ;
+    rdfs:label "form" ;
+    dul:hasQuality ns1:Most ;
+    quant:hasDeterminer quant:the ;
+    ns1:mostExtremeFormOf ns1:anarchism_1 .
+
+ns1:Supporter rdfs:label "supporters" .
+
+ns1:egoism_1 a ns1:Egoism,
+        ns1:EgoisticAnarchism ;
+    rdfs:label "egoism" ;
+    dul:hasQuality ns1:Egoistic .
+
+ns1:Anarchism a owl:Class ;
+    rdfs:label "anarchism" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+

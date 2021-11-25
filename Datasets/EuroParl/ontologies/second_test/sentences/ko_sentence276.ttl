@@ -1,0 +1,124 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence276.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme rdfs:label "at" .
+
+translation_coherence:ko_sentence276.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence276" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence276" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Because rdfs:label "because" .
+
+ns1:Of rdfs:label "his" .
+
+ns1:Within rdfs:label "within" .
+
+ns1:create_1 a ns1:Create ;
+    rdfs:label "created" ;
+    vn.role:Agent ns1:Koch ;
+    vn.role:Product ns1:report_1 ;
+    ns1:because ns1:situation_1 .
+
+ns1:docuverse earmark:hasContent "Mr. Koch created his sound reports because he worked at CEN and was not expired within the UN Economic Council."^^xsd:string .
+
+ns1:male_1 rdfs:label "his" .
+
+ns1:sound_1 a ns1:Sound ;
+    rdfs:label "sound" ;
+    dul:associatedWith ns1:report_1 .
+
+ns1:Cen rdfs:label "CEN" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:European_Committee_for_Standardization .
+
+ns1:Create rdfs:label "created" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Expire rdfs:label "expired" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Report rdfs:label "reports" .
+
+ns1:Sound rdfs:label "sound" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:SoundReport rdfs:subClassOf ns1:Report .
+
+ns1:Un_economic_council rdfs:label "UN Economic Council" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Work rdfs:label "worked" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:expire_1 a ns1:Expire ;
+    rdfs:label "expired" ;
+    boxer:patient ns1:Koch ;
+    boxing:hasTruthValue boxing:False ;
+    ns1:within ns1:Un_economic_council .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:expire_1,
+        ns1:work_1 .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "worked" ;
+    vn.role:Actor ns1:Koch ;
+    vn.role:Theme ns1:Cen .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> a ns1:Male ;
+    rdfs:label "Mr." ;
+    boxer:possibleType dul:Role .
+
+ns1:Male rdfs:label "Koch",
+        "Mr." .
+
+ns1:report_1 a ns1:SoundReport ;
+    rdfs:label "reports" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:soundReportOf ns1:Koch .
+
+ns1:Koch a ns1:Male ;
+    rdfs:label "Koch" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> .
+

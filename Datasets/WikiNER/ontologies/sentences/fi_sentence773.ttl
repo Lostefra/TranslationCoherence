@@ -1,0 +1,151 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix fred: <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence773.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+fred: rdfs:label ":"^^xsd:string .
+
+translation_coherence:fi_sentence773.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence773" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence773" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Where rdfs:label "where" .
+
+ns1:docuverse earmark:hasContent "Anthropology historians such as Marvin_Harris show two frames where empirical anthropology has emerged: interest in space and interest in long-term human processes."^^xsd:string .
+
+ns1:show_1 a ns1:Show ;
+    rdfs:label "show" ;
+    vn.role:Agent ns1:historian_1 ;
+    vn.role:Theme ns1:frame_1 .
+
+ns1:Emerge rdfs:label "emerged" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Empirical a owl:Class ;
+    rdfs:label "empirical" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Empirical_evidence .
+
+ns1:EmpiricalAnthropology a owl:Class ;
+    rdfs:label "empirical anthropology" ;
+    dul:hasQuality ns1:Empirical ;
+    rdfs:subClassOf ns1:Anthropology .
+
+ns1:Frame rdfs:label "frames" .
+
+ns1:Historian rdfs:label "historians" .
+
+ns1:Human rdfs:label "human" ;
+    owl:sameAs dbpedia:Human .
+
+ns1:HumanProcess rdfs:subClassOf ns1:Process .
+
+ns1:Long-term rdfs:label "long-term" .
+
+ns1:Long-termHumanProcess rdfs:subClassOf ns1:HumanProcess .
+
+ns1:Marvin_harris rdfs:label "Marvin Harris" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Marvin_Harris .
+
+ns1:Process rdfs:label "processes" .
+
+ns1:Show rdfs:label "show" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Space rdfs:label "space" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:anthropology_1 a ns1:EmpiricalAnthropology ;
+    rdfs:label "anthropology" .
+
+ns1:emerge_1 a ns1:Emerge ;
+    rdfs:label "emerged" ;
+    vn.role:Location ns1:interest_1 ;
+    vn.role:Theme ns1:anthropology_1 .
+
+ns1:frame_1 a ns1:Frame ;
+    rdfs:label "frames" ;
+    dul:hasDataValue "2"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple,
+        quant:two ;
+    ns1:where ns1:emerge_1 .
+
+ns1:historian_1 a ns1:Historian ;
+    rdfs:label "historians" ;
+    dul:associatedWith ns1:Anthropology ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:as ns1:Marvin_harris .
+
+ns1:interest_1 a ns1:Interest ;
+    rdfs:label "interest" ;
+    ns1:in ns1:interest_2,
+        ns1:space_1 .
+
+ns1:interest_2 a ns1:Interest ;
+    rdfs:label "interest" ;
+    ns1:in ns1:process_1 .
+
+ns1:process_1 a ns1:Long-termHumanProcess ;
+    rdfs:label "processes" ;
+    dul:hasQuality ns1:Human,
+        ns1:Long-term ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:space_1 a ns1:Space ;
+    rdfs:label "space" .
+
+ns1:Anthropology a owl:Class ;
+    rdfs:label "Anthropology",
+        "anthropology" ;
+    boxer:possibleType owl:Thing ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> ;
+    owl:equivalentClass dbpedia:Anthropology .
+
+ns1:Interest rdfs:label "interest" ;
+    rdfs:subClassOf dul:Situation .
+

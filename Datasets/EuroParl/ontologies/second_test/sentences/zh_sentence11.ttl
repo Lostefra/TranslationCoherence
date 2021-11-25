@@ -1,0 +1,212 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence11.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence11.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence11" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence11" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:If rdfs:label "if" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Noteq rdfs:label "other" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "Ms. President, if you should write to the President_of_Sri_Lanka, regrets the death of other violence in Sri Lanka, and urges her to do everything possible to seek peace and resolve the very difficult situation?"^^xsd:string .
+
+ns1:regret_1 a ns1:Regret ;
+    rdfs:label "regrets" ;
+    vn.role:Experiencer ns1:President ;
+    vn.role:Theme ns1:death_1 ;
+    ns1:if ns1:write_1 .
+
+ns1:urge_1 a ns1:Urge ;
+    rdfs:label "urges" ;
+    vn.role:Agent ns1:President ;
+    vn.role:Proposition ns1:situation_1 ;
+    ns1:if ns1:write_1 .
+
+dbpedia:Sri_Lanka a schema:Country,
+        schema:Place .
+
+boxing:Possible rdfs:label "possible" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Death rdfs:label "death" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:DifficultSituation a owl:Class ;
+    rdfs:label "Difficult Situation" ;
+    dul:hasQuality ns1:Difficult ;
+    rdfs:subClassOf ns1:Situation .
+
+ns1:Do rdfs:label "do" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Her rdfs:label "her" .
+
+<https://w3id.org/stlab/ke/amiala/zh_sentence11.ttl/Ms.> rdfs:label "Ms." ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Peace rdfs:label "peace" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Person rdfs:label "you" .
+
+ns1:President_of_sri_lanka rdfs:label "President of Sri Lanka" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:President_of_Sri_Lanka .
+
+ns1:Regret rdfs:label "regrets" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Resolve rdfs:label "resolve" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Seek rdfs:label "seek" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Sri_lanka rdfs:label "Sri Lanka" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Sri_Lanka .
+
+ns1:Urge rdfs:label "urges" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Very rdfs:label "very" .
+
+ns1:VeryDifficultSituation a owl:Class ;
+    rdfs:label "very difficult situation" ;
+    rdfs:subClassOf ns1:DifficultSituation .
+
+ns1:Write rdfs:label "write" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:death_1 a ns1:Death ;
+    rdfs:label "death" ;
+    quant:hasDeterminer quant:the ;
+    ns1:deathOf ns1:violence_1 ;
+    ns1:locatedIn ns1:Sri_lanka .
+
+ns1:do_1 a ns1:Do ;
+    rdfs:label "do" ;
+    boxer:agent ns1:her_1 ;
+    boxer:patient ns1:thing_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "you" .
+
+ns1:possible_1 a boxing:Possible ;
+    rdfs:label "possible" ;
+    boxer:agent ns1:thing_1 ;
+    boxer:theme ns1:situation_1 .
+
+ns1:resolve_1 a ns1:Resolve ;
+    rdfs:label "resolve" ;
+    boxer:patient ns1:situation_2 ;
+    vn.role:Actor ns1:thing_1 .
+
+ns1:seek_1 a ns1:Seek ;
+    rdfs:label "seek" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Theme ns1:peace_1 .
+
+ns1:situation_2 a ns1:VeryDifficultSituation ;
+    rdfs:label "situation" ;
+    dul:hasQuality ns1:Difficult ;
+    quant:hasDeterminer quant:the .
+
+ns1:violence_1 a ns1:Violence ;
+    rdfs:label "other" ;
+    owl:differentFrom ns1:violence_2 .
+
+ns1:violence_2 a ns1:Violence ;
+    rdfs:label "violence" ;
+    quant:hasDeterminer quant:other .
+
+owl:Thing rdfs:label "everything" .
+
+ns1:Difficult a owl:Class ;
+    rdfs:label "difficult" ;
+    dul:hasQuality ns1:Very ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:President rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith <https://w3id.org/stlab/ke/amiala/zh_sentence11.ttl/Ms.> ;
+    owl:sameAs dbpedia:President .
+
+ns1:Situation a owl:Class ;
+    rdfs:label "situation" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Violence rdfs:label "other",
+        "violence" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:her_1 a ns1:Her ;
+    rdfs:label "her" .
+
+ns1:peace_1 a ns1:Peace ;
+    rdfs:label "peace" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:do_1,
+        ns1:her_1,
+        ns1:peace_1,
+        ns1:possible_1,
+        ns1:resolve_1,
+        ns1:seek_1,
+        ns1:thing_1 .
+
+ns1:write_1 a ns1:Write ;
+    rdfs:label "write" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_1 ;
+    ns1:to ns1:President_of_sri_lanka .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "everything" .
+

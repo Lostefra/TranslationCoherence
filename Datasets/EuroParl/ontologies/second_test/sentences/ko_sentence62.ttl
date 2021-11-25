@@ -1,0 +1,256 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence62.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+vn.role:Cause rdfs:label "In" .
+
+translation_coherence:ko_sentence62.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence62" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence62" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Agent rdfs:label "by" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:accept_1 a ns1:ExplicitlyAccept ;
+    rdfs:label "accepted" ;
+    dul:hasQuality ns1:Explicitly ;
+    vn.role:Agent ns1:Prodi ;
+    vn.role:Cause ns1:addition_1 ;
+    vn.role:Theme ns1:Prodi_commission .
+
+ns1:approve_1 a ns1:Approve ;
+    rdfs:label "approved" ;
+    boxer:agent ns1:group_1 ;
+    vn.role:Agent ns1:meeting_1 ;
+    vn.role:Theme ns1:announcement_1 ;
+    ns1:in "0001-09-01"^^xsd:date .
+
+ns1:docuverse earmark:hasContent "The announcement of the podcast president, the political program of the Prodi_Commission was approved by the group of early European socialist parties in September by the meeting of almost unappropriate European socialist, In addition, it was explicitly accepted by the President Prodi, Rejoices his devotion in his suburban speech."^^xsd:string .
+
+ns1:podcast_1 a ns1:Podcast ;
+    rdfs:label "podcast" ;
+    dul:associatedWith ns1:president_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:rejoice_1 a ns1:Rejoice ;
+    rdfs:label "Rejoices" ;
+    boxer:patient ns1:devotion_1 ;
+    vn.role:Cause ns1:addition_1 ;
+    vn.role:Experiencer ns1:Prodi_commission ;
+    ns1:in ns1:speech_1 .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Accept rdfs:label "accepted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Addition rdfs:label "addition" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:AlmostUnappropriateEuropeanSocialist rdfs:label "almost unappropriate European socialist" ;
+    rdfs:subClassOf ns1:UnappropriateEuropeanSocialist .
+
+ns1:Announcement rdfs:label "announcement" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Approve rdfs:label "approved" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Devotion rdfs:label "devotion" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Early rdfs:label "early" .
+
+ns1:EarlyEuropeanSocialistParty rdfs:subClassOf ns1:EuropeanSocialistParty .
+
+ns1:EuropeanSocialist a owl:Class ;
+    rdfs:label "European socialist" ;
+    dul:hasQuality ns1:European ;
+    rdfs:subClassOf ns1:Socialist .
+
+ns1:EuropeanSocialistParty rdfs:subClassOf ns1:SocialistParty .
+
+ns1:Explicitly rdfs:label "explicitly" .
+
+ns1:ExplicitlyAccept rdfs:subClassOf ns1:Accept .
+
+ns1:Group rdfs:label "group" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Meeting rdfs:label "meeting" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Party rdfs:label "parties" .
+
+ns1:PodcastPresident a owl:Class ;
+    rdfs:label "Podcast President" ;
+    dul:associatedWith ns1:Podcast ;
+    rdfs:subClassOf ns1:President .
+
+ns1:Political a owl:Class ;
+    rdfs:label "political" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:PoliticalProgram a owl:Class ;
+    rdfs:label "political program" ;
+    dul:hasQuality ns1:Political ;
+    rdfs:subClassOf ns1:Program .
+
+ns1:President a owl:Class ;
+    rdfs:label "president" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Prodi rdfs:label "Prodi" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#President> ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#President> .
+
+ns1:Program a owl:Class ;
+    rdfs:label "program" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Rejoice rdfs:label "Rejoices" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:SocialistParty rdfs:subClassOf ns1:Party .
+
+ns1:Speech a owl:Class ;
+    rdfs:label "speech" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Suburban a owl:Class ;
+    rdfs:label "suburban" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SuburbanSpeech a owl:Class ;
+    rdfs:label "suburban speech" ;
+    dul:hasQuality ns1:Suburban ;
+    rdfs:subClassOf ns1:Speech .
+
+ns1:Unappropriate rdfs:label "unappropriate" ;
+    dul:hasQuality ns1:Almost ;
+    owl:sameAs dbpedia:Unappropriate .
+
+ns1:UnappropriateEuropeanSocialist rdfs:label "Unappropriate European Socialist" ;
+    rdfs:subClassOf ns1:EuropeanSocialist .
+
+ns1:announcement_1 a ns1:Announcement ;
+    rdfs:label "announcement" ;
+    quant:hasDeterminer quant:the ;
+    ns1:announcementOf ns1:president_1 .
+
+ns1:devotion_1 a ns1:Devotion ;
+    rdfs:label "devotion" ;
+    ns1:devotionOf ns1:male_1 .
+
+ns1:group_1 a ns1:Group ;
+    rdfs:label "group" ;
+    quant:hasDeterminer quant:the ;
+    ns1:groupOf ns1:party_1 .
+
+ns1:meeting_1 a ns1:Meeting ;
+    rdfs:label "meeting" ;
+    quant:hasDeterminer quant:the ;
+    ns1:meetingOf ns1:socialist_1 .
+
+ns1:party_1 a ns1:EarlyEuropeanSocialistParty ;
+    rdfs:label "parties" ;
+    dul:hasQuality ns1:Early,
+        ns1:European,
+        ns1:Socialist ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:program_1 a ns1:PoliticalProgram ;
+    rdfs:label "program" ;
+    quant:hasDeterminer quant:the ;
+    ns1:politicalProgramOf ns1:Prodi_commission .
+
+ns1:socialist_1 a ns1:AlmostUnappropriateEuropeanSocialist ;
+    rdfs:label "socialist" ;
+    dul:hasQuality ns1:European,
+        ns1:Unappropriate .
+
+ns1:speech_1 a ns1:SuburbanSpeech ;
+    rdfs:label "speech" ;
+    ns1:suburbanSpeechOf ns1:male_1 .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#President> rdfs:label "President" ;
+    boxer:possibleType dul:Role ;
+    owl:sameAs dbpedia:President .
+
+ns1:Almost rdfs:label "almost" .
+
+ns1:Podcast a owl:Class ;
+    rdfs:label "podcast" ;
+    owl:equivalentClass dbpedia:Podcast .
+
+ns1:Socialist a owl:Class ;
+    rdfs:label "socialist" ;
+    owl:equivalentClass dbpedia:Socialism .
+
+ns1:addition_1 a ns1:Addition ;
+    rdfs:label "addition" .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "his" .
+
+ns1:president_1 a ns1:PodcastPresident ;
+    rdfs:label "president" ;
+    dul:associatedWith ns1:program_1 .
+
+ns1:European a owl:Class ;
+    rdfs:label "European" ;
+    dul:hasQuality ns1:Almost ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Prodi_commission rdfs:label "Prodi Commission" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality owl:Thing ;
+    owl:sameAs dbpedia:Prodi_Commission .
+

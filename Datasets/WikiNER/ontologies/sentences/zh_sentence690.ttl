@@ -1,0 +1,141 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence690.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:zh_sentence690.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence690" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence690" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In" .
+
+ns1:Into rdfs:label "into" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:bring_1 a ns1:Bring ;
+    rdfs:label "bringing" ;
+    vn.role:Agent ns1:Barbary_corsairs ;
+    vn.role:Theme ns1:survivor_1 .
+
+ns1:destroy_1 a ns1:Destroy ;
+    rdfs:label "destroyed" ;
+    vn.role:Agent ns1:Barbary_corsairs ;
+    vn.role:Patient ns1:town_1 ;
+    ns1:in "1558-01-01"^^xsd:date .
+
+ns1:docuverse earmark:hasContent "In 1558, Barbary_corsairs occupied the town of Tutadella, destroyed the town, killing the population and bringing 3,000 survivors to Istanbul into slavery."^^xsd:string .
+
+ns1:istanbul_1 a ns1:Istanbul ;
+    rdfs:label "Istanbul" ;
+    boxer:agent ns1:Barbary_corsairs ;
+    ns1:into ns1:slavery_1 .
+
+ns1:kill_1 a ns1:Kill ;
+    rdfs:label "killing" ;
+    vn.role:Agent ns1:Barbary_corsairs ;
+    vn.role:Patient ns1:population_1 .
+
+ns1:occupy_1 a ns1:Occupy ;
+    rdfs:label "occupied" ;
+    vn.role:Cause ns1:Barbary_corsairs ;
+    vn.role:Experiencer ns1:town_1 ;
+    ns1:in "1558-01-01"^^xsd:date .
+
+dbpedia:Istanbul rdfs:subClassOf schema:City,
+        schema:Place .
+
+ns1:Bring rdfs:label "bringing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Destroy rdfs:label "destroyed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Istanbul a owl:Class ;
+    rdfs:label "Istanbul" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Istanbul .
+
+ns1:Kill rdfs:label "killing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Occupy rdfs:label "occupied" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Population rdfs:label "population" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Slavery a owl:Class ;
+    rdfs:label "slavery" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Slavery .
+
+ns1:Survivor rdfs:label "survivors" .
+
+ns1:Town rdfs:label "town" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Tutadella rdfs:label "Tutadella" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:population_1 a ns1:Population ;
+    rdfs:label "population" ;
+    quant:hasDeterminer quant:the .
+
+ns1:slavery_1 a ns1:Slavery ;
+    rdfs:label "slavery" .
+
+ns1:survivor_1 a ns1:Survivor ;
+    rdfs:label "survivors" ;
+    dul:hasDataValue "3000"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:3%2C000,
+        quant:multiple .
+
+ns1:town_1 a ns1:Town ;
+    rdfs:label "town" ;
+    quant:hasDeterminer quant:the ;
+    ns1:townOf ns1:Tutadella .
+
+ns1:Barbary_corsairs rdfs:label "Barbary corsairs" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Barbary_pirates .
+

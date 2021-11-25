@@ -1,0 +1,144 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence687.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "to" .
+
+translation_coherence:nl_sentence687.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence687" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence687" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Between rdfs:label "between" .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "In 1551, Turgut Reis made the entire population of the Maltese island Gozo, between 5,000 and 6,000, she's sending them to Libya."^^xsd:string .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "made" ;
+    dul:associatedWith ns1:gozo_1 ;
+    vn.role:Agent ns1:Turgut_reis ;
+    vn.role:Theme ns1:population_1 ;
+    ns1:between "6000"^^xsd:nonNegativeInteger ;
+    ns1:in "1551-01-01"^^xsd:date .
+
+ns1:send_1 a ns1:Send ;
+    rdfs:label "sending" ;
+    vn.role:Agent ns1:female_1 ;
+    vn.role:Destination ns1:Libya ;
+    vn.role:Theme ns1:thing_1 .
+
+dbpedia:Libya a schema:Country,
+        schema:Place .
+
+dbpedia:Malta rdfs:subClassOf schema:Country,
+        schema:Place .
+
+owl:Thing rdfs:label "them" .
+
+ns1:Entire a owl:Class ;
+    rdfs:label "entire" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:EntirePopulation a owl:Class ;
+    rdfs:label "entire population" ;
+    dul:hasQuality ns1:Entire ;
+    rdfs:subClassOf ns1:Population .
+
+ns1:Female rdfs:label "she" .
+
+ns1:Gozo a owl:Class ;
+    rdfs:label "Gozo" ;
+    owl:equivalentClass dbpedia:Gozo .
+
+ns1:Island a owl:Class ;
+    rdfs:label "island" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Libya rdfs:label "Libya" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Libya .
+
+ns1:Make rdfs:label "made" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:MalteseIsland a owl:Class ;
+    rdfs:label "Maltese Island" ;
+    dul:hasQuality ns1:Maltese ;
+    rdfs:subClassOf ns1:Island .
+
+ns1:Population a owl:Class ;
+    rdfs:label "population" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Send rdfs:label "sending" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Turgut_reis rdfs:label "Turgut Reis" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Dragut .
+
+ns1:female_1 a ns1:Female ;
+    rdfs:label "she" .
+
+ns1:gozo_1 a ns1:Gozo ;
+    rdfs:label "Gozo" .
+
+ns1:island_1 a ns1:MalteseIsland ;
+    rdfs:label "island" ;
+    dul:hasQuality ns1:Maltese ;
+    quant:hasDeterminer quant:the .
+
+ns1:population_1 a ns1:EntirePopulation ;
+    rdfs:label "population" ;
+    quant:hasDeterminer quant:the ;
+    ns1:entirePopulationOf ns1:island_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "them" .
+
+ns1:Maltese a owl:Class ;
+    rdfs:label "Maltese" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Malta .
+

@@ -1,0 +1,124 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence336.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:en_sentence336.ttl a owl:Ontology ;
+    rdfs:label "en_sentence336" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence336" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of",
+        "our",
+        "their" .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "Furthermore, three quarters of our farm workers are part-time and require supplements to their incomes."^^xsd:string .
+
+ns1:require_1 a ns1:Require ;
+    rdfs:label "require" ;
+    dul:hasQuality ns1:Furthermore ;
+    vn.role:Agent ns1:quarter_1 ;
+    vn.role:Patient ns1:supplement_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Part-time,
+        ns1:quarter_1 ;
+    dul:hasQuality ns1:Furthermore .
+
+ns1:thing_1 coref:coref ns1:farm_1 .
+
+ns1:Farm rdfs:label "farm" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:FarmWorker rdfs:subClassOf ns1:Worker .
+
+ns1:Income rdfs:label "incomes" .
+
+ns1:Quarter rdfs:label "quarters" .
+
+ns1:Require rdfs:label "require" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Supplement rdfs:label "supplements" .
+
+ns1:Worker rdfs:label "workers" .
+
+ns1:income_1 a ns1:Income ;
+    rdfs:label "incomes" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:incomeOf ns1:farm_1 .
+
+ns1:person_1 a ns1:Person .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "our" .
+
+ns1:supplement_1 a ns1:Supplement ;
+    rdfs:label "supplements" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:to ns1:income_1 .
+
+ns1:Furthermore rdfs:label "Furthermore" .
+
+ns1:Part-time rdfs:label "part-time" .
+
+ns1:farm_1 a owl:Thing,
+        ns1:Farm ;
+    rdfs:label "farm",
+        "their" ;
+    dul:associatedWith ns1:worker_1 .
+
+ns1:quarter_1 a ns1:Quarter ;
+    rdfs:label "quarters" ;
+    dul:hasDataValue "3"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:Part-time ;
+    quant:hasQuantifier quant:multiple,
+        quant:three ;
+    ns1:quarterOf ns1:worker_1 .
+
+ns1:worker_1 a ns1:FarmWorker ;
+    rdfs:label "workers" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:farmWorkerOf ns1:person_1,
+        ns1:person_2 .
+

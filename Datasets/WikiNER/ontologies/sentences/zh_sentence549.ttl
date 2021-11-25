@@ -1,0 +1,147 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence549.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence549.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence549" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence549" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Infirstachievewith rdfs:label "first achieved great achievements in 1943 with" .
+
+ns1:Of rdfs:label "her" .
+
+ns1:docuverse earmark:hasContent "She first achieved great achievements in 1943 with her new  Fountainhead , which was her most prominent work in 1957, AtlasShru stoves."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Most,
+        ns1:Prominent,
+        ns1:She,
+        ns1:SheMostProminentWork,
+        ns1:Work,
+        ns1:fountainhead_1 ;
+    ns1:in "1957-01-01"^^xsd:date .
+
+ns1:stove_1 a ns1:Stove ;
+    rdfs:label "stoves" ;
+    boxer:agent ns1:Atlasshru ;
+    boxer:theme ns1:achieve_1 .
+
+ns1:work_1 rdfs:label "work" .
+
+ns1:Achieve rdfs:label "achieved" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Achievement rdfs:label "achievements" .
+
+ns1:Atlasshru rdfs:label "AtlasShru" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Female rdfs:label "She" .
+
+ns1:First rdfs:label "first" .
+
+ns1:FirstAchieve rdfs:subClassOf ns1:Achieve .
+
+ns1:Fountainhead a owl:Class ;
+    rdfs:label "Fountainhead" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:The_Fountainhead .
+
+ns1:Great rdfs:label "great" .
+
+ns1:GreatAchievement rdfs:subClassOf ns1:Achievement .
+
+ns1:MostProminentWork a owl:Class ;
+    rdfs:label "most prominent work" ;
+    rdfs:subClassOf ns1:ProminentWork .
+
+ns1:New rdfs:label "new" .
+
+ns1:NewFountainhead rdfs:subClassOf ns1:Fountainhead .
+
+ns1:ProminentWork a owl:Class ;
+    rdfs:label "prominent work" ;
+    dul:hasQuality ns1:Prominent ;
+    rdfs:subClassOf ns1:Work .
+
+ns1:Stove rdfs:label "stoves" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:achieve_1 a ns1:FirstAchieve ;
+    rdfs:label "achieved" ;
+    dul:hasQuality ns1:First ;
+    vn.role:Agent ns1:female_1 ;
+    vn.role:Theme ns1:achievement_1 ;
+    ns1:inFirstAchieveWith ns1:fountainhead_1 .
+
+ns1:achievement_1 a ns1:GreatAchievement ;
+    rdfs:label "achievements" ;
+    dul:hasQuality ns1:Great ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Most rdfs:label "most" .
+
+ns1:Prominent a owl:Class ;
+    rdfs:label "prominent" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:She rdfs:label "her" .
+
+ns1:SheMostProminentWork rdfs:subClassOf ns1:MostProminentWork .
+
+ns1:Work a owl:Class ;
+    rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:female_1 a ns1:Female ;
+    rdfs:label "She",
+        "her" .
+
+ns1:fountainhead_1 a ns1:NewFountainhead,
+        ns1:SheMostProminentWork ;
+    rdfs:label "Fountainhead" ;
+    dul:hasQuality ns1:Most,
+        ns1:New,
+        ns1:She ;
+    ns1:sheMostProminentWorkOf ns1:female_1 .
+

@@ -1,0 +1,222 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence217.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Source rdfs:label "was" .
+
+translation_coherence:nl_sentence217.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence217" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence217" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "my",
+        "of",
+        "your" .
+
+ns1:cause_1 a ns1:Cause ;
+    rdfs:label "caused" ;
+    vn.role:Theme1 ns1:person_4 ;
+    vn.role:Theme2 ns1:person_5 .
+
+ns1:docuverse earmark:hasContent "Achilles told Hector it was hopeless to expect that of him, to explain that my anger would now drive me to hack away your flesh and eat your raw... Such pain you caused me."^^xsd:string .
+
+ns1:tell_1 a ns1:Tell ;
+    rdfs:label "told" ;
+    vn.role:Agent ns1:Achilles ;
+    vn.role:Recipient ns1:Hector ;
+    vn.role:Topic ns1:situation_1 .
+
+ns1:Anger rdfs:label "anger" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Away rdfs:label "away" .
+
+ns1:Cause rdfs:label "caused" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Drive rdfs:label "drive" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Eat rdfs:label "eat" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Explain rdfs:label "explain" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Flesh rdfs:label "flesh" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Hack rdfs:label "hack" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Hector rdfs:label "Hector" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Hopeless rdfs:label "hopeless" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Male rdfs:label "him" .
+
+ns1:Now rdfs:label "now" .
+
+ns1:NowDrive rdfs:label "now drive" ;
+    rdfs:subClassOf ns1:Drive .
+
+ns1:Pain rdfs:label "pain" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Such rdfs:label "Such" .
+
+ns1:Tell rdfs:label "told" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:drive_1 a ns1:NowDrive ;
+    rdfs:label "drive" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Now ;
+    vn.role:Agent ns1:anger_1 ;
+    vn.role:Theme ns1:person_3 .
+
+ns1:eat_1 a ns1:Eat ;
+    rdfs:label "eat" ;
+    boxer:theme ns1:situation_1 ;
+    vn.role:Agent ns1:neuter_1 ;
+    vn.role:Source ns1:hopeless_1 .
+
+ns1:explain_1 a ns1:Explain ;
+    rdfs:label "explain" ;
+    vn.role:Agent ns1:neuter_1 ;
+    vn.role:Source ns1:hopeless_1 ;
+    vn.role:Topic ns1:situation_1 .
+
+ns1:flesh_1 a ns1:Flesh ;
+    rdfs:label "flesh" ;
+    ns1:fleshOf ns1:person_2 .
+
+ns1:hack_1 a ns1:Hack ;
+    rdfs:label "hack" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Away ;
+    vn.role:Agent ns1:anger_1 ;
+    vn.role:Patient ns1:flesh_1 .
+
+ns1:pain_1 a ns1:Pain ;
+    rdfs:label "pain" ;
+    quant:hasDeterminer quant:such .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "my" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "your" .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "me" .
+
+ns1:person_4 a ns1:Person ;
+    rdfs:label "you" ;
+    dul:associatedWith ns1:pain_1 ;
+    dul:hasQuality ns1:Such .
+
+ns1:person_5 a ns1:Person ;
+    rdfs:label "me" .
+
+ns1:thing_3 a owl:Thing ;
+    rdfs:label "that" ;
+    ns1:thingOf ns1:Achilles .
+
+ns1:your_1 a ns1:Your ;
+    rdfs:label "your" ;
+    dul:hasQuality ns1:Raw .
+
+ns1:Achilles rdfs:label "Achilles" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Male ;
+    owl:sameAs dbpedia:Achilles .
+
+ns1:Expect rdfs:label "expect" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Raw rdfs:label "raw" .
+
+ns1:Your rdfs:label "your" .
+
+ns1:anger_1 a ns1:Anger ;
+    rdfs:label "anger" ;
+    quant:hasDeterminer quant:that ;
+    ns1:angerOf ns1:person_1 .
+
+ns1:expect_1 a ns1:Expect ;
+    rdfs:label "expect" ;
+    vn.role:Agent ns1:thing_1,
+        ns1:thing_2 ;
+    vn.role:Theme ns1:thing_3 .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "it" .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:thing_2 a owl:Thing .
+
+ns1:hopeless_1 a ns1:Hopeless ;
+    rdfs:label "hopeless" ;
+    boxer:agent ns1:thing_1,
+        ns1:thing_2 ;
+    boxer:theme ns1:expect_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Expect,
+        ns1:Raw,
+        ns1:Your,
+        ns1:drive_1,
+        ns1:eat_1,
+        ns1:expect_1,
+        ns1:explain_1,
+        ns1:hack_1,
+        ns1:hopeless_1,
+        ns1:your_1 .
+
+owl:Thing rdfs:label "it",
+        "that" .
+
+ns1:Person rdfs:label "me",
+        "you" .
+

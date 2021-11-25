@@ -1,0 +1,129 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence162.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme2 rdfs:label "on" .
+
+translation_coherence:de_sentence162.ttl a owl:Ontology ;
+    rdfs:label "de_sentence162" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence162" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:base_1 a ns1:Base ;
+    rdfs:label "based" ;
+    vn.role:Theme1 ns1:movement_1 ;
+    vn.role:Theme2 ns1:fact_1 .
+
+ns1:docuverse earmark:hasContent "This movement is based on the fact that the United_Kingdom_Constitution makes power highly centralised in Montgomery and virtually no power in local hands."^^xsd:string .
+
+ns1:Base rdfs:label "based" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Centralise rdfs:label "centralised" .
+
+ns1:Fact rdfs:label "fact" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Hand rdfs:label "hands" .
+
+ns1:Highly rdfs:label "highly" .
+
+ns1:Local rdfs:label "local" .
+
+ns1:LocalHand rdfs:subClassOf ns1:Hand .
+
+ns1:Make rdfs:label "makes" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Montgomery rdfs:label "Montgomery" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Movement rdfs:label "movement" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:United_kingdom_constitution a owl:Class ;
+    rdfs:label "United Kingdom Constitution" ;
+    owl:equivalentClass dbpedia:Constitution_of_the_United_Kingdom .
+
+ns1:Virtually rdfs:label "virtually" .
+
+ns1:fact_1 a ns1:Fact ;
+    rdfs:label "fact" ;
+    boxer:theme ns1:make_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:hand_1 a ns1:LocalHand ;
+    rdfs:label "hands" ;
+    dul:hasQuality ns1:Local ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "makes" ;
+    vn.role:Agent ns1:united_kingdom_constitution_1 ;
+    vn.role:Theme ns1:power_1 ;
+    ns1:locatedIn ns1:Montgomery,
+        ns1:power_2 .
+
+ns1:movement_1 a ns1:Movement ;
+    rdfs:label "movement" ;
+    quant:hasDeterminer quant:this .
+
+ns1:power_1 a ns1:Power ;
+    rdfs:label "power" ;
+    dul:hasQuality ns1:Centralise,
+        ns1:Highly .
+
+ns1:power_2 a ns1:Power ;
+    rdfs:label "power" ;
+    dul:hasQuality ns1:Virtually ;
+    quant:hasQuantifier quant:no ;
+    ns1:in ns1:hand_1 .
+
+ns1:united_kingdom_constitution_1 a ns1:United_kingdom_constitution ;
+    rdfs:label "United Kingdom Constitution" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Power a owl:Class ;
+    rdfs:label "power" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Power_(social_and_political) .
+

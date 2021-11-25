@@ -1,0 +1,153 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence635.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence635.ttl a owl:Ontology ;
+    rdfs:label "de_sentence635" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence635" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "As" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "As a result, it is likely to be more useful to say Member_States more strongly in terms of financial assistance to the regions."^^xsd:string .
+
+ns1:likely_1 a ns1:Likely ;
+    rdfs:label "likely" ;
+    boxer:agent ns1:neuter_1 ;
+    boxer:theme ns1:situation_1 ;
+    ns1:as ns1:result_1 .
+
+ns1:term_1 a ns1:Term ;
+    rdfs:label "terms" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:FinancialAssistance a owl:Class ;
+    rdfs:label "Financial Assistance" ;
+    dul:hasQuality ns1:Financial ;
+    rdfs:subClassOf ns1:Assistance ;
+    owl:equivalentClass dbpedia:Welfare .
+
+ns1:Likely rdfs:label "likely" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Region rdfs:label "regions" .
+
+ns1:Result rdfs:label "result" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:assistance_1 a ns1:FinancialAssistance ;
+    rdfs:label "assistance" ;
+    ns1:to ns1:region_1 .
+
+ns1:member_states_1 a ns1:Member_states ;
+    rdfs:label "Member States" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:region_1 a ns1:Region ;
+    rdfs:label "regions" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:result_1 a ns1:Result ;
+    rdfs:label "result" ;
+    quant:hasDeterminer quant:a .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "say" ;
+    dul:hasQuality ns1:More,
+        ns1:Strongly ;
+    vn.role:Agent ns1:neuter_1 ;
+    vn.role:Topic ns1:member_states_1 ;
+    ns1:inTermOf ns1:assistance_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Assistance,
+        ns1:Financial,
+        ns1:Member_states,
+        ns1:More,
+        ns1:Say,
+        ns1:Strongly,
+        ns1:Term,
+        ns1:Useful,
+        ns1:useful_1 .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:useful_1 a ns1:Useful ;
+    rdfs:label "useful" ;
+    boxer:agent ns1:neuter_1 ;
+    boxer:theme ns1:say_1 ;
+    ns1:more ns1:thing_1 .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Assistance a owl:Class ;
+    rdfs:label "assistance" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Financial a owl:Class ;
+    rdfs:label "financial" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Member_states a owl:Class ;
+    rdfs:label "Member States" ;
+    owl:equivalentClass dbpedia:Member_state_of_the_European_Union .
+
+ns1:More rdfs:label "more" .
+
+ns1:Say rdfs:label "say" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Strongly rdfs:label "strongly" .
+
+ns1:Term rdfs:label "terms" .
+
+ns1:Useful rdfs:label "useful" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "it" .
+

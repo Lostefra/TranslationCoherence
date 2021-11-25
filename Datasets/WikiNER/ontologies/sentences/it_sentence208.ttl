@@ -1,0 +1,163 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence208.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "in" .
+
+translation_coherence:it_sentence208.ttl a owl:Ontology ;
+    rdfs:label "it_sentence208" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence208" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:From rdfs:label "from" .
+
+ns1:Of rdfs:label "'",
+        "'s",
+        "his",
+        "of" .
+
+ns1:Quantity rdfs:label "many" .
+
+ns1:afflict_1 a ns1:Afflict ;
+    rdfs:label "afflicted" ;
+    vn.role:Cause ns1:Achilles ;
+    vn.role:Experiencer ns1:death_1 ;
+    ns1:after ns1:receive_1 .
+
+ns1:docuverse earmark:hasContent "After receiving news of Patroclus' death from Antilochus, Nestor's son, Achilles afflicted his cousin's death and held many funeral games in his honor."^^xsd:string .
+
+ns1:hold_1 a ns1:Hold ;
+    rdfs:label "held" ;
+    vn.role:Agent ns1:Achilles ;
+    vn.role:Location ns1:honor_1 ;
+    vn.role:Value ns1:game_1 ;
+    ns1:after ns1:receive_1 .
+
+ns1:male_1 rdfs:label "his" .
+
+owl:Thing rdfs:label "After" .
+
+ns1:Afflict rdfs:label "afflicted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Antilochus rdfs:label "Antilochus" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Antilochus .
+
+ns1:Cousin rdfs:label "cousin" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Death rdfs:label "death" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Funeral rdfs:label "funeral" ;
+    owl:sameAs dbpedia:Funeral_games .
+
+ns1:FuneralGame rdfs:subClassOf ns1:Game .
+
+ns1:Game rdfs:label "games" .
+
+ns1:Hold rdfs:label "held" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Honor rdfs:label "honor" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Male rdfs:label "Achilles" .
+
+ns1:Nestor rdfs:label "Nestor" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Nestor_(mythology) .
+
+ns1:News rdfs:label "news" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Patroclus rdfs:label "Patroclus" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Patroclus .
+
+ns1:Receive rdfs:label "receiving" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Son rdfs:label "son" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:cousin_1 a ns1:Cousin ;
+    rdfs:label "cousin" ;
+    ns1:cousinOf ns1:Achilles .
+
+ns1:game_1 a ns1:FuneralGame ;
+    rdfs:label "games" ;
+    dul:hasQuality ns1:Funeral ;
+    quant:hasQuantifier quant:many,
+        quant:multiple .
+
+ns1:honor_1 a ns1:Honor ;
+    rdfs:label "honor" ;
+    ns1:honorOf ns1:Achilles .
+
+ns1:news_1 a ns1:News ;
+    rdfs:label "news" ;
+    ns1:newsOf ns1:death_1 .
+
+ns1:son_1 a ns1:Son ;
+    rdfs:label "son" ;
+    ns1:sonOf ns1:Nestor .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "After" .
+
+ns1:death_1 a ns1:Death ;
+    rdfs:label "death" ;
+    ns1:deathOf ns1:Patroclus,
+        ns1:cousin_1 ;
+    ns1:from ns1:Antilochus,
+        ns1:son_1 .
+
+ns1:receive_1 a ns1:Receive ;
+    rdfs:label "receiving" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Theme ns1:news_1 .
+
+ns1:Achilles a ns1:Male ;
+    rdfs:label "Achilles" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Achilles .
+

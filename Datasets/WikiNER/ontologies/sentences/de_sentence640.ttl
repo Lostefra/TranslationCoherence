@@ -1,0 +1,124 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence640.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "for" .
+
+translation_coherence:de_sentence640.ttl a owl:Ontology ;
+    rdfs:label "de_sentence640" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence640" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:John_p._mackey a ns1:Topic ;
+    rdfs:label "John P. Mackey" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith ns1:Ceo .
+
+ns1:Mark_cuban a ns1:Topic ;
+    rdfs:label "Mark Cuban" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith ns1:owner_1 ;
+    owl:sameAs dbpedia:Mark_Cuban .
+
+ns1:Of rdfs:label "of",
+        "their" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "Mark_Cuban, owner of Didier Marnes, and John P. Mackey, CEO of all food, said to keep the edge for their success."^^xsd:string .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "said" ;
+    boxer:patient ns1:food_1 ;
+    vn.role:Topic ns1:keep_1 .
+
+ns1:Ceo rdfs:label "CEO" ;
+    boxer:possibleType owl:Thing ;
+    ns1:of ns1:food_1 .
+
+ns1:Didier_marnes rdfs:label "Didier Marnes" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Edge rdfs:label "edge" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Food rdfs:label "food" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Keep rdfs:label "keep" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Owner rdfs:label "owner" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Say rdfs:label "said" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Success rdfs:label "success" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:edge_1 a ns1:Edge ;
+    rdfs:label "edge" ;
+    quant:hasDeterminer quant:the .
+
+ns1:keep_1 a ns1:Keep ;
+    rdfs:label "keep" ;
+    vn.role:Agent ns1:food_1 ;
+    vn.role:Location ns1:success_1 ;
+    vn.role:Theme ns1:edge_1 .
+
+ns1:owner_1 a ns1:Owner ;
+    rdfs:label "owner" ;
+    ns1:ownerOf ns1:Didier_marnes .
+
+ns1:success_1 a ns1:Success ;
+    rdfs:label "success" ;
+    ns1:successOf ns1:thing_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "their" .
+
+ns1:Topic rdfs:label "John P. Mackey",
+        "Mark Cuban" .
+
+ns1:food_1 a ns1:Food ;
+    rdfs:label "food" ;
+    quant:hasQuantifier quant:all .
+

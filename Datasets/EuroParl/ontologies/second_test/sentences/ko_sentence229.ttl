@@ -1,0 +1,198 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence229.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence229.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence229" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence229" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Entails rdfs:label "If" .
+
+ns1:For rdfs:label "for" .
+
+ns1:Until rdfs:label "until" .
+
+ns1:cause_1 rdfs:label "cause" .
+
+ns1:docuverse earmark:hasContent "If the EU does not take action, the member country will be obliged to revisit the national laws for a very short period until the CEN is a unnecessary cost and uncertain cause."^^xsd:string .
+
+ns1:member_1 a ns1:Member ;
+    rdfs:label "member" ;
+    dul:associatedWith ns1:country_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "take" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:Eu ;
+    vn.role:Theme ns1:action_1 ;
+    ns1:entails ns1:oblige_1 .
+
+ns1:Action rdfs:label "action" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Cen a ns1:UncertainCause,
+        ns1:UnnecessaryCost ;
+    rdfs:label "CEN",
+        "cause",
+        "cost" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs ns1:cost_1 .
+
+ns1:Country a owl:Class ;
+    rdfs:label "country" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Eu rdfs:label "EU" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:European_Union .
+
+ns1:Law rdfs:label "laws" .
+
+ns1:MemberCountry a owl:Class ;
+    rdfs:label "Member Country" ;
+    dul:associatedWith ns1:Member ;
+    rdfs:subClassOf ns1:Country .
+
+ns1:National rdfs:label "national" .
+
+ns1:NationalLaw rdfs:subClassOf ns1:Law .
+
+ns1:Oblige rdfs:label "obliged" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Period a owl:Class ;
+    rdfs:label "period" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Revisit rdfs:label "revisit" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Short a owl:Class ;
+    rdfs:label "short" ;
+    dul:hasQuality ns1:Very ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ShortPeriod a owl:Class ;
+    rdfs:label "Short Period" ;
+    dul:hasQuality ns1:Short ;
+    rdfs:subClassOf ns1:Period .
+
+ns1:Take rdfs:label "take" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:UncertainCause rdfs:label "Uncertain Cause" ;
+    dul:associatedWith ns1:Cause ;
+    dul:hasModality ns1:Uncertain .
+
+ns1:UnnecessaryCost a owl:Class ;
+    rdfs:label "unnecessary cost" ;
+    dul:hasQuality ns1:Unnecessary ;
+    rdfs:subClassOf ns1:Cost .
+
+ns1:Very rdfs:label "very" .
+
+ns1:VeryShortPeriod a owl:Class ;
+    rdfs:label "Very Short Period" ;
+    rdfs:subClassOf ns1:ShortPeriod .
+
+ns1:action_1 a ns1:Action ;
+    rdfs:label "action" .
+
+ns1:cost_1 a ns1:Cost ;
+    rdfs:label "cost" ;
+    quant:hasDeterminer quant:a .
+
+ns1:law_1 a ns1:NationalLaw ;
+    rdfs:label "laws" ;
+    dul:hasQuality ns1:National ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:oblige_1 a ns1:Oblige ;
+    rdfs:label "obliged" ;
+    boxer:theme ns1:revisit_1 ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Patient ns1:country_1 .
+
+ns1:period_1 a ns1:VeryShortPeriod ;
+    rdfs:label "period" ;
+    quant:hasDeterminer quant:a .
+
+ns1:revisit_1 a ns1:Revisit ;
+    rdfs:label "revisit" ;
+    boxer:agent ns1:country_1 ;
+    boxer:patient ns1:law_1 ;
+    boxing:hasModality boxing:Necessary ;
+    ns1:for ns1:period_1 ;
+    ns1:until ns1:situation_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Cause,
+        ns1:Cen,
+        ns1:Cost,
+        ns1:Uncertain,
+        ns1:Unnecessary .
+
+ns1:Cause a owl:Class ;
+    rdfs:label "CEN",
+        "cause" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Member a owl:Class ;
+    rdfs:label "member" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Uncertain a owl:Class ;
+    rdfs:label "uncertain" .
+
+ns1:Unnecessary a owl:Class ;
+    rdfs:label "unnecessary" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Cost a owl:Class ;
+    rdfs:label "CEN",
+        "cost" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:country_1 a ns1:MemberCountry ;
+    rdfs:label "country" .
+

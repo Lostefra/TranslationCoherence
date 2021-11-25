@@ -1,0 +1,148 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence250.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:zh_sentence250.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence250" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence250" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:At rdfs:label "At" .
+
+ns1:Be rdfs:label "is" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Than rdfs:label "than" .
+
+ns1:docuverse earmark:hasContent "As recommended by the Committee, 20oC will be sufficient. At the Mediterranean coast, it is difficult to imagine that temperatures in Raplant may be significantly lower than that level."^^xsd:string .
+
+ns1:imagine_1 a ns1:Imagine ;
+    rdfs:label "imagine" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Agent ns1:Committee ;
+    vn.role:Theme ns1:temperature_1 ;
+    ns1:be ns1:difficult_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Possible ;
+    boxing:involves ns1:Committee,
+        ns1:Lower,
+        ns1:Significantly ;
+    ns1:at ns1:coast_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:20oc,
+        ns1:Sufficient ;
+    ns1:as ns1:recommend_1 .
+
+ns1:20oc rdfs:label "20oC" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality ns1:Sufficient .
+
+ns1:Coast rdfs:label "coast" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Difficult rdfs:label "difficult" .
+
+ns1:Imagine rdfs:label "imagine" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Level rdfs:label "level" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Lower rdfs:label "lower" .
+
+ns1:Mediterranean rdfs:label "Mediterranean" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Mediterranean_Sea .
+
+ns1:Raplant rdfs:label "Raplant" .
+
+ns1:Recommend rdfs:label "recommended" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Temperature rdfs:label "temperatures" .
+
+ns1:coast_1 a ns1:Coast ;
+    rdfs:label "coast" ;
+    dul:associatedWith ns1:Mediterranean .
+
+ns1:difficult_1 a ns1:Difficult ;
+    rdfs:label "difficult" .
+
+ns1:level_1 a ns1:Level ;
+    rdfs:label "level" ;
+    quant:hasDeterminer quant:that .
+
+ns1:raplant_1 a ns1:Raplant ;
+    rdfs:label "Raplant" .
+
+ns1:recommend_1 a ns1:Recommend ;
+    rdfs:label "recommended" ;
+    vn.role:Agent ns1:Committee ;
+    vn.role:Theme ns1:thing_1 .
+
+ns1:temperature_1 a ns1:Temperature ;
+    rdfs:label "temperatures" ;
+    quant:hasDeterminer quant:that ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:raplant_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "As" .
+
+owl:Thing rdfs:label "As",
+        "it" .
+
+ns1:Significantly rdfs:label "significantly" .
+
+ns1:Sufficient rdfs:label "sufficient" .
+
+ns1:Committee rdfs:label "Committee" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality owl:Thing,
+        ns1:Significantly ;
+    owl:sameAs dbpedia:Committee ;
+    ns1:lowerThan ns1:level_1 .
+

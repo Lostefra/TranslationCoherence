@@ -1,0 +1,183 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence273.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+vn.role:Destination rdfs:label "to" .
+
+vn.role:Source rdfs:label "via" .
+
+translation_coherence:it_sentence273.ttl a owl:Ontology ;
+    rdfs:label "it_sentence273" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence273" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Agent rdfs:label "by" .
+
+ns1:From rdfs:label "from" .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:accompany_1 a ns1:Accompany ;
+    rdfs:label "accompanied" ;
+    vn.role:Agent ns1:friend_1 ;
+    vn.role:Theme ns1:year_1 .
+
+ns1:docuverse earmark:hasContent "In the same year, hired by the businessman of New_Salem Denton_Offutt and accompanied by friends, took goods from New Salem to New_Orleans via flatboat on the rivers Sangamon__Illinois and Mississippi."^^xsd:string .
+
+ns1:event_1 a dul:Event ;
+    ns1:in ns1:year_1 .
+
+ns1:hire_1 a ns1:Hire ;
+    rdfs:label "hired" ;
+    boxer:agent ns1:businessman_1 ;
+    vn.role:Agent ns1:friend_1 ;
+    vn.role:Theme ns1:year_1 .
+
+ns1:river_1 rdfs:label "rivers" .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "took" ;
+    vn.role:Agent ns1:year_1 ;
+    vn.role:Destination ns1:New_orleans ;
+    vn.role:Source ns1:flatboat_1 ;
+    vn.role:Theme ns1:goods_1 ;
+    ns1:from ns1:New_salem .
+
+dbpedia:Mississippi a schema:AdministrativeArea,
+        schema:Place .
+
+dbpedia:Mississippi_River a schema:BodyOfWater,
+        schema:Place,
+        schema:RiverBodyOfWater .
+
+dbpedia:New_Orleans a schema:City,
+        schema:Place .
+
+ns1:Accompany rdfs:label "accompanied" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Businessman rdfs:label "businessman" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Flatboat a owl:Class ;
+    rdfs:label "flatboat" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Flatboat .
+
+ns1:Friend rdfs:label "friends" .
+
+ns1:Goods rdfs:label "goods" .
+
+ns1:Hire rdfs:label "hired" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Mississippi a ns1:River ;
+    rdfs:label "Mississippi",
+        "rivers" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Sangamon__illinois ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    owl:sameAs dbpedia:Mississippi,
+        dbpedia:Mississippi_River .
+
+ns1:New_orleans rdfs:label "New Orleans" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:New_Orleans .
+
+ns1:New_salem rdfs:label "New Salem" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:New_salem_denton_offutt rdfs:label "New Salem Denton Offutt" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Same a owl:Class ;
+    rdfs:label "same" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SameYear a owl:Class ;
+    rdfs:label "same year" ;
+    dul:hasQuality ns1:Same ;
+    rdfs:subClassOf ns1:Year .
+
+ns1:Sangamon__illinois a ns1:River ;
+    rdfs:label "Sangamon  Illinois",
+        "rivers" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs <http://dbpedia.org/resource/Sangamon,_Illinois> .
+
+ns1:Take rdfs:label "took" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Year a owl:Class ;
+    rdfs:label "year" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:businessman_1 a ns1:Businessman ;
+    rdfs:label "businessman" ;
+    quant:hasDeterminer quant:the ;
+    ns1:businessmanOf ns1:New_salem_denton_offutt .
+
+ns1:flatboat_1 a ns1:Flatboat ;
+    rdfs:label "flatboat" ;
+    ns1:on ns1:Mississippi .
+
+ns1:goods_1 a ns1:Goods ;
+    rdfs:label "goods" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:River rdfs:label "Mississippi",
+        "Sangamon  Illinois",
+        "rivers" .
+
+ns1:friend_1 a ns1:Friend ;
+    rdfs:label "friends" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:year_1 a ns1:SameYear ;
+    rdfs:label "year" ;
+    quant:hasDeterminer quant:the .
+

@@ -1,0 +1,121 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence563.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence563.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence563" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence563" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:During rdfs:label "during" .
+
+ns1:Noteq rdfs:label "other" .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:complete_1 a ns1:NeverComplete ;
+    rdfs:label "completed" ;
+    dul:hasQuality ns1:However,
+        ns1:Never ;
+    vn.role:Theme ns1:novel_1 .
+
+ns1:docuverse earmark:hasContent "However, the novel was never completed and no other projects were produced or published during Rand's lifetime."^^xsd:string .
+
+ns1:produce_1 a ns1:Produce ;
+    rdfs:label "produced" ;
+    boxing:hasTruthValue boxing:False ;
+    dul:hasQuality ns1:However ;
+    vn.role:Theme ns1:project_1 ;
+    ns1:however ns1:publish_1 ;
+    ns1:union ns1:publish_1 .
+
+ns1:Complete rdfs:label "completed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Lifetime rdfs:label "lifetime" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Never rdfs:label "never" .
+
+ns1:NeverComplete rdfs:subClassOf ns1:Complete .
+
+ns1:Novel rdfs:label "novel" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Produce rdfs:label "produced" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Publish rdfs:label "published" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType time:Interval .
+
+ns1:lifetime_1 a ns1:Lifetime ;
+    rdfs:label "lifetime" ;
+    ns1:lifetimeOf ns1:Rand .
+
+ns1:novel_1 a ns1:Novel ;
+    rdfs:label "novel" ;
+    quant:hasDeterminer quant:the .
+
+ns1:project_2 a ns1:Project ;
+    rdfs:label "projects" ;
+    quant:hasDeterminer quant:other ;
+    quant:hasQuantifier quant:multiple,
+        quant:no .
+
+ns1:However rdfs:label "However" .
+
+ns1:Project rdfs:label "other",
+        "projects" .
+
+ns1:project_1 a ns1:Project ;
+    rdfs:label "other" ;
+    owl:differentFrom ns1:project_2 .
+
+ns1:publish_1 a ns1:Publish ;
+    rdfs:label "published" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Product ns1:project_1 ;
+    ns1:during ns1:lifetime_1 .
+

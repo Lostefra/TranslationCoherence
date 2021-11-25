@@ -1,0 +1,121 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence379.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "for" .
+
+translation_coherence:zh_sentence379.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence379" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence379" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:concern_1 a ns1:Concern ;
+    rdfs:label "concerned" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Experiencer ns1:region_1 .
+
+ns1:docuverse earmark:hasContent "Funding is often provided for projects that have no lasting interest in the region concerned."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "have" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:project_1 ;
+    vn.role:Patient ns1:interest_1 .
+
+ns1:provide_1 a ns1:OftenProvide ;
+    rdfs:label "provided" ;
+    boxer:patient ns1:Funding ;
+    dul:hasQuality ns1:Often ;
+    vn.role:Recipient ns1:project_1 .
+
+ns1:Concern rdfs:label "concerned" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Funding rdfs:label "Funding" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Funding,
+        ns1:interest_1 .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Lasting a owl:Class ;
+    rdfs:label "lasting" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:LastingInterest a owl:Class ;
+    rdfs:label "lasting interest" ;
+    dul:hasQuality ns1:Lasting ;
+    rdfs:subClassOf ns1:Interest .
+
+ns1:Often rdfs:label "often" .
+
+ns1:OftenProvide rdfs:subClassOf ns1:Provide .
+
+ns1:Project rdfs:label "projects" .
+
+ns1:Provide rdfs:label "provided" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Region rdfs:label "region" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Interest a owl:Class ;
+    rdfs:label "interest" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Interest .
+
+ns1:interest_1 a ns1:Interest,
+        ns1:LastingInterest ;
+    rdfs:label "interest" ;
+    quant:hasQuantifier quant:no ;
+    ns1:in ns1:region_1 .
+
+ns1:project_1 a dbpedia:Project,
+        ns1:Project ;
+    rdfs:label "projects" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:region_1 a ns1:Region ;
+    rdfs:label "region" ;
+    quant:hasDeterminer quant:the .
+

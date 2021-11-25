@@ -1,0 +1,153 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence412.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence412.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence412" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence412" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In",
+        "in" .
+
+ns1:Local rdfs:label "local" .
+
+ns1:Of rdfs:label "her" .
+
+ns1:On rdfs:label "on" .
+
+ns1:To rdfs:label "to" .
+
+ns1:With rdfs:label "with" .
+
+ns1:agree_1 a ns1:ReallyAgree ;
+    rdfs:label "agree" ;
+    dul:hasQuality ns1:But,
+        ns1:Really ;
+    vn.role:Actor ns1:person_1 ;
+    ns1:with ns1:female_1 .
+
+ns1:disagree_1 a ns1:Disagree ;
+    rdfs:label "disagreed" ;
+    boxer:patient ns1:event_2 ;
+    ns1:with ns1:rapporteur_1 .
+
+ns1:docuverse earmark:hasContent "In numerous events in the past Mr President was disagreed with rapporteur on her approach to local policy matters. But, I really agree with her."^^xsd:string .
+
+ns1:event_1 a dul:Event ;
+    ns1:in ns1:event_2 .
+
+ns1:policy_1 a ns1:Policy ;
+    rdfs:label "policy" ;
+    dul:associatedWith ns1:matter_1 .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> rdfs:label "Mr" ;
+    boxer:possibleType dul:Role .
+
+ns1:Agree rdfs:label "Agree",
+        "agree" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Approach rdfs:label "approach" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:But rdfs:label "But" .
+
+ns1:Disagree rdfs:label "disagreed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:LocalPolicyMatter rdfs:subClassOf ns1:PolicyMatter .
+
+ns1:Matter rdfs:label "matters" .
+
+ns1:Numerous rdfs:label "numerous" .
+
+ns1:NumerousEvent rdfs:subClassOf dul:Event .
+
+ns1:Past rdfs:label "past" .
+
+ns1:Person rdfs:label "I" .
+
+ns1:Policy rdfs:label "policy" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:PolicyMatter rdfs:subClassOf ns1:Matter .
+
+ns1:President rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    dul:hasQuality ns1:Past ;
+    owl:sameAs dbpedia:President .
+
+ns1:Rapporteur rdfs:label "rapporteur" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Really rdfs:label "really" .
+
+ns1:ReallyAgree rdfs:label "really agree" ;
+    rdfs:subClassOf ns1:Agree .
+
+ns1:approach_1 a ns1:Approach ;
+    rdfs:label "approach" ;
+    ns1:approachOf ns1:female_1 ;
+    ns1:to ns1:matter_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:rapporteur_1 a ns1:Rapporteur ;
+    rdfs:label "rapporteur" ;
+    ns1:on ns1:approach_1 .
+
+ns1:event_2 a ns1:NumerousEvent ;
+    rdfs:label "events" ;
+    dul:hasQuality ns1:Numerous ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:President .
+
+ns1:female_1 a ns1:Female ;
+    rdfs:label "her" .
+
+ns1:matter_1 a ns1:LocalPolicyMatter ;
+    rdfs:label "matters" ;
+    quant:hasQuantifier quant:multiple .
+
+dul:Event rdfs:label "events" .
+

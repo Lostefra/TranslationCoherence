@@ -1,0 +1,140 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence47.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "from" .
+
+translation_coherence:nl_sentence47.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence47" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence47" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:docuverse earmark:hasContent "To Stirner's rights and he kept society from existing, but the individuals are reality."^^xsd:string .
+
+ns1:exist_1 a ns1:Exist ;
+    rdfs:label "existing" ;
+    vn.role:Theme ns1:thing_1 .
+
+ns1:keep_1 a ns1:Keep ;
+    rdfs:label "kept" ;
+    vn.role:Agent ns1:Stirner ;
+    vn.role:Location ns1:thing_1 ;
+    vn.role:Theme ns1:society_1 .
+
+ns1:reality_1 rdfs:label "reality" .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves ns1:Reality,
+        ns1:individual_1 ;
+    dul:associatedWith ns1:Stirner .
+
+ns1:to_1 a ns1:To ;
+    rdfs:label "To" ;
+    boxer:agent ns1:Stirner,
+        ns1:rights_1 ;
+    boxer:theme ns1:situation_1,
+        ns1:situation_2,
+        ns1:situation_4 .
+
+ns1:Exist rdfs:label "existing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Individual rdfs:label "individuals" .
+
+ns1:Keep rdfs:label "kept" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Rights a owl:Class ;
+    rdfs:label "rights" ;
+    owl:equivalentClass dbpedia:Rights .
+
+ns1:Society a owl:Class ;
+    rdfs:label "society" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Society .
+
+ns1:To rdfs:label "To" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:event_1 a dul:Event .
+
+ns1:event_2 a dul:Event .
+
+ns1:event_3 a dul:Event .
+
+ns1:individual_1 a ns1:Individual,
+        ns1:Reality ;
+    rdfs:label "individuals" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:rights_1 a ns1:Rights ;
+    rdfs:label "rights" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:rightsOf ns1:Stirner .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:event_2 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:event_1 .
+
+ns1:situation_4 a ns1:Situation ;
+    boxing:involves ns1:event_3 .
+
+ns1:society_1 a ns1:Society ;
+    rdfs:label "society" .
+
+ns1:Reality a owl:Class ;
+    rdfs:label "reality" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Reality .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:Stirner rdfs:label "Stirner" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Male ;
+    owl:sameAs dbpedia:Max_Stirner .
+

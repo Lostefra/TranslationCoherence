@@ -1,0 +1,227 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence277.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:nl_sentence277.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence277" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence277" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Entails rdfs:label "if" .
+
+ns1:Eq rdfs:label "'s" .
+
+ns1:Eu rdfs:label "EU" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:European_Union,
+        ns1:position_2 ;
+    ns1:in ns1:position_2 .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Whether rdfs:label "whether" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "I should like to ask the Vice President if she's in a position to tell us what the state of the game is regarding the efforts of harmony made by these two organizations, and whether the EU is in a simple position with this."^^xsd:string .
+
+ns1:event_1 a dul:Event ;
+    dul:associatedWith ns1:person_1 .
+
+ns1:female_1 rdfs:label "she" .
+
+ns1:like_1 a ns1:Like ;
+    rdfs:label "like" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Experiencer ns1:person_1 ;
+    vn.role:Theme ns1:situation_3 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Position,
+        ns1:Simple,
+        ns1:SimplePosition,
+        ns1:position_2 ;
+    ns1:whether ns1:situation_2 .
+
+ns1:Ask rdfs:label "ask" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Female rdfs:label "she" ;
+    rdfs:subClassOf ns1:Effort .
+
+ns1:Game rdfs:label "game" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Harmony rdfs:label "harmony" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Like rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Make rdfs:label "made" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Organization rdfs:label "organizations" .
+
+ns1:Regard rdfs:label "regarding" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:State rdfs:label "state" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Tell rdfs:label "tell" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Vice_president rdfs:label "Vice President" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Vice_president .
+
+ns1:event_2 a dul:Event .
+
+ns1:game_1 a ns1:Game ;
+    rdfs:label "game" ;
+    quant:hasDeterminer quant:the .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "made" ;
+    vn.role:Agent ns1:organization_1 ;
+    vn.role:Theme ns1:effort_1 ;
+    ns1:entails ns1:ask_1 ;
+    ns1:in ns1:position_1 .
+
+ns1:organization_1 a ns1:Organization ;
+    rdfs:label "organizations" ;
+    dul:hasDataValue "2"^^xsd:nonNegativeInteger ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple,
+        quant:two .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "us" .
+
+ns1:regard_1 a ns1:Regard ;
+    rdfs:label "regarding" ;
+    vn.role:Experiencer ns1:state_1 ;
+    vn.role:Stimulus ns1:thing_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:event_2 .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:ask_1,
+        ns1:harmony_1,
+        ns1:make_1,
+        ns1:position_1,
+        ns1:regard_1,
+        ns1:tell_1,
+        ns1:thing_1 .
+
+ns1:state_1 a ns1:State ;
+    rdfs:label "state" ;
+    quant:hasDeterminer quant:the ;
+    ns1:stateOf ns1:game_1 .
+
+ns1:tell_1 a ns1:Tell ;
+    rdfs:label "tell" ;
+    vn.role:Agent ns1:effort_1 ;
+    vn.role:Recipient ns1:person_2 ;
+    vn.role:Topic ns1:thing_1 .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "this" .
+
+ns1:Effort rdfs:label "efforts" .
+
+ns1:Person rdfs:label "I",
+        "us" .
+
+ns1:Simple rdfs:label "simple" .
+
+ns1:SimplePosition rdfs:label "simple position" ;
+    rdfs:subClassOf ns1:Position .
+
+ns1:ask_1 a ns1:Ask ;
+    rdfs:label "ask" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Patient ns1:Vice_president .
+
+ns1:effort_1 a ns1:Effort,
+        ns1:Female ;
+    rdfs:label "efforts" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:effortOf ns1:harmony_1 .
+
+ns1:harmony_1 a ns1:Harmony ;
+    rdfs:label "harmony" .
+
+ns1:position_1 a ns1:Position ;
+    rdfs:label "position" ;
+    quant:hasDeterminer quant:a .
+
+owl:Thing rdfs:label "this",
+        "what" .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:position_2 a ns1:Position,
+        ns1:SimplePosition ;
+    rdfs:label "position" ;
+    dul:hasQuality ns1:Simple ;
+    quant:hasDeterminer quant:a ;
+    ns1:with ns1:thing_2 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "what" .
+
+ns1:Position rdfs:label "Position",
+        "position" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+

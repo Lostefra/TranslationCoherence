@@ -1,0 +1,154 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence468.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence468.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence468" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence468" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Because rdfs:label "because" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "First, the terms of the text were too good because they suffered considerable damage, and the attempts to repair Apilizi also caused considerable damage."^^xsd:string .
+
+ns1:repair_1 a ns1:Repair ;
+    rdfs:label "repair" ;
+    boxer:agent ns1:attempt_1 ;
+    boxer:patient ns1:Apilizi .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Good,
+        ns1:Too,
+        ns1:term_1 ;
+    dul:hasQuality ns1:First ;
+    ns1:because ns1:situation_2 .
+
+owl:Thing rdfs:label "they" .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoCause rdfs:subClassOf ns1:Cause .
+
+ns1:Apilizi rdfs:label "Apilizi" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Attempt rdfs:label "attempts" .
+
+ns1:Cause rdfs:label "caused" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Considerable a owl:Class ;
+    rdfs:label "Considerable",
+        "considerable" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Damage a owl:Class ;
+    rdfs:label "Damage",
+        "damage" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:First rdfs:label "First" .
+
+ns1:Repair rdfs:label "repair" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Suffer rdfs:label "suffered" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Term rdfs:label "terms" .
+
+ns1:Text rdfs:label "text" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:cause_1 a ns1:AlsoCause ;
+    rdfs:label "caused" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Theme1 ns1:attempt_1 ;
+    vn.role:Theme2 ns1:damage_2 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:cause_1,
+        ns1:damage_1,
+        ns1:damage_2,
+        ns1:suffer_1 .
+
+ns1:suffer_1 a ns1:Suffer ;
+    rdfs:label "suffered" ;
+    vn.role:Experiencer ns1:thing_1 ;
+    vn.role:Theme ns1:damage_1 .
+
+ns1:term_1 a ns1:Term ;
+    rdfs:label "terms" ;
+    dul:hasQuality ns1:Good ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:termOf ns1:text_1 .
+
+ns1:text_1 a ns1:Text ;
+    rdfs:label "text" ;
+    quant:hasDeterminer quant:the .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "they" .
+
+ns1:ConsiderableDamage a owl:Class ;
+    rdfs:label "Considerable Damage",
+        "considerable damage" ;
+    dul:hasQuality ns1:Considerable ;
+    rdfs:subClassOf ns1:Damage .
+
+ns1:Good rdfs:label "good" ;
+    dul:hasQuality ns1:Too .
+
+ns1:Too rdfs:label "too" .
+
+ns1:attempt_1 a ns1:Attempt ;
+    rdfs:label "attempts" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:damage_1 a ns1:ConsiderableDamage ;
+    rdfs:label "damage" .
+
+ns1:damage_2 a ns1:ConsiderableDamage ;
+    rdfs:label "damage" .
+

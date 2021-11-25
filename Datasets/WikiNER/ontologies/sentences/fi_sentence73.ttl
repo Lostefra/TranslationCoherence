@@ -1,0 +1,113 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence73.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "in" .
+
+translation_coherence:fi_sentence73.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence73" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence73" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "its" .
+
+ns1:docuverse earmark:hasContent "Alabama is set in the 30th country and is second in its inland waterways."^^xsd:string .
+
+ns1:inland_1 a ns1:Inland ;
+    rdfs:label "inland" ;
+    dul:associatedWith ns1:waterway_1 .
+
+ns1:neuter_1 coref:coref ns1:Alabama .
+
+ns1:set_1 a ns1:Set ;
+    rdfs:label "set" ;
+    vn.role:Destination ns1:country_1 ;
+    vn.role:Theme ns1:Alabama .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Alabama,
+        ns1:Second ;
+    ns1:in ns1:waterway_1 .
+
+dbpedia:Alabama a schema:AdministrativeArea,
+        schema:Place .
+
+owl:Thing rdfs:label "Alabama" .
+
+ns1:30th rdfs:label "30th" .
+
+ns1:30thCountry rdfs:label "30th country" ;
+    rdfs:subClassOf ns1:Country .
+
+ns1:Inland rdfs:label "inland" .
+
+ns1:InlandWaterway rdfs:subClassOf ns1:Waterway .
+
+ns1:Set rdfs:label "set" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Waterway rdfs:label "waterways" .
+
+ns1:Country rdfs:label "country" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Second rdfs:label "second" .
+
+ns1:country_1 a ns1:30thCountry,
+        ns1:Country ;
+    rdfs:label "country" ;
+    dul:hasQuality ns1:30th ;
+    quant:hasDeterminer quant:the .
+
+ns1:waterway_1 a ns1:InlandWaterway ;
+    rdfs:label "waterways" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:inlandWaterwayOf ns1:Alabama .
+
+ns1:Alabama a owl:Thing ;
+    rdfs:label "Alabama",
+        "its" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality ns1:Second ;
+    owl:sameAs dbpedia:Alabama,
+        ns1:country_1 .
+

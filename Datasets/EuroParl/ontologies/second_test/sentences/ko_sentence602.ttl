@@ -1,0 +1,141 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence602.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:ko_sentence602.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence602" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence602" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Behind rdfs:label "behind" .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:development_1 rdfs:label "development" .
+
+ns1:docuverse earmark:hasContent "In this connection, too, the weight is given to the decimal importance of SMEs as force behind employers and local development."^^xsd:string .
+
+ns1:give_1 a ns1:Give ;
+    rdfs:label "given" ;
+    dul:hasQuality ns1:Too ;
+    vn.role:Recipient ns1:importance_1 ;
+    vn.role:Theme ns1:weight_1 ;
+    ns1:in ns1:connection_1 .
+
+ns1:Connection rdfs:label "connection" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Decimal a owl:Class ;
+    rdfs:label "decimal" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:DecimalImportance a owl:Class ;
+    rdfs:label "decimal importance" ;
+    dul:hasQuality ns1:Decimal ;
+    rdfs:subClassOf ns1:Importance .
+
+ns1:Development a owl:Class ;
+    rdfs:label "development" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Employer rdfs:label "employers" .
+
+ns1:Force rdfs:label "force" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Give rdfs:label "given" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:LocalDevelopment a owl:Class ;
+    rdfs:label "Local Development" ;
+    dul:hasQuality ns1:Local ;
+    rdfs:subClassOf ns1:Development .
+
+ns1:Sme rdfs:label "SMEs" .
+
+ns1:Too rdfs:label "too" .
+
+ns1:Weight rdfs:label "weight" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:connection_1 a ns1:Connection ;
+    rdfs:label "connection" ;
+    quant:hasDeterminer quant:this .
+
+ns1:employer_1 a ns1:Employer,
+        ns1:LocalDevelopment ;
+    rdfs:label "employers" ;
+    dul:hasQuality ns1:Local ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:force_1 a ns1:Force ;
+    rdfs:label "force" .
+
+ns1:sme_1 a ns1:Sme ;
+    rdfs:label "SMEs" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:as ns1:force_1 .
+
+ns1:weight_1 a ns1:Weight ;
+    rdfs:label "weight" ;
+    quant:hasDeterminer quant:the ;
+    owl:sameAs ns1:importance_1 .
+
+ns1:Importance a owl:Class ;
+    rdfs:label "importance" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Local a owl:Class ;
+    rdfs:label "local" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:importance_1 a ns1:DecimalImportance,
+        ns1:Importance ;
+    rdfs:label "importance" ;
+    quant:hasDeterminer quant:the ;
+    ns1:behind ns1:employer_1 ;
+    ns1:decimalImportanceOf ns1:sme_1 .
+

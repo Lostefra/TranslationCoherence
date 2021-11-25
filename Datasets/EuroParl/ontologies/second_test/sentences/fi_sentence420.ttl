@@ -1,0 +1,123 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence420.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Source rdfs:label "with" .
+
+translation_coherence:fi_sentence420.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence420" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence420" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "As" .
+
+ns1:Of rdfs:label "my",
+        "of" .
+
+ns1:docuverse earmark:hasContent "As a prea., I want to express my dissatisfaction with the lack of an island experience."^^xsd:string .
+
+ns1:island_1 a ns1:Island ;
+    rdfs:label "island" ;
+    dul:associatedWith ns1:experience_1 ;
+    quant:hasDeterminer quant:an .
+
+ns1:person_1 coref:coref ns1:person_2 .
+
+ns1:prea._1 a <https://w3id.org/stlab/ke/amiala/fi_sentence420.ttl/Prea.> ;
+    rdfs:label "prea." ;
+    quant:hasDeterminer quant:a ;
+    ns1:as ns1:want_1 .
+
+ns1:Dissatisfaction rdfs:label "dissatisfaction" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Experience a owl:Class ;
+    rdfs:label "experience" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Express rdfs:label "express" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:IslandExperience a owl:Class ;
+    rdfs:label "island experience" ;
+    dul:associatedWith ns1:Island ;
+    rdfs:subClassOf ns1:Experience .
+
+ns1:Lack rdfs:label "lack" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Person rdfs:label "I" .
+
+<https://w3id.org/stlab/ke/amiala/fi_sentence420.ttl/Prea.> rdfs:label "prea." .
+
+ns1:Want rdfs:label "want" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:dissatisfaction_1 a ns1:Dissatisfaction ;
+    rdfs:label "dissatisfaction" ;
+    ns1:dissatisfactionOf ns1:person_2 .
+
+ns1:express_1 a ns1:Express ;
+    rdfs:label "express" ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Source ns1:lack_1 ;
+    vn.role:Theme ns1:dissatisfaction_1 .
+
+ns1:lack_1 a ns1:Lack ;
+    rdfs:label "lack" ;
+    quant:hasDeterminer quant:the ;
+    ns1:lackOf ns1:experience_1 .
+
+ns1:want_1 a ns1:Want ;
+    rdfs:label "want" ;
+    vn.role:Experiencer ns1:person_2 ;
+    vn.role:Theme ns1:express_1 .
+
+ns1:Island a owl:Class ;
+    rdfs:label "island" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:experience_1 a ns1:IslandExperience ;
+    rdfs:label "experience" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "I",
+        "my" .
+

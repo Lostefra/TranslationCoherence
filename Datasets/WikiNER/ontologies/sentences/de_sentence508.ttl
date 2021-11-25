@@ -1,0 +1,129 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence508.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence508.ttl a owl:Ontology ;
+    rdfs:label "de_sentence508" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence508" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Malcolm_arnold rdfs:label "Malcolm Arnold" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Farrah_fawcett ;
+    owl:sameAs dbpedia:Malcolm_Arnold ;
+    ns1:at "2007-01-01"^^xsd:date .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:criticise_1 a ns1:Criticise ;
+    rdfs:label "criticised" ;
+    boxer:agent ns1:section_1 ;
+    boxer:patient ns1:injunction_1 .
+
+ns1:docuverse earmark:hasContent "This section criticised the injunctions of major people such as Leonard_Schrader and Malcolm_Arnold 2007 and Gene_Barry, Farrah_Fawcett, Henry Gil and Bea_Arthur in 2010."^^xsd:string .
+
+ns1:Bea_arthur rdfs:label "Bea Arthur" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Bea_Arthur ;
+    ns1:in "2010-01-01"^^xsd:date .
+
+ns1:Criticise rdfs:label "criticised" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Gene_barry rdfs:label "Gene Barry" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Farrah_fawcett ;
+    owl:sameAs dbpedia:Gene_Barry .
+
+ns1:Henry_gil rdfs:label "Henry Gil" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Injunction rdfs:label "injunctions" .
+
+ns1:Leonard_schrader rdfs:label "Leonard Schrader" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith ns1:Farrah_fawcett ;
+    owl:sameAs dbpedia:Leonard_Schrader .
+
+ns1:Major a owl:Class ;
+    rdfs:label "major" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:MajorPeople a owl:Class ;
+    rdfs:label "Major People" ;
+    dul:hasQuality ns1:Major ;
+    rdfs:subClassOf ns1:People .
+
+ns1:People a owl:Class ;
+    rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Section rdfs:label "section" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:injunction_1 a ns1:Injunction ;
+    rdfs:label "injunctions" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:injunctionOf ns1:people_1 .
+
+ns1:people_1 a ns1:MajorPeople ;
+    rdfs:label "people" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:as ns1:Gene_barry,
+        ns1:Leonard_schrader,
+        "2007-01-01"^^xsd:date .
+
+ns1:section_1 a ns1:Section ;
+    rdfs:label "section" ;
+    quant:hasDeterminer quant:this .
+
+ns1:Farrah_fawcett rdfs:label "Farrah Fawcett" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Bea_arthur,
+        ns1:Henry_gil ;
+    owl:sameAs dbpedia:Farrah_Fawcett .
+

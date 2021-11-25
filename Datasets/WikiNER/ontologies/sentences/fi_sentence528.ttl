@@ -1,0 +1,135 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%> .
+@prefix ns2: <https://w3id.org/stlab/ke/amiala/fi_sentence528.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ns1:5E%5Ebest rdfs:label "best" .
+
+translation_coherence:fi_sentence528.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence528" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence528" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns2:Quantity rdfs:label "Many" .
+
+ns2:Rel rdfs:label "," .
+
+ns2:Union rdfs:label "or" .
+
+ns2:docuverse earmark:hasContent "Many Academy_Award winners, especially the best image, have not been time tests or have won more valuable efforts."^^xsd:string .
+
+ns2:situation_1 a ns2:Situation ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves ns2:winner_2 ;
+    ns2:union ns2:win_1 .
+
+ns2:test_1 rdfs:label "tests" ;
+    quant:hasQuantifier quant:multiple .
+
+ns2:time_1 a ns2:Time ;
+    rdfs:label "time" ;
+    dul:associatedWith ns2:winner_2 .
+
+ns1:5Ebest rdfs:label "best" .
+
+ns1:5EbestImage rdfs:subClassOf ns2:Image .
+
+ns2:Academy_award a ns2:TimeTest ;
+    rdfs:label "Academy Award",
+        "tests",
+        "time" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Academy_Awards .
+
+ns2:Effort rdfs:label "efforts" .
+
+ns2:Especially rdfs:label "especially" .
+
+ns2:More rdfs:label "more" .
+
+ns2:MoreValuableEffort rdfs:subClassOf ns2:ValuableEffort .
+
+ns2:Test rdfs:label "Academy Award",
+        "tests" .
+
+ns2:Time rdfs:label "Academy Award",
+        "time" ;
+    rdfs:subClassOf dul:Situation .
+
+ns2:Valuable rdfs:label "valuable" .
+
+ns2:ValuableEffort rdfs:subClassOf ns2:Effort .
+
+ns2:Win rdfs:label "won" ;
+    rdfs:subClassOf dul:Event .
+
+ns2:Winner rdfs:label "winners" .
+
+ns2:effort_1 a ns2:MoreValuableEffort ;
+    rdfs:label "efforts" ;
+    dul:hasQuality ns2:More,
+        ns2:Valuable ;
+    quant:hasQuantifier quant:multiple .
+
+ns2:image_1 a ns1:5EbestImage,
+        ns2:Image ;
+    rdfs:label "image" ;
+    dul:hasQuality ns1:5Ebest,
+        ns2:Especially ;
+    ns1:5EbestAmong ns2:Image ;
+    quant:hasDeterminer quant:the .
+
+ns2:win_1 a ns2:Win ;
+    rdfs:label "won" ;
+    vn.role:Agent ns2:winner_2 ;
+    vn.role:Theme ns2:effort_1 .
+
+ns2:TimeTest rdfs:subClassOf ns2:Test .
+
+ns2:Image rdfs:label "image" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns2:winner_2 a ns2:TimeTest,
+        ns2:Winner ;
+    rdfs:label "winners" ;
+    dul:associatedWith ns2:Academy_award,
+        ns2:image_1 ;
+    quant:hasQuantifier quant:multiple .
+

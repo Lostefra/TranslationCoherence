@@ -1,0 +1,104 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence340.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:ko_sentence340.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence340" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence340" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:docuverse earmark:hasContent "Lincoln received 1,866,452 votes, 1,376,957 votes, Breckinridge 849,781 votes and 588,789 votes in Bel."^^xsd:string .
+
+ns1:receive_1 a ns1:Receive ;
+    rdfs:label "received" ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Theme ns1:Breckinridge ;
+    ns1:locatedIn ns1:Bel .
+
+ns1:vote_1 rdfs:label "votes" ;
+    quant:hasQuantifier quant:1%2C866%2C452,
+        quant:multiple .
+
+ns1:vote_2 rdfs:label "votes" ;
+    quant:hasQuantifier quant:1%2C376%2C957,
+        quant:multiple .
+
+ns1:vote_3 rdfs:label "votes" .
+
+ns1:vote_4 rdfs:label "votes" .
+
+ns1:1%2C376%2C957 rdfs:label "1,376,957" .
+
+ns1:1%2C376%2C957Vote rdfs:subClassOf ns1:Vote .
+
+ns1:1%2C866%2C452 rdfs:label "1,866,452" .
+
+ns1:1%2C866%2C452Vote rdfs:subClassOf ns1:Vote .
+
+ns1:Bel rdfs:label "Bel" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Breckinridge a ns1:1%2C376%2C957Vote,
+        ns1:1%2C866%2C452Vote,
+        ns1:Vote ;
+    rdfs:label "Breckinridge",
+        "votes" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasDataValue "588789"^^xsd:nonNegativeInteger,
+        "849781"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:1%2C376%2C957,
+        ns1:1%2C866%2C452 ;
+    quant:hasQuantifier quant:588%2C789,
+        quant:849%2C781,
+        quant:multiple .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Receive rdfs:label "received" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Vote rdfs:label "Breckinridge",
+        "votes" .
+

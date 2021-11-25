@@ -1,0 +1,187 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence18.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence18.ttl a owl:Ontology ;
+    rdfs:label "it_sentence18" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence18" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Against rdfs:label "against" .
+
+ns1:As rdfs:label "as" .
+
+ns1:Because rdfs:label "because" .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Within rdfs:label "within" .
+
+ns1:act_1 a ns1:ViolentAct ;
+    rdfs:label "acts" ;
+    dul:hasQuality ns1:Violent ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:against ns1:counterrevolution_1 ;
+    ns1:violentActOf ns1:reprisal_1 .
+
+ns1:claim_1 a ns1:Claim ;
+    rdfs:label "claimed" ;
+    vn.role:Agent ns1:anarchist_1 .
+
+ns1:docuverse earmark:hasContent "Some anarchists, such as Johann_Most, claimed to publicize violent acts of reprisal against counterrevolution because we preach not only action within and for themselves, but also action as propaganda."^^xsd:string .
+
+ns1:group_1 coref:coref ns1:anarchist_1 .
+
+ns1:publicize_1 a ns1:Publicize ;
+    rdfs:label "publicize" ;
+    vn.role:Agent ns1:anarchist_1 ;
+    ns1:because ns1:situation_5 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:action_1 ;
+    ns1:entails ns1:situation_2 .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves ns1:action_1 ;
+    ns1:entails ns1:situation_4 .
+
+ns1:Act rdfs:label "acts" .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoAction rdfs:label "also action" ;
+    rdfs:subClassOf ns1:Action .
+
+ns1:Anarchist rdfs:label "anarchists" .
+
+ns1:Claim rdfs:label "claimed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Counterrevolution a owl:Class ;
+    rdfs:label "counterrevolution" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Counter-revolutionary .
+
+ns1:Group rdfs:label "themselves" .
+
+ns1:Johann_most rdfs:label "Johann Most" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Johann_Most .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Propaganda a owl:Class ;
+    rdfs:label "propaganda" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> ;
+    owl:equivalentClass dbpedia:Propaganda .
+
+ns1:Publicize rdfs:label "publicize" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Reprisal rdfs:label "reprisal" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Violent rdfs:label "violent" ;
+    owl:sameAs dbpedia:Violence .
+
+ns1:ViolentAct rdfs:subClassOf ns1:Act .
+
+ns1:counterrevolution_1 a ns1:Counterrevolution ;
+    rdfs:label "counterrevolution" .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:preach_1 a ns1:Preach ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:person_1 .
+
+ns1:preach_2 a ns1:Preach ;
+    rdfs:label "preach" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Topic ns1:action_1,
+        ns1:action_2 .
+
+ns1:reprisal_1 a ns1:Reprisal ;
+    rdfs:label "reprisal" .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:action_1 .
+
+ns1:situation_4 a ns1:Situation ;
+    boxing:involves ns1:action_1 .
+
+ns1:situation_5 a ns1:Situation ;
+    boxing:involves ns1:action_1,
+        ns1:action_2,
+        ns1:preach_1,
+        ns1:preach_2,
+        ns1:propaganda_1 .
+
+ns1:Action rdfs:label "action" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Preach rdfs:label "preach" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:action_2 a ns1:AlsoAction ;
+    rdfs:label "action" ;
+    dul:hasQuality ns1:Also ;
+    ns1:as ns1:propaganda_1 .
+
+ns1:propaganda_1 a ns1:Propaganda ;
+    rdfs:label "propaganda" .
+
+ns1:anarchist_1 a dbpedia:Anarchism,
+        ns1:Anarchist,
+        ns1:Group ;
+    rdfs:label "anarchists",
+        "themselves" ;
+    quant:hasQuantifier quant:multiple,
+        quant:some ;
+    ns1:as ns1:Johann_most .
+
+ns1:action_1 a ns1:Action ;
+    rdfs:label "action" ;
+    ns1:for ns1:anarchist_1 ;
+    ns1:within ns1:anarchist_1 .
+

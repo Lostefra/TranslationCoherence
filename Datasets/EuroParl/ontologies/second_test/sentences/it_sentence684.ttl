@@ -1,0 +1,168 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence684.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%2C> rdfs:label "," .
+
+translation_coherence:it_sentence684.ttl a owl:Ontology ;
+    rdfs:label "it_sentence684" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence684" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:development_1 rdfs:label "development" .
+
+ns1:docuverse earmark:hasContent "I think of research and technological development, the provision of infrastructure and quality, human resources, small and medium-sized enterprises and direct investment from abroad."^^xsd:string .
+
+ns1:investment_1 rdfs:label "investment" .
+
+ns1:quality_1 rdfs:label "quality" .
+
+ns1:think_1 a ns1:Think ;
+    rdfs:label "think" ;
+    dul:associatedWith ns1:provision_1 ;
+    vn.role:Agent ns1:person_1 ;
+    ns1:thinkOf ns1:research_1 .
+
+ns1:Abroad rdfs:label "abroad" .
+
+ns1:Development a owl:Class ;
+    rdfs:label "development" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:DirectInvestment a owl:Class ;
+    rdfs:label "Direct Investment" ;
+    dul:hasQuality ns1:Direct ;
+    rdfs:subClassOf ns1:Investment ;
+    owl:equivalentClass dbpedia:Foreign_direct_investment .
+
+ns1:Enterprise rdfs:label "enterprises" .
+
+ns1:Human rdfs:label "human" .
+
+ns1:HumanResource rdfs:subClassOf ns1:Resource .
+
+ns1:Infrastructure a owl:Class ;
+    rdfs:label "infrastructure" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Infrastructure .
+
+ns1:Investment a owl:Class ;
+    rdfs:label "investment" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Investment .
+
+ns1:Medium-sized rdfs:label "medium-sized" ;
+    owl:sameAs dbpedia:Small_and_medium-sized_enterprises .
+
+ns1:Medium-sizedEnterprise rdfs:subClassOf ns1:Enterprise .
+
+ns1:Person rdfs:label "I" .
+
+ns1:Provision rdfs:label "provision" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Quality a owl:Class ;
+    rdfs:label "quality" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Quality_control .
+
+ns1:Research a owl:Class ;
+    rdfs:label "research" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Medical_research .
+
+ns1:Resource rdfs:label "resources" .
+
+ns1:Small rdfs:label "small" .
+
+ns1:Technological a owl:Class ;
+    rdfs:label "technological" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:TechnologicalDevelopment a owl:Class ;
+    rdfs:label "technological development" ;
+    dul:hasQuality ns1:Technological ;
+    rdfs:subClassOf ns1:Development ;
+    owl:equivalentClass dbpedia:Technology .
+
+ns1:Think rdfs:label "think" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:enterprise_1 a ns1:DirectInvestment,
+        ns1:Medium-sizedEnterprise ;
+    rdfs:label "enterprises" ;
+    dul:hasQuality ns1:Abroad,
+        ns1:Direct,
+        ns1:Medium-sized,
+        ns1:Small ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:infrastructure_1 a ns1:Infrastructure,
+        ns1:Quality ;
+    rdfs:label "infrastructure" .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:provision_1 a ns1:Provision ;
+    rdfs:label "provision" ;
+    dul:associatedWith ns1:resource_1 ;
+    quant:hasDeterminer quant:the ;
+    ns1:provisionOf ns1:infrastructure_1 .
+
+ns1:research_1 a ns1:Research,
+        ns1:TechnologicalDevelopment ;
+    rdfs:label "research" .
+
+ns1:resource_1 a dbpedia:Human_resources,
+        ns1:HumanResource ;
+    rdfs:label "resources" ;
+    dul:associatedWith ns1:enterprise_1 ;
+    dul:hasQuality ns1:Human ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Direct a owl:Class ;
+    rdfs:label "direct" ;
+    rdfs:subClassOf dul:Quality .
+

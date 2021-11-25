@@ -1,0 +1,152 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence75.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:fi_sentence75.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence75" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence75" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Union rdfs:label "or" .
+
+ns1:add_1 a ns1:Add ;
+    rdfs:label "added" ;
+    vn.role:Recipient ns1:job_1 ;
+    vn.role:Topic ns1:establishment_1 ;
+    ns1:in ns1:addition_1 .
+
+ns1:disjunct_1 a ns1:Disjunct ;
+    boxing:involves ns1:Establishment,
+        ns1:establishment_1 ;
+    ns1:union ns1:disjunct_2 .
+
+ns1:docuverse earmark:hasContent "In addition, the establishment or expan. of several military installations, mainly the U.S._Army and the U.S._Air_Force, was added to state jobs."^^xsd:string .
+
+ns1:expan._1 rdfs:label "expan." .
+
+ns1:state_1 a ns1:State ;
+    rdfs:label "state" ;
+    dul:associatedWith ns1:job_1 .
+
+dbpedia:United_States_Air_Force rdfs:subClassOf schema:Organization .
+
+dbpedia:United_States_Armed_Forces a schema:Organization .
+
+dbpedia:United_States_Army a schema:Organization .
+
+ns1:Add rdfs:label "added" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Addition rdfs:label "addition" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Installation rdfs:label "installations" .
+
+ns1:Job rdfs:label "jobs" .
+
+ns1:Military rdfs:label "military" ;
+    owl:sameAs dbpedia:United_States_Armed_Forces .
+
+ns1:MilitaryInstallation rdfs:subClassOf ns1:Installation .
+
+ns1:Several rdfs:label "several" .
+
+ns1:SeveralMilitaryInstallation rdfs:subClassOf ns1:MilitaryInstallation .
+
+ns1:State rdfs:label "state" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:StateJob rdfs:subClassOf ns1:Job .
+
+ns1:U.s._air_force a owl:Class ;
+    rdfs:label "U.S. Air Force" ;
+    owl:equivalentClass dbpedia:United_States_Air_Force .
+
+ns1:U.s._army rdfs:label "U.S. Army" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality ns1:Mainly ;
+    owl:sameAs dbpedia:United_States_Army .
+
+ns1:addition_1 a ns1:Addition ;
+    rdfs:label "addition" .
+
+ns1:disjunct_2 a ns1:Disjunct ;
+    boxing:involves <https://w3id.org/stlab/ke/amiala/fi_sentence75.ttl/Expan.>,
+        ns1:establishment_1 .
+
+ns1:installation_1 a dbpedia:Military_base,
+        ns1:SeveralMilitaryInstallation ;
+    rdfs:label "installations" ;
+    dul:associatedWith ns1:U.s._army,
+        ns1:u.s._air_force_1 ;
+    dul:hasQuality ns1:Military,
+        ns1:Several ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:u.s._air_force_1 a ns1:U.s._air_force ;
+    rdfs:label "U.S. Air Force" ;
+    dul:hasQuality ns1:Mainly ;
+    quant:hasDeterminer quant:the .
+
+ns1:Establishment rdfs:label "establishment" ;
+    rdfs:subClassOf dul:Situation .
+
+<https://w3id.org/stlab/ke/amiala/fi_sentence75.ttl/Expan.> rdfs:label "expan." .
+
+ns1:Mainly rdfs:label "mainly" .
+
+ns1:job_1 a ns1:StateJob ;
+    rdfs:label "jobs" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:establishment_1 a ns1:Establishment,
+        <https://w3id.org/stlab/ke/amiala/fi_sentence75.ttl/Expan.> ;
+    rdfs:label "establishment" ;
+    quant:hasDeterminer quant:the ;
+    ns1:establishmentOf ns1:installation_1 .
+

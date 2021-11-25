@@ -1,0 +1,131 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence312.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence312.ttl a owl:Ontology ;
+    rdfs:label "en_sentence312" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence312" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:commercialize_1 a ns1:NeverCommercialize ;
+    rdfs:label "commercialized" ;
+    dul:hasQuality ns1:Never ;
+    vn.role:Patient ns1:idea_1 .
+
+ns1:docuverse earmark:hasContent "The idea was never commercialized, but Lincoln is still the only person to hold a patent and serve as President_of_the_United_States."^^xsd:string .
+
+ns1:person_1 rdfs:label "person" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Lincoln ;
+    ns1:entails ns1:situation_2 .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves ns1:hold_1,
+        ns1:patent_1,
+        ns1:president_of_the_united_states_1,
+        ns1:serve_1 ;
+    dul:hasQuality ns1:Still .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+ns1:Commercialize rdfs:label "commercialized" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Hold rdfs:label "hold" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Idea rdfs:label "idea" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Never rdfs:label "never" .
+
+ns1:NeverCommercialize rdfs:subClassOf ns1:Commercialize .
+
+ns1:Patent a owl:Class ;
+    rdfs:label "patent" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Patent .
+
+ns1:Person rdfs:label "person" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:President_of_the_united_states a owl:Class ;
+    rdfs:label "President of the United States" ;
+    owl:equivalentClass dbpedia:President_of_the_United_States .
+
+ns1:Serve rdfs:label "serve" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Still rdfs:label "still" .
+
+ns1:hold_1 a ns1:Hold ;
+    rdfs:label "hold" ;
+    vn.role:Theme ns1:patent_1 .
+
+ns1:idea_1 a ns1:Idea ;
+    rdfs:label "idea" ;
+    quant:hasDeterminer quant:the .
+
+ns1:serve_1 a ns1:Serve ;
+    rdfs:label "serve" ;
+    ns1:as ns1:president_of_the_united_states_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Lincoln .
+
+ns1:Lincoln a ns1:Person ;
+    rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    quant:hasDeterminer quant:the ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+
+ns1:patent_1 a ns1:Patent ;
+    rdfs:label "patent" ;
+    quant:hasDeterminer quant:a .
+
+ns1:president_of_the_united_states_1 a ns1:President_of_the_united_states ;
+    rdfs:label "President of the United States" ;
+    quant:hasQuantifier quant:multiple .
+

@@ -1,0 +1,243 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence529.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "on" .
+
+vn.role:Predicate rdfs:label "for" .
+
+translation_coherence:nl_sentence529.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence529" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence529" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Before rdfs:label "before" .
+
+ns1:Few rdfs:label "few" .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Within rdfs:label "within" .
+
+ns1:consider_1 a ns1:Consider ;
+    rdfs:label "considered" ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Theme ns1:person_3 ;
+    ns1:within ns1:College .
+
+ns1:docuverse earmark:hasContent "I took part in a meeting of the most remote areas on November 23, and within the College, we considered we needed a few more weeks before we could make a report that was appropriate for the extreme problems and the expectations of these areas. I would thank you for understanding this case."^^xsd:string .
+
+ns1:meeting_1 a ns1:Meeting ;
+    rdfs:label "meeting" ;
+    quant:hasDeterminer quant:a .
+
+ns1:need_1 a ns1:Need ;
+    rdfs:label "needed" ;
+    vn.role:Experiencer ns1:person_3 ;
+    vn.role:Theme ns1:have_1 ;
+    ns1:before ns1:make_1 .
+
+ns1:person_5 coref:coref ns1:person_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Possible ;
+    boxing:involves ns1:Appropriate,
+        ns1:report_1 ;
+    ns1:for ns1:expectation_1,
+        ns1:problem_1 .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "took" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Destination "0001-11-23"^^xsd:date ;
+    vn.role:Theme ns1:part_1 ;
+    ns1:inMeetingOf ns1:area_1 .
+
+ns1:thank_1 a ns1:Thank ;
+    rdfs:label "thank" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Predicate ns1:thing_1 ;
+    vn.role:Theme ns1:person_6 .
+
+ns1:understand_1 a ns1:Understand ;
+    rdfs:label "understanding" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Proposition ns1:case_1 .
+
+ns1:Area rdfs:label "areas" .
+
+ns1:Case rdfs:label "case" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:College rdfs:label "College" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:College .
+
+ns1:Consider rdfs:label "considered" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Expectation rdfs:label "expectations" .
+
+ns1:Extreme rdfs:label "extreme" .
+
+ns1:ExtremeProblem rdfs:subClassOf ns1:Problem .
+
+ns1:FewMoreWeek rdfs:subClassOf ns1:MoreWeek .
+
+ns1:Have rdfs:subClassOf dul:Event .
+
+ns1:Make rdfs:label "make" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Meeting rdfs:label "meeting" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:More rdfs:label "more" .
+
+ns1:MoreWeek rdfs:subClassOf ns1:Week .
+
+ns1:Most rdfs:label "most" .
+
+ns1:MostRemoteArea rdfs:subClassOf ns1:RemoteArea .
+
+ns1:Need rdfs:label "needed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Part rdfs:label "part" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Problem rdfs:label "problems" .
+
+ns1:Remote rdfs:label "remote" .
+
+ns1:RemoteArea rdfs:subClassOf ns1:Area .
+
+ns1:Report rdfs:label "report" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Take rdfs:label "took" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Thank rdfs:label "thank" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Understand rdfs:label "understanding" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Week rdfs:label "weeks" .
+
+ns1:case_1 a ns1:Case ;
+    rdfs:label "case" ;
+    quant:hasDeterminer quant:this .
+
+ns1:expectation_1 a ns1:Expectation ;
+    rdfs:label "expectations" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:extremeProblemOf ns1:area_1 .
+
+ns1:have_1 a ns1:Have ;
+    vn.role:Agent ns1:person_3 ;
+    vn.role:Patient ns1:week_1 .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "make" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Agent ns1:person_4 ;
+    vn.role:Theme ns1:report_1 .
+
+ns1:part_1 a ns1:Part ;
+    rdfs:label "part" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:person_4 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:person_6 a ns1:Person ;
+    rdfs:label "you" .
+
+ns1:problem_1 a ns1:ExtremeProblem ;
+    rdfs:label "problems" ;
+    dul:hasQuality ns1:Extreme ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:extremeProblemOf ns1:area_1 .
+
+ns1:week_1 a ns1:FewMoreWeek ;
+    rdfs:label "weeks" ;
+    dul:hasQuality ns1:More ;
+    quant:hasDeterminer quant:a ;
+    quant:hasQuantifier quant:few,
+        quant:multiple .
+
+ns1:Appropriate rdfs:label "appropriate" .
+
+ns1:report_1 a ns1:Report ;
+    rdfs:label "report" ;
+    dul:hasQuality ns1:Appropriate ;
+    quant:hasDeterminer quant:a .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:area_1 a ns1:MostRemoteArea ;
+    rdfs:label "areas" ;
+    dul:hasQuality ns1:Most,
+        ns1:Remote ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:Person rdfs:label "I",
+        "we",
+        "you" .
+

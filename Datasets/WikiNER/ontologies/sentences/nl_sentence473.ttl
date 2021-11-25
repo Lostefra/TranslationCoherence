@@ -1,0 +1,113 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence473.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence473.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence473" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence473" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In",
+        "in" .
+
+ns1:Like rdfs:label "like" .
+
+ns1:Where rdfs:label "where" .
+
+ns1:docuverse earmark:hasContent "In places like Sparta where all the women are bad, there can only be half-happines in society."^^xsd:string .
+
+ns1:half-happine_1 rdfs:label "half-happines" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Possible ;
+    boxing:involves ns1:Half-happine,
+        ns1:there_1 ;
+    dul:hasQuality ns1:Only ;
+    ns1:in ns1:place_1,
+        ns1:society_1 .
+
+dbpedia:Sparta a schema:Country,
+        schema:Place .
+
+ns1:Only rdfs:label "only" .
+
+ns1:Place rdfs:label "places" .
+
+ns1:Society rdfs:label "society" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Sparta rdfs:label "Sparta" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Sparta .
+
+ns1:There rdfs:label "there" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Woman rdfs:label "women" .
+
+ns1:place_1 a ns1:Place ;
+    rdfs:label "places" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:like ns1:Sparta ;
+    ns1:where ns1:situation_2 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:hasModality boxing:Possible ;
+    boxing:involves ns1:Bad,
+        ns1:woman_1 .
+
+ns1:society_1 a ns1:Society ;
+    rdfs:label "society" .
+
+ns1:there_1 a ns1:Half-happine,
+        ns1:There ;
+    rdfs:label "there" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:woman_1 a ns1:Woman ;
+    rdfs:label "women" ;
+    dul:hasQuality ns1:Bad ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Bad rdfs:label "bad" .
+
+ns1:Half-happine rdfs:label "half-happines" .
+

@@ -1,0 +1,136 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence49.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Patient2 rdfs:label "with" .
+
+translation_coherence:fi_sentence49.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence49" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence49" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:associate_1 a ns1:CommonlyAssociate ;
+    rdfs:label "associated" ;
+    dul:hasQuality ns1:Commonly ;
+    vn.role:Patient1 ns1:anarchism_1 ;
+    vn.role:Patient2 ns1:Johann_most,
+        ns1:Mikhail_bakunin .
+
+ns1:call_1 a ns1:AlsoCall ;
+    rdfs:label "called" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Predicate ns1:socialism_1 ;
+    vn.role:Theme ns1:anarchism_1 .
+
+ns1:docuverse earmark:hasContent "Collec. anarchism, also called revolutionary socialism, is a revolutionary form of anarchism that is commonly associated with Mikhail_Bakunin and Johann_Most."^^xsd:string .
+
+ns1:form_1 rdfs:label "form" ;
+    quant:hasDeterminer quant:a .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoCall rdfs:subClassOf ns1:Call .
+
+ns1:Associate rdfs:label "associated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Call rdfs:label "called" ;
+    rdfs:subClassOf dul:Event .
+
+<https://w3id.org/stlab/ke/amiala/fi_sentence49.ttl/Collec.> a ns1:RevolutionaryForm ;
+    rdfs:label "Collec.",
+        "form" ;
+    boxer:possibleType owl:Thing ;
+    dul:hasQuality ns1:Revolutionary .
+
+ns1:Commonly rdfs:label "commonly" .
+
+ns1:CommonlyAssociate rdfs:subClassOf ns1:Associate .
+
+ns1:Form rdfs:label "Collec.",
+        "form" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Johann_most rdfs:label "Johann Most" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Johann_Most .
+
+ns1:Mikhail_bakunin rdfs:label "Mikhail Bakunin" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Mikhail_Bakunin .
+
+ns1:RevolutionarySocialism a owl:Class ;
+    rdfs:label "revolutionary socialism" ;
+    dul:hasQuality ns1:Revolutionary ;
+    rdfs:subClassOf ns1:Socialism ;
+    owl:equivalentClass dbpedia:Revolutionary_socialism .
+
+ns1:Socialism a owl:Class ;
+    rdfs:label "socialism" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:anarchism_2 a ns1:Anarchism ;
+    rdfs:label "anarchism" .
+
+ns1:socialism_1 a ns1:RevolutionarySocialism ;
+    rdfs:label "socialism" .
+
+ns1:Anarchism a owl:Class ;
+    rdfs:label "anarchism" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> ;
+    owl:equivalentClass dbpedia:Anarchism .
+
+ns1:RevolutionaryForm rdfs:label "revolutionary form" ;
+    rdfs:subClassOf ns1:Form .
+
+ns1:anarchism_1 a ns1:Anarchism,
+        ns1:RevolutionaryForm ;
+    rdfs:label "anarchism" ;
+    dul:associatedWith <https://w3id.org/stlab/ke/amiala/fi_sentence49.ttl/Collec.> ;
+    dul:hasQuality ns1:Revolutionary ;
+    ns1:anarchismOf ns1:anarchism_2 .
+
+ns1:Revolutionary a owl:Class ;
+    rdfs:label "Revolutionary",
+        "revolutionary" ;
+    rdfs:subClassOf dul:Quality .
+

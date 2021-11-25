@@ -1,0 +1,175 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence553.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence553.ttl a owl:Ontology ;
+    rdfs:label "en_sentence553" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence553" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Assessment rdfs:label "assessments" .
+
+ns1:Eq rdfs:label "be" .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:assessment_1 rdfs:label "assessments" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:disjunct_1 a ns1:Disjunct ;
+    boxing:involves ns1:use_1 .
+
+ns1:docuverse earmark:hasContent "Moreover, the guidelines may not substitute for the programming or the ex ante assessments which must be the tool used to specify priorities and the effectiveness of these programmes."^^xsd:string .
+
+ns1:ex_1 a ns1:Ex ;
+    rdfs:label "ex" ;
+    dul:associatedWith ns1:ante_1,
+        ns1:tool_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:substitute_1 a ns1:Substitute ;
+    rdfs:label "substitute" ;
+    boxing:hasModality boxing:Possible ;
+    boxing:hasTruthValue boxing:False ;
+    dul:hasQuality ns1:Moreover ;
+    vn.role:Theme1 ns1:guideline_1 ;
+    ns1:for ns1:programming_1,
+        ns1:tool_1 .
+
+ns1:Ante a owl:Class ;
+    rdfs:label "ante" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Effectiveness rdfs:label "effectiveness" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:ExAnte a owl:Class ;
+    rdfs:label "ex ante" ;
+    dul:associatedWith ns1:Ex ;
+    rdfs:subClassOf ns1:Ante ;
+    owl:equivalentClass dbpedia:Ex-ante .
+
+ns1:ExAnteAssessment rdfs:subClassOf ns1:Tool .
+
+ns1:Guideline rdfs:label "guidelines" .
+
+ns1:Moreover rdfs:label "Moreover" .
+
+ns1:Priority rdfs:label "priorities" .
+
+ns1:Programme rdfs:label "programmes" .
+
+ns1:Programming rdfs:label "programming" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Substitute rdfs:label "substitute" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Use rdfs:label "used" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:ante_1 a ns1:ExAnte ;
+    rdfs:label "ante" ;
+    dul:associatedWith ns1:tool_1 .
+
+ns1:effectiveness_1 a ns1:Effectiveness ;
+    rdfs:label "effectiveness" ;
+    quant:hasDeterminer quant:the ;
+    ns1:effectivenessOf ns1:programme_1 .
+
+ns1:guideline_1 a ns1:Guideline ;
+    rdfs:label "guidelines" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:programme_1 a ns1:Programme ;
+    rdfs:label "programmes" ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:programming_1 a ns1:Programming ;
+    rdfs:label "programming" ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:priority_1,
+        ns1:specify_1,
+        ns1:specify_2 .
+
+ns1:specify_1 a ns1:Specify ;
+    vn.role:Agent ns1:tool_1 ;
+    vn.role:Theme ns1:effectiveness_1 .
+
+ns1:specify_2 a ns1:Specify ;
+    rdfs:label "specify" ;
+    vn.role:Agent ns1:tool_1 ;
+    vn.role:Theme ns1:priority_1 .
+
+ns1:use_1 a ns1:Use ;
+    rdfs:label "used" ;
+    boxer:theme ns1:situation_1 ;
+    boxing:hasModality boxing:Necessary,
+        boxing:Possible ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Theme ns1:tool_1 .
+
+ns1:Ex a owl:Class ;
+    rdfs:label "ex" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Specify rdfs:label "specify" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Tool rdfs:label "tool" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:priority_1 a ns1:Priority ;
+    rdfs:label "priorities" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:tool_1 a ns1:ExAnteAssessment,
+        ns1:Tool ;
+    rdfs:label "tool" ;
+    quant:hasDeterminer quant:the .
+

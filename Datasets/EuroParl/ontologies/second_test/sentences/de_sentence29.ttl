@@ -1,0 +1,227 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence29.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence29.ttl a owl:Ontology ;
+    rdfs:label "de_sentence29" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence29" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:So rdfs:label "so" .
+
+ns1:as_1 rdfs:label "as" .
+
+ns1:docuverse earmark:hasContent "These findings form the basis of the European programmes to protect the Barents_Sea, so I would ask you to examine a draft letter which outlines the main facts and clarifies the position of the Parliament, as in the resolutions it has adopted."^^xsd:string .
+
+ns1:draft_1 a ns1:Draft ;
+    rdfs:label "draft" ;
+    dul:associatedWith ns1:letter_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:form_1,
+        ns1:protect_1 ;
+    ns1:so ns1:ask_1 .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Adopt rdfs:label "adopted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:As rdfs:label "as" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Ask rdfs:label "ask" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Basis rdfs:label "basis" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Clarify rdfs:label "clarifies" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:DraftLetter a owl:Class ;
+    rdfs:label "Draft Letter" ;
+    dul:associatedWith ns1:Draft ;
+    rdfs:subClassOf ns1:Letter .
+
+ns1:European rdfs:label "European" .
+
+ns1:EuropeanProgramme rdfs:subClassOf ns1:Programme .
+
+ns1:Examine rdfs:label "examine" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Fact rdfs:label "facts" .
+
+ns1:Finding rdfs:label "findings" .
+
+ns1:Form rdfs:label "form" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Letter a owl:Class ;
+    rdfs:label "letter" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Main rdfs:label "main" .
+
+ns1:MainFact rdfs:subClassOf ns1:Fact .
+
+ns1:Outline rdfs:label "outlines" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Parliament rdfs:label "Parliament" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Parliament .
+
+ns1:Position rdfs:label "position" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Programme rdfs:label "programmes" .
+
+ns1:Protect rdfs:label "protect" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Resolution rdfs:label "resolutions" .
+
+ns1:adopt_1 a ns1:Adopt ;
+    rdfs:label "adopted" ;
+    vn.role:Agent ns1:Barents_sea ;
+    vn.role:Theme ns1:resolution_1 .
+
+ns1:ask_1 a ns1:Ask ;
+    rdfs:label "ask" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Topic ns1:situation_2 .
+
+ns1:basis_1 a ns1:Basis ;
+    rdfs:label "basis" ;
+    quant:hasDeterminer quant:the ;
+    ns1:basisOf ns1:programme_1 .
+
+ns1:clarify_1 a ns1:Clarify ;
+    rdfs:label "clarifies" ;
+    boxer:agent ns1:letter_1 ;
+    boxer:patient ns1:position_1 .
+
+ns1:examine_1 a ns1:Examine ;
+    rdfs:label "examine" ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Location ns1:letter_1 .
+
+ns1:fact_1 a ns1:MainFact ;
+    rdfs:label "facts" ;
+    dul:hasQuality ns1:Main ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:finding_1 a ns1:Finding ;
+    rdfs:label "findings" ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:form_1 a ns1:Form ;
+    rdfs:label "form" ;
+    vn.role:Agent ns1:finding_1 ;
+    vn.role:Theme ns1:basis_1 .
+
+ns1:outline_1 a ns1:Outline ;
+    rdfs:label "outlines" ;
+    boxer:agent ns1:letter_1 ;
+    boxer:patient ns1:fact_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "you" .
+
+ns1:protect_1 a ns1:Protect ;
+    rdfs:label "protect" ;
+    vn.role:Agent ns1:programme_1 ;
+    vn.role:Theme ns1:Barents_sea .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:adopt_1,
+        ns1:clarify_1,
+        ns1:examine_1,
+        ns1:letter_1,
+        ns1:outline_1,
+        ns1:position_1 .
+
+ns1:Barents_sea rdfs:label "Barents Sea" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:hasQuality owl:Thing ;
+    owl:sameAs dbpedia:Barents_Sea .
+
+ns1:Draft a owl:Class ;
+    rdfs:label "draft" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Person rdfs:label "I",
+        "you" .
+
+ns1:position_1 a ns1:As,
+        ns1:Position ;
+    rdfs:label "position" ;
+    quant:hasDeterminer quant:the ;
+    ns1:in ns1:resolution_1 ;
+    ns1:positionOf ns1:Parliament .
+
+ns1:programme_1 a ns1:EuropeanProgramme ;
+    rdfs:label "programmes" ;
+    dul:hasQuality ns1:European ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:resolution_1 a ns1:Resolution ;
+    rdfs:label "resolutions" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:letter_1 a ns1:DraftLetter ;
+    rdfs:label "letter" .
+

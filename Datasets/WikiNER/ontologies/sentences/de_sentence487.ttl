@@ -1,0 +1,135 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence487.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:de_sentence487.ttl a owl:Ontology ;
+    rdfs:label "de_sentence487" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence487" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:At rdfs:label "at" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "The first awards were published on 16 July. in the Hollywood_hotel, with a public audience of around 26 people at a private calves."^^xsd:string .
+
+ns1:publish_1 a ns1:Publish ;
+    rdfs:label "published" ;
+    vn.role:Product ns1:award_1 ;
+    ns1:at ns1:calf_1 ;
+    ns1:in ns1:Hollywood_hotel ;
+    ns1:on <https://w3id.org/stlab/ke/amiala/de_sentence487.ttl/July.> ;
+    ns1:with ns1:audience_1 .
+
+ns1:Around rdfs:label "around" .
+
+ns1:Award rdfs:label "awards" .
+
+ns1:Calf rdfs:label "calves" .
+
+ns1:First rdfs:label "first" .
+
+ns1:FirstAward rdfs:subClassOf ns1:Award .
+
+ns1:Hollywood_hotel rdfs:label "Hollywood hotel" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Hollywood_Hotel_(film) .
+
+<https://w3id.org/stlab/ke/amiala/de_sentence487.ttl/July.> rdfs:label "July." ;
+    boxer:possibleType time:Interval ;
+    ns1:at "0001-01-16"^^xsd:date .
+
+ns1:People rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Private rdfs:label "private" .
+
+ns1:PrivateCalf rdfs:subClassOf ns1:Calf .
+
+ns1:PublicAudience a owl:Class ;
+    rdfs:label "public audience" ;
+    dul:hasQuality ns1:Public ;
+    rdfs:subClassOf ns1:Audience .
+
+ns1:Publish rdfs:label "published" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:award_1 a ns1:FirstAward ;
+    rdfs:label "awards" ;
+    dul:hasQuality ns1:First ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    owl:sameAs ns1:audience_1 .
+
+ns1:calf_1 a ns1:PrivateCalf ;
+    rdfs:label "calves" ;
+    dul:hasQuality ns1:Private ;
+    quant:hasDeterminer quant:a ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:people_1 a ns1:People ;
+    rdfs:label "people" ;
+    dul:hasDataValue "26"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:Around ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Audience a owl:Class ;
+    rdfs:label "audience" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Public a owl:Class ;
+    rdfs:label "public" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:audience_1 a ns1:Audience,
+        ns1:PublicAudience ;
+    rdfs:label "audience" ;
+    dul:hasQuality ns1:Public ;
+    quant:hasDeterminer quant:a ;
+    ns1:publicAudienceOf ns1:people_1 .
+

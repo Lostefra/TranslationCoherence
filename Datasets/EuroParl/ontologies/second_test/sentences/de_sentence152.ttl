@@ -1,0 +1,188 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence152.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "in" .
+
+translation_coherence:de_sentence152.ttl a owl:Ontology ;
+    rdfs:label "de_sentence152" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence152" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "be" .
+
+ns1:Of rdfs:label "of",
+        "our" .
+
+ns1:Prevention a ns1:Response ;
+    rdfs:label "Prevention" ;
+    boxer:possibleType owl:Thing ;
+    ns1:responseOf ns1:person_1 ;
+    ns1:to ns1:disaster_1 .
+
+ns1:That rdfs:label "that" .
+
+ns1:To rdfs:label "to" .
+
+ns1:Towards rdfs:label "towards" .
+
+ns1:Well-trained rdfs:label "well-trained" .
+
+ns1:docuverse earmark:hasContent "Prevention must be our response to disasters of this kind, and this draft Directive is an important step towards well-trained security consultants, so that the right measures are taken in time."^^xsd:string .
+
+ns1:draft_1 a ns1:Draft ;
+    rdfs:label "draft" ;
+    dul:associatedWith ns1:directive_1 ;
+    quant:hasDeterminer quant:this .
+
+ns1:response_1 rdfs:label "response" .
+
+ns1:security_1 a ns1:Security ;
+    rdfs:label "security" ;
+    dul:associatedWith ns1:consultant_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:consultant_1,
+        ns1:directive_1 ;
+    dul:hasQuality ns1:So ;
+    ns1:that ns1:take_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:Disaster,
+        ns1:disaster_1 .
+
+ns1:Consultant rdfs:label "consultants" .
+
+ns1:Directive a owl:Class ;
+    rdfs:label "Directive" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:DraftDirective a owl:Class ;
+    rdfs:label "Draft Directive" ;
+    dul:associatedWith ns1:Draft ;
+    rdfs:subClassOf ns1:Directive .
+
+ns1:Important a owl:Class ;
+    rdfs:label "important" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ImportantStep a owl:Class ;
+    rdfs:label "Important Step" ;
+    dul:hasQuality ns1:Important ;
+    rdfs:subClassOf ns1:Step .
+
+ns1:Kind rdfs:label "kind" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Measure rdfs:label "measures" .
+
+ns1:Response rdfs:label "response" ;
+    rdfs:subClassOf dul:Process .
+
+ns1:Right rdfs:label "right" .
+
+ns1:RightMeasure rdfs:subClassOf ns1:Measure .
+
+ns1:Security rdfs:label "security" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:SecurityConsultant rdfs:subClassOf ns1:Consultant .
+
+ns1:So rdfs:label "so" .
+
+ns1:Take rdfs:label "taken" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Time rdfs:label "time" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Well-trainedSecurityConsultant rdfs:subClassOf ns1:SecurityConsultant .
+
+ns1:kind_1 a ns1:Kind ;
+    rdfs:label "kind" ;
+    quant:hasDeterminer quant:this .
+
+ns1:measure_1 a ns1:RightMeasure ;
+    rdfs:label "measures" ;
+    dul:hasQuality ns1:Right ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "our" .
+
+ns1:step_1 a ns1:Step ;
+    rdfs:label "step" ;
+    quant:hasDeterminer quant:an .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "taken" ;
+    vn.role:Location ns1:time_1 ;
+    vn.role:Value ns1:measure_1 .
+
+ns1:time_1 a ns1:Time ;
+    rdfs:label "time" .
+
+ns1:Disaster rdfs:label "disasters" .
+
+ns1:Draft a owl:Class ;
+    rdfs:label "draft" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Step a owl:Class ;
+    rdfs:label "step" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:directive_1 a ns1:DraftDirective,
+        ns1:ImportantStep ;
+    rdfs:label "Directive" ;
+    owl:sameAs ns1:step_1 ;
+    ns1:towards ns1:consultant_1 .
+
+ns1:disaster_1 a ns1:Disaster ;
+    rdfs:label "disasters" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:disasterOf ns1:kind_1 .
+
+ns1:consultant_1 a ns1:Well-trainedSecurityConsultant ;
+    rdfs:label "consultants" ;
+    quant:hasQuantifier quant:multiple .
+

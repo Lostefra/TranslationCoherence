@@ -1,0 +1,110 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence352.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence352.ttl a owl:Ontology ;
+    rdfs:label "it_sentence352" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence352" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:At rdfs:label "at" .
+
+ns1:Noteq rdfs:label "other" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:arrest_1 a ns1:Arrest ;
+    rdfs:label "arrested" ;
+    boxer:patient ns1:George_william_brown .
+
+ns1:docuverse earmark:hasContent "George_William_Brown, Baltimore Mayor and other political suspects of Maryland were arrested and imprisoned at Fort_McHenry."^^xsd:string .
+
+ns1:imprison_1 a ns1:Imprison ;
+    rdfs:label "imprisoned" ;
+    vn.role:Theme ns1:George_william_brown ;
+    ns1:at ns1:Fort_mchenry .
+
+dbpedia:Maryland a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:Arrest rdfs:label "arrested" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Baltimore_mayor rdfs:label "Baltimore Mayor" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Fort_mchenry rdfs:label "Fort McHenry" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Fort_McHenry .
+
+ns1:Imprison rdfs:label "imprisoned" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Maryland rdfs:label "Maryland" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Maryland .
+
+ns1:Political rdfs:label "political" ;
+    owl:sameAs dbpedia:Politics_of_the_United_States .
+
+ns1:PoliticalSuspect rdfs:subClassOf ns1:Suspect .
+
+ns1:suspect_1 a ns1:Suspect ;
+    rdfs:label "other" ;
+    owl:differentFrom ns1:suspect_2 ;
+    ns1:suspectOf ns1:Maryland .
+
+ns1:suspect_2 a ns1:PoliticalSuspect ;
+    rdfs:label "suspects" ;
+    dul:hasQuality ns1:Political ;
+    quant:hasDeterminer quant:other ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:George_william_brown rdfs:label "George William Brown" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Baltimore_mayor,
+        ns1:suspect_1 ;
+    owl:sameAs dbpedia:George_William_Brown .
+
+ns1:Suspect rdfs:label "other",
+        "suspects" .
+

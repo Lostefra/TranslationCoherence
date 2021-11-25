@@ -1,0 +1,176 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence59.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence59.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence59" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence59" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "was" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Rel rdfs:label "(",
+        "," .
+
+ns1:docuverse earmark:hasContent "Perhaps the most well-known effort in this field was the Escuela_Moderna (Escuela Moderna), a project that had a significant impact on the education and experimental teaching of the Catalan."^^xsd:string .
+
+ns1:effort_1 rdfs:label "effort" ;
+    quant:hasDeterminer quant:the .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "had" ;
+    vn.role:Agent ns1:project_1 ;
+    vn.role:Patient ns1:impact_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Catalan,
+        ns1:Escuela_moderna,
+        ns1:education_1,
+        ns1:field_1,
+        ns1:impact_1,
+        ns1:project_1 ;
+    dul:hasQuality ns1:Perhaps .
+
+ns1:teaching_1 rdfs:label "teaching" .
+
+dbpedia:Catalan_language a schema:Language .
+
+ns1:Education a owl:Class ;
+    rdfs:label "education" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Education .
+
+ns1:Effort a owl:Class ;
+    rdfs:label "effort" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Escuela_moderna a ns1:MostWell-knownEffort ;
+    rdfs:label "Escuela Moderna" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:project_1 ;
+    dul:hasQuality ns1:Most ;
+    owl:sameAs dbpedia:Escuela_Moderna ;
+    ns1:in ns1:field_1 .
+
+ns1:Experimental a owl:Class ;
+    rdfs:label "experimental" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Experiment .
+
+ns1:ExperimentalTeaching a owl:Class ;
+    rdfs:label "Experimental Teaching" ;
+    dul:hasQuality ns1:Experimental ;
+    rdfs:subClassOf ns1:Teaching .
+
+ns1:Field rdfs:label "field" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Have rdfs:label "had" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Most rdfs:label "most" .
+
+ns1:MostWell-knownEffort a owl:Class ;
+    rdfs:label "most well-known effort" ;
+    rdfs:subClassOf ns1:Well-knownEffort .
+
+ns1:Perhaps rdfs:label "Perhaps" .
+
+ns1:Project rdfs:label "project" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Significant a owl:Class ;
+    rdfs:label "significant" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SignificantImpact a owl:Class ;
+    rdfs:label "significant impact" ;
+    dul:hasQuality ns1:Significant ;
+    rdfs:subClassOf ns1:Impact .
+
+ns1:Teaching a owl:Class ;
+    rdfs:label "teaching" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Education .
+
+ns1:Well-known a owl:Class ;
+    rdfs:label "well-known" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Well-knownEffort a owl:Class ;
+    rdfs:label "well-known effort" ;
+    dul:hasQuality ns1:Well-known ;
+    rdfs:subClassOf ns1:Effort .
+
+ns1:Catalan rdfs:label "Catalan" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Catalan_language .
+
+ns1:Impact a owl:Class ;
+    rdfs:label "impact" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:education_1 a ns1:Education,
+        ns1:ExperimentalTeaching ;
+    rdfs:label "education" ;
+    quant:hasDeterminer quant:the ;
+    ns1:educationOf ns1:Catalan .
+
+ns1:field_1 a ns1:Field ;
+    rdfs:label "field" ;
+    quant:hasDeterminer quant:this ;
+    owl:sameAs ns1:impact_1 .
+
+ns1:impact_1 a ns1:Impact,
+        ns1:SignificantImpact ;
+    rdfs:label "impact" ;
+    quant:hasDeterminer quant:a ;
+    ns1:on ns1:education_1 .
+
+ns1:project_1 a ns1:Project ;
+    rdfs:label "project" ;
+    quant:hasDeterminer quant:a .
+

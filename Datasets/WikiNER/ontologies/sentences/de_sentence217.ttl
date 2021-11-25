@@ -1,0 +1,194 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence217.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence217.ttl a owl:Ontology ;
+    rdfs:label "de_sentence217" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence217" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "my",
+        "your" .
+
+ns1:Such rdfs:label "such" .
+
+ns1:docuverse earmark:hasContent "Hector said that he was hopeful that he could expect my troge, my fur, I will now move to get away and eat your meat   such stocks you have."^^xsd:string .
+
+ns1:meat_1 a ns1:Meat ;
+    rdfs:label "meat" ;
+    dul:associatedWith ns1:stock_1 .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "said" ;
+    vn.role:Agent ns1:Hector ;
+    vn.role:Topic ns1:situation_1 .
+
+ns1:Fur rdfs:label "fur" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Meat rdfs:label "meat" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:MeatSuchStock rdfs:subClassOf ns1:SuchStock .
+
+ns1:NowMove rdfs:label "Now Move" ;
+    rdfs:subClassOf ns1:Move .
+
+ns1:Say rdfs:label "said" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Stock rdfs:label "stocks" .
+
+ns1:SuchStock rdfs:subClassOf ns1:Stock .
+
+ns1:Troge rdfs:label "troge" .
+
+ns1:eat_1 a ns1:Eat ;
+    rdfs:label "eat" ;
+    vn.role:Agent ns1:person_4 ;
+    vn.role:Patient ns1:stock_1 .
+
+ns1:expect_1 a ns1:Expect ;
+    rdfs:label "expect" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Agent ns1:Hector ;
+    vn.role:Theme ns1:fur_1,
+        ns1:troge_1 .
+
+ns1:fur_1 a ns1:Fur ;
+    rdfs:label "fur" ;
+    ns1:furOf ns1:person_3 .
+
+ns1:get_1 a ns1:Get ;
+    rdfs:label "get" ;
+    vn.role:Patient ns1:person_4 .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "have" ;
+    vn.role:Agent ns1:person_5 ;
+    vn.role:Patient ns1:stock_1 .
+
+ns1:hopeful_1 a ns1:Hopeful ;
+    rdfs:label "hopeful" ;
+    boxer:agent ns1:Hector ;
+    boxer:theme ns1:situation_1 .
+
+ns1:move_1 a ns1:NowMove ;
+    rdfs:label "move" ;
+    boxer:theme ns1:situation_1 ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Now ;
+    vn.role:Theme ns1:person_4 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "your" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "my" .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "my" .
+
+ns1:person_5 a ns1:Person ;
+    rdfs:label "you" .
+
+ns1:troge_1 a ns1:Troge ;
+    rdfs:label "troge" ;
+    ns1:trogeOf ns1:person_2 .
+
+ns1:Away rdfs:label "away" .
+
+ns1:Eat rdfs:label "eat" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Expect rdfs:label "expect" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Get rdfs:label "get" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Hopeful rdfs:label "hopeful" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Move rdfs:label "move" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Now rdfs:label "now" .
+
+ns1:Hector rdfs:label "Hector" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Male .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:Away,
+        ns1:Eat,
+        ns1:Expect,
+        ns1:Get,
+        ns1:Have,
+        ns1:Hopeful,
+        ns1:Move,
+        ns1:Now,
+        ns1:eat_1,
+        ns1:expect_1,
+        ns1:get_1,
+        ns1:have_1,
+        ns1:hopeful_1,
+        ns1:move_1,
+        ns1:person_4 .
+
+ns1:stock_1 a ns1:MeatSuchStock ;
+    rdfs:label "stocks" ;
+    quant:hasDeterminer quant:such ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:meatSuchStockOf ns1:person_1 .
+
+ns1:person_4 a ns1:Person ;
+    rdfs:label "I" ;
+    dul:hasQuality ns1:Away .
+
+ns1:Person rdfs:label "I",
+        "you" .
+

@@ -1,0 +1,124 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence741.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:de_sentence741.ttl a owl:Ontology ;
+    rdfs:label "de_sentence741" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence741" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of",
+        "their" .
+
+ns1:docuverse earmark:hasContent "Women make 70% of Algerian lawyers and 60% of their judges and dominate the field of medicine."^^xsd:string .
+
+ns1:dominate_1 a ns1:Dominate ;
+    rdfs:label "dominate" ;
+    vn.role:Theme1 ns1:woman_1 ;
+    vn.role:Theme2 ns1:field_1 .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "make" ;
+    vn.role:Agent ns1:woman_1 ;
+    vn.role:Theme ns1:percent_1,
+        ns1:percent_2 .
+
+ns1:thing_1 coref:coref ns1:woman_1 .
+
+ns1:Algerian rdfs:label "Algerian" .
+
+ns1:AlgerianLawyer rdfs:subClassOf ns1:Lawyer .
+
+ns1:Dominate rdfs:label "dominate" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Field rdfs:label "field" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Judge rdfs:label "judges" .
+
+ns1:Lawyer rdfs:label "lawyers" .
+
+ns1:Make rdfs:label "make" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Medicine rdfs:label "medicine" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Woman rdfs:label "Women" .
+
+ns1:field_1 a ns1:Field ;
+    rdfs:label "field" ;
+    quant:hasDeterminer quant:the ;
+    ns1:fieldOf ns1:medicine_1 .
+
+ns1:judge_1 a ns1:Judge ;
+    rdfs:label "judges" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:judgeOf ns1:woman_1 .
+
+ns1:lawyer_1 a ns1:AlgerianLawyer ;
+    rdfs:label "lawyers" ;
+    dul:hasQuality ns1:Algerian ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:medicine_1 a ns1:Medicine ;
+    rdfs:label "medicine" .
+
+ns1:percent_1 a ns1:Percent ;
+    rdfs:label "%" ;
+    dul:hasDataValue "70"^^xsd:nonNegativeInteger ;
+    ns1:percentOf ns1:lawyer_1 .
+
+ns1:percent_2 a ns1:Percent ;
+    rdfs:label "%" ;
+    dul:hasDataValue "60"^^xsd:nonNegativeInteger ;
+    ns1:percentOf ns1:judge_1 .
+
+ns1:Percent rdfs:label "%" .
+
+ns1:woman_1 a owl:Thing,
+        ns1:Woman ;
+    rdfs:label "Women",
+        "their" ;
+    quant:hasQuantifier quant:multiple .
+

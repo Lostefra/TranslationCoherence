@@ -1,0 +1,172 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence399.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence399.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence399" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence399" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:While rdfs:label "While" .
+
+ns1:agree_1 a ns1:Agree ;
+    rdfs:label "agree" ;
+    vn.role:Actor ns1:critic_1 ;
+    vn.role:Theme ns1:situation_1 ;
+    ns1:while ns1:say_1 .
+
+ns1:docuverse earmark:hasContent "While some critics say Lincoln is moving too far and too fast, they agree that he owns a nation's values, which meant a new foundation for a nation."^^xsd:string .
+
+ns1:thing_1 coref:coref ns1:critic_1 .
+
+owl:Thing rdfs:label "they" .
+
+ns1:Agree rdfs:label "agree" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Critic rdfs:label "critics" .
+
+ns1:Far rdfs:label "far" .
+
+ns1:Fast rdfs:label "fast" .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Mean rdfs:label "meant" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Move rdfs:label "moving" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:New a owl:Class ;
+    rdfs:label "new" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:NewFoundation a owl:Class ;
+    rdfs:label "new foundation" ;
+    dul:hasQuality ns1:New ;
+    rdfs:subClassOf ns1:Foundation .
+
+ns1:Own rdfs:label "owns" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Say rdfs:label "say" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Too rdfs:label "Too",
+        "too" .
+
+ns1:Value rdfs:label "values" .
+
+ns1:mean_1 a ns1:Mean ;
+    rdfs:label "meant" ;
+    vn.role:Agent ns1:value_1 ;
+    vn.role:Theme ns1:foundation_1 .
+
+ns1:move_1 a ns1:Move ;
+    rdfs:label "moving" ;
+    dul:hasQuality ns1:Far,
+        ns1:Fast,
+        ns1:Too ;
+    vn.role:Theme ns1:Lincoln .
+
+ns1:own_1 a ns1:Own ;
+    rdfs:label "owns" ;
+    vn.role:Theme1 ns1:Lincoln ;
+    vn.role:Theme2 ns1:value_1 .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "say" ;
+    vn.role:Agent ns1:critic_1 ;
+    vn.role:Topic ns1:situation_2 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:foundation_1,
+        ns1:mean_1,
+        ns1:nation_1,
+        ns1:nation_2,
+        ns1:own_1,
+        ns1:value_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:move_1 .
+
+ns1:Foundation a owl:Class ;
+    rdfs:label "foundation" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Male ;
+    owl:sameAs ns1:foundation_1 .
+
+ns1:Nation rdfs:label "nation" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:nation_1 a ns1:Nation ;
+    rdfs:label "nation" ;
+    quant:hasDeterminer quant:a .
+
+ns1:nation_2 a ns1:Nation ;
+    rdfs:label "nation" ;
+    quant:hasDeterminer quant:a .
+
+ns1:critic_1 a owl:Thing,
+        ns1:Critic ;
+    rdfs:label "critics",
+        "they" ;
+    quant:hasQuantifier quant:multiple,
+        quant:some .
+
+ns1:foundation_1 a ns1:Foundation,
+        ns1:NewFoundation ;
+    rdfs:label "foundation" ;
+    quant:hasDeterminer quant:a ;
+    ns1:for ns1:nation_2 .
+
+ns1:value_1 a ns1:Value ;
+    rdfs:label "values" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:valueOf ns1:nation_1 .
+

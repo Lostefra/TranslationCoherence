@@ -1,0 +1,172 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence232.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Actor1 rdfs:label "by" .
+
+vn.role:Location rdfs:label "as" .
+
+vn.role:Oblique rdfs:label "with" .
+
+vn.role:Source rdfs:label "with" .
+
+translation_coherence:de_sentence232.ttl a owl:Ontology ;
+    rdfs:label "de_sentence232" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence232" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "his" .
+
+ns1:affect_1 a ns1:ActuallyAffect ;
+    rdfs:label "affected" ;
+    boxing:hasTruthValue boxing:False ;
+    dul:hasQuality ns1:Actually ;
+    vn.role:Cause ns1:Achilles ;
+    vn.role:Experiencer ns1:spion_1 ;
+    vn.role:Oblique ns1:enthusiasm_1 .
+
+ns1:carry_1 a ns1:Carry ;
+    rdfs:label "carried" ;
+    dul:hasQuality ns1:Out ;
+    vn.role:Agent ns1:Alexander_the_great ;
+    vn.role:Source ns1:Achilles ;
+    vn.role:Theme ns1:Iliad .
+
+ns1:docuverse earmark:hasContent "In 333 BC, the city was visited by Alexander_the_Great, who turned out as the new Achilles and carried out with him the Iliad, but his courtbiographs did not mention the Spion that he had actually affected with enthusiasm."^^xsd:string .
+
+ns1:mention_1 a ns1:Mention ;
+    rdfs:label "mention" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:courtbiograph_1 ;
+    vn.role:Topic ns1:spion_1 .
+
+ns1:turn_1 a ns1:Turn ;
+    rdfs:label "turned" ;
+    dul:hasQuality ns1:Out ;
+    vn.role:Location ns1:Achilles ;
+    vn.role:Theme ns1:Alexander_the_great .
+
+ns1:visit_1 a ns1:Visit ;
+    rdfs:label "visited" ;
+    vn.role:Actor1 ns1:Alexander_the_great ;
+    vn.role:Actor2 ns1:city_1 ;
+    ns1:in ns1:Bc .
+
+dbpedia:Alexander_the_Great a schema:Person .
+
+dbpedia:Carole_King rdfs:subClassOf schema:MusicGroup,
+        schema:Person .
+
+ns1:Actually rdfs:label "actually" .
+
+ns1:ActuallyAffect rdfs:subClassOf ns1:Affect .
+
+ns1:Affect rdfs:label "affected" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Bc rdfs:label "BC" ;
+    boxer:possibleType time:Interval ;
+    dul:hasDataValue "333"^^xsd:nonNegativeInteger .
+
+ns1:Carry rdfs:label "carried" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:City a owl:Class ;
+    rdfs:label "city" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> ;
+    owl:equivalentClass dbpedia:Carole_King .
+
+ns1:Courtbiograph rdfs:label "courtbiographs" .
+
+ns1:Enthusiasm rdfs:label "enthusiasm" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Iliad rdfs:label "Iliad" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Iliad .
+
+ns1:Male rdfs:label "him" .
+
+ns1:Mention rdfs:label "mention" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:New rdfs:label "new" .
+
+ns1:Spion rdfs:label "Spion" .
+
+ns1:Turn rdfs:label "turned" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Visit rdfs:label "visited" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:city_1 a ns1:City ;
+    rdfs:label "city" ;
+    quant:hasDeterminer quant:the .
+
+ns1:courtbiograph_1 a ns1:Courtbiograph ;
+    rdfs:label "courtbiographs" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:courtbiographOf ns1:Achilles .
+
+ns1:enthusiasm_1 a ns1:Enthusiasm ;
+    rdfs:label "enthusiasm" .
+
+ns1:Out rdfs:label "Out",
+        "out" .
+
+ns1:spion_1 a ns1:Spion ;
+    rdfs:label "Spion" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Alexander_the_great rdfs:label "Alexander the Great" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Alexander_the_Great .
+
+ns1:Achilles rdfs:label "Achilles" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Male,
+        ns1:New ;
+    owl:sameAs dbpedia:Achilles .
+

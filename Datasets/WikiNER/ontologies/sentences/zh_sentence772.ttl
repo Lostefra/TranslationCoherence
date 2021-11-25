@@ -1,0 +1,205 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence772.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence772.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence772" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence772" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "his",
+        "their" .
+
+ns1:Since rdfs:label "since" .
+
+ns1:docuverse earmark:hasContent "However, since he had never left Germany and had not studied his own culture, human beings were in fact an inherent experience in their own main philosophical areas."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:area_1,
+        ns1:being_1,
+        ns1:culture_1,
+        ns1:fact_1,
+        ns1:male_1,
+        ns1:situation_2,
+        ns1:situation_3 ;
+    dul:hasQuality ns1:However .
+
+ns1:thing_1 coref:coref ns1:being_1 .
+
+dbpedia:German_Empire a schema:Country,
+        schema:Place .
+
+dbpedia:Germany a schema:Country,
+        schema:Place .
+
+ns1:Area rdfs:label "areas" .
+
+ns1:Being rdfs:label "beings" .
+
+ns1:Culture a owl:Class ;
+    rdfs:label "culture" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Culture .
+
+ns1:Fact a owl:Class ;
+    rdfs:label "fact" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Fact .
+
+ns1:Germany rdfs:label "Germany" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:German_Empire,
+        dbpedia:Germany .
+
+ns1:However rdfs:label "However" .
+
+ns1:Human rdfs:label "human" ;
+    owl:sameAs dbpedia:Human .
+
+ns1:HumanBeing rdfs:subClassOf ns1:Being .
+
+ns1:Leave rdfs:label "left" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Main rdfs:label "main" .
+
+ns1:MainPhilosophicalArea rdfs:subClassOf ns1:PhilosophicalArea .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Never rdfs:label "never" .
+
+ns1:NeverLeave rdfs:subClassOf ns1:Leave .
+
+ns1:OwnCulture a owl:Class ;
+    rdfs:label "Own Culture" ;
+    dul:hasQuality ns1:Own ;
+    rdfs:subClassOf ns1:Culture .
+
+ns1:OwnMainPhilosophicalArea rdfs:subClassOf ns1:MainPhilosophicalArea .
+
+ns1:Philosophical rdfs:label "philosophical" ;
+    owl:sameAs dbpedia:Philosophy .
+
+ns1:PhilosophicalArea rdfs:subClassOf ns1:Area .
+
+ns1:Study rdfs:label "studied" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:experience_1 a ns1:Experience ;
+    rdfs:label "experience" ;
+    quant:hasDeterminer quant:an .
+
+ns1:leave_1 a ns1:NeverLeave ;
+    rdfs:label "left" ;
+    dul:hasQuality ns1:Never ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Theme ns1:Germany .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:leave_1,
+        ns1:study_1 ;
+    ns1:since ns1:situation_3 .
+
+ns1:study_1 a ns1:Study ;
+    rdfs:label "studied" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Theme ns1:culture_1 .
+
+ns1:Inherent a owl:Class ;
+    rdfs:label "inherent" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:InherentExperience a owl:Class ;
+    rdfs:label "Inherent Experience" ;
+    dul:hasQuality ns1:Inherent ;
+    rdfs:subClassOf ns1:Experience .
+
+ns1:Own a owl:Class ;
+    rdfs:label "own" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:area_1 a ns1:OwnMainPhilosophicalArea ;
+    rdfs:label "areas" ;
+    dul:hasQuality ns1:Main,
+        ns1:Own,
+        ns1:Philosophical ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:ownMainPhilosophicalAreaOf ns1:being_1 .
+
+ns1:culture_1 a ns1:OwnCulture ;
+    rdfs:label "culture" ;
+    ns1:ownCultureOf ns1:male_1 .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves ns1:Experience,
+        ns1:Inherent,
+        ns1:InherentExperience,
+        ns1:being_1,
+        ns1:fact_1 ;
+    ns1:in ns1:fact_1 .
+
+ns1:Experience a owl:Class ;
+    rdfs:label "experience" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Experience .
+
+ns1:fact_1 a ns1:Fact ;
+    rdfs:label "fact" .
+
+ns1:being_1 a dbpedia:Human,
+        owl:Thing,
+        ns1:HumanBeing,
+        ns1:InherentExperience ;
+    rdfs:label "beings",
+        "their" ;
+    dul:hasQuality ns1:Human ;
+    quant:hasQuantifier quant:multiple ;
+    owl:sameAs ns1:experience_1 ;
+    ns1:in ns1:area_1 .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "he",
+        "his" ;
+    coref:coref ns1:male_1 .
+

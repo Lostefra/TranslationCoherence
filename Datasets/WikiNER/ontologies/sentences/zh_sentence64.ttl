@@ -1,0 +1,173 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence64.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Predicate rdfs:label "as" .
+
+translation_coherence:zh_sentence64.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence64" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence64" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:docuverse earmark:hasContent "The first document on the topic, in particular almost all of the characteristics of a mere error and insistence on the same description, is still seen as wrong."^^xsd:string .
+
+ns1:insistence_1 rdfs:label "insistence" .
+
+ns1:see_1 a ns1:StillSee ;
+    rdfs:label "seen" ;
+    dul:hasQuality ns1:Still ;
+    vn.role:Predicate ns1:wrong_1 ;
+    vn.role:Theme ns1:document_1 ;
+    ns1:in ns1:all_1 .
+
+ns1:All a owl:Class ;
+    rdfs:label "all" .
+
+ns1:Almost a owl:Class ;
+    rdfs:label "almost" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:AlmostAll a owl:Class ;
+    rdfs:label "Almost All" ;
+    dul:hasQuality ns1:Almost ;
+    rdfs:subClassOf ns1:All .
+
+ns1:Characteristic rdfs:label "characteristics" .
+
+ns1:Description a owl:Class ;
+    rdfs:label "description" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Document a owl:Class ;
+    rdfs:label "document" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Error a owl:Class ;
+    rdfs:label "error" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:First a owl:Class ;
+    rdfs:label "first" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FirstDocument a owl:Class ;
+    rdfs:label "first document" ;
+    dul:hasQuality ns1:First ;
+    rdfs:subClassOf ns1:Document .
+
+ns1:Insistence rdfs:label "insistence" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Mere a owl:Class ;
+    rdfs:label "mere" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:MereError a owl:Class ;
+    rdfs:label "mere error" ;
+    dul:hasQuality ns1:Mere ;
+    rdfs:subClassOf ns1:Error .
+
+ns1:Particular rdfs:label "particular" .
+
+ns1:ParticularAlmostAll a owl:Class ;
+    rdfs:label "particular almost all" ;
+    rdfs:subClassOf ns1:AlmostAll .
+
+ns1:Same a owl:Class ;
+    rdfs:label "same" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SameDescription a owl:Class ;
+    rdfs:label "same description" ;
+    dul:hasQuality ns1:Same ;
+    rdfs:subClassOf ns1:Description .
+
+ns1:See rdfs:label "seen" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Still rdfs:label "still" .
+
+ns1:StillSee rdfs:subClassOf ns1:See .
+
+ns1:Topic rdfs:label "topic" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Wrong rdfs:label "wrong" .
+
+ns1:all_1 a ns1:ParticularAlmostAll ;
+    rdfs:label "all" ;
+    dul:hasQuality ns1:Particular ;
+    ns1:particularAlmostAllOf ns1:characteristic_1 .
+
+ns1:characteristic_1 a ns1:Characteristic ;
+    rdfs:label "characteristics" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:all,
+        quant:multiple ;
+    ns1:characteristicOf ns1:error_1 .
+
+ns1:description_1 a ns1:SameDescription ;
+    rdfs:label "description" ;
+    quant:hasDeterminer quant:the .
+
+ns1:document_1 a ns1:FirstDocument ;
+    rdfs:label "document" ;
+    quant:hasDeterminer quant:the ;
+    ns1:on ns1:topic_1 .
+
+ns1:error_1 a ns1:Insistence,
+        ns1:MereError ;
+    rdfs:label "error" ;
+    quant:hasDeterminer quant:a ;
+    ns1:on ns1:description_1 .
+
+ns1:topic_1 a ns1:Topic ;
+    rdfs:label "topic" ;
+    quant:hasDeterminer quant:the .
+
+ns1:wrong_1 a ns1:Wrong ;
+    rdfs:label "wrong" .
+

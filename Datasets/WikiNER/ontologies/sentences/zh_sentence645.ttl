@@ -1,0 +1,120 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence645.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "In" .
+
+translation_coherence:zh_sentence645.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence645" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence645" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:docuverse earmark:hasContent "In 1999, an independent film on the lives of Ayn_Rand was held in Rand Peter_Fonda as husband Hlen Mirren."^^xsd:string .
+
+ns1:hold_1 a ns1:Hold ;
+    rdfs:label "held" ;
+    vn.role:Location "1999-01-01"^^xsd:date ;
+    vn.role:Value ns1:film_1 ;
+    ns1:locatedIn ns1:Peter_fonda .
+
+ns1:husband_1 rdfs:label "husband" .
+
+ns1:life_1 a ns1:Life ;
+    rdfs:label "lives" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+dbpedia:Ayn_Rand a schema:Person .
+
+ns1:Ayn_rand rdfs:label "Ayn Rand" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Ayn_Rand .
+
+ns1:Film a owl:Class ;
+    rdfs:label "film" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity>,
+        dul:InformationEntity .
+
+ns1:Hlen_mirren a ns1:Husband ;
+    rdfs:label "Hlen Mirren",
+        "husband" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Hold rdfs:label "held" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Husband rdfs:label "Hlen Mirren",
+        "husband" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Independent a owl:Class ;
+    rdfs:label "independent" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:IndependentFilm a owl:Class ;
+    rdfs:label "Independent Film" ;
+    dul:hasQuality ns1:Independent ;
+    rdfs:subClassOf ns1:Film ;
+    owl:equivalentClass dbpedia:Independent_film .
+
+ns1:Life rdfs:label "lives" .
+
+ns1:Peter_fonda rdfs:label "Peter Fonda" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Rand ;
+    owl:sameAs dbpedia:Peter_Fonda ;
+    ns1:as ns1:Hlen_mirren .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:film_1 a ns1:IndependentFilm ;
+    rdfs:label "film" ;
+    quant:hasDeterminer quant:an ;
+    ns1:onLifeOf ns1:Ayn_rand .
+

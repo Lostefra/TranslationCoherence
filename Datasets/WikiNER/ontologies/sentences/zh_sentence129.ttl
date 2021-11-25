@@ -1,0 +1,137 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence129.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:zh_sentence129.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence129" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence129" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:1%2C380%2C121 rdfs:label "1,380,121" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "The South Batista Convention has a maximum of 1,380,121 participants in Albama, followed by the American Church of Jurists, which is 3,27,734 members and 150,647 followers of Catholic churches."^^xsd:string .
+
+ns1:follow_1 a ns1:Follow ;
+    rdfs:label "followed" ;
+    vn.role:Agent ns1:American_church ;
+    vn.role:Theme ns1:participant_1 .
+
+ns1:follower_1 rdfs:label "followers" .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "has" ;
+    vn.role:Agent ns1:South_batista_convention ;
+    vn.role:Patient ns1:maximum_1 .
+
+ns1:member_1 rdfs:label "members" ;
+    quant:hasQuantifier quant:3%2C27%2C734,
+        quant:multiple .
+
+ns1:1%2C380%2C121Participant rdfs:subClassOf ns1:Participant .
+
+ns1:3%2C27%2C734 rdfs:label "3,27,734" .
+
+ns1:3%2C27%2C734Member rdfs:subClassOf ns1:Member .
+
+ns1:Albama rdfs:label "Albama" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:American_church rdfs:label "American Church" ;
+    boxer:possibleType foaf:Organisation ;
+    ns1:of ns1:Jurists .
+
+ns1:Catholic rdfs:label "Catholic" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Catholicism .
+
+ns1:Church rdfs:label "churches" .
+
+ns1:Follow rdfs:label "followed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Follower rdfs:label "followers" .
+
+ns1:Have rdfs:label "has" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Jurists rdfs:label "Jurists" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Maximum rdfs:label "maximum" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:Member rdfs:label "members" .
+
+ns1:Participant rdfs:label "participants" .
+
+ns1:South_batista_convention rdfs:label "South Batista Convention" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:church_1 a ns1:Church ;
+    rdfs:label "churches" ;
+    dul:associatedWith ns1:Catholic ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:maximum_1 a ns1:3%2C27%2C734Member,
+        ns1:Follower,
+        ns1:Maximum ;
+    rdfs:label "maximum" ;
+    dul:hasDataValue "150647"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:3%2C27%2C734 ;
+    quant:hasDeterminer quant:a ;
+    quant:hasQuantifier quant:150%2C647,
+        quant:multiple ;
+    ns1:maximumOf ns1:church_1,
+        ns1:participant_1 .
+
+ns1:participant_1 a ns1:1%2C380%2C121Participant ;
+    rdfs:label "participants" ;
+    quant:hasQuantifier quant:1%2C380%2C121,
+        quant:multiple ;
+    ns1:locatedIn ns1:Albama .
+

@@ -1,0 +1,190 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence594.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Elatest> rdfs:label "latest" .
+
+translation_coherence:it_sentence594.ttl a owl:Ontology ;
+    rdfs:label "it_sentence594" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence594" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "'s",
+        "his" .
+
+ns1:begin_1 a ns1:Begin ;
+    rdfs:label "beginning" ;
+    vn.role:Agent ns1:work_1 ;
+    vn.role:Theme ns1:role_1 .
+
+ns1:docuverse earmark:hasContent "Rand's latest narrative work marked a turning point in his life, ending his career as a novelist and beginning his role as a popular philosopher."^^xsd:string .
+
+ns1:end_1 a ns1:End ;
+    rdfs:label "ending" ;
+    vn.role:Agent ns1:work_1 ;
+    vn.role:Theme ns1:career_1 ;
+    ns1:as ns1:novelist_1 .
+
+ns1:mark_1 a ns1:Mark ;
+    rdfs:label "marked" ;
+    vn.role:Agent ns1:work_1 ;
+    vn.role:Theme ns1:point_1 .
+
+ns1:turning_1 a ns1:Turning ;
+    rdfs:label "turning" ;
+    dul:associatedWith ns1:point_1 ;
+    quant:hasDeterminer quant:a .
+
+dbpedia:Ayn_Rand a schema:Person .
+
+ns1:Begin rdfs:label "beginning" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Career rdfs:label "career" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:End rdfs:label "ending" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Latest rdfs:label "latest" .
+
+ns1:LatestNarrativeWork a owl:Class ;
+    rdfs:label "Latest Narrative Work" ;
+    rdfs:subClassOf ns1:NarrativeWork .
+
+ns1:Life rdfs:label "life" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Mark rdfs:label "marked" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Narrative a owl:Class ;
+    rdfs:label "narrative" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Novelist a owl:Class ;
+    rdfs:label "novelist" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Novelist .
+
+ns1:Philosopher a owl:Class ;
+    rdfs:label "philosopher" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Philosopher .
+
+ns1:Point a owl:Class ;
+    rdfs:label "point" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Popular a owl:Class ;
+    rdfs:label "popular" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:PopularPhilosopher a owl:Class ;
+    rdfs:label "Popular Philosopher" ;
+    dul:hasQuality ns1:Popular ;
+    rdfs:subClassOf ns1:Philosopher .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType time:Interval ;
+    owl:sameAs dbpedia:Ayn_Rand .
+
+ns1:Role rdfs:label "role" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:TurningPoint a owl:Class ;
+    rdfs:label "turning point" ;
+    dul:associatedWith ns1:Turning ;
+    rdfs:subClassOf ns1:Point ;
+    owl:equivalentClass dbpedia:Climax_(narrative) .
+
+ns1:Work a owl:Class ;
+    rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:career_1 a ns1:Career ;
+    rdfs:label "career" ;
+    ns1:careerOf ns1:male_1 .
+
+ns1:life_1 a ns1:Life ;
+    rdfs:label "life" ;
+    ns1:lifeOf ns1:male_1 .
+
+ns1:novelist_1 a ns1:Novelist ;
+    rdfs:label "novelist" ;
+    quant:hasDeterminer quant:a .
+
+ns1:philosopher_1 a ns1:PopularPhilosopher ;
+    rdfs:label "philosopher" ;
+    quant:hasDeterminer quant:a .
+
+ns1:role_1 a ns1:Role ;
+    rdfs:label "role" ;
+    ns1:as ns1:philosopher_1 ;
+    ns1:roleOf ns1:male_1 .
+
+ns1:Turning a owl:Class ;
+    rdfs:label "turning" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:point_1 a ns1:TurningPoint ;
+    rdfs:label "point" ;
+    ns1:in ns1:life_1 .
+
+ns1:NarrativeWork a owl:Class ;
+    rdfs:label "Narrative Work" ;
+    dul:hasQuality ns1:Narrative ;
+    rdfs:subClassOf ns1:Work ;
+    owl:equivalentClass dbpedia:Narrative .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "his" .
+
+ns1:work_1 a ns1:LatestNarrativeWork,
+        ns1:NarrativeWork ;
+    rdfs:label "work" ;
+    dul:hasQuality ns1:Latest ;
+    ns1:latestAmong ns1:NarrativeWork ;
+    ns1:latestNarrativeWorkOf ns1:Rand .
+

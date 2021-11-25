@@ -1,0 +1,141 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence47.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Predicate rdfs:label "in" .
+
+translation_coherence:it_sentence47.ttl a owl:Ontology ;
+    rdfs:label "it_sentence47" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence47" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Onthingof rdfs:label "on some of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:appear_1 a ns1:Appear ;
+    rdfs:label "appeared" ;
+    vn.role:Predicate ns1:newspaper_1 ;
+    vn.role:Theme ns1:opinion_1 .
+
+ns1:docuverse earmark:hasContent "Madam President, Mr Diez Gonzalez and I had tabled questions on some of the Vice-President's opinions, Mrs de Palacio, who appeared in a Spanish newspaper."^^xsd:string .
+
+ns1:table_1 a ns1:Table ;
+    rdfs:label "tabled" ;
+    boxer:agent ns1:Madam_president,
+        ns1:person_1 ;
+    boxer:patient ns1:question_1 ;
+    ns1:onThingOf ns1:opinion_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "some" .
+
+ns1:Appear rdfs:label "appeared" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:De_palacio rdfs:label "de Palacio" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis> ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis> .
+
+ns1:Diez_gonzalez rdfs:label "Diez Gonzalez" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> .
+
+ns1:Madam_president rdfs:label "Madam President" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith ns1:Diez_gonzalez .
+
+ns1:Newspaper a owl:Class ;
+    rdfs:label "newspaper" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Opinion rdfs:label "opinions" .
+
+ns1:Person rdfs:label "I" .
+
+ns1:Question rdfs:label "questions" .
+
+ns1:SpanishNewspaper a owl:Class ;
+    rdfs:label "Spanish Newspaper" ;
+    dul:hasQuality ns1:Spanish ;
+    rdfs:subClassOf ns1:Newspaper .
+
+ns1:Table rdfs:label "tabled" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Vice-president rdfs:label "Vice-President" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:newspaper_1 a ns1:SpanishNewspaper ;
+    rdfs:label "newspaper" ;
+    dul:hasQuality ns1:Spanish ;
+    quant:hasDeterminer quant:a .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:question_1 a ns1:Question ;
+    rdfs:label "questions" ;
+    quant:hasQuantifier quant:multiple .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis> rdfs:label "Mrs" ;
+    boxer:possibleType dul:Role .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> rdfs:label "Mr" ;
+    boxer:possibleType dul:Role .
+
+owl:Thing rdfs:label "some" .
+
+ns1:Spanish a owl:Class ;
+    rdfs:label "Spanish" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:opinion_1 a ns1:Opinion ;
+    rdfs:label "opinions" ;
+    dul:associatedWith ns1:De_palacio ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:opinionOf ns1:Vice-president .
+

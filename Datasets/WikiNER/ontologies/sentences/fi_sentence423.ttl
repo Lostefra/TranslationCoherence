@@ -1,0 +1,152 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence423.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence423.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence423" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence423" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:a.ence_1 a ns1:A.ence ;
+    rdfs:label "a.ence" ;
+    quant:hasDeterminer quant:the .
+
+ns1:docuverse earmark:hasContent "In the a.ence of official training, Lincoln's personal philosophy shaped an amazingly persistent memory and passion for reading and learning."^^xsd:string .
+
+ns1:learning_1 rdfs:label "learning" .
+
+ns1:passion_1 rdfs:label "passion" .
+
+ns1:shape_1 a ns1:Shape ;
+    rdfs:label "shaped" ;
+    vn.role:Agent ns1:philosophy_1 ;
+    vn.role:Theme ns1:memory_1 ;
+    ns1:inA.enceOf ns1:training_1 .
+
+ns1:A.ence rdfs:label "a.ence" .
+
+ns1:Amazingly rdfs:label "amazingly" .
+
+ns1:AmazinglyPersistentMemory a owl:Class ;
+    rdfs:label "amazingly persistent memory" ;
+    rdfs:subClassOf ns1:PersistentMemory .
+
+ns1:Learning rdfs:label "learning" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Memory a owl:Class ;
+    rdfs:label "memory" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Official a owl:Class ;
+    rdfs:label "official" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:OfficialTraining a owl:Class ;
+    rdfs:label "official training" ;
+    dul:hasQuality ns1:Official ;
+    rdfs:subClassOf ns1:Training .
+
+ns1:Passion rdfs:label "passion" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:PersistentMemory a owl:Class ;
+    rdfs:label "Persistent Memory" ;
+    dul:hasQuality ns1:Persistent ;
+    rdfs:subClassOf ns1:Memory ;
+    owl:equivalentClass dbpedia:Persistent_memory .
+
+ns1:Personal a owl:Class ;
+    rdfs:label "personal" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:PersonalPhilosophy a owl:Class ;
+    rdfs:label "personal philosophy" ;
+    dul:hasQuality ns1:Personal ;
+    rdfs:subClassOf ns1:Philosophy .
+
+ns1:Philosophy a owl:Class ;
+    rdfs:label "philosophy" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Philosophy .
+
+ns1:Reading rdfs:label "reading" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Shape rdfs:label "shaped" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Training a owl:Class ;
+    rdfs:label "training" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:memory_1 a ns1:AmazinglyPersistentMemory,
+        ns1:Passion ;
+    rdfs:label "memory" ;
+    dul:hasQuality ns1:Persistent ;
+    quant:hasDeterminer quant:an ;
+    ns1:for ns1:reading_1 .
+
+ns1:philosophy_1 a ns1:PersonalPhilosophy ;
+    rdfs:label "philosophy" ;
+    ns1:personalPhilosophyOf ns1:Lincoln .
+
+ns1:reading_1 a ns1:Learning,
+        ns1:Reading ;
+    rdfs:label "reading" .
+
+ns1:training_1 a ns1:OfficialTraining ;
+    rdfs:label "training" .
+
+ns1:Persistent a owl:Class ;
+    rdfs:label "persistent" ;
+    dul:hasQuality ns1:Amazingly ;
+    rdfs:subClassOf dul:Quality .
+

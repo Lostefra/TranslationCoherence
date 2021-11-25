@@ -1,0 +1,187 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence344.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%2C> rdfs:label "," .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:zh_sentence344.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence344" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence344" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:At rdfs:label "at" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Into rdfs:label "into" .
+
+ns1:Since rdfs:label "since" .
+
+ns1:believe_1 a ns1:Believe ;
+    rdfs:label "believe" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:docuverse earmark:hasContent "We believe that the Committee must take into account, at least in a spirit, the conclusions adopted by the current Parliament, since at this stage we are doing here seem to be unused and, whatever heat."^^xsd:string .
+
+ns1:person_2 coref:coref ns1:person_1 .
+
+ns1:Account rdfs:label "account" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Adopt rdfs:label "adopted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Believe rdfs:label "believe" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Committee rdfs:label "Committee" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Committee .
+
+ns1:Conclusion rdfs:label "conclusions" .
+
+ns1:Current rdfs:label "current" .
+
+ns1:Heat rdfs:label "heat" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Parliament rdfs:label "Parliament" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality ns1:Current ;
+    owl:sameAs dbpedia:Parliament .
+
+ns1:Person rdfs:label "We",
+        "we" .
+
+ns1:Seem rdfs:label "seem" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Spirit rdfs:label "spirit" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Stage rdfs:label "stage" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Take rdfs:label "take" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Whatever rdfs:label "whatever" .
+
+ns1:adopt_1 a ns1:Adopt ;
+    rdfs:label "adopted" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:Parliament ;
+    vn.role:Theme ns1:conclusion_1 ;
+    ns1:since ns1:do_1 .
+
+ns1:seem_1 a ns1:Seem ;
+    rdfs:label "seem" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:associatedWith ns1:spirit_1 ;
+    vn.role:Predicate ns1:situation_1 ;
+    vn.role:Theme ns1:conclusion_1 .
+
+ns1:stage_1 a ns1:Stage ;
+    rdfs:label "stage" ;
+    quant:hasDeterminer quant:this .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "take" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:associatedWith ns1:heat_1 ;
+    vn.role:Agent ns1:Committee ;
+    ns1:in ns1:spirit_1 ;
+    ns1:into ns1:account_1 .
+
+ns1:Do rdfs:label "doing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Here rdfs:label "here" .
+
+ns1:Unused rdfs:label "unused" .
+
+ns1:account_1 a ns1:Account ;
+    rdfs:label "account" .
+
+ns1:conclusion_1 a ns1:Conclusion ;
+    rdfs:label "conclusions" ;
+    dul:hasQuality ns1:Unused ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:do_1 a ns1:Do ;
+    rdfs:label "doing" ;
+    boxer:agent ns1:person_1 ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Here ;
+    ns1:at ns1:stage_1 .
+
+ns1:heat_1 a ns1:Heat ;
+    rdfs:label "heat" ;
+    dul:associatedWith ns1:whatever_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:Do,
+        ns1:Here,
+        ns1:Unused,
+        ns1:account_1,
+        ns1:adopt_1,
+        ns1:do_1,
+        ns1:heat_1,
+        ns1:seem_1,
+        ns1:spirit_1,
+        ns1:take_1,
+        ns1:whatever_1 .
+
+ns1:whatever_1 a ns1:Whatever ;
+    rdfs:label "whatever" .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "We",
+        "we" .
+
+ns1:spirit_1 a ns1:Spirit ;
+    rdfs:label "spirit" ;
+    quant:hasDeterminer quant:a .
+

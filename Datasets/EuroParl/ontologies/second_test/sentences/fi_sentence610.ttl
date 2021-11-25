@@ -1,0 +1,126 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence610.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+vn.role:Predicate rdfs:label "as" .
+
+translation_coherence:fi_sentence610.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence610" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence610" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Be rdfs:label "is" .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:With rdfs:label "with" .
+
+ns1:define_1 a ns1:Define ;
+    rdfs:label "defined" ;
+    vn.role:Agent ns1:european_commission_1 ;
+    vn.role:Predicate ns1:increase_1 ;
+    vn.role:Theme ns1:strategy_1 .
+
+ns1:docuverse earmark:hasContent "The Commission_President Berend's report complies with the strategy defined by the European_Commission, as it is justified to increase competitiveness."^^xsd:string .
+
+ns1:report_1 a ns1:Report ;
+    rdfs:label "report" ;
+    dul:associatedWith ns1:comply_1 .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Competitiveness rdfs:label "competitiveness" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Comply rdfs:label "complies" .
+
+ns1:Define rdfs:label "defined" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:European_commission a owl:Class ;
+    rdfs:label "European Commission" ;
+    owl:equivalentClass dbpedia:European_Commission .
+
+ns1:Increase rdfs:label "increase" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Justified rdfs:label "justified" .
+
+ns1:Report rdfs:label "report" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:ReportComply rdfs:subClassOf ns1:Comply .
+
+ns1:Strategy rdfs:label "strategy" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:competitiveness_1 a ns1:Competitiveness ;
+    rdfs:label "competitiveness" .
+
+ns1:comply_1 a ns1:ReportComply ;
+    rdfs:label "complies" ;
+    dul:hasQuality ns1:Topic ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:reportComplyOf ns1:Commission_president_berend ;
+    ns1:with ns1:strategy_1 .
+
+ns1:european_commission_1 a ns1:European_commission ;
+    rdfs:label "European Commission" ;
+    quant:hasDeterminer quant:the .
+
+ns1:increase_1 a ns1:Increase ;
+    rdfs:label "increase" ;
+    vn.role:Agent ns1:Commission_president_berend ;
+    vn.role:Patient ns1:competitiveness_1 ;
+    ns1:be ns1:justified_1 .
+
+ns1:justified_1 a ns1:Justified ;
+    rdfs:label "justified" .
+
+ns1:Commission_president_berend rdfs:label "Commission President Berend" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality owl:Thing .
+
+ns1:strategy_1 a ns1:Strategy ;
+    rdfs:label "strategy" ;
+    quant:hasDeterminer quant:the .
+

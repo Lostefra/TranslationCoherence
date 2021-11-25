@@ -1,0 +1,160 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence567.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:ko_sentence567.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence567" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence567" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:When rdfs:label "when" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "This guideline is very satisfied with the support level provided by House. When installing this guideline, it was submitted to the member country when it was established."^^xsd:string .
+
+ns1:member_1 a ns1:Member ;
+    rdfs:label "member" ;
+    dul:associatedWith ns1:country_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:provide_1 a ns1:Provide ;
+    rdfs:label "provided" ;
+    vn.role:Agent ns1:House ;
+    vn.role:Theme ns1:level_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Satisfied,
+        ns1:guideline_1 ;
+    dul:hasQuality ns1:Very ;
+    ns1:with ns1:level_1 .
+
+ns1:submit_1 a ns1:Submit ;
+    rdfs:label "submitted" ;
+    vn.role:Recipient ns1:country_1 ;
+    vn.role:Theme ns1:House ;
+    ns1:when ns1:establish_1,
+        ns1:install_1 .
+
+ns1:support_1 a ns1:Support ;
+    rdfs:label "support" ;
+    dul:associatedWith ns1:level_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:Country a owl:Class ;
+    rdfs:label "country" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Establish rdfs:label "established" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Guideline rdfs:label "guideline" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Install rdfs:label "installing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Level a owl:Class ;
+    rdfs:label "level" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:MemberCountry a owl:Class ;
+    rdfs:label "Member Country" ;
+    dul:associatedWith ns1:Member ;
+    rdfs:subClassOf ns1:Country .
+
+ns1:Provide rdfs:label "provided" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Submit rdfs:label "submitted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:SupportLevel a owl:Class ;
+    rdfs:label "Support Level" ;
+    dul:associatedWith ns1:Support ;
+    rdfs:subClassOf ns1:Level .
+
+ns1:Very rdfs:label "very" .
+
+ns1:establish_1 a ns1:Establish ;
+    rdfs:label "established" ;
+    vn.role:Theme ns1:House .
+
+ns1:install_1 a ns1:Install ;
+    rdfs:label "installing" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Theme ns1:guideline_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "When" .
+
+owl:Thing rdfs:label "When",
+        "it" .
+
+ns1:Member a owl:Class ;
+    rdfs:label "member" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Satisfied rdfs:label "satisfied" .
+
+ns1:Support a owl:Class ;
+    rdfs:label "support" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:country_1 a ns1:MemberCountry ;
+    rdfs:label "country" .
+
+ns1:guideline_1 a ns1:Guideline ;
+    rdfs:label "guideline" ;
+    dul:hasQuality ns1:Satisfied ;
+    quant:hasDeterminer quant:this .
+
+ns1:House rdfs:label "House" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality owl:Thing ;
+    owl:sameAs dbpedia:House .
+
+ns1:level_1 a ns1:SupportLevel ;
+    rdfs:label "level" .
+

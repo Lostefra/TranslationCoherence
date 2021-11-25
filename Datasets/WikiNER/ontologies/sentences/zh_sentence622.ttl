@@ -1,0 +1,143 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence622.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Source rdfs:label "from" .
+
+translation_coherence:zh_sentence622.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence622" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence622" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Noteq rdfs:label "other" .
+
+ns1:Of rdfs:label "her",
+        "of",
+        "their" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:docuverse earmark:hasContent "There were other positive reviews, but most of them were removed from their publication as a non-review of her information or had never been imported."^^xsd:string .
+
+ns1:remove_1 a ns1:Remove ;
+    rdfs:label "removed" ;
+    vn.role:Source ns1:publication_1 ;
+    vn.role:Theme ns1:most_1 ;
+    ns1:as ns1:non-review_1 ;
+    ns1:union ns1:import_1 .
+
+ns1:review_2 rdfs:label "reviews" ;
+    quant:hasDeterminer quant:other ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:there_1 a ns1:PositiveReview,
+        ns1:There ;
+    rdfs:label "There" ;
+    dul:hasQuality ns1:Positive .
+
+ns1:thing_1 coref:coref ns1:thing_2 .
+
+owl:Thing rdfs:label "them" .
+
+ns1:Import rdfs:label "imported" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Information a owl:Class ;
+    rdfs:label "information" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> ;
+    owl:equivalentClass dbpedia:Information .
+
+ns1:Most rdfs:label "most" .
+
+ns1:Never rdfs:label "never" .
+
+ns1:Non-review rdfs:label "non-review" .
+
+ns1:Positive rdfs:label "positive" ;
+    owl:sameAs dbpedia:Positivism .
+
+ns1:PositiveReview rdfs:subClassOf ns1:Review .
+
+ns1:Publication a owl:Class ;
+    rdfs:label "publication" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Publication .
+
+ns1:Remove rdfs:label "removed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Review rdfs:label "review",
+        "reviews" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:There rdfs:label "There" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:female_1 a ns1:Female ;
+    rdfs:label "her" .
+
+ns1:import_1 a ns1:Import ;
+    rdfs:label "imported" ;
+    boxer:patient ns1:most_1 ;
+    dul:hasQuality ns1:Never .
+
+ns1:information_1 a ns1:Information ;
+    rdfs:label "information" ;
+    ns1:informationOf ns1:female_1 .
+
+ns1:non-review_1 a ns1:Non-review ;
+    rdfs:label "non-review" ;
+    quant:hasDeterminer quant:a ;
+    ns1:non-reviewOf ns1:information_1 .
+
+ns1:publication_1 a ns1:Publication ;
+    rdfs:label "publication" ;
+    ns1:publicationOf ns1:thing_2 .
+
+ns1:most_1 a ns1:Most ;
+    rdfs:label "most" ;
+    ns1:mostOf ns1:thing_2 .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "their",
+        "them" .
+

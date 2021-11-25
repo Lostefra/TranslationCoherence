@@ -1,0 +1,152 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence143.ttl/> .
+@prefix ns2: <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ns2:7B rdfs:label "{" .
+
+translation_coherence:ko_sentence143.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence143" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence143" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Entails rdfs:label "If" .
+
+ns1:From rdfs:label "from" .
+
+ns1:If rdfs:label "if" .
+
+ns1:Rel rdfs:label "(",
+        "," .
+
+ns1:adopt_1 a ns1:ProperlyAdopt ;
+    rdfs:label "adopted" ;
+    boxing:hasTruthValue boxing:False ;
+    dul:hasQuality ns1:Properly ;
+    vn.role:Theme ns1:position_1 ;
+    ns1:entails ns1:modify_1 .
+
+ns1:docuverse earmark:hasContent "If they do not reflect the position properly adopted, we can modify them, {{if price_varies}}from {{/if}}{{html Shopify.formatMoney(price_min, window.money_format)}}"^^xsd:string .
+
+ns1:html_1 rdfs:label "html" .
+
+ns1:reflect_1 a ns1:Reflect ;
+    rdfs:label "reflect" ;
+    boxer:patient ns1:position_1 ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Experiencer ns1:thing_1 .
+
+ns2:2Fif rdfs:label "/if" .
+
+ns2:2Fif_1 a ns2:2Fif ;
+    rdfs:label "/if" .
+
+ns1:Adopt rdfs:label "adopted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Html a owl:Class ;
+    rdfs:label "Shopify.formatMoney",
+        "html" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:HTML .
+
+ns1:Modify rdfs:label "modify" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Position rdfs:label "position" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Price_min rdfs:label "price min" .
+
+ns1:Price_varies rdfs:label "price varies" .
+
+ns1:Properly rdfs:label "properly" .
+
+ns1:ProperlyAdopt rdfs:subClassOf ns1:Adopt .
+
+ns1:Reflect rdfs:label "reflect" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Shopify.formatmoney a ns1:Html ;
+    rdfs:label "Shopify.formatMoney",
+        "html" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith ns1:price_min_1 ;
+    ns2:7B ns2:2Fif_1 .
+
+ns1:Window.money_format rdfs:label "window.money format" .
+
+ns1:modify_1 a ns1:Modify ;
+    rdfs:label "modify" ;
+    boxer:agent ns1:person_1 ;
+    boxer:patient ns1:thing_2 ;
+    boxing:hasModality boxing:Possible ;
+    ns1:if ns1:price_varies_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:price_min_1 a ns1:Price_min ;
+    rdfs:label "price min" ;
+    dul:associatedWith ns1:window.money_format_1 .
+
+ns1:price_varies_1 a ns1:Price_varies ;
+    rdfs:label "price varies" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:from ns1:Shopify.formatmoney .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "they" .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "them" .
+
+ns1:window.money_format_1 a ns1:Window.money_format ;
+    rdfs:label "window.money format" .
+
+ns1:position_1 a ns1:Position ;
+    rdfs:label "position" ;
+    quant:hasDeterminer quant:the .
+
+owl:Thing rdfs:label "them",
+        "they" .
+

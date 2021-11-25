@@ -1,0 +1,148 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence559.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence559.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence559" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence559" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:After rdfs:label "after" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "their" .
+
+ns1:docuverse earmark:hasContent "However, after the e.ly, visiting foreign researchers, some purified students were able to complete their work and graduate work in October 1924."^^xsd:string .
+
+ns1:graduate_1 a ns1:Graduate ;
+    rdfs:label "graduate" ;
+    dul:associatedWith ns1:work_2 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:able_1,
+        ns1:situation_1 ;
+    dul:hasQuality ns1:However .
+
+ns1:thing_1 coref:coref ns1:e.ly_1 .
+
+ns1:visit_1 a ns1:Visit ;
+    rdfs:label "visiting" ;
+    vn.role:Actor1 ns1:thing_2 ;
+    vn.role:Actor2 ns1:researcher_1 .
+
+ns1:Able rdfs:label "able" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Complete rdfs:label "complete" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:E.ly rdfs:label "e.ly" .
+
+ns1:Foreign rdfs:label "foreign" .
+
+ns1:ForeignResearcher rdfs:subClassOf ns1:Researcher .
+
+ns1:Graduate rdfs:label "graduate" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:GraduateWork rdfs:label "graduate work" ;
+    rdfs:subClassOf ns1:Work .
+
+ns1:However rdfs:label "However" .
+
+ns1:Purified rdfs:label "purified" .
+
+ns1:PurifiedStudent rdfs:subClassOf ns1:Student .
+
+ns1:Researcher rdfs:label "researchers" .
+
+ns1:Student rdfs:label "students" .
+
+ns1:Visit rdfs:label "visiting" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:able_1 a ns1:Able ;
+    rdfs:label "able" ;
+    boxer:agent ns1:student_1 ;
+    boxer:theme ns1:situation_1 ;
+    ns1:after ns1:e.ly_1 .
+
+ns1:complete_1 a ns1:Complete ;
+    rdfs:label "complete" ;
+    vn.role:Agent ns1:student_1 ;
+    vn.role:Theme ns1:work_1,
+        ns1:work_2 ;
+    ns1:in "1924-10-01"^^xsd:date .
+
+ns1:researcher_1 a ns1:ForeignResearcher ;
+    rdfs:label "researchers" ;
+    dul:hasQuality ns1:Foreign ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:thing_2 a owl:Thing .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "work" ;
+    ns1:workOf ns1:e.ly_1 .
+
+ns1:Work rdfs:label "Work",
+        "work" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:complete_1,
+        ns1:work_2 .
+
+ns1:student_1 a ns1:PurifiedStudent ;
+    rdfs:label "students" ;
+    dul:hasQuality ns1:Purified ;
+    quant:hasQuantifier quant:multiple,
+        quant:some .
+
+ns1:e.ly_1 a owl:Thing,
+        ns1:E.ly ;
+    rdfs:label "e.ly",
+        "their" .
+
+ns1:work_2 a ns1:GraduateWork ;
+    rdfs:label "work" .
+

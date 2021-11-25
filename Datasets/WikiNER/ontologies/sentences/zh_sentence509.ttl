@@ -1,0 +1,238 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence509.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Patient2 rdfs:label "into" .
+
+translation_coherence:zh_sentence509.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence509" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence509" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Since rdfs:label "Since" .
+
+ns1:announce_1 a ns1:Announce ;
+    rdfs:label "announced" ;
+    dul:associatedWith ns1:broadcast_1 ;
+    vn.role:Agent ns1:Al_gore,
+        ns1:Leonardo_dicaprio ;
+    vn.role:Topic ns1:incorporate_1 ;
+    ns1:in "2007-01-01"^^xsd:date .
+
+ns1:college_1 a ns1:College ;
+    rdfs:label "college" ;
+    dul:associatedWith ns1:award_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:distance_1 a ns1:Distance ;
+    rdfs:label "distance" ;
+    dul:associatedWith ns1:broadcast_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:docuverse earmark:hasContent "Since 2002, a directory has been observed in the school premises of the hybrid vehicle; in 2007 a distance broadcast of the 79 college awards, Leonardo_DiCaprio and former Vice-President Al_Gore announced that ecologically motivated practices have been incorporated into the planning and implementation of Uzbek and several related events."^^xsd:string .
+
+ns1:implementation_1 rdfs:label "implementation" .
+
+ns1:observe_1 a ns1:Observe ;
+    rdfs:label "observed" ;
+    vn.role:Theme ns1:directory_1 ;
+    ns1:in ns1:premise_1 ;
+    ns1:since "2002-01-01"^^xsd:date .
+
+ns1:school_1 a ns1:School ;
+    rdfs:label "school" ;
+    dul:associatedWith ns1:premise_1 ;
+    quant:hasDeterminer quant:the .
+
+dbpedia:Al_Gore a schema:Person .
+
+dbpedia:Leonardo_DiCaprio a schema:Person .
+
+ns1:Al_gore rdfs:label "Al Gore" ;
+    boxer:possibleType owl:Thing ;
+    dul:hasQuality ns1:Former,
+        ns1:Vice-president ;
+    owl:sameAs dbpedia:Al_Gore .
+
+ns1:Announce rdfs:label "announced" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Award rdfs:label "awards" .
+
+ns1:Broadcast a owl:Class ;
+    rdfs:label "broadcast" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:College rdfs:label "college" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:CollegeAward rdfs:subClassOf ns1:Award .
+
+ns1:Directory rdfs:label "directory" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:DistanceBroadcast a owl:Class ;
+    rdfs:label "distance broadcast" ;
+    dul:associatedWith ns1:Distance ;
+    rdfs:subClassOf ns1:Broadcast .
+
+ns1:Ecologically rdfs:label "ecologically" .
+
+ns1:EcologicallyMotivatedPractice rdfs:subClassOf ns1:MotivatedPractice .
+
+ns1:Former rdfs:label "former" .
+
+ns1:Hybrid a owl:Class ;
+    rdfs:label "hybrid" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:HybridVehicle a owl:Class ;
+    rdfs:label "Hybrid Vehicle" ;
+    dul:hasQuality ns1:Hybrid ;
+    rdfs:subClassOf ns1:Vehicle ;
+    owl:equivalentClass dbpedia:Hybrid_vehicle .
+
+ns1:Implementation rdfs:label "implementation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Incorporate rdfs:label "incorporated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Leonardo_dicaprio rdfs:label "Leonardo DiCaprio" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Leonardo_DiCaprio .
+
+ns1:Motivated rdfs:label "motivated" ;
+    dul:hasQuality ns1:Ecologically .
+
+ns1:MotivatedPractice rdfs:subClassOf ns1:Practice .
+
+ns1:Observe rdfs:label "observed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Planning rdfs:label "planning" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Practice rdfs:label "practices" .
+
+ns1:Premise rdfs:label "premises" .
+
+ns1:Related rdfs:label "related" .
+
+ns1:RelatedEvent rdfs:subClassOf dul:Event .
+
+ns1:School rdfs:label "school" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:SchoolPremise rdfs:subClassOf ns1:Premise .
+
+ns1:Several rdfs:label "several" .
+
+ns1:SeveralRelatedEvent rdfs:subClassOf ns1:RelatedEvent .
+
+ns1:Uzbek rdfs:label "Uzbek" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Uzbeks .
+
+ns1:Vehicle a owl:Class ;
+    rdfs:label "vehicle" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Vice-president rdfs:label "Vice-President" .
+
+ns1:directory_1 a ns1:Directory ;
+    rdfs:label "directory" ;
+    quant:hasDeterminer quant:a .
+
+ns1:event_1 a ns1:SeveralRelatedEvent ;
+    rdfs:label "events" ;
+    dul:hasQuality ns1:Related,
+        ns1:Several ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:incorporate_1 a ns1:Incorporate ;
+    rdfs:label "incorporated" ;
+    vn.role:Patient1 ns1:practice_1 ;
+    vn.role:Patient2 ns1:planning_1 .
+
+ns1:planning_1 a ns1:Implementation,
+        ns1:Planning ;
+    rdfs:label "planning" ;
+    quant:hasDeterminer quant:the ;
+    ns1:planningOf ns1:Uzbek,
+        ns1:event_1 .
+
+ns1:practice_1 a ns1:EcologicallyMotivatedPractice ;
+    rdfs:label "practices" ;
+    dul:hasQuality ns1:Motivated ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:vehicle_1 a ns1:HybridVehicle ;
+    rdfs:label "vehicle" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Distance a owl:Class ;
+    rdfs:label "distance" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:award_1 a ns1:CollegeAward ;
+    rdfs:label "awards" ;
+    dul:hasDataValue "79"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:broadcast_1 a ns1:DistanceBroadcast ;
+    rdfs:label "broadcast" ;
+    ns1:distanceBroadcastOf ns1:award_1 .
+
+ns1:premise_1 a ns1:SchoolPremise ;
+    rdfs:label "premises" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:schoolPremiseOf ns1:vehicle_1 .
+
+dul:Event rdfs:label "events" .
+

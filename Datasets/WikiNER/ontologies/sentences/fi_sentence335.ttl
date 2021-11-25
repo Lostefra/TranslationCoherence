@@ -1,0 +1,126 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence335.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence335.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence335" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence335" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "his" .
+
+ns1:deny_1 a ns1:Deny ;
+    rdfs:label "denied" ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Theme ns1:Civil_war ;
+    ns1:in ns1:185x-xx-xx .
+
+ns1:docuverse earmark:hasContent "In the 1850s, Lincoln denied the Civil_War, and his supporters repeatedly rejected the allegations that his election would stimulate his elimination."^^xsd:string .
+
+ns1:male_1 rdfs:label "his" .
+
+ns1:reject_1 a ns1:RepeatedlyReject ;
+    rdfs:label "rejected" ;
+    dul:hasQuality ns1:Repeatedly ;
+    vn.role:Agent ns1:supporter_1 ;
+    vn.role:Proposition ns1:allegation_1 .
+
+dbpedia:English_Civil_War a schema:Event .
+
+ns1:Allegation rdfs:label "allegations" .
+
+ns1:Civil_war rdfs:label "Civil War" ;
+    boxer:possibleType time:Interval ;
+    owl:sameAs dbpedia:English_Civil_War .
+
+ns1:Deny rdfs:label "denied" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Election rdfs:label "election" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Elimination rdfs:label "elimination" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Male rdfs:label "Lincoln" .
+
+ns1:Reject rdfs:label "rejected" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Repeatedly rdfs:label "repeatedly" .
+
+ns1:RepeatedlyReject rdfs:subClassOf ns1:Reject .
+
+ns1:Stimulate rdfs:label "stimulate" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Supporter rdfs:label "supporters" .
+
+ns1:allegation_1 a ns1:Allegation ;
+    rdfs:label "allegations" ;
+    boxer:theme ns1:stimulate_1 ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:election_1 a ns1:Election ;
+    rdfs:label "election" ;
+    ns1:electionOf ns1:Lincoln .
+
+ns1:elimination_1 a ns1:Elimination ;
+    rdfs:label "elimination" ;
+    ns1:eliminationOf ns1:Lincoln .
+
+ns1:stimulate_1 a ns1:Stimulate ;
+    rdfs:label "stimulate" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:election_1 ;
+    vn.role:Patient ns1:elimination_1 .
+
+ns1:supporter_1 a ns1:Supporter ;
+    rdfs:label "supporters" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:supporterOf ns1:Lincoln .
+
+ns1:Lincoln a ns1:Male ;
+    rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person .
+

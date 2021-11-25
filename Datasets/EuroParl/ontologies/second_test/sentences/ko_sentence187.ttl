@@ -1,0 +1,178 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence187.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "in" .
+
+translation_coherence:ko_sentence187.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence187" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence187" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Noteq rdfs:label "Other" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "Other instructions, relevant standards set in 95/35/EC are enough to advise people in a responsible way for the transport organization of dangerous goods."^^xsd:string .
+
+ns1:enough_1 a ns1:Enough ;
+    rdfs:label "enough" ;
+    boxer:agent ns1:instruction_1 ;
+    boxer:theme ns1:advise_1 .
+
+ns1:set_1 a ns1:Set ;
+    rdfs:label "set" ;
+    vn.role:Destination ns1:95%2F35%2Fec ;
+    vn.role:Theme ns1:instruction_1 .
+
+ns1:transport_1 a ns1:Transport ;
+    rdfs:label "transport" ;
+    dul:associatedWith ns1:organization_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:95%2F35%2Fec rdfs:label "95/35/EC" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs ns1:way_1 .
+
+ns1:Advise rdfs:label "advise" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Dangerous a owl:Class ;
+    rdfs:label "dangerous" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:DangerousGoods a owl:Class ;
+    rdfs:label "dangerous goods" ;
+    dul:hasQuality ns1:Dangerous ;
+    rdfs:subClassOf ns1:Goods ;
+    owl:equivalentClass dbpedia:Dangerous_goods .
+
+ns1:Enough rdfs:label "enough" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Goods a owl:Class ;
+    rdfs:label "goods" .
+
+ns1:Organization a owl:Class ;
+    rdfs:label "organization" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:People rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Relevant rdfs:label "relevant" .
+
+ns1:RelevantStandard rdfs:subClassOf ns1:Standard .
+
+ns1:Responsible a owl:Class ;
+    rdfs:label "responsible" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ResponsibleWay a owl:Class ;
+    rdfs:label "responsible way" ;
+    dul:hasQuality ns1:Responsible ;
+    rdfs:subClassOf ns1:Way .
+
+ns1:Set rdfs:label "set" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Standard rdfs:label "standards" .
+
+ns1:TransportOrganization a owl:Class ;
+    rdfs:label "Transport Organization" ;
+    dul:associatedWith ns1:Transport ;
+    rdfs:subClassOf ns1:Organization .
+
+ns1:advise_1 a ns1:Advise ;
+    rdfs:label "advise" ;
+    vn.role:Agent ns1:instruction_1 ;
+    vn.role:Patient ns1:people_1 ;
+    ns1:for ns1:organization_1 ;
+    ns1:in ns1:way_1 .
+
+ns1:goods_1 a ns1:DangerousGoods ;
+    rdfs:label "goods" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:instruction_2 a ns1:Instruction ;
+    rdfs:label "instructions" ;
+    quant:hasDeterminer quant:other ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:people_1 a ns1:People ;
+    rdfs:label "people" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:standard_1 a ns1:RelevantStandard ;
+    rdfs:label "standards" ;
+    dul:hasQuality ns1:Relevant ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Instruction rdfs:label "Other",
+        "instructions" .
+
+ns1:Transport a owl:Class ;
+    rdfs:label "transport" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Way a owl:Class ;
+    rdfs:label "way" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:organization_1 a ns1:TransportOrganization ;
+    rdfs:label "organization" ;
+    ns1:transportOrganizationOf ns1:goods_1 .
+
+ns1:way_1 a ns1:ResponsibleWay,
+        ns1:Way ;
+    rdfs:label "way" ;
+    quant:hasDeterminer quant:a .
+
+ns1:instruction_1 a ns1:Instruction ;
+    rdfs:label "Other" ;
+    dul:associatedWith ns1:standard_1 ;
+    owl:differentFrom ns1:instruction_2 .
+

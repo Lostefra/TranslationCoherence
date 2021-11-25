@@ -1,21 +1,23 @@
 from rdflib.term import Literal
+
+from utilities import constants
 from utilities.utility_functions import get_node_triples
 
 
 def all_different_relations_and_only_in_1_graph(g1, g2, n, rg, lemmas):
     rg1 = set()
     rg2 = set()
-    for p in [n.starting_point, n.equivalent, n.synonymy]:
+    for p in [n.starting_point, n.equivalent, n.synonymy, n.different]:
         for s, o in rg.subject_objects(predicate=p):
             rg1.add(s)
             rg2.add(o)
     left_out_g1 = set()
     left_out_g2 = set()
     for node in g1.all_nodes() - rg1:
-        if type(node) is not Literal:
+        if type(node) is not Literal and not str(node).startswith(constants.DBPEDIA_PREFIX):
             left_out_g1.add(node)
     for node in g2.all_nodes() - rg2:
-        if type(node) is not Literal:
+        if type(node) is not Literal and not str(node).startswith(constants.DBPEDIA_PREFIX):
             left_out_g2.add(node)
 
     for node_1 in left_out_g1:

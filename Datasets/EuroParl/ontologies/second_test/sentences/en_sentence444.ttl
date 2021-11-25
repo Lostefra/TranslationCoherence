@@ -1,0 +1,171 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence444.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence444.ttl a owl:Ontology ;
+    rdfs:label "en_sentence444" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence444" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:For rdfs:label "for" .
+
+ns1:French rdfs:label "French" ;
+    owl:sameAs dbpedia:French_language .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Within rdfs:label "within" .
+
+ns1:concern_1 a ns1:Concern ;
+    rdfs:label "concerned" ;
+    vn.role:Experiencer ns1:expert_1 ;
+    ns1:as ns1:situation_1 .
+
+ns1:docuverse earmark:hasContent "As far as French planning experts are concerned, for example, the most probable scenario today is that of the entrenchment of regional disparities within each country."^^xsd:string .
+
+ns1:planning_1 a ns1:Planning ;
+    rdfs:label "planning" ;
+    dul:associatedWith ns1:expert_1 .
+
+ns1:scenario_1 rdfs:label "scenario" ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:country_1,
+        ns1:disparity_1 ;
+    dul:hasQuality ns1:Far .
+
+ns1:thing_1 a owl:Thing,
+        ns1:MostProbableScenario ;
+    rdfs:label "that" ;
+    dul:hasQuality ns1:Most ;
+    ns1:thingOf ns1:entrenchment_1 .
+
+dbpedia:French_language a schema:Language .
+
+ns1:Concern rdfs:label "concerned" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Country rdfs:label "country" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Disparity rdfs:label "disparities" .
+
+ns1:Entrenchment rdfs:label "entrenchment" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Example rdfs:label "example" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Expert rdfs:label "experts" .
+
+ns1:Far rdfs:label "far" .
+
+ns1:FrenchPlanningExpert rdfs:subClassOf ns1:PlanningExpert .
+
+ns1:Most rdfs:label "most" .
+
+ns1:MostProbableScenario a owl:Class ;
+    rdfs:label "most probable scenario" ;
+    rdfs:subClassOf owl:Thing,
+        ns1:ProbableScenario .
+
+ns1:Planning rdfs:label "planning" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:PlanningExpert rdfs:subClassOf ns1:Expert .
+
+ns1:Probable a owl:Class ;
+    rdfs:label "probable" .
+
+ns1:ProbableScenario a owl:Class ;
+    dul:associatedWith ns1:Scenario ;
+    dul:hasModality ns1:Probable .
+
+ns1:Regional rdfs:label "regional" .
+
+ns1:RegionalDisparity rdfs:subClassOf ns1:Disparity .
+
+ns1:Scenario a owl:Class ;
+    rdfs:label "scenario" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Today rdfs:label "today" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:entrenchment_1 a ns1:Entrenchment ;
+    rdfs:label "entrenchment" ;
+    quant:hasDeterminer quant:the ;
+    ns1:entrenchmentOf ns1:disparity_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:country_1,
+        ns1:disparity_1,
+        ns1:example_1,
+        ns1:today_1 ;
+    dul:associatedWith ns1:today_1 ;
+    ns1:for ns1:example_1 .
+
+owl:Thing rdfs:label "that" .
+
+ns1:example_1 a ns1:Example ;
+    rdfs:label "example" .
+
+ns1:expert_1 a ns1:FrenchPlanningExpert ;
+    rdfs:label "experts" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:today_1 a ns1:Today ;
+    rdfs:label "today" .
+
+ns1:country_1 a ns1:Country ;
+    rdfs:label "country" ;
+    quant:hasQuantifier quant:each .
+
+ns1:disparity_1 a ns1:RegionalDisparity ;
+    rdfs:label "disparities" ;
+    dul:hasQuality ns1:Regional ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:within ns1:country_1 .
+

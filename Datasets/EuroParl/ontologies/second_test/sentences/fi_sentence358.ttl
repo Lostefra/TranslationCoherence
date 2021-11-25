@@ -1,0 +1,186 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence358.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:fi_sentence358.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence358" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence358" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Be rdfs:label "is" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of",
+        "our" .
+
+ns1:docuverse earmark:hasContent "It is important to recognize the skills and opportunities of our regions in the hi-tech industry. It is important that Europe quickly loses soil to the United_States in the future of technology."^^xsd:string .
+
+ns1:future_1 a ns1:Future ;
+    rdfs:label "future" ;
+    quant:hasDeterminer quant:the .
+
+ns1:opportunity_1 rdfs:label "opportunities" .
+
+ns1:recognize_1 a ns1:Recognize ;
+    rdfs:label "recognize" ;
+    vn.role:Agent ns1:neuter_1 ;
+    vn.role:Theme ns1:skill_1 ;
+    ns1:be ns1:important_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:lose_1,
+        ns1:soil_1,
+        ns1:technology_1 ;
+    dul:hasQuality ns1:Important .
+
+dbpedia:Europe a schema:Continent,
+        schema:Place .
+
+dbpedia:United_States rdfs:subClassOf schema:Country,
+        schema:Place .
+
+owl:Thing rdfs:label "It" .
+
+ns1:Europe rdfs:label "Europe" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Europe .
+
+ns1:Future rdfs:label "future" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Hi-techIndustry a owl:Class ;
+    rdfs:label "Hi-tech Industry" ;
+    dul:hasQuality ns1:Hi-tech ;
+    rdfs:subClassOf ns1:Industry .
+
+ns1:Industry a owl:Class ;
+    rdfs:label "industry" ;
+    rdfs:subClassOf dul:Organization ;
+    owl:equivalentClass dbpedia:Industry .
+
+ns1:Lose rdfs:label "loses" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Opportunity rdfs:label "opportunities" .
+
+ns1:Quickly rdfs:label "quickly" .
+
+ns1:QuicklyLose rdfs:subClassOf ns1:Lose .
+
+ns1:Recognize rdfs:label "recognize" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Region rdfs:label "regions" .
+
+ns1:Skill rdfs:label "skills" .
+
+ns1:Soil rdfs:label "soil" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Technology a owl:Class ;
+    rdfs:label "technology" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Technology .
+
+ns1:UnitedStates rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:United_states a owl:Class ;
+    rdfs:label "United States" ;
+    rdfs:subClassOf ns1:UnitedStates ;
+    owl:equivalentClass dbpedia:United_States .
+
+ns1:important_1 a ns1:Important ;
+    rdfs:label "important" .
+
+ns1:industry_1 a ns1:Hi-techIndustry ;
+    rdfs:label "industry" ;
+    dul:hasQuality ns1:Hi-tech ;
+    quant:hasDeterminer quant:the .
+
+ns1:lose_1 a ns1:QuicklyLose ;
+    rdfs:label "loses" ;
+    dul:hasQuality ns1:Quickly ;
+    vn.role:Agent ns1:Europe ;
+    vn.role:Recipient ns1:united_states_1 ;
+    vn.role:Theme ns1:soil_1 .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "It" .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "our" .
+
+ns1:region_1 a ns1:Region ;
+    rdfs:label "regions" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:industry_1 ;
+    ns1:regionOf ns1:person_1 .
+
+ns1:skill_1 a dbpedia:Skill,
+        ns1:Opportunity,
+        ns1:Skill ;
+    rdfs:label "skills" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:skillOf ns1:region_1 .
+
+ns1:united_states_1 a ns1:United_states ;
+    rdfs:label "United States" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:inFutureOf ns1:technology_1 .
+
+ns1:Hi-tech a owl:Class ;
+    rdfs:label "hi-tech" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:High_tech .
+
+ns1:Important rdfs:label "Important",
+        "important" .
+
+ns1:soil_1 a ns1:Soil ;
+    rdfs:label "soil" .
+
+ns1:technology_1 a ns1:Technology ;
+    rdfs:label "technology" .
+

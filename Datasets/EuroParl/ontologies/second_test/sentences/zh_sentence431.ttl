@@ -1,0 +1,178 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence431.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Location rdfs:label "into" .
+
+translation_coherence:zh_sentence431.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence431" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence431" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:Since rdfs:label "since" .
+
+ns1:When rdfs:label "when" ;
+    owl:sameAs dbpedia:When_We_On .
+
+ns1:docuverse earmark:hasContent "In short, I would like to say that we are going into this period when we are asked to manage the programme for 2000-2006, since we face two major challenges, which must not be routine."^^xsd:string .
+
+ns1:like_1 a ns1:Like ;
+    rdfs:label "like" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Experiencer ns1:person_1 ;
+    vn.role:Theme ns1:say_1 ;
+    ns1:in ns1:thing_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves ns1:Routine,
+        ns1:period_1 .
+
+owl:Thing rdfs:label "In" .
+
+ns1:2000-2006 rdfs:label "2000-2006" .
+
+ns1:2000-2006_1 a ns1:2000-2006 ;
+    rdfs:label "2000-2006" .
+
+ns1:Ask rdfs:label "asked" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Challenge rdfs:label "challenges" .
+
+ns1:Face rdfs:label "face" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Go rdfs:label "going" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Like rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Major rdfs:label "major" .
+
+ns1:MajorChallenge rdfs:subClassOf ns1:Challenge .
+
+ns1:Manage rdfs:label "manage" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Period rdfs:label "period" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Programme rdfs:label "programme" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Say rdfs:label "say" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Short rdfs:label "short" .
+
+ns1:ask_1 a ns1:Ask ;
+    rdfs:label "asked" ;
+    boxer:theme ns1:manage_1 ;
+    vn.role:Patient ns1:person_3 .
+
+ns1:challenge_1 a ns1:MajorChallenge ;
+    rdfs:label "challenges" ;
+    dul:hasDataValue "2"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:Major ;
+    quant:hasQuantifier quant:2000-2006,
+        quant:multiple,
+        quant:two .
+
+ns1:face_1 a ns1:Face ;
+    rdfs:label "face" ;
+    vn.role:Agent ns1:person_4 ;
+    vn.role:Theme ns1:challenge_1 .
+
+ns1:go_1 a ns1:Go ;
+    rdfs:label "going" ;
+    vn.role:Location ns1:period_1 ;
+    vn.role:Theme ns1:person_2 .
+
+ns1:manage_1 a ns1:Manage ;
+    rdfs:label "manage" ;
+    vn.role:Agent ns1:person_3 ;
+    vn.role:Theme ns1:programme_1 ;
+    ns1:since ns1:face_1 .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:person_4 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:programme_1 a ns1:Programme ;
+    rdfs:label "programme" ;
+    quant:hasDeterminer quant:the ;
+    ns1:for ns1:2000-2006_1 .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "say" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Topic ns1:go_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "In" ;
+    dul:hasQuality ns1:Short .
+
+ns1:Routine rdfs:label "routine" .
+
+ns1:period_1 a ns1:Period ;
+    rdfs:label "period" ;
+    dul:hasQuality ns1:Routine ;
+    quant:hasDeterminer quant:this ;
+    ns1:when ns1:ask_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:Person rdfs:label "I",
+        "we" .
+

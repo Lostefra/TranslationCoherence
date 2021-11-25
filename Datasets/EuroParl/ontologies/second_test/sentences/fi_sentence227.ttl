@@ -1,0 +1,110 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence227.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence227.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence227" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence227" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Because rdfs:label "because" .
+
+ns1:Of rdfs:label "our" .
+
+ns1:docuverse earmark:hasContent "I'm sorry because we have to work because others haven't done our job."^^xsd:string .
+
+ns1:person_1 coref:coref ns1:person_3 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Sorry,
+        ns1:person_2 ;
+    ns1:because ns1:have_1 .
+
+ns1:Do rdfs:label "done" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Job rdfs:label "job" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Other rdfs:label "others" .
+
+ns1:Work rdfs:label "work" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:do_1 a ns1:Do ;
+    rdfs:label "done" ;
+    boxer:agent ns1:other_1 ;
+    boxer:patient ns1:job_1 ;
+    boxing:hasTruthValue boxing:False .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "have" ;
+    boxer:theme ns1:work_1 ;
+    vn.role:Agent ns1:person_3 .
+
+ns1:job_1 a ns1:Job ;
+    rdfs:label "job" ;
+    ns1:jobOf ns1:person_3 .
+
+ns1:other_1 a ns1:Other ;
+    rdfs:label "others" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "I" ;
+    dul:hasQuality ns1:Sorry .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "work" ;
+    vn.role:Actor ns1:person_3 ;
+    ns1:because ns1:do_1 .
+
+ns1:Person rdfs:label "I",
+        "we" .
+
+ns1:Sorry rdfs:label "sorry" .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "our",
+        "we" .
+

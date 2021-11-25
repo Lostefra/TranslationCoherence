@@ -1,0 +1,214 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence107.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Source rdfs:label "because",
+        "from" .
+
+translation_coherence:en_sentence107.ttl a owl:Ontology ;
+    rdfs:label "en_sentence107" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence107" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:At rdfs:label "at" .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "I was told that large sections of the Socialist_Group were also keen to have this item taken off the agenda, because at the vote in the Conference_of_Presidents no vote was received from the working group of Members of the Socialist Group responsible for this matter."^^xsd:string .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:keen_1 ;
+    dul:hasQuality ns1:Also .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves ns1:Responsible,
+        ns1:Socialist_group ;
+    ns1:for ns1:matter_1 .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "taken" ;
+    dul:hasQuality ns1:Off ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Source ns1:receive_1 ;
+    vn.role:Theme ns1:agenda_1 .
+
+ns1:tell_1 a ns1:Tell ;
+    rdfs:label "told" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Topic ns1:situation_1 .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "working" ;
+    vn.role:Actor ns1:group_1 .
+
+dbpedia:Party_of_European_Socialists rdfs:subClassOf schema:Organization .
+
+ns1:Agenda rdfs:label "agenda" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Also rdfs:label "also" .
+
+ns1:Conference_of_presidents a owl:Class ;
+    rdfs:label "Conference of Presidents" ;
+    owl:equivalentClass dbpedia:Conference_of_Presidents_of_the_European_Parliament .
+
+ns1:Group rdfs:label "group" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Item rdfs:label "item" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Keen rdfs:label "keen" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Large rdfs:label "large" .
+
+ns1:LargeSection rdfs:subClassOf ns1:Section .
+
+ns1:Matter rdfs:label "matter" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Member rdfs:label "Members" .
+
+ns1:Off rdfs:label "off" .
+
+ns1:Person rdfs:label "I" .
+
+ns1:Receive rdfs:label "received" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Section rdfs:label "sections" .
+
+ns1:Take rdfs:label "taken" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Tell rdfs:label "told" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Vote rdfs:label "vote" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Work rdfs:label "working" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:agenda_1 a ns1:Agenda ;
+    rdfs:label "agenda" ;
+    quant:hasDeterminer quant:the .
+
+ns1:conference_of_presidents_1 a ns1:Conference_of_presidents ;
+    rdfs:label "Conference of Presidents" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:item_1 a ns1:Item ;
+    rdfs:label "item" ;
+    quant:hasDeterminer quant:this .
+
+ns1:matter_1 a ns1:Matter ;
+    rdfs:label "matter" ;
+    quant:hasDeterminer quant:this .
+
+ns1:member_1 a ns1:Member ;
+    rdfs:label "Members" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:memberOf ns1:Socialist_group .
+
+ns1:receive_1 a ns1:Receive ;
+    rdfs:label "received" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Source ns1:group_1 ;
+    vn.role:Theme ns1:vote_1 ;
+    ns1:at ns1:vote_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Have,
+        ns1:have_1,
+        ns1:keen_1,
+        ns1:section_1 .
+
+ns1:socialist_group_1 a ns1:Socialist_group ;
+    rdfs:label "Socialist Group" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Responsible rdfs:label "responsible" .
+
+ns1:group_1 a ns1:Group ;
+    rdfs:label "group" ;
+    quant:hasDeterminer quant:the ;
+    ns1:groupOf ns1:member_1 .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "have" ;
+    vn.role:Agent ns1:section_1 ;
+    vn.role:Patient ns1:item_1 .
+
+ns1:keen_1 a ns1:Keen ;
+    rdfs:label "keen" ;
+    boxer:agent ns1:section_1 ;
+    boxer:theme ns1:have_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:vote_1 a ns1:Vote ;
+    rdfs:label "vote" ;
+    quant:hasQuantifier quant:no ;
+    ns1:in ns1:conference_of_presidents_1 .
+
+ns1:Socialist_group a owl:Class ;
+    rdfs:label "Socialist Group" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality ns1:Responsible ;
+    owl:equivalentClass dbpedia:Party_of_European_Socialists .
+
+ns1:section_1 a ns1:LargeSection ;
+    rdfs:label "sections" ;
+    dul:hasQuality ns1:Large ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:largeSectionOf ns1:socialist_group_1 .
+

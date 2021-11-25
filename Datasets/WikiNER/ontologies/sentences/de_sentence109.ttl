@@ -1,0 +1,184 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence109.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Elongest> rdfs:label "longest" .
+
+translation_coherence:de_sentence109.ttl a owl:Ontology ;
+    rdfs:label "de_sentence109" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence109" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Longest rdfs:label "longest" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:bridge_1 a ns1:Bridge ;
+    rdfs:label "bridge" ;
+    dul:associatedWith ns1:east_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:concern_1 rdfs:label "concern" ;
+    quant:hasDeterminer quant:the .
+
+ns1:docuverse earmark:hasContent "The main concern in Arizona is the natural Bridge Rock, the longest natural bridge east of Rockies, just south of Haleyville, in Winston_County."^^xsd:string .
+
+ns1:just_1 a ns1:Just ;
+    rdfs:label "just" ;
+    dul:associatedWith ns1:Rock .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Just,
+        ns1:JustSouth,
+        ns1:Rock,
+        ns1:South ;
+    ns1:locatedIn ns1:Winston_county .
+
+ns1:south_1 rdfs:label "south" .
+
+dbpedia:Arizona a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:Arizona rdfs:label "Arizona" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Arizona .
+
+ns1:BridgeEast a owl:Class ;
+    rdfs:label "bridge east" ;
+    dul:associatedWith ns1:Bridge ;
+    rdfs:subClassOf ns1:East .
+
+ns1:Concern a owl:Class ;
+    rdfs:label "concern" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:East a owl:Class ;
+    rdfs:label "east" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Haleyville rdfs:label "Haleyville" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs <http://dbpedia.org/resource/Haleyville,_Alabama> .
+
+ns1:LongestNaturalBridge a owl:Class .
+
+ns1:LongestNaturalBridgeEast a owl:Class ;
+    rdfs:label "longest natural bridge east" ;
+    dul:associatedWith ns1:LongestNaturalBridge ;
+    rdfs:subClassOf ns1:NaturalBridgeEast .
+
+ns1:Main a owl:Class ;
+    rdfs:label "main" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:MainConcern a owl:Class ;
+    rdfs:label "main concern" ;
+    dul:hasQuality ns1:Main ;
+    rdfs:subClassOf ns1:Concern,
+        ns1:JustSouth .
+
+ns1:Natural rdfs:label "Natural",
+        "natural" ;
+    owl:sameAs dbpedia:Natural_arch .
+
+ns1:NaturalBridge a owl:Class .
+
+ns1:Rockies rdfs:label "Rockies" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Rocky_Mountains .
+
+ns1:Winston_county rdfs:label "Winston County" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs <http://dbpedia.org/resource/Winston_County,_Alabama> .
+
+ns1:Just rdfs:label "Bridge",
+        "Rock",
+        "just" .
+
+ns1:Rock a ns1:JustSouth,
+        ns1:MainConcern ;
+    rdfs:label "Rock",
+        "just",
+        "south" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith ns1:Bridge,
+        ns1:east_1 ;
+    dul:hasQuality ns1:Natural ;
+    dul:hasRole ns1:Bridge ;
+    ns1:justSouthOf ns1:Haleyville ;
+    ns1:locatedIn ns1:Arizona .
+
+ns1:South a owl:Class ;
+    rdfs:label "Bridge",
+        "Rock",
+        "south" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> ;
+    owl:equivalentClass dbpedia:Southern_United_States .
+
+ns1:east_1 a ns1:LongestNaturalBridgeEast,
+        ns1:NaturalBridgeEast ;
+    rdfs:label "east" ;
+    ns1:longestAmong ns1:NaturalBridgeEast ;
+    ns1:longestNaturalBridgeEastOf ns1:Rockies .
+
+ns1:NaturalBridgeEast a owl:Class ;
+    rdfs:label "Natural Bridge East" ;
+    dul:associatedWith ns1:NaturalBridge ;
+    rdfs:subClassOf ns1:BridgeEast .
+
+ns1:Bridge a owl:Class,
+        ns1:JustSouth ;
+    rdfs:label "Bridge",
+        "bridge",
+        "just",
+        "south" ;
+    boxer:possibleType owl:Thing ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Bridge .
+
+ns1:JustSouth rdfs:label "just south" ;
+    rdfs:subClassOf ns1:South .
+

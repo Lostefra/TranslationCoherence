@@ -1,0 +1,209 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence193.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#-> rdfs:label "-" .
+
+vn.role:Oblique rdfs:label "in" .
+
+translation_coherence:ko_sentence193.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence193" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence193" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Of rdfs:label "my" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:convince_1 a ns1:Convince ;
+    rdfs:label "convinced" ;
+    boxer:theme ns1:fall_1 ;
+    vn.role:Cause ns1:person_3 .
+
+ns1:disjunct_1 a ns1:Disjunct ;
+    boxing:involves ns1:Pay,
+        ns1:Problem,
+        ns1:Safety,
+        ns1:pay_1,
+        ns1:problem_1 .
+
+ns1:docuverse earmark:hasContent "First, I want to ask a commission - I am convinced that my request will fall in the volatile land - More attention should be on the road, on the channels or on the road to be paid as a safety problem."^^xsd:string .
+
+ns1:safety_1 a ns1:Safety ;
+    rdfs:label "safety" ;
+    dul:associatedWith ns1:problem_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:want_1 a ns1:Want ;
+    rdfs:label "want" ;
+    dul:hasQuality ns1:First ;
+    vn.role:Experiencer ns1:person_2 ;
+    vn.role:Theme ns1:ask_1 .
+
+ns1:Ask rdfs:label "ask" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Attention a owl:Class ;
+    rdfs:label "attention" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Channel rdfs:label "channels" .
+
+ns1:Commission rdfs:label "commission" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Convince rdfs:label "convinced" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Fall rdfs:label "fall" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:First rdfs:label "First" .
+
+ns1:Land a owl:Class ;
+    rdfs:label "land" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:MoreAttention a owl:Class ;
+    rdfs:label "More Attention" ;
+    dul:hasQuality ns1:More ;
+    rdfs:subClassOf ns1:Attention .
+
+ns1:Request rdfs:label "request" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Road rdfs:label "road" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:SafetyProblem a owl:Class ;
+    rdfs:label "Safety Problem" ;
+    dul:associatedWith ns1:Safety ;
+    rdfs:subClassOf ns1:Problem .
+
+ns1:Volatile a owl:Class ;
+    rdfs:label "volatile" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:VolatileLand a owl:Class ;
+    rdfs:label "volatile land" ;
+    dul:hasQuality ns1:Volatile ;
+    rdfs:subClassOf ns1:Land .
+
+ns1:Want rdfs:label "want" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:ask_1 a ns1:Ask ;
+    rdfs:label "ask" ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Patient ns1:commission_1 .
+
+ns1:attention_1 a ns1:MoreAttention ;
+    rdfs:label "attention" ;
+    dul:hasQuality ns1:More .
+
+ns1:channel_1 a ns1:Channel ;
+    rdfs:label "channels" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:commission_1 a ns1:Commission ;
+    rdfs:label "commission" ;
+    quant:hasDeterminer quant:a .
+
+ns1:fall_1 a ns1:Fall ;
+    rdfs:label "fall" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Oblique ns1:land_1 ;
+    vn.role:Theme ns1:request_1 .
+
+ns1:land_1 a ns1:VolatileLand ;
+    rdfs:label "land" ;
+    <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#-> ns1:attention_1 ;
+    quant:hasDeterminer quant:the ;
+    ns1:on ns1:road_1 .
+
+ns1:pay_1 a ns1:Pay ;
+    rdfs:label "paid" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Asset ns1:road_1 ;
+    ns1:as ns1:problem_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "my" .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:request_1 a ns1:Request ;
+    rdfs:label "request" ;
+    ns1:requestOf ns1:person_1 .
+
+ns1:More a owl:Class ;
+    rdfs:label "More" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Pay rdfs:label "paid" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Problem a owl:Class ;
+    rdfs:label "problem" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:road_1 a ns1:Road ;
+    rdfs:label "road" ;
+    quant:hasDeterminer quant:the ;
+    ns1:on ns1:channel_1 .
+
+ns1:Person rdfs:label "I" .
+
+ns1:Safety a owl:Class ;
+    rdfs:label "safety" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:problem_1 a ns1:SafetyProblem ;
+    rdfs:label "problem" .
+

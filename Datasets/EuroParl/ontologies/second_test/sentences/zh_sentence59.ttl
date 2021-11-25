@@ -1,0 +1,143 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence59.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence59.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence59" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence59" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:At rdfs:label "at" .
+
+ns1:Country rdfs:label "countries" .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:country_1 rdfs:label "countries" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:docuverse earmark:hasContent "We do not know what is happening. Why is, therefore, the profit of the European_Union weapon-producing countries at the expense of innocent people?"^^xsd:string .
+
+ns1:happen_1 a ns1:Happen ;
+    rdfs:label "happening" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Theme ns1:thing_1 .
+
+ns1:know_1 a ns1:Know ;
+    rdfs:label "know" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:thing_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Therefore,
+        ns1:profit_1 ;
+    dul:associatedWith ns1:reason_1 .
+
+owl:Thing rdfs:label "what" .
+
+ns1:European_union rdfs:label "European Union" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:European_Union .
+
+ns1:Expense rdfs:label "expense" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Happen rdfs:label "happening" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Innocent a owl:Class ;
+    rdfs:label "innocent" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:InnocentPeople a owl:Class ;
+    rdfs:label "Innocent People" ;
+    dul:hasQuality ns1:Innocent ;
+    rdfs:subClassOf ns1:People .
+
+ns1:Know rdfs:label "know" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:People a owl:Class ;
+    rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Person rdfs:label "We" .
+
+ns1:Reason rdfs:label "Why" .
+
+ns1:Weapon-producing rdfs:label "weapon-producing" .
+
+ns1:Weapon-producingCountry rdfs:subClassOf ns1:Profit .
+
+ns1:expense_1 a ns1:Expense ;
+    rdfs:label "expense" ;
+    quant:hasDeterminer quant:the ;
+    ns1:expenseOf ns1:people_1 .
+
+ns1:people_1 a ns1:InnocentPeople ;
+    rdfs:label "people" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "We" .
+
+ns1:profit_1 a ns1:Profit,
+        ns1:Weapon-producingCountry ;
+    rdfs:label "profit" ;
+    dul:hasQuality ns1:Therefore,
+        ns1:Weapon-producing ;
+    quant:hasDeterminer quant:the ;
+    ns1:at ns1:expense_1 ;
+    ns1:profitOf ns1:European_union .
+
+ns1:reason_1 a ns1:Reason ;
+    rdfs:label "Why" .
+
+ns1:Profit rdfs:label "profit" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Therefore rdfs:label "therefore" .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "what" .
+

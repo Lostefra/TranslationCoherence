@@ -1,0 +1,144 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence44.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:ko_sentence44.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence44" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence44" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:develop_1 a ns1:LaterDevelop ;
+    rdfs:label "developed" ;
+    dul:hasQuality ns1:Later ;
+    vn.role:Product ns1:stirner_1 ;
+    ns1:in ns1:form_1 .
+
+ns1:docuverse earmark:hasContent "This aspect of Godwin's philosophy was peeled by humanitarian motivation and Stirner was later developed in more extreme form."^^xsd:string .
+
+ns1:peel_1 a ns1:Peel ;
+    rdfs:label "peeled" ;
+    vn.role:Agent ns1:motivation_1 ;
+    vn.role:Source ns1:aspect_1 .
+
+ns1:Aspect rdfs:label "aspect" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Develop rdfs:label "developed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Extreme a owl:Class ;
+    rdfs:label "extreme" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ExtremeForm a owl:Class ;
+    rdfs:label "extreme form" ;
+    dul:hasQuality ns1:Extreme ;
+    rdfs:subClassOf ns1:Form .
+
+ns1:Form a owl:Class ;
+    rdfs:label "form" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Godwin rdfs:label "Godwin" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:William_Godwin .
+
+ns1:Humanitarian a owl:Class ;
+    rdfs:label "humanitarian" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:HumanitarianMotivation a owl:Class ;
+    rdfs:label "humanitarian motivation" ;
+    dul:hasQuality ns1:Humanitarian ;
+    rdfs:subClassOf ns1:Motivation .
+
+ns1:Later rdfs:label "later" .
+
+ns1:LaterDevelop rdfs:subClassOf ns1:Develop .
+
+ns1:More rdfs:label "more" .
+
+ns1:MoreExtremeForm a owl:Class ;
+    rdfs:label "More Extreme Form" ;
+    rdfs:subClassOf ns1:ExtremeForm .
+
+ns1:Motivation a owl:Class ;
+    rdfs:label "motivation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> ;
+    owl:equivalentClass dbpedia:Motivation .
+
+ns1:Peel rdfs:label "peeled" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Philosophy a owl:Class ;
+    rdfs:label "philosophy" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Philosophy .
+
+ns1:Stirner a owl:Class ;
+    rdfs:label "Stirner" ;
+    owl:equivalentClass dbpedia:Max_Stirner .
+
+ns1:aspect_1 a ns1:Aspect ;
+    rdfs:label "aspect" ;
+    quant:hasDeterminer quant:this ;
+    ns1:aspectOf ns1:philosophy_1 .
+
+ns1:form_1 a ns1:MoreExtremeForm ;
+    rdfs:label "form" ;
+    dul:hasQuality ns1:More .
+
+ns1:motivation_1 a ns1:HumanitarianMotivation ;
+    rdfs:label "motivation" .
+
+ns1:philosophy_1 a ns1:Philosophy ;
+    rdfs:label "philosophy" ;
+    ns1:philosophyOf ns1:Godwin .
+
+ns1:stirner_1 a ns1:Stirner ;
+    rdfs:label "Stirner" .
+

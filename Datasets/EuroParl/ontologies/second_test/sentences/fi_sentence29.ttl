@@ -1,0 +1,202 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence29.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:fi_sentence29.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence29" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence29" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Therefore rdfs:label "therefore" .
+
+ns1:docuverse earmark:hasContent "These findings form the foundation for European programmes to protect the Barents_Sea, and therefore I ask you to investigate a study indicating the main facts and obtaining the position of the Parliament as adopted by the resolution."^^xsd:string .
+
+ns1:form_1 a ns1:Form ;
+    rdfs:label "form" ;
+    vn.role:Agent ns1:finding_1 ;
+    vn.role:Theme ns1:foundation_1 .
+
+ns1:protect_1 a ns1:Protect ;
+    rdfs:label "protect" ;
+    vn.role:Agent ns1:finding_1 ;
+    vn.role:Theme ns1:Barents_sea ;
+    ns1:therefore ns1:ask_1 .
+
+ns1:Adopt rdfs:label "adopted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Ask rdfs:label "ask" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Barents_sea rdfs:label "Barents Sea" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Barents_Sea .
+
+ns1:European rdfs:label "European" .
+
+ns1:EuropeanProgramme rdfs:subClassOf ns1:Programme .
+
+ns1:Fact rdfs:label "facts" .
+
+ns1:Finding rdfs:label "findings" .
+
+ns1:Form rdfs:label "form" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Foundation rdfs:label "foundation" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Indicate rdfs:label "indicating" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Investigate rdfs:label "investigate" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Main rdfs:label "main" .
+
+ns1:MainFact rdfs:subClassOf ns1:Fact .
+
+ns1:Obtain rdfs:label "obtaining" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Parliament rdfs:label "Parliament" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Parliament .
+
+ns1:Position rdfs:label "position" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Programme rdfs:label "programmes" .
+
+ns1:Protect rdfs:label "protect" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Resolution rdfs:label "resolution" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Study rdfs:label "study" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:ask_1 a ns1:Ask ;
+    rdfs:label "ask" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Topic ns1:situation_1 .
+
+ns1:fact_1 a ns1:MainFact ;
+    rdfs:label "facts" ;
+    dul:hasQuality ns1:Main ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:foundation_1 a ns1:Foundation ;
+    rdfs:label "foundation" ;
+    quant:hasDeterminer quant:the ;
+    ns1:for ns1:programme_1 .
+
+ns1:indicate_1 a ns1:Indicate ;
+    rdfs:label "indicating" ;
+    vn.role:Cause ns1:study_1 ;
+    vn.role:Topic ns1:fact_1 .
+
+ns1:investigate_1 a ns1:Investigate ;
+    rdfs:label "investigate" ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Location ns1:study_1 .
+
+ns1:obtain_1 a ns1:Obtain ;
+    rdfs:label "obtaining" ;
+    vn.role:Agent ns1:study_1 ;
+    vn.role:Theme ns1:position_1 ;
+    ns1:as ns1:adopt_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "you" .
+
+ns1:position_1 a ns1:Position ;
+    rdfs:label "position" ;
+    quant:hasDeterminer quant:the ;
+    ns1:positionOf ns1:Parliament .
+
+ns1:programme_1 a ns1:EuropeanProgramme ;
+    rdfs:label "programmes" ;
+    dul:hasQuality ns1:European ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:resolution_1 a ns1:Resolution ;
+    rdfs:label "resolution" ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:adopt_1,
+        ns1:indicate_1,
+        ns1:investigate_1,
+        ns1:obtain_1,
+        ns1:study_1 .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:Person rdfs:label "I",
+        "you" .
+
+ns1:adopt_1 a ns1:Adopt ;
+    rdfs:label "adopted" ;
+    vn.role:Agent ns1:resolution_1 ;
+    vn.role:Theme ns1:thing_1 .
+
+ns1:finding_1 a ns1:Finding ;
+    rdfs:label "findings" ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:study_1 a ns1:Study ;
+    rdfs:label "study" ;
+    quant:hasDeterminer quant:a .
+

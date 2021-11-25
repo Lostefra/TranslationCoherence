@@ -1,0 +1,128 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence413.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Source rdfs:label "across" .
+
+translation_coherence:it_sentence413.ttl a owl:Ontology ;
+    rdfs:label "it_sentence413" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence413" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Before rdfs:label "before" .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:To rdfs:label "to" .
+
+ns1:Where rdfs:label "where" .
+
+ns1:docuverse earmark:hasContent "The president was taken across the theater to the House Petersen, where he was in a coma for nine hours before he died."^^xsd:string .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "taken" ;
+    vn.role:Source ns1:theater_1 ;
+    vn.role:Theme ns1:president_1 .
+
+ns1:Hour rdfs:label "hours" .
+
+ns1:House_petersen rdfs:label "House Petersen" ;
+    boxer:possibleType foaf:Organisation ;
+    ns1:where ns1:situation_1 .
+
+ns1:Male rdfs:label "he" .
+
+ns1:President rdfs:label "president" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Take rdfs:label "taken" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Theater rdfs:label "theater" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "he" ;
+    ns1:in ns1:coma_1 .
+
+ns1:president_1 a ns1:President ;
+    rdfs:label "president" ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Coma,
+        ns1:Die,
+        ns1:coma_1,
+        ns1:die_1,
+        ns1:hour_1 ;
+    ns1:before ns1:die_1 ;
+    ns1:for ns1:hour_1 .
+
+ns1:theater_1 a ns1:Theater ;
+    rdfs:label "theater" ;
+    quant:hasDeterminer quant:the ;
+    ns1:to ns1:House_petersen .
+
+ns1:Coma a owl:Class ;
+    rdfs:label "coma" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Coma .
+
+ns1:Die rdfs:label "died" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:coma_1 a ns1:Coma ;
+    rdfs:label "coma" ;
+    quant:hasDeterminer quant:a .
+
+ns1:die_1 a ns1:Die ;
+    rdfs:label "died" ;
+    vn.role:Theme ns1:male_1 .
+
+ns1:hour_1 a ns1:Hour ;
+    rdfs:label "hours" ;
+    dul:hasDataValue "9"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple,
+        quant:nine .
+

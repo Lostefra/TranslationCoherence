@@ -1,0 +1,127 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence362.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence362.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence362" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence362" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:docuverse earmark:hasContent "The Commission's Directorate-General shall have internal consistency, respecting the specific local and regional nako of the Commission's programmes."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "have" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:directorate-general_1 ;
+    vn.role:Patient ns1:consistency_1 .
+
+ns1:respect_1 a ns1:Respect ;
+    rdfs:label "respecting" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Experiencer ns1:directorate-general_1 ;
+    vn.role:Theme ns1:nako_1 .
+
+ns1:Consistency a owl:Class ;
+    rdfs:label "consistency" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Directorate-general rdfs:label "Directorate-General" .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:InternalConsistency a owl:Class ;
+    rdfs:label "internal consistency" ;
+    dul:hasQuality ns1:Internal ;
+    rdfs:subClassOf ns1:Consistency .
+
+ns1:Local rdfs:label "local" .
+
+ns1:Nako a owl:Class ;
+    rdfs:label "nako" .
+
+ns1:Programme rdfs:label "programmes" .
+
+ns1:RegionalNako a owl:Class ;
+    rdfs:label "Regional Nako" ;
+    dul:hasQuality ns1:Regional ;
+    rdfs:subClassOf ns1:Nako .
+
+ns1:Respect rdfs:label "respecting" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Specific rdfs:label "specific" .
+
+ns1:consistency_1 a ns1:InternalConsistency ;
+    rdfs:label "consistency" ;
+    dul:hasQuality ns1:Internal .
+
+ns1:nako_1 a ns1:RegionalNako ;
+    rdfs:label "nako" ;
+    dul:hasQuality ns1:Local,
+        ns1:Regional,
+        ns1:Specific ;
+    quant:hasDeterminer quant:the ;
+    ns1:regionalNakoOf ns1:programme_1 .
+
+ns1:programme_1 a ns1:Programme ;
+    rdfs:label "programmes" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:programmeOf ns1:Commission .
+
+ns1:Commission rdfs:label "Commission" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:European_Commission .
+
+ns1:Internal a owl:Class ;
+    rdfs:label "internal" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Regional a owl:Class ;
+    rdfs:label "regional" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:directorate-general_1 a ns1:Directorate-general ;
+    rdfs:label "Directorate-General" ;
+    ns1:directorate-generalOf ns1:Commission .
+

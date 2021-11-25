@@ -1,0 +1,161 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence647.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence647.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence647" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence647" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:character_1 rdfs:label "character" ;
+    quant:hasDeterminer quant:the .
+
+ns1:docuverse earmark:hasContent "Nick_Gillespie, the editor-in-chief of Reason, pointed out that Rand's is a tortured kimortality in which he is equally likely the main character of the Punch_line."^^xsd:string .
+
+ns1:equally_1 rdfs:label "equally" .
+
+ns1:kimortality_1 rdfs:label "kimortality" ;
+    quant:hasDeterminer quant:a .
+
+ns1:point_1 a ns1:Point ;
+    rdfs:label "pointed" ;
+    boxer:theme ns1:situation_1 ;
+    dul:hasQuality ns1:Out ;
+    vn.role:Agent ns1:Nick_gillespie .
+
+dbpedia:Ayn_Rand a schema:Person .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s> rdfs:label "'s" .
+
+ns1:Character a owl:Class ;
+    rdfs:label "character" ;
+    rdfs:subClassOf dul:Personification .
+
+ns1:Editor-in-chief a owl:Class ;
+    rdfs:label "editor-in-chief" ;
+    owl:equivalentClass dbpedia:Editing .
+
+ns1:Kimortality a owl:Class ;
+    rdfs:label "Rand",
+        "kimortality" .
+
+ns1:Main a owl:Class ;
+    rdfs:label "main" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:MainCharacter a owl:Class ;
+    rdfs:label "Main Character" ;
+    dul:hasQuality ns1:Main ;
+    rdfs:subClassOf ns1:Character .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Out rdfs:label "out" .
+
+ns1:Point rdfs:label "pointed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Punch_line rdfs:label "Punch line" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Punch_line .
+
+ns1:Rand a ns1:TorturedKimortality ;
+    rdfs:label "Rand",
+        "kimortality" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality ns1:Tortured ;
+    owl:sameAs dbpedia:Ayn_Rand .
+
+ns1:Reason rdfs:label "Reason" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Reason_(magazine) .
+
+ns1:editor-in-chief_1 a ns1:Editor-in-chief ;
+    rdfs:label "editor-in-chief" ;
+    quant:hasDeterminer quant:the ;
+    ns1:editor-in-chiefOf ns1:Reason .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s_1>,
+        ns1:situation_2 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Equally,
+        ns1:Likely,
+        ns1:Nick_gillespie ;
+    ns1:in <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s_1> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s_1> a <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s>,
+        ns1:TorturedKimortality ;
+    rdfs:label "'s" ;
+    dul:associatedWith ns1:Rand ;
+    dul:hasQuality ns1:Tortured .
+
+ns1:Equally rdfs:label "equally" .
+
+ns1:Likely rdfs:label "likely" .
+
+ns1:Nick_gillespie a ns1:Equally,
+        ns1:MainCharacter ;
+    rdfs:label "Nick Gillespie" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith ns1:editor-in-chief_1 ;
+    dul:hasQuality ns1:Likely,
+        ns1:Male ;
+    owl:sameAs dbpedia:Nick_Gillespie ;
+    ns1:equallyOf ns1:Punch_line .
+
+ns1:TorturedKimortality a owl:Class ;
+    rdfs:label "tortured kimortality" ;
+    dul:hasQuality ns1:Tortured ;
+    rdfs:subClassOf ns1:Kimortality .
+
+ns1:Tortured a owl:Class ;
+    rdfs:label "tortured" ;
+    rdfs:subClassOf dul:Quality .
+

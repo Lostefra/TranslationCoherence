@@ -1,0 +1,260 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence460.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence460.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence460" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence460" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:From rdfs:label "from" .
+
+ns1:Goal rdfs:label "Goal" ;
+    boxer:possibleType time:Interval ;
+    ns1:at "0001-01-02"^^xsd:date .
+
+ns1:Like rdfs:label "like" .
+
+ns1:Of rdfs:label "my",
+        "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:To rdfs:label "to" .
+
+ns1:When rdfs:label "when" .
+
+ns1:colleague_1 rdfs:label "colleague" .
+
+ns1:docuverse earmark:hasContent "The President, like my colleague Mr. Evans, is very pleased to stand up and make my first speech to this house on this important matter, especially when I represent part of the United_Kingdom, the West_Midlands, who has so far benefitted from the implementation of the Goal 2."^^xsd:string .
+
+ns1:pleased_1 a ns1:VeryPleased ;
+    rdfs:label "pleased" ;
+    boxer:agent ns1:President ;
+    boxer:theme ns1:situation_1 ;
+    dul:hasQuality ns1:Very .
+
+dbpedia:United_Kingdom rdfs:subClassOf schema:Country,
+        schema:Place .
+
+dbpedia:West_Midlands_(county) rdfs:subClassOf schema:AdministrativeArea,
+        schema:Place .
+
+ns1:Benefit rdfs:label "benefitted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Evans a ns1:Colleague ;
+    rdfs:label "Evans",
+        "colleague" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    ns1:of ns1:person_1 .
+
+ns1:Far rdfs:label "far" .
+
+ns1:FarBenefit rdfs:subClassOf ns1:Benefit .
+
+ns1:First a owl:Class ;
+    rdfs:label "first" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FirstSpeech a owl:Class ;
+    rdfs:label "First Speech" ;
+    dul:hasQuality ns1:First ;
+    rdfs:subClassOf ns1:Speech .
+
+ns1:House rdfs:label "house" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Implementation rdfs:label "implementation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Important a owl:Class ;
+    rdfs:label "important" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ImportantMatter a owl:Class ;
+    rdfs:label "important matter" ;
+    dul:hasQuality ns1:Important ;
+    rdfs:subClassOf ns1:Matter .
+
+ns1:Make rdfs:label "make" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Matter a owl:Class ;
+    rdfs:label "matter" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Part rdfs:label "part" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Pleased a owl:Class ;
+    rdfs:label "pleased" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:The_Pleased .
+
+ns1:Represent rdfs:label "represent" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:So rdfs:label "so" .
+
+ns1:SoFarBenefit rdfs:subClassOf ns1:FarBenefit .
+
+ns1:Speech a owl:Class ;
+    rdfs:label "speech" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Stand rdfs:label "stand" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:UnitedKingdom rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:United_kingdom a owl:Class ;
+    rdfs:label "United Kingdom" ;
+    rdfs:subClassOf ns1:UnitedKingdom ;
+    owl:equivalentClass dbpedia:United_Kingdom .
+
+ns1:Up rdfs:label "up" .
+
+ns1:Very rdfs:label "very" .
+
+ns1:VeryPleased rdfs:label "Very Pleased" ;
+    rdfs:subClassOf ns1:Pleased .
+
+ns1:West_midlands a owl:Class ;
+    rdfs:label "West Midlands" ;
+    owl:equivalentClass dbpedia:West_Midlands_(county) .
+
+ns1:benefit_1 a ns1:SoFarBenefit ;
+    rdfs:label "benefitted" ;
+    boxer:agent ns1:part_1 ;
+    dul:hasQuality ns1:Far,
+        ns1:So ;
+    ns1:from ns1:implementation_1 .
+
+ns1:house_1 a ns1:House ;
+    rdfs:label "house" ;
+    quant:hasDeterminer quant:this .
+
+ns1:implementation_1 a ns1:Implementation ;
+    rdfs:label "implementation" ;
+    quant:hasDeterminer quant:the ;
+    ns1:implementationOf "0001-01-02"^^xsd:date .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "make" ;
+    dul:hasQuality ns1:Especially ;
+    vn.role:Agent ns1:President ;
+    vn.role:Theme ns1:speech_1 ;
+    ns1:on ns1:matter_1 ;
+    ns1:when ns1:situation_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "my" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "my" .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:represent_1 a ns1:Represent ;
+    rdfs:label "represent" ;
+    vn.role:Agent ns1:person_3 ;
+    vn.role:Theme ns1:part_1 .
+
+ns1:speech_1 a ns1:FirstSpeech ;
+    rdfs:label "speech" ;
+    ns1:firstSpeechOf ns1:person_2 ;
+    ns1:to ns1:house_1 .
+
+ns1:stand_1 a ns1:Stand ;
+    rdfs:label "stand" ;
+    dul:hasQuality ns1:Especially,
+        ns1:Up ;
+    vn.role:Agent ns1:President ;
+    ns1:on ns1:matter_1 ;
+    ns1:when ns1:situation_1 .
+
+ns1:united_kingdom_1 a ns1:United_kingdom ;
+    rdfs:label "United Kingdom" ;
+    quant:hasDeterminer quant:the .
+
+ns1:west_midlands_1 a ns1:West_midlands ;
+    rdfs:label "West Midlands" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> a ns1:Colleague ;
+    rdfs:label "Mr.",
+        "colleague" ;
+    boxer:possibleType dul:Role .
+
+ns1:Colleague rdfs:label "Evans",
+        "Mr.",
+        "colleague" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Especially rdfs:label "especially" .
+
+ns1:matter_1 a ns1:ImportantMatter ;
+    rdfs:label "matter" ;
+    quant:hasDeterminer quant:this .
+
+ns1:Person rdfs:label "I" .
+
+ns1:President rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:President ;
+    ns1:like ns1:Evans .
+
+ns1:part_1 a ns1:Part ;
+    rdfs:label "part" ;
+    ns1:partOf ns1:united_kingdom_1,
+        ns1:west_midlands_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:benefit_1,
+        ns1:make_1,
+        ns1:part_1,
+        ns1:represent_1,
+        ns1:stand_1 .
+

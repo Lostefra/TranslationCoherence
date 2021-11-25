@@ -1,0 +1,155 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence75.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "on" .
+
+vn.role:Proposition rdfs:label "for" .
+
+translation_coherence:de_sentence75.ttl a owl:Ontology ;
+    rdfs:label "de_sentence75" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence75" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "Mrs President, I am really on the behaviour of Mr Baron Crespo and the fact that he is now asking for this point to be put on the Wednesday agenda."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Crespo,
+        ns1:President,
+        ns1:agenda_1,
+        ns1:ask_1,
+        ns1:behaviour_1,
+        ns1:fact_1,
+        ns1:person_1,
+        ns1:point_1,
+        ns1:put_1 ;
+    dul:hasQuality ns1:Really .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis> rdfs:label "Mrs" ;
+    boxer:possibleType dul:Role .
+
+ns1:Agenda rdfs:label "agenda" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Ask rdfs:label "asking" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Behaviour rdfs:label "behaviour" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Fact rdfs:label "fact" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Now rdfs:label "now" .
+
+ns1:NowAsk rdfs:subClassOf ns1:Ask .
+
+ns1:Person rdfs:label "I" .
+
+ns1:Point rdfs:label "point" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:President rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis>,
+        ns1:person_1 ;
+    owl:sameAs dbpedia:President ;
+    ns1:onBehaviourOf ns1:Crespo .
+
+ns1:Put rdfs:label "put" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Really rdfs:label "really" .
+
+ns1:Wednesday rdfs:label "Wednesday" ;
+    boxer:possibleType time:Interval .
+
+ns1:behaviour_1 a ns1:Behaviour ;
+    rdfs:label "behaviour" ;
+    quant:hasDeterminer quant:the .
+
+ns1:fact_1 a ns1:Fact ;
+    rdfs:label "fact" ;
+    boxer:theme ns1:situation_2 ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:ask_1,
+        ns1:put_1 .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister_baron> rdfs:label "Mr Baron" ;
+    boxer:possibleType dul:Role .
+
+ns1:agenda_1 a ns1:Agenda ;
+    rdfs:label "agenda" ;
+    dul:associatedWith ns1:Wednesday .
+
+ns1:ask_1 a ns1:NowAsk ;
+    rdfs:label "asking" ;
+    dul:hasQuality ns1:Now ;
+    vn.role:Agent ns1:Crespo ;
+    vn.role:Proposition ns1:point_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:put_1 a ns1:Put ;
+    rdfs:label "put" ;
+    vn.role:Destination ns1:agenda_1 ;
+    vn.role:Theme ns1:point_1 .
+
+ns1:Crespo rdfs:label "Crespo" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister_baron> ;
+    dul:hasQuality ns1:Male ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister_baron> .
+
+ns1:point_1 a ns1:Point ;
+    rdfs:label "point" ;
+    quant:hasDeterminer quant:this .
+

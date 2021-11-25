@@ -1,0 +1,140 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence386.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Ebest> rdfs:label "best" .
+
+translation_coherence:nl_sentence386.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence386" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence386" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Besides rdfs:label "besides" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Noteq rdfs:label "other" .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:That rdfs:label "that" .
+
+ns1:docuverse earmark:hasContent "Abraham_Lincoln's carefully manipulated address, besides other presentations that day, was considered one of the best speeches in American_history."^^xsd:string .
+
+ns1:manipulate_1 a ns1:Manipulate ;
+    rdfs:label "manipulated" ;
+    vn.role:Patient ns1:address_1 .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+ns1:Abraham_lincoln rdfs:label "Abraham Lincoln" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+
+ns1:Address a owl:Class ;
+    rdfs:label "address" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Public_speaking .
+
+ns1:American_history rdfs:label "American history" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:History_of_the_United_States .
+
+ns1:Best rdfs:label "best" .
+
+ns1:BestSpeech rdfs:subClassOf ns1:Speech .
+
+ns1:Carefully rdfs:label "carefully" .
+
+ns1:Consider rdfs:label "considered" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Day rdfs:label "day" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:Manipulate rdfs:label "manipulated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:address_1 a ns1:Address ;
+    rdfs:label "address" ;
+    dul:hasQuality ns1:Carefully,
+        ns1:Topic ;
+    ns1:addressOf ns1:Abraham_lincoln ;
+    ns1:besides ns1:presentation_1 .
+
+ns1:consider_1 a ns1:Consider ;
+    rdfs:label "considered" ;
+    vn.role:Predicate ns1:speech_1 ;
+    vn.role:Theme ns1:day_1 .
+
+ns1:day_1 a ns1:Day ;
+    rdfs:label "day" ;
+    quant:hasDeterminer quant:that .
+
+ns1:presentation_1 a ns1:Presentation ;
+    rdfs:label "other" ;
+    owl:differentFrom ns1:presentation_2 ;
+    ns1:that ns1:consider_1 .
+
+ns1:presentation_2 a ns1:Presentation ;
+    rdfs:label "presentations" ;
+    quant:hasDeterminer quant:other ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:speech_1 a dbpedia:Public_speaking,
+        ns1:BestSpeech,
+        ns1:Speech ;
+    rdfs:label "speeches" ;
+    dul:hasDataValue "1"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:Best ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple,
+        quant:one ;
+    ns1:bestAmong ns1:Speech ;
+    ns1:locatedIn ns1:American_history .
+
+ns1:Presentation rdfs:label "other",
+        "presentations" .
+
+ns1:Speech rdfs:label "speeches" .
+

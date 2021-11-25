@@ -1,0 +1,144 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence638.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme2 rdfs:label "on" .
+
+translation_coherence:ko_sentence638.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence638" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence638" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:From rdfs:label "from" .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Union rdfs:label "or" .
+
+ns1:William_f._buckley a ns1:Topic ;
+    rdfs:label "William F. Buckley" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Mary_gaitskill ;
+    owl:sameAs <http://dbpedia.org/resource/William_F._Buckley,_Jr.> .
+
+ns1:docuverse earmark:hasContent "William_F._Buckley, Mary_Gaitskill, Matt_Ruff, J._Neil_Schulman and the ran or text based on the striking figures from the author's novels such as Kay_Nolte_Smith."^^xsd:string .
+
+ns1:run_1 a ns1:Run ;
+    rdfs:label "ran" ;
+    vn.role:Location ns1:Matt_ruff ;
+    vn.role:Theme ns1:J._neil_schulman,
+        ns1:the_1 ;
+    ns1:union ns1:base_1 .
+
+ns1:Author rdfs:label "author" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Base rdfs:label "based" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Figure rdfs:label "figures" .
+
+ns1:J._neil_schulman rdfs:label "J. Neil Schulman" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:J._Neil_Schulman .
+
+ns1:Kay_nolte_smith rdfs:label "Kay Nolte Smith" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Kay_Nolte_Smith .
+
+ns1:Mary_gaitskill rdfs:label "Mary Gaitskill" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Matt_ruff,
+        ns1:text_1 ;
+    owl:sameAs dbpedia:Mary_Gaitskill .
+
+ns1:Novel rdfs:label "novels" .
+
+ns1:Run rdfs:label "ran" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Striking rdfs:label "striking" .
+
+ns1:StrikingFigure rdfs:subClassOf ns1:Figure .
+
+ns1:Text rdfs:label "text" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:The rdfs:label "the" .
+
+ns1:Topic rdfs:label "William F. Buckley" .
+
+ns1:author_1 a ns1:Author ;
+    rdfs:label "author" ;
+    quant:hasDeterminer quant:the .
+
+ns1:base_1 a ns1:Base ;
+    rdfs:label "based" ;
+    vn.role:Theme1 ns1:text_1 ;
+    vn.role:Theme2 ns1:figure_1 .
+
+ns1:figure_1 a ns1:StrikingFigure ;
+    rdfs:label "figures" ;
+    dul:hasQuality ns1:Striking ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:from ns1:novel_1 .
+
+ns1:novel_1 a ns1:Novel ;
+    rdfs:label "novels" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:as ns1:Kay_nolte_smith ;
+    ns1:novelOf ns1:author_1 .
+
+ns1:the_1 a ns1:The ;
+    rdfs:label "the" .
+
+ns1:Matt_ruff rdfs:label "Matt Ruff" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Matt_Ruff .
+
+ns1:text_1 a ns1:Text ;
+    rdfs:label "text" ;
+    quant:hasDeterminer quant:the .
+

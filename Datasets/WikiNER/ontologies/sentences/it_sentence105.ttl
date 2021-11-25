@@ -1,0 +1,149 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence105.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Location rdfs:label "from" .
+
+translation_coherence:it_sentence105.ttl a owl:Ontology ;
+    rdfs:label "it_sentence105" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence105" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:At rdfs:label "at" ;
+    owl:sameAs dbpedia:Allegiance .
+
+ns1:In rdfs:label "in" .
+
+ns1:Rel rdfs:label "(" .
+
+ns1:docuverse earmark:hasContent "Alabama extends from the sea level to Mobile_Bay at more than 1,800 feet (550 m) in the Appalachian_Mountains in the northeast."^^xsd:string .
+
+ns1:extend_1 a ns1:Extend ;
+    rdfs:label "extends" ;
+    vn.role:Location ns1:level_1 ;
+    vn.role:Theme ns1:Alabama .
+
+ns1:mobile_bay_1 a ns1:Mobile_bay ;
+    rdfs:label "Mobile Bay" ;
+    boxer:agent ns1:level_1 ;
+    ns1:at ns1:foot_1 .
+
+ns1:sea_1 a ns1:Sea ;
+    rdfs:label "sea" ;
+    dul:associatedWith ns1:level_1 ;
+    quant:hasDeterminer quant:the .
+
+dbpedia:Alabama a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:Alabama rdfs:label "Alabama" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Alabama .
+
+ns1:AppalachianMountains rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Appalachian_mountains a owl:Class ;
+    rdfs:label "Appalachian Mountains" ;
+    rdfs:subClassOf ns1:AppalachianMountains ;
+    owl:equivalentClass dbpedia:Appalachian_Mountains .
+
+ns1:Extend rdfs:label "extends" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Foot rdfs:label "feet" .
+
+ns1:Level a owl:Class ;
+    rdfs:label "level" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:M rdfs:label "m" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:Mobile_bay a owl:Class ;
+    rdfs:label "Mobile Bay" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Mobile_Bay .
+
+ns1:More rdfs:label "more" .
+
+ns1:Northeast rdfs:label "northeast" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:SeaLevel a owl:Class ;
+    rdfs:label "sea level" ;
+    dul:associatedWith ns1:Sea ;
+    rdfs:subClassOf ns1:Level ;
+    owl:equivalentClass dbpedia:Sea_level .
+
+ns1:Than rdfs:label "than" .
+
+ns1:appalachian_mountains_1 a ns1:Appalachian_mountains ;
+    rdfs:label "Appalachian Mountains" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:northeast_1 .
+
+ns1:foot_1 a ns1:Foot ;
+    rdfs:label "feet" ;
+    dul:associatedWith ns1:m_1 ;
+    dul:hasDataValue "1800"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:More,
+        ns1:Than ;
+    quant:hasQuantifier quant:1%2C800,
+        quant:multiple ;
+    ns1:in ns1:appalachian_mountains_1 .
+
+ns1:m_1 a ns1:M ;
+    rdfs:label "m" ;
+    dul:hasDataValue "550"^^xsd:nonNegativeInteger .
+
+ns1:northeast_1 a ns1:Northeast ;
+    rdfs:label "northeast" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Sea a owl:Class ;
+    rdfs:label "sea" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:level_1 a ns1:SeaLevel ;
+    rdfs:label "level" .
+

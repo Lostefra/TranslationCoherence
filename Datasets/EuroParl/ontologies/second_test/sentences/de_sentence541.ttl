@@ -1,0 +1,111 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence541.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Source rdfs:label "at" .
+
+translation_coherence:de_sentence541.ttl a owl:Ontology ;
+    rdfs:label "de_sentence541" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence541" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "It is true that the consultation with the Parliament will only take place at a late stage."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:place_1,
+        ns1:stage_1,
+        ns1:take_1 ;
+    dul:hasQuality boxing:True .
+
+boxing:True rdfs:label "true" .
+
+ns1:Consultation rdfs:label "consultation" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Late a owl:Class ;
+    rdfs:label "late" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:LateStage a owl:Class ;
+    rdfs:label "Late Stage" ;
+    dul:hasQuality ns1:Late ;
+    rdfs:subClassOf ns1:Stage .
+
+ns1:Only rdfs:label "only" .
+
+ns1:OnlyTake rdfs:label "Only Take" ;
+    rdfs:subClassOf ns1:Take .
+
+ns1:Parliament rdfs:label "Parliament" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Parliament .
+
+ns1:Place rdfs:label "place" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Stage a owl:Class ;
+    rdfs:label "stage" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Take rdfs:label "take" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:consultation_1 a ns1:Consultation ;
+    rdfs:label "consultation" ;
+    quant:hasDeterminer quant:the ;
+    ns1:with ns1:Parliament .
+
+ns1:take_1 a ns1:OnlyTake ;
+    rdfs:label "take" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Only ;
+    vn.role:Agent ns1:consultation_1 ;
+    vn.role:Source ns1:stage_1 ;
+    vn.role:Theme ns1:place_1 .
+
+ns1:place_1 a ns1:Place ;
+    rdfs:label "place" .
+
+ns1:stage_1 a ns1:LateStage ;
+    rdfs:label "stage" ;
+    quant:hasDeterminer quant:a .
+

@@ -1,0 +1,164 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence388.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence388.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence388" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence388" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Because rdfs:label "because" .
+
+ns1:Eq rdfs:label "are" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "We have the obligation to do so because we are the representative of the citizens in the European_Union of Citizens and not in Europe in the United_States and the region."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "have" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Patient ns1:obligation_1 .
+
+ns1:person_2 coref:coref ns1:person_1 .
+
+dbpedia:Europe a schema:Continent,
+        schema:Place .
+
+dbpedia:United_States rdfs:subClassOf schema:Country,
+        schema:Place .
+
+ns1:Citizen rdfs:label "citizens" .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Obligation rdfs:label "obligation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Region rdfs:label "region" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:So rdfs:label "so" .
+
+ns1:UnitedStates rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:United_states a owl:Class ;
+    rdfs:label "United States" ;
+    rdfs:subClassOf ns1:UnitedStates ;
+    owl:equivalentClass dbpedia:United_States .
+
+ns1:do_1 a ns1:Do ;
+    boxer:agent ns1:obligation_1 ;
+    ns1:because ns1:situation_1 .
+
+ns1:do_2 a ns1:Do ;
+    rdfs:label "do" ;
+    boxer:agent ns1:obligation_1 ;
+    boxing:hasTruthValue boxing:False ;
+    ns1:locatedIn ns1:Europe .
+
+ns1:representative_1 a ns1:Person,
+        ns1:Representative ;
+    rdfs:label "representative" ;
+    quant:hasDeterminer quant:the ;
+    ns1:representativeOf ns1:citizen_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Citizens,
+        ns1:Europe,
+        ns1:European_union,
+        ns1:citizen_1,
+        ns1:do_1,
+        ns1:do_2,
+        ns1:region_1,
+        ns1:representative_1,
+        ns1:united_states_1 .
+
+ns1:Citizens rdfs:label "Citizens" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Do rdfs:label "do" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Europe rdfs:label "Europe" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Europe ;
+    ns1:locatedIn ns1:region_1,
+        ns1:united_states_1 .
+
+ns1:European_union rdfs:label "European Union" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:European_Union ;
+    ns1:of ns1:Citizens .
+
+ns1:Person rdfs:label "We",
+        "we" ;
+    rdfs:subClassOf ns1:Representative .
+
+ns1:Representative rdfs:label "representative" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:citizen_1 a ns1:Citizen ;
+    rdfs:label "citizens" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:European_union .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "We",
+        "we" .
+
+ns1:region_1 a ns1:Region ;
+    rdfs:label "region" ;
+    quant:hasDeterminer quant:the .
+
+ns1:united_states_1 a ns1:United_states ;
+    rdfs:label "United States" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:obligation_1 a ns1:Obligation ;
+    rdfs:label "obligation" ;
+    dul:hasQuality ns1:So ;
+    quant:hasDeterminer quant:the .
+

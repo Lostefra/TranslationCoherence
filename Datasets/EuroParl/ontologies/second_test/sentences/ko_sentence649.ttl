@@ -1,0 +1,185 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence649.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence649.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence649" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence649" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:When rdfs:label "when" ;
+    owl:sameAs dbpedia:When_We_On .
+
+ns1:able_1 a ns1:Able ;
+    rdfs:label "able" ;
+    boxer:agent ns1:person_1 ;
+    boxer:theme ns1:say_1 ;
+    boxing:hasModality boxing:Necessary .
+
+ns1:docuverse earmark:hasContent "We will be able to say that we are successful when we manage when we create a lack of structure policies and have a significant reduction in unemployment rates."^^xsd:string .
+
+ns1:structure_1 a ns1:Structure ;
+    rdfs:label "structure" ;
+    dul:associatedWith ns1:policy_1 .
+
+ns1:unemployment_1 a ns1:Unemployment ;
+    rdfs:label "unemployment" ;
+    dul:associatedWith ns1:rate_1 .
+
+ns1:Able rdfs:label "able" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Create rdfs:label "create" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Lack rdfs:label "lack" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Manage rdfs:label "manage" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Policy rdfs:label "policies" .
+
+ns1:Rate rdfs:label "rates" .
+
+ns1:Reduction a owl:Class ;
+    rdfs:label "reduction" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Say rdfs:label "say" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Significant a owl:Class ;
+    rdfs:label "significant" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SignificantReduction a owl:Class ;
+    rdfs:label "significant reduction" ;
+    dul:hasQuality ns1:Significant ;
+    rdfs:subClassOf ns1:Reduction .
+
+ns1:Structure rdfs:label "structure" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:StructurePolicy rdfs:subClassOf ns1:Policy .
+
+ns1:Unemployment a owl:Class ;
+    rdfs:label "unemployment" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Unemployment .
+
+ns1:UnemploymentRate rdfs:subClassOf ns1:Rate .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "have" ;
+    vn.role:Agent ns1:person_3 ;
+    vn.role:Patient ns1:reduction_1 .
+
+ns1:manage_1 a ns1:Manage ;
+    rdfs:label "manage" ;
+    vn.role:Agent ns1:person_3 ;
+    vn.role:Theme ns1:reduction_1 ;
+    ns1:when ns1:create_1 .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "we" ;
+    dul:hasQuality ns1:Successful .
+
+ns1:person_4 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "say" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Topic ns1:situation_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Successful,
+        ns1:create_1,
+        ns1:have_1,
+        ns1:lack_1,
+        ns1:manage_1,
+        ns1:person_2,
+        ns1:policy_1,
+        ns1:rate_1,
+        ns1:reduction_1 .
+
+ns1:Successful rdfs:label "successful" .
+
+ns1:create_1 a ns1:Create ;
+    rdfs:label "create" ;
+    vn.role:Agent ns1:person_4 ;
+    vn.role:Product ns1:lack_1 .
+
+ns1:lack_1 a ns1:Lack ;
+    rdfs:label "lack" ;
+    quant:hasDeterminer quant:a ;
+    ns1:lackOf ns1:policy_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "We" .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:policy_1 a dbpedia:Policy,
+        ns1:StructurePolicy ;
+    rdfs:label "policies" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:rate_1 a ns1:UnemploymentRate ;
+    rdfs:label "rates" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:reduction_1 a ns1:SignificantReduction ;
+    rdfs:label "reduction" ;
+    quant:hasDeterminer quant:a ;
+    ns1:in ns1:rate_1 .
+
+ns1:Person rdfs:label "We",
+        "we" .
+

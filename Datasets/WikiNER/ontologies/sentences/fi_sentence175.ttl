@@ -1,0 +1,120 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence175.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#.ed> rdfs:label ".ed" .
+
+translation_coherence:fi_sentence175.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence175" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence175" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "Republicans have an 8-1 majority in the Supreme_Court_of_Alabama and a 5-2 majority of .ed leadership positions."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "have" ;
+    vn.role:Agent ns1:republican_1 ;
+    vn.role:Patient ns1:majority_1 .
+
+ns1:leadership_1 a ns1:Leadership ;
+    rdfs:label "leadership" ;
+    dul:associatedWith ns1:position_1 .
+
+dbpedia:Republican_Party_(United_States) rdfs:subClassOf schema:Organization .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#.edLeadershipPosition> rdfs:subClassOf ns1:LeadershipPosition .
+
+ns1:5-2 rdfs:label "5-2" .
+
+ns1:5-2Majority rdfs:label "5-2 majority" ;
+    rdfs:subClassOf ns1:Majority .
+
+ns1:8-1 rdfs:label "8-1" .
+
+ns1:8-1Majority rdfs:label "8-1 majority" ;
+    rdfs:subClassOf ns1:Majority .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Leadership rdfs:label "leadership" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:LeadershipPosition rdfs:subClassOf ns1:Position .
+
+ns1:Position rdfs:label "positions" .
+
+ns1:Republican a owl:Class ;
+    rdfs:label "Republicans" ;
+    owl:equivalentClass dbpedia:Republican_Party_(United_States) .
+
+ns1:Supreme_court_of_alabama rdfs:label "Supreme Court of Alabama" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Supreme_Court_of_Alabama .
+
+ns1:majority_1 a ns1:8-1Majority ;
+    rdfs:label "majority" ;
+    dul:hasQuality ns1:8-1 ;
+    quant:hasDeterminer quant:an ;
+    ns1:locatedIn ns1:Supreme_court_of_alabama,
+        ns1:majority_2 .
+
+ns1:majority_2 a ns1:5-2Majority ;
+    rdfs:label "majority" ;
+    dul:hasQuality ns1:5-2 ;
+    quant:hasDeterminer quant:a ;
+    ns1:5-2MajorityOf ns1:position_1 .
+
+ns1:republican_1 a ns1:Republican ;
+    rdfs:label "Republicans" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Majority rdfs:label "Majority",
+        "majority" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:position_1 a <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#.edLeadershipPosition> ;
+    rdfs:label "positions" ;
+    quant:hasQuantifier quant:multiple .
+

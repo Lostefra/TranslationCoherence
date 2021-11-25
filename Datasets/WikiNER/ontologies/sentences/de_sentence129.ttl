@@ -1,0 +1,151 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence129.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Ehighest> rdfs:label "highest" .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:de_sentence129.ttl a owl:Ontology ;
+    rdfs:label "de_sentence129" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence129" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Arizona rdfs:label "Arizona" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Arizona .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "The Southern_Baptist_Convention has the highest number of trailers in Arizona with 1.380.121, followed by the United_Methodist_Church with 3.734 members and the Catholic_Church with 150.647 supporters."^^xsd:string .
+
+ns1:follow_1 a ns1:Follow ;
+    rdfs:label "followed" ;
+    vn.role:Agent ns1:Catholic_church,
+        ns1:United_methodist_church ;
+    vn.role:Theme ns1:number_1 .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "has" ;
+    vn.role:Agent ns1:southern_baptist_convention_1 ;
+    vn.role:Patient ns1:number_1 .
+
+dbpedia:Arizona a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:1.380.121 rdfs:label "1.380.121" .
+
+ns1:1.380.121_1 a ns1:1.380.121 ;
+    rdfs:label "1.380.121" .
+
+ns1:Catholic_church rdfs:label "Catholic Church" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Catholic_Church ;
+    ns1:with ns1:supporter_1 .
+
+ns1:Follow rdfs:label "followed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Have rdfs:label "has" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Highest a owl:Class ;
+    rdfs:label "highest" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:HighestNumber a owl:Class ;
+    rdfs:label "highest number" ;
+    dul:hasQuality ns1:Highest ;
+    rdfs:subClassOf ns1:Number .
+
+ns1:Member rdfs:label "members" .
+
+ns1:SouthernBaptistConvention rdfs:subClassOf dul:Organization .
+
+ns1:Southern_baptist_convention a owl:Class ;
+    rdfs:label "Southern Baptist Convention" ;
+    rdfs:subClassOf ns1:SouthernBaptistConvention ;
+    owl:equivalentClass dbpedia:Southern_Baptist_Convention .
+
+ns1:Supporter rdfs:label "supporters" .
+
+ns1:Trailer rdfs:label "trailers" .
+
+ns1:United_methodist_church rdfs:label "United Methodist Church" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:United_Methodist_Church ;
+    ns1:with ns1:member_1 .
+
+ns1:member_1 a ns1:Member ;
+    rdfs:label "members" ;
+    dul:hasDataValue "3.734"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:southern_baptist_convention_1 a ns1:Southern_baptist_convention ;
+    rdfs:label "Southern Baptist Convention" ;
+    quant:hasDeterminer quant:the .
+
+ns1:supporter_1 a ns1:Supporter ;
+    rdfs:label "supporters" ;
+    dul:hasDataValue "150.647"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:trailer_1 a ns1:Trailer ;
+    rdfs:label "trailers" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:number_1 a ns1:HighestNumber,
+        ns1:Number ;
+    rdfs:label "number" ;
+    quant:hasDeterminer quant:the ;
+    ns1:highestAmong ns1:Number ;
+    ns1:highestNumberOf ns1:trailer_1 ;
+    ns1:inHighestNumberWith ns1:1.380.121_1 .
+
+ns1:Number a owl:Class ;
+    rdfs:label "number" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+

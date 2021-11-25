@@ -1,0 +1,122 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence73.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:zh_sentence73.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence73" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence73" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "its",
+        "of" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "Alabama made up 30 parts of the total area, with its area of inland waterways second."^^xsd:string .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "made" ;
+    dul:hasQuality ns1:Up ;
+    vn.role:Agent ns1:Alabama ;
+    vn.role:Theme ns1:part_1 ;
+    ns1:with ns1:area_1 .
+
+ns1:neuter_1 coref:coref ns1:Alabama .
+
+dbpedia:Alabama a schema:AdministrativeArea,
+        schema:Place .
+
+owl:Thing rdfs:label "Alabama" .
+
+ns1:Area a owl:Class ;
+    rdfs:label "Area",
+        "area" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Inland rdfs:label "inland" .
+
+ns1:InlandWaterway rdfs:subClassOf ns1:Waterway .
+
+ns1:Make rdfs:label "made" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Part rdfs:label "parts" .
+
+ns1:Second rdfs:label "second" .
+
+ns1:Total a owl:Class ;
+    rdfs:label "total" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:TotalArea a owl:Class ;
+    rdfs:label "Total Area" ;
+    dul:hasQuality ns1:Total ;
+    rdfs:subClassOf ns1:Area .
+
+ns1:Up rdfs:label "up" .
+
+ns1:Waterway rdfs:label "waterways" .
+
+ns1:part_1 a ns1:Part ;
+    rdfs:label "parts" ;
+    dul:hasDataValue "30"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:partOf ns1:area_1 .
+
+ns1:waterway_1 a ns1:InlandWaterway ;
+    rdfs:label "waterways" ;
+    dul:hasQuality ns1:Inland,
+        ns1:Second ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:area_1 a ns1:TotalArea ;
+    rdfs:label "area" ;
+    quant:hasDeterminer quant:the ;
+    ns1:totalAreaOf ns1:Alabama,
+        ns1:waterway_1 .
+
+ns1:Alabama a owl:Thing ;
+    rdfs:label "Alabama",
+        "its" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Alabama .
+

@@ -1,0 +1,119 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence48.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Predicate rdfs:label "as" .
+
+translation_coherence:fi_sentence48.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence48" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence48" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Noteq rdfs:label "other" .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "Stirner's philosophy has been regarded as the predenor of existentialism with other thinkers such as Friedrich_Nietzsche and Sren Kierkegaard."^^xsd:string .
+
+ns1:regard_1 a ns1:Regard ;
+    rdfs:label "regarded" ;
+    vn.role:Predicate ns1:predenor_1 ;
+    vn.role:Theme ns1:philosophy_1 ;
+    ns1:with ns1:thinker_1 .
+
+dbpedia:Friedrich_Nietzsche a schema:Person .
+
+ns1:Existentialism a owl:Class ;
+    rdfs:label "existentialism" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Existentialism .
+
+ns1:Friedrich_nietzsche rdfs:label "Friedrich Nietzsche" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Friedrich_Nietzsche .
+
+ns1:Philosophy a owl:Class ;
+    rdfs:label "philosophy" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Philosophy_of_Max_Stirner .
+
+ns1:Predenor rdfs:label "predenor" .
+
+ns1:Regard rdfs:label "regarded" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Sren_kierkegaard rdfs:label "Sren Kierkegaard" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Stirner rdfs:label "Stirner" ;
+    boxer:possibleType foaf:Person .
+
+ns1:existentialism_1 a ns1:Existentialism ;
+    rdfs:label "existentialism" .
+
+ns1:philosophy_1 a ns1:Philosophy ;
+    rdfs:label "philosophy" ;
+    ns1:philosophyOf ns1:Stirner .
+
+ns1:predenor_1 a ns1:Predenor ;
+    rdfs:label "predenor" ;
+    quant:hasDeterminer quant:the ;
+    ns1:predenorOf ns1:existentialism_1 .
+
+ns1:thinker_1 a ns1:Thinker ;
+    rdfs:label "other" ;
+    owl:differentFrom ns1:thinker_2 ;
+    ns1:as ns1:Friedrich_nietzsche,
+        ns1:Sren_kierkegaard .
+
+ns1:thinker_2 a dbpedia:Intellectual,
+        ns1:Thinker ;
+    rdfs:label "thinkers" ;
+    quant:hasDeterminer quant:other ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Thinker rdfs:label "other",
+        "thinkers" .
+

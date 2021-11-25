@@ -1,0 +1,208 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence64.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence64.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence64" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence64" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Again rdfs:label "again" .
+
+ns1:During rdfs:label "during" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Noteq rdfs:label "previous" .
+
+ns1:Of rdfs:label "his" .
+
+ns1:That rdfs:label "that" .
+
+ns1:agree_1 a ns1:Agree ;
+    rdfs:label "agreed" ;
+    vn.role:Actor ns1:President ;
+    vn.role:Theme ns1:reapply_1 ;
+    ns1:in "0001-09-01"^^xsd:date .
+
+ns1:do_1 a ns1:Do ;
+    rdfs:label "did" ;
+    boxer:agent ns1:President ;
+    ns1:againDuring ns1:law_1 ;
+    ns1:in "0001-07-01"^^xsd:date .
+
+ns1:docuverse earmark:hasContent "I should also like to point out, Madam President, that this parliament voted to express his trust in President Prodi during the previous legislation. It did again during this law, in July, and in September, it agreed to reapply the entire commission."^^xsd:string .
+
+ns1:like_1 a ns1:AlsoLike ;
+    rdfs:label "like" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Experiencer ns1:person_1 ;
+    vn.role:Theme ns1:point_1 .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#President> rdfs:label "President" ;
+    boxer:possibleType dul:Role ;
+    owl:sameAs dbpedia:President .
+
+ns1:Agree rdfs:label "agreed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoLike rdfs:label "also like" ;
+    rdfs:subClassOf ns1:Like .
+
+ns1:Commission a owl:Class ;
+    rdfs:label "commission" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Do rdfs:label "did" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Entire a owl:Class ;
+    rdfs:label "entire" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:EntireCommission a owl:Class ;
+    rdfs:label "Entire Commission" ;
+    dul:hasQuality ns1:Entire ;
+    rdfs:subClassOf ns1:Commission .
+
+ns1:Express rdfs:label "express" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Law rdfs:label "law" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Like rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Madam rdfs:label "Madam" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Out rdfs:label "out" .
+
+ns1:Parliament rdfs:label "parliament" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Person rdfs:label "I" .
+
+ns1:Point rdfs:label "point" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Prodi rdfs:label "Prodi" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#President> .
+
+ns1:Reapply rdfs:label "reapply" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Trust rdfs:label "trust" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Vote rdfs:label "voted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:commission_1 a ns1:EntireCommission ;
+    rdfs:label "commission" ;
+    quant:hasDeterminer quant:the .
+
+ns1:express_1 a ns1:Express ;
+    rdfs:label "express" ;
+    vn.role:Agent ns1:parliament_1 ;
+    vn.role:Theme ns1:trust_1 .
+
+ns1:law_1 a ns1:Law ;
+    rdfs:label "law" ;
+    quant:hasDeterminer quant:this .
+
+ns1:legislation_1 a ns1:Legislation ;
+    rdfs:label "previous" ;
+    owl:differentFrom ns1:legislation_2 .
+
+ns1:legislation_2 a ns1:Legislation ;
+    rdfs:label "legislation" ;
+    quant:hasDeterminer quant:the .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "his" .
+
+ns1:point_1 a ns1:Point ;
+    rdfs:label "point" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Out ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:President .
+
+ns1:reapply_1 a ns1:Reapply ;
+    rdfs:label "reapply" ;
+    boxer:agent ns1:President ;
+    boxer:patient ns1:commission_1 .
+
+ns1:trust_1 a ns1:Trust ;
+    rdfs:label "trust" ;
+    ns1:during ns1:legislation_1 ;
+    ns1:in ns1:Prodi ;
+    ns1:trustOf ns1:male_1 .
+
+ns1:vote_1 a ns1:Vote ;
+    rdfs:label "voted" ;
+    vn.role:Agent ns1:parliament_1 ;
+    vn.role:Theme ns1:express_1 .
+
+ns1:Legislation rdfs:label "legislation",
+        "previous" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:parliament_1 a ns1:Parliament ;
+    rdfs:label "It"^^xsd:string,
+        "parliament" ;
+    quant:hasDeterminer quant:this .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:President rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith ns1:Madam ;
+    dul:hasQuality owl:Thing ;
+    owl:sameAs dbpedia:President ;
+    ns1:that ns1:vote_1 .
+

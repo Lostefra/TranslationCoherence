@@ -1,0 +1,135 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence175.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Location rdfs:label "in" .
+
+translation_coherence:ko_sentence175.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence175" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence175" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Elected rdfs:label "elected" ;
+    owl:sameAs dbpedia:Election .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:branch_1 a ns1:Branch ;
+    rdfs:label "branch" ;
+    dul:associatedWith ns1:office_1 .
+
+ns1:docuverse earmark:hasContent "The Republic holds 8   1 majority in the Alabama_Supreme_Court and has 5   2 majority of the nation's elected executive branch offices."^^xsd:string .
+
+ns1:executive_1 a ns1:Executive ;
+    rdfs:label "executive" ;
+    dul:associatedWith ns1:office_1 .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "has" ;
+    vn.role:Agent ns1:Republic ;
+    vn.role:Patient ns1:majority_2 .
+
+ns1:hold_1 a ns1:Hold ;
+    rdfs:label "holds" ;
+    vn.role:Agent ns1:Republic ;
+    vn.role:Location ns1:Alabama_supreme_court ;
+    vn.role:Value ns1:majority_1 .
+
+ns1:Alabama_supreme_court rdfs:label "Alabama Supreme Court" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Supreme_Court_of_Alabama .
+
+ns1:Branch rdfs:label "branch" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:BranchOffice rdfs:subClassOf ns1:Office .
+
+ns1:ElectedExecutiveBranchOffice rdfs:subClassOf ns1:ExecutiveBranchOffice .
+
+ns1:Executive a owl:Class ;
+    rdfs:label "executive" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Executive_(government) .
+
+ns1:ExecutiveBranchOffice rdfs:subClassOf ns1:BranchOffice .
+
+ns1:Have rdfs:label "has" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Hold rdfs:label "holds" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Nation a owl:Class ;
+    rdfs:label "nation" ;
+    rdfs:subClassOf dul:Organization ;
+    owl:equivalentClass dbpedia:Nation .
+
+ns1:Office rdfs:label "offices" .
+
+ns1:majority_1 a ns1:Majority ;
+    rdfs:label "majority" ;
+    dul:hasDataValue "8"^^xsd:nonNegativeInteger .
+
+ns1:majority_2 a ns1:Majority ;
+    rdfs:label "majority" ;
+    dul:hasDataValue "10"^^xsd:nonNegativeInteger ;
+    ns1:majorityOf ns1:office_1 .
+
+ns1:nation_1 a ns1:Nation ;
+    rdfs:label "nation" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Majority a owl:Class ;
+    rdfs:label "majority" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Majority .
+
+ns1:Republic rdfs:label "Republic" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Republic .
+
+ns1:office_1 a ns1:ElectedExecutiveBranchOffice ;
+    rdfs:label "offices" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:electedExecutiveBranchOfficeOf ns1:nation_1 .
+

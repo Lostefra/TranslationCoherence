@@ -1,0 +1,132 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence94.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence94.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence94" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence94" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:With rdfs:label "with" .
+
+ns1:agree_1 a ns1:Agree ;
+    rdfs:label "agree" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Actor ns1:person_2 ;
+    ns1:with ns1:recommendation_1 .
+
+ns1:docuverse earmark:hasContent "However, in Parliament, we also have a monitoring role for the Commission, and we do not agree with all the recommendations of the Committee."^^xsd:string .
+
+ns1:have_1 a ns1:AlsoHave ;
+    rdfs:label "have" ;
+    dul:hasQuality ns1:Also,
+        ns1:However ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Patient ns1:role_1 ;
+    ns1:in ns1:Parliament .
+
+ns1:monitoring_1 a ns1:Monitoring ;
+    rdfs:label "monitoring" ;
+    dul:associatedWith ns1:role_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:Agree rdfs:label "agree" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoHave rdfs:label "Also Have" ;
+    rdfs:subClassOf ns1:Have .
+
+ns1:Commission rdfs:label "Commission" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Committee rdfs:label "Committee" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Committee .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:However rdfs:label "However" .
+
+ns1:MonitoringRole a owl:Class ;
+    rdfs:label "monitoring role" ;
+    dul:associatedWith ns1:Monitoring ;
+    rdfs:subClassOf ns1:Role .
+
+ns1:Parliament rdfs:label "Parliament" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Parliament .
+
+ns1:Recommendation rdfs:label "recommendations" .
+
+ns1:Role a owl:Class ;
+    rdfs:label "role" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:recommendation_1 a ns1:Recommendation ;
+    rdfs:label "recommendations" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:recommendationOf ns1:Committee .
+
+ns1:Monitoring a owl:Class ;
+    rdfs:label "monitoring" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Person rdfs:label "we" .
+
+ns1:role_1 a ns1:MonitoringRole ;
+    rdfs:label "role" ;
+    ns1:for ns1:Commission .
+

@@ -1,0 +1,158 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence659.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Cause rdfs:label "by" .
+
+vn.role:Oblique rdfs:label "with" .
+
+translation_coherence:en_sentence659.ttl a owl:Ontology ;
+    rdfs:label "en_sentence659" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence659" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "her" .
+
+ns1:Whereas rdfs:label "whereas" .
+
+ns1:docuverse earmark:hasContent "Sciabarra writes, The left was infuriated by her anti-communist, pro-capitalist politics, whereas the right was disgusted with her atheism and civil libertarianism."^^xsd:string .
+
+ns1:female_1 rdfs:label "her" .
+
+ns1:libertarianism_1 rdfs:label "libertarianism" .
+
+ns1:write_1 a ns1:Write ;
+    rdfs:label "writes" ;
+    vn.role:Agent ns1:Sciabarra ;
+    vn.role:Topic ns1:infuriate_1 .
+
+ns1:Anti-communist rdfs:label "anti-communist" ;
+    owl:sameAs dbpedia:Anti-communism .
+
+ns1:Atheism a owl:Class ;
+    rdfs:label "atheism" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> ;
+    owl:equivalentClass dbpedia:Atheism .
+
+ns1:Civil a owl:Class ;
+    rdfs:label "civil" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:CivilLibertarianism a owl:Class ;
+    rdfs:label "Civil Libertarianism" ;
+    dul:hasQuality ns1:Civil ;
+    rdfs:subClassOf ns1:Libertarianism ;
+    owl:equivalentClass dbpedia:Civil_libertarianism .
+
+ns1:Disgust rdfs:label "disgusted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Female rdfs:label "Sciabarra" .
+
+ns1:Infuriate rdfs:label "infuriated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Left a owl:Class ;
+    rdfs:label "left" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> ;
+    owl:equivalentClass dbpedia:Left-wing_politics .
+
+ns1:Libertarianism a owl:Class ;
+    rdfs:label "libertarianism" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Politics a owl:Class ;
+    rdfs:label "politics" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Politics .
+
+ns1:Pro-capitalist a owl:Class ;
+    rdfs:label "pro-capitalist" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Procapitalist .
+
+ns1:Pro-capitalistPolitics a owl:Class ;
+    rdfs:label "pro-capitalist politics" ;
+    dul:hasQuality ns1:Pro-capitalist ;
+    rdfs:subClassOf ns1:Politics .
+
+ns1:Right a owl:Class ;
+    rdfs:label "right" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Right-wing_politics .
+
+ns1:Write rdfs:label "writes" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:atheism_1 a ns1:Atheism,
+        ns1:CivilLibertarianism ;
+    rdfs:label "atheism" ;
+    ns1:civilLibertarianismOf ns1:Sciabarra .
+
+ns1:disgust_1 a ns1:Disgust ;
+    rdfs:label "disgusted" ;
+    vn.role:Experiencer ns1:right_1 ;
+    vn.role:Oblique ns1:atheism_1 .
+
+ns1:infuriate_1 a ns1:Infuriate ;
+    rdfs:label "infuriated" ;
+    vn.role:Cause ns1:politics_1 ;
+    vn.role:Experiencer ns1:left_1 ;
+    ns1:whereas ns1:disgust_1 .
+
+ns1:left_1 a ns1:Left ;
+    rdfs:label "left" ;
+    quant:hasDeterminer quant:the .
+
+ns1:politics_1 a ns1:Pro-capitalistPolitics ;
+    rdfs:label "politics" ;
+    dul:hasQuality ns1:Anti-communist ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:pro-capitalistPoliticsOf ns1:Sciabarra .
+
+ns1:right_1 a ns1:Right ;
+    rdfs:label "right" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Sciabarra a ns1:Female ;
+    rdfs:label "Sciabarra" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Chris_Matthew_Sciabarra .
+

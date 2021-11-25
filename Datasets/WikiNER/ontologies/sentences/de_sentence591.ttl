@@ -1,0 +1,193 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix fred: <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence591.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fred: rdfs:label ":"^^xsd:string .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#+the+morals+of+the+rational+own+interest> coref:coref ns1:theme_1 .
+
+translation_coherence:de_sentence591.ttl a owl:Ontology ;
+    rdfs:label "de_sentence591" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence591" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Eq rdfs:label "was" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "The theme of the novel was the role of the spirit in the existence of the man - and as a complement to the demonstration of a new moral philosophy: the morals of the rational own interest."^^xsd:string .
+
+ns1:existence_1 a ns1:Existence ;
+    rdfs:label "existence" ;
+    quant:hasDeterminer quant:the .
+
+ns1:role_1 a ns1:Role,
+        ns1:Theme ;
+    rdfs:label "role" ;
+    quant:hasDeterminer quant:the ;
+    ns1:as ns1:complement_1 ;
+    ns1:inExistenceOf ns1:man_1 ;
+    ns1:roleOf ns1:spirit_1 ;
+    ns1:themeOf ns1:novel_1 .
+
+ns1:Complement rdfs:label "complement" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Demonstration rdfs:label "demonstration" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Existence a owl:Class ;
+    rdfs:label "existence" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Existence .
+
+ns1:Interest a owl:Class ;
+    rdfs:label "interest" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Man a owl:Class ;
+    rdfs:label "man" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Human .
+
+ns1:MoralPhilosophy a owl:Class ;
+    rdfs:label "moral philosophy" ;
+    dul:hasQuality ns1:Moral ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic>,
+        ns1:Philosophy ;
+    owl:equivalentClass dbpedia:Ethics .
+
+ns1:New rdfs:label "new" .
+
+ns1:NewMoralPhilosophy a owl:Class ;
+    rdfs:label "New Moral Philosophy" ;
+    rdfs:subClassOf ns1:MoralPhilosophy .
+
+ns1:Novel rdfs:label "novel" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Own a owl:Class ;
+    rdfs:label "own" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:OwnInterest a owl:Class ;
+    rdfs:label "Own Interest" ;
+    dul:hasQuality ns1:Own ;
+    rdfs:subClassOf ns1:Interest .
+
+ns1:Philosophy a owl:Class ;
+    rdfs:label "philosophy" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Rational rdfs:label "rational" ;
+    owl:sameAs dbpedia:Rationality .
+
+ns1:RationalOwnInterest a owl:Class ;
+    rdfs:label "rational own interest" ;
+    rdfs:subClassOf ns1:OwnInterest .
+
+ns1:Spirit a owl:Class ;
+    rdfs:label "spirit" ;
+    rdfs:subClassOf dul:Personification ;
+    owl:equivalentClass dbpedia:Spirit .
+
+ns1:Theme rdfs:label "theme" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic>,
+        ns1:Role .
+
+ns1:complement_1 a ns1:Complement ;
+    rdfs:label "complement" ;
+    quant:hasDeterminer quant:a ;
+    ns1:to ns1:demonstration_1 .
+
+ns1:demonstration_1 a ns1:Demonstration ;
+    rdfs:label "demonstration" ;
+    quant:hasDeterminer quant:the ;
+    ns1:demonstrationOf ns1:philosophy_1 .
+
+ns1:interest_1 a ns1:RationalOwnInterest ;
+    rdfs:label "interest" ;
+    dul:hasQuality ns1:Rational ;
+    quant:hasDeterminer quant:the .
+
+ns1:man_1 a ns1:Man ;
+    rdfs:label "man" ;
+    quant:hasDeterminer quant:the .
+
+ns1:moral_1 a dbpedia:Morality,
+        ns1:Moral ;
+    rdfs:label "morals" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:moralOf ns1:interest_1 .
+
+ns1:novel_1 a ns1:Novel ;
+    rdfs:label "novel" ;
+    quant:hasDeterminer quant:the .
+
+ns1:philosophy_1 a ns1:NewMoralPhilosophy ;
+    rdfs:label "philosophy" ;
+    boxing:declaration ns1:moral_1 ;
+    dul:hasQuality ns1:Moral,
+        ns1:New ;
+    quant:hasDeterminer quant:a .
+
+ns1:spirit_1 a ns1:Spirit ;
+    rdfs:label "spirit" ;
+    quant:hasDeterminer quant:the .
+
+ns1:theme_1 rdfs:label "theme" .
+
+ns1:Role rdfs:label "role" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Moral a owl:Class ;
+    rdfs:label "moral",
+        "morals" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic>,
+        dul:Quality .
+

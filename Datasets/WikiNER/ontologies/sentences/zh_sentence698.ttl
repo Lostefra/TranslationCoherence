@@ -1,0 +1,130 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence698.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+foaf:Person rdfs:label "per" .
+
+translation_coherence:zh_sentence698.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence698" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence698" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Month rdfs:label "months" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "More than 1 million people, 10 per cent of the population, then fled to France and only a few months in 1962."^^xsd:string .
+
+ns1:flee_1 a ns1:ThenFlee ;
+    rdfs:label "fled" ;
+    dul:hasQuality ns1:Then ;
+    vn.role:Theme ns1:people_1 ;
+    ns1:in "1962-01-01"^^xsd:date ;
+    ns1:to ns1:France,
+        ns1:thing_1 .
+
+ns1:month_1 rdfs:label "months" ;
+    quant:hasDeterminer quant:a ;
+    quant:hasQuantifier quant:few,
+        quant:multiple .
+
+dbpedia:France a schema:Country,
+        schema:Place .
+
+ns1:Cent rdfs:label "cent" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:Few rdfs:label "few" .
+
+ns1:FewMonth rdfs:subClassOf owl:Thing .
+
+ns1:Flee rdfs:label "fled" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:France rdfs:label "France" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:France .
+
+ns1:More rdfs:label "More" .
+
+ns1:People rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Population a owl:Class ;
+    rdfs:label "population" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:World_population .
+
+ns1:Than rdfs:label "than" .
+
+ns1:Then rdfs:label "then" .
+
+ns1:ThenFlee rdfs:subClassOf ns1:Flee .
+
+ns1:cent_1 a ns1:Cent ;
+    rdfs:label "cent" .
+
+ns1:people_1 a ns1:People ;
+    rdfs:label "people" ;
+    dul:associatedWith ns1:population_1 ;
+    dul:hasDataValue "1000000"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:More,
+        ns1:Than ;
+    quant:hasQuantifier quant:million,
+        quant:multiple .
+
+ns1:population_1 a ns1:Population ;
+    rdfs:label "population" ;
+    dul:hasDataValue "10"^^xsd:nonNegativeInteger ;
+    quant:hasDeterminer quant:the ;
+    ns1:per ns1:cent_1 .
+
+ns1:thing_1 a owl:Thing,
+        ns1:FewMonth ;
+    dul:hasQuality ns1:Few .
+

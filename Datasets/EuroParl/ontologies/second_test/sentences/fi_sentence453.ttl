@@ -1,0 +1,123 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence453.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%2C> rdfs:label "," .
+
+translation_coherence:fi_sentence453.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence453" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence453" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:capability_1 rdfs:label "capabilities" .
+
+ns1:docuverse earmark:hasContent "To this end, all Member States and Europe shall use all resources and capabilities available, including.uctural Funds."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:resource_1 .
+
+ns1:situation_3 a ns1:Situation ;
+    ns1:entails ns1:situation_4 .
+
+ns1:to_1 a ns1:To ;
+    rdfs:label "To" ;
+    boxer:agent ns1:end_1 .
+
+ns1:use_1 a ns1:Use ;
+    rdfs:label "use" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:associatedWith ns1:fund_1 ;
+    vn.role:Agent ns1:Europe,
+        ns1:Member_states .
+
+dbpedia:Europe a schema:Continent,
+        schema:Place .
+
+ns1:Capability rdfs:label "capabilities" .
+
+ns1:End rdfs:label "end" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Europe rdfs:label "Europe" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:hasQuality ns1:Available ;
+    owl:sameAs dbpedia:Europe .
+
+ns1:Fund rdfs:label "Funds" .
+
+ns1:Including.uctural rdfs:label "including.uctural" .
+
+ns1:Including.ucturalFund rdfs:subClassOf ns1:Fund .
+
+ns1:Member_states rdfs:label "Member States" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:hasQuality ns1:Available .
+
+ns1:Resource rdfs:label "resources" .
+
+ns1:To rdfs:label "To" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Use rdfs:label "use" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:end_1 a ns1:End ;
+    rdfs:label "end" ;
+    quant:hasDeterminer quant:this .
+
+ns1:fund_1 a ns1:Including.ucturalFund ;
+    rdfs:label "Funds" ;
+    dul:hasQuality ns1:Including.uctural ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:situation_4 a ns1:Situation ;
+    boxing:involves ns1:resource_1 .
+
+ns1:Available rdfs:label "available" .
+
+ns1:resource_1 a dbpedia:Resource,
+        ns1:Capability,
+        ns1:Resource ;
+    rdfs:label "resources" ;
+    quant:hasQuantifier quant:all,
+        quant:multiple .
+

@@ -1,0 +1,163 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence463.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence463.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence463" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence463" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Although rdfs:label "although" .
+
+ns1:At rdfs:label "at" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "philanthropic also recognizes the role of sexuality in the production of certain high plants, although this last found losing at a later age."^^xsd:string .
+
+ns1:production_1 a ns1:Production ;
+    rdfs:label "production" ;
+    quant:hasDeterminer quant:the .
+
+ns1:recognize_1 a ns1:AlsoRecognize ;
+    rdfs:label "recognizes" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Agent ns1:philanthropic_1 ;
+    vn.role:Theme ns1:role_1 ;
+    ns1:although ns1:situation_1 .
+
+owl:Thing rdfs:label "this" .
+
+ns1:Age a owl:Class ;
+    rdfs:label "age" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoRecognize rdfs:subClassOf ns1:Recognize .
+
+ns1:Certain rdfs:label "certain" .
+
+ns1:CertainHighPlant rdfs:subClassOf ns1:HighPlant .
+
+ns1:Find rdfs:label "found" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:High rdfs:label "high" .
+
+ns1:HighPlant rdfs:subClassOf ns1:Plant .
+
+ns1:Last rdfs:label "last" .
+
+ns1:LastFind rdfs:subClassOf ns1:Find .
+
+ns1:Later a owl:Class ;
+    rdfs:label "later" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:LaterAge a owl:Class ;
+    rdfs:label "Later Age" ;
+    dul:hasQuality ns1:Later ;
+    rdfs:subClassOf ns1:Age .
+
+ns1:Lose rdfs:label "losing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Philanthropic rdfs:label "philanthropic" .
+
+ns1:Plant rdfs:label "plants" .
+
+ns1:Production rdfs:label "production" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Recognize rdfs:label "recognizes" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Role rdfs:label "role" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Sexuality a owl:Class ;
+    rdfs:label "sexuality" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Sexual_orientation .
+
+ns1:find_1 a ns1:LastFind ;
+    rdfs:label "found" ;
+    dul:hasQuality ns1:Last ;
+    vn.role:Agent ns1:thing_1 .
+
+ns1:lose_1 a ns1:Lose ;
+    rdfs:label "losing" ;
+    vn.role:Agent ns1:thing_1 ;
+    ns1:at ns1:age_1 .
+
+ns1:philanthropic_1 a ns1:Philanthropic ;
+    rdfs:label "philanthropic" .
+
+ns1:plant_1 a ns1:CertainHighPlant ;
+    rdfs:label "plants" ;
+    dul:hasQuality ns1:Certain,
+        ns1:High ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:role_1 a ns1:Role ;
+    rdfs:label "role" ;
+    quant:hasDeterminer quant:the ;
+    ns1:inProductionOf ns1:plant_1 ;
+    ns1:roleOf ns1:sexuality_1 .
+
+ns1:sexuality_1 a ns1:Sexuality ;
+    rdfs:label "sexuality" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:age_1,
+        ns1:find_1,
+        ns1:lose_1 .
+
+ns1:age_1 a ns1:LaterAge ;
+    rdfs:label "age" ;
+    quant:hasDeterminer quant:a,
+        quant:this .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "this" .
+

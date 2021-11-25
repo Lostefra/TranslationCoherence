@@ -1,0 +1,185 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence26.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Oblique rdfs:label "with" .
+
+translation_coherence:zh_sentence26.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence26" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence26" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:To rdfs:label "to" .
+
+ns1:clear_1 a ns1:Clear ;
+    rdfs:label "clear" ;
+    boxer:theme ns1:situation_3 ;
+    vn.role:Patient ns1:Court .
+
+ns1:concern_1 a ns1:Concern ;
+    rdfs:label "concerned" ;
+    vn.role:Experiencer ns1:Court ;
+    vn.role:Oblique ns1:male_1 .
+
+ns1:docuverse earmark:hasContent "All of us here are pleased that the Court is concerned with him and has made it clear that access to environmental information is also constitutional rights in Russia."^^xsd:string .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "made" .
+
+ns1:pleased_1 a ns1:Pleased ;
+    rdfs:label "pleased" ;
+    boxer:agent ns1:thing_1 .
+
+ns1:rights_1 rdfs:label "rights" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:thing_1 ;
+    ns1:entails ns1:situation_2 .
+
+ns1:situation_4 a ns1:Situation ;
+    boxing:involves ns1:Constitutional,
+        ns1:ConstitutionalRights,
+        ns1:Rights,
+        ns1:access_1 ;
+    dul:hasQuality ns1:Also .
+
+dbpedia:Russia a schema:Country,
+        schema:Place .
+
+ns1:Access rdfs:label "access" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Also rdfs:label "also" .
+
+ns1:Clear rdfs:label "clear" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Concern rdfs:label "concerned" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Environmental a owl:Class ;
+    rdfs:label "environmental" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:EnvironmentalInformation a owl:Class ;
+    rdfs:label "environmental information" ;
+    dul:hasQuality ns1:Environmental ;
+    rdfs:subClassOf ns1:Information ;
+    owl:equivalentClass dbpedia:United_Nations_Department_of_Public_Information .
+
+ns1:Here rdfs:label "here" .
+
+ns1:Information a owl:Class ;
+    rdfs:label "information" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Make rdfs:label "made" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Male rdfs:label "him" .
+
+ns1:Person rdfs:label "us" .
+
+ns1:Pleased a owl:Class ;
+    rdfs:label "pleased" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:The_Pleased .
+
+ns1:Russia rdfs:label "Russia" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Russia,
+        dbpedia:Russian_Empire .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "him" .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:person_1,
+        ns1:thing_1 .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves ns1:Constitutional,
+        ns1:ConstitutionalRights,
+        ns1:Rights,
+        ns1:access_1,
+        ns1:information_1 .
+
+owl:Thing rdfs:label "All",
+        "it" .
+
+ns1:Court rdfs:label "Court" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality owl:Thing ;
+    owl:sameAs dbpedia:Court .
+
+ns1:access_1 a ns1:Access,
+        ns1:ConstitutionalRights ;
+    rdfs:label "access" ;
+    ns1:locatedIn ns1:Russia ;
+    ns1:to ns1:information_1 .
+
+ns1:information_1 a ns1:EnvironmentalInformation ;
+    rdfs:label "information" .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "us" .
+
+ns1:Constitutional a owl:Class ;
+    rdfs:label "constitutional" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ConstitutionalRights a owl:Class ;
+    rdfs:label "Constitutional Rights" ;
+    dul:hasQuality ns1:Constitutional ;
+    rdfs:subClassOf ns1:Rights .
+
+ns1:Rights a owl:Class ;
+    rdfs:label "rights" .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "All" ;
+    dul:hasQuality ns1:Here ;
+    ns1:thingOf ns1:person_1 .
+

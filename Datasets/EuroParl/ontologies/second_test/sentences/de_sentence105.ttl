@@ -1,0 +1,238 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence105.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%2C> rdfs:label "," .
+
+translation_coherence:de_sentence105.ttl a owl:Ontology ;
+    rdfs:label "de_sentence105" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence105" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Entails rdfs:label "if" .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:action_1 a ns1:Action ;
+    rdfs:label "action" ;
+    dul:associatedWith ns1:plan_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:docuverse earmark:hasContent "President of the Commission, I would like to repeat that the Commission discussed the action plan for the next five years and, if the Parliament decides, this week, if the decision is, we are ready to adopt the programme for the next five years and next month, the 2000 programme we have fully agreed."^^xsd:string .
+
+ns1:like_1 a ns1:Like ;
+    rdfs:label "like" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Experiencer ns1:President ;
+    vn.role:Theme ns1:repeat_1 .
+
+ns1:ActionPlan a owl:Class ;
+    rdfs:label "Action Plan" ;
+    dul:associatedWith ns1:Action ;
+    rdfs:subClassOf ns1:Plan .
+
+ns1:Adopt rdfs:label "adopt" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Agree rdfs:label "agreed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Decide rdfs:label "decides" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Decision a owl:Class ;
+    rdfs:label "decision" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Voices_of_Animals_and_Men .
+
+ns1:Discuss rdfs:label "discussed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Fully rdfs:label "fully" .
+
+ns1:FullyAgree rdfs:subClassOf ns1:Agree .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Like rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Month rdfs:label "month" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Parliament rdfs:label "Parliament" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Parliament .
+
+ns1:Plan a owl:Class ;
+    rdfs:label "plan" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Programme rdfs:label "programme" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Ready rdfs:label "ready" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Repeat rdfs:label "repeat" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Week rdfs:label "week" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Year rdfs:label "years" .
+
+ns1:adopt_1 a ns1:Adopt ;
+    rdfs:label "adopt" ;
+    dul:associatedWith ns1:month_1,
+        ns1:programme_1 ;
+    dul:hasQuality ns1:Next ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Theme ns1:programme_1 ;
+    ns1:for ns1:year_1 .
+
+ns1:agree_1 a ns1:FullyAgree ;
+    rdfs:label "agreed" ;
+    boxer:patient ns1:programme_1 ;
+    dul:hasQuality ns1:Fully .
+
+ns1:decide_1 a ns1:Decide ;
+    rdfs:label "decides" ;
+    boxer:agent ns1:Parliament,
+        ns1:decision_1 ;
+    ns1:entails ns1:ready_1 .
+
+ns1:decision_1 a ns1:Decision ;
+    rdfs:label "decision" ;
+    quant:hasDeterminer quant:the .
+
+ns1:discuss_1 a ns1:Discuss ;
+    rdfs:label "discussed" ;
+    boxer:agent ns1:Commission ;
+    boxer:patient ns1:plan_1 ;
+    ns1:for ns1:year_1 .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "have" ;
+    vn.role:Agent ns1:person_3 ;
+    vn.role:Patient ns1:programme_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:repeat_1 a ns1:Repeat ;
+    rdfs:label "repeat" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:President ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:decide_1,
+        ns1:discuss_1,
+        ns1:ready_1,
+        ns1:situation_2 .
+
+ns1:week_1 a ns1:Week ;
+    rdfs:label "week" ;
+    quant:hasDeterminer quant:this .
+
+ns1:Action a owl:Class ;
+    rdfs:label "action" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Commission rdfs:label "Commission" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:person_1 .
+
+ns1:Next rdfs:label "Next",
+        "next" .
+
+ns1:President rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:President ;
+    ns1:of ns1:Commission .
+
+ns1:month_1 a ns1:Month ;
+    rdfs:label "month" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:plan_1 a ns1:ActionPlan ;
+    rdfs:label "plan" .
+
+ns1:ready_1 a ns1:Ready ;
+    rdfs:label "ready" ;
+    dul:associatedWith ns1:week_1 ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Product ns1:situation_2 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:adopt_1,
+        ns1:agree_1,
+        ns1:have_1,
+        ns1:month_1 .
+
+ns1:year_1 a ns1:Year ;
+    rdfs:label "years" ;
+    dul:hasDataValue "5"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:Next ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:five,
+        quant:multiple .
+
+ns1:Person rdfs:label "I",
+        "we" .
+
+ns1:programme_1 a ns1:Programme ;
+    rdfs:label "programme" ;
+    quant:hasDeterminer quant:the ;
+    ns1:at "2000-01-01"^^xsd:date .
+

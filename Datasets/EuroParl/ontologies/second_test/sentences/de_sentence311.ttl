@@ -1,0 +1,152 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence311.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence311.ttl a owl:Ontology ;
+    rdfs:label "de_sentence311" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence311" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Theme rdfs:label "possible" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "This will be possible with government interventions, and such a D. of higher education will be an undisputable policy in the evening of development."^^xsd:string .
+
+ns1:government_1 a ns1:Government ;
+    rdfs:label "government" ;
+    dul:associatedWith ns1:intervention_1 ;
+    quant:hasDeterminer quant:this .
+
+ns1:policy_1 rdfs:label "policy" ;
+    quant:hasDeterminer quant:an .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves <https://w3id.org/stlab/ke/amiala/de_sentence311.ttl/D.>,
+        ns1:development_1,
+        ns1:education_1,
+        ns1:evening_1,
+        ns1:intervention_1,
+        ns1:thing_1,
+        ns1:thing_2 ;
+    ns1:with ns1:intervention_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves <https://w3id.org/stlab/ke/amiala/de_sentence311.ttl/D.>,
+        ns1:development_1 .
+
+ns1:Development rdfs:label "development" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Education a owl:Class ;
+    rdfs:label "education" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Evening rdfs:label "evening" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Government rdfs:label "government" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:GovernmentIntervention rdfs:subClassOf ns1:Intervention .
+
+ns1:Higher a owl:Class ;
+    rdfs:label "higher" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:HigherEducation a owl:Class ;
+    rdfs:label "Higher Education" ;
+    dul:hasQuality ns1:Higher ;
+    rdfs:subClassOf ns1:Education .
+
+ns1:Intervention rdfs:label "interventions" .
+
+ns1:Policy a owl:Class ;
+    rdfs:label "D.",
+        "policy" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Such rdfs:label "such" .
+
+ns1:Undisputable a owl:Class ;
+    rdfs:label "undisputable" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:UndisputablePolicy a owl:Class ;
+    rdfs:label "Undisputable Policy" ;
+    dul:hasQuality ns1:Undisputable ;
+    rdfs:subClassOf ns1:Policy .
+
+ns1:evening_1 a ns1:Evening ;
+    rdfs:label "evening" ;
+    quant:hasDeterminer quant:the .
+
+ns1:thing_1 a owl:Thing ;
+    boxer:theme ns1:thing_2 .
+
+owl:Thing rdfs:label "This" .
+
+<https://w3id.org/stlab/ke/amiala/de_sentence311.ttl/D.> a ns1:UndisputablePolicy ;
+    rdfs:label "D.",
+        "policy" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Such ;
+    ns1:inEveningOf ns1:development_1 ;
+    ns1:undisputablePolicyOf ns1:education_1 .
+
+ns1:education_1 a ns1:HigherEducation ;
+    rdfs:label "education" .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "This" .
+
+ns1:development_1 a ns1:Development ;
+    rdfs:label "development" .
+
+ns1:intervention_1 a ns1:GovernmentIntervention ;
+    rdfs:label "interventions" ;
+    quant:hasQuantifier quant:multiple .
+

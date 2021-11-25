@@ -1,0 +1,199 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence491.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:en_sentence491.ttl a owl:Ontology ;
+    rdfs:label "en_sentence491" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence491" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Few rdfs:label "few" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "Mr President, I would like to say a few words in order to highlight two points made in these reports which are of fundamental strategic importance to the way we see the Union."^^xsd:string .
+
+ns1:like_1 a ns1:Like ;
+    rdfs:label "like" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:associatedWith ns1:President ;
+    vn.role:Experiencer ns1:person_1 ;
+    vn.role:Theme ns1:say_1 .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> a ns1:Topic ;
+    rdfs:label "Mr" ;
+    boxer:possibleType dul:Role .
+
+ns1:FewWord rdfs:subClassOf ns1:Word .
+
+ns1:Fundamental rdfs:label "fundamental" .
+
+ns1:FundamentalStrategicImportance a owl:Class ;
+    rdfs:label "Fundamental Strategic Importance" ;
+    rdfs:subClassOf ns1:StrategicImportance .
+
+ns1:Highlight rdfs:label "highlight" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Importance a owl:Class ;
+    rdfs:label "importance" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Like rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Make rdfs:label "made" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Order rdfs:label "order" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Point rdfs:label "points" .
+
+ns1:President a ns1:Topic ;
+    rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    owl:sameAs dbpedia:President .
+
+ns1:Report rdfs:label "reports" .
+
+ns1:Say rdfs:label "say" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:See rdfs:label "see" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Strategic a owl:Class ;
+    rdfs:label "strategic" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:StrategicImportance a owl:Class ;
+    rdfs:label "strategic importance" ;
+    dul:hasQuality ns1:Strategic ;
+    rdfs:subClassOf ns1:Importance .
+
+ns1:Union rdfs:label "Union" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Way rdfs:label "way" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Word rdfs:label "words" .
+
+ns1:highlight_1 a ns1:Highlight ;
+    rdfs:label "highlight" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Patient ns1:point_1 .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "made" ;
+    vn.role:Theme ns1:point_1 ;
+    ns1:in ns1:report_1 .
+
+ns1:order_1 a ns1:Order ;
+    rdfs:label "order" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:report_1 a ns1:Report ;
+    rdfs:label "reports" ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:reportOf ns1:importance_1 .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "say" ;
+    boxer:patient ns1:word_1 ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Topic ns1:situation_1 ;
+    ns1:in ns1:order_1 .
+
+ns1:see_1 a ns1:See ;
+    rdfs:label "see" ;
+    dul:associatedWith ns1:way_1 ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Theme ns1:Union .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:highlight_1,
+        ns1:importance_1,
+        ns1:make_1,
+        ns1:point_1,
+        ns1:see_1 .
+
+ns1:word_1 a ns1:FewWord ;
+    rdfs:label "words" ;
+    quant:hasDeterminer quant:a ;
+    quant:hasQuantifier quant:few,
+        quant:multiple .
+
+ns1:Person rdfs:label "I",
+        "we" .
+
+ns1:Topic rdfs:label "Mr",
+        "President" .
+
+ns1:importance_1 a ns1:FundamentalStrategicImportance ;
+    rdfs:label "importance" ;
+    dul:hasQuality ns1:Fundamental ;
+    ns1:to ns1:way_1 .
+
+ns1:way_1 a ns1:Way ;
+    rdfs:label "way" ;
+    quant:hasDeterminer quant:the .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:point_1 a ns1:Point ;
+    rdfs:label "points" ;
+    dul:hasDataValue "2"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple,
+        quant:two .
+

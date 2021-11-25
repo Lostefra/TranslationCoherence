@@ -1,0 +1,121 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence24.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme rdfs:label "In" .
+
+translation_coherence:zh_sentence24.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence24" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence24" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Towards rdfs:label "towards" .
+
+ns1:docuverse earmark:hasContent "In the February and October revolution, a architect joined the Bolsheviks, who initially made a strong attitude towards Bolshevik_coup."^^xsd:string .
+
+ns1:join_1 a ns1:Join ;
+    rdfs:label "joined" ;
+    boxer:patient ns1:Bolsheviks ;
+    vn.role:Actor ns1:architect_1 ;
+    vn.role:Theme ns1:revolution_1 .
+
+ns1:make_1 a ns1:InitiallyMake ;
+    rdfs:label "made" ;
+    dul:hasQuality ns1:Initially ;
+    vn.role:Agent ns1:Bolsheviks ;
+    vn.role:Theme ns1:attitude_1 ;
+    ns1:towards ns1:Bolshevik_coup .
+
+ns1:Architect rdfs:label "architect" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Attitude a owl:Class ;
+    rdfs:label "attitude" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Bolshevik_coup rdfs:label "Bolshevik coup" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:October_Revolution .
+
+ns1:Initially rdfs:label "initially" .
+
+ns1:InitiallyMake rdfs:subClassOf ns1:Make .
+
+ns1:Join rdfs:label "joined" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Make rdfs:label "made" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Revolution a owl:Class ;
+    rdfs:label "revolution" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:October_Revolution .
+
+ns1:Strong a owl:Class ;
+    rdfs:label "strong" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:StrongAttitude a owl:Class ;
+    rdfs:label "strong attitude" ;
+    dul:hasQuality ns1:Strong ;
+    rdfs:subClassOf ns1:Attitude .
+
+ns1:architect_1 a ns1:Architect ;
+    rdfs:label "architect" ;
+    quant:hasDeterminer quant:a .
+
+ns1:attitude_1 a ns1:StrongAttitude ;
+    rdfs:label "attitude" ;
+    quant:hasDeterminer quant:a .
+
+ns1:revolution_1 a ns1:Revolution ;
+    rdfs:label "revolution" ;
+    ns1:at "0001-02-01"^^xsd:date,
+        "0001-10-01"^^xsd:date .
+
+dbpedia:October_Revolution a schema:Event ;
+    rdfs:subClassOf schema:Event .
+
+ns1:Bolsheviks rdfs:label "Bolsheviks" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Bolshevik,
+        dbpedia:Bolsheviks .
+

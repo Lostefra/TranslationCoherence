@@ -1,0 +1,197 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence697.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Instrument rdfs:label "with" .
+
+vn.role:Topic rdfs:label "On" .
+
+translation_coherence:zh_sentence697.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence697" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence697" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:By rdfs:label "by" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Onpointof rdfs:label "on a point of" .
+
+ns1:docuverse earmark:hasContent "On that point, I must inform the European_Parliament that, by 2000, I intend to organize a seminar with national and regional authorities on a point of order to evaluate good practices in the management of the structural funds."^^xsd:string .
+
+ns1:inform_1 a ns1:Inform ;
+    rdfs:label "inform" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Recipient ns1:european_parliament_1 ;
+    vn.role:Topic ns1:point_1 .
+
+ns1:management_1 a ns1:Management ;
+    rdfs:label "management" ;
+    quant:hasDeterminer quant:the .
+
+dbpedia:European_Parliament rdfs:subClassOf schema:Organization .
+
+ns1:Authority rdfs:label "authorities" .
+
+ns1:European_parliament a owl:Class ;
+    rdfs:label "European Parliament" ;
+    owl:equivalentClass dbpedia:European_Parliament .
+
+ns1:Evaluate rdfs:label "evaluate" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Fund rdfs:label "funds" .
+
+ns1:Good rdfs:label "good" .
+
+ns1:GoodPractice rdfs:subClassOf ns1:Practice .
+
+ns1:Inform rdfs:label "inform" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Intend rdfs:label "intend" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Management rdfs:label "management" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:National rdfs:label "national" .
+
+ns1:Order a owl:Class ;
+    rdfs:label "order" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Point_of_order .
+
+ns1:Organize rdfs:label "organize" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Practice rdfs:label "practices" .
+
+ns1:Regional rdfs:label "regional" .
+
+ns1:RegionalAuthority rdfs:subClassOf ns1:Authority .
+
+ns1:Seminar rdfs:label "seminar" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Structural rdfs:label "structural" ;
+    owl:sameAs dbpedia:Structural_Funds_and_Cohesion_Fund .
+
+ns1:StructuralFund rdfs:subClassOf ns1:Fund .
+
+ns1:european_parliament_1 a ns1:European_parliament ;
+    rdfs:label "European Parliament" ;
+    boxer:theme ns1:intend_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:evaluate_1 a ns1:Evaluate ;
+    rdfs:label "evaluate" ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Theme ns1:practice_1 .
+
+ns1:fund_1 a ns1:StructuralFund ;
+    rdfs:label "funds" ;
+    dul:hasQuality ns1:Structural ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:intend_1 a ns1:Intend ;
+    rdfs:label "intend" ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Predicate ns1:situation_1 ;
+    ns1:intendBy "2000-01-01"^^xsd:date .
+
+ns1:organize_1 a ns1:Organize ;
+    rdfs:label "organize" ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Instrument ns1:authority_1 ;
+    vn.role:Theme ns1:seminar_1 ;
+    ns1:onPointOf ns1:order_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:point_1 a ns1:Point ;
+    rdfs:label "point" ;
+    quant:hasDeterminer quant:that .
+
+ns1:point_2 a ns1:Point ;
+    rdfs:label "point" ;
+    quant:hasDeterminer quant:a .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:authority_1,
+        ns1:evaluate_1,
+        ns1:order_1,
+        ns1:organize_1,
+        ns1:point_2,
+        ns1:practice_1,
+        ns1:seminar_1 .
+
+ns1:Person rdfs:label "I" .
+
+ns1:Point rdfs:label "point" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:authority_1 a ns1:RegionalAuthority ;
+    rdfs:label "authorities" ;
+    dul:hasQuality ns1:National,
+        ns1:Regional ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:order_1 a ns1:Order ;
+    rdfs:label "order" .
+
+ns1:practice_1 a ns1:GoodPractice ;
+    rdfs:label "practices" ;
+    dul:hasQuality ns1:Good ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:inManagementOf ns1:fund_1 .
+
+ns1:seminar_1 a ns1:Seminar ;
+    rdfs:label "seminar" ;
+    quant:hasDeterminer quant:a .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "I" .
+

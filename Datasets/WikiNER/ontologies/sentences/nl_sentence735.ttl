@@ -1,0 +1,190 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence735.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:nl_sentence735.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence735" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence735" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:From rdfs:label "from" .
+
+ns1:In rdfs:label "In",
+        "in" .
+
+ns1:Noteq rdfs:label "other" .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:State-of-the-art rdfs:label "state-of-the-art" .
+
+ns1:air-defense_1 a ns1:Air-defense ;
+    rdfs:label "air-defense" ;
+    dul:associatedWith ns1:system_1 .
+
+ns1:combat_1 a ns1:Combat ;
+    rdfs:label "combat" ;
+    dul:associatedWith ns1:plane_1 .
+
+ns1:docuverse earmark:hasContent "In return, President Bouteflika wanted to buy 7.5 billion dollars in combat planes, air-defense systems and other weapons from Russia, in the opinion of the head of Russia's state-of-the-art export Roboros."^^xsd:string .
+
+ns1:export_1 a ns1:Export ;
+    rdfs:label "export" ;
+    dul:associatedWith ns1:roboro_1 .
+
+ns1:opinion_1 a ns1:Opinion ;
+    rdfs:label "opinion" ;
+    quant:hasDeterminer quant:the .
+
+ns1:want_1 a ns1:Want ;
+    rdfs:label "wanted" ;
+    vn.role:Experiencer ns1:Bouteflika ;
+    vn.role:Theme ns1:buy_1 ;
+    ns1:in ns1:return_1 .
+
+dbpedia:Russia a schema:Country,
+        schema:Place .
+
+ns1:Air-defense rdfs:label "air-defense" .
+
+ns1:Air-defenseSystem rdfs:subClassOf ns1:System .
+
+ns1:Buy rdfs:label "buy" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Combat rdfs:label "combat" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:CombatPlane rdfs:subClassOf ns1:Plane .
+
+ns1:Dollar rdfs:label "dollars" .
+
+ns1:Export rdfs:label "export" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:ExportRoboro rdfs:subClassOf ns1:Roboro .
+
+ns1:Head rdfs:label "head" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Opinion rdfs:label "opinion" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Plane rdfs:label "planes" .
+
+ns1:Return rdfs:label "return" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Roboro rdfs:label "Roboros" .
+
+ns1:State-of-the-artExportRoboro rdfs:subClassOf ns1:ExportRoboro .
+
+ns1:System rdfs:label "systems" .
+
+ns1:Want rdfs:label "wanted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:buy_1 a ns1:Buy ;
+    rdfs:label "buy" ;
+    vn.role:Agent ns1:Bouteflika ;
+    vn.role:Theme ns1:dollar_1 .
+
+ns1:dollar_1 a ns1:Dollar ;
+    rdfs:label "dollars" ;
+    dul:hasDataValue "7500000000.0"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:billion,
+        quant:multiple ;
+    ns1:dollarOf ns1:roboro_1 ;
+    ns1:from ns1:Russia ;
+    ns1:in ns1:plane_1 ;
+    ns1:inOpinionOf ns1:head_1 .
+
+ns1:head_1 a ns1:Head ;
+    rdfs:label "head" ;
+    quant:hasDeterminer quant:the .
+
+ns1:return_1 a ns1:Return ;
+    rdfs:label "return" .
+
+ns1:weapon_1 a ns1:Weapon ;
+    rdfs:label "other" ;
+    owl:differentFrom ns1:weapon_2 .
+
+ns1:weapon_2 a ns1:Weapon ;
+    rdfs:label "weapons" ;
+    quant:hasDeterminer quant:other ;
+    quant:hasQuantifier quant:multiple .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#President> rdfs:label "President" ;
+    boxer:possibleType dul:Role ;
+    owl:sameAs dbpedia:President .
+
+ns1:Bouteflika rdfs:label "Bouteflika" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#President> ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#President> .
+
+ns1:Russia rdfs:label "Russia" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Russia .
+
+ns1:Weapon rdfs:label "other",
+        "weapons" .
+
+ns1:plane_1 a ns1:CombatPlane ;
+    rdfs:label "planes" ;
+    dul:associatedWith ns1:system_1,
+        ns1:weapon_1 ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:roboro_1 a ns1:State-of-the-artExportRoboro ;
+    rdfs:label "Roboros" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:state-of-the-artExportRoboroOf ns1:Russia .
+
+ns1:system_1 a ns1:Air-defenseSystem ;
+    rdfs:label "systems" ;
+    quant:hasQuantifier quant:multiple .
+

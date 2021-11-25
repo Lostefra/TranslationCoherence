@@ -1,0 +1,150 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence593.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence593.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence593" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence593" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Why rdfs:label "why" .
+
+ns1:docuverse earmark:hasContent "We need a deep analysis now why regional policy doesn't produce the most wanted result in all areas."^^xsd:string .
+
+ns1:need_1 a ns1:Need ;
+    rdfs:label "need" ;
+    dul:hasQuality ns1:Now ;
+    vn.role:Experiencer ns1:person_1 ;
+    vn.role:Theme ns1:have_1 .
+
+ns1:Analysis a owl:Class ;
+    rdfs:label "analysis" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Area rdfs:label "areas" .
+
+ns1:Deep a owl:Class ;
+    rdfs:label "deep" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:DeepAnalysis a owl:Class ;
+    rdfs:label "Deep Analysis" ;
+    dul:hasQuality ns1:Deep ;
+    rdfs:subClassOf ns1:Analysis .
+
+ns1:Have rdfs:subClassOf dul:Event .
+
+ns1:Most rdfs:label "most" .
+
+ns1:MostWantedResult a owl:Class ;
+    rdfs:label "Most Wanted Result" ;
+    rdfs:subClassOf ns1:WantedResult .
+
+ns1:Need rdfs:label "need" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Now rdfs:label "now" .
+
+ns1:Person rdfs:label "We" .
+
+ns1:Policy a owl:Class ;
+    rdfs:label "policy" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Produce rdfs:label "produce" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:RegionalPolicy a owl:Class ;
+    rdfs:label "regional policy" ;
+    dul:hasQuality ns1:Regional ;
+    rdfs:subClassOf ns1:Policy .
+
+ns1:Result a owl:Class ;
+    rdfs:label "result" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Wanted a owl:Class ;
+    rdfs:label "wanted" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:WantedResult a owl:Class ;
+    rdfs:label "wanted result" ;
+    dul:hasQuality ns1:Wanted ;
+    rdfs:subClassOf ns1:Result .
+
+ns1:analysis_1 a ns1:DeepAnalysis ;
+    rdfs:label "analysis" ;
+    quant:hasDeterminer quant:a ;
+    ns1:why ns1:produce_1 .
+
+ns1:area_1 a ns1:Area ;
+    rdfs:label "areas" ;
+    quant:hasQuantifier quant:all,
+        quant:multiple .
+
+ns1:have_1 a ns1:Have ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Patient ns1:analysis_1 .
+
+ns1:policy_1 a ns1:RegionalPolicy ;
+    rdfs:label "policy" ;
+    dul:hasQuality ns1:Regional .
+
+ns1:produce_1 a ns1:Produce ;
+    rdfs:label "produce" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:policy_1 ;
+    vn.role:Theme ns1:result_1 ;
+    ns1:in ns1:area_1 .
+
+ns1:result_1 a ns1:MostWantedResult ;
+    rdfs:label "result" ;
+    dul:hasQuality ns1:Most ;
+    quant:hasDeterminer quant:the .
+
+ns1:Regional a owl:Class ;
+    rdfs:label "regional" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "We" .
+

@@ -1,0 +1,188 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence453.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence453.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence453" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence453" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "For" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:Than rdfs:label "than" .
+
+ns1:claim_1 a ns1:Claim ;
+    rdfs:label "claimed" ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Theme ns1:situation_1 ;
+    ns1:for ns1:example_1 ;
+    ns1:in ns1:history_1 .
+
+ns1:docuverse earmark:hasContent "For example, in his history of animals, he claimed that human males have more teeth than females and in the generations of animals, he said the female was a deformed man."^^xsd:string .
+
+ns1:generation_1 a ns1:Generation ;
+    rdfs:label "generations" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "said" ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Topic ns1:situation_2 .
+
+ns1:Claim rdfs:label "claimed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Example rdfs:label "example" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Generation rdfs:label "generations" .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:History rdfs:label "history" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Human rdfs:label "human" ;
+    owl:sameAs dbpedia:Human .
+
+ns1:HumanMale rdfs:subClassOf ns1:Male .
+
+ns1:More rdfs:label "more" .
+
+ns1:MoreTooth rdfs:subClassOf ns1:Tooth .
+
+ns1:Say rdfs:label "said" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Tooth a owl:Class ;
+    rdfs:label "teeth" ;
+    owl:equivalentClass dbpedia:Tooth .
+
+ns1:animal_1 a dbpedia:History_of_Animals,
+        ns1:Animal ;
+    rdfs:label "animals" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:example_1 a ns1:Example ;
+    rdfs:label "example" .
+
+ns1:female_2 a ns1:DeformedMan,
+        ns1:Female ;
+    rdfs:label "female" ;
+    dul:hasQuality ns1:Deformed ;
+    quant:hasDeterminer quant:the ;
+    owl:sameAs ns1:man_1 .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "have" ;
+    vn.role:Agent ns1:male_2 ;
+    vn.role:Patient ns1:tooth_1 .
+
+ns1:history_1 a ns1:History ;
+    rdfs:label "history" ;
+    ns1:historyOf ns1:animal_1,
+        ns1:male_1 .
+
+ns1:man_1 a ns1:Man ;
+    rdfs:label "man" ;
+    quant:hasDeterminer quant:a .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:animal_2,
+        ns1:female_1,
+        ns1:have_1,
+        ns1:male_2,
+        ns1:tooth_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Deformed,
+        ns1:DeformedMan,
+        ns1:Man,
+        ns1:female_2 .
+
+ns1:Animal rdfs:label "animals" .
+
+ns1:Deformed rdfs:label "deformed" .
+
+ns1:DeformedMan rdfs:label "deformed man" ;
+    rdfs:subClassOf ns1:Man .
+
+ns1:Female rdfs:label "female",
+        "females" ;
+    rdfs:subClassOf dul:Organism .
+
+ns1:Male rdfs:label "he",
+        "males" .
+
+ns1:animal_2 a ns1:Animal ;
+    rdfs:label "animals" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:female_1 a ns1:Female ;
+    rdfs:label "females" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:male_2 a ns1:HumanMale ;
+    rdfs:label "males" ;
+    dul:hasQuality ns1:Human ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:tooth_1 a ns1:MoreTooth ;
+    rdfs:label "teeth" ;
+    dul:hasQuality ns1:More ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:inGenerationOf ns1:animal_2 ;
+    ns1:than ns1:female_1 .
+
+ns1:Man rdfs:label "Man",
+        "man" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "he",
+        "his" .
+

@@ -1,0 +1,110 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence234.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Proposition rdfs:label "to" .
+
+translation_coherence:nl_sentence234.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence234" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence234" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "The procedures for the exercise of these implementing forces that matched the committee were reduced to the Council of June 1999."^^xsd:string .
+
+ns1:exercise_1 a ns1:Exercise ;
+    rdfs:label "exercise" ;
+    quant:hasDeterminer quant:the .
+
+ns1:implement_1 a ns1:Implement ;
+    rdfs:label "implementing" ;
+    vn.role:Agent ns1:force_1 .
+
+ns1:match_1 a ns1:Match ;
+    rdfs:label "matched" ;
+    vn.role:Agent ns1:force_1 ;
+    vn.role:Patient ns1:committee_1 .
+
+ns1:reduce_1 a ns1:Reduce ;
+    rdfs:label "reduced" ;
+    vn.role:Patient ns1:procedure_1 ;
+    vn.role:Proposition ns1:Council .
+
+ns1:Committee rdfs:label "committee" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Council rdfs:label "Council" ;
+    boxer:possibleType foaf:Organisation ;
+    ns1:of "1999-06-01"^^xsd:date .
+
+ns1:Exercise rdfs:label "exercise" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Force rdfs:label "forces" .
+
+ns1:Implement rdfs:label "implementing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Match rdfs:label "matched" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Procedure rdfs:label "procedures" .
+
+ns1:Reduce rdfs:label "reduced" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:committee_1 a ns1:Committee ;
+    rdfs:label "committee" ;
+    quant:hasDeterminer quant:the .
+
+ns1:procedure_1 a ns1:Procedure ;
+    rdfs:label "procedures" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:forExerciseOf ns1:force_1 .
+
+ns1:force_1 a ns1:Force ;
+    rdfs:label "forces" ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple .
+

@@ -1,0 +1,119 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence404.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence404.ttl a owl:Ontology ;
+    rdfs:label "en_sentence404" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence404" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:change_1 a ns1:Change ;
+    boxer:patient ns1:plan_1 ;
+    vn.role:Agent ns1:Booth ;
+    vn.role:Theme ns1:attend_1 .
+
+ns1:determine_1 a ns1:Determine ;
+    vn.role:Agent ns1:Booth ;
+    vn.role:Theme ns1:assassinate_1 ;
+    ns1:after ns1:attend_1 .
+
+ns1:promote_1 a ns1:Promote ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Theme ns1:rights_1 ;
+    ns1:for ns1:black_1 ;
+    ns1:in ns1:speech_1 .
+
+ns1:voting_1 a ns1:Voting ;
+    dul:associatedWith ns1:rights_1 .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+ns1:Assassinate rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Assassination .
+
+ns1:Attend rdfs:subClassOf dul:Event .
+
+ns1:Change rdfs:subClassOf dul:Event .
+
+ns1:Determine rdfs:subClassOf dul:Event .
+
+ns1:President rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:President_of_the_United_States .
+
+ns1:Promote rdfs:subClassOf dul:Event .
+
+ns1:Speech rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:VotingRights dul:associatedWith ns1:Voting ;
+    rdfs:subClassOf ns1:Rights ;
+    owl:equivalentClass dbpedia:Suffrage .
+
+ns1:assassinate_1 a ns1:Assassinate ;
+    vn.role:Agent ns1:Booth ;
+    vn.role:Patient ns1:president_1 .
+
+ns1:black_1 a ns1:Black ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:plan_1 a ns1:Plan ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:planOf ns1:Lincoln .
+
+ns1:president_1 a ns1:President ;
+    quant:hasDeterminer quant:the .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:Lincoln a ns1:Male ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+
+ns1:Voting rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:attend_1 a ns1:Attend ;
+    boxer:patient ns1:speech_1 ;
+    vn.role:Experiencer ns1:thing_1 .
+
+ns1:rights_1 a ns1:VotingRights ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:speech_1 a ns1:Speech ;
+    ns1:at "0001-04-11"^^xsd:date .
+
+ns1:Booth dul:hasQuality ns1:Incensed .
+

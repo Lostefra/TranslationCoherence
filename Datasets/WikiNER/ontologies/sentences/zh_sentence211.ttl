@@ -1,0 +1,142 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence211.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "As" .
+
+translation_coherence:zh_sentence211.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence211" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence211" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Quantity rdfs:label "many" .
+
+ns1:docuverse earmark:hasContent "As a result of the deaths of Pateque Lus, the Ahle stopped fighting and killed many men on the ground, but always sought to go out."^^xsd:string .
+
+ns1:kill_1 a ns1:Kill ;
+    rdfs:label "killed" ;
+    vn.role:Agent ns1:Ahle ;
+    vn.role:Location ns1:result_1 ;
+    vn.role:Patient ns1:man_1 ;
+    ns1:on ns1:ground_1 .
+
+ns1:seek_1 a ns1:AlwaysSeek ;
+    rdfs:label "sought" ;
+    boxer:theme ns1:go_1 ;
+    dul:hasQuality ns1:Always ;
+    vn.role:Agent ns1:Ahle ;
+    vn.role:Location ns1:result_1 .
+
+ns1:stop_1 a ns1:Stop ;
+    rdfs:label "stopped" ;
+    vn.role:Agent ns1:Ahle ;
+    vn.role:Location ns1:result_1 ;
+    vn.role:Theme ns1:fight_1 .
+
+ns1:Always rdfs:label "always" .
+
+ns1:AlwaysSeek rdfs:subClassOf ns1:Seek .
+
+ns1:Death rdfs:label "deaths" .
+
+ns1:Fight rdfs:label "fighting" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Go rdfs:label "go" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Ground rdfs:label "ground" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Kill rdfs:label "killed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Man rdfs:label "men" .
+
+ns1:Out rdfs:label "out" .
+
+ns1:Pateque_lus rdfs:label "Pateque Lus" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Result rdfs:label "result" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Seek rdfs:label "sought" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Stop rdfs:label "stopped" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:death_1 a ns1:Death ;
+    rdfs:label "deaths" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:deathOf ns1:Pateque_lus .
+
+ns1:fight_1 a ns1:Fight ;
+    rdfs:label "fighting" ;
+    vn.role:Actor ns1:Ahle .
+
+ns1:go_1 a ns1:Go ;
+    rdfs:label "go" ;
+    dul:hasQuality ns1:Out ;
+    vn.role:Theme ns1:Ahle .
+
+ns1:ground_1 a ns1:Ground ;
+    rdfs:label "ground" ;
+    quant:hasDeterminer quant:the .
+
+ns1:man_1 a ns1:Man ;
+    rdfs:label "men" ;
+    quant:hasQuantifier quant:many,
+        quant:multiple .
+
+ns1:result_1 a ns1:Result ;
+    rdfs:label "result" ;
+    quant:hasDeterminer quant:a ;
+    ns1:resultOf ns1:death_1 .
+
+ns1:Ahle rdfs:label "Ahle" ;
+    boxer:possibleType foaf:Organisation .
+

@@ -1,0 +1,208 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence33.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Destination rdfs:label "to" .
+
+vn.role:Location rdfs:label "when" ;
+    owl:sameAs dbpedia:When_We_On .
+
+vn.role:Proposition rdfs:label "for" .
+
+translation_coherence:fi_sentence33.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence33" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence33" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Although rdfs:label "Although" .
+
+ns1:Because rdfs:label "because" .
+
+ns1:channel_1 rdfs:label "channels" ;
+    quant:hasQuantifier quant:multiple,
+        quant:two .
+
+ns1:channel_2 rdfs:label "channels" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:channel_3 rdfs:label "channels" ;
+    quant:hasQuantifier quant:multiple,
+        quant:no .
+
+ns1:docuverse earmark:hasContent "Although there are now two Finnish channels and Portuguese channels, there are no Dutch channels that I would have asked for because the Dutch want to follow the news even when we are sent to exile every month."^^xsd:string .
+
+ns1:portuguese_1 a ns1:Portuguese ;
+    rdfs:label "Portuguese" ;
+    dul:associatedWith ns1:there_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:there_1 ;
+    ns1:although ns1:situation_2 .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves ns1:there_1 ;
+    dul:hasQuality ns1:Now .
+
+dbpedia:Dutch_language a schema:Language .
+
+dbpedia:Finland a schema:Country,
+        schema:Place .
+
+dbpedia:Portugal rdfs:subClassOf schema:Country,
+        schema:Place .
+
+ns1:Ask rdfs:label "asked" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:DutchChannel rdfs:subClassOf ns1:Channel .
+
+ns1:Even rdfs:label "even" .
+
+ns1:Exile rdfs:label "exile" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Finnish rdfs:label "Finnish" ;
+    owl:sameAs dbpedia:Finland .
+
+ns1:FinnishChannel rdfs:subClassOf ns1:Channel .
+
+ns1:Follow rdfs:label "follow" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Month rdfs:label "month" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:News rdfs:label "news" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Now rdfs:label "now" .
+
+ns1:Portuguese a owl:Class ;
+    rdfs:label "Portuguese" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Portugal .
+
+ns1:PortugueseChannel rdfs:subClassOf ns1:Channel .
+
+ns1:Send rdfs:label "sent" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Want rdfs:label "want" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:ask_1 a ns1:Ask ;
+    rdfs:label "asked" ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Proposition ns1:there_2 ;
+    ns1:because ns1:want_1 .
+
+ns1:news_1 a ns1:News ;
+    rdfs:label "news" ;
+    quant:hasDeterminer quant:the .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:ask_1,
+        ns1:exile_1,
+        ns1:follow_1,
+        ns1:month_1,
+        ns1:send_1,
+        ns1:there_2,
+        ns1:want_1 .
+
+ns1:Person rdfs:label "I",
+        "we" .
+
+ns1:There rdfs:label "there" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:exile_1 a ns1:Exile ;
+    rdfs:label "exile" .
+
+ns1:follow_1 a ns1:Follow ;
+    rdfs:label "follow" ;
+    dul:hasQuality ns1:Even ;
+    vn.role:Agent ns1:Dutch ;
+    vn.role:Location ns1:send_1 ;
+    vn.role:Theme ns1:news_1 .
+
+ns1:month_1 a ns1:Month ;
+    rdfs:label "month" ;
+    quant:hasQuantifier quant:every .
+
+ns1:send_1 a ns1:Send ;
+    rdfs:label "sent" ;
+    vn.role:Destination ns1:exile_1 ;
+    vn.role:Source ns1:month_1 ;
+    vn.role:Theme ns1:person_2 .
+
+ns1:there_2 a ns1:DutchChannel,
+        ns1:There ;
+    rdfs:label "there" ;
+    dul:hasQuality ns1:Dutch .
+
+ns1:want_1 a ns1:Want ;
+    rdfs:label "want" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Experiencer ns1:Dutch ;
+    vn.role:Theme ns1:follow_1 .
+
+ns1:Channel rdfs:label "channels" .
+
+ns1:Dutch rdfs:label "Dutch" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Dutch_language .
+
+ns1:there_1 a ns1:FinnishChannel,
+        ns1:PortugueseChannel,
+        ns1:There ;
+    rdfs:label "there" ;
+    dul:hasDataValue "2"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:Finnish .
+

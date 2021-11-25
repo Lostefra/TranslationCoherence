@@ -1,0 +1,183 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence627.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Attribute rdfs:label "in" .
+
+vn.role:Location rdfs:label "in" .
+
+foaf:Person rdfs:label "per" .
+
+translation_coherence:nl_sentence627.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence627" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence627" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Especially rdfs:label "especially" .
+
+ns1:Few rdfs:label "few" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Objective_1 a dbpedia:Regional_policy_of_the_European_Union ;
+    rdfs:label "Objective 1" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Such rdfs:label "such" .
+
+ns1:docuverse earmark:hasContent "The attempts to increase the GDP per capita in Objective_1 regions don't always result in such an increase, not a satisfying result in a period, especially in the last few years, economic growth."^^xsd:string .
+
+ns1:increase_1 a ns1:Increase ;
+    rdfs:label "increase" ;
+    boxer:patient ns1:Gdp ;
+    vn.role:Attribute ns1:region_1 ;
+    vn.role:Patient ns1:attempt_1 .
+
+ns1:result_1 a ns1:AlwaysResult ;
+    rdfs:label "result" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Location ns1:increase_2 ;
+    vn.role:Theme ns1:attempt_1 ;
+    ns1:especiallyIn ns1:year_1 ;
+    ns1:in ns1:period_1 .
+
+ns1:Always a owl:Class ;
+    rdfs:label "always" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:AlwaysResult a owl:Class ;
+    rdfs:label "always result" ;
+    dul:hasQuality ns1:Always ;
+    rdfs:subClassOf ns1:Result .
+
+ns1:Attempt rdfs:label "attempts" .
+
+ns1:Capita rdfs:label "capita" .
+
+ns1:Economic a owl:Class ;
+    rdfs:label "economic" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:EconomicGrowth a owl:Class ;
+    rdfs:label "Economic Growth" ;
+    dul:hasQuality ns1:Economic ;
+    rdfs:subClassOf ns1:Growth ;
+    owl:equivalentClass dbpedia:Gross_domestic_product .
+
+ns1:FewYear rdfs:subClassOf ns1:Year .
+
+ns1:Gdp rdfs:label "GDP" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Gross_domestic_product ;
+    ns1:per ns1:capita_1 .
+
+ns1:Growth a owl:Class ;
+    rdfs:label "growth" ;
+    rdfs:subClassOf dul:Process .
+
+ns1:Last rdfs:label "last" .
+
+ns1:LastFewYear rdfs:subClassOf ns1:FewYear .
+
+ns1:Objective_1Region rdfs:subClassOf ns1:Region .
+
+ns1:Period rdfs:label "period" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Region rdfs:label "regions" .
+
+ns1:Satisfying rdfs:label "satisfying" .
+
+ns1:SatisfyingResult rdfs:label "satisfying result" ;
+    rdfs:subClassOf ns1:Result .
+
+ns1:Year rdfs:label "years" .
+
+ns1:capita_1 a ns1:Capita ;
+    rdfs:label "capita" .
+
+ns1:growth_1 a ns1:EconomicGrowth ;
+    rdfs:label "growth" .
+
+ns1:increase_2 a ns1:Increase ;
+    rdfs:label "increase" ;
+    dul:associatedWith ns1:result_2 ;
+    quant:hasDeterminer quant:an,
+        quant:such .
+
+ns1:period_1 a ns1:Period ;
+    rdfs:label "period" ;
+    quant:hasDeterminer quant:a .
+
+ns1:region_1 a ns1:Objective_1Region ;
+    rdfs:label "regions" ;
+    quant:hasQuantifier quant:multiple,
+        quant:objective_1 .
+
+ns1:result_2 a ns1:SatisfyingResult ;
+    rdfs:label "result" ;
+    dul:hasQuality ns1:Satisfying ;
+    quant:hasDeterminer quant:a .
+
+ns1:year_1 a ns1:LastFewYear ;
+    rdfs:label "years" ;
+    dul:associatedWith ns1:growth_1 ;
+    dul:hasQuality ns1:Last ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:few,
+        quant:multiple .
+
+ns1:Increase rdfs:label "Increase",
+        "increase" ;
+    rdfs:subClassOf dul:Amount,
+        dul:Event .
+
+ns1:Result a owl:Class ;
+    rdfs:label "Result",
+        "result" ;
+    rdfs:subClassOf dul:Event,
+        dul:Situation .
+
+ns1:attempt_1 a ns1:Attempt ;
+    rdfs:label "attempts" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+

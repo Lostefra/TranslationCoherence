@@ -1,0 +1,168 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence639.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence639.ttl a owl:Ontology ;
+    rdfs:label "en_sentence639" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence639" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:With rdfs:label "With" .
+
+ns1:docuverse earmark:hasContent "With the planned accession of a large number of these countries in the foreseeable future, it is a matter of urgency to review the current structural policy."^^xsd:string .
+
+ns1:matter_1 a ns1:Matter ;
+    rdfs:label "matter" ;
+    dul:hasQuality owl:Thing ;
+    quant:hasDeterminer quant:a ;
+    ns1:matterOf ns1:urgency_1 .
+
+ns1:review_1 a ns1:Review ;
+    rdfs:label "review" ;
+    vn.role:Agent ns1:urgency_1 ;
+    vn.role:Theme ns1:policy_1 ;
+    ns1:with ns1:accession_1 .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Accession a owl:Class ;
+    rdfs:label "accession" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Country rdfs:label "countries" .
+
+ns1:Current rdfs:label "current" .
+
+ns1:CurrentStructuralPolicy a owl:Class ;
+    rdfs:label "Current Structural Policy" ;
+    rdfs:subClassOf ns1:StructuralPolicy .
+
+ns1:ForeseeableFuture a owl:Class ;
+    rdfs:label "foreseeable future" ;
+    dul:hasQuality ns1:Foreseeable ;
+    rdfs:subClassOf ns1:Future .
+
+ns1:Future a owl:Class ;
+    rdfs:label "future" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Large a owl:Class ;
+    rdfs:label "large" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:LargeNumber a owl:Class ;
+    rdfs:label "large number" ;
+    dul:hasQuality ns1:Large ;
+    rdfs:subClassOf ns1:Number .
+
+ns1:Matter a owl:Class ;
+    rdfs:label "matter" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Matter .
+
+ns1:Number a owl:Class ;
+    rdfs:label "number" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Planned a owl:Class ;
+    rdfs:label "planned" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:PlannedAccession a owl:Class ;
+    rdfs:label "Planned Accession" ;
+    dul:hasQuality ns1:Planned ;
+    rdfs:subClassOf ns1:Accession .
+
+ns1:Policy a owl:Class ;
+    rdfs:label "policy" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Review rdfs:label "review" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Structural a owl:Class ;
+    rdfs:label "structural" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:StructuralPolicy a owl:Class ;
+    rdfs:label "Structural Policy" ;
+    dul:hasQuality ns1:Structural ;
+    rdfs:subClassOf ns1:Policy .
+
+ns1:Urgency rdfs:label "urgency" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:accession_1 a ns1:PlannedAccession ;
+    rdfs:label "accession" ;
+    quant:hasDeterminer quant:the ;
+    ns1:plannedAccessionOf ns1:number_1 .
+
+ns1:country_1 a ns1:Country ;
+    rdfs:label "countries" ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:future_1 a ns1:ForeseeableFuture ;
+    rdfs:label "future" ;
+    dul:hasQuality ns1:Foreseeable ;
+    quant:hasDeterminer quant:the .
+
+ns1:number_1 a ns1:LargeNumber ;
+    rdfs:label "number" ;
+    quant:hasDeterminer quant:a ;
+    ns1:in ns1:future_1 ;
+    ns1:largeNumberOf ns1:country_1 .
+
+ns1:policy_1 a ns1:CurrentStructuralPolicy ;
+    rdfs:label "policy" ;
+    dul:hasQuality ns1:Current ;
+    quant:hasDeterminer quant:the .
+
+ns1:Foreseeable a owl:Class ;
+    rdfs:label "foreseeable" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:urgency_1 a ns1:Urgency ;
+    rdfs:label "urgency" .
+

@@ -1,0 +1,143 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix fred: <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence695.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fred: rdfs:label ":"^^xsd:string .
+
+translation_coherence:de_sentence695.ttl a owl:Ontology ;
+    rdfs:label "de_sentence695" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence695" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:During rdfs:label "during" .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:Quantity rdfs:label "many" .
+
+ns1:While rdfs:label "while" .
+
+ns1:docuverse earmark:hasContent "Algeria's social fabric, which has been suffered during the occupation: literacy has been subdued, while the development has rooted many of the population."^^xsd:string .
+
+ns1:population_1 a ns1:Population ;
+    rdfs:label "population" ;
+    quant:hasDeterminer quant:the .
+
+ns1:suffer_1 a ns1:Suffer ;
+    rdfs:label "suffered" ;
+    vn.role:Theme ns1:fabric_1 ;
+    ns1:during ns1:occupation_1 .
+
+dbpedia:Algeria a schema:Country,
+        schema:Place .
+
+dbpedia:French_Algeria a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:Algeria rdfs:label "Algeria" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Algeria,
+        dbpedia:French_Algeria .
+
+ns1:Development rdfs:label "development" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Fabric a owl:Class ;
+    rdfs:label "fabric" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Textile .
+
+ns1:Literacy a owl:Class ;
+    rdfs:label "literacy" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Literacy .
+
+ns1:Occupation rdfs:label "occupation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Population rdfs:label "population" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Root rdfs:label "rooted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Social a owl:Class ;
+    rdfs:label "social" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SocialFabric a owl:Class ;
+    rdfs:label "Social Fabric" ;
+    dul:hasQuality ns1:Social ;
+    rdfs:subClassOf ns1:Fabric .
+
+ns1:Subdue rdfs:label "subdued" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Suffer rdfs:label "suffered" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:development_1 a ns1:Development ;
+    rdfs:label "development" ;
+    quant:hasDeterminer quant:the .
+
+ns1:fabric_1 a ns1:SocialFabric ;
+    rdfs:label "fabric" ;
+    dul:hasQuality ns1:Topic ;
+    ns1:socialFabricOf ns1:Algeria .
+
+ns1:literacy_1 a ns1:Literacy ;
+    rdfs:label "literacy" .
+
+ns1:occupation_1 a ns1:Occupation ;
+    rdfs:label "occupation" ;
+    boxing:declaration ns1:subdue_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:root_1 a ns1:Root ;
+    rdfs:label "rooted" ;
+    vn.role:Agent ns1:development_1 .
+
+ns1:subdue_1 a ns1:Subdue ;
+    rdfs:label "subdued" ;
+    vn.role:Patient ns1:literacy_1 ;
+    ns1:while ns1:root_1 .
+

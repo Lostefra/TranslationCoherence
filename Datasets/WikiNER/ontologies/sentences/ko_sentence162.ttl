@@ -1,0 +1,140 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence162.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "in" .
+
+vn.role:Theme rdfs:label "on" .
+
+vn.role:Theme2 rdfs:label "on" .
+
+translation_coherence:ko_sentence162.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence162" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence162" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:base_1 a ns1:Base ;
+    rdfs:label "based" ;
+    vn.role:Theme1 ns1:exercise_1 ;
+    vn.role:Theme2 ns1:fact_1 .
+
+ns1:docuverse earmark:hasContent "This exercise is based on the fact that the Constitution_of_Alabama focuses on the power of Montgomery and can actually leave power in local hands."^^xsd:string .
+
+ns1:Actually rdfs:label "actually" .
+
+ns1:ActuallyLeave rdfs:label "Actually Leave" ;
+    rdfs:subClassOf ns1:Leave .
+
+ns1:Base rdfs:label "based" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Exercise rdfs:label "exercise" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Fact rdfs:label "fact" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Focus rdfs:label "focuses" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Hand rdfs:label "hands" .
+
+ns1:Leave rdfs:label "leave" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Local rdfs:label "local" .
+
+ns1:LocalHand rdfs:subClassOf ns1:Hand .
+
+ns1:Montgomery rdfs:label "Montgomery" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:exercise_1 a ns1:Exercise ;
+    rdfs:label "exercise" ;
+    quant:hasDeterminer quant:this .
+
+ns1:fact_1 a ns1:Fact ;
+    rdfs:label "fact" ;
+    boxer:theme ns1:situation_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:focus_1 a ns1:Focus ;
+    rdfs:label "focuses" ;
+    vn.role:Experiencer ns1:Constitution_of_alabama ;
+    vn.role:Theme ns1:power_1 .
+
+ns1:leave_1 a ns1:ActuallyLeave ;
+    rdfs:label "leave" ;
+    boxing:hasModality boxing:Possible ;
+    dul:hasQuality ns1:Actually ;
+    vn.role:Agent ns1:Constitution_of_alabama ;
+    vn.role:Location ns1:hand_1 ;
+    vn.role:Theme ns1:power_2 .
+
+ns1:power_1 a ns1:Power ;
+    rdfs:label "power" ;
+    quant:hasDeterminer quant:the ;
+    ns1:powerOf ns1:Montgomery .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:focus_1,
+        ns1:hand_1,
+        ns1:leave_1,
+        ns1:power_2 .
+
+ns1:Constitution_of_alabama rdfs:label "Constitution of Alabama" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Constitution_of_Alabama .
+
+ns1:Power a owl:Class ;
+    rdfs:label "power" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass <http://dbpedia.org/resource/The_Power_(Snap!_song)> .
+
+ns1:hand_1 a ns1:LocalHand ;
+    rdfs:label "hands" ;
+    dul:hasQuality ns1:Local ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:power_2 a ns1:Power ;
+    rdfs:label "power" .
+

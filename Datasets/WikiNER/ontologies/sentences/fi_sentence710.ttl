@@ -1,0 +1,127 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence710.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence710.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence710" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence710" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:After rdfs:label "after" .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:docuverse earmark:hasContent "Amazigh's experiences and identity erityisesti significantly after the boycott of the Kabyl demonstrations and the local elections."^^xsd:string .
+
+ns1:identity_1 a ns1:Identity ;
+    rdfs:label "identity" ;
+    dul:associatedWith ns1:erityisestus_1,
+        ns1:experience_1 .
+
+ns1:significantly_1 rdfs:label "significantly" .
+
+ns1:Amazigh rdfs:label "Amazigh" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Berbers .
+
+ns1:Boycott a owl:Class ;
+    rdfs:label "boycott" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Boycott .
+
+ns1:Demonstration rdfs:label "demonstrations" .
+
+ns1:Election rdfs:label "elections" .
+
+ns1:Erityisestus rdfs:label "erityisesti" .
+
+ns1:ErityisestusSignificantly rdfs:subClassOf ns1:Significantly .
+
+ns1:Experience rdfs:label "experiences" .
+
+ns1:Identity rdfs:label "identity" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:IdentityErityisestus rdfs:subClassOf ns1:Erityisestus .
+
+ns1:IdentityErityisestusSignificantly rdfs:subClassOf ns1:ErityisestusSignificantly .
+
+ns1:Kabyl rdfs:label "Kabyl" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Kabylie .
+
+ns1:Local rdfs:label "local" .
+
+ns1:LocalElection rdfs:subClassOf ns1:Election .
+
+ns1:Significantly rdfs:label "significantly" .
+
+ns1:boycott_1 a ns1:Boycott ;
+    rdfs:label "boycott" ;
+    quant:hasDeterminer quant:the ;
+    ns1:boycottOf ns1:demonstration_1,
+        ns1:election_1 .
+
+ns1:demonstration_1 a dbpedia:Demonstration_(protest),
+        ns1:Demonstration ;
+    rdfs:label "demonstrations" ;
+    dul:associatedWith ns1:Kabyl ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:election_1 a ns1:LocalElection ;
+    rdfs:label "elections" ;
+    dul:hasQuality ns1:Local ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:erityisestus_1 a ns1:IdentityErityisestus ;
+    rdfs:label "erityisesti" ;
+    dul:associatedWith ns1:experience_1 ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:experience_1 a ns1:Experience,
+        ns1:IdentityErityisestusSignificantly ;
+    rdfs:label "experiences" ;
+    dul:hasQuality ns1:Topic ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:after ns1:boycott_1 ;
+    ns1:identityErityisestusSignificantlyOf ns1:Amazigh .
+

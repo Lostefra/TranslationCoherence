@@ -1,0 +1,140 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence168.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence168.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence168" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence168" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:On rdfs:label "on" .
+
+ns1:Onsaleof rdfs:label "on the sale of" .
+
+ns1:check_1 rdfs:label "check" .
+
+ns1:docuverse earmark:hasContent "Alabama is an alcoholic liquor check, the government has a monopoly on the sale of alcohol."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "has" ;
+    dul:associatedWith ns1:Alabama ;
+    vn.role:Agent ns1:government_1 ;
+    vn.role:Patient ns1:monopoly_1 .
+
+ns1:liquor_1 a ns1:Liquor ;
+    rdfs:label "liquor" ;
+    dul:associatedWith ns1:Alabama ;
+    quant:hasDeterminer quant:an .
+
+ns1:sale_1 a ns1:Sale ;
+    rdfs:label "sale" ;
+    quant:hasDeterminer quant:the .
+
+dbpedia:Alabama a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:Alcohol rdfs:label "alcohol" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Alcoholic a owl:Class ;
+    rdfs:label "alcoholic" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Alcoholic_beverage .
+
+ns1:AlcoholicLiquor a owl:Class ;
+    dul:hasQuality ns1:Alcoholic ;
+    rdfs:subClassOf ns1:Liquor .
+
+ns1:AlcoholicLiquorCheck a owl:Class ;
+    rdfs:label "alcoholic liquor check" ;
+    dul:associatedWith ns1:AlcoholicLiquor ;
+    rdfs:subClassOf ns1:LiquorCheck .
+
+ns1:Check a owl:Class ;
+    rdfs:label "Alabama",
+        "check" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Government rdfs:label "government" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Have rdfs:label "has" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:LiquorCheck a owl:Class ;
+    rdfs:label "liquor check" ;
+    dul:associatedWith ns1:Liquor ;
+    rdfs:subClassOf ns1:Check .
+
+ns1:Monopoly a owl:Class ;
+    rdfs:label "monopoly" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Monopoly .
+
+ns1:Sale a owl:Class ;
+    rdfs:label "sale" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Sales .
+
+ns1:alcohol_1 a ns1:Alcohol ;
+    rdfs:label "alcohol" .
+
+ns1:government_1 a ns1:Government ;
+    rdfs:label "government" ;
+    quant:hasDeterminer quant:the .
+
+ns1:monopoly_1 a ns1:Monopoly ;
+    rdfs:label "monopoly" ;
+    quant:hasDeterminer quant:a ;
+    ns1:onSaleOf ns1:alcohol_1 .
+
+ns1:Alabama a ns1:AlcoholicLiquorCheck ;
+    rdfs:label "Alabama",
+        "check",
+        "liquor" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Alabama .
+
+ns1:Liquor a owl:Class ;
+    rdfs:label "Alabama",
+        "liquor" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Alcoholic_beverage .
+

@@ -1,0 +1,96 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence752.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence752.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence752" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence752" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Until rdfs:label "until" .
+
+ns1:become_1 a ns1:Become ;
+    rdfs:label "become" ;
+    boxer:agent ns1:Algeria ;
+    boxer:patient ns1:community_1 ;
+    ns1:until ns1:196x-xx-xx .
+
+ns1:docuverse earmark:hasContent "Algeria has become an important Jewish community until the 1960s."^^xsd:string .
+
+dbpedia:Algeria a schema:Country,
+        schema:Place .
+
+dbpedia:French_Algeria a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:Algeria rdfs:label "Algeria" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Algeria,
+        dbpedia:French_Algeria .
+
+ns1:Become rdfs:label "become" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Community a owl:Class ;
+    rdfs:label "community" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Important rdfs:label "important" .
+
+ns1:ImportantJewishCommunity a owl:Class ;
+    rdfs:label "Important Jewish Community" ;
+    rdfs:subClassOf ns1:JewishCommunity .
+
+ns1:JewishCommunity a owl:Class ;
+    rdfs:label "Jewish community" ;
+    dul:hasQuality ns1:Jewish ;
+    rdfs:subClassOf ns1:Community .
+
+ns1:community_1 a ns1:ImportantJewishCommunity ;
+    rdfs:label "community" ;
+    dul:hasQuality ns1:Important,
+        ns1:Jewish ;
+    quant:hasDeterminer quant:an .
+
+ns1:Jewish a owl:Class ;
+    rdfs:label "Jewish" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Jews .
+

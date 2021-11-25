@@ -1,0 +1,114 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence34.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence34.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence34" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence34" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Against rdfs:label "against" .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of",
+        "their" .
+
+ns1:docuverse earmark:hasContent "Anarchists were known for their involvement in protests against the meetings of the World_Trade_Organization."^^xsd:string .
+
+ns1:know_1 a ns1:Know ;
+    rdfs:label "known" ;
+    vn.role:Theme ns1:anarchist_1 ;
+    ns1:for ns1:involvement_1 .
+
+ns1:thing_1 coref:coref ns1:anarchist_1 .
+
+dbpedia:World_Trade_Organization rdfs:subClassOf schema:Organization .
+
+ns1:Anarchist a owl:Class ;
+    rdfs:label "Anarchists" ;
+    owl:equivalentClass dbpedia:Anarchism .
+
+ns1:Involvement rdfs:label "involvement" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Know rdfs:label "known" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Meeting rdfs:label "meetings" .
+
+ns1:Protest rdfs:label "protests" .
+
+ns1:WorldTradeOrganization rdfs:subClassOf dul:Organization .
+
+ns1:World_trade_organization a owl:Class ;
+    rdfs:label "World Trade Organization" ;
+    rdfs:subClassOf ns1:WorldTradeOrganization ;
+    owl:equivalentClass dbpedia:World_Trade_Organization .
+
+ns1:involvement_1 a ns1:Involvement ;
+    rdfs:label "involvement" ;
+    ns1:in ns1:protest_1 ;
+    ns1:involvementOf ns1:anarchist_1 .
+
+ns1:meeting_1 a ns1:Meeting ;
+    rdfs:label "meetings" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:meetingOf ns1:world_trade_organization_1 .
+
+ns1:protest_1 a dbpedia:1999_Seattle_WTO_protests,
+        ns1:Protest ;
+    rdfs:label "protests" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:against ns1:meeting_1 .
+
+ns1:world_trade_organization_1 a ns1:World_trade_organization ;
+    rdfs:label "World Trade Organization" ;
+    quant:hasDeterminer quant:the .
+
+ns1:anarchist_1 a owl:Thing,
+        ns1:Anarchist ;
+    rdfs:label "Anarchists",
+        "their" ;
+    quant:hasQuantifier quant:multiple .
+

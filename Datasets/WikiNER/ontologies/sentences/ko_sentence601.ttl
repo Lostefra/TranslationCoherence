@@ -1,0 +1,145 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence601.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme rdfs:label "on",
+        "with" .
+
+translation_coherence:ko_sentence601.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence601" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence601" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:believe_1 a ns1:Believe ;
+    rdfs:label "believe" ;
+    dul:hasQuality ns1:However ;
+    vn.role:Agent ns1:student_1 ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:docuverse earmark:hasContent "However, some former NBI students believe the scope of this action, focusing on the most close followers of the ran with problems."^^xsd:string .
+
+ns1:Action rdfs:label "action" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Believe rdfs:label "believe" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Close rdfs:label "close" .
+
+ns1:CloseFollower rdfs:subClassOf ns1:Follower .
+
+ns1:Focus rdfs:label "focusing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Follower rdfs:label "followers" .
+
+ns1:However rdfs:label "However" .
+
+ns1:Most rdfs:label "most" .
+
+ns1:MostCloseFollower rdfs:subClassOf ns1:CloseFollower .
+
+ns1:Nbi rdfs:label "NBI" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality ns1:Former .
+
+ns1:Problem rdfs:label "problems" .
+
+ns1:Run rdfs:label "ran" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Scope rdfs:label "scope" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Student rdfs:label "students" .
+
+ns1:The rdfs:label "the" .
+
+ns1:action_1 a ns1:Action ;
+    rdfs:label "action" ;
+    quant:hasDeterminer quant:this .
+
+ns1:focus_1 a ns1:Focus ;
+    rdfs:label "focusing" ;
+    vn.role:Experiencer ns1:scope_1 ;
+    vn.role:Theme ns1:follower_1 .
+
+ns1:follower_1 a ns1:MostCloseFollower ;
+    rdfs:label "followers" ;
+    dul:hasQuality ns1:Close,
+        ns1:Most ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:mostCloseFollowerOf ns1:the_1 .
+
+ns1:run_1 a ns1:Run ;
+    rdfs:label "ran" ;
+    vn.role:Location ns1:scope_1 ;
+    vn.role:Theme ns1:problem_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:focus_1,
+        ns1:problem_1,
+        ns1:run_1,
+        ns1:the_1 .
+
+ns1:student_1 a ns1:Student ;
+    rdfs:label "students" ;
+    dul:associatedWith ns1:Nbi ;
+    dul:hasQuality ns1:Former ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Former rdfs:label "former" .
+
+ns1:problem_1 a ns1:Problem ;
+    rdfs:label "problems" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:scope_1 a ns1:Scope ;
+    rdfs:label "scope" ;
+    quant:hasDeterminer quant:the ;
+    ns1:scopeOf ns1:action_1 .
+
+ns1:the_1 a ns1:The ;
+    rdfs:label "the" .
+

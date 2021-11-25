@@ -1,0 +1,220 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence344.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+vn.role:Stimulus rdfs:label "like" .
+
+translation_coherence:nl_sentence344.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence344" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence344" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:But rdfs:label "but" .
+
+ns1:In rdfs:label "in" .
+
+ns1:On rdfs:label "on" .
+
+ns1:commission_1 a ns1:Commission ;
+    rdfs:label "commission" ;
+    dul:associatedWith ns1:account_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:do_1 a ns1:Do ;
+    rdfs:label "do" ;
+    boxer:agent ns1:person_1 ;
+    boxer:patient ns1:thing_1 ;
+    dul:hasQuality ns1:Here .
+
+ns1:docuverse earmark:hasContent "We think it's important that the commission account holds the conclusions adopted by this parliament, at least in mind, because on this stage, it looks like what we do here is a useless exercise, and nothing but the air."^^xsd:string .
+
+ns1:exercise_1 rdfs:label "exercise" ;
+    quant:hasDeterminer quant:a .
+
+ns1:look_1 a ns1:Look ;
+    rdfs:label "looks" ;
+    vn.role:Experiencer ns1:neuter_1 ;
+    vn.role:Stimulus ns1:situation_3 .
+
+ns1:person_2 coref:coref ns1:person_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:adopt_1,
+        ns1:hold_1,
+        ns1:mind_1 ;
+    dul:hasQuality ns1:Important .
+
+ns1:thing_2 rdfs:label "nothing" .
+
+ns1:think_1 a ns1:Think ;
+    rdfs:label "think" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:Account a owl:Class ;
+    rdfs:label "account" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Air rdfs:label "air" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:CommissionAccount a owl:Class ;
+    rdfs:label "commission account" ;
+    dul:associatedWith ns1:Commission ;
+    rdfs:subClassOf ns1:Account .
+
+ns1:Conclusion rdfs:label "conclusions" .
+
+ns1:Do rdfs:label "do" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Here rdfs:label "here" .
+
+ns1:Look rdfs:label "looks" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Parliament rdfs:label "parliament" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Person rdfs:label "We",
+        "we" .
+
+ns1:Stage rdfs:label "stage" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Think rdfs:label "think" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:UselessExercise a owl:Class ;
+    rdfs:label "Useless Exercise" ;
+    dul:hasQuality ns1:Useless ;
+    rdfs:subClassOf ns1:Exercise .
+
+ns1:air_1 a ns1:Air ;
+    rdfs:label "air" ;
+    quant:hasDeterminer quant:the .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "it" .
+
+ns1:parliament_1 a ns1:Parliament ;
+    rdfs:label "parliament" ;
+    quant:hasDeterminer quant:this .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Adopt,
+        ns1:Hold,
+        ns1:Important,
+        ns1:Mind,
+        ns1:adopt_1,
+        ns1:hold_1,
+        ns1:mind_1 .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves owl:Thing,
+        ns1:Exercise,
+        ns1:Useless,
+        ns1:thing_1 .
+
+ns1:stage_1 a ns1:Stage ;
+    rdfs:label "stage" ;
+    quant:hasDeterminer quant:this .
+
+ns1:Adopt rdfs:label "adopted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Commission a owl:Class ;
+    rdfs:label "commission" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Exercise a owl:Class ;
+    rdfs:label "exercise" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Hold rdfs:label "holds" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Important rdfs:label "important" .
+
+ns1:Mind rdfs:label "mind" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Useless a owl:Class ;
+    rdfs:label "useless" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:account_1 a ns1:CommissionAccount ;
+    rdfs:label "account" .
+
+ns1:adopt_1 a ns1:Adopt ;
+    rdfs:label "adopted" ;
+    vn.role:Agent ns1:parliament_1 ;
+    vn.role:Theme ns1:conclusion_1 ;
+    ns1:in ns1:mind_1 ;
+    ns1:on ns1:stage_1 .
+
+ns1:conclusion_1 a ns1:Conclusion ;
+    rdfs:label "conclusions" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:hold_1 a ns1:Hold ;
+    rdfs:label "holds" ;
+    vn.role:Agent ns1:account_1 ;
+    vn.role:Theme ns1:conclusion_1 .
+
+ns1:thing_1 a owl:Thing,
+        ns1:UselessExercise ;
+    rdfs:label "what" ;
+    ns1:but ns1:air_1 .
+
+owl:Thing rdfs:label "it",
+        "nothing",
+        "what" .
+
+ns1:mind_1 a ns1:Mind ;
+    rdfs:label "mind" .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "We",
+        "we" .
+

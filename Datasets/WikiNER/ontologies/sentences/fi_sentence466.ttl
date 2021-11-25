@@ -1,0 +1,117 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix fred: <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence466.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fred: rdfs:label ":"^^xsd:string .
+
+translation_coherence:fi_sentence466.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence466" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence466" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:On rdfs:label "on" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:With rdfs:label "with" .
+
+ns1:conclude_1 a ns1:Conclude ;
+    rdfs:label "concludes" ;
+    vn.role:Agent <https://w3id.org/stlab/ke/amiala/fi_sentence466.ttl/Aristo.> ;
+    ns1:with ns1:Poet .
+
+ns1:disjunct_1 a ns1:Disjunct ;
+    boxing:involves ns1:Epic,
+        ns1:epic_1 ;
+    ns1:union ns1:disjunct_2 .
+
+ns1:docuverse earmark:hasContent "Aristo. concludes with Poet on, a conversation with either better: epic or t.ic."^^xsd:string .
+
+ns1:t.ic._1 rdfs:label "t.ic." .
+
+<https://w3id.org/stlab/ke/amiala/fi_sentence466.ttl/Aristo.> rdfs:label "Aristo." ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Better rdfs:label "better" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Conclude rdfs:label "concludes" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Conversation rdfs:label "conversation" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Either rdfs:label "either" .
+
+ns1:EitherBetter rdfs:label "Either Better" ;
+    rdfs:subClassOf ns1:Better .
+
+ns1:Poet rdfs:label "Poet" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Poet,
+        dbpedia:Poetry ;
+    ns1:on ns1:conversation_1 .
+
+ns1:better_1 a ns1:EitherBetter ;
+    rdfs:label "better" ;
+    boxing:declaration ns1:epic_1 ;
+    dul:hasQuality ns1:Either .
+
+ns1:conversation_1 a ns1:Conversation ;
+    rdfs:label "conversation" ;
+    quant:hasDeterminer quant:a ;
+    ns1:with ns1:better_1 .
+
+ns1:disjunct_2 a ns1:Disjunct ;
+    boxing:involves <https://w3id.org/stlab/ke/amiala/fi_sentence466.ttl/T.ic.>,
+        ns1:epic_1 .
+
+ns1:Epic a owl:Class ;
+    rdfs:label "epic" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Epic_poetry .
+
+<https://w3id.org/stlab/ke/amiala/fi_sentence466.ttl/T.ic.> rdfs:label "t.ic." .
+
+ns1:epic_1 a ns1:Epic,
+        <https://w3id.org/stlab/ke/amiala/fi_sentence466.ttl/T.ic.> ;
+    rdfs:label "epic" .
+

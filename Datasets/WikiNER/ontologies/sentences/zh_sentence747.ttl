@@ -1,0 +1,111 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence747.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence747.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence747" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence747" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "The Berber_language, the most spoken in the country, is taught and partially officially (a number of limitations)."^^xsd:string .
+
+ns1:number_1 a ns1:Number ;
+    rdfs:label "number" ;
+    dul:hasQuality ns1:Officially,
+        ns1:Partially,
+        ns1:Topic ;
+    quant:hasDeterminer quant:a ;
+    ns1:numberOf ns1:limitation_1 .
+
+ns1:teach_1 a ns1:Teach ;
+    rdfs:label "taught" ;
+    dul:associatedWith ns1:Berber_language ;
+    vn.role:Topic ns1:speak_1 .
+
+ns1:Berber_language a ns1:Topic ;
+    rdfs:label "Berber language" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Berber_languages .
+
+ns1:Country a owl:Class ;
+    rdfs:label "country" ;
+    rdfs:subClassOf dul:Organization ;
+    owl:equivalentClass dbpedia:Nation_state .
+
+ns1:Limitation rdfs:label "limitations" .
+
+ns1:Most rdfs:label "most" .
+
+ns1:MostSpeak rdfs:subClassOf ns1:Speak .
+
+ns1:Number a owl:Class ;
+    rdfs:label "number" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Grammatical_number .
+
+ns1:Officially rdfs:label "officially" .
+
+ns1:Partially rdfs:label "partially" .
+
+ns1:Speak rdfs:label "spoken" .
+
+ns1:Teach rdfs:label "taught" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:country_1 a ns1:Country ;
+    rdfs:label "country" ;
+    quant:hasDeterminer quant:the .
+
+ns1:limitation_1 a ns1:Limitation ;
+    rdfs:label "limitations" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:speak_1 a dbpedia:Speech,
+        ns1:MostSpeak ;
+    rdfs:label "spoken" ;
+    dul:hasQuality ns1:Most ;
+    ns1:in ns1:country_1 .
+
+ns1:Topic rdfs:label "Berber language" .
+

@@ -1,0 +1,150 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence768.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence768.ttl a owl:Ontology ;
+    rdfs:label "de_sentence768" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence768" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "The irrevocable recognition that Galt is the end of his endeavors, the man, the perfect man, and that his means do not match this goal (and that he is his ideals to those who are evil)."^^xsd:string .
+
+ns1:end_1 rdfs:label "end" .
+
+ns1:ideal_1 rdfs:label "ideals" .
+
+ns1:male_1 rdfs:label "his" .
+
+ns1:recognition_1 a ns1:IrrevocableRecognition ;
+    rdfs:label "recognition" ;
+    boxer:theme ns1:match_1 ;
+    dul:hasQuality ns1:Topic ;
+    quant:hasDeterminer quant:the .
+
+owl:Thing rdfs:label "those" .
+
+ns1:Endeavor rdfs:label "endeavors" .
+
+ns1:Evil rdfs:label "evil" .
+
+ns1:Goal rdfs:label "goal" ;
+    rdfs:subClassOf dul:Goal .
+
+ns1:Irrevocable a owl:Class ;
+    rdfs:label "irrevocable" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:IrrevocableRecognition a owl:Class ;
+    rdfs:label "irrevocable recognition" ;
+    dul:hasQuality ns1:Irrevocable ;
+    rdfs:subClassOf ns1:Recognition .
+
+ns1:Male rdfs:label "Galt" ;
+    rdfs:subClassOf ns1:End,
+        ns1:Ideal .
+
+ns1:Man rdfs:label "man" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Match rdfs:label "match" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Means rdfs:label "means" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Perfect rdfs:label "perfect" ;
+    owl:sameAs dbpedia:The_Perfect_Man .
+
+ns1:Recognition a owl:Class ;
+    rdfs:label "recognition" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:endeavor_1 a ns1:Endeavor ;
+    rdfs:label "endeavors" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:endeavorOf ns1:Galt .
+
+ns1:goal_1 a ns1:Goal ;
+    rdfs:label "goal" ;
+    quant:hasDeterminer quant:this .
+
+ns1:man_1 a ns1:Man ;
+    rdfs:label "man" ;
+    dul:hasQuality ns1:Perfect ;
+    quant:hasDeterminer quant:the .
+
+ns1:match_1 a ns1:Match ;
+    rdfs:label "match" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:means_1 ;
+    vn.role:Patient ns1:goal_1 .
+
+ns1:means_1 a ns1:Means ;
+    rdfs:label "means" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:meansOf ns1:Galt .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "those" ;
+    dul:hasQuality ns1:Evil .
+
+ns1:End rdfs:label "end" ;
+    rdfs:subClassOf dul:Goal .
+
+ns1:Galt a ns1:End,
+        ns1:Ideal,
+        ns1:Male ;
+    rdfs:label "Galt" ;
+    boxer:possibleType foaf:Person ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:endOf ns1:endeavor_1,
+        ns1:man_1 ;
+    ns1:to ns1:thing_1 .
+
+ns1:Ideal rdfs:label "ideals" .
+

@@ -1,0 +1,138 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence297.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Attribute rdfs:label "in" .
+
+vn.role:Location rdfs:label "since" .
+
+translation_coherence:nl_sentence297.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence297" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence297" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Between rdfs:label "between" .
+
+ns1:docuverse earmark:hasContent "We've seen poverty grow in Wales, and we've still grown further since 1997. We've seen the hole between rich and poor wide."^^xsd:string .
+
+ns1:grow_1 a ns1:Grow ;
+    rdfs:label "grow" ;
+    vn.role:Attribute ns1:Wales,
+        ns1:person_2 ;
+    vn.role:Patient ns1:person_1 .
+
+ns1:grow_2 a ns1:StillGrow ;
+    rdfs:label "grown" ;
+    dul:hasQuality ns1:Further,
+        ns1:Still ;
+    vn.role:Location "1997-01-01"^^xsd:date ;
+    vn.role:Theme ns1:person_2 .
+
+ns1:poor_1 rdfs:label "poor" .
+
+ns1:see_1 a ns1:See ;
+    rdfs:label "seen" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:poverty_1 .
+
+ns1:see_2 a ns1:See ;
+    rdfs:label "seen" ;
+    vn.role:Agent ns1:person_3 ;
+    vn.role:Theme ns1:hole_1 .
+
+dbpedia:Wales a schema:Country,
+        schema:Place .
+
+ns1:Further rdfs:label "further" .
+
+ns1:Hole rdfs:label "hole" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Poor rdfs:label "poor" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Poverty rdfs:label "poverty" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Rich rdfs:label "rich" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Still rdfs:label "still" .
+
+ns1:StillGrow rdfs:subClassOf ns1:Grow .
+
+ns1:Wales rdfs:label "Wales" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Wales .
+
+ns1:Wide rdfs:label "wide" .
+
+ns1:hole_1 a ns1:Hole ;
+    rdfs:label "hole" ;
+    dul:hasQuality ns1:Wide ;
+    quant:hasDeterminer quant:the ;
+    ns1:between ns1:rich_1 .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "We" .
+
+ns1:poverty_1 a ns1:Poverty ;
+    rdfs:label "poverty" .
+
+ns1:rich_1 a ns1:Poor,
+        ns1:Rich ;
+    rdfs:label "rich" .
+
+ns1:Grow rdfs:label "grow",
+        "grown" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:See rdfs:label "seen" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "We" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:Person rdfs:label "We",
+        "we" .
+

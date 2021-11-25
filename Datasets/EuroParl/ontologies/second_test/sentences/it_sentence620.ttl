@@ -1,0 +1,193 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence620.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Oblique rdfs:label "in" .
+
+translation_coherence:it_sentence620.ttl a owl:Ontology ;
+    rdfs:label "it_sentence620" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence620" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Entails rdfs:label "if" .
+
+ns1:In rdfs:label "in" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "It is imperative that this should go hand in hand with an economic policy oriented to demand, if we want to have the opportunity to improve the social situation in these areas."^^xsd:string .
+
+ns1:improve_1 a ns1:Improve ;
+    rdfs:label "improve" ;
+    vn.role:Agent ns1:opportunity_1 ;
+    vn.role:Patient ns1:situation_3 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:go_1,
+        ns1:hand_1,
+        ns1:hand_2,
+        ns1:orient_1,
+        ns1:policy_1,
+        ns1:situation_1 ;
+    dul:hasQuality ns1:Imperative .
+
+ns1:want_1 a ns1:Want ;
+    rdfs:label "want" ;
+    vn.role:Experiencer ns1:person_1 ;
+    vn.role:Theme ns1:have_1 ;
+    ns1:entails ns1:have_1 .
+
+owl:Thing rdfs:label "this" .
+
+ns1:Area rdfs:label "areas" .
+
+ns1:Economic a owl:Class ;
+    rdfs:label "economic" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:EconomicPolicy a owl:Class ;
+    rdfs:label "economic policy" ;
+    dul:hasQuality ns1:Economic ;
+    rdfs:subClassOf ns1:Policy .
+
+ns1:Go rdfs:label "go" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Imperative rdfs:label "imperative" .
+
+ns1:Improve rdfs:label "improve" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Opportunity rdfs:label "opportunity" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Orient rdfs:label "oriented" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Policy a owl:Class ;
+    rdfs:label "policy" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Social a owl:Class ;
+    rdfs:label "social" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SocialSituation a owl:Class ;
+    rdfs:label "social situation" ;
+    dul:hasQuality ns1:Social ;
+    rdfs:subClassOf ns1:Situation .
+
+ns1:Want rdfs:label "want" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:area_1 a ns1:Area ;
+    rdfs:label "areas" ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:go_1 a ns1:Go ;
+    rdfs:label "go" ;
+    boxer:patient ns1:hand_1 ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Oblique ns1:hand_2 ;
+    vn.role:Theme ns1:thing_1 ;
+    ns1:with ns1:policy_1 .
+
+ns1:orient_1 a ns1:Orient ;
+    rdfs:label "oriented" ;
+    boxer:patient ns1:policy_1 ;
+    boxer:theme ns1:demand_1 ;
+    boxing:hasModality boxing:Necessary .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Demand,
+        ns1:demand_1 .
+
+ns1:situation_3 a ns1:SocialSituation ;
+    rdfs:label "situation" ;
+    quant:hasDeterminer quant:the ;
+    ns1:in ns1:area_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "this" .
+
+ns1:Demand rdfs:label "demand" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Hand rdfs:label "hand" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:demand_1 a ns1:Demand ;
+    rdfs:label "demand" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:policy_1 .
+
+ns1:hand_1 a ns1:Hand ;
+    rdfs:label "hand" ;
+    quant:hasDeterminer quant:this .
+
+ns1:hand_2 a ns1:Hand ;
+    rdfs:label "hand" .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "have" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Patient ns1:opportunity_1 .
+
+ns1:opportunity_1 a ns1:Opportunity ;
+    rdfs:label "opportunity" ;
+    quant:hasDeterminer quant:the .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:Situation a owl:Class ;
+    rdfs:label "situation" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:policy_1 a ns1:EconomicPolicy ;
+    rdfs:label "policy" ;
+    quant:hasDeterminer quant:an .
+

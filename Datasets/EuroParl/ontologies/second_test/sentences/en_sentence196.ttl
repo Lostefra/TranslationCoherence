@@ -1,0 +1,115 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix fred: <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence196.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fred: rdfs:label ":"^^xsd:string .
+
+translation_coherence:en_sentence196.ttl a owl:Ontology ;
+    rdfs:label "en_sentence196" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence196" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "My" .
+
+ns1:docuverse earmark:hasContent "My second point has already been mentioned: it concerns the minimum standards."^^xsd:string .
+
+ns1:mention_1 a ns1:Mention ;
+    rdfs:label "mentioned" ;
+    boxing:declaration ns1:concern_1 ;
+    dul:hasQuality ns1:Already ;
+    vn.role:Topic ns1:point_1 .
+
+ns1:minimum_1 a ns1:Minimum ;
+    rdfs:label "minimum" ;
+    dul:associatedWith ns1:standard_1 ;
+    quant:hasDeterminer quant:the .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Already rdfs:label "already" .
+
+ns1:Concern rdfs:label "concerns" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Mention rdfs:label "mentioned" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Minimum a owl:Class ;
+    rdfs:label "minimum" ;
+    rdfs:subClassOf dul:Amount ;
+    owl:equivalentClass dbpedia:Maxima_and_minima .
+
+ns1:MinimumStandard rdfs:subClassOf ns1:Standard .
+
+ns1:Point a owl:Class ;
+    rdfs:label "point" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Second a owl:Class ;
+    rdfs:label "second" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SecondPoint a owl:Class ;
+    rdfs:label "Second Point" ;
+    dul:hasQuality ns1:Second ;
+    rdfs:subClassOf ns1:Point .
+
+ns1:Standard rdfs:label "standards" .
+
+ns1:concern_1 a ns1:Concern ;
+    rdfs:label "concerns" ;
+    vn.role:Cause ns1:neuter_1 ;
+    vn.role:Experiencer ns1:standard_1 .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "it" .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "My" .
+
+ns1:point_1 a ns1:SecondPoint ;
+    rdfs:label "point" ;
+    ns1:secondPointOf ns1:person_1 .
+
+ns1:standard_1 a ns1:MinimumStandard ;
+    rdfs:label "standards" ;
+    quant:hasQuantifier quant:multiple .
+

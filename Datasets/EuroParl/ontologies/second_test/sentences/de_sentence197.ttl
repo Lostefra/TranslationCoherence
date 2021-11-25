@@ -1,0 +1,141 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence197.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence197.ttl a owl:Ontology ;
+    rdfs:label "de_sentence197" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence197" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In",
+        "in" .
+
+ns1:Quantity rdfs:label "many" .
+
+ns1:Towards rdfs:label "towards" .
+
+ns1:Where rdfs:label "where" .
+
+ns1:believe_1 a ns1:Believe ;
+    rdfs:label "believe" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:work_1 ;
+    ns1:in ns1:principle_1 .
+
+ns1:docuverse earmark:hasContent "In principle, I believe that in many cases where traffic is concerned, we should work towards greater flexibility and country-specific rules."^^xsd:string .
+
+ns1:Believe rdfs:label "believe" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Case rdfs:label "cases" .
+
+ns1:Concern rdfs:label "concerned" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Country-specific rdfs:label "country-specific" .
+
+ns1:Country-specificRule rdfs:subClassOf ns1:Rule .
+
+ns1:Flexibility a owl:Class ;
+    rdfs:label "flexibility" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Greater a owl:Class ;
+    rdfs:label "greater" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:GreaterFlexibility a owl:Class ;
+    rdfs:label "Greater Flexibility" ;
+    dul:hasQuality ns1:Greater ;
+    rdfs:subClassOf ns1:Flexibility .
+
+ns1:Principle rdfs:label "principle" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Rule rdfs:label "rules" .
+
+ns1:Traffic rdfs:label "traffic" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Work rdfs:label "work" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:case_1 a ns1:Case ;
+    rdfs:label "cases" ;
+    quant:hasQuantifier quant:many,
+        quant:multiple ;
+    ns1:where ns1:concern_1 .
+
+ns1:concern_1 a ns1:Concern ;
+    rdfs:label "concerned" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Experiencer ns1:traffic_1 .
+
+ns1:flexibility_1 a ns1:GreaterFlexibility ;
+    rdfs:label "flexibility" .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:principle_1 a ns1:Principle ;
+    rdfs:label "principle" .
+
+ns1:rule_1 a ns1:Country-specificRule ;
+    rdfs:label "rules" ;
+    dul:hasQuality ns1:Country-specific ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:traffic_1 a ns1:Traffic ;
+    rdfs:label "traffic" .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "work" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Actor ns1:person_2 ;
+    ns1:in ns1:case_1 ;
+    ns1:towards ns1:flexibility_1,
+        ns1:rule_1 .
+
+ns1:Person rdfs:label "I",
+        "we" .
+

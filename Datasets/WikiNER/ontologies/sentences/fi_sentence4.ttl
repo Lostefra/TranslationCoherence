@@ -1,0 +1,190 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence4.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Patient2 rdfs:label "to" .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:fi_sentence4.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence4" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence4" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Anarchist rdfs:label "anarchist" ;
+    owl:sameAs dbpedia:Anarchism .
+
+ns1:Eq rdfs:label "was" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:Though rdfs:label "though" .
+
+ns1:While rdfs:label "while" .
+
+ns1:docuverse earmark:hasContent "Godwin was the first to form the political and economic concepts of anarchism, even though he did not give this name to the ideas he had developed in his work, while Godwin attached his anarchist ideas to the early Edmund_Burke."^^xsd:string .
+
+ns1:first_1 rdfs:label "first" .
+
+ns1:form_1 a ns1:Form ;
+    rdfs:label "form" ;
+    dul:hasQuality ns1:Even ;
+    vn.role:Agent ns1:Godwin ;
+    vn.role:Theme ns1:concept_1 ;
+    ns1:though ns1:situation_1 ;
+    ns1:while ns1:attach_1 .
+
+dbpedia:Edmund_Burke a schema:Person .
+
+ns1:Anarchism a owl:Class ;
+    rdfs:label "anarchism" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> ;
+    owl:equivalentClass dbpedia:Anarchism .
+
+ns1:Attach rdfs:label "attached" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Concept rdfs:label "concepts" .
+
+ns1:Develop rdfs:label "developed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Early rdfs:label "early" .
+
+ns1:Economic rdfs:label "economic" ;
+    owl:sameAs dbpedia:Economy .
+
+ns1:EconomicConcept rdfs:subClassOf ns1:Concept .
+
+ns1:Edmund_burke rdfs:label "Edmund Burke" ;
+    boxer:possibleType time:Interval ;
+    dul:hasQuality ns1:Early ;
+    owl:sameAs dbpedia:Edmund_Burke .
+
+ns1:Even rdfs:label "even" .
+
+ns1:First rdfs:label "first" ;
+    rdfs:subClassOf dul:Role .
+
+ns1:Form a owl:Class ;
+    rdfs:label "form" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Substantial_form .
+
+ns1:Give rdfs:label "give" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Idea rdfs:label "ideas" .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Name a owl:Class ;
+    rdfs:label "name" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Name .
+
+ns1:Political rdfs:label "political" ;
+    owl:sameAs dbpedia:Political_philosophy .
+
+ns1:Work a owl:Class ;
+    rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Employment .
+
+ns1:anarchism_1 a ns1:Anarchism ;
+    rdfs:label "anarchism" .
+
+ns1:attach_1 a ns1:Attach ;
+    rdfs:label "attached" ;
+    vn.role:Agent ns1:Godwin ;
+    vn.role:Patient1 ns1:idea_1 ;
+    vn.role:Patient2 ns1:Edmund_burke .
+
+ns1:concept_1 a dbpedia:Concept,
+        ns1:EconomicConcept ;
+    rdfs:label "concepts" ;
+    dul:hasQuality ns1:Economic,
+        ns1:Political ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:economicConceptOf ns1:anarchism_1 .
+
+ns1:develop_1 a dbpedia:Economic_development,
+        ns1:Develop ;
+    rdfs:label "developed" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:Godwin ;
+    vn.role:Product ns1:idea_1 ;
+    ns1:in ns1:work_1 .
+
+ns1:give_1 a ns1:Give ;
+    rdfs:label "give" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:Godwin ;
+    vn.role:Recipient ns1:idea_1 ;
+    vn.role:Theme ns1:name_1 .
+
+ns1:name_1 a ns1:Name ;
+    rdfs:label "name" ;
+    quant:hasDeterminer quant:this .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:develop_1,
+        ns1:give_1 .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "work" ;
+    ns1:workOf ns1:Godwin .
+
+ns1:idea_1 a ns1:Idea ;
+    rdfs:label "ideas" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:ideaOf ns1:Godwin .
+
+ns1:Godwin a ns1:First ;
+    rdfs:label "Godwin" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Male ;
+    owl:sameAs dbpedia:William_Godwin .
+

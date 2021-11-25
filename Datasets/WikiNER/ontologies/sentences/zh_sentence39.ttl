@@ -1,0 +1,120 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence39.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Predicate rdfs:label "as" .
+
+translation_coherence:zh_sentence39.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence39" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence39" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "His",
+        "of" .
+
+ns1:characterize_1 a ns1:FirstCharacterize ;
+    rdfs:label "characterized" ;
+    dul:hasQuality ns1:First ;
+    vn.role:Predicate ns1:form_1 ;
+    vn.role:Theme ns1:goal_1 .
+
+ns1:community_1 rdfs:label "community" .
+
+ns1:docuverse earmark:hasContent "His goal was first characterized as a third form, community and property of society."^^xsd:string .
+
+ns1:property_1 rdfs:label "property" .
+
+ns1:Characterize rdfs:label "characterized" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Community a owl:Class ;
+    rdfs:label "community" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Community .
+
+ns1:First rdfs:label "first" .
+
+ns1:FirstCharacterize rdfs:subClassOf ns1:Characterize .
+
+ns1:Goal rdfs:label "goal" ;
+    rdfs:subClassOf dul:Goal .
+
+ns1:Property a owl:Class ;
+    rdfs:label "property" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Property .
+
+ns1:Society a owl:Class ;
+    rdfs:label "society" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Society .
+
+ns1:Third a owl:Class ;
+    rdfs:label "third" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ThirdForm a owl:Class ;
+    rdfs:label "Third Form" ;
+    dul:hasQuality ns1:Third ;
+    rdfs:subClassOf ns1:Form .
+
+ns1:goal_1 a ns1:Goal ;
+    rdfs:label "goal" ;
+    owl:sameAs ns1:form_1 ;
+    ns1:goalOf ns1:male_1 .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "His" .
+
+ns1:society_1 a ns1:Society ;
+    rdfs:label "society" .
+
+ns1:Form a owl:Class ;
+    rdfs:label "form" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:form_1 a ns1:Community,
+        ns1:Form,
+        ns1:Property,
+        ns1:ThirdForm ;
+    rdfs:label "form" ;
+    quant:hasDeterminer quant:a ;
+    ns1:thirdFormOf ns1:society_1 .
+

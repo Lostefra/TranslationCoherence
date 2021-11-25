@@ -1,0 +1,105 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence458.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence458.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence458" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence458" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:About rdfs:label "about" .
+
+ns1:complain_1 a ns1:MostlyComplain ;
+    rdfs:label "complaining" ;
+    dul:hasQuality ns1:Mostly ;
+    vn.role:Agent ns1:thing_1 .
+
+ns1:docuverse earmark:hasContent "This is about what European little and average companies, especially, mostly complaining."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:company_1,
+        ns1:little_1 ;
+    dul:hasQuality ns1:Especially .
+
+owl:Thing rdfs:label "This" .
+
+ns1:Average rdfs:label "average" .
+
+ns1:AverageCompany rdfs:subClassOf ns1:Company .
+
+ns1:Company rdfs:label "companies" .
+
+ns1:Complain rdfs:label "complaining" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Especially rdfs:label "especially" .
+
+ns1:EuropeanLittle a owl:Class ;
+    rdfs:label "European Little" ;
+    dul:hasQuality ns1:European ;
+    rdfs:subClassOf ns1:Little .
+
+ns1:Little a owl:Class ;
+    rdfs:label "little" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:Mostly rdfs:label "mostly" .
+
+ns1:MostlyComplain rdfs:subClassOf ns1:Complain .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "This" ;
+    ns1:about ns1:company_1,
+        ns1:little_1 .
+
+ns1:European a owl:Class ;
+    rdfs:label "European" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:company_1 a ns1:AverageCompany ;
+    rdfs:label "companies" ;
+    dul:hasQuality ns1:Average ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:little_1 a ns1:EuropeanLittle ;
+    rdfs:label "little" ;
+    dul:hasQuality ns1:European ;
+    quant:hasDeterminer quant:this .
+

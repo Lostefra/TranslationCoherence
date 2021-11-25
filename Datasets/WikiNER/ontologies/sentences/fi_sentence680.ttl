@@ -1,0 +1,200 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence680.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:fi_sentence680.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence680" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence680" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Because rdfs:label "because" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Why rdfs:label "why" .
+
+ns1:contact_1 rdfs:label "contact" .
+
+ns1:docuverse earmark:hasContent "This is another reason why McKenna suggested the area as a cradle of culture and civilization, because the visions of these fungi give a powerful impulse to art, painting and supernatural contact."^^xsd:string .
+
+ns1:reason_2 rdfs:label "reason" .
+
+ns1:thing_1 a owl:Thing,
+        ns1:Reason ;
+    rdfs:label "This" ;
+    quant:hasDeterminer quant:another,
+        quant:this ;
+    ns1:why ns1:situation_1 .
+
+owl:Thing rdfs:label "This" .
+
+ns1:Area rdfs:label "area" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Art rdfs:label "art" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Civilization a owl:Class ;
+    rdfs:label "civilization" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Civilization .
+
+ns1:Contact a owl:Class ;
+    rdfs:label "contact" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Cradle rdfs:label "cradle" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Culture rdfs:label "culture" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Fungus a owl:Class ;
+    rdfs:label "fungi" ;
+    owl:equivalentClass dbpedia:Fungus .
+
+ns1:Give rdfs:label "give" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Impulse a owl:Class ;
+    rdfs:label "impulse" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Mckenna rdfs:label "McKenna" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Painting rdfs:label "painting" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Powerful a owl:Class ;
+    rdfs:label "powerful" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:PowerfulImpulse a owl:Class ;
+    rdfs:label "powerful impulse" ;
+    dul:hasQuality ns1:Powerful ;
+    rdfs:subClassOf ns1:Impulse .
+
+ns1:Reason rdfs:label "reason" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Suggest rdfs:label "suggested" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Supernatural a owl:Class ;
+    rdfs:label "supernatural" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Supernatural .
+
+ns1:SupernaturalContact a owl:Class ;
+    rdfs:label "Supernatural Contact" ;
+    dul:hasQuality ns1:Supernatural ;
+    rdfs:subClassOf ns1:Contact .
+
+ns1:Vision rdfs:label "visions" .
+
+ns1:area_1 a ns1:Area ;
+    rdfs:label "area" ;
+    quant:hasDeterminer quant:the ;
+    ns1:as ns1:civilization_1,
+        ns1:cradle_1 .
+
+ns1:fungus_1 a ns1:Fungus ;
+    rdfs:label "fungi" ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:art_1,
+        ns1:civilization_1,
+        ns1:cradle_1,
+        ns1:culture_1,
+        ns1:give_1,
+        ns1:impulse_1,
+        ns1:painting_1,
+        ns1:suggest_1 .
+
+ns1:suggest_1 a ns1:Suggest ;
+    rdfs:label "suggested" ;
+    vn.role:Agent ns1:Mckenna ;
+    vn.role:Theme ns1:area_1 ;
+    ns1:because ns1:give_1 .
+
+ns1:vision_1 a ns1:Vision ;
+    rdfs:label "visions" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:visionOf ns1:fungus_1 .
+
+ns1:art_1 a ns1:Art ;
+    rdfs:label "art" ;
+    dul:associatedWith ns1:painting_1 .
+
+ns1:civilization_1 a ns1:Civilization ;
+    rdfs:label "civilization" .
+
+ns1:cradle_1 a ns1:Cradle ;
+    rdfs:label "cradle" ;
+    quant:hasDeterminer quant:a ;
+    ns1:cradleOf ns1:culture_1 .
+
+ns1:culture_1 a ns1:Culture ;
+    rdfs:label "culture" .
+
+ns1:give_1 a ns1:Give ;
+    rdfs:label "give" ;
+    vn.role:Agent ns1:vision_1 ;
+    vn.role:Recipient ns1:art_1 ;
+    vn.role:Theme ns1:impulse_1 .
+
+ns1:impulse_1 a ns1:PowerfulImpulse ;
+    rdfs:label "impulse" ;
+    quant:hasDeterminer quant:a .
+
+ns1:painting_1 a ns1:Painting,
+        ns1:SupernaturalContact ;
+    rdfs:label "painting" .
+

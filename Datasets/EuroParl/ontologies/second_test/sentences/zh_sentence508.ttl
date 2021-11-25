@@ -1,0 +1,132 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence508.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence508.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence508" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence508" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Since rdfs:label "since" .
+
+ns1:docuverse earmark:hasContent "They are improving competitiveness, but not all wealth has increased, since employment has not increased and employment opportunities are still different in the region."^^xsd:string .
+
+ns1:employment_2 a ns1:Employment ;
+    rdfs:label "employment" ;
+    dul:associatedWith ns1:opportunity_1 .
+
+ns1:improve_1 a ns1:Improve ;
+    rdfs:label "improving" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Patient ns1:competitiveness_1 .
+
+ns1:increase_1 a ns1:Increase ;
+    rdfs:label "increased" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Patient ns1:wealth_1 ;
+    ns1:since ns1:increase_2 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Different,
+        ns1:opportunity_1 ;
+    dul:hasQuality ns1:Still ;
+    ns1:in ns1:region_1 .
+
+owl:Thing rdfs:label "They" .
+
+ns1:Competitiveness rdfs:label "competitiveness" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:EmploymentOpportunity rdfs:subClassOf ns1:Opportunity .
+
+ns1:Improve rdfs:label "improving" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Opportunity rdfs:label "opportunities" .
+
+ns1:Region rdfs:label "region" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Still rdfs:label "still" .
+
+ns1:Wealth a owl:Class ;
+    rdfs:label "wealth" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Wealth .
+
+ns1:competitiveness_1 a ns1:Competitiveness ;
+    rdfs:label "competitiveness" .
+
+ns1:employment_1 a ns1:Employment ;
+    rdfs:label "employment" .
+
+ns1:increase_2 a ns1:Increase ;
+    rdfs:label "increased" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Patient ns1:employment_1 .
+
+ns1:region_1 a ns1:Region ;
+    rdfs:label "region" ;
+    quant:hasDeterminer quant:the .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "They" .
+
+ns1:wealth_1 a ns1:Wealth ;
+    rdfs:label "wealth" ;
+    quant:hasQuantifier quant:all .
+
+ns1:Different rdfs:label "different" .
+
+ns1:Employment a owl:Class ;
+    rdfs:label "employment" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Employment .
+
+ns1:Increase rdfs:label "increased" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:opportunity_1 a ns1:EmploymentOpportunity ;
+    rdfs:label "opportunities" ;
+    dul:hasQuality ns1:Different ;
+    quant:hasQuantifier quant:multiple .
+

@@ -1,0 +1,144 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence555.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Topic rdfs:label "on" .
+
+translation_coherence:zh_sentence555.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence555" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence555" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:After rdfs:label "After" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:brief_1 a ns1:Brief ;
+    rdfs:label "briefed" ;
+    vn.role:Agent ns1:female_1 ;
+    vn.role:Topic ns1:soldier_1 ;
+    ns1:after ns1:completion_1 .
+
+ns1:docuverse earmark:hasContent "After the completion of the high-level school on crime, she briefed on a fraternal soldier who had a vocational teaching."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "had" ;
+    vn.role:Agent ns1:soldier_1 ;
+    vn.role:Patient ns1:teaching_1 .
+
+ns1:Brief rdfs:label "briefed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Completion rdfs:label "completion" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Crime rdfs:label "crime" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Female rdfs:label "she" .
+
+ns1:Fraternal a owl:Class ;
+    rdfs:label "fraternal" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FraternalSoldier a owl:Class ;
+    rdfs:label "Fraternal Soldier" ;
+    dul:hasQuality ns1:Fraternal ;
+    rdfs:subClassOf ns1:Soldier .
+
+ns1:Have rdfs:label "had" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:High-level a owl:Class ;
+    rdfs:label "high-level" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:High-levelSchool a owl:Class ;
+    rdfs:label "high-level school" ;
+    dul:hasQuality ns1:High-level ;
+    rdfs:subClassOf ns1:School .
+
+ns1:School a owl:Class ;
+    rdfs:label "school" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Soldier a owl:Class ;
+    rdfs:label "soldier" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Teaching a owl:Class ;
+    rdfs:label "teaching" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Vocational a owl:Class ;
+    rdfs:label "vocational" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:VocationalTeaching a owl:Class ;
+    rdfs:label "Vocational Teaching" ;
+    dul:hasQuality ns1:Vocational ;
+    rdfs:subClassOf ns1:Teaching .
+
+ns1:completion_1 a ns1:Completion ;
+    rdfs:label "completion" ;
+    quant:hasDeterminer quant:the ;
+    ns1:completionOf ns1:school_1 .
+
+ns1:crime_1 a ns1:Crime ;
+    rdfs:label "crime" .
+
+ns1:female_1 a ns1:Female ;
+    rdfs:label "she" .
+
+ns1:school_1 a ns1:High-levelSchool ;
+    rdfs:label "school" ;
+    quant:hasDeterminer quant:the ;
+    ns1:on ns1:crime_1 .
+
+ns1:teaching_1 a ns1:VocationalTeaching ;
+    rdfs:label "teaching" ;
+    quant:hasDeterminer quant:a .
+
+ns1:soldier_1 a ns1:FraternalSoldier ;
+    rdfs:label "soldier" ;
+    quant:hasDeterminer quant:a .
+

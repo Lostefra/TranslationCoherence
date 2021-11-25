@@ -1,0 +1,130 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence135.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:ko_sentence135.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence135" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence135" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In",
+        "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "(" .
+
+ns1:docuverse earmark:hasContent "In the 1970s and 1980s, the economy of Birmingham was transformed by the University_of_Birmingham (UAB) and invested in biotechnology and medical research."^^xsd:string .
+
+ns1:invest_1 a ns1:Invest ;
+    rdfs:label "invested" ;
+    vn.role:Recipient ns1:economy_1 ;
+    ns1:in ns1:197x-xx-xx,
+        ns1:198x-xx-xx,
+        ns1:biotechnology_1 .
+
+ns1:research_1 rdfs:label "research" .
+
+ns1:transform_1 a ns1:Transform ;
+    rdfs:label "transformed" ;
+    vn.role:Agent ns1:University_of_birmingham ;
+    vn.role:Patient ns1:economy_1 ;
+    ns1:in ns1:197x-xx-xx,
+        ns1:198x-xx-xx .
+
+dbpedia:Birmingham a schema:City,
+        schema:Place .
+
+dbpedia:University_of_Birmingham a schema:CollegeOrUniversity,
+        schema:EducationalOrganization,
+        schema:Organization .
+
+ns1:Biotechnology a owl:Class ;
+    rdfs:label "biotechnology" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> ;
+    owl:equivalentClass dbpedia:Biotechnology .
+
+ns1:Birmingham rdfs:label "Birmingham" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Birmingham,
+        dbpedia:Economy_of_Birmingham .
+
+ns1:Economy rdfs:label "economy" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#System> .
+
+ns1:Invest rdfs:label "invested" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Medical a owl:Class ;
+    rdfs:label "medical" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:MedicalResearch a owl:Class ;
+    rdfs:label "Medical Research" ;
+    dul:hasQuality ns1:Medical ;
+    rdfs:subClassOf ns1:Research .
+
+ns1:Research a owl:Class ;
+    rdfs:label "research" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Transform rdfs:label "transformed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Uab rdfs:label "UAB" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Autonomous_University_of_Barcelona .
+
+ns1:University_of_birmingham rdfs:label "University of Birmingham" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:Uab ;
+    owl:sameAs dbpedia:University_of_Birmingham .
+
+ns1:biotechnology_1 a ns1:Biotechnology,
+        ns1:MedicalResearch ;
+    rdfs:label "biotechnology" .
+
+ns1:economy_1 a ns1:Economy ;
+    rdfs:label "economy" ;
+    quant:hasDeterminer quant:the ;
+    ns1:economyOf ns1:Birmingham .
+

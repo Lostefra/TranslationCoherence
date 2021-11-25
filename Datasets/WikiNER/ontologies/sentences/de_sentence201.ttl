@@ -1,0 +1,118 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence201.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:de_sentence201.ttl a owl:Ontology ;
+    rdfs:label "de_sentence201" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence201" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "later versions of the story proposed by Troilus were killed by Achilles in an over-weed feeling."^^xsd:string .
+
+ns1:kill_1 a ns1:Kill ;
+    rdfs:label "killed" ;
+    vn.role:Agent ns1:Achilles ;
+    vn.role:Patient ns1:version_1 ;
+    ns1:in ns1:feeling_1 .
+
+ns1:propose_1 a ns1:Propose ;
+    rdfs:label "proposed" ;
+    vn.role:Agent ns1:Troilus ;
+    vn.role:Theme ns1:story_1 .
+
+ns1:Achilles rdfs:label "Achilles" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Achilles .
+
+ns1:Kill rdfs:label "killed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Later rdfs:label "later" .
+
+ns1:LaterVersion rdfs:subClassOf ns1:Version .
+
+ns1:Over-weed a owl:Class ;
+    rdfs:label "over-weed" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Over-weedFeeling a owl:Class ;
+    rdfs:label "Over-weed Feeling" ;
+    dul:hasQuality ns1:Over-weed ;
+    rdfs:subClassOf ns1:Feeling .
+
+ns1:Propose rdfs:label "proposed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Story a owl:Class ;
+    rdfs:label "story" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> ;
+    owl:equivalentClass dbpedia:Narrative .
+
+ns1:Troilus rdfs:label "Troilus" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs ns1:feeling_1 .
+
+ns1:Version rdfs:label "versions" .
+
+ns1:version_1 a ns1:LaterVersion ;
+    rdfs:label "versions" ;
+    dul:hasQuality ns1:Later ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:laterVersionOf ns1:story_1 .
+
+ns1:Feeling a owl:Class ;
+    rdfs:label "feeling" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:feeling_1 a ns1:Feeling,
+        ns1:Over-weedFeeling ;
+    rdfs:label "feeling" ;
+    quant:hasDeterminer quant:an .
+
+ns1:story_1 a ns1:Story ;
+    rdfs:label "story" ;
+    quant:hasDeterminer quant:the .
+

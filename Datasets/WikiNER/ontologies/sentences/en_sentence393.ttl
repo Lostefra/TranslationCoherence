@@ -1,0 +1,205 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence393.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence393.ttl a owl:Ontology ;
+    rdfs:label "en_sentence393" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence393" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:At rdfs:label "at" .
+
+ns1:From rdfs:label "from" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "his" .
+
+ns1:To rdfs:label "to" .
+
+ns1:With rdfs:label "with" .
+
+ns1:allow_1 a ns1:Allow ;
+    rdfs:label "allowed" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:docuverse earmark:hasContent "This allowed the president to confer in person with Grant and Sherman about ending hostilities (as Sherman coincidentally managed a hasty visit to Grant from his forces in North_Carolina at the same time)."^^xsd:string .
+
+ns1:male_1 rdfs:label "his" .
+
+dbpedia:North_Carolina a schema:AdministrativeArea,
+        schema:Place .
+
+dbpedia:Ulysses_S._Grant a schema:Person .
+
+dbpedia:William_Tecumseh_Sherman a schema:Person .
+
+owl:Thing rdfs:label "This" .
+
+ns1:Allow rdfs:label "allowed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Coincidentally rdfs:label "coincidentally" .
+
+ns1:CoincidentallyManage rdfs:subClassOf ns1:Manage .
+
+ns1:Confer rdfs:label "confer" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:End rdfs:label "ending" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Force rdfs:label "forces" .
+
+ns1:HastyVisit a owl:Class ;
+    rdfs:label "Hasty Visit" ;
+    dul:hasQuality ns1:Hasty ;
+    rdfs:subClassOf ns1:Visit .
+
+ns1:Hostility rdfs:label "hostilities" .
+
+ns1:Male rdfs:label "Grant" .
+
+ns1:Manage rdfs:label "managed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:North_carolina rdfs:label "North Carolina" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:North_Carolina .
+
+ns1:Person rdfs:label "person" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:President a owl:Class ;
+    rdfs:label "president" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:President_of_the_United_States .
+
+ns1:Same a owl:Class ;
+    rdfs:label "same" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SameTime a owl:Class ;
+    rdfs:label "same time" ;
+    dul:hasQuality ns1:Same ;
+    rdfs:subClassOf ns1:Time .
+
+ns1:Sherman rdfs:label "Sherman" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:William_Tecumseh_Sherman .
+
+ns1:Time a owl:Class ;
+    rdfs:label "time" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Visit a owl:Class ;
+    rdfs:label "visit" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:confer_1 a ns1:Confer ;
+    rdfs:label "confer" ;
+    vn.role:Actor ns1:president_1 ;
+    ns1:inPersonWith ns1:Grant .
+
+ns1:end_1 a ns1:End ;
+    rdfs:label "ending" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:hostility_1 ;
+    ns1:as ns1:manage_1 .
+
+ns1:force_1 a ns1:Force ;
+    rdfs:label "forces" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:forceOf ns1:Grant ;
+    ns1:locatedIn ns1:North_carolina .
+
+ns1:president_1 a ns1:President ;
+    rdfs:label "president" ;
+    quant:hasDeterminer quant:the,
+        quant:this .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:confer_1,
+        ns1:end_1,
+        ns1:hostility_1,
+        ns1:manage_1,
+        ns1:person_1,
+        ns1:visit_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "This" .
+
+ns1:time_1 a ns1:SameTime ;
+    rdfs:label "time" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Hasty a owl:Class ;
+    rdfs:label "hasty" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:hostility_1 a ns1:Hostility ;
+    rdfs:label "hostilities" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:manage_1 a ns1:CoincidentallyManage ;
+    rdfs:label "managed" ;
+    dul:hasQuality ns1:Coincidentally ;
+    vn.role:Agent ns1:Sherman ;
+    vn.role:Theme ns1:visit_1 ;
+    ns1:at ns1:time_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "person" .
+
+ns1:visit_1 a ns1:HastyVisit ;
+    rdfs:label "visit" ;
+    dul:hasQuality ns1:Hasty ;
+    quant:hasDeterminer quant:a ;
+    ns1:from ns1:force_1 ;
+    ns1:to ns1:Grant .
+
+ns1:Grant a ns1:Male ;
+    rdfs:label "Grant" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Ulysses_S._Grant .
+

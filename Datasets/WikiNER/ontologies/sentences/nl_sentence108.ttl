@@ -1,0 +1,118 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence108.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:nl_sentence108.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence108" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence108" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:At rdfs:label "at" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Include rdfs:label "including" .
+
+ns1:Near rdfs:label "near" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:administer_1 a ns1:Administer ;
+    rdfs:label "administered" ;
+    vn.role:Agent ns1:National_park_service ;
+    vn.role:Theme <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s_1> ;
+    ns1:at ns1:Alexander_city ;
+    ns1:include ns1:Horseshoe_bend_national_military_park .
+
+ns1:docuverse earmark:hasContent "Area's in Alabama administered by the National_Park_Service, including Horseshoe_Bend_National_Military_Park at Alexander_City, Little_River_Canyon_National_Preserve near Fort Pay, Russell,"^^xsd:string .
+
+dbpedia:Alabama a schema:AdministrativeArea,
+        schema:Place .
+
+dbpedia:National_Park_Service a schema:GovernmentOrganization,
+        schema:Organization .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s> rdfs:label "'s" .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s_1> a <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s> ;
+    rdfs:label "'s" ;
+    dul:associatedWith ns1:Area,
+        ns1:Little_river_canyon_national_preserve ;
+    dul:hasQuality ns1:Topic ;
+    ns1:locatedIn ns1:Alabama .
+
+ns1:Administer rdfs:label "administered" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Alabama rdfs:label "Alabama" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Alabama .
+
+ns1:Alexander_city rdfs:label "Alexander City" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs <http://dbpedia.org/resource/Alexander_City,_Alabama> .
+
+ns1:Area rdfs:label "Area" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:hasQuality ns1:Topic .
+
+ns1:Fort_pay rdfs:label "Fort Pay" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Russell .
+
+ns1:Horseshoe_bend_national_military_park rdfs:label "Horseshoe Bend National Military Park" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Horseshoe_Bend_National_Military_Park .
+
+ns1:Little_river_canyon_national_preserve rdfs:label "Little River Canyon National Preserve" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Little_River_Canyon_National_Preserve ;
+    ns1:near ns1:Fort_pay .
+
+ns1:National_park_service rdfs:label "National Park Service" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:National_Park_Service .
+
+ns1:Russell rdfs:label "Russell" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs <http://dbpedia.org/resource/Russell_County,_Alabama> .
+

@@ -1,0 +1,222 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence229.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence229.ttl a owl:Ontology ;
+    rdfs:label "en_sentence229" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence229" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "its",
+        "their" .
+
+ns1:Then rdfs:label "then" .
+
+ns1:Until rdfs:label "until" .
+
+ns1:docuverse earmark:hasContent "Should the European_Union fail to take action, then Member States would be obliged to amend their national legislation for a very brief period, until the CEN completes its work, which would cause unnecessary cost and uncertainty."^^xsd:string .
+
+ns1:fail_1 a ns1:Fail ;
+    rdfs:label "fail" ;
+    vn.role:Agent ns1:European_union ;
+    vn.role:Theme ns1:take_1 .
+
+ns1:neuter_1 coref:coref ns1:Cen .
+
+ns1:uncertainty_1 rdfs:label "uncertainty" .
+
+ns1:Action rdfs:label "action" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Amend a owl:Class ;
+    rdfs:label "amend" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Repeal .
+
+ns1:Brief a owl:Class ;
+    rdfs:label "brief" ;
+    dul:hasQuality ns1:Very ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:BriefPeriod a owl:Class ;
+    rdfs:label "brief period" ;
+    dul:hasQuality ns1:Brief ;
+    rdfs:subClassOf ns1:Period .
+
+ns1:Cause rdfs:label "cause" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Complete rdfs:label "completes" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Cost a owl:Class ;
+    rdfs:label "cost" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Fail a owl:Class ;
+    rdfs:label "fail" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Market_failure .
+
+ns1:Legislation a owl:Class ;
+    rdfs:label "legislation" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Legislation .
+
+ns1:NationalLegislation a owl:Class ;
+    rdfs:label "national legislation" ;
+    dul:hasQuality ns1:National ;
+    rdfs:subClassOf ns1:Legislation .
+
+ns1:Oblige rdfs:label "obliged" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Period a owl:Class ;
+    rdfs:label "period" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Take rdfs:label "take" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Uncertainty a owl:Class ;
+    rdfs:label "uncertainty" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Uncertainty .
+
+ns1:Unnecessary a owl:Class ;
+    rdfs:label "unnecessary" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:UnnecessaryCost a owl:Class ;
+    rdfs:label "unnecessary cost" ;
+    dul:hasQuality ns1:Unnecessary ;
+    rdfs:subClassOf ns1:Cost .
+
+ns1:Very rdfs:label "very" .
+
+ns1:VeryBriefPeriod a owl:Class ;
+    rdfs:label "Very Brief Period" ;
+    rdfs:subClassOf ns1:BriefPeriod .
+
+ns1:Work a owl:Class ;
+    rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Employment .
+
+ns1:action_1 a ns1:Action ;
+    rdfs:label "action" .
+
+ns1:amend_1 a ns1:Amend ;
+    rdfs:label "amend" ;
+    boxer:agent ns1:Member_states ;
+    boxer:patient ns1:legislation_1 ;
+    boxing:hasModality boxing:Necessary ;
+    ns1:for ns1:period_1 .
+
+ns1:cause_1 a ns1:Cause ;
+    rdfs:label "cause" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Theme1 ns1:work_1 ;
+    vn.role:Theme2 ns1:cost_1 .
+
+ns1:complete_1 a ns1:Complete ;
+    rdfs:label "completes" ;
+    vn.role:Agent ns1:Cen ;
+    vn.role:Theme ns1:work_1 .
+
+ns1:legislation_1 a ns1:NationalLegislation ;
+    rdfs:label "legislation" ;
+    dul:hasQuality ns1:National ;
+    ns1:nationalLegislationOf ns1:thing_1 .
+
+ns1:oblige_1 a ns1:Oblige ;
+    rdfs:label "obliged" ;
+    boxer:theme ns1:amend_1 ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Patient ns1:Member_states ;
+    ns1:until ns1:situation_1 .
+
+ns1:period_1 a ns1:VeryBriefPeriod ;
+    rdfs:label "period" ;
+    quant:hasDeterminer quant:a .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:cause_1,
+        ns1:complete_1,
+        ns1:cost_1 .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "take" ;
+    vn.role:Agent ns1:European_union ;
+    vn.role:Theme ns1:action_1 ;
+    ns1:then ns1:oblige_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "their" .
+
+ns1:Cen rdfs:label "CEN",
+        "its" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:European_union rdfs:label "European Union" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:European_Union .
+
+ns1:National a owl:Class ;
+    rdfs:label "national" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:cost_1 a ns1:Uncertainty,
+        ns1:UnnecessaryCost ;
+    rdfs:label "cost" .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "work" ;
+    ns1:workOf ns1:Member_states .
+
+owl:Thing rdfs:label "Member States" .
+
+ns1:Member_states a owl:Thing ;
+    rdfs:label "Member States" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+

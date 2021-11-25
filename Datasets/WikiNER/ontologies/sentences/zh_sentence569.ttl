@@ -1,0 +1,97 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence569.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme rdfs:label "on" .
+
+translation_coherence:zh_sentence569.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence569" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence569" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Between rdfs:label "between" .
+
+ns1:In rdfs:label "In" .
+
+ns1:docuverse earmark:hasContent "In the Russian_Communist_Party, it focuses on the struggle between individuals and States."^^xsd:string .
+
+ns1:focus_1 a ns1:Focus ;
+    rdfs:label "focuses" ;
+    vn.role:Experiencer ns1:neuter_1 ;
+    vn.role:Theme ns1:struggle_1 ;
+    ns1:in ns1:Russian_communist_party .
+
+ns1:state_1 rdfs:label "States" .
+
+dbpedia:Communist_Party_of_the_Soviet_Union a schema:Organization .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Focus rdfs:label "focuses" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Individual rdfs:label "individuals" .
+
+ns1:Russian_communist_party rdfs:label "Russian Communist Party" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Communist_Party_of_the_Soviet_Union .
+
+ns1:State a owl:Class ;
+    rdfs:label "States" ;
+    owl:equivalentClass dbpedia:State_(polity) .
+
+ns1:Struggle a owl:Class ;
+    rdfs:label "struggle" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Class_conflict .
+
+ns1:individual_1 a ns1:Individual,
+        ns1:State ;
+    rdfs:label "individuals" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "it" .
+
+ns1:struggle_1 a ns1:Struggle ;
+    rdfs:label "struggle" ;
+    quant:hasDeterminer quant:the ;
+    ns1:between ns1:individual_1 .
+

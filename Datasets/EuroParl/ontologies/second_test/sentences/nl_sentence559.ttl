@@ -1,0 +1,180 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence559.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence559.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence559" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence559" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Agent rdfs:label "by" .
+
+ns1:At rdfs:label "at" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:docuverse earmark:hasContent "And yes, on the subject of the balance of the national society, let's not forget that the new policy is also funded by the EAGF Guaranteeee Section, programmed at the rebuilding of Europe."^^xsd:string .
+
+ns1:event_1 a dul:Event ;
+    dul:hasQuality ns1:And,
+        ns1:Yes ;
+    ns1:onSubjectOf ns1:balance_1 .
+
+ns1:let_1 a ns1:Let ;
+    rdfs:label "let" ;
+    boxer:agent ns1:balance_1 ;
+    boxer:theme ns1:forget_1 .
+
+ns1:subject_1 a ns1:Subject ;
+    rdfs:label "subject" ;
+    quant:hasDeterminer quant:the .
+
+dbpedia:Europe a schema:Continent,
+        schema:Place .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s> rdfs:label "'s" .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s_1> a <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s> ;
+    rdfs:label "'s" .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoFund rdfs:subClassOf ns1:Fund .
+
+ns1:And rdfs:label "And" .
+
+ns1:Balance rdfs:label "balance" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Europe rdfs:label "Europe" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Europe .
+
+ns1:Forget rdfs:label "forget" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Fund rdfs:label "funded" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Let rdfs:label "let" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:NationalSociety a owl:Class ;
+    rdfs:label "National Society" ;
+    dul:hasQuality ns1:National ;
+    rdfs:subClassOf ns1:Society .
+
+ns1:New a owl:Class ;
+    rdfs:label "new" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:NewPolicy a owl:Class ;
+    rdfs:label "New Policy" ;
+    dul:hasQuality ns1:New ;
+    rdfs:subClassOf ns1:Policy .
+
+ns1:Policy a owl:Class ;
+    rdfs:label "policy" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Program rdfs:label "programmed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Rebuilding rdfs:label "rebuilding" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Society a owl:Class ;
+    rdfs:label "society" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Subject rdfs:label "subject" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Yes rdfs:label "yes" .
+
+ns1:forget_1 a ns1:Forget ;
+    rdfs:label "forget" ;
+    boxer:agent <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s_1> ;
+    boxer:theme ns1:situation_1 ;
+    boxing:hasTruthValue boxing:False .
+
+ns1:fund_1 a ns1:AlsoFund ;
+    rdfs:label "funded" ;
+    boxer:agent ns1:Eagf_guaranteeee_section ;
+    boxer:patient ns1:policy_1 ;
+    dul:hasQuality ns1:Also .
+
+ns1:policy_1 a ns1:NewPolicy ;
+    rdfs:label "policy" ;
+    quant:hasDeterminer quant:the .
+
+ns1:program_1 a ns1:Program ;
+    rdfs:label "programmed" ;
+    boxer:patient ns1:Eagf_guaranteeee_section ;
+    ns1:at ns1:rebuilding_1 .
+
+ns1:rebuilding_1 a ns1:Rebuilding ;
+    rdfs:label "rebuilding" ;
+    quant:hasDeterminer quant:the ;
+    ns1:rebuildingOf ns1:Europe .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:fund_1,
+        ns1:program_1 .
+
+ns1:society_1 a ns1:NationalSociety ;
+    rdfs:label "society" ;
+    dul:hasQuality ns1:National ;
+    quant:hasDeterminer quant:the .
+
+ns1:Eagf_guaranteeee_section rdfs:label "EAGF Guaranteeee Section" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:National a owl:Class ;
+    rdfs:label "national" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:balance_1 a ns1:Balance ;
+    rdfs:label "balance" ;
+    quant:hasDeterminer quant:the ;
+    ns1:balanceOf ns1:society_1 .
+

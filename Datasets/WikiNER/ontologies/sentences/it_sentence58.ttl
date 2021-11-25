@@ -1,0 +1,139 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence58.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence58.ttl a owl:Ontology ;
+    rdfs:label "it_sentence58" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence58" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:appoint_1 a ns1:Appoint ;
+    rdfs:label "appoints" ;
+    vn.role:Agent ns1:Stirner ;
+    vn.role:Theme ns1:principle_1 ;
+    ns1:in ns1:neuter_1 .
+
+ns1:docuverse earmark:hasContent "In it Stirner appoints his own educational principle, explaining that self-understanding consists of hourly self-creation."^^xsd:string .
+
+ns1:explain_1 a ns1:Explain ;
+    rdfs:label "explaining" ;
+    vn.role:Agent ns1:Stirner ;
+    vn.role:Topic ns1:consist_1 .
+
+ns1:male_1 rdfs:label "his" .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Appoint rdfs:label "appoints" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Consist rdfs:label "consists" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Educational a owl:Class ;
+    rdfs:label "educational" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:EducationalPrinciple a owl:Class ;
+    rdfs:label "educational principle" ;
+    dul:hasQuality ns1:Educational ;
+    rdfs:subClassOf ns1:Principle .
+
+ns1:Explain rdfs:label "explaining" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:HourlySelf-creation a owl:Class ;
+    rdfs:label "Hourly Self-creation" ;
+    dul:hasQuality ns1:Hourly ;
+    rdfs:subClassOf ns1:Self-creation .
+
+ns1:Male rdfs:label "Stirner" .
+
+ns1:Own rdfs:label "own" .
+
+ns1:OwnEducationalPrinciple a owl:Class ;
+    rdfs:label "own educational principle" ;
+    rdfs:subClassOf ns1:EducationalPrinciple .
+
+ns1:Principle a owl:Class ;
+    rdfs:label "principle" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Principle .
+
+ns1:Self-creation a owl:Class ;
+    rdfs:label "self-creation" .
+
+ns1:Self-understanding rdfs:label "self-understanding" .
+
+ns1:consist_1 a ns1:Consist ;
+    rdfs:label "consists" ;
+    boxer:agent ns1:self-understanding_1 ;
+    ns1:consistOf ns1:self-creation_1 .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "it" .
+
+ns1:principle_1 a ns1:OwnEducationalPrinciple ;
+    rdfs:label "principle" ;
+    dul:hasQuality ns1:Own ;
+    ns1:ownEducationalPrincipleOf ns1:Stirner .
+
+ns1:self-creation_1 a ns1:HourlySelf-creation ;
+    rdfs:label "self-creation" ;
+    dul:hasQuality ns1:Hourly .
+
+ns1:self-understanding_1 a ns1:Self-understanding ;
+    rdfs:label "self-understanding" ;
+    quant:hasDeterminer quant:that .
+
+ns1:Hourly a owl:Class ;
+    rdfs:label "hourly" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Stirner a ns1:Male ;
+    rdfs:label "Stirner" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Max_Stirner .
+

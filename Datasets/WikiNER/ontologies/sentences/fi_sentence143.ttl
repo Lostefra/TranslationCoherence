@@ -1,0 +1,146 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence143.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Elargest> rdfs:label "largest" .
+
+translation_coherence:fi_sentence143.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence143" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence143" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:Until rdfs:label "until" .
+
+ns1:docuverse earmark:hasContent "Torchmark Plc's head vuoteen kaupungissaers were located in Finland until 2006, and remains the city's largest operation."^^xsd:string .
+
+ns1:head_1 a ns1:Head ;
+    rdfs:label "head" ;
+    dul:associatedWith ns1:kaupungissaer_1,
+        ns1:vuoteen_1 .
+
+ns1:locate_1 a ns1:Locate ;
+    rdfs:label "located" ;
+    boxer:patient ns1:kaupungissaer_1 ;
+    ns1:locatedIn ns1:Finland ;
+    ns1:until "2006-01-01"^^xsd:date .
+
+ns1:remain_1 a ns1:Remain ;
+    rdfs:label "remains" ;
+    boxer:patient ns1:operation_1 ;
+    vn.role:Theme ns1:kaupungissaer_1 .
+
+dbpedia:Carole_King rdfs:subClassOf schema:MusicGroup,
+        schema:Person .
+
+dbpedia:Finland a schema:Country,
+        schema:Place .
+
+ns1:City a owl:Class ;
+    rdfs:label "city" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> ;
+    owl:equivalentClass dbpedia:Carole_King .
+
+ns1:Finland rdfs:label "Finland" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Finland .
+
+ns1:HeadVuoteen a owl:Class ;
+    rdfs:label "Head Vuoteen" ;
+    dul:associatedWith ns1:Head ;
+    rdfs:subClassOf ns1:Vuoteen .
+
+ns1:HeadVuoteenKaupungissaer rdfs:subClassOf ns1:VuoteenKaupungissaer .
+
+ns1:Kaupungissaer rdfs:label "kaupungissaers" .
+
+ns1:Largest a owl:Class ;
+    rdfs:label "largest" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:LargestOperation a owl:Class ;
+    rdfs:label "Largest Operation" ;
+    dul:hasQuality ns1:Largest ;
+    rdfs:subClassOf ns1:Operation .
+
+ns1:Locate rdfs:label "located" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Remain rdfs:label "remains" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Torchmark_plc rdfs:label "Torchmark Plc" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Vuoteen a owl:Class ;
+    rdfs:label "vuoteen" .
+
+ns1:VuoteenKaupungissaer rdfs:subClassOf ns1:Kaupungissaer .
+
+ns1:city_1 a ns1:City ;
+    rdfs:label "city" ;
+    quant:hasDeterminer quant:the .
+
+ns1:operation_1 a ns1:LargestOperation,
+        ns1:Operation ;
+    rdfs:label "operation" ;
+    ns1:largestAmong ns1:Operation ;
+    ns1:largestOperationOf ns1:city_1 .
+
+ns1:vuoteen_1 a ns1:HeadVuoteen ;
+    rdfs:label "vuoteen" ;
+    dul:associatedWith ns1:kaupungissaer_1 .
+
+ns1:Head a owl:Class ;
+    rdfs:label "head" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Operation a owl:Class ;
+    rdfs:label "operation" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:kaupungissaer_1 a ns1:HeadVuoteenKaupungissaer ;
+    rdfs:label "kaupungissaers" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:headVuoteenKaupungissaerOf ns1:Torchmark_plc .
+

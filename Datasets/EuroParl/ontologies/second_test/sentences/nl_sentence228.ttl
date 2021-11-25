@@ -1,0 +1,103 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence228.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence228.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence228" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence228" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:With rdfs:label "With" .
+
+ns1:accept_1 a ns1:Accept ;
+    rdfs:label "accept" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:proposal_1 ;
+    ns1:with ns1:respect_1 .
+
+ns1:amplify_1 a ns1:Amplify ;
+    rdfs:label "amplify" ;
+    vn.role:Agent ns1:proposal_1 ;
+    vn.role:Theme ns1:Director_94%2F55%2Fec .
+
+ns1:docuverse earmark:hasContent "With this respect, I accept this proposal to amplify Director 94/55/EC who was interviewed today."^^xsd:string .
+
+ns1:interview_1 a ns1:Interview ;
+    rdfs:label "interviewed" ;
+    dul:associatedWith ns1:today_1 ;
+    vn.role:Recipient ns1:Director_94%2F55%2Fec .
+
+ns1:Accept rdfs:label "accept" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Amplify rdfs:label "amplify" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Interview rdfs:label "interviewed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Person rdfs:label "I" .
+
+ns1:Proposal rdfs:label "proposal" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Respect rdfs:label "respect" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Today rdfs:label "today" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:respect_1 a ns1:Respect ;
+    rdfs:label "respect" ;
+    quant:hasDeterminer quant:this .
+
+ns1:today_1 a ns1:Today ;
+    rdfs:label "today" .
+
+ns1:Director_94%2F55%2Fec rdfs:label "Director 94/55/EC" ;
+    boxer:possibleType owl:Thing .
+
+ns1:proposal_1 a ns1:Proposal ;
+    rdfs:label "proposal" ;
+    quant:hasDeterminer quant:this .
+

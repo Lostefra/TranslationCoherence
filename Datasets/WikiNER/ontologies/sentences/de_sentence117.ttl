@@ -1,0 +1,162 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence117.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence117.ttl a owl:Ontology ;
+    rdfs:label "de_sentence117" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence117" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:From rdfs:label "from" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "Areas of the State that are far from the Gulf are not immune to the effects of storms, which often cause huge rainfall as they move and weaken."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves ns1:Far,
+        ns1:state_1 ;
+    ns1:from ns1:Gulf .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves ns1:Immune,
+        ns1:Move,
+        ns1:area_1,
+        ns1:cause_1,
+        ns1:move_1,
+        ns1:rainfall_1,
+        ns1:storm_1,
+        ns1:weaken_1 ;
+    ns1:to ns1:effect_1 .
+
+owl:Thing rdfs:label "they" .
+
+ns1:Area rdfs:label "Areas" .
+
+ns1:Cause rdfs:label "cause" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Effect rdfs:label "effects" .
+
+ns1:Gulf rdfs:label "Gulf" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Huge a owl:Class ;
+    rdfs:label "huge" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:HugeRainfall a owl:Class ;
+    rdfs:label "Huge Rainfall" ;
+    dul:hasQuality ns1:Huge ;
+    rdfs:subClassOf ns1:Rainfall .
+
+ns1:OftenCause rdfs:label "often cause" ;
+    rdfs:subClassOf ns1:Cause .
+
+ns1:Rainfall a owl:Class ;
+    rdfs:label "rainfall" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:State rdfs:label "State" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Storm rdfs:label "storms" .
+
+ns1:Weaken rdfs:label "weaken" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:area_1 a ns1:Area ;
+    rdfs:label "Areas" ;
+    dul:hasQuality ns1:Immune ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:areaOf ns1:state_1 .
+
+ns1:cause_1 a ns1:OftenCause ;
+    rdfs:label "cause" ;
+    dul:hasQuality ns1:Often ;
+    vn.role:Theme1 ns1:storm_1 ;
+    vn.role:Theme2 ns1:rainfall_1 ;
+    ns1:as ns1:move_1 .
+
+ns1:effect_1 a ns1:Effect ;
+    rdfs:label "effects" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:effectOf ns1:storm_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "they" .
+
+ns1:weaken_1 a ns1:Weaken ;
+    rdfs:label "weaken" ;
+    dul:hasQuality ns1:Often ;
+    vn.role:Patient ns1:storm_1 .
+
+ns1:Far rdfs:label "far" .
+
+ns1:Immune rdfs:label "immune" .
+
+ns1:Move rdfs:label "move" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Often rdfs:label "often" .
+
+ns1:move_1 a ns1:Move ;
+    rdfs:label "move" ;
+    vn.role:Theme ns1:thing_1 .
+
+ns1:rainfall_1 a ns1:HugeRainfall ;
+    rdfs:label "rainfall" .
+
+ns1:state_1 a ns1:State ;
+    rdfs:label "State" ;
+    dul:hasQuality ns1:Far ;
+    quant:hasDeterminer quant:the .
+
+ns1:storm_1 a ns1:Storm ;
+    rdfs:label "storms" ;
+    quant:hasQuantifier quant:multiple .
+

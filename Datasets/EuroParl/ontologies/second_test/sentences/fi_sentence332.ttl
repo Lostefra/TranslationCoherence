@@ -1,0 +1,161 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence332.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence332.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence332" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence332" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:On rdfs:label "on" .
+
+ns1:Outside rdfs:label "outside" .
+
+ns1:disappear_1 a ns1:Disappear ;
+    rdfs:label "disappeared" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Theme ns1:people_1 .
+
+ns1:docuverse earmark:hasContent "Young people who have disappeared will receive training and find work outside the countryside, and they all have a disadvantaged effect on these areas."^^xsd:string .
+
+ns1:find_1 a ns1:Find ;
+    rdfs:label "find" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:people_1 ;
+    vn.role:Theme ns1:work_1 ;
+    ns1:outside ns1:countryside_1 .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "have" ;
+    vn.role:Agent ns1:people_1 ;
+    vn.role:Patient ns1:effect_1 .
+
+ns1:receive_1 a ns1:Receive ;
+    rdfs:label "receive" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:people_1 ;
+    vn.role:Theme ns1:training_1 .
+
+ns1:thing_1 coref:coref ns1:people_1 .
+
+owl:Thing rdfs:label "they" .
+
+ns1:Area rdfs:label "areas" .
+
+ns1:Countryside rdfs:label "countryside" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:DisadvantagedEffect a owl:Class ;
+    rdfs:label "disadvantaged effect" ;
+    dul:hasQuality ns1:Disadvantaged ;
+    rdfs:subClassOf ns1:Effect .
+
+ns1:Disappear rdfs:label "disappeared" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Effect a owl:Class ;
+    rdfs:label "effect" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Find rdfs:label "find" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:People a owl:Class ;
+    rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Receive rdfs:label "receive" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Training rdfs:label "training" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Work a owl:Class ;
+    rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Employment .
+
+ns1:YoungPeople a owl:Class ;
+    rdfs:label "Young people" ;
+    dul:hasQuality ns1:Young ;
+    rdfs:subClassOf ns1:People ;
+    owl:equivalentClass dbpedia:Youth .
+
+ns1:area_1 a ns1:Area ;
+    rdfs:label "areas" ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:countryside_1 a ns1:Countryside ;
+    rdfs:label "countryside" ;
+    quant:hasDeterminer quant:the .
+
+ns1:effect_1 a ns1:DisadvantagedEffect ;
+    rdfs:label "effect" ;
+    dul:hasQuality ns1:Disadvantaged ;
+    quant:hasDeterminer quant:a ;
+    quant:hasQuantifier quant:all ;
+    ns1:on ns1:area_1 .
+
+ns1:training_1 a ns1:Training ;
+    rdfs:label "training" .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "work" .
+
+ns1:Disadvantaged a owl:Class ;
+    rdfs:label "disadvantaged" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Young a owl:Class ;
+    rdfs:label "Young" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Youth .
+
+ns1:people_1 a owl:Thing,
+        ns1:YoungPeople ;
+    rdfs:label "people",
+        "they" ;
+    dul:hasQuality ns1:Young ;
+    quant:hasQuantifier quant:multiple .
+

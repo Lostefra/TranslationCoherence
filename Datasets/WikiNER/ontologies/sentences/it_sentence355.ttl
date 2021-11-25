@@ -1,0 +1,176 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence355.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence355.ttl a owl:Ontology ;
+    rdfs:label "it_sentence355" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence355" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Rel rdfs:label "," .
+
+ns1:To rdfs:label "to" .
+
+ns1:call_1 a ns1:Call ;
+    rdfs:label "called" ;
+    vn.role:Agent ns1:West_point ;
+    vn.role:Topic ns1:situation_1 .
+
+ns1:docuverse earmark:hasContent "McClellan, a young graduate and railway manager West_Point called back to active military service, took a more prudent approach."^^xsd:string .
+
+ns1:railway_1 a ns1:Railway ;
+    rdfs:label "railway" ;
+    dul:associatedWith ns1:manager_1 .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "took" ;
+    vn.role:Agent ns1:Mcclellan ;
+    vn.role:Theme ns1:approach_1 .
+
+dbpedia:United_States_Military_Academy a schema:CollegeOrUniversity,
+        schema:EducationalOrganization,
+        schema:Organization .
+
+ns1:Active rdfs:label "active" .
+
+ns1:ActiveMilitaryService a owl:Class ;
+    rdfs:label "active military service" ;
+    rdfs:subClassOf ns1:MilitaryService .
+
+ns1:Approach a owl:Class ;
+    rdfs:label "approach" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Call rdfs:label "called" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Graduate a owl:Class ;
+    rdfs:label "graduate" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Manager a owl:Class ;
+    rdfs:label "manager" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Mcclellan rdfs:label "McClellan" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:graduate_1,
+        ns1:manager_1 .
+
+ns1:MilitaryService a owl:Class ;
+    rdfs:label "military service" ;
+    dul:hasQuality ns1:Military ;
+    rdfs:subClassOf dul:Organization,
+        ns1:Service .
+
+ns1:More rdfs:label "more" .
+
+ns1:MorePrudentApproach a owl:Class ;
+    rdfs:label "more prudent approach" ;
+    rdfs:subClassOf ns1:PrudentApproach .
+
+ns1:Prudent a owl:Class ;
+    rdfs:label "prudent" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:PrudentApproach a owl:Class ;
+    rdfs:label "prudent approach" ;
+    dul:hasQuality ns1:Prudent ;
+    rdfs:subClassOf ns1:Approach .
+
+ns1:RailwayManager a owl:Class ;
+    rdfs:label "railway manager" ;
+    dul:associatedWith ns1:Railway ;
+    rdfs:subClassOf ns1:Manager .
+
+ns1:Service a owl:Class ;
+    rdfs:label "service" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Take rdfs:label "took" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:West_point rdfs:label "West Point" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:United_States_Military_Academy .
+
+ns1:Young a owl:Class ;
+    rdfs:label "young" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:YoungGraduate a owl:Class ;
+    rdfs:label "young graduate" ;
+    dul:hasQuality ns1:Young ;
+    rdfs:subClassOf ns1:Graduate .
+
+ns1:approach_1 a ns1:MorePrudentApproach ;
+    rdfs:label "approach" ;
+    dul:hasQuality ns1:More ;
+    quant:hasDeterminer quant:a .
+
+ns1:graduate_1 a ns1:YoungGraduate ;
+    rdfs:label "graduate" ;
+    quant:hasDeterminer quant:a .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Back,
+        ns1:manager_1,
+        ns1:service_1 ;
+    ns1:to ns1:service_1 .
+
+ns1:Back rdfs:label "back" .
+
+ns1:Military a owl:Class ;
+    rdfs:label "military" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Railway a owl:Class ;
+    rdfs:label "railway" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:service_1 a ns1:ActiveMilitaryService ;
+    rdfs:label "service" ;
+    dul:hasQuality ns1:Active,
+        ns1:Military .
+
+ns1:manager_1 a ns1:RailwayManager ;
+    rdfs:label "manager" ;
+    dul:hasQuality ns1:Back .
+

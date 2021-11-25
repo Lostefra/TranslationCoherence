@@ -1,0 +1,194 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence519.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "to" .
+
+vn.role:Theme2 rdfs:label "on" .
+
+translation_coherence:ko_sentence519.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence519" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence519" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:base_1 a ns1:Base ;
+    rdfs:label "based" ;
+    vn.role:Theme1 ns1:priority_1 ;
+    vn.role:Theme2 ns1:experience_1 .
+
+ns1:community_1 a ns1:Community ;
+    rdfs:label "community" ;
+    dul:associatedWith ns1:policy_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:deliver_1 a ns1:Deliver ;
+    rdfs:label "deliver" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Theme ns1:priority_1 .
+
+ns1:docuverse earmark:hasContent "This means deliver the priority of the committee, and based on the past experience in the implementation of the program, and the current community policy related to the structured operation."^^xsd:string .
+
+ns1:implementation_1 a ns1:Implementation ;
+    rdfs:label "implementation" ;
+    quant:hasDeterminer quant:the .
+
+ns1:mean_1 a ns1:Mean ;
+    rdfs:label "means" ;
+    vn.role:Agent ns1:thing_1 .
+
+ns1:relate_1 a ns1:Relate ;
+    rdfs:label "related" ;
+    vn.role:Recipient ns1:operation_1 ;
+    vn.role:Topic ns1:policy_1 .
+
+owl:Thing rdfs:label "This" .
+
+ns1:Base rdfs:label "based" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Committee rdfs:label "committee" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:CommunityPolicy a owl:Class ;
+    rdfs:label "Community Policy" ;
+    dul:associatedWith ns1:Community ;
+    rdfs:subClassOf ns1:Policy .
+
+ns1:Current a owl:Class ;
+    rdfs:label "current" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:CurrentCommunity a owl:Class ;
+    dul:hasQuality ns1:Current ;
+    rdfs:subClassOf ns1:Community .
+
+ns1:CurrentCommunityPolicy a owl:Class ;
+    rdfs:label "current community policy" ;
+    dul:associatedWith ns1:CurrentCommunity ;
+    rdfs:subClassOf ns1:CommunityPolicy .
+
+ns1:Deliver rdfs:label "deliver" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Experience a owl:Class ;
+    rdfs:label "experience" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Implementation a owl:Class ;
+    rdfs:label "implementation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Implementation .
+
+ns1:Mean rdfs:label "means" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Operation a owl:Class ;
+    rdfs:label "operation" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Past a owl:Class ;
+    rdfs:label "past" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:PastExperience a owl:Class ;
+    rdfs:label "Past Experience" ;
+    dul:hasQuality ns1:Past ;
+    rdfs:subClassOf ns1:Experience .
+
+ns1:Policy a owl:Class ;
+    rdfs:label "policy" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Policy .
+
+ns1:Priority rdfs:label "priority" ;
+    rdfs:subClassOf dul:Role .
+
+ns1:Program rdfs:label "program" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Relate rdfs:label "related" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Structured a owl:Class ;
+    rdfs:label "structured" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:StructuredOperation a owl:Class ;
+    rdfs:label "structured operation" ;
+    dul:hasQuality ns1:Structured ;
+    rdfs:subClassOf ns1:Operation .
+
+ns1:committee_1 a ns1:Committee ;
+    rdfs:label "committee" ;
+    quant:hasDeterminer quant:the .
+
+ns1:experience_1 a ns1:PastExperience ;
+    rdfs:label "experience" ;
+    quant:hasDeterminer quant:the ;
+    ns1:inImplementationOf ns1:program_1 .
+
+ns1:operation_1 a ns1:StructuredOperation ;
+    rdfs:label "operation" ;
+    quant:hasDeterminer quant:the .
+
+ns1:program_1 a ns1:Program ;
+    rdfs:label "program" ;
+    quant:hasDeterminer quant:the .
+
+ns1:policy_1 a ns1:CurrentCommunityPolicy ;
+    rdfs:label "policy" .
+
+ns1:priority_1 a ns1:Priority ;
+    rdfs:label "priority" ;
+    quant:hasDeterminer quant:the,
+        quant:this ;
+    ns1:priorityOf ns1:committee_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "This" .
+
+ns1:Community a owl:Class ;
+    rdfs:label "community" ;
+    rdfs:subClassOf dul:Collection .
+

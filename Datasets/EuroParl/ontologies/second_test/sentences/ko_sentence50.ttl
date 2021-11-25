@@ -1,0 +1,135 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence50.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "on" .
+
+translation_coherence:ko_sentence50.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence50" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence50" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Noteq rdfs:label "other" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:appear_1 a ns1:Appear ;
+    rdfs:label "appears" ;
+    vn.role:Location "0001-11-18"^^xsd:date ;
+    vn.role:Theme ns1:newspaper_1 .
+
+ns1:docuverse earmark:hasContent "The question previously mentions the intervention of Mr. Palacio, in other cases, and in the ABC newspaper that appears on this opinion 18 November."^^xsd:string .
+
+ns1:mention_1 a ns1:PreviouslyMention ;
+    rdfs:label "mentions" ;
+    dul:hasQuality ns1:Previously ;
+    vn.role:Agent ns1:question_1 ;
+    vn.role:Topic ns1:intervention_1 ;
+    ns1:in ns1:case_1,
+        ns1:newspaper_1 .
+
+ns1:opinion_1 a ns1:Opinion ;
+    rdfs:label "opinion" ;
+    quant:hasDeterminer quant:this ;
+    ns1:at "0001-11-18"^^xsd:date .
+
+dbpedia:American_Broadcasting_Company a schema:Organization .
+
+ns1:Abc rdfs:label "ABC" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:American_Broadcasting_Company .
+
+ns1:Appear rdfs:label "appears" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Intervention rdfs:label "intervention" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Mention rdfs:label "mentions" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Newspaper rdfs:label "newspaper" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Opinion rdfs:label "opinion" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Palacio rdfs:label "Palacio" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> .
+
+ns1:Previously rdfs:label "previously" .
+
+ns1:PreviouslyMention rdfs:subClassOf ns1:Mention .
+
+ns1:Question rdfs:label "question" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:case_1 a ns1:Case ;
+    rdfs:label "other" ;
+    owl:differentFrom ns1:case_2 .
+
+ns1:case_2 a ns1:Case ;
+    rdfs:label "cases" ;
+    quant:hasDeterminer quant:other ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:intervention_1 a ns1:Intervention ;
+    rdfs:label "intervention" ;
+    quant:hasDeterminer quant:the ;
+    ns1:interventionOf ns1:Palacio .
+
+ns1:question_1 a ns1:Question ;
+    rdfs:label "question" ;
+    quant:hasDeterminer quant:the .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> rdfs:label "Mr." ;
+    boxer:possibleType dul:Role .
+
+ns1:Case rdfs:label "cases",
+        "other" .
+
+ns1:newspaper_1 a ns1:Newspaper ;
+    rdfs:label "newspaper" ;
+    dul:associatedWith ns1:Abc .
+

@@ -1,0 +1,186 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence307.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "to" .
+
+vn.role:Theme rdfs:label "with" .
+
+translation_coherence:zh_sentence307.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence307" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence307" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In",
+        "in" .
+
+ns1:Of rdfs:label "'s",
+        "his",
+        "of" .
+
+ns1:be_1 a ns1:Be ;
+    rdfs:label "is" ;
+    boxer:agent ns1:bulk_1 ;
+    boxer:theme ns1:situation_1 ;
+    ns1:inHotelOf ns1:Clinles .
+
+ns1:docuverse earmark:hasContent "In the Clinles's hotels in Slinton, the bulk of his energy is to develop a living law to deal with the various businesses that can be provided to a simple lawyer."^^xsd:string .
+
+ns1:hotel_1 a ns1:Hotel ;
+    rdfs:label "hotels" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:locatedIn ns1:Slinton .
+
+ns1:living_1 a ns1:Living ;
+    rdfs:label "living" ;
+    dul:associatedWith ns1:law_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:Be rdfs:label "Be",
+        "is" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Bulk rdfs:label "bulk" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Business rdfs:label "businesses" .
+
+ns1:Clinles rdfs:label "Clinles" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Deal rdfs:label "deal" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Develop rdfs:label "develop" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Energy rdfs:label "energy" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Hotel rdfs:label "hotels" .
+
+ns1:Law a owl:Class ;
+    rdfs:label "law" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:LivingLaw a owl:Class ;
+    rdfs:label "Living Law" ;
+    dul:associatedWith ns1:Living ;
+    rdfs:subClassOf ns1:Law ;
+    owl:equivalentClass dbpedia:Living_with_the_Law_(album) .
+
+ns1:Provide rdfs:label "provided" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Simple a owl:Class ;
+    rdfs:label "simple" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SimpleLawyer a owl:Class ;
+    rdfs:label "simple lawyer" ;
+    dul:hasQuality ns1:Simple ;
+    rdfs:subClassOf ns1:Lawyer .
+
+ns1:Slinton rdfs:label "Slinton" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Various rdfs:label "various" .
+
+ns1:VariousBusiness rdfs:subClassOf ns1:Business .
+
+ns1:deal_1 a ns1:Deal ;
+    rdfs:label "deal" ;
+    vn.role:Agent ns1:law_1 ;
+    vn.role:Theme ns1:business_1 .
+
+ns1:develop_1 a ns1:Develop ;
+    rdfs:label "develop" ;
+    vn.role:Agent ns1:bulk_1 ;
+    vn.role:Product ns1:law_1 .
+
+ns1:energy_1 a ns1:Energy ;
+    rdfs:label "energy" ;
+    owl:sameAs ns1:lawyer_1 ;
+    ns1:energyOf ns1:male_1 .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "his" .
+
+ns1:provide_1 a ns1:Provide ;
+    rdfs:label "provided" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Recipient ns1:lawyer_1 ;
+    vn.role:Theme ns1:business_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:deal_1,
+        ns1:develop_1,
+        ns1:law_1,
+        ns1:lawyer_1,
+        ns1:provide_1 .
+
+ns1:Lawyer a owl:Class ;
+    rdfs:label "lawyer" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Living a owl:Class ;
+    rdfs:label "living" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:bulk_1 a ns1:Bulk ;
+    rdfs:label "bulk" ;
+    quant:hasDeterminer quant:the ;
+    ns1:bulkOf ns1:energy_1 .
+
+ns1:business_1 a dbpedia:Business,
+        ns1:VariousBusiness ;
+    rdfs:label "businesses" ;
+    dul:hasQuality ns1:Various ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:lawyer_1 a ns1:Lawyer,
+        ns1:SimpleLawyer ;
+    rdfs:label "lawyer" ;
+    quant:hasDeterminer quant:a .
+
+ns1:law_1 a ns1:LivingLaw ;
+    rdfs:label "law" .
+

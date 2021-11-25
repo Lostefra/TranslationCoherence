@@ -1,0 +1,143 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence367.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "in" .
+
+vn.role:Location rdfs:label "in" .
+
+translation_coherence:nl_sentence367.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence367" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence367" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Quantity rdfs:label "many" .
+
+ns1:With rdfs:label "with" .
+
+ns1:committee_1 a ns1:Committee ;
+    rdfs:label "committee" ;
+    dul:associatedWith ns1:debate_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:detail_1 a ns1:Detail ;
+    rdfs:label "detailed" ;
+    vn.role:Theme ns1:amendment_1 ;
+    ns1:with ns1:report_1 .
+
+ns1:docuverse earmark:hasContent "She's somehow involved in some depth and in the committee debate, she took account of many amendments detailed with this report."^^xsd:string .
+
+ns1:involve_1 a ns1:SomehowInvolve ;
+    rdfs:label "involved" ;
+    dul:hasQuality ns1:Somehow ;
+    vn.role:Agent ns1:female_1 ;
+    vn.role:Destination ns1:depth_1 .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "took" ;
+    vn.role:Agent ns1:female_1 ;
+    vn.role:Location ns1:debate_1 ;
+    vn.role:Value ns1:account_1 .
+
+ns1:Account rdfs:label "account" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Amendment rdfs:label "amendments" .
+
+ns1:CommitteeDebate a owl:Class ;
+    rdfs:label "committee debate" ;
+    dul:associatedWith ns1:Committee ;
+    rdfs:subClassOf ns1:Debate .
+
+ns1:Debate a owl:Class ;
+    rdfs:label "debate" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Depth rdfs:label "depth" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Detail rdfs:label "detailed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Female rdfs:label "She" .
+
+ns1:Involve rdfs:label "involved" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Report rdfs:label "report" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Somehow rdfs:label "somehow" .
+
+ns1:SomehowInvolve rdfs:subClassOf ns1:Involve .
+
+ns1:Take rdfs:label "took" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:account_1 a ns1:Account ;
+    rdfs:label "account" ;
+    ns1:accountOf ns1:amendment_1 .
+
+ns1:depth_1 a ns1:Depth ;
+    rdfs:label "depth" ;
+    quant:hasQuantifier quant:some .
+
+ns1:report_1 a ns1:Report ;
+    rdfs:label "report" ;
+    quant:hasDeterminer quant:this .
+
+ns1:Committee a owl:Class ;
+    rdfs:label "committee" ;
+    rdfs:subClassOf dul:Organization ;
+    owl:equivalentClass dbpedia:Committee .
+
+ns1:amendment_1 a ns1:Amendment ;
+    rdfs:label "amendments" ;
+    quant:hasQuantifier quant:many,
+        quant:multiple .
+
+ns1:debate_1 a ns1:CommitteeDebate ;
+    rdfs:label "debate" .
+
+ns1:female_1 a ns1:Female ;
+    rdfs:label "She" .
+

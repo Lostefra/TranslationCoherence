@@ -1,0 +1,108 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence661.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence661.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence661" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence661" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:At rdfs:label "at" .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:create_1 a ns1:AlsoCreate ;
+    rdfs:label "created" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Agent ns1:idea_1 ;
+    vn.role:Product ns1:topic_1 .
+
+ns1:docuverse earmark:hasContent "Rand's idea also created a topic of research at Clemson and Duke_University."^^xsd:string .
+
+dbpedia:Clemson_University a schema:CollegeOrUniversity,
+        schema:EducationalOrganization,
+        schema:Organization .
+
+dbpedia:Duke_University a schema:CollegeOrUniversity,
+        schema:EducationalOrganization,
+        schema:Organization .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoCreate rdfs:subClassOf ns1:Create .
+
+ns1:Clemson rdfs:label "Clemson" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Clemson_University .
+
+ns1:Create rdfs:label "created" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Duke_university rdfs:label "Duke University" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Duke_University .
+
+ns1:Idea rdfs:label "idea" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Research rdfs:label "research" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Topic rdfs:label "topic" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:idea_1 a ns1:Idea ;
+    rdfs:label "idea" ;
+    ns1:ideaOf ns1:Rand .
+
+ns1:research_1 a ns1:Research ;
+    rdfs:label "research" .
+
+ns1:topic_1 a ns1:Topic ;
+    rdfs:label "topic" ;
+    quant:hasDeterminer quant:a ;
+    ns1:at ns1:Clemson,
+        ns1:Duke_university ;
+    ns1:topicOf ns1:research_1 .
+

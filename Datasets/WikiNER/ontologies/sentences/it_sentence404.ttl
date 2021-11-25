@@ -1,0 +1,179 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence404.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence404.ttl a owl:Ontology ;
+    rdfs:label "it_sentence404" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence404" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "his" .
+
+ns1:change_1 a ns1:Change ;
+    rdfs:label "changed" ;
+    boxer:patient ns1:plan_1 ;
+    vn.role:Agent ns1:Booth ;
+    vn.role:Theme ns1:attend_1 .
+
+ns1:decide_1 a ns1:Decide ;
+    rdfs:label "decided" ;
+    boxer:agent ns1:Booth ;
+    boxer:theme ns1:assassinate_1 ;
+    ns1:after ns1:attend_1 .
+
+ns1:docuverse earmark:hasContent "After attending an April 11 speech in which Lincoln promoted black voting rights, an incense Booth changed his plans and decided to assassinate the president."^^xsd:string .
+
+ns1:incense_1 rdfs:label "his",
+        "incense" .
+
+ns1:promote_1 a ns1:Promote ;
+    rdfs:label "promoted" ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Theme ns1:rights_1 ;
+    ns1:in ns1:speech_1 .
+
+ns1:voting_1 a ns1:Voting ;
+    rdfs:label "voting" ;
+    dul:associatedWith ns1:rights_1 .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+owl:Thing rdfs:label "After" .
+
+ns1:Assassinate a owl:Class ;
+    rdfs:label "assassinate" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Assassination .
+
+ns1:Attend rdfs:label "attending" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Black a owl:Class ;
+    rdfs:label "black" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:BlackVoting a owl:Class ;
+    dul:hasQuality ns1:Black ;
+    rdfs:subClassOf ns1:Voting .
+
+ns1:BlackVotingRights a owl:Class ;
+    rdfs:label "Black Voting Rights" ;
+    dul:associatedWith ns1:BlackVoting ;
+    rdfs:subClassOf ns1:VotingRights ;
+    owl:equivalentClass dbpedia:Fifteenth_Amendment_to_the_United_States_Constitution .
+
+ns1:Change rdfs:label "changed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Decide rdfs:label "decided" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Incense rdfs:label "Booth",
+        "incense" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+
+ns1:Plan rdfs:label "plans" .
+
+ns1:President a owl:Class ;
+    rdfs:label "president" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:President_of_the_United_States .
+
+ns1:Promote rdfs:label "promoted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Rights a owl:Class ;
+    rdfs:label "rights" .
+
+ns1:Speech rdfs:label "speech" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:VotingRights a owl:Class ;
+    rdfs:label "voting rights" ;
+    dul:associatedWith ns1:Voting ;
+    rdfs:subClassOf ns1:Rights .
+
+ns1:assassinate_1 a ns1:Assassinate ;
+    rdfs:label "assassinate" ;
+    vn.role:Agent ns1:Booth ;
+    vn.role:Patient ns1:president_1 .
+
+ns1:plan_1 a ns1:Plan ;
+    rdfs:label "plans" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:planOf ns1:Booth .
+
+ns1:president_1 a ns1:President ;
+    rdfs:label "president" ;
+    quant:hasDeterminer quant:the .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "After" .
+
+ns1:attend_1 a ns1:Attend ;
+    rdfs:label "attending" ;
+    boxer:patient ns1:speech_1 ;
+    vn.role:Experiencer ns1:thing_1 .
+
+ns1:rights_1 a ns1:BlackVotingRights ;
+    rdfs:label "rights" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:speech_1 a ns1:Speech ;
+    rdfs:label "speech" ;
+    ns1:at "0001-04-11"^^xsd:date .
+
+ns1:Voting a owl:Class ;
+    rdfs:label "voting" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Booth a ns1:Incense ;
+    rdfs:label "Booth",
+        "incense" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Male ;
+    quant:hasDeterminer quant:an .
+

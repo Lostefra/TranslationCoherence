@@ -1,0 +1,178 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence580.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:fi_sentence580.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence580" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence580" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:8._1 rdfs:label "8." .
+
+ns1:Entails rdfs:label "if" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "It should be noted that the overall competitiveness of the European_Union is generally 8. of the United_States_of_America, and that this figure will only improve if the number of competitive units is increasing. In addition, this is a time when technological developments, economic globalization and the problems of enlargement and common currency demand areas and businesses and private companies to increase competition."^^xsd:string .
+
+ns1:note_1 a ns1:Note ;
+    rdfs:label "noted" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:neuter_1 ;
+    vn.role:Topic ns1:situation_1 .
+
+ns1:quantity_competitiveness_1 a ns1:quantity_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Quantity_competitiveness_1,
+        "8."^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:Generally .
+
+dbpedia:United_States a schema:Country,
+        schema:Place .
+
+owl:Thing rdfs:label "It" .
+
+ns1:Competitive rdfs:label "competitive" .
+
+ns1:CompetitiveUnit rdfs:subClassOf ns1:Unit .
+
+ns1:Competitiveness a owl:Class ;
+    rdfs:label "competitiveness" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:EuropeanUnion rdfs:subClassOf dul:Organization .
+
+ns1:European_union a owl:Class ;
+    rdfs:label "European Union" ;
+    rdfs:subClassOf ns1:EuropeanUnion ;
+    owl:equivalentClass dbpedia:European_Union .
+
+ns1:Figure rdfs:label "figure" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Generally rdfs:label "generally" .
+
+ns1:Improve rdfs:label "improve" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Increase rdfs:label "increase",
+        "increasing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Note rdfs:label "noted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Number rdfs:label "number" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Only rdfs:label "only" .
+
+ns1:OnlyImprove rdfs:label "Only Improve" ;
+    rdfs:subClassOf ns1:Improve .
+
+ns1:Overall a owl:Class ;
+    rdfs:label "overall" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:OverallCompetitiveness a owl:Class ;
+    rdfs:label "Overall Competitiveness" ;
+    dul:hasQuality ns1:Overall ;
+    rdfs:subClassOf ns1:Competitiveness .
+
+ns1:Unit rdfs:label "units" .
+
+ns1:United_states_of_america rdfs:label "United States of America" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:United_States .
+
+ns1:european_union_1 a ns1:European_union ;
+    rdfs:label "European Union" ;
+    quant:hasDeterminer quant:the .
+
+ns1:figure_1 a ns1:Figure ;
+    rdfs:label "figure" ;
+    quant:hasDeterminer quant:this .
+
+ns1:increase_1 a ns1:Increase ;
+    rdfs:label "increasing" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Patient ns1:number_1 ;
+    ns1:entails ns1:improve_1 .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "It" .
+
+ns1:number_1 a ns1:Number ;
+    rdfs:label "number" ;
+    quant:hasDeterminer quant:the ;
+    ns1:numberOf ns1:unit_1 .
+
+ns1:quantity_1 dul:hasDataValue "8."^^xsd:nonNegativeInteger .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:Quantity_competitiveness_1,
+        ns1:improve_1,
+        ns1:increase_1,
+        ns1:unit_1,
+        "8."^^xsd:nonNegativeInteger .
+
+ns1:Quantity_competitiveness_1 a ns1:OverallCompetitiveness ;
+    rdfs:label "competitiveness" ;
+    quant:hasDeterminer quant:the ;
+    ns1:overallCompetitivenessOf ns1:United_states_of_america,
+        ns1:european_union_1 .
+
+ns1:improve_1 a ns1:OnlyImprove ;
+    rdfs:label "improve" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Only ;
+    vn.role:Patient ns1:figure_1 .
+
+ns1:unit_1 a ns1:CompetitiveUnit ;
+    rdfs:label "units" ;
+    dul:hasQuality ns1:Competitive ;
+    quant:hasQuantifier quant:multiple .
+
+"8."^^xsd:nonNegativeInteger rdfs:label "8." .
+

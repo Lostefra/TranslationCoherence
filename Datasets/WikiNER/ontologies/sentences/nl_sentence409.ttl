@@ -1,0 +1,87 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence409.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:nl_sentence409.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence409" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence409" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:cut_1 a ns1:Cut ;
+    rdfs:label "cut" ;
+    vn.role:Agent ns1:knife_1 ;
+    vn.role:Patient ns1:Henry_rathbone .
+
+ns1:docuverse earmark:hasContent "Major Henry_Rathbone threatened Booth but was cut by Booth's knife."^^xsd:string .
+
+ns1:threaten_1 a ns1:Threaten ;
+    rdfs:label "threatened" ;
+    vn.role:Cause ns1:Henry_rathbone ;
+    vn.role:Experiencer ns1:Booth .
+
+ns1:Cut rdfs:label "cut" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Knife rdfs:label "knife" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Threaten rdfs:label "threatened" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:knife_1 a ns1:Knife ;
+    rdfs:label "knife" ;
+    ns1:knifeOf ns1:Booth .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Major> rdfs:label "Major" ;
+    boxer:possibleType dul:Role .
+
+ns1:Booth rdfs:label "Booth" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Henry_rathbone rdfs:label "Henry Rathbone" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Major> ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Major> ;
+    owl:sameAs dbpedia:Henry_Rathbone .
+

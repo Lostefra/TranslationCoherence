@@ -1,0 +1,121 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence99.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence99.ttl a owl:Ontology ;
+    rdfs:label "it_sentence99" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence99" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Since rdfs:label "Since" .
+
+ns1:docuverse earmark:hasContent "Since 1990, the majority of white people in the state voted increasingly Republican in state elections."^^xsd:string .
+
+ns1:state_2 a ns1:State ;
+    rdfs:label "state" ;
+    dul:associatedWith ns1:election_1 .
+
+ns1:vote_1 a ns1:Vote ;
+    rdfs:label "voted" ;
+    vn.role:Agent ns1:majority_1 ;
+    ns1:in ns1:election_1 ;
+    ns1:since "1990-01-01"^^xsd:date .
+
+dbpedia:Republican_Party_(United_States) a schema:Organization .
+
+ns1:Election rdfs:label "elections" .
+
+ns1:Increasingly rdfs:label "increasingly" .
+
+ns1:Majority rdfs:label "majority" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:People a owl:Class ;
+    rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Republican rdfs:label "Republican" ;
+    dul:hasQuality ns1:Increasingly ;
+    owl:sameAs dbpedia:Republican_Party_(United_States) .
+
+ns1:StateElection rdfs:subClassOf ns1:Election .
+
+ns1:Vote rdfs:label "voted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:WhitePeople a owl:Class ;
+    rdfs:label "White People" ;
+    dul:hasQuality ns1:White ;
+    rdfs:subClassOf ns1:People ;
+    owl:equivalentClass dbpedia:White_Americans .
+
+ns1:majority_1 a ns1:Majority ;
+    rdfs:label "majority" ;
+    dul:hasQuality ns1:Republican ;
+    quant:hasDeterminer quant:the ;
+    ns1:majorityOf ns1:people_1 .
+
+ns1:people_1 a ns1:WhitePeople ;
+    rdfs:label "people" ;
+    dul:hasQuality ns1:White ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:state_1 .
+
+ns1:state_1 a ns1:State ;
+    rdfs:label "state" ;
+    quant:hasDeterminer quant:the .
+
+ns1:State rdfs:label "state" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:White a owl:Class ;
+    rdfs:label "white" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:White_people .
+
+ns1:election_1 a dbpedia:Election,
+        ns1:StateElection ;
+    rdfs:label "elections" ;
+    quant:hasQuantifier quant:multiple .
+

@@ -1,0 +1,184 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence337.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme rdfs:label "on" .
+
+translation_coherence:en_sentence337.ttl a owl:Ontology ;
+    rdfs:label "en_sentence337" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence337" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Onlifestoryof rdfs:label "on Lincoln 's life story" .
+
+ns1:childhood_1 a ns1:Childhood ;
+    rdfs:label "childhood" ;
+    dul:associatedWith ns1:poverty_1 .
+
+ns1:docuverse earmark:hasContent "There were thousands of Republican speakers who focused first on the party platform, and second on Lincoln 's life story, emphasizing his childhood poverty."^^xsd:string .
+
+ns1:emphasize_1 a ns1:Emphasize ;
+    rdfs:label "emphasizing" ;
+    vn.role:Agent ns1:there_1 ;
+    vn.role:Theme ns1:poverty_1 .
+
+ns1:focus_1 a ns1:Focus ;
+    rdfs:label "focused" ;
+    dul:hasQuality ns1:First ;
+    vn.role:Experiencer ns1:there_1 ;
+    vn.role:Theme ns1:platform_1 .
+
+ns1:life_1 a ns1:Life ;
+    rdfs:label "life" ;
+    dul:associatedWith ns1:story_1 .
+
+ns1:party_1 a ns1:Party ;
+    rdfs:label "party" ;
+    dul:associatedWith ns1:platform_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Second,
+        ns1:there_1 ;
+    ns1:onLifeStoryOf ns1:Lincoln .
+
+ns1:thousand_1 rdfs:label "thousands" .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+dbpedia:Republican_Party_(United_States) a schema:Organization .
+
+ns1:ChildhoodPoverty a owl:Class ;
+    rdfs:label "childhood poverty" ;
+    dul:associatedWith ns1:Childhood ;
+    rdfs:subClassOf ns1:Poverty .
+
+ns1:Emphasize rdfs:label "emphasizing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:First rdfs:label "first" .
+
+ns1:Focus rdfs:label "focused" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:LifeStory a owl:Class ;
+    rdfs:label "Life Story" ;
+    dul:associatedWith ns1:Life ;
+    rdfs:subClassOf ns1:Story .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+
+ns1:PartyPlatform a owl:Class ;
+    rdfs:label "party platform" ;
+    dul:associatedWith ns1:Party ;
+    rdfs:subClassOf ns1:Platform ;
+    owl:equivalentClass dbpedia:Party_platform .
+
+ns1:Platform a owl:Class ;
+    rdfs:label "platform" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Poverty a owl:Class ;
+    rdfs:label "poverty" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Republican rdfs:label "Republican" ;
+    owl:sameAs dbpedia:Republican_Party_(United_States) .
+
+ns1:RepublicanSpeaker rdfs:subClassOf ns1:Speaker .
+
+ns1:Speaker rdfs:label "speakers" .
+
+ns1:Story a owl:Class ;
+    rdfs:label "story" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:There rdfs:label "There" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Thousand rdfs:label "thousands" .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "his" .
+
+ns1:speaker_1 a ns1:RepublicanSpeaker ;
+    rdfs:label "speakers" ;
+    dul:hasQuality ns1:Republican ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:story_1 a ns1:LifeStory ;
+    rdfs:label "story" .
+
+ns1:Childhood a owl:Class ;
+    rdfs:label "childhood" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Life a owl:Class ;
+    rdfs:label "life" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Party a owl:Class ;
+    rdfs:label "party" ;
+    rdfs:subClassOf dul:Organization ;
+    owl:equivalentClass dbpedia:Triumph_Heritage_Empowerment_Party .
+
+ns1:Second rdfs:label "second" .
+
+ns1:platform_1 a ns1:PartyPlatform ;
+    rdfs:label "platform" .
+
+ns1:poverty_1 a ns1:ChildhoodPoverty ;
+    rdfs:label "poverty" ;
+    ns1:childhoodPovertyOf ns1:male_1 .
+
+ns1:there_1 a ns1:There,
+        ns1:Thousand ;
+    rdfs:label "There" ;
+    dul:hasQuality ns1:Second ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:thereOf ns1:speaker_1 .
+

@@ -1,0 +1,182 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence239.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence239.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence239" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence239" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Onco.of rdfs:label "on the co. of" .
+
+ns1:city_1 a dbpedia:Polis,
+        ns1:MarineCity ;
+    rdfs:label "cities" ;
+    dul:hasQuality ns1:Marine ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:co._1 a <https://w3id.org/stlab/ke/amiala/fi_sentence239.ttl/Co.> ;
+    rdfs:label "co." ;
+    quant:hasDeterminer quant:the .
+
+ns1:docuverse earmark:hasContent "The heroic cult of Achilles on the island of Leuce was widespread in ancient times, not only on the co. of the Pontic Sea, but also in marine cities with close links to the riches of the Black_Sea."^^xsd:string .
+
+ns1:island_1 a ns1:Island ;
+    rdfs:label "island" ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves ns1:Widespread,
+        ns1:cult_1 ;
+    dul:hasQuality ns1:Only ;
+    ns1:in ns1:time_1 ;
+    ns1:onCo.Of ns1:Pontic_sea .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Widespread,
+        ns1:cult_1 ;
+    dul:hasQuality ns1:Also ;
+    ns1:in ns1:time_1 ;
+    ns1:inMarineCityWith ns1:links_1 .
+
+ns1:Achille a owl:Class ;
+    rdfs:label "Achilles" ;
+    owl:equivalentClass dbpedia:Achilles .
+
+ns1:Also rdfs:label "also" .
+
+ns1:Ancient rdfs:label "ancient" ;
+    owl:sameAs dbpedia:Ancient_Greece .
+
+ns1:AncientTime rdfs:subClassOf ns1:Time .
+
+ns1:Black_sea rdfs:label "Black Sea" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Black_Sea .
+
+ns1:City rdfs:label "cities" .
+
+ns1:Close a owl:Class ;
+    rdfs:label "close" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:CloseLinks a owl:Class ;
+    rdfs:label "close links" ;
+    dul:hasQuality ns1:Close ;
+    rdfs:subClassOf ns1:Links .
+
+<https://w3id.org/stlab/ke/amiala/fi_sentence239.ttl/Co.> rdfs:label "co." .
+
+ns1:Cult a owl:Class ;
+    rdfs:label "cult" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Heroic a owl:Class ;
+    rdfs:label "heroic" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:HeroicCult a owl:Class ;
+    rdfs:label "heroic cult" ;
+    dul:hasQuality ns1:Heroic ;
+    rdfs:subClassOf ns1:Cult ;
+    owl:equivalentClass dbpedia:Greek_hero_cult .
+
+ns1:Island rdfs:label "island" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Leuce rdfs:label "Leuce" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Snake_Island_(Black_Sea) .
+
+ns1:Links a owl:Class ;
+    rdfs:label "links" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Marine rdfs:label "marine" ;
+    owl:sameAs dbpedia:Ocean .
+
+ns1:MarineCity rdfs:subClassOf ns1:City .
+
+ns1:Only rdfs:label "only" .
+
+ns1:Pontic_sea rdfs:label "Pontic Sea" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Riches rdfs:label "riches" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Time rdfs:label "times" .
+
+ns1:achille_1 a ns1:Achille ;
+    rdfs:label "Achilles" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:onIslandOf ns1:Leuce .
+
+ns1:links_1 a ns1:CloseLinks ;
+    rdfs:label "links" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:to ns1:riches_1 .
+
+ns1:riches_1 a ns1:Riches ;
+    rdfs:label "riches" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:richesOf ns1:Black_sea .
+
+ns1:cult_1 a ns1:HeroicCult ;
+    rdfs:label "cult" ;
+    dul:hasQuality ns1:Widespread ;
+    quant:hasDeterminer quant:the ;
+    ns1:heroicCultOf ns1:achille_1 .
+
+ns1:time_1 a ns1:AncientTime ;
+    rdfs:label "times" ;
+    dul:hasQuality ns1:Ancient ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Widespread rdfs:label "widespread" .
+

@@ -1,0 +1,151 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence454.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:ko_sentence454.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence454" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence454" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:docuverse earmark:hasContent "The need for the European_Commission is not a good intention, but the clear guideline and these resources are used by the member states."^^xsd:string .
+
+ns1:member_1 a ns1:Member ;
+    rdfs:label "member" ;
+    dul:associatedWith ns1:state_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves ns1:Good,
+        ns1:GoodIntention,
+        ns1:Intention,
+        ns1:need_1 .
+
+ns1:use_1 a ns1:Use ;
+    vn.role:Agent ns1:state_1 ;
+    vn.role:Theme ns1:resource_1 .
+
+ns1:use_2 a ns1:Use ;
+    rdfs:label "used" ;
+    vn.role:Agent ns1:state_1 ;
+    vn.role:Theme ns1:guideline_1 .
+
+ns1:Clear a owl:Class ;
+    rdfs:label "clear" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ClearGuideline a owl:Class ;
+    rdfs:label "clear guideline" ;
+    dul:hasQuality ns1:Clear ;
+    rdfs:subClassOf ns1:Guideline .
+
+ns1:European_commission a owl:Class ;
+    rdfs:label "European Commission" ;
+    owl:equivalentClass dbpedia:European_Commission .
+
+ns1:Member a owl:Class ;
+    rdfs:label "member" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Member_state_of_the_European_Union .
+
+ns1:MemberState rdfs:subClassOf ns1:State .
+
+ns1:Need rdfs:label "need" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Resource rdfs:label "resources" .
+
+ns1:State rdfs:label "states" .
+
+ns1:european_commission_1 a ns1:European_commission ;
+    rdfs:label "European Commission" ;
+    quant:hasDeterminer quant:the ;
+    owl:sameAs ns1:guideline_1,
+        ns1:intention_1 .
+
+ns1:intention_1 a ns1:Intention ;
+    rdfs:label "intention" ;
+    quant:hasDeterminer quant:a .
+
+ns1:need_1 a ns1:GoodIntention,
+        ns1:Need ;
+    rdfs:label "need" ;
+    quant:hasDeterminer quant:the ;
+    ns1:for ns1:european_commission_1 .
+
+ns1:resource_1 a ns1:Resource ;
+    rdfs:label "resources" ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Good a owl:Class ;
+    rdfs:label "good" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Good_(economics) .
+
+ns1:GoodIntention a owl:Class ;
+    rdfs:label "Good Intention" ;
+    dul:hasQuality ns1:Good ;
+    rdfs:subClassOf ns1:Intention .
+
+ns1:Guideline a owl:Class ;
+    rdfs:label "guideline" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Use rdfs:label "used" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:guideline_1 a ns1:ClearGuideline,
+        ns1:Guideline ;
+    rdfs:label "guideline" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Intention a owl:Class ;
+    rdfs:label "intention" ;
+    rdfs:subClassOf dul:Goal .
+
+ns1:state_1 a ns1:MemberState ;
+    rdfs:label "states" ;
+    quant:hasQuantifier quant:multiple .
+

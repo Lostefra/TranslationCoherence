@@ -1,0 +1,168 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence49.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Patient2 rdfs:label "to" .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:zh_sentence49.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence49" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence49" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:colonial_1 a ns1:Colonial ;
+    rdfs:label "colonial" ;
+    dul:associatedWith ns1:rule_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:docuverse earmark:hasContent "The colonial rule is also referred to as a revolutionary socialist or such form, which is the form of revolutionary rule, often linked to Mikhail Baikou and Johanno."^^xsd:string .
+
+ns1:link_1 a ns1:OftenLink ;
+    rdfs:label "linked" ;
+    dul:hasQuality ns1:Often ;
+    vn.role:Patient1 ns1:rule_1 ;
+    vn.role:Patient2 ns1:Mikhail_baikou .
+
+ns1:refer_1 a ns1:AlsoRefer ;
+    rdfs:label "referred" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Recipient ns1:Johanno ;
+    vn.role:Theme ns1:rule_1 ;
+    ns1:as ns1:form_1,
+        ns1:socialist_1 ;
+    ns1:union ns1:situation_1 .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoRefer rdfs:subClassOf ns1:Refer .
+
+ns1:ColonialRule a owl:Class ;
+    rdfs:label "colonial rule" ;
+    dul:associatedWith ns1:Colonial ;
+    rdfs:subClassOf ns1:Rule ;
+    owl:equivalentClass dbpedia:Colonialism .
+
+ns1:Form a owl:Class ;
+    rdfs:label "form" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Johanno rdfs:label "Johanno" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Link rdfs:label "linked" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Mikhail_baikou rdfs:label "Mikhail Baikou" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Often rdfs:label "often" .
+
+ns1:OftenLink rdfs:subClassOf ns1:Link .
+
+ns1:Refer rdfs:label "referred" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:RevolutionarySocialist a owl:Class ;
+    rdfs:label "revolutionary socialist" ;
+    dul:hasQuality ns1:Revolutionary ;
+    rdfs:subClassOf ns1:Socialist ;
+    owl:equivalentClass dbpedia:Revolutionary_socialism .
+
+ns1:Such a owl:Class ;
+    rdfs:label "such" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SuchForm a owl:Class ;
+    rdfs:label "Such Form" ;
+    dul:hasQuality ns1:Such ;
+    rdfs:subClassOf ns1:Form .
+
+ns1:form_1 a ns1:SuchForm ;
+    rdfs:label "form" ;
+    quant:hasDeterminer quant:such ;
+    ns1:suchFormOf ns1:rule_2 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Revolutionary,
+        ns1:RevolutionaryRule,
+        ns1:Rule,
+        ns1:rule_2 .
+
+ns1:Colonial a owl:Class ;
+    rdfs:label "colonial" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:RevolutionaryRule rdfs:label "revolutionary rule" ;
+    rdfs:subClassOf ns1:Rule .
+
+ns1:Socialist a owl:Class ;
+    rdfs:label "socialist" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:rule_2 a ns1:RevolutionaryRule ;
+    rdfs:label "rule" ;
+    dul:hasQuality ns1:Revolutionary .
+
+ns1:socialist_1 a ns1:RevolutionarySocialist,
+        ns1:Socialist ;
+    rdfs:label "socialist" ;
+    quant:hasDeterminer quant:a .
+
+ns1:Revolutionary a owl:Class ;
+    rdfs:label "revolutionary" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Rule a owl:Class ;
+    rdfs:label "rule" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:rule_1 a ns1:ColonialRule ;
+    rdfs:label "rule" ;
+    owl:sameAs ns1:socialist_1 .
+

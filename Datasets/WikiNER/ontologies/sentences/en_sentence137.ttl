@@ -1,0 +1,128 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence137.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence137.ttl a owl:Ontology ;
+    rdfs:label "en_sentence137" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence137" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:center_1 rdfs:label "center" .
+
+ns1:docuverse earmark:hasContent "Birmingham is also a leading U.S._banking center and the headquarters of Regions_Financial_Corporation, BBVA Compass and Superior_Bancorp."^^xsd:string .
+
+ns1:headquarters_1 rdfs:label "headquarters" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Birmingham,
+        ns1:lead_1 ;
+    dul:hasQuality ns1:Also .
+
+ns1:u.s._banking_1 a ns1:U.s._banking ;
+    rdfs:label "U.S. banking" ;
+    dul:associatedWith ns1:Birmingham ;
+    quant:hasDeterminer quant:a .
+
+dbpedia:Birmingham a schema:City,
+        schema:Place .
+
+<http://dbpedia.org/resource/Birmingham,_Alabama> a schema:City,
+        schema:Place .
+
+ns1:Also rdfs:label "also" .
+
+ns1:Bbva_compass rdfs:label "BBVA Compass" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:BBVA_Compass .
+
+ns1:Center a owl:Class ;
+    rdfs:label "Birmingham",
+        "center" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> ;
+    owl:equivalentClass dbpedia:Branch_(banking) .
+
+ns1:Lead rdfs:label "leading" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Regions_financial_corporation rdfs:label "Regions Financial Corporation" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:Bbva_compass,
+        ns1:Superior_bancorp ;
+    owl:sameAs dbpedia:Regions_Financial_Corporation .
+
+ns1:Superior_bancorp rdfs:label "Superior Bancorp" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Superior_Bancorp .
+
+ns1:U.s._bankingCenter a owl:Class ;
+    rdfs:label "U.S. banking center" ;
+    dul:associatedWith ns1:U.s._banking ;
+    rdfs:subClassOf ns1:Center,
+        ns1:Headquarters .
+
+ns1:lead_1 a ns1:Lead ;
+    rdfs:label "leading" ;
+    vn.role:Agent ns1:Birmingham .
+
+ns1:Headquarters rdfs:label "headquarters" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:U.s._banking a owl:Class ;
+    rdfs:label "Birmingham",
+        "U.S. banking" ;
+    owl:equivalentClass dbpedia:Banking_in_the_United_States .
+
+ns1:Birmingham a ns1:Headquarters,
+        ns1:U.s._bankingCenter ;
+    rdfs:label "Birmingham",
+        "U.S. banking",
+        "center" ;
+    boxer:possibleType foaf:Organisation ;
+    quant:hasDeterminer quant:the ;
+    owl:sameAs dbpedia:Birmingham,
+        <http://dbpedia.org/resource/Birmingham,_Alabama> ;
+    ns1:headquartersOf ns1:Regions_financial_corporation .
+

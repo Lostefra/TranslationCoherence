@@ -1,0 +1,171 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence543.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Source rdfs:label "this",
+        "until" .
+
+translation_coherence:nl_sentence543.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence543" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence543" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:docuverse earmark:hasContent "Given the elections of the European_Parliament that took place this time, parliament was unable to take his research on these guidelines until after the text was finalized in 1999."^^xsd:string .
+
+ns1:give_1 a ns1:Give ;
+    rdfs:label "Given" ;
+    vn.role:Agent ns1:election_1 ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "took" ;
+    vn.role:Agent ns1:european_parliament_1 ;
+    vn.role:Source ns1:time_1 ;
+    vn.role:Theme ns1:place_1 .
+
+dbpedia:European_Parliament rdfs:subClassOf schema:Organization .
+
+ns1:After rdfs:label "after" .
+
+ns1:Election rdfs:label "elections" .
+
+ns1:European_parliament a owl:Class ;
+    rdfs:label "European Parliament" ;
+    owl:equivalentClass dbpedia:European_Parliament .
+
+ns1:Finalize rdfs:label "finalized" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Give rdfs:label "Given" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Guideline rdfs:label "guidelines" .
+
+ns1:Parliament rdfs:label "parliament" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Place rdfs:label "place" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Research rdfs:label "research" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Text rdfs:label "text" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Time rdfs:label "time" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Unable rdfs:label "unable" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:election_1 a ns1:Election ;
+    rdfs:label "elections" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:electionOf ns1:european_parliament_1 .
+
+ns1:guideline_1 a ns1:Guideline ;
+    rdfs:label "guidelines" ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "his" .
+
+ns1:place_1 a ns1:Place ;
+    rdfs:label "place" .
+
+ns1:research_1 a ns1:Research ;
+    rdfs:label "research" ;
+    ns1:on ns1:guideline_1 ;
+    ns1:researchOf ns1:male_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:finalize_1,
+        ns1:parliament_1,
+        ns1:take_2,
+        ns1:unable_1,
+        "1999-01-01"^^xsd:date .
+
+ns1:text_1 a ns1:Text ;
+    rdfs:label "text" ;
+    quant:hasDeterminer quant:the .
+
+ns1:time_1 a ns1:Time ;
+    rdfs:label "time" ;
+    dul:hasQuality ns1:Current ;
+    quant:hasDeterminer quant:this .
+
+ns1:unable_1 a ns1:Unable ;
+    rdfs:label "unable" ;
+    boxer:agent ns1:parliament_1 ;
+    boxer:theme ns1:take_2 .
+
+ns1:Take rdfs:label "take",
+        "took" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:european_parliament_1 a ns1:European_parliament ;
+    rdfs:label "European Parliament" ;
+    quant:hasDeterminer quant:the .
+
+ns1:finalize_1 a ns1:Finalize ;
+    rdfs:label "finalized" ;
+    boxer:patient ns1:text_1 ;
+    dul:hasQuality ns1:After ;
+    ns1:in "1999-01-01"^^xsd:date .
+
+ns1:take_2 a ns1:Take ;
+    rdfs:label "take" ;
+    vn.role:Agent ns1:parliament_1 ;
+    vn.role:Source ns1:finalize_1 ;
+    vn.role:Theme ns1:research_1 .
+
+ns1:parliament_1 a ns1:Parliament ;
+    rdfs:label "parliament" .
+

@@ -1,0 +1,144 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence680.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence680.ttl a owl:Ontology ;
+    rdfs:label "de_sentence680" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence680" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Noteq rdfs:label "previous" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "They pointed out the quality of the report and even wrote if I don't be confused that it is a real improvement compared to previous reports."^^xsd:string .
+
+ns1:improvement_1 a ns1:RealImprovement ;
+    rdfs:label "improvement" ;
+    dul:hasQuality owl:Thing ;
+    quant:hasDeterminer quant:a .
+
+ns1:point_1 a ns1:Point ;
+    rdfs:label "pointed" ;
+    dul:hasQuality ns1:Out ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Theme ns1:quality_1 .
+
+ns1:write_1 a ns1:EvenWrite ;
+    rdfs:label "wrote" ;
+    dul:hasQuality ns1:Even ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Topic ns1:confuse_1 .
+
+ns1:Compare rdfs:label "compared" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Confuse rdfs:label "confused" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Even rdfs:label "even" .
+
+ns1:EvenWrite rdfs:subClassOf ns1:Write .
+
+ns1:Improvement a owl:Class ;
+    rdfs:label "improvement" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Out rdfs:label "out" .
+
+ns1:Person rdfs:label "I" .
+
+ns1:Point rdfs:label "pointed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Quality rdfs:label "quality" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Real a owl:Class ;
+    rdfs:label "real" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:RealImprovement a owl:Class ;
+    rdfs:label "Real Improvement" ;
+    dul:hasQuality ns1:Real ;
+    rdfs:subClassOf ns1:Improvement .
+
+ns1:Write rdfs:label "wrote" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:compare_1 a ns1:Compare ;
+    rdfs:label "compared" ;
+    ns1:to ns1:report_2 .
+
+ns1:confuse_1 a ns1:Confuse ;
+    rdfs:label "confused" ;
+    boxer:theme ns1:compare_1 ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Cause ns1:person_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:quality_1 a ns1:Quality ;
+    rdfs:label "quality" ;
+    quant:hasDeterminer quant:the ;
+    ns1:qualityOf ns1:report_1 .
+
+ns1:report_2 a ns1:Report ;
+    rdfs:label "reports" ;
+    quant:hasQuantifier quant:multiple ;
+    owl:differentFrom ns1:report_1 .
+
+owl:Thing rdfs:label "They",
+        "it" .
+
+ns1:Report rdfs:label "report",
+        "reports" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:report_1 a ns1:Report ;
+    rdfs:label "report" ;
+    quant:hasDeterminer quant:the .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "They" .
+

@@ -1,0 +1,112 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence553.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme rdfs:label "by" .
+
+translation_coherence:ko_sentence553.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence553" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence553" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:docuverse earmark:hasContent "Rand's family life was suspended by the rise of Bolshevik_party in Vladimir_Lenin."^^xsd:string .
+
+ns1:family_1 a ns1:Family ;
+    rdfs:label "family" ;
+    dul:associatedWith ns1:life_1 .
+
+ns1:suspend_1 a ns1:Suspend ;
+    rdfs:label "suspended" ;
+    vn.role:Destination ns1:life_1 ;
+    vn.role:Theme ns1:rise_1 .
+
+dbpedia:Ayn_Rand a schema:Person .
+
+dbpedia:Communist_Party_of_the_Soviet_Union a schema:Organization .
+
+dbpedia:Vladimir_Lenin a schema:Person .
+
+ns1:Bolshevik_party rdfs:label "Bolshevik party" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Communist_Party_of_the_Soviet_Union .
+
+ns1:FamilyLife a owl:Class ;
+    rdfs:label "Family Life" ;
+    dul:associatedWith ns1:Family ;
+    rdfs:subClassOf ns1:Life .
+
+ns1:Life a owl:Class ;
+    rdfs:label "life" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Ayn_Rand .
+
+ns1:Rise rdfs:label "rise" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Suspend rdfs:label "suspended" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Vladimir_lenin rdfs:label "Vladimir Lenin" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Vladimir_Lenin .
+
+ns1:rise_1 a ns1:Rise ;
+    rdfs:label "rise" ;
+    quant:hasDeterminer quant:the ;
+    ns1:locatedIn ns1:Vladimir_lenin ;
+    ns1:riseOf ns1:Bolshevik_party .
+
+ns1:Family a owl:Class ;
+    rdfs:label "family" ;
+    rdfs:subClassOf dul:Organization ;
+    owl:equivalentClass dbpedia:Family .
+
+ns1:life_1 a ns1:FamilyLife ;
+    rdfs:label "life" ;
+    ns1:familyLifeOf ns1:Rand .
+

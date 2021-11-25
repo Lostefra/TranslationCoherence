@@ -1,0 +1,169 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence150.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:en_sentence150.ttl a owl:Ontology ;
+    rdfs:label "en_sentence150" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence150" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Foraccountof rdfs:label "account for 51 percent of" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:average_1 a ns1:Average ;
+    rdfs:label "average" ;
+    quant:hasDeterminer quant:an .
+
+ns1:compare_1 rdfs:label "compared" .
+
+ns1:docuverse earmark:hasContent "Sales and excise taxes in Alabama account for 51 percent of all state and local revenue, compared with an average of about 36 percent nationwide."^^xsd:string .
+
+ns1:excise_1 a ns1:Excise ;
+    rdfs:label "excise" ;
+    dul:associatedWith ns1:sale_1 .
+
+ns1:percent_1 a ns1:Percent ;
+    rdfs:label "percent" ;
+    dul:hasDataValue "51"^^xsd:nonNegativeInteger .
+
+ns1:percent_2 a ns1:Percent ;
+    rdfs:label "percent" ;
+    dul:associatedWith ns1:nationwide_1 .
+
+ns1:revenue_1 rdfs:label "revenue" .
+
+ns1:situation_1 a ns1:Situation ;
+    ns1:entails ns1:situation_2 .
+
+ns1:tax_1 rdfs:label "taxes" ;
+    quant:hasQuantifier quant:multiple .
+
+dbpedia:Alabama a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:About rdfs:label "about" .
+
+ns1:Account a owl:Class ;
+    rdfs:label "account" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Deposit_account .
+
+ns1:Alabama rdfs:label "Alabama" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Alabama .
+
+ns1:Average rdfs:label "average" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Compare rdfs:label "compared" .
+
+ns1:Excise a owl:Class ;
+    rdfs:label "excise" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Excise .
+
+ns1:ExciseTax rdfs:subClassOf ns1:Tax .
+
+ns1:LocalRevenue a owl:Class ;
+    rdfs:label "local revenue" ;
+    dul:hasQuality ns1:Local ;
+    rdfs:subClassOf ns1:Revenue .
+
+ns1:Nationwide rdfs:label "nationwide" .
+
+ns1:PercentNationwide rdfs:label "Percent Nationwide" ;
+    rdfs:subClassOf ns1:Nationwide .
+
+ns1:Revenue a owl:Class ;
+    rdfs:label "revenue" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Revenue .
+
+ns1:Sale a owl:Class ;
+    rdfs:label "Sales" ;
+    owl:equivalentClass dbpedia:Sales_tax .
+
+ns1:State rdfs:label "state" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Tax rdfs:label "taxes" .
+
+ns1:account_1 a ns1:Account ;
+    rdfs:label "account" ;
+    dul:associatedWith ns1:Alabama ;
+    ns1:forAccountOf ns1:state_1 .
+
+ns1:sale_1 a ns1:Compare,
+        ns1:ExciseTax,
+        ns1:Sale ;
+    rdfs:label "Sales" ;
+    dul:hasQuality ns1:Topic ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:account_1 ;
+    ns1:withAverageOf ns1:nationwide_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:state_1 .
+
+ns1:Local a owl:Class ;
+    rdfs:label "local" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Percent a owl:Class ;
+    rdfs:label "percent" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Percentage .
+
+ns1:nationwide_1 a ns1:PercentNationwide ;
+    rdfs:label "nationwide" ;
+    dul:hasDataValue "36"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:About .
+
+ns1:state_1 a ns1:LocalRevenue,
+        ns1:State ;
+    rdfs:label "state" ;
+    dul:hasQuality ns1:Local ;
+    quant:hasQuantifier quant:all .
+

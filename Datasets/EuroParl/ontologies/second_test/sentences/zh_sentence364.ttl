@@ -1,0 +1,214 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence364.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "to" .
+
+translation_coherence:zh_sentence364.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence364" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence364" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Entails rdfs:label "If" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Key rdfs:label "key" .
+
+ns1:Of rdfs:label "of",
+        "our" .
+
+ns1:To rdfs:label "to" .
+
+ns1:attract_1 a ns1:Attract ;
+    rdfs:label "attracting" ;
+    boxer:agent ns1:path_1 ;
+    boxer:patient ns1:confidence_1 ;
+    boxing:hasModality boxing:Necessary .
+
+ns1:business_1 a ns1:Business ;
+    rdfs:label "business" ;
+    dul:associatedWith ns1:activity_1 .
+
+ns1:docuverse earmark:hasContent "If we can inculcate the spirit of business activity to our poor and structurally weak regions, we will ultimately return to the path of attracting the confidence of a large number of investors, which will be key to success in the future."^^xsd:string .
+
+ns1:inculcate_1 a ns1:Inculcate ;
+    rdfs:label "inculcate" ;
+    boxer:agent ns1:person_2 ;
+    boxer:patient ns1:spirit_1 ;
+    boxing:hasModality boxing:Possible ;
+    ns1:entails ns1:return_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:number_1,
+        ns1:success_1 ;
+    ns1:in ns1:future_1 .
+
+ns1:Activity a owl:Class ;
+    rdfs:label "activity" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Attract rdfs:label "attracting" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:BusinessActivity a owl:Class ;
+    rdfs:label "Business Activity" ;
+    dul:associatedWith ns1:Business ;
+    rdfs:subClassOf ns1:Activity .
+
+ns1:Confidence rdfs:label "confidence" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Future rdfs:label "future" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Inculcate rdfs:label "inculcate" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Investor rdfs:label "investors" .
+
+ns1:Large a owl:Class ;
+    rdfs:label "large" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:LargeNumber a owl:Class ;
+    rdfs:label "Large Number" ;
+    dul:hasQuality ns1:Large ;
+    rdfs:subClassOf ns1:Number .
+
+ns1:Number a owl:Class ;
+    rdfs:label "number" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Path rdfs:label "path" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Poor rdfs:label "poor" .
+
+ns1:Region rdfs:label "regions" .
+
+ns1:Return rdfs:label "return" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Spirit rdfs:label "spirit" ;
+    rdfs:subClassOf dul:Personification .
+
+ns1:Structurally rdfs:label "structurally" .
+
+ns1:StructurallyWeakRegion rdfs:subClassOf ns1:WeakRegion .
+
+ns1:Success rdfs:label "success" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Ultimately rdfs:label "ultimately" .
+
+ns1:UltimatelyReturn rdfs:label "ultimately return" ;
+    rdfs:subClassOf ns1:Return .
+
+ns1:Weak rdfs:label "weak" ;
+    dul:hasQuality ns1:Structurally .
+
+ns1:WeakRegion rdfs:subClassOf ns1:Region .
+
+ns1:confidence_1 a ns1:Confidence ;
+    rdfs:label "confidence" ;
+    quant:hasDeterminer quant:the ;
+    ns1:confidenceOf ns1:number_1 .
+
+ns1:future_1 a ns1:Future ;
+    rdfs:label "future" ;
+    quant:hasDeterminer quant:the .
+
+ns1:investor_1 a ns1:Investor ;
+    rdfs:label "investors" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "our" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:region_1 a ns1:StructurallyWeakRegion ;
+    rdfs:label "regions" ;
+    dul:hasQuality ns1:Poor,
+        ns1:Weak ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:structurallyWeakRegionOf ns1:person_1 .
+
+ns1:return_1 a ns1:UltimatelyReturn ;
+    rdfs:label "return" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Ultimately ;
+    vn.role:Destination ns1:path_1 ;
+    vn.role:Patient ns1:person_3 .
+
+ns1:spirit_1 a ns1:Spirit ;
+    rdfs:label "spirit" ;
+    quant:hasDeterminer quant:the ;
+    ns1:spiritOf ns1:activity_1 ;
+    ns1:to ns1:region_1 .
+
+ns1:Business a owl:Class ;
+    rdfs:label "business" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:activity_1 a ns1:BusinessActivity ;
+    rdfs:label "activity" .
+
+ns1:number_1 a ns1:LargeNumber ;
+    rdfs:label "number" ;
+    quant:hasDeterminer quant:a ;
+    ns1:keyTo ns1:success_1 ;
+    ns1:largeNumberOf ns1:investor_1 .
+
+ns1:path_1 a ns1:Path ;
+    rdfs:label "path" ;
+    quant:hasDeterminer quant:the .
+
+ns1:success_1 a ns1:Success ;
+    rdfs:label "success" .
+
+ns1:Person rdfs:label "we" .
+

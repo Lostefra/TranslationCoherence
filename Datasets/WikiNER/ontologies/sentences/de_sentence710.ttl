@@ -1,0 +1,152 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence710.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Attribute rdfs:label "in" .
+
+translation_coherence:de_sentence710.ttl a owl:Ontology ;
+    rdfs:label "de_sentence710" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence710" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Follow rdfs:label "following" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "The question of the languages and identity of Amazigh has increased significantly, in particular following the extensive Kabyle events of 2001 and the close boycott of local elections in Kabylie."^^xsd:string .
+
+ns1:identity_1 rdfs:label "identity" .
+
+ns1:increase_1 a ns1:Increase ;
+    rdfs:label "increased" ;
+    dul:hasQuality ns1:Significantly ;
+    vn.role:Attribute ns1:particular_1 ;
+    vn.role:Patient ns1:question_1 ;
+    ns1:follow ns1:event_1 .
+
+ns1:Amazigh rdfs:label "Amazigh" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Berbers .
+
+ns1:Boycott a owl:Class ;
+    rdfs:label "boycott" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Boycott .
+
+ns1:Close a owl:Class ;
+    rdfs:label "close" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:CloseBoycott a owl:Class ;
+    rdfs:label "Close Boycott" ;
+    dul:hasQuality ns1:Close ;
+    rdfs:subClassOf ns1:Boycott .
+
+ns1:Election rdfs:label "elections" .
+
+ns1:Identity rdfs:label "identity" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Increase rdfs:label "increased" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Kabyle rdfs:label "Kabyle" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:hasQuality ns1:Extensive ;
+    owl:sameAs dbpedia:Kabyle_people .
+
+ns1:Kabylie rdfs:label "Kabylie" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Kabylie .
+
+ns1:Language rdfs:label "languages" .
+
+ns1:Local rdfs:label "local" .
+
+ns1:LocalElection rdfs:subClassOf ns1:Election .
+
+ns1:Particular rdfs:label "particular" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Question rdfs:label "question" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Significantly rdfs:label "significantly" .
+
+ns1:boycott_1 a ns1:CloseBoycott ;
+    rdfs:label "boycott" ;
+    quant:hasDeterminer quant:the ;
+    ns1:closeBoycottOf ns1:election_1 .
+
+ns1:election_1 a ns1:LocalElection ;
+    rdfs:label "elections" ;
+    dul:hasQuality ns1:Local ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:event_1 a dul:Event ;
+    rdfs:label "events" ;
+    dul:associatedWith ns1:Kabyle ;
+    dul:hasQuality ns1:Extensive ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:eventOf ns1:boycott_1,
+        "2001-01-01"^^xsd:date ;
+    ns1:locatedIn ns1:Kabylie .
+
+ns1:language_1 a ns1:Identity,
+        ns1:Language ;
+    rdfs:label "languages" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:languageOf ns1:Amazigh .
+
+ns1:particular_1 a ns1:Particular ;
+    rdfs:label "particular" .
+
+ns1:question_1 a ns1:Question ;
+    rdfs:label "question" ;
+    quant:hasDeterminer quant:the ;
+    ns1:questionOf ns1:language_1 .
+
+dul:Event rdfs:label "events" .
+
+ns1:Extensive rdfs:label "extensive" .
+

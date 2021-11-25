@@ -1,0 +1,127 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence630.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Oblique rdfs:label "In" .
+
+translation_coherence:zh_sentence630.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence630" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence630" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Between rdfs:label "between" .
+
+ns1:More rdfs:label "more" .
+
+ns1:That rdfs:label "that" .
+
+ns1:Within rdfs:label "within" .
+
+ns1:docuverse earmark:hasContent "In addition, it was felt that differences between regions within Member States were sometimes even more pronounced, causing serious problems."^^xsd:string .
+
+ns1:feel_1 a ns1:Feel ;
+    rdfs:label "felt" ;
+    vn.role:Oblique ns1:addition_1 ;
+    vn.role:Stimulus ns1:neuter_1 ;
+    ns1:that ns1:cause_1 .
+
+ns1:Addition rdfs:label "addition" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Cause rdfs:label "causing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Difference rdfs:label "differences" .
+
+ns1:Even rdfs:label "even" ;
+    dul:hasQuality ns1:Sometimes .
+
+ns1:Feel rdfs:label "felt" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Member_states rdfs:label "Member States" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Problem rdfs:label "problems" .
+
+ns1:Pronounced rdfs:label "pronounced" ;
+    dul:hasQuality ns1:Even,
+        ns1:Sometimes .
+
+ns1:Region rdfs:label "regions" .
+
+ns1:Serious rdfs:label "serious" .
+
+ns1:SeriousProblem rdfs:subClassOf ns1:Problem .
+
+ns1:addition_1 a ns1:Addition ;
+    rdfs:label "addition" .
+
+ns1:cause_1 a ns1:Cause ;
+    rdfs:label "causing" ;
+    vn.role:Theme1 ns1:difference_1 ;
+    vn.role:Theme2 ns1:problem_1 .
+
+ns1:difference_1 a ns1:Difference ;
+    rdfs:label "differences" ;
+    dul:hasQuality ns1:Pronounced ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:between ns1:region_1 ;
+    ns1:more ns1:thing_1 ;
+    ns1:within ns1:Member_states .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "it" .
+
+ns1:problem_1 a ns1:SeriousProblem ;
+    rdfs:label "problems" ;
+    dul:hasQuality ns1:Serious ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:region_1 a ns1:Region ;
+    rdfs:label "regions" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:thing_1 a owl:Thing .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Sometimes rdfs:label "sometimes" .
+

@@ -1,0 +1,111 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence610.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence610.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence610" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence610" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:argumentd_1 a ns1:AlsoArgumentd ;
+    rdfs:label "argumentd" ;
+    boxer:agent ns1:self-interest_1 ;
+    boxer:patient ns1:principle_1 ;
+    dul:hasQuality ns1:Also .
+
+ns1:docuverse earmark:hasContent "rational self-interest for Rand also argumentd, as well as proper Indian moral principles."^^xsd:string .
+
+dbpedia:Ayn_Rand a schema:Person .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoArgumentd rdfs:label "Also Argumentd" ;
+    rdfs:subClassOf ns1:Argumentd .
+
+ns1:Argumentd rdfs:label "argumentd" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Indian rdfs:label "Indian" .
+
+ns1:IndianMoralPrinciple rdfs:subClassOf ns1:MoralPrinciple .
+
+ns1:Moral rdfs:label "moral" ;
+    owl:sameAs dbpedia:Moral .
+
+ns1:MoralPrinciple rdfs:subClassOf ns1:Principle .
+
+ns1:Principle rdfs:label "principles" .
+
+ns1:Proper rdfs:label "proper" .
+
+ns1:ProperIndianMoralPrinciple rdfs:subClassOf ns1:IndianMoralPrinciple .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Ayn_Rand .
+
+ns1:Rational a owl:Class ;
+    rdfs:label "rational" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:RationalSelf-interest a owl:Class ;
+    rdfs:label "rational self-interest" ;
+    dul:hasQuality ns1:Rational ;
+    rdfs:subClassOf ns1:Self-interest ;
+    owl:equivalentClass dbpedia:Rational_egoism .
+
+ns1:Self-interest a owl:Class ;
+    rdfs:label "self-interest" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:principle_1 a dbpedia:Value_(ethics),
+        ns1:ProperIndianMoralPrinciple ;
+    rdfs:label "principles" ;
+    dul:hasQuality ns1:Indian,
+        ns1:Moral,
+        ns1:Proper ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:self-interest_1 a ns1:RationalSelf-interest ;
+    rdfs:label "self-interest" ;
+    ns1:for ns1:Rand .
+

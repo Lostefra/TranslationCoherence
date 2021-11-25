@@ -1,0 +1,141 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence173.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Predicate rdfs:label "as" .
+
+vn.role:Theme rdfs:label "of" .
+
+translation_coherence:zh_sentence173.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence173" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence173" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of",
+        "their" .
+
+ns1:deprive_1 a ns1:Deprive ;
+    rdfs:label "depriving" ;
+    vn.role:Agent ns1:thing_2 ;
+    vn.role:Source ns1:thing_4 ;
+    vn.role:Theme ns1:right_1 .
+
+ns1:docuverse earmark:hasContent "The national voters viewed them as depriving them of their right to vote and elected the Governor of Gyi Hunt of the Republic."^^xsd:string .
+
+ns1:elect_1 a dbpedia:Election,
+        ns1:Elect ;
+    rdfs:label "elected" ;
+    vn.role:Agent ns1:voter_1 ;
+    vn.role:Theme ns1:Governor .
+
+ns1:view_1 a ns1:View ;
+    rdfs:label "viewed" ;
+    vn.role:Agent ns1:voter_1 ;
+    vn.role:Predicate ns1:thing_2 ;
+    vn.role:Theme ns1:thing_3 .
+
+ns1:vote_1 a ns1:Vote ;
+    rdfs:label "vote" ;
+    vn.role:Agent ns1:right_1 .
+
+ns1:Deprive rdfs:label "depriving" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Elect rdfs:label "elected" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Governor rdfs:label "Governor" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Governor ;
+    ns1:of ns1:Hunt .
+
+ns1:Gyi rdfs:label "Gyi" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Hunt rdfs:label "Hunt" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith ns1:Gyi ;
+    ns1:of ns1:Republic .
+
+ns1:National rdfs:label "national" .
+
+ns1:NationalVoter rdfs:subClassOf ns1:Voter .
+
+ns1:Republic rdfs:label "Republic" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Republic .
+
+ns1:Right a owl:Class ;
+    rdfs:label "right" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Suffrage .
+
+ns1:View rdfs:label "viewed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Vote rdfs:label "vote" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Voter rdfs:label "voters" .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "their" .
+
+ns1:thing_3 a owl:Thing ;
+    rdfs:label "them" .
+
+ns1:thing_4 a owl:Thing ;
+    rdfs:label "them" .
+
+ns1:right_1 a ns1:Right ;
+    rdfs:label "right" ;
+    ns1:rightOf ns1:thing_1 .
+
+ns1:thing_2 a owl:Thing .
+
+ns1:voter_1 a dbpedia:Voting,
+        ns1:NationalVoter ;
+    rdfs:label "voters" ;
+    dul:hasQuality ns1:National ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+owl:Thing rdfs:label "them" .
+

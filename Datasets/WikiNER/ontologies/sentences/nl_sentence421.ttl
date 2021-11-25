@@ -1,0 +1,125 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence421.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence421.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence421" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence421" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:docuverse earmark:hasContent "There were few people who were strong or directly affecting the moral and intellectual development of Lincoln."^^xsd:string .
+
+ns1:people_1 rdfs:label "people" ;
+    quant:hasQuantifier quant:few,
+        quant:multiple .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Strong,
+        ns1:there_1 ;
+    ns1:union ns1:affect_1 .
+
+ns1:Affect rdfs:label "affecting" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Development a owl:Class ;
+    rdfs:label "development" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Directly rdfs:label "directly" .
+
+ns1:DirectlyAffect rdfs:subClassOf ns1:Affect .
+
+ns1:FewPeople a owl:Class ;
+    rdfs:label "Few People" ;
+    dul:hasQuality ns1:Few ;
+    rdfs:subClassOf ns1:People .
+
+ns1:Intellectual a owl:Class ;
+    rdfs:label "intellectual" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:IntellectualDevelopment a owl:Class ;
+    rdfs:label "intellectual development" ;
+    dul:hasQuality ns1:Intellectual ;
+    rdfs:subClassOf ns1:Development ;
+    owl:equivalentClass <http://dbpedia.org/resource/Piaget's_theory_of_cognitive_development> .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Moral rdfs:label "moral" ;
+    owl:sameAs dbpedia:Morality .
+
+ns1:People a owl:Class ;
+    rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Person .
+
+ns1:There rdfs:label "There" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:affect_1 a ns1:DirectlyAffect ;
+    rdfs:label "affecting" ;
+    dul:hasQuality ns1:Directly ;
+    vn.role:Cause ns1:there_1 ;
+    vn.role:Experiencer ns1:development_1 .
+
+ns1:development_1 a ns1:IntellectualDevelopment ;
+    rdfs:label "development" ;
+    dul:hasQuality ns1:Moral ;
+    quant:hasDeterminer quant:the ;
+    ns1:intellectualDevelopmentOf ns1:Lincoln .
+
+ns1:Few a owl:Class ;
+    rdfs:label "few" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Strong rdfs:label "strong" .
+
+ns1:there_1 a ns1:FewPeople,
+        ns1:There ;
+    rdfs:label "There" ;
+    dul:hasQuality ns1:Few,
+        ns1:Strong .
+

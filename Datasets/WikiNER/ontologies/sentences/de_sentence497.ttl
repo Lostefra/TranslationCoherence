@@ -1,0 +1,134 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence497.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence497.ttl a owl:Ontology ;
+    rdfs:label "de_sentence497" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence497" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Inagreementwith rdfs:label "in agreement with" .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:Statuettette rdfs:label "statuettette" .
+
+ns1:docuverse earmark:hasContent "Michael_Todd_'s Grandson', trying to sell Todd 's Oscar statuettette', shows that there are many who are not in agreement with this idea."^^xsd:string .
+
+ns1:many_1 rdfs:label "many" .
+
+ns1:show_1 a ns1:Show ;
+    rdfs:label "shows" ;
+    vn.role:Agent ns1:Michael_todd_ ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:try_1 a ns1:Try ;
+    rdfs:label "trying" ;
+    vn.role:Agent <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27_1> ;
+    vn.role:Predicate ns1:sell_1 .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27> rdfs:label "'" .
+
+ns1:Grandson rdfs:label "Grandson" ;
+    boxer:possibleType time:Interval .
+
+ns1:Idea rdfs:label "idea" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Many rdfs:label "many" .
+
+ns1:Oscar rdfs:label "Oscar" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Michael_todd_ ;
+    ns1:of ns1:Todd .
+
+ns1:Sell rdfs:label "sell" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Show rdfs:label "shows" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:There rdfs:label "there" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Todd rdfs:label "Todd" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Mike_Todd .
+
+ns1:Try rdfs:label "trying" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:agreement_1 a ns1:Agreement ;
+    rdfs:label "agreement" ;
+    quant:hasQuantifier quant:many .
+
+ns1:idea_1 a ns1:Idea ;
+    rdfs:label "idea" ;
+    quant:hasDeterminer quant:this .
+
+ns1:sell_1 a ns1:Sell ;
+    rdfs:label "sell" ;
+    vn.role:Agent <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27_1> ;
+    vn.role:Theme ns1:Oscar .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves ns1:Agreement,
+        ns1:agreement_1,
+        ns1:there_1 .
+
+ns1:there_1 a ns1:Many,
+        ns1:There ;
+    rdfs:label "there" ;
+    ns1:inAgreementWith ns1:idea_1 .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27_1> a <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27> ;
+    rdfs:label "'" ;
+    dul:associatedWith ns1:Grandson .
+
+ns1:Agreement rdfs:label "agreement" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Michael_todd_ rdfs:label "Michael Todd " ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Mike_Todd .
+

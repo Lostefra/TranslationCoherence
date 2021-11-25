@@ -1,0 +1,108 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence375.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence375.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence375" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence375" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "Particularly important is the involvement of SMEs in the planning and implementation of programmes."^^xsd:string .
+
+ns1:implementation_1 rdfs:label "implementation" .
+
+ns1:involvement_1 rdfs:label "involvement" .
+
+ns1:situation_1 a ns1:Involvement,
+        ns1:Situation ;
+    boxing:involves ns1:Important,
+        ns1:Particularly,
+        ns1:particularly_1 ;
+    quant:hasDeterminer quant:the ;
+    ns1:in ns1:planning_1 ;
+    ns1:involvementOf ns1:sme_1 .
+
+ns1:Implementation a owl:Class ;
+    rdfs:label "implementation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Strategic_planning .
+
+ns1:Involvement rdfs:label "involvement" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity>,
+        ns1:Situation .
+
+ns1:Planning a owl:Class ;
+    rdfs:label "planning" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Planning .
+
+ns1:Programme rdfs:label "programmes" .
+
+ns1:Sme rdfs:label "SMEs" .
+
+ns1:particularly_1 a ns1:Particularly ;
+    rdfs:label "Particularly" ;
+    dul:hasQuality ns1:Important .
+
+ns1:planning_1 a ns1:Implementation,
+        ns1:Planning ;
+    rdfs:label "planning" ;
+    quant:hasDeterminer quant:the ;
+    ns1:planningOf ns1:programme_1 .
+
+ns1:programme_1 a dbpedia:Program_management,
+        ns1:Programme ;
+    rdfs:label "programmes" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:sme_1 a ns1:Sme ;
+    rdfs:label "SMEs" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Important rdfs:label "important" .
+
+ns1:Particularly rdfs:label "Particularly" .
+

@@ -1,0 +1,107 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence456.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence456.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence456" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence456" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:claim_1 a ns1:Claim ;
+    rdfs:label "claimed" ;
+    vn.role:Agent ns1:Plato ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:docuverse earmark:hasContent "Plato claimed there are some universal forms that aren't part of certain things."^^xsd:string .
+
+ns1:form_1 a dbpedia:Theory_of_Forms ;
+    rdfs:label "forms" ;
+    quant:hasQuantifier quant:multiple,
+        quant:some .
+
+ns1:part_1 rdfs:label "part" .
+
+dbpedia:Plato a schema:Person .
+
+owl:Thing rdfs:label "things" .
+
+ns1:Certain rdfs:label "certain" .
+
+ns1:CertainThing rdfs:subClassOf owl:Thing .
+
+ns1:Claim rdfs:label "claimed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Form rdfs:label "forms" .
+
+ns1:Part rdfs:label "part" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Plato rdfs:label "Plato" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Plato .
+
+ns1:There rdfs:label "there" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Universal rdfs:label "universal" ;
+    owl:sameAs dbpedia:Universal_(metaphysics) .
+
+ns1:UniversalForm rdfs:subClassOf ns1:Form .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves ns1:there_1,
+        ns1:thing_1 .
+
+ns1:there_1 a ns1:Part,
+        ns1:There,
+        ns1:UniversalForm ;
+    rdfs:label "there" ;
+    dul:hasQuality ns1:Universal ;
+    ns1:thereOf ns1:thing_1 .
+
+ns1:thing_1 a ns1:CertainThing ;
+    rdfs:label "things" ;
+    dul:hasQuality ns1:Certain ;
+    quant:hasQuantifier quant:multiple .
+

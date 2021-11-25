@@ -1,0 +1,145 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence408.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:zh_sentence408.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence408" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence408" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Between rdfs:label "between" .
+
+ns1:In rdfs:label "in" .
+
+ns1:contribute_1 a ns1:CertainlyContribute ;
+    rdfs:label "contribute" ;
+    dul:hasQuality ns1:Certainly ;
+    vn.role:Agent ns1:programme_1 ;
+    vn.role:Recipient ns1:competitiveness_1 .
+
+ns1:docuverse earmark:hasContent "The important EU programmes between 1989, 1993, 1994 and 1999 certainly contribute to increasing economic competitiveness in neighbouring countries and in Europe Goal 1 region."^^xsd:string .
+
+ns1:increase_1 a ns1:Increase ;
+    rdfs:label "increasing" ;
+    vn.role:Patient ns1:competitiveness_1 .
+
+ns1:neighbour_1 a ns1:Neighbour ;
+    rdfs:label "neighbouring" ;
+    boxer:agent ns1:country_1 .
+
+ns1:region_1 rdfs:label "region" .
+
+dbpedia:Europe a schema:Continent,
+        schema:Place .
+
+ns1:Certainly rdfs:label "certainly" .
+
+ns1:CertainlyContribute rdfs:label "Certainly Contribute" ;
+    rdfs:subClassOf ns1:Contribute .
+
+ns1:Competitiveness a owl:Class ;
+    rdfs:label "competitiveness" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Contribute rdfs:label "contribute" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Country rdfs:label "countries" .
+
+ns1:Economic a owl:Class ;
+    rdfs:label "economic" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:EconomicCompetitiveness a owl:Class ;
+    rdfs:label "Economic Competitiveness" ;
+    dul:hasQuality ns1:Economic ;
+    rdfs:subClassOf ns1:Competitiveness .
+
+ns1:Eu rdfs:label "EU" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality ns1:Important .
+
+ns1:Europe a ns1:Region ;
+    rdfs:label "Europe",
+        "region" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Europe ;
+    ns1:at "0001-01-01"^^xsd:date .
+
+ns1:Goal a ns1:Region ;
+    rdfs:label "Goal",
+        "region" ;
+    boxer:possibleType time:Interval ;
+    dul:associatedWith ns1:Europe ;
+    ns1:at "0001-01-01"^^xsd:date .
+
+ns1:Increase rdfs:label "increasing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Neighbour rdfs:label "neighbouring" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Programme rdfs:label "programmes" .
+
+ns1:programme_1 a ns1:Programme ;
+    rdfs:label "programmes" ;
+    dul:associatedWith ns1:Eu ;
+    dul:hasQuality ns1:Important ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:between "1999-01-01"^^xsd:date .
+
+ns1:Important rdfs:label "important" .
+
+ns1:Region rdfs:label "Europe",
+        "Goal",
+        "region" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:competitiveness_1 a ns1:EconomicCompetitiveness ;
+    rdfs:label "competitiveness" ;
+    ns1:in ns1:Goal,
+        ns1:country_1 .
+
+ns1:country_1 a ns1:Country ;
+    rdfs:label "countries" ;
+    quant:hasQuantifier quant:multiple .
+

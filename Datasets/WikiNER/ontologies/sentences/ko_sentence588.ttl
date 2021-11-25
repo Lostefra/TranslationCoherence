@@ -1,0 +1,132 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence588.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:ko_sentence588.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence588" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence588" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:begin_1 a ns1:Begin ;
+    rdfs:label "began" ;
+    dul:hasQuality ns1:Later ;
+    vn.role:Agent ns1:female_1 ;
+    vn.role:Theme ns1:read_1 .
+
+ns1:create_1 a ns1:Create ;
+    rdfs:label "created" ;
+    vn.role:Agent ns1:page_1 ;
+    vn.role:Product ns1:Atlas_shrugged .
+
+ns1:docuverse earmark:hasContent "Later she began to read the draft of a new novel. Atlas_Shrugged was created by the original page."^^xsd:string .
+
+ns1:Atlas_shrugged rdfs:label "Atlas Shrugged" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Atlas_Shrugged,
+        ns1:page_1 .
+
+ns1:Begin rdfs:label "began" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Create rdfs:label "created" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Draft rdfs:label "draft" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Female rdfs:label "she" .
+
+ns1:Later rdfs:label "Later" .
+
+ns1:New a owl:Class ;
+    rdfs:label "new" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:NewNovel a owl:Class ;
+    rdfs:label "New Novel" ;
+    dul:hasQuality ns1:New ;
+    rdfs:subClassOf ns1:Novel .
+
+ns1:Novel a owl:Class ;
+    rdfs:label "novel" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Original a owl:Class ;
+    rdfs:label "original" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:OriginalPage a owl:Class ;
+    rdfs:label "Original Page" ;
+    dul:hasQuality ns1:Original ;
+    rdfs:subClassOf ns1:Page .
+
+ns1:Read rdfs:label "read" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:draft_1 a ns1:Draft ;
+    rdfs:label "draft" ;
+    quant:hasDeterminer quant:the ;
+    ns1:draftOf ns1:novel_1 .
+
+ns1:novel_1 a ns1:NewNovel ;
+    rdfs:label "novel" ;
+    quant:hasDeterminer quant:a .
+
+ns1:read_1 a ns1:Read ;
+    rdfs:label "read" ;
+    vn.role:Agent ns1:female_1 ;
+    vn.role:Theme ns1:draft_1 .
+
+ns1:Page a owl:Class ;
+    rdfs:label "page" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:female_1 a ns1:Female ;
+    rdfs:label "she" .
+
+ns1:page_1 a ns1:OriginalPage,
+        ns1:Page ;
+    rdfs:label "page" ;
+    quant:hasDeterminer quant:the .
+

@@ -1,0 +1,162 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence487.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence487.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence487" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence487" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "'s",
+        "of",
+        "whose" .
+
+ns1:To rdfs:label "to" .
+
+ns1:communication_1 rdfs:label "communication" .
+
+ns1:dismantle_1 a ns1:GraduallyDismantle ;
+    rdfs:label "dismantled" ;
+    dul:hasQuality ns1:Gradually ;
+    vn.role:Agent ns1:lack_1 .
+
+ns1:docuverse earmark:hasContent "Too little attention has been paid to the major problems facing the Union's islands, whose lack of infrastructure for transport, communication and energy has gradually dismantled."^^xsd:string .
+
+ns1:energy_1 rdfs:label "energy" .
+
+ns1:face_1 a ns1:Face ;
+    rdfs:label "facing" ;
+    vn.role:Agent ns1:problem_1 ;
+    vn.role:Theme ns1:island_1 .
+
+ns1:pay_1 a ns1:Pay ;
+    rdfs:label "paid" ;
+    vn.role:Asset ns1:attention_1 ;
+    ns1:to ns1:problem_1 .
+
+ns1:Attention a owl:Class ;
+    rdfs:label "attention" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Communication rdfs:label "communication" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Dismantle rdfs:label "dismantled" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Energy rdfs:label "energy" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Face rdfs:label "facing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Gradually rdfs:label "gradually" .
+
+ns1:GraduallyDismantle rdfs:subClassOf ns1:Dismantle .
+
+ns1:Infrastructure rdfs:label "infrastructure" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Island rdfs:label "islands" .
+
+ns1:Lack rdfs:label "lack" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Little a owl:Class ;
+    rdfs:label "little" ;
+    dul:hasQuality ns1:Too ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:LittleAttention a owl:Class ;
+    rdfs:label "Little Attention" ;
+    dul:hasQuality ns1:Little ;
+    rdfs:subClassOf ns1:Attention .
+
+ns1:Major rdfs:label "major" .
+
+ns1:MajorProblem rdfs:subClassOf ns1:Problem .
+
+ns1:Pay rdfs:label "paid" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Problem rdfs:label "problems" .
+
+ns1:Too rdfs:label "Too" .
+
+ns1:TooLittleAttention a owl:Class ;
+    rdfs:label "Too little attention" ;
+    rdfs:subClassOf ns1:LittleAttention .
+
+ns1:Transport rdfs:label "transport" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Union rdfs:label "Union" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:attention_1 a ns1:TooLittleAttention ;
+    rdfs:label "attention" .
+
+ns1:infrastructure_1 a ns1:Infrastructure ;
+    rdfs:label "infrastructure" ;
+    ns1:for ns1:transport_1 .
+
+ns1:lack_1 a ns1:Communication,
+        ns1:Energy,
+        ns1:Lack ;
+    rdfs:label "lack" ;
+    ns1:energyOf ns1:island_1 ;
+    ns1:lackOf ns1:infrastructure_1 .
+
+ns1:transport_1 a ns1:Transport ;
+    rdfs:label "transport" .
+
+ns1:island_1 a ns1:Island ;
+    rdfs:label "islands" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:islandOf ns1:Union .
+
+ns1:problem_1 a ns1:MajorProblem ;
+    rdfs:label "problems" ;
+    dul:hasQuality ns1:Major ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+

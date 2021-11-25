@@ -1,0 +1,170 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence430.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Predicate rdfs:label "as" .
+
+translation_coherence:zh_sentence430.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence430" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence430" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "In contemporary admires, Lincoln is usually seen as the typical values of integrity and integrity, respect for the rights of individuals and minorities and universal human freedom."^^xsd:string .
+
+ns1:rights_1 a ns1:Rights ;
+    rdfs:label "rights" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:see_1 a ns1:UsuallySee ;
+    rdfs:label "seen" ;
+    dul:hasQuality ns1:Usually ;
+    vn.role:Predicate ns1:value_1 ;
+    vn.role:Theme ns1:Lincoln ;
+    ns1:in ns1:admire_1 .
+
+ns1:Admire rdfs:label "admires" .
+
+ns1:Contemporary rdfs:label "contemporary" ;
+    owl:sameAs dbpedia:Contemporary_philosophy .
+
+ns1:ContemporaryAdmire rdfs:subClassOf ns1:Admire .
+
+ns1:Freedom a owl:Class ;
+    rdfs:label "freedom" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Human a owl:Class ;
+    rdfs:label "human" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:HumanFreedom a owl:Class ;
+    rdfs:label "Human Freedom" ;
+    dul:hasQuality ns1:Human ;
+    rdfs:subClassOf ns1:Freedom ;
+    owl:equivalentClass dbpedia:Liberty .
+
+ns1:Individual rdfs:label "individuals" .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Minority rdfs:label "minorities" .
+
+ns1:Respect a owl:Class ;
+    rdfs:label "respect" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Respect .
+
+ns1:Rights rdfs:label "rights" .
+
+ns1:See rdfs:label "seen" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Typical rdfs:label "typical" .
+
+ns1:TypicalValue rdfs:subClassOf ns1:Value .
+
+ns1:Universal rdfs:label "universal" ;
+    owl:sameAs dbpedia:Universal_(metaphysics) .
+
+ns1:UniversalHumanFreedom a owl:Class ;
+    rdfs:label "universal human freedom" ;
+    rdfs:subClassOf ns1:HumanFreedom .
+
+ns1:Usually rdfs:label "usually" .
+
+ns1:UsuallySee rdfs:subClassOf ns1:See .
+
+ns1:Value rdfs:label "values" .
+
+ns1:admire_1 a ns1:ContemporaryAdmire ;
+    rdfs:label "admires" ;
+    dul:hasQuality ns1:Contemporary ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:freedom_1 a ns1:UniversalHumanFreedom ;
+    rdfs:label "freedom" ;
+    dul:hasQuality ns1:Universal .
+
+ns1:individual_1 a dbpedia:Individual_and_group_rights,
+        ns1:Individual ;
+    rdfs:label "individuals" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:integrity_1 a ns1:Integrity ;
+    rdfs:label "integrity" .
+
+ns1:integrity_2 a ns1:Integrity ;
+    rdfs:label "integrity" ;
+    dul:associatedWith ns1:freedom_1,
+        ns1:minority_1,
+        ns1:respect_1 .
+
+ns1:minority_1 a ns1:Minority ;
+    rdfs:label "minorities" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:respect_1 a ns1:Respect ;
+    rdfs:label "respect" ;
+    ns1:forRightsOf ns1:individual_1 .
+
+ns1:value_1 a dbpedia:Value_(ethics),
+        ns1:TypicalValue ;
+    rdfs:label "values" ;
+    dul:hasQuality ns1:Typical ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:typicalValueOf ns1:integrity_1,
+        ns1:integrity_2 .
+
+ns1:Integrity a owl:Class ;
+    rdfs:label "integrity" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Integrity .
+

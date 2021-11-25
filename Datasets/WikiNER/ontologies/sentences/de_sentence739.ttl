@@ -1,0 +1,119 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence739.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "from" .
+
+translation_coherence:de_sentence739.ttl a owl:Ontology ;
+    rdfs:label "de_sentence739" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence739" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:After rdfs:label "after" .
+
+ns1:During rdfs:label "during" .
+
+ns1:Immediately rdfs:label "immediately" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:docuverse earmark:hasContent "Almost all of these people are left from France during or immediately after the independence of the country."^^xsd:string .
+
+ns1:leave_1 a ns1:Leave ;
+    rdfs:label "left" ;
+    vn.role:Location ns1:France ;
+    vn.role:Theme ns1:all_1 ;
+    ns1:during ns1:independence_1 ;
+    ns1:immediatelyAfter ns1:independence_1 .
+
+dbpedia:France a schema:Country,
+        schema:Place .
+
+ns1:All a owl:Class ;
+    rdfs:label "all" .
+
+ns1:Almost a owl:Class ;
+    rdfs:label "Almost" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:AlmostAll a owl:Class ;
+    rdfs:label "Almost all" ;
+    dul:hasQuality ns1:Almost ;
+    rdfs:subClassOf ns1:All .
+
+ns1:Country rdfs:label "country" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:France rdfs:label "France" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:France .
+
+ns1:Independence a owl:Class ;
+    rdfs:label "independence" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Independence .
+
+ns1:Leave rdfs:label "left" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:People rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:all_1 a ns1:AlmostAll ;
+    rdfs:label "all" ;
+    ns1:almostAllOf ns1:people_1 .
+
+ns1:country_1 a ns1:Country ;
+    rdfs:label "country" ;
+    quant:hasDeterminer quant:the .
+
+ns1:people_1 a ns1:People ;
+    rdfs:label "people" ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:all,
+        quant:multiple .
+
+ns1:independence_1 a ns1:Independence ;
+    rdfs:label "independence" ;
+    quant:hasDeterminer quant:the ;
+    ns1:independenceOf ns1:country_1 .
+

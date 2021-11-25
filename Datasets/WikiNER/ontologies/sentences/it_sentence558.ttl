@@ -1,0 +1,124 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence558.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence558.ttl a owl:Ontology ;
+    rdfs:label "it_sentence558" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence558" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Among rdfs:label "Among" .
+
+ns1:Of rdfs:label "his" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:become_1 a ns1:Become ;
+    rdfs:label "became" ;
+    boxer:agent ns1:Victor_hugo ;
+    boxer:patient ns1:favorite_1 ;
+    ns1:among ns1:writer_1 .
+
+ns1:docuverse earmark:hasContent "Among the writers he read right now, Victor_Hugo, Edmond_Rostand, Friedrich_Schiller, and Fyodor_Dostoevsky became his perennial favorites."^^xsd:string .
+
+ns1:read_1 a ns1:Read ;
+    rdfs:label "read" ;
+    dul:hasQuality ns1:Now,
+        ns1:Right ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Theme ns1:writer_1 .
+
+dbpedia:Friedrich_Schiller a schema:Person .
+
+dbpedia:Fyodor_Dostoyevsky a schema:Person .
+
+dbpedia:Victor_Hugo a schema:Person .
+
+ns1:Become rdfs:label "became" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Edmond_rostand rdfs:label "Edmond Rostand" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Friedrich_schiller ;
+    owl:sameAs dbpedia:Edmond_Rostand .
+
+ns1:Favorite rdfs:label "favorites" .
+
+ns1:Friedrich_schiller rdfs:label "Friedrich Schiller" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Friedrich_Schiller .
+
+ns1:Fyodor_dostoevsky rdfs:label "Fyodor Dostoevsky" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Fyodor_Dostoyevsky .
+
+ns1:Now rdfs:label "now" .
+
+ns1:Perennial rdfs:label "perennial" .
+
+ns1:PerennialFavorite rdfs:subClassOf ns1:Favorite .
+
+ns1:Read rdfs:label "read" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Right rdfs:label "right" .
+
+ns1:Victor_hugo rdfs:label "Victor Hugo" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Edmond_rostand,
+        ns1:Fyodor_dostoevsky ;
+    owl:sameAs dbpedia:Victor_Hugo .
+
+ns1:Writer rdfs:label "writers" .
+
+ns1:favorite_1 a ns1:PerennialFavorite ;
+    rdfs:label "favorites" ;
+    dul:hasQuality ns1:Perennial ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:perennialFavoriteOf ns1:male_1 .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "his" .
+
+ns1:writer_1 a ns1:Writer ;
+    rdfs:label "writers" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+

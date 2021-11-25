@@ -1,0 +1,131 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence272.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Oblique rdfs:label "in" .
+
+translation_coherence:de_sentence272.ttl a owl:Ontology ;
+    rdfs:label "de_sentence272" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence272" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:arrive_1 a ns1:Arrive ;
+    rdfs:label "arrived" ;
+    vn.role:Oblique ns1:Macon_county ;
+    vn.role:Theme ns1:family_1,
+        ns1:fear_1,
+        "1830-01-01"^^xsd:date .
+
+ns1:dairy_1 a ns1:Dairy ;
+    rdfs:label "dairy" ;
+    dul:associatedWith ns1:disease_1,
+        ns1:outbreak_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:docuverse earmark:hasContent "1830, fear of a dairy disease outbreak, the family has arrived in Macon_County, Ill."^^xsd:string .
+
+ns1:Arrive rdfs:label "arrived" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:DairyDiseaseOutbreak a owl:Class ;
+    rdfs:label "Dairy Disease Outbreak" ;
+    dul:associatedWith ns1:DairyDisease ;
+    rdfs:subClassOf ns1:DiseaseOutbreak .
+
+ns1:DiseaseOutbreak a owl:Class ;
+    rdfs:label "disease outbreak" ;
+    dul:associatedWith ns1:Disease ;
+    rdfs:subClassOf ns1:Outbreak .
+
+ns1:Family a owl:Class ;
+    rdfs:label "family" ;
+    rdfs:subClassOf dul:Organization ;
+    owl:equivalentClass dbpedia:Family .
+
+ns1:Fear rdfs:label "fear" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Ill rdfs:label "Ill" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Disease .
+
+ns1:Macon_county rdfs:label "Macon County" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Ill ;
+    owl:sameAs <http://dbpedia.org/resource/Macon_County,_North_Carolina> .
+
+ns1:Outbreak a owl:Class ;
+    rdfs:label "outbreak" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:disease_1 a ns1:DairyDisease ;
+    rdfs:label "disease" ;
+    dul:associatedWith ns1:outbreak_1 .
+
+ns1:family_1 a ns1:Family ;
+    rdfs:label "family" ;
+    quant:hasDeterminer quant:the .
+
+ns1:fear_1 a ns1:Fear ;
+    rdfs:label "fear" ;
+    ns1:fearOf ns1:outbreak_1 .
+
+ns1:Dairy a owl:Class ;
+    rdfs:label "dairy" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> ;
+    owl:equivalentClass dbpedia:Dairy .
+
+ns1:DairyDisease a owl:Class ;
+    rdfs:label "Dairy Disease" ;
+    dul:associatedWith ns1:Dairy ;
+    rdfs:subClassOf ns1:Disease .
+
+ns1:Disease a owl:Class ;
+    rdfs:label "disease" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Disease .
+
+ns1:outbreak_1 a ns1:DairyDiseaseOutbreak ;
+    rdfs:label "outbreak" .
+

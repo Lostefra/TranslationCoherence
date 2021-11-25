@@ -1,0 +1,115 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence140.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence140.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence140" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence140" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Entails rdfs:label "If" .
+
+ns1:Eq rdfs:label "am" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:docuverse earmark:hasContent "The President: If I have voted in the right record, I am not personally or objected."^^xsd:string .
+
+ns1:person_2 rdfs:label "I" .
+
+ns1:vote_1 a ns1:Vote ;
+    rdfs:label "voted" ;
+    vn.role:Agent ns1:person_1 ;
+    ns1:entails ns1:situation_1 ;
+    ns1:in ns1:record_1 .
+
+ns1:Object rdfs:label "objected" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Personally rdfs:label "personally" .
+
+ns1:Record a owl:Class ;
+    rdfs:label "record" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Right a owl:Class ;
+    rdfs:label "right" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:RightRecord a owl:Class ;
+    rdfs:label "Right Record" ;
+    dul:hasQuality ns1:Right ;
+    rdfs:subClassOf ns1:Record .
+
+ns1:Vote rdfs:label "voted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:object_1 a ns1:Object ;
+    rdfs:label "objected" ;
+    vn.role:Agent ns1:President ;
+    vn.role:Topic ns1:President .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:record_1 a ns1:RightRecord ;
+    rdfs:label "record" ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves ns1:President,
+        ns1:Topic ;
+    dul:hasQuality ns1:Personally ;
+    ns1:union ns1:object_1 .
+
+ns1:Person rdfs:label "I" ;
+    rdfs:subClassOf ns1:Topic .
+
+ns1:President a ns1:Person,
+        ns1:Topic ;
+    rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:President .
+
+ns1:Topic rdfs:label "President" .
+

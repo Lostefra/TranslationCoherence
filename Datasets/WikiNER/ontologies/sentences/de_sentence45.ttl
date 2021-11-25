@@ -1,0 +1,204 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence45.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Experiencer rdfs:label "by" .
+
+vn.role:Predicate rdfs:label "as" .
+
+translation_coherence:de_sentence45.ttl a owl:Ontology ;
+    rdfs:label "de_sentence45" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence45" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Best rdfs:label "best" .
+
+ns1:Earliest rdfs:label "earliest" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:anarchism_2 rdfs:label "anarchism" .
+
+ns1:docuverse earmark:hasContent "The most extreme form of individualism, known as egoism, or egoist anarchism, was identified by one of the earliest and best known advocates of individualist anarchism Maxbuscher."^^xsd:string .
+
+ns1:egoist_1 a ns1:Egoist ;
+    rdfs:label "egoist" ;
+    dul:associatedWith ns1:advocate_1,
+        ns1:anarchism_1 .
+
+ns1:individualist_1 a ns1:Individualist ;
+    rdfs:label "individualist" ;
+    dul:associatedWith ns1:Maxbuscher .
+
+ns1:know_1 a ns1:Know ;
+    rdfs:label "known" ;
+    vn.role:Predicate ns1:egoism_1 ;
+    vn.role:Theme ns1:form_1 ;
+    ns1:union ns1:identify_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:know_2 ;
+    ns1:entails ns1:situation_2 .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves ns1:know_2 ;
+    ns1:entails ns1:situation_4 .
+
+ns1:situation_5 a ns1:Situation ;
+    boxing:involves ns1:know_2 ;
+    ns1:entails ns1:advocate_1 .
+
+ns1:Egoism a owl:Class ;
+    rdfs:label "egoism" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Egoist_anarchism .
+
+ns1:EgoistAnarchism a owl:Class ;
+    rdfs:label "Egoist Anarchism" ;
+    dul:associatedWith ns1:Egoist ;
+    rdfs:subClassOf ns1:Anarchism ;
+    owl:equivalentClass dbpedia:Egoist_anarchism .
+
+ns1:Extreme a owl:Class ;
+    rdfs:label "extreme" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ExtremeForm a owl:Class ;
+    rdfs:label "Extreme Form" ;
+    dul:hasQuality ns1:Extreme ;
+    rdfs:subClassOf ns1:Form .
+
+ns1:Form a owl:Class ;
+    rdfs:label "form" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Identify rdfs:label "identified" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Individualism a owl:Class ;
+    rdfs:label "individualism" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Individualism .
+
+ns1:Individualist rdfs:label "Maxbuscher",
+        "individualist" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:IndividualistAnarchism a owl:Class ;
+    rdfs:label "individualist anarchism" ;
+    rdfs:subClassOf ns1:Anarchism ;
+    owl:equivalentClass dbpedia:Individualist_anarchism .
+
+ns1:Most rdfs:label "most" .
+
+ns1:MostExtremeForm a owl:Class ;
+    rdfs:label "most extreme form" ;
+    rdfs:subClassOf ns1:ExtremeForm .
+
+ns1:anarchism_1 a ns1:EgoistAnarchism ;
+    rdfs:label "anarchism" .
+
+ns1:egoism_1 a ns1:Egoism ;
+    rdfs:label "egoism" .
+
+ns1:form_1 a ns1:MostExtremeForm ;
+    rdfs:label "form" ;
+    dul:hasQuality ns1:Most ;
+    quant:hasDeterminer quant:the ;
+    ns1:mostExtremeFormOf ns1:individualism_1 .
+
+ns1:identify_1 a ns1:Identify ;
+    rdfs:label "identified" ;
+    vn.role:Experiencer ns1:advocate_1 .
+
+ns1:individualism_1 a ns1:Individualism ;
+    rdfs:label "individualism" .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:advocate_2,
+        ns1:know_2 .
+
+ns1:situation_4 a ns1:Situation ;
+    boxing:involves ns1:advocate_2,
+        ns1:know_2 .
+
+ns1:Advocate rdfs:label "advocates" .
+
+ns1:Anarchism a owl:Class ;
+    rdfs:label "Maxbuscher",
+        "anarchism" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Egoist a owl:Class ;
+    rdfs:label "egoist" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Know rdfs:label "known" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Maxbuscher a ns1:IndividualistAnarchism ;
+    rdfs:label "Maxbuscher",
+        "anarchism",
+        "individualist" ;
+    boxer:possibleType time:Interval .
+
+ns1:advocate_1 a ns1:Advocate ;
+    dul:hasDataValue "1"^^xsd:nonNegativeInteger ;
+    owl:differentFrom ns1:advocate_2,
+        ns1:know_2 ;
+    ns1:advocateOf ns1:Maxbuscher ;
+    ns1:best ns1:advocate_2 ;
+    ns1:earliest ns1:advocate_2 .
+
+ns1:advocate_2 a ns1:Advocate ;
+    rdfs:label "advocates" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple,
+        quant:one .
+
+ns1:know_2 a ns1:Know ;
+    rdfs:label "known" ;
+    vn.role:Theme ns1:advocate_1,
+        ns1:advocate_2 .
+

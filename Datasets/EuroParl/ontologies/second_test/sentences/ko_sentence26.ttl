@@ -1,0 +1,140 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence26.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence26.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence26" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence26" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:In rdfs:label "in" .
+
+ns1:To rdfs:label "to" .
+
+ns1:accept_1 a ns1:Accept ;
+    rdfs:label "accept" ;
+    dul:associatedWith ns1:person_1 ;
+    vn.role:Agent ns1:court_1 ;
+    vn.role:Theme ns1:male_1 .
+
+ns1:access_1 rdfs:label "access" .
+
+ns1:clarify_1 a ns1:Clarify ;
+    rdfs:label "clarify" ;
+    boxer:agent ns1:court_1 ;
+    boxer:patient ns1:neuter_1 ;
+    dul:associatedWith ns1:person_1 ;
+    ns1:locatedIn ns1:Russia .
+
+ns1:docuverse earmark:hasContent "We all here courts accept him and clarify it in Russia, too, access to environmental information is the Constitutional Right."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Constitutional_right ;
+    dul:associatedWith ns1:neuter_1 ;
+    dul:hasQuality ns1:Too .
+
+dbpedia:Russia a schema:Country,
+        schema:Place .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Accept rdfs:label "accept" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Access rdfs:label "access" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Clarify rdfs:label "clarify" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Constitutional_right a ns1:Access ;
+    rdfs:label "Constitutional Right" ;
+    boxer:possibleType foaf:Organisation ;
+    ns1:to ns1:information_1 .
+
+ns1:Court rdfs:label "courts" .
+
+ns1:Environmental a owl:Class ;
+    rdfs:label "environmental" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:EnvironmentalInformation a owl:Class ;
+    rdfs:label "environmental information" ;
+    dul:hasQuality ns1:Environmental ;
+    rdfs:subClassOf ns1:Information ;
+    owl:equivalentClass dbpedia:United_Nations_Department_of_Public_Information .
+
+ns1:Here rdfs:label "here" .
+
+ns1:Information a owl:Class ;
+    rdfs:label "information" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Male rdfs:label "him" .
+
+ns1:Person rdfs:label "We" .
+
+ns1:Russia rdfs:label "Russia" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Russia .
+
+ns1:Too rdfs:label "too" .
+
+ns1:information_1 a ns1:EnvironmentalInformation ;
+    rdfs:label "information" .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "him" .
+
+ns1:court_1 a ns1:Court ;
+    rdfs:label "courts" ;
+    quant:hasQuantifier quant:all,
+        quant:multiple .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "it" .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "We" ;
+    dul:hasQuality ns1:Here,
+        ns1:Topic .
+

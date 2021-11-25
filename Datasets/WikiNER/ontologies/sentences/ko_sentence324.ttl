@@ -1,0 +1,132 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence324.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "with" .
+
+translation_coherence:ko_sentence324.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence324" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence324" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:create_1 a ns1:Create ;
+    rdfs:label "created" ;
+    vn.role:Agent ns1:speech_1 ;
+    vn.role:Product ns1:republic_of_korea_1 .
+
+ns1:cross_1 a ns1:Cross ;
+    rdfs:label "crosses" ;
+    vn.role:Agent ns1:republic_of_korea_1 ;
+    vn.role:Patient ns1:North ;
+    vn.role:Recipient ns1:book_1,
+        ns1:image_1 .
+
+ns1:docuverse earmark:hasContent "This speech has created a Republic_of_Korea that crosses the North with an invalid image and a book for the risk of sadness."^^xsd:string .
+
+ns1:risk_1 a ns1:Risk ;
+    rdfs:label "risk" ;
+    quant:hasDeterminer quant:the .
+
+dbpedia:South_Korea rdfs:subClassOf schema:Country,
+        schema:Place .
+
+ns1:Book rdfs:label "book" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Create rdfs:label "created" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Cross rdfs:label "crosses" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Image a owl:Class ;
+    rdfs:label "image" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Invalid a owl:Class ;
+    rdfs:label "invalid" .
+
+ns1:InvalidImage rdfs:label "invalid image" ;
+    dul:associatedWith ns1:Image ;
+    dul:hasModality ns1:Invalid .
+
+ns1:North rdfs:label "North" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:RepublicOfKorea rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Republic_of_korea a owl:Class ;
+    rdfs:label "Republic of Korea" ;
+    rdfs:subClassOf ns1:RepublicOfKorea ;
+    owl:equivalentClass dbpedia:South_Korea .
+
+ns1:Risk rdfs:label "risk" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Sadness rdfs:label "sadness" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Speech rdfs:label "speech" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:book_1 a ns1:Book ;
+    rdfs:label "book" ;
+    quant:hasDeterminer quant:a ;
+    ns1:forRiskOf ns1:sadness_1 .
+
+ns1:image_1 a ns1:InvalidImage ;
+    rdfs:label "image" ;
+    quant:hasDeterminer quant:an .
+
+ns1:sadness_1 a ns1:Sadness ;
+    rdfs:label "sadness" .
+
+ns1:speech_1 a ns1:Speech ;
+    rdfs:label "speech" ;
+    quant:hasDeterminer quant:this .
+
+ns1:republic_of_korea_1 a ns1:Republic_of_korea ;
+    rdfs:label "Republic of Korea" ;
+    quant:hasDeterminer quant:a .
+

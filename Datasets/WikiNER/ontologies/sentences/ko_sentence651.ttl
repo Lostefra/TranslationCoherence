@@ -1,0 +1,92 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence651.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence651.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence651" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence651" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:disjunct_1 a ns1:Disjunct ;
+    boxing:involves ns1:Conservative,
+        ns1:Member,
+        ns1:member_1 ;
+    ns1:union ns1:disjunct_2 .
+
+ns1:docuverse earmark:hasContent "Conservative or libertarian member of the United_States_Republican_Party."^^xsd:string .
+
+dbpedia:Republican_Party_(United_States) a schema:Organization .
+
+ns1:LibertarianMember a owl:Class ;
+    rdfs:label "libertarian member" ;
+    dul:hasQuality ns1:Libertarian ;
+    rdfs:subClassOf ns1:Member .
+
+ns1:United_states_republican_party rdfs:label "United States Republican Party" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Republican_Party_(United_States) .
+
+ns1:disjunct_2 a ns1:Disjunct ;
+    boxing:involves ns1:Libertarian,
+        ns1:Member,
+        ns1:member_1 .
+
+ns1:Conservative rdfs:label "Conservative" ;
+    owl:sameAs dbpedia:Conservatism .
+
+ns1:Libertarian a owl:Class ;
+    rdfs:label "libertarian" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Libertarianism .
+
+ns1:member_1 a ns1:LibertarianMember ;
+    rdfs:label "member" ;
+    dul:hasQuality ns1:Conservative,
+        ns1:Topic ;
+    ns1:libertarianMemberOf ns1:United_states_republican_party .
+
+ns1:Member a owl:Class ;
+    rdfs:label "member" ;
+    rdfs:subClassOf dul:Person .
+

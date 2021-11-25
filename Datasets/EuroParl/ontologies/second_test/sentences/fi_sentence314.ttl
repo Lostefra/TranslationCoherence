@@ -1,0 +1,206 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence314.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence314.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence314" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence314" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Because rdfs:label "because" .
+
+ns1:Eq rdfs:label "are",
+        "were" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:So rdfs:label "so" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "Wealthy regions were those with jobs in the industry, but nowadays these regions have become a burden, and they may well be poor, so we need to invest in new industries, such as e-commerce and services, because they are the industries of the future."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Possible ;
+    boxing:involves ns1:Poor,
+        ns1:thing_2 ;
+    dul:hasQuality ns1:Well .
+
+ns1:thing_1 rdfs:label "those" .
+
+ns1:thing_3 rdfs:label "they" .
+
+ns1:Become rdfs:label "become" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Burden rdfs:label "burden" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:E-commerce rdfs:label "e-commerce" ;
+    owl:sameAs dbpedia:E-commerce .
+
+ns1:Future rdfs:label "future" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Invest a owl:Class ;
+    rdfs:label "invest" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Investment .
+
+ns1:Job rdfs:label "jobs" .
+
+ns1:Need rdfs:label "need" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:New rdfs:label "new" .
+
+ns1:Nowadays rdfs:label "nowadays" .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Region rdfs:label "regions" ;
+    rdfs:subClassOf owl:Thing .
+
+ns1:Service rdfs:label "services" .
+
+ns1:Well rdfs:label "well" .
+
+ns1:become_1 a ns1:Become ;
+    rdfs:label "become" ;
+    boxer:agent ns1:region_1 ;
+    boxer:patient ns1:burden_1 ;
+    dul:hasQuality ns1:Nowadays ;
+    ns1:so ns1:need_1 .
+
+ns1:burden_1 a ns1:Burden ;
+    rdfs:label "burden" ;
+    quant:hasDeterminer quant:a .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Wealthy,
+        ns1:become_1,
+        ns1:future_1,
+        ns1:industry_1,
+        ns1:industry_2,
+        ns1:invest_1,
+        ns1:job_1,
+        ns1:need_1,
+        ns1:region_1,
+        ns1:service_1 .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "they" ;
+    dul:hasQuality ns1:Poor .
+
+ns1:Industry a owl:Class ;
+    rdfs:label "industries",
+        "industry" ;
+    rdfs:subClassOf dul:Organization ;
+    owl:equivalentClass dbpedia:Industry .
+
+ns1:NewIndustry rdfs:subClassOf ns1:Industry .
+
+ns1:Poor rdfs:label "poor" ;
+    owl:sameAs dbpedia:Poverty .
+
+ns1:Wealthy a owl:Thing ;
+    rdfs:label "Wealthy" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Wealth ;
+    ns1:with ns1:job_1 .
+
+ns1:future_1 a ns1:Future ;
+    rdfs:label "future" ;
+    quant:hasDeterminer quant:the .
+
+ns1:industry_1 a ns1:Industry ;
+    rdfs:label "industry" ;
+    quant:hasDeterminer quant:the .
+
+ns1:industry_2 a dbpedia:Second_Industrial_Revolution,
+        owl:Thing,
+        ns1:NewIndustry ;
+    rdfs:label "industries" ;
+    dul:hasQuality ns1:New ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:as ns1:service_1 ;
+    ns1:newIndustryOf ns1:future_1 .
+
+ns1:invest_1 a ns1:Invest ;
+    rdfs:label "invest" ;
+    vn.role:Agent ns1:person_1 ;
+    ns1:because ns1:situation_2 ;
+    ns1:in ns1:industry_2 .
+
+ns1:job_1 a dbpedia:Employment,
+        ns1:Job ;
+    rdfs:label "jobs" ;
+    quant:hasDeterminer quant:those ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:industry_1 .
+
+ns1:need_1 a ns1:Need ;
+    rdfs:label "need" ;
+    vn.role:Experiencer ns1:person_1 ;
+    vn.role:Theme ns1:invest_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:region_1 a ns1:Region ;
+    rdfs:label "regions" ;
+    dul:associatedWith ns1:Wealthy ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:service_1 a dbpedia:Service_(economics),
+        ns1:Service ;
+    rdfs:label "services" ;
+    dul:hasQuality ns1:E-commerce ;
+    quant:hasDeterminer quant:such ;
+    quant:hasQuantifier quant:multiple .
+
+owl:Thing rdfs:label "they",
+        "those" ;
+    rdfs:subClassOf ns1:NewIndustry .
+

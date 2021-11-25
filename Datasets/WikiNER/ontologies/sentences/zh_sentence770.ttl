@@ -1,0 +1,140 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence770.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "In" .
+
+translation_coherence:zh_sentence770.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence770" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence770" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Noteq rdfs:label "different" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Quantity rdfs:label "many" .
+
+ns1:docuverse earmark:hasContent "In the University of the United_Kingdom and many universities in Europe, these subsectors often reside in separate sectors as different subjects."^^xsd:string .
+
+ns1:reside_1 a ns1:OftenReside ;
+    rdfs:label "reside" ;
+    dul:hasQuality ns1:Often ;
+    vn.role:Location ns1:University ;
+    vn.role:Theme ns1:subsector_1 ;
+    ns1:in ns1:sector_1 .
+
+dbpedia:Europe a schema:Continent,
+        schema:Place .
+
+dbpedia:United_Kingdom rdfs:subClassOf schema:Country,
+        schema:Place .
+
+ns1:Europe rdfs:label "Europe" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Europe .
+
+ns1:Often rdfs:label "often" .
+
+ns1:OftenReside rdfs:label "Often Reside" ;
+    rdfs:subClassOf ns1:Reside .
+
+ns1:Reside rdfs:label "reside" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Sector rdfs:label "sectors" .
+
+ns1:Separate rdfs:label "separate" .
+
+ns1:SeparateSector rdfs:subClassOf ns1:Sector .
+
+ns1:Subsector rdfs:label "subsectors" .
+
+ns1:UnitedKingdom rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:United_kingdom a owl:Class ;
+    rdfs:label "United Kingdom" ;
+    rdfs:subClassOf ns1:UnitedKingdom ;
+    owl:equivalentClass dbpedia:United_Kingdom .
+
+ns1:sector_1 a ns1:SeparateSector ;
+    rdfs:label "sectors" ;
+    dul:hasQuality ns1:Separate ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:as ns1:subject_1 .
+
+ns1:subject_1 a ns1:Subject ;
+    rdfs:label "different" ;
+    owl:differentFrom ns1:subject_2 .
+
+ns1:subject_2 a ns1:Subject ;
+    rdfs:label "subjects" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:subsector_1 a ns1:Subsector ;
+    rdfs:label "subsectors" ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:united_kingdom_1 a ns1:United_kingdom ;
+    rdfs:label "United Kingdom" ;
+    quant:hasDeterminer quant:the .
+
+ns1:university_1 a dbpedia:University,
+        ns1:University ;
+    rdfs:label "universities" ;
+    quant:hasQuantifier quant:many,
+        quant:multiple ;
+    ns1:locatedIn ns1:Europe .
+
+ns1:Subject rdfs:label "different",
+        "subjects" .
+
+ns1:University a owl:Class ;
+    rdfs:label "University",
+        "universities" ;
+    boxer:possibleType foaf:Organisation ;
+    ns1:of ns1:united_kingdom_1,
+        ns1:university_1 .
+

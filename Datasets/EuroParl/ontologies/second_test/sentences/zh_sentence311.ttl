@@ -1,0 +1,154 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence311.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "to" .
+
+translation_coherence:zh_sentence311.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence311" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence311" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "This would enable the Government to take action to decentralization of higher education and would be a useful policy for development."^^xsd:string .
+
+ns1:enable_1 a ns1:Enable ;
+    rdfs:label "enable" ;
+    boxer:agent ns1:thing_1 ;
+    boxer:theme ns1:take_1 ;
+    boxing:hasModality boxing:Necessary .
+
+ns1:policy_1 rdfs:label "policy" ;
+    quant:hasDeterminer quant:a .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:development_1,
+        ns1:thing_1 .
+
+owl:Thing rdfs:label "This" .
+
+ns1:Action a owl:Class ;
+    rdfs:label "action" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Action_theory_(philosophy) .
+
+ns1:Decentralization a owl:Class ;
+    rdfs:label "decentralization" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Decentralization .
+
+ns1:Development a owl:Class ;
+    rdfs:label "development" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Economic_development .
+
+ns1:Education a owl:Class ;
+    rdfs:label "education" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Enable rdfs:label "enable" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Government a owl:Class ;
+    rdfs:label "Government" ;
+    rdfs:subClassOf dul:Organization ;
+    owl:equivalentClass dbpedia:Government .
+
+ns1:Higher a owl:Class ;
+    rdfs:label "higher" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:HigherEducation a owl:Class ;
+    rdfs:label "Higher Education" ;
+    dul:hasQuality ns1:Higher ;
+    rdfs:subClassOf ns1:Education ;
+    owl:equivalentClass dbpedia:Higher_education .
+
+ns1:Policy a owl:Class ;
+    rdfs:label "policy" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Policy .
+
+ns1:Take rdfs:label "take" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Useful a owl:Class ;
+    rdfs:label "useful" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:UsefulPolicy a owl:Class ;
+    rdfs:label "Useful Policy" ;
+    dul:hasQuality ns1:Useful ;
+    rdfs:subClassOf ns1:Policy .
+
+ns1:action_1 a ns1:Action ;
+    rdfs:label "action" .
+
+ns1:decentralization_1 a ns1:Decentralization ;
+    rdfs:label "decentralization" ;
+    ns1:decentralizationOf ns1:education_1 .
+
+ns1:education_1 a ns1:HigherEducation ;
+    rdfs:label "education" .
+
+ns1:government_1 a ns1:Government ;
+    rdfs:label "Government" ;
+    quant:hasDeterminer quant:the,
+        quant:this .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "take" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:government_1 ;
+    vn.role:Destination ns1:decentralization_1 ;
+    vn.role:Theme ns1:action_1 .
+
+ns1:development_1 a ns1:Development ;
+    rdfs:label "development" .
+
+ns1:thing_1 a owl:Thing,
+        ns1:UsefulPolicy ;
+    rdfs:label "This" ;
+    ns1:for ns1:development_1 .
+

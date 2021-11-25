@@ -1,0 +1,134 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence179.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence179.ttl a owl:Ontology ;
+    rdfs:label "de_sentence179" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence179" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "its" .
+
+ns1:Over rdfs:label "over" .
+
+ns1:adopt_1 a ns1:Adopt ;
+    rdfs:label "adopted" ;
+    vn.role:Agent ns1:Governor,
+        ns1:british_legislature_1 ;
+    vn.role:Theme ns1:resolution_1 ;
+    ns1:in "2007-01-01"^^xsd:date .
+
+ns1:docuverse earmark:hasContent "In 2007, the British_legislature and the Governor adopted a resolution expressing deep regret over slavery and its lasting effects."^^xsd:string .
+
+ns1:express_1 a ns1:Express ;
+    rdfs:label "expressing" ;
+    vn.role:Agent ns1:resolution_1 ;
+    vn.role:Theme ns1:effect_1,
+        ns1:regret_1 .
+
+dbpedia:Parliament_of_the_United_Kingdom rdfs:subClassOf schema:Organization .
+
+ns1:Adopt rdfs:label "adopted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:British_legislature a owl:Class ;
+    rdfs:label "British legislature" ;
+    owl:equivalentClass dbpedia:Parliament_of_the_United_Kingdom .
+
+ns1:Deep a owl:Class ;
+    rdfs:label "deep" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:DeepRegret a owl:Class ;
+    rdfs:label "Deep Regret" ;
+    dul:hasQuality ns1:Deep ;
+    rdfs:subClassOf ns1:Regret .
+
+ns1:Effect rdfs:label "effects" .
+
+ns1:Express rdfs:label "expressing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Governor rdfs:label "Governor" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Governor .
+
+ns1:Lasting rdfs:label "lasting" .
+
+ns1:LastingEffect rdfs:subClassOf ns1:Effect .
+
+ns1:Regret a owl:Class ;
+    rdfs:label "regret" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Resolution rdfs:label "resolution" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Slavery a owl:Class ;
+    rdfs:label "slavery" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Slavery .
+
+ns1:british_legislature_1 a ns1:British_legislature ;
+    rdfs:label "British legislature" ;
+    quant:hasDeterminer quant:the .
+
+ns1:effect_1 a ns1:LastingEffect ;
+    rdfs:label "effects" ;
+    dul:hasQuality ns1:Lasting ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:lastingEffectOf ns1:neuter_1 .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "its" .
+
+ns1:regret_1 a ns1:DeepRegret ;
+    rdfs:label "regret" ;
+    ns1:over ns1:slavery_1 .
+
+ns1:slavery_1 a ns1:Slavery ;
+    rdfs:label "slavery" .
+
+ns1:resolution_1 a ns1:Resolution ;
+    rdfs:label "resolution" ;
+    quant:hasDeterminer quant:a .
+

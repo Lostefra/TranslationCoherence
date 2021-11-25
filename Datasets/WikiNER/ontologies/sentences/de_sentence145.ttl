@@ -1,0 +1,105 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence145.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence145.ttl a owl:Ontology ;
+    rdfs:label "de_sentence145" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence145" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "Huntstown has a technology-driven economy due to NASA's Marshall_Space_Flight_Center and the Redstone_Arsenal."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "has" ;
+    vn.role:Agent ns1:Huntstown ;
+    vn.role:Patient ns1:economy_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Due,
+        ns1:economy_1 ;
+    ns1:to ns1:Marshall_space_flight_center,
+        ns1:Redstone_arsenal .
+
+dbpedia:NASA a schema:GovernmentOrganization,
+        schema:Organization .
+
+ns1:Economy a owl:Class ;
+    rdfs:label "economy" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#System> .
+
+ns1:Have rdfs:label "has" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Huntstown rdfs:label "Huntstown" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Marshall_space_flight_center rdfs:label "Marshall Space Flight Center" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Marshall_Space_Flight_Center ;
+    ns1:of ns1:Nasa .
+
+ns1:Nasa rdfs:label "NASA" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:NASA .
+
+ns1:Redstone_arsenal rdfs:label "Redstone Arsenal" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Redstone_Arsenal .
+
+ns1:Technology-driven a owl:Class ;
+    rdfs:label "technology-driven" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Technology-drivenEconomy a owl:Class ;
+    rdfs:label "technology-driven economy" ;
+    dul:hasQuality ns1:Technology-driven ;
+    rdfs:subClassOf ns1:Economy .
+
+ns1:Due rdfs:label "due" .
+
+ns1:economy_1 a ns1:Technology-drivenEconomy ;
+    rdfs:label "economy" ;
+    dul:hasQuality ns1:Due ;
+    quant:hasDeterminer quant:a .
+

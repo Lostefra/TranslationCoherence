@@ -1,0 +1,155 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence98.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence98.ttl a owl:Ontology ;
+    rdfs:label "de_sentence98" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence98" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "my",
+        "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:docuverse earmark:hasContent "The fact that the topics are interlinked also suggests that we should conduct the debate on both programmes together. So my group rejects the proposal of the socialist group."^^xsd:string .
+
+ns1:reject_1 a ns1:Reject ;
+    rdfs:label "rejects" ;
+    dul:hasQuality ns1:So ;
+    vn.role:Agent ns1:group_1 ;
+    vn.role:Proposition ns1:proposal_1 .
+
+ns1:suggest_1 a ns1:AlsoSuggest ;
+    rdfs:label "suggests" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Agent ns1:fact_1 ;
+    vn.role:Topic ns1:conduct_1 .
+
+dbpedia:Party_of_European_Socialists a schema:Organization .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoSuggest rdfs:subClassOf ns1:Suggest .
+
+ns1:Conduct rdfs:label "conduct" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Debate rdfs:label "debate" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Fact rdfs:label "fact" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Group rdfs:label "group" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Interlink rdfs:label "interlinked" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Programme rdfs:label "programmes" .
+
+ns1:Proposal rdfs:label "proposal" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Reject rdfs:label "rejects" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:So rdfs:label "So" .
+
+ns1:Socialist rdfs:label "socialist" ;
+    owl:sameAs dbpedia:Party_of_European_Socialists .
+
+ns1:Suggest rdfs:label "suggests" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Together rdfs:label "together" .
+
+ns1:Topic rdfs:label "topics" .
+
+ns1:conduct_1 a ns1:Conduct ;
+    rdfs:label "conduct" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Together ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Theme ns1:debate_1 .
+
+ns1:debate_1 a ns1:Debate ;
+    rdfs:label "debate" ;
+    quant:hasDeterminer quant:the ;
+    ns1:on ns1:programme_1 .
+
+ns1:fact_1 a ns1:Fact ;
+    rdfs:label "fact" ;
+    boxer:theme ns1:interlink_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:interlink_1 a ns1:Interlink ;
+    rdfs:label "interlinked" ;
+    vn.role:Patient ns1:topic_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "my" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:programme_1 a ns1:Programme ;
+    rdfs:label "programmes" ;
+    quant:hasQuantifier quant:both,
+        quant:multiple .
+
+ns1:proposal_1 a ns1:Proposal ;
+    rdfs:label "proposal" ;
+    quant:hasDeterminer quant:the ;
+    ns1:proposalOf ns1:group_1 .
+
+ns1:topic_1 a ns1:Topic ;
+    rdfs:label "topics" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Person rdfs:label "we" .
+
+ns1:group_1 a ns1:Group ;
+    rdfs:label "group" ;
+    dul:hasQuality ns1:Socialist ;
+    ns1:groupOf ns1:person_1 .
+

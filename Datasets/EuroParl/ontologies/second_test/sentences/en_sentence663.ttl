@@ -1,0 +1,109 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence663.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "as" .
+
+translation_coherence:en_sentence663.ttl a owl:Ontology ;
+    rdfs:label "en_sentence663" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence663" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:docuverse earmark:hasContent "The solution, as I see it, lies in clearly encouraging entrepreneurship."^^xsd:string .
+
+ns1:lie_1 a ns1:Lie ;
+    rdfs:label "lies" ;
+    vn.role:Agent ns1:solution_1 ;
+    vn.role:Location ns1:see_1 ;
+    ns1:in ns1:entrepreneurship_1 .
+
+ns1:neuter_1 coref:coref ns1:solution_1 .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Clearly rdfs:label "clearly" .
+
+ns1:ClearlyEncouragingEntrepreneurship a owl:Class ;
+    rdfs:label "Clearly Encouraging Entrepreneurship" ;
+    rdfs:subClassOf ns1:EncouragingEntrepreneurship .
+
+ns1:Encouraging a owl:Class ;
+    rdfs:label "encouraging" ;
+    dul:hasQuality ns1:Clearly ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:EncouragingEntrepreneurship a owl:Class ;
+    rdfs:label "Encouraging Entrepreneurship" ;
+    dul:hasQuality ns1:Encouraging ;
+    rdfs:subClassOf ns1:Entrepreneurship .
+
+ns1:Entrepreneurship a owl:Class ;
+    rdfs:label "entrepreneurship" .
+
+ns1:Lie rdfs:label "lies" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Person rdfs:label "I" .
+
+ns1:See rdfs:label "see" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Solution rdfs:label "solution" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:entrepreneurship_1 a ns1:ClearlyEncouragingEntrepreneurship ;
+    rdfs:label "entrepreneurship" .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:see_1 a ns1:See ;
+    rdfs:label "see" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:solution_1 .
+
+ns1:solution_1 a owl:Thing,
+        ns1:Solution ;
+    rdfs:label "it",
+        "solution" ;
+    quant:hasDeterminer quant:the .
+

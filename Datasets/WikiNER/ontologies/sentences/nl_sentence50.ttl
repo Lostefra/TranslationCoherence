@@ -1,0 +1,142 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence50.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Cause rdfs:label "by" .
+
+translation_coherence:nl_sentence50.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence50" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence50" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:19th rdfs:label "19th" .
+
+ns1:Late rdfs:label "late" .
+
+ns1:Like rdfs:label "like" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:century_1 a ns1:Century ;
+    rdfs:label "century" ;
+    dul:associatedWith ns1:writing_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:docuverse earmark:hasContent "It was inspired by the late 19th century writing of early female anarchists like Lucy_Parsons, Emma_Goldman, Voltairine_de_Cleyre, and Dora_Marsden."^^xsd:string .
+
+ns1:inspire_1 a ns1:Inspire ;
+    rdfs:label "inspired" ;
+    vn.role:Cause ns1:writing_1 ;
+    vn.role:Experiencer ns1:neuter_1 .
+
+ns1:19thCenturyWriting rdfs:label "19th century writing" ;
+    rdfs:subClassOf ns1:CenturyWriting .
+
+ns1:Anarchist rdfs:label "anarchists" .
+
+ns1:CenturyWriting a owl:Class ;
+    rdfs:label "Century Writing" ;
+    dul:associatedWith ns1:Century ;
+    rdfs:subClassOf ns1:Writing .
+
+ns1:Dora_marsden rdfs:label "Dora Marsden" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Dora_Marsden .
+
+ns1:Early rdfs:label "early" .
+
+ns1:EarlyFemaleAnarchist rdfs:subClassOf ns1:FemaleAnarchist .
+
+ns1:Emma_goldman rdfs:label "Emma Goldman" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith ns1:Voltairine_de_cleyre ;
+    owl:sameAs dbpedia:Emma_Goldman .
+
+ns1:Female rdfs:label "female" ;
+    owl:sameAs dbpedia:Woman .
+
+ns1:FemaleAnarchist rdfs:subClassOf ns1:Anarchist .
+
+ns1:Inspire rdfs:label "inspired" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Late19thCenturyWriting rdfs:subClassOf ns1:19thCenturyWriting .
+
+ns1:Lucy_parsons a owl:Class ;
+    rdfs:label "Lucy Parsons" ;
+    owl:equivalentClass dbpedia:Lucy_Parsons .
+
+ns1:Voltairine_de_cleyre rdfs:label "Voltairine de Cleyre" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Voltairine_de_Cleyre .
+
+ns1:Writing a owl:Class ;
+    rdfs:label "writing" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:anarchist_1 a dbpedia:Anarchism,
+        ns1:EarlyFemaleAnarchist ;
+    rdfs:label "anarchists" ;
+    dul:hasQuality ns1:Early,
+        ns1:Female ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:like ns1:lucy_parsons_1 .
+
+ns1:lucy_parsons_1 a ns1:Lucy_parsons ;
+    rdfs:label "Lucy Parsons" ;
+    dul:associatedWith ns1:Dora_marsden,
+        ns1:Emma_goldman ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "It" .
+
+ns1:Century a owl:Class ;
+    rdfs:label "century" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:writing_1 a ns1:Late19thCenturyWriting ;
+    rdfs:label "writing" ;
+    ns1:late19thCenturyWritingOf ns1:anarchist_1 .
+
+owl:Thing rdfs:label "It" .
+

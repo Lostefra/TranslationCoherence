@@ -1,0 +1,136 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence239.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "in" .
+
+vn.role:Patient2 rdfs:label "to" .
+
+translation_coherence:ko_sentence239.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence239" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence239" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Blue rdfs:label "blue" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:connect_1 a ns1:TightlyConnect ;
+    rdfs:label "connected" ;
+    dul:hasQuality ns1:Tightly ;
+    vn.role:Patient1 ns1:city_1 ;
+    vn.role:Patient2 ns1:lane_1 .
+
+ns1:docuverse earmark:hasContent "The hero of the Achilles of Leuce Island was widely used in the marine city, which was tightly connected to the sea lanes of Pontic Sea, as well as in the blue sea."^^xsd:string .
+
+ns1:sea_1 a ns1:Sea ;
+    rdfs:label "sea" ;
+    dul:associatedWith ns1:lane_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:use_1 a ns1:WidelyUse ;
+    rdfs:label "used" ;
+    dul:hasQuality ns1:Widely ;
+    vn.role:Location ns1:city_1 ;
+    vn.role:Value ns1:hero_1 .
+
+ns1:Achilles rdfs:label "Achilles" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Achilles ;
+    ns1:of ns1:Leuce_island .
+
+ns1:City a owl:Class ;
+    rdfs:label "city" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Connect rdfs:label "connected" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Hero rdfs:label "hero" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Lane rdfs:label "lanes" .
+
+ns1:Leuce_island rdfs:label "Leuce Island" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Marine a owl:Class ;
+    rdfs:label "marine" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:MarineCity a owl:Class ;
+    rdfs:label "marine city" ;
+    dul:hasQuality ns1:Marine ;
+    rdfs:subClassOf ns1:City ;
+    owl:equivalentClass <http://dbpedia.org/resource/Marine_City,_Michigan> .
+
+ns1:Pontic_sea rdfs:label "Pontic Sea" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Sea rdfs:label "sea" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:SeaLane rdfs:subClassOf ns1:Lane .
+
+ns1:Tightly rdfs:label "tightly" .
+
+ns1:TightlyConnect rdfs:subClassOf ns1:Connect .
+
+ns1:Use rdfs:label "used" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Widely rdfs:label "widely" .
+
+ns1:WidelyUse rdfs:subClassOf ns1:Use .
+
+ns1:hero_1 a ns1:Hero ;
+    rdfs:label "hero" ;
+    quant:hasDeterminer quant:the ;
+    ns1:heroOf ns1:Achilles .
+
+ns1:city_1 a ns1:MarineCity ;
+    rdfs:label "city" ;
+    quant:hasDeterminer quant:the .
+
+ns1:lane_1 a ns1:SeaLane ;
+    rdfs:label "lanes" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:seaLaneOf ns1:Pontic_sea .
+

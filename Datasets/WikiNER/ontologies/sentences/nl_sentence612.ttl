@@ -1,0 +1,177 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence612.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence612.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence612" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence612" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "her",
+        "of" .
+
+ns1:To rdfs:label "to" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "Philosopher Chandra Kukathas said that her inevitable hostility to the state and tax returns are inconsistent with a rejection of anarchy, and her attempts to solve the difficulties and unable us."^^xsd:string .
+
+ns1:female_1 rdfs:label "her" .
+
+ns1:return_1 rdfs:label "returns" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "said" ;
+    vn.role:Agent ns1:Chandra_kukathas ;
+    vn.role:Topic ns1:situation_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Inconsistent,
+        ns1:hostility_1 ;
+    dul:hasQuality ns1:Unable,
+        ns1:We .
+
+ns1:solve_1 a ns1:Solve ;
+    rdfs:label "solve" ;
+    vn.role:Agent ns1:attempt_1 ;
+    vn.role:Theme ns1:difficulty_1 .
+
+ns1:tax_1 a ns1:Tax ;
+    rdfs:label "tax" ;
+    dul:associatedWith ns1:state_1 .
+
+ns1:Anarchy a owl:Class ;
+    rdfs:label "anarchy" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Anarchism .
+
+ns1:Attempt rdfs:label "attempts" .
+
+ns1:Difficulty rdfs:label "difficulties" .
+
+ns1:Hostility a owl:Class ;
+    rdfs:label "hostility" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:InevitableHostility a owl:Class ;
+    rdfs:label "Inevitable Hostility" ;
+    dul:hasQuality ns1:Inevitable ;
+    rdfs:subClassOf ns1:Hostility .
+
+ns1:Rejection rdfs:label "rejection" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Return rdfs:label "returns" .
+
+ns1:Say rdfs:label "said" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Solve rdfs:label "solve" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:State rdfs:label "state" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Tax rdfs:label "tax" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:TaxReturn rdfs:subClassOf ns1:Return .
+
+ns1:Unable rdfs:label "unable" .
+
+ns1:We rdfs:label "us" .
+
+ns1:attempt_1 a ns1:Attempt ;
+    rdfs:label "attempts" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:attemptOf ns1:Chandra_kukathas .
+
+ns1:difficulty_1 a ns1:Difficulty ;
+    rdfs:label "difficulties" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:rejection_1 a ns1:Rejection ;
+    rdfs:label "rejection" ;
+    quant:hasDeterminer quant:a .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Inconsistent,
+        ns1:anarchy_1,
+        ns1:hostility_1,
+        ns1:rejection_1 ;
+    ns1:withRejectionOf ns1:anarchy_1 .
+
+ns1:Female rdfs:label "Chandra Kukathas",
+        "Philosopher" .
+
+ns1:Inevitable a owl:Class ;
+    rdfs:label "inevitable" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Philosopher a ns1:Female ;
+    rdfs:label "Philosopher" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Philosophy .
+
+ns1:anarchy_1 a ns1:Anarchy ;
+    rdfs:label "anarchy" .
+
+ns1:hostility_1 a ns1:InevitableHostility ;
+    rdfs:label "hostility" ;
+    dul:hasQuality ns1:Inconsistent,
+        ns1:Inevitable ;
+    ns1:inevitableHostilityOf ns1:Chandra_kukathas ;
+    ns1:to ns1:state_1 .
+
+ns1:state_1 a ns1:State,
+        ns1:TaxReturn ;
+    rdfs:label "state" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Chandra_kukathas a ns1:Female ;
+    rdfs:label "Chandra Kukathas" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith ns1:Philosopher ;
+    dul:hasRole ns1:Philosopher .
+
+ns1:Inconsistent rdfs:label "inconsistent" .
+

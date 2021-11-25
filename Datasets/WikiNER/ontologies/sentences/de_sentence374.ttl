@@ -1,0 +1,162 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence374.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Actor2 rdfs:label "with" .
+
+vn.role:Source rdfs:label "because" .
+
+translation_coherence:de_sentence374.ttl a owl:Ontology ;
+    rdfs:label "de_sentence374" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence374" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "his" .
+
+ns1:Rel rdfs:label ",",
+        "a" .
+
+ns1:docuverse earmark:hasContent "Two days a week, Lincoln would meet with his Cabinet in the afternoon, and occasionally his wife would force him to carry out a transport because she was worried."^^xsd:string .
+
+ns1:female_1 coref:coref ns1:wife_1 .
+
+ns1:force_1 a ns1:Force ;
+    rdfs:label "force" ;
+    boxer:theme ns1:carry_1 ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Occasionally ;
+    vn.role:Agent ns1:wife_1 .
+
+ns1:male_1 rdfs:label "his" .
+
+ns1:meet_1 a ns1:Meet ;
+    rdfs:label "meet" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:associatedWith ns1:day_1 ;
+    vn.role:Actor1 ns1:Lincoln ;
+    vn.role:Actor2 ns1:cabinet_1 ;
+    ns1:in ns1:afternoon_1 .
+
+ns1:Afternoon rdfs:label "afternoon" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Cabinet rdfs:label "Cabinet" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Carry rdfs:label "carry" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Day rdfs:label "days" .
+
+ns1:Female rdfs:label "she" .
+
+ns1:Force rdfs:label "force" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Male rdfs:label "Lincoln" .
+
+ns1:Meet rdfs:label "meet" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Occasionally rdfs:label "occasionally" .
+
+ns1:Out rdfs:label "out" .
+
+ns1:Transport rdfs:label "transport" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Week rdfs:label "week" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Wife rdfs:label "wife" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Worry rdfs:label "worried" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:afternoon_1 a ns1:Afternoon ;
+    rdfs:label "afternoon" ;
+    quant:hasDeterminer quant:the .
+
+ns1:cabinet_1 a ns1:Cabinet ;
+    rdfs:label "Cabinet" ;
+    ns1:cabinetOf ns1:Lincoln .
+
+ns1:carry_1 a ns1:Carry ;
+    rdfs:label "carry" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Out ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Source ns1:worry_1 ;
+    vn.role:Theme ns1:transport_1 .
+
+ns1:day_1 a ns1:Day ;
+    rdfs:label "days" ;
+    dul:associatedWith ns1:week_1 ;
+    dul:hasDataValue "2"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple,
+        quant:two .
+
+ns1:transport_1 a ns1:Transport ;
+    rdfs:label "transport" ;
+    quant:hasDeterminer quant:a .
+
+ns1:week_1 a ns1:Week ;
+    rdfs:label "week" ;
+    quant:hasDeterminer quant:a .
+
+ns1:worry_1 a ns1:Worry ;
+    rdfs:label "worried" ;
+    vn.role:Experiencer ns1:wife_1 .
+
+ns1:wife_1 a ns1:Female,
+        ns1:Wife ;
+    rdfs:label "she",
+        "wife" ;
+    ns1:wifeOf ns1:Lincoln .
+
+ns1:Lincoln a ns1:Male ;
+    rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person .
+

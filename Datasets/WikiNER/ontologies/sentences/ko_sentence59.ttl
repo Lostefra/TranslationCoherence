@@ -1,0 +1,163 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence59.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Ebest> rdfs:label "best" .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:ko_sentence59.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence59" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence59" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:Rel rdfs:label "(" .
+
+ns1:docuverse earmark:hasContent "Perhaps the best known in this field Efforts were a project for the experimental technology commonly taught by Francisco_Ferrer's Modern School (Escuela_Moderna) and Catalan training."^^xsd:string .
+
+ns1:field_1 a ns1:Field ;
+    rdfs:label "field" ;
+    dul:associatedWith ns1:effort_1 ;
+    quant:hasDeterminer quant:the,
+        quant:this .
+
+ns1:know_1 a ns1:Know ;
+    rdfs:label "known" ;
+    vn.role:Theme ns1:project_1 ;
+    ns1:in ns1:effort_1 .
+
+ns1:teach_1 a ns1:CommonlyTeach ;
+    rdfs:label "taught" ;
+    dul:hasQuality ns1:Commonly ;
+    vn.role:Agent ns1:Modern_school ;
+    vn.role:Topic ns1:technology_1 .
+
+ns1:training_1 rdfs:label "training" .
+
+ns1:Best rdfs:label "best" .
+
+ns1:Catalan rdfs:label "Catalan" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Modern_school ;
+    owl:sameAs dbpedia:Catalans .
+
+ns1:Commonly rdfs:label "commonly" .
+
+ns1:CommonlyTeach rdfs:subClassOf ns1:Teach .
+
+ns1:Effort rdfs:label "Efforts" .
+
+ns1:Escuela_moderna rdfs:label "Escuela Moderna" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Escuela_Moderna .
+
+ns1:Experimental a owl:Class ;
+    rdfs:label "experimental" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ExperimentalTechnology a owl:Class ;
+    rdfs:label "Experimental Technology" ;
+    dul:hasQuality ns1:Experimental ;
+    rdfs:subClassOf ns1:Technology .
+
+ns1:Field rdfs:label "field" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:FieldEffort rdfs:subClassOf ns1:Effort .
+
+ns1:Francisco_ferrer rdfs:label "Francisco Ferrer" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Francesc_Ferrer_i_Guàrdia .
+
+ns1:Know rdfs:label "known" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Perhaps rdfs:label "Perhaps" .
+
+ns1:Teach rdfs:label "taught" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Training rdfs:label "Modern School",
+        "training" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:project_1 a owl:Thing,
+        ns1:Project ;
+    rdfs:label "project" ;
+    dul:hasQuality ns1:Best,
+        ns1:Perhaps ;
+    quant:hasDeterminer quant:a ;
+    ns1:bestAmong owl:Thing ;
+    ns1:for ns1:technology_1 .
+
+owl:Thing rdfs:subClassOf ns1:Project .
+
+ns1:Modern_school a ns1:Training ;
+    rdfs:label "Modern School",
+        "training" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:Catalan,
+        ns1:Escuela_moderna ;
+    owl:sameAs dbpedia:Escuela_Moderna ;
+    ns1:trainingOf ns1:Francisco_ferrer .
+
+ns1:Project rdfs:label "project" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Technology a owl:Class ;
+    rdfs:label "technology" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:effort_1 a ns1:FieldEffort ;
+    rdfs:label "Efforts" ;
+    quant:hasQuantifier quant:multiple ;
+    owl:sameAs ns1:technology_1 .
+
+ns1:technology_1 a ns1:ExperimentalTechnology,
+        ns1:Technology ;
+    rdfs:label "technology" ;
+    quant:hasDeterminer quant:the .
+

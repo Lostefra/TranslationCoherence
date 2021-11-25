@@ -1,0 +1,173 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence425.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+vn.role:Predicate rdfs:label "as" .
+
+translation_coherence:en_sentence425.ttl a owl:Ontology ;
+    rdfs:label "en_sentence425" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence425" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In",
+        "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Over rdfs:label "over" .
+
+ns1:To rdfs:label "to" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:describe_1 a ns1:Describe ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Predicate "1846-01-01"^^xsd:date ;
+    vn.role:Theme ns1:effect_1 .
+
+ns1:describe_2 a ns1:Describe ;
+    rdfs:label "described" ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Predicate "1846-01-01"^^xsd:date ;
+    vn.role:Theme ns1:effect_1 .
+
+ns1:docuverse earmark:hasContent "In 1846 Lincoln described the effect of this doctrine as that the human mind is impelled to action, or held in rest by some power, over which the mind itself has no control."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "has" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:mind_1 ;
+    vn.role:Patient ns1:control_1 ;
+    ns1:over ns1:power_1 .
+
+ns1:impel_1 a ns1:Impel ;
+    rdfs:label "impelled" ;
+    vn.role:Patient ns1:mind_1 ;
+    ns1:in "1846-01-01"^^xsd:date ;
+    ns1:to ns1:action_1 ;
+    ns1:union ns1:hold_1 .
+
+owl:Thing rdfs:label "itself" .
+
+ns1:Action rdfs:label "action" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Control rdfs:label "control" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Doctrine rdfs:label "doctrine" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Effect rdfs:label "effect" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Have rdfs:label "has" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Hold rdfs:label "held" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Human a owl:Class ;
+    rdfs:label "human" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:HumanMind a owl:Class ;
+    rdfs:label "Human Mind" ;
+    dul:hasQuality ns1:Human ;
+    rdfs:subClassOf ns1:Mind ;
+    owl:equivalentClass dbpedia:Mind .
+
+ns1:Impel rdfs:label "impelled" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Mind a owl:Class ;
+    rdfs:label "mind" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Power rdfs:label "power" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Rest rdfs:label "rest" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:action_1 a ns1:Action ;
+    rdfs:label "action" .
+
+ns1:control_1 a ns1:Control ;
+    rdfs:label "control" ;
+    quant:hasQuantifier quant:no .
+
+ns1:doctrine_1 a ns1:Doctrine ;
+    rdfs:label "doctrine" ;
+    quant:hasDeterminer quant:this .
+
+ns1:hold_1 a ns1:Hold ;
+    rdfs:label "held" ;
+    vn.role:Agent ns1:power_1 ;
+    vn.role:Value ns1:mind_1 ;
+    ns1:in ns1:rest_1,
+        "1846-01-01"^^xsd:date .
+
+ns1:rest_1 a ns1:Rest ;
+    rdfs:label "rest" .
+
+ns1:Describe rdfs:label "described" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person .
+
+ns1:effect_1 a ns1:Effect ;
+    rdfs:label "effect" ;
+    quant:hasDeterminer quant:the ;
+    ns1:effectOf ns1:doctrine_1 .
+
+ns1:power_1 a ns1:Power ;
+    rdfs:label "power" ;
+    quant:hasQuantifier quant:some .
+
+ns1:mind_1 a ns1:HumanMind ;
+    rdfs:label "mind" ;
+    dul:hasQuality owl:Thing ;
+    quant:hasDeterminer quant:the .
+

@@ -1,0 +1,129 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence123.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+foaf:Person rdfs:label "per" .
+
+translation_coherence:ko_sentence123.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence123" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence123" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "For",
+        "for" .
+
+ns1:average_1 a ns1:Average ;
+    rdfs:label "average" ;
+    dul:associatedWith ns1:precaution_1 ;
+    quant:hasDeterminer quant:an .
+
+ns1:docuverse earmark:hasContent "For example, an annual average precaution for Birmingham area is 2 inches per year."^^xsd:string .
+
+ns1:inch_1 rdfs:label "inches" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:precaution_1,
+        ns1:year_1 ;
+    ns1:for ns1:example_1 .
+
+dbpedia:Birmingham a schema:City,
+        schema:Place .
+
+ns1:Annual a owl:Class ;
+    rdfs:label "annual" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:AnnualAverage a owl:Class ;
+    dul:hasQuality ns1:Annual ;
+    rdfs:subClassOf ns1:Average .
+
+ns1:AnnualAveragePrecaution a owl:Class ;
+    rdfs:label "Annual Average Precaution" ;
+    dul:associatedWith ns1:AnnualAverage ;
+    rdfs:subClassOf ns1:AveragePrecaution .
+
+ns1:Area rdfs:label "area" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:AveragePrecaution a owl:Class ;
+    rdfs:label "Average Precaution" ;
+    dul:associatedWith ns1:Average ;
+    rdfs:subClassOf ns1:Precaution .
+
+ns1:Birmingham rdfs:label "Birmingham" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Birmingham .
+
+ns1:Example rdfs:label "example" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Inch rdfs:label "inches" .
+
+ns1:Precaution a owl:Class ;
+    rdfs:label "precaution" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Year rdfs:label "year" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:area_1 a ns1:Area ;
+    rdfs:label "area" ;
+    dul:associatedWith ns1:Birmingham .
+
+ns1:example_1 a ns1:Example ;
+    rdfs:label "example" .
+
+ns1:precaution_1 a ns1:AnnualAveragePrecaution,
+        ns1:Inch ;
+    rdfs:label "precaution" ;
+    dul:hasDataValue "2"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:for ns1:area_1 ;
+    ns1:per ns1:year_1 .
+
+ns1:year_1 a ns1:Year ;
+    rdfs:label "year" .
+
+ns1:Average a owl:Class ;
+    rdfs:label "average" ;
+    rdfs:subClassOf dul:InformationEntity .
+

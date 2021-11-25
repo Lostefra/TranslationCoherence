@@ -1,0 +1,126 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence635.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence635.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence635" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence635" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Be rdfs:label "'s" .
+
+ns1:Include rdfs:label "including" .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "Given this, it's probably more meaningful, including financial help to the regions, to say Member States any more."^^xsd:string .
+
+ns1:give_1 a ns1:Give ;
+    rdfs:label "Given" ;
+    vn.role:Agent ns1:thing_2 ;
+    vn.role:Theme ns1:say_1 .
+
+ns1:neuter_1 coref:coref ns1:thing_2 .
+
+ns1:Any rdfs:label "any" .
+
+ns1:Financial a owl:Class ;
+    rdfs:label "financial" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FinancialHelp a owl:Class ;
+    rdfs:label "financial help" ;
+    dul:hasQuality ns1:Financial ;
+    rdfs:subClassOf ns1:Help .
+
+ns1:Give rdfs:label "Given" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Help a owl:Class ;
+    rdfs:label "help" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Meaningful rdfs:label "meaningful" .
+
+ns1:Member_states rdfs:label "Member States" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:More rdfs:label "more" .
+
+ns1:Probably rdfs:label "probably" .
+
+ns1:Region rdfs:label "regions" .
+
+ns1:Say rdfs:label "say" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:help_1 a ns1:FinancialHelp ;
+    rdfs:label "help" ;
+    quant:hasDeterminer quant:this ;
+    ns1:to ns1:region_1 .
+
+ns1:meaningful_1 a ns1:Meaningful ;
+    rdfs:label "meaningful" ;
+    ns1:more ns1:thing_1 .
+
+ns1:region_1 a ns1:Region ;
+    rdfs:label "regions" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "say" ;
+    dul:hasQuality ns1:Any,
+        ns1:More,
+        ns1:Probably ;
+    vn.role:Agent ns1:thing_2 ;
+    vn.role:Topic ns1:Member_states ;
+    ns1:be ns1:meaningful_1 ;
+    ns1:include ns1:help_1 .
+
+ns1:thing_1 a owl:Thing .
+
+owl:Thing rdfs:label "it",
+        "this" .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "it",
+        "this" .
+

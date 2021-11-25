@@ -1,0 +1,189 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence408.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Destination rdfs:label "on" .
+
+vn.role:Location rdfs:label "into" .
+
+translation_coherence:de_sentence408.ttl a owl:Ontology ;
+    rdfs:label "de_sentence408" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence408" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:At rdfs:label "at" .
+
+ns1:Of rdfs:label "its" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Rel rdfs:label "(" .
+
+ns1:When rdfs:label "When" .
+
+ns1:begin_1 a ns1:Begin ;
+    rdfs:label "began" ;
+    vn.role:Theme ns1:salmon_1 ;
+    ns1:when ns1:situation_1 .
+
+ns1:deringer_1 rdfs:label "Deringer" .
+
+ns1:docuverse earmark:hasContent "When the salmon began, it came into the box and was targeted at a single, round-ball .44 caliber (11 mm) Deringer on its head, Firing on the point scene."^^xsd:string .
+
+ns1:neuter_1 coref:coref ns1:salmon_1 .
+
+ns1:point_1 a ns1:Point ;
+    rdfs:label "point" ;
+    dul:associatedWith ns1:scene_1 ;
+    quant:hasDeterminer quant:the .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#.44Caliber> rdfs:subClassOf ns1:Caliber .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Begin rdfs:label "began" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Box rdfs:label "box" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Caliber rdfs:label "caliber" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic>,
+        dul:Amount .
+
+ns1:Come rdfs:label "came" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Deringer rdfs:label "Deringer" .
+
+ns1:Fire rdfs:label "Firing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Head rdfs:label "head" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Mm rdfs:label "mm" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:PointScene a owl:Class ;
+    rdfs:label "point scene" ;
+    dul:associatedWith ns1:Point ;
+    rdfs:subClassOf ns1:Scene .
+
+ns1:Round-ball rdfs:label "round-ball" .
+
+ns1:Round-ball.44Caliber rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#.44Caliber> .
+
+ns1:Salmon a owl:Class ;
+    rdfs:label "salmon" ;
+    rdfs:subClassOf dul:Organism ;
+    owl:equivalentClass dbpedia:Salmon .
+
+ns1:Scene a owl:Class ;
+    rdfs:label "scene" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Single rdfs:label "single" .
+
+ns1:Target rdfs:label "targeted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:box_1 a ns1:Box ;
+    rdfs:label "box" ;
+    quant:hasDeterminer quant:the .
+
+ns1:come_1 a ns1:Come ;
+    rdfs:label "came" ;
+    vn.role:Location ns1:box_1 ;
+    vn.role:Theme ns1:salmon_1 .
+
+ns1:fire_1 a ns1:Fire ;
+    rdfs:label "Firing" ;
+    vn.role:Agent ns1:salmon_1 ;
+    vn.role:Destination ns1:scene_1 .
+
+ns1:head_1 a ns1:Head ;
+    rdfs:label "head" ;
+    ns1:headOf ns1:salmon_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:caliber_1,
+        ns1:come_1,
+        ns1:fire_1,
+        ns1:mm_1,
+        ns1:target_1 .
+
+ns1:target_1 a ns1:Target ;
+    rdfs:label "targeted" ;
+    vn.role:Theme ns1:salmon_1 ;
+    ns1:at ns1:caliber_1 .
+
+".44"^^xsd:nonNegativeInteger rdfs:label ".44" .
+
+ns1:Point a owl:Class ;
+    rdfs:label "point" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:caliber_1 a ns1:Round-ball.44Caliber ;
+    rdfs:label "caliber" ;
+    dul:associatedWith ns1:mm_1 ;
+    dul:hasQuality ns1:Round-ball,
+        ns1:Single,
+        ".44"^^xsd:nonNegativeInteger ;
+    quant:hasDeterminer quant:a .
+
+ns1:mm_1 a ns1:Deringer,
+        ns1:Mm ;
+    rdfs:label "mm" ;
+    dul:hasDataValue "11"^^xsd:nonNegativeInteger ;
+    ns1:on ns1:head_1 .
+
+ns1:scene_1 a ns1:PointScene ;
+    rdfs:label "scene" .
+
+ns1:salmon_1 a owl:Thing,
+        ns1:Salmon ;
+    rdfs:label "it",
+        "its",
+        "salmon" ;
+    quant:hasDeterminer quant:the .
+

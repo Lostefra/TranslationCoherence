@@ -1,0 +1,156 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence87.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence87.ttl a owl:Ontology ;
+    rdfs:label "de_sentence87" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence87" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Like rdfs:label "like" .
+
+ns1:Of rdfs:label "of",
+        "our" .
+
+ns1:docuverse earmark:hasContent "We trust the Commission and Romano_Prodi and after a difficult process, like everyone knows, the vast majority of our group supports the trust in Romano Prodi and the Commission."^^xsd:string .
+
+ns1:know_1 a ns1:Know ;
+    rdfs:label "knows" ;
+    vn.role:Agent ns1:process_1 ;
+    vn.role:Theme ns1:situation_1 ;
+    ns1:like ns1:person_3 .
+
+ns1:person_1 coref:coref ns1:person_2 .
+
+ns1:trust_1 a ns1:Trust ;
+    rdfs:label "trust" ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Theme ns1:Commission,
+        ns1:Romano_prodi .
+
+ns1:After rdfs:label "after" .
+
+ns1:DifficultProcess a owl:Class ;
+    rdfs:label "Difficult Process" ;
+    dul:hasQuality ns1:Difficult ;
+    rdfs:subClassOf ns1:Process .
+
+ns1:Group rdfs:label "group" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Know rdfs:label "knows" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Majority a owl:Class ;
+    rdfs:label "majority" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Process a owl:Class ;
+    rdfs:label "process" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Support rdfs:label "supports" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Vast a owl:Class ;
+    rdfs:label "vast" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:VastMajority a owl:Class ;
+    rdfs:label "vast majority" ;
+    dul:hasQuality ns1:Vast ;
+    rdfs:subClassOf ns1:Majority .
+
+ns1:group_1 a ns1:Group ;
+    rdfs:label "group" ;
+    ns1:groupOf ns1:person_2 .
+
+ns1:majority_1 a ns1:VastMajority ;
+    rdfs:label "majority" ;
+    quant:hasDeterminer quant:the ;
+    ns1:vastMajorityOf ns1:group_1 .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "everyone" .
+
+ns1:process_1 a ns1:DifficultProcess ;
+    rdfs:label "process" ;
+    dul:hasQuality ns1:Difficult ;
+    quant:hasDeterminer quant:a .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:support_1 .
+
+ns1:support_1 a ns1:Support ;
+    rdfs:label "supports" ;
+    dul:hasQuality ns1:After ;
+    vn.role:Agent ns1:majority_1 ;
+    vn.role:Beneficiary ns1:trust_2 .
+
+ns1:trust_2 a ns1:Trust ;
+    rdfs:label "trust" ;
+    quant:hasDeterminer quant:the ;
+    ns1:locatedIn ns1:Commission,
+        ns1:Romano_prodi .
+
+ns1:Commission rdfs:label "Commission" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Difficult a owl:Class ;
+    rdfs:label "difficult" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Person rdfs:label "We",
+        "everyone" .
+
+ns1:Romano_prodi rdfs:label "Romano Prodi" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place>,
+        foaf:Organisation ;
+    owl:sameAs dbpedia:Romano_Prodi .
+
+ns1:Trust rdfs:label "trust" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "We",
+        "our" .
+

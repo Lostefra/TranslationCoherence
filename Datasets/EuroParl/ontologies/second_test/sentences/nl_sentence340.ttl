@@ -1,0 +1,164 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence340.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "in" .
+
+vn.role:Source rdfs:label "at" .
+
+translation_coherence:nl_sentence340.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence340" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence340" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:About rdfs:label "about" .
+
+ns1:At rdfs:label "at" .
+
+ns1:Be rdfs:label "'s" .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:docuverse earmark:hasContent "It's important to prioritize general criteria for agriculture and demographic equilibrium, and to keep in mind about the Committee's conclusions at Agriculture and Ruvelope that are only taken at 16."^^xsd:string .
+
+ns1:equilibrium_1 rdfs:label "equilibrium" .
+
+ns1:keep_1 a ns1:Keep ;
+    rdfs:label "keep" ;
+    vn.role:Agent ns1:neuter_1 ;
+    vn.role:Location ns1:mind_1 ;
+    ns1:be ns1:important_1 .
+
+ns1:prioritize_1 a ns1:Prioritize ;
+    rdfs:label "prioritize" ;
+    boxer:agent ns1:neuter_1 ;
+    boxer:patient ns1:criterion_1 ;
+    ns1:be ns1:important_1 .
+
+ns1:take_1 a ns1:OnlyTake ;
+    rdfs:label "taken" ;
+    dul:hasQuality ns1:Only ;
+    vn.role:Source "0001-01-16"^^xsd:date ;
+    vn.role:Theme ns1:conclusion_1 .
+
+owl:Thing rdfs:label "It" .
+
+ns1:Committee rdfs:label "Committee" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Committee .
+
+ns1:Conclusion rdfs:label "conclusions" .
+
+ns1:Criterion rdfs:label "criteria" .
+
+ns1:Demographic a owl:Class ;
+    rdfs:label "demographic" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:DemographicEquilibrium a owl:Class ;
+    rdfs:label "Demographic Equilibrium" ;
+    dul:hasQuality ns1:Demographic ;
+    rdfs:subClassOf ns1:Equilibrium .
+
+ns1:Equilibrium a owl:Class ;
+    rdfs:label "equilibrium" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:General rdfs:label "general" .
+
+ns1:GeneralCriterion rdfs:subClassOf ns1:Criterion .
+
+ns1:Important rdfs:label "important" .
+
+ns1:Keep rdfs:label "keep" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Mind rdfs:label "mind" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Only rdfs:label "only" .
+
+ns1:OnlyTake rdfs:subClassOf ns1:Take .
+
+ns1:Prioritize rdfs:label "prioritize" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Ruvelope rdfs:label "Ruvelope" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Take rdfs:label "taken" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:agriculture_1 a ns1:Agriculture,
+        ns1:DemographicEquilibrium ;
+    rdfs:label "agriculture" .
+
+ns1:criterion_1 a ns1:GeneralCriterion ;
+    rdfs:label "criteria" ;
+    dul:hasQuality ns1:General ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:for ns1:agriculture_1 .
+
+ns1:mind_1 a ns1:Mind ;
+    rdfs:label "mind" ;
+    ns1:about ns1:conclusion_1 .
+
+ns1:Agriculture a owl:Class ;
+    rdfs:label "Agriculture",
+        "agriculture" ;
+    boxer:possibleType foaf:Organisation ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Agriculture .
+
+ns1:conclusion_1 a ns1:Conclusion ;
+    rdfs:label "conclusions" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:at ns1:Agriculture,
+        ns1:Ruvelope ;
+    ns1:conclusionOf ns1:Committee .
+
+ns1:important_1 a ns1:Important ;
+    rdfs:label "important" .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "It" .
+

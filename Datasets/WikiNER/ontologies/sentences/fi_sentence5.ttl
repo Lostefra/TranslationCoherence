@@ -1,0 +1,136 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence5.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Patient2 rdfs:label "from",
+        "with" .
+
+translation_coherence:fi_sentence5.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence5" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence5" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:19th rdfs:label "19th" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:To rdfs:label "to" .
+
+ns1:associate_1 a ns1:Associate ;
+    rdfs:label "associated" ;
+    vn.role:Patient1 ns1:era_1 ;
+    vn.role:Patient2 ns1:era_1,
+        ns1:movement_1 .
+
+ns1:century_1 a ns1:Century ;
+    rdfs:label "century" ;
+    dul:associatedWith ns1:movement_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:docuverse earmark:hasContent "The classic era that scientists have separated from 1860 to 1939 is associated with the 19th century labor movements and the era of the Spanish_Civil_War."^^xsd:string .
+
+ns1:labor_1 a ns1:Labor ;
+    rdfs:label "labor" ;
+    dul:associatedWith ns1:movement_1 .
+
+ns1:separate_1 a ns1:Separate ;
+    rdfs:label "separated" ;
+    vn.role:Agent ns1:scientist_1 ;
+    vn.role:Patient1 ns1:era_1 ;
+    vn.role:Patient2 "1860-01-01"^^xsd:date ;
+    ns1:to "1939-01-01"^^xsd:date .
+
+dbpedia:Spanish_Civil_War a schema:Event .
+
+ns1:19thCenturyLaborMovement rdfs:subClassOf ns1:CenturyLaborMovement .
+
+ns1:Associate rdfs:label "associated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Century rdfs:label "century" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:CenturyLaborMovement rdfs:subClassOf ns1:LaborMovement .
+
+ns1:Classic a owl:Class ;
+    rdfs:label "classic" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ClassicEra a owl:Class ;
+    rdfs:label "classic era" ;
+    dul:hasQuality ns1:Classic ;
+    rdfs:subClassOf ns1:Era .
+
+ns1:Era a owl:Class ;
+    rdfs:label "era" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Labor a owl:Class ;
+    rdfs:label "labor" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Trade_union .
+
+ns1:LaborMovement rdfs:subClassOf ns1:Movement .
+
+ns1:Movement rdfs:label "movements" .
+
+ns1:Scientist rdfs:label "scientists" .
+
+ns1:Separate rdfs:label "separated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Spanish_civil_war rdfs:label "Spanish Civil War" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Spanish_Civil_War .
+
+ns1:scientist_1 a ns1:Scientist ;
+    rdfs:label "scientists" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:era_1 a ns1:ClassicEra ;
+    rdfs:label "era" ;
+    quant:hasDeterminer quant:the ;
+    ns1:classicEraOf ns1:Spanish_civil_war .
+
+ns1:movement_1 a dbpedia:Labour_movement,
+        ns1:19thCenturyLaborMovement ;
+    rdfs:label "movements" ;
+    quant:hasQuantifier quant:multiple .
+

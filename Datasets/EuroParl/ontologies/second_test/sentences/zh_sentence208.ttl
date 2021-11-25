@@ -1,0 +1,149 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence208.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:zh_sentence208.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence208" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence208" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of",
+        "their" .
+
+ns1:That rdfs:label "that" .
+
+ns1:area_1 a ns1:Area ;
+    rdfs:label "area" ;
+    quant:hasDeterminer quant:the .
+
+ns1:docuverse earmark:hasContent "I very briefly thank members for their statements and tell you that security is one of the priorities in the area of transport."^^xsd:string .
+
+ns1:tell_1 a ns1:Tell ;
+    rdfs:label "tell" ;
+    vn.role:Agent ns1:member_1 ;
+    vn.role:Topic ns1:person_1 .
+
+ns1:Area rdfs:label "area" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Briefly rdfs:label "briefly" ;
+    dul:hasQuality ns1:Very .
+
+ns1:BrieflyThankMember rdfs:subClassOf ns1:ThankMember .
+
+ns1:I rdfs:label "I" .
+
+ns1:Member rdfs:label "members" .
+
+ns1:Person rdfs:label "you" .
+
+ns1:Priority rdfs:label "priorities" .
+
+ns1:Security rdfs:label "security" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Statement rdfs:label "statements" .
+
+ns1:Tell rdfs:label "tell" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Thank rdfs:label "thank" ;
+    dul:hasQuality ns1:Briefly,
+        ns1:Very .
+
+ns1:ThankMember rdfs:subClassOf ns1:Member .
+
+ns1:Transport rdfs:label "transport" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:VeryBrieflyThankMember rdfs:subClassOf ns1:BrieflyThankMember .
+
+ns1:member_1 a ns1:VeryBrieflyThankMember ;
+    rdfs:label "members" ;
+    dul:hasQuality ns1:I,
+        ns1:Thank,
+        ns1:Topic ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:for ns1:statement_1 ;
+    ns1:that ns1:situation_1,
+        ns1:situation_2 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "you" .
+
+ns1:priority_1 a ns1:Priority ;
+    rdfs:label "priorities" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple,
+        quant:one ;
+    ns1:inAreaOf ns1:transport_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:security_1,
+        ns1:transport_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:security_1,
+        ns1:transport_1 .
+
+ns1:statement_1 a ns1:Statement ;
+    rdfs:label "statements" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:statementOf ns1:thing_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "their" .
+
+ns1:Very rdfs:label "very" .
+
+ns1:security_1 a ns1:Security ;
+    rdfs:label "security" ;
+    dul:hasDataValue "1"^^xsd:nonNegativeInteger ;
+    ns1:securityOf ns1:priority_1 .
+
+ns1:transport_1 a ns1:Transport ;
+    rdfs:label "transport" .
+

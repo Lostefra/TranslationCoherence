@@ -1,0 +1,156 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence479.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence479.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence479" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence479" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:By rdfs:label "by" .
+
+ns1:Entails rdfs:label "if" .
+
+ns1:Of rdfs:label "of",
+        "their" .
+
+ns1:docuverse earmark:hasContent "Don't let us forget that if this policy is effective, they also benefit European citizens by improveing their quality of life."^^xsd:string .
+
+ns1:let_1 a ns1:Let ;
+    rdfs:label "let" ;
+    boxer:agent ns1:thing_2 ;
+    boxer:theme ns1:forget_1 ;
+    boxing:hasTruthValue boxing:False .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoBenefit rdfs:label "also benefit" ;
+    rdfs:subClassOf ns1:Benefit .
+
+ns1:Benefit a owl:Class ;
+    rdfs:label "benefit" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Welfare .
+
+ns1:Citizen rdfs:label "citizens" .
+
+ns1:European rdfs:label "European" .
+
+ns1:EuropeanCitizen rdfs:subClassOf ns1:Citizen .
+
+ns1:Forget rdfs:label "forget" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Improvee rdfs:label "improveing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Let rdfs:label "let" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Life rdfs:label "life" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Person rdfs:label "us" .
+
+ns1:Policy rdfs:label "policy" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Quality a owl:Class ;
+    rdfs:label "quality" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Quality_of_life .
+
+ns1:forget_1 a ns1:Forget ;
+    rdfs:label "forget" ;
+    boxer:agent ns1:person_1 ;
+    boxer:theme ns1:situation_1 .
+
+ns1:improvee_1 a ns1:Improvee ;
+    rdfs:label "improveing" ;
+    boxer:agent ns1:thing_3 ;
+    boxer:patient ns1:quality_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "us" .
+
+ns1:policy_1 a ns1:Policy ;
+    rdfs:label "policy" ;
+    dul:hasQuality ns1:Effective ;
+    quant:hasDeterminer quant:this .
+
+ns1:quality_1 a ns1:Quality ;
+    rdfs:label "quality" ;
+    ns1:qualityOf ns1:life_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Effective,
+        ns1:benefit_1,
+        ns1:citizen_1,
+        ns1:improvee_1,
+        ns1:life_1,
+        ns1:policy_1 ;
+    ns1:entails ns1:benefit_1 .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:thing_2 a owl:Thing .
+
+ns1:Effective rdfs:label "effective" .
+
+ns1:benefit_1 a ns1:AlsoBenefit ;
+    rdfs:label "benefit" ;
+    boxer:agent ns1:thing_3 ;
+    boxer:patient ns1:citizen_1 ;
+    dul:hasQuality ns1:Also ;
+    ns1:byQualityOf ns1:thing_1 .
+
+ns1:citizen_1 a ns1:EuropeanCitizen ;
+    rdfs:label "citizens" ;
+    dul:hasQuality ns1:European ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:life_1 a ns1:Life ;
+    rdfs:label "life" .
+
+ns1:thing_3 a owl:Thing ;
+    rdfs:label "they" .
+
+owl:Thing rdfs:label "they" .
+

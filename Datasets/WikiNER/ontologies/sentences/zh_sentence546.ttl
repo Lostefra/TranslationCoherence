@@ -1,0 +1,118 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence546.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:zh_sentence546.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence546" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence546" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:answer_1 rdfs:label "answer" .
+
+ns1:docuverse earmark:hasContent "I have provided water to the injured, as I see you all face and answer Bhai_Kanhaiya."^^xsd:string .
+
+ns1:person_2 coref:coref ns1:person_1 .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "you" .
+
+ns1:provide_1 a ns1:Provide ;
+    rdfs:label "provided" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Recipient ns1:injured_1 ;
+    ns1:as ns1:see_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    ns1:entails ns1:situation_2 .
+
+ns1:water_1 a ns1:Water ;
+    rdfs:label "water" .
+
+ns1:Answer rdfs:label "answer" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Bhai_kanhaiya a owl:Class ;
+    rdfs:label "Bhai Kanhaiya" ;
+    owl:equivalentClass dbpedia:Bhai_Kanhaiya .
+
+ns1:Face rdfs:label "face" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Injured rdfs:label "injured" .
+
+ns1:Provide rdfs:label "provided" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:See rdfs:label "see" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Water rdfs:label "water" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:bhai_kanhaiya_1 a ns1:Bhai_kanhaiya ;
+    rdfs:label "Bhai Kanhaiya" .
+
+ns1:face_1 a ns1:Answer,
+        ns1:Face ;
+    rdfs:label "face" ;
+    quant:hasQuantifier quant:all .
+
+ns1:injured_1 a ns1:Injured ;
+    rdfs:label "injured" ;
+    quant:hasDeterminer quant:the .
+
+ns1:see_1 a ns1:See ;
+    rdfs:label "see" ;
+    dul:associatedWith ns1:bhai_kanhaiya_1 ;
+    vn.role:Experiencer ns1:person_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:face_1 .
+
+ns1:Person rdfs:label "I",
+        "you" .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+

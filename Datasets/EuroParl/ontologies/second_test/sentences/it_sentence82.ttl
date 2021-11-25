@@ -1,0 +1,117 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence82.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence82.ttl a owl:Ontology ;
+    rdfs:label "it_sentence82" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence82" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "As",
+        "as" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:docuverse earmark:hasContent "As you know, every president has the same number of votes as his group."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "has" ;
+    vn.role:Agent ns1:president_1 ;
+    vn.role:Patient ns1:number_1 ;
+    ns1:as ns1:know_1 .
+
+ns1:Group rdfs:label "group" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Have rdfs:label "has" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Know rdfs:label "know" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Number a owl:Class ;
+    rdfs:label "number" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Person rdfs:label "you" .
+
+ns1:President rdfs:label "president" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Same a owl:Class ;
+    rdfs:label "same" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SameNumber a owl:Class ;
+    rdfs:label "Same Number" ;
+    dul:hasQuality ns1:Same ;
+    rdfs:subClassOf ns1:Number .
+
+ns1:Vote rdfs:label "votes" .
+
+ns1:group_1 a ns1:Group ;
+    rdfs:label "group" ;
+    ns1:groupOf ns1:male_1 .
+
+ns1:know_1 a ns1:Know ;
+    rdfs:label "know" ;
+    vn.role:Agent ns1:person_1 .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "his" .
+
+ns1:number_1 a ns1:SameNumber ;
+    rdfs:label "number" ;
+    quant:hasDeterminer quant:the ;
+    ns1:sameNumberOf ns1:vote_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "you" .
+
+ns1:president_1 a ns1:President ;
+    rdfs:label "president" ;
+    quant:hasQuantifier quant:every .
+
+ns1:vote_1 a ns1:Vote ;
+    rdfs:label "votes" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:as ns1:group_1 .
+

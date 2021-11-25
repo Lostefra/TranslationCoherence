@@ -1,0 +1,143 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence730.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:zh_sentence730.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence730" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence730" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "The People's Provincial Assembly is the political entity responsible for the management of a province, with the President and elected by members of Parliament."^^xsd:string .
+
+ns1:elect_1 a ns1:Elect ;
+    rdfs:label "elected" ;
+    vn.role:Agent ns1:member_1 ;
+    vn.role:Theme ns1:Provincial_assembly .
+
+ns1:entity_1 rdfs:label "entity" ;
+    quant:hasDeterminer quant:the .
+
+ns1:management_1 a ns1:Management ;
+    rdfs:label "management" ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Provincial_assembly,
+        ns1:Responsible ;
+    ns1:forManagementOf ns1:province_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Provincial_assembly,
+        ns1:Responsible,
+        ns1:province_1 ;
+    ns1:with ns1:President .
+
+dbpedia:Parliament_of_the_United_Kingdom a schema:Organization .
+
+ns1:Elect rdfs:label "elected" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Entity a owl:Class ;
+    rdfs:label "entity" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Management rdfs:label "management" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Member rdfs:label "members" .
+
+ns1:Parliament rdfs:label "Parliament" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Parliament,
+        dbpedia:Parliament_of_the_United_Kingdom .
+
+ns1:People rdfs:label "People" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Political a owl:Class ;
+    rdfs:label "political" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:PoliticalEntity a owl:Class ;
+    rdfs:label "political entity" ;
+    dul:hasQuality ns1:Political ;
+    rdfs:subClassOf ns1:Entity .
+
+ns1:President rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:President .
+
+ns1:Province rdfs:label "province" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:member_1 a ns1:Member ;
+    rdfs:label "members" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:memberOf ns1:Parliament .
+
+ns1:people_1 a ns1:People ;
+    rdfs:label "People" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:province_1 a ns1:Province ;
+    rdfs:label "province" ;
+    quant:hasDeterminer quant:a .
+
+ns1:Provincial_assembly a ns1:PoliticalEntity ;
+    rdfs:label "Provincial Assembly" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality ns1:Responsible ;
+    owl:sameAs <http://dbpedia.org/resource/People's_Provincial_Assembly> ;
+    ns1:of ns1:people_1 .
+
+ns1:Responsible rdfs:label "responsible" .
+

@@ -1,0 +1,176 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence305.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "in" .
+
+translation_coherence:nl_sentence305.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence305" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence305" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:docuverse earmark:hasContent "We're looking to challenge the UK government to ensure that the private sector, who has to deliver the great impetus for Structural Funds, is involved in planning."^^xsd:string .
+
+ns1:look_1 a ns1:Look ;
+    rdfs:label "looking" ;
+    boxer:theme ns1:situation_1 ;
+    vn.role:Agent ns1:person_1 .
+
+ns1:Challenge rdfs:label "challenge" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Deliver rdfs:label "deliver" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Ensure rdfs:label "ensure" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Fund rdfs:label "Funds" .
+
+ns1:Government a owl:Class ;
+    rdfs:label "government" ;
+    rdfs:subClassOf dul:Organization ;
+    owl:equivalentClass dbpedia:Government_of_the_United_Kingdom .
+
+ns1:Great a owl:Class ;
+    rdfs:label "great" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:GreatImpetus a owl:Class ;
+    rdfs:label "Great Impetus" ;
+    dul:hasQuality ns1:Great ;
+    rdfs:subClassOf ns1:Impetus .
+
+ns1:Have rdfs:label "has" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Impetus a owl:Class ;
+    rdfs:label "impetus" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Involve rdfs:label "involved" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Look rdfs:label "looking" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Person rdfs:label "We" .
+
+ns1:Planning rdfs:label "planning" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Private a owl:Class ;
+    rdfs:label "private" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:PrivateSector a owl:Class ;
+    rdfs:label "Private Sector" ;
+    dul:hasQuality ns1:Private ;
+    rdfs:subClassOf ns1:Sector .
+
+ns1:Sector a owl:Class ;
+    rdfs:label "sector" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Structural rdfs:label "Structural" .
+
+ns1:StructuralFund rdfs:subClassOf ns1:Fund .
+
+ns1:Uk rdfs:label "UK" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:challenge_1 a ns1:Challenge ;
+    rdfs:label "challenge" ;
+    boxer:agent ns1:person_1 ;
+    boxer:patient ns1:government_1 .
+
+ns1:deliver_1 a ns1:Deliver ;
+    rdfs:label "deliver" ;
+    vn.role:Agent ns1:sector_1 ;
+    vn.role:Theme ns1:impetus_1 .
+
+ns1:ensure_1 a ns1:Ensure ;
+    rdfs:label "ensure" ;
+    vn.role:Cause ns1:person_1 ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:fund_1 a ns1:StructuralFund ;
+    rdfs:label "Funds" ;
+    dul:hasQuality ns1:Structural ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:government_1 a ns1:Government ;
+    rdfs:label "government" ;
+    dul:associatedWith ns1:Uk .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "has" ;
+    boxer:theme ns1:deliver_1 ;
+    vn.role:Agent ns1:sector_1 .
+
+ns1:impetus_1 a ns1:GreatImpetus ;
+    rdfs:label "impetus" ;
+    quant:hasDeterminer quant:the ;
+    ns1:for ns1:fund_1 .
+
+ns1:involve_1 a ns1:Involve ;
+    rdfs:label "involved" ;
+    vn.role:Destination ns1:planning_1 ;
+    vn.role:Theme ns1:sector_1 .
+
+ns1:planning_1 a ns1:Planning ;
+    rdfs:label "planning" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:challenge_1,
+        ns1:ensure_1,
+        ns1:have_1,
+        ns1:involve_1,
+        ns1:planning_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "We" .
+
+ns1:sector_1 a ns1:PrivateSector ;
+    rdfs:label "sector" ;
+    quant:hasDeterminer quant:the .
+

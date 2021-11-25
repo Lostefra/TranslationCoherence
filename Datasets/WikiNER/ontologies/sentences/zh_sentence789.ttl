@@ -1,0 +1,197 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence789.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "from" .
+
+translation_coherence:zh_sentence789.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence789" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence789" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of",
+        "their" .
+
+ns1:as_1 rdfs:label "as" .
+
+ns1:docuverse earmark:hasContent "Mali knows that the influence ofski and Radiffe-Brown stems from their active training of students, as in Bossa, and actively the establishment of institutions that further achieve their programme objectives."^^xsd:string .
+
+ns1:influence_1 a ns1:Influence ;
+    rdfs:label "influence" ;
+    dul:associatedWith ns1:ofskus_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:know_1 a ns1:Know ;
+    rdfs:label "knows" ;
+    vn.role:Agent ns1:Mali ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:programme_1 a ns1:Programme ;
+    rdfs:label "programme" ;
+    dul:associatedWith ns1:objective_1 .
+
+ns1:radiffe-brown_1 rdfs:label "Radiffe-Brown" .
+
+dbpedia:Mali a schema:Country,
+        schema:Place .
+
+ns1:Achieve rdfs:label "achieve" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Active a owl:Class ;
+    rdfs:label "active" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ActiveTraining a owl:Class ;
+    rdfs:label "Active Training" ;
+    dul:hasQuality ns1:Active ;
+    rdfs:subClassOf ns1:Training .
+
+ns1:Actively rdfs:label "actively" .
+
+ns1:As rdfs:label "as" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Bossa rdfs:label "Bossa" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Establishment rdfs:label "establishment" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Further rdfs:label "further" .
+
+ns1:FurtherAchieve rdfs:label "Further Achieve" ;
+    rdfs:subClassOf ns1:Achieve .
+
+ns1:Influence rdfs:label "influence" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:InfluenceOfskus rdfs:subClassOf ns1:Ofskus .
+
+ns1:Institution rdfs:label "institutions" .
+
+ns1:Know rdfs:label "knows" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Mali rdfs:label "Mali" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Mali .
+
+ns1:Objective rdfs:label "objectives" .
+
+ns1:Ofskus rdfs:label "ofski" .
+
+ns1:Programme rdfs:label "programme" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:ProgrammeObjective rdfs:subClassOf ns1:Objective .
+
+ns1:Radiffe-brown rdfs:label "Radiffe-Brown" .
+
+ns1:Stem rdfs:label "stems" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Student rdfs:label "students" .
+
+ns1:Training a owl:Class ;
+    rdfs:label "training" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Training .
+
+ns1:achieve_1 a ns1:FurtherAchieve ;
+    rdfs:label "achieve" ;
+    dul:hasQuality ns1:Further ;
+    vn.role:Agent ns1:institution_1 ;
+    vn.role:Theme ns1:objective_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:achieve_1,
+        ns1:establishment_1,
+        ns1:institution_1,
+        ns1:stem_1,
+        ns1:student_1,
+        ns1:training_1 .
+
+ns1:stem_1 a ns1:Stem ;
+    rdfs:label "stems" ;
+    vn.role:Location ns1:establishment_1,
+        ns1:training_1 ;
+    vn.role:Theme ns1:ofskus_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "their" .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "their" .
+
+ns1:establishment_1 a ns1:Establishment ;
+    rdfs:label "establishment" ;
+    dul:hasQuality ns1:Actively ;
+    quant:hasDeterminer quant:the ;
+    ns1:establishmentOf ns1:institution_1 .
+
+ns1:objective_1 a dbpedia:Goal,
+        ns1:ProgrammeObjective ;
+    rdfs:label "objectives" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:programmeObjectiveOf ns1:thing_2 .
+
+ns1:ofskus_1 a ns1:InfluenceOfskus,
+        ns1:Radiffe-brown ;
+    rdfs:label "ofski" .
+
+ns1:student_1 a ns1:Student ;
+    rdfs:label "students" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:training_1 a ns1:ActiveTraining,
+        ns1:As ;
+    rdfs:label "training" ;
+    ns1:activeTrainingOf ns1:student_1 ;
+    ns1:asOf ns1:thing_1 ;
+    ns1:locatedIn ns1:Bossa .
+
+ns1:institution_1 a dbpedia:Institution,
+        ns1:Institution ;
+    rdfs:label "institutions" ;
+    quant:hasQuantifier quant:multiple .
+

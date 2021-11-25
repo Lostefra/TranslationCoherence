@@ -1,0 +1,209 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence592.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence592.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence592" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence592" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:At rdfs:label "at" .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:To rdfs:label "to" .
+
+ns1:achievement_1 rdfs:label "achievements" .
+
+ns1:docuverse earmark:hasContent "The new great heroes and leaders of John Gorte said that the strike was aimed at blocking the world's motor vehicle and withdrawing the idea of individuals most conducive to national wealth and achievements."^^xsd:string .
+
+ns1:leader_1 rdfs:label "leaders" .
+
+ns1:motor_1 a ns1:Motor ;
+    rdfs:label "motor" ;
+    dul:associatedWith ns1:vehicle_1 .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "said" ;
+    vn.role:Agent ns1:hero_1 ;
+    vn.role:Topic ns1:situation_2 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Conducive,
+        ns1:individual_1 ;
+    dul:hasQuality ns1:Most .
+
+ns1:Achievement rdfs:label "achievements" .
+
+ns1:Aim rdfs:label "aimed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Block rdfs:label "blocking" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Great rdfs:label "great" .
+
+ns1:GreatHero rdfs:subClassOf ns1:Hero .
+
+ns1:Hero rdfs:label "heroes" .
+
+ns1:Idea rdfs:label "idea" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Individual rdfs:label "individuals" .
+
+ns1:John_gorte rdfs:label "John Gorte" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Leader rdfs:label "leaders" .
+
+ns1:Most rdfs:label "most" .
+
+ns1:MotorVehicle a owl:Class ;
+    rdfs:label "Motor Vehicle" ;
+    dul:associatedWith ns1:Motor ;
+    rdfs:subClassOf ns1:Vehicle .
+
+ns1:NationalWealth a owl:Class ;
+    rdfs:label "national wealth" ;
+    dul:hasQuality ns1:National ;
+    rdfs:subClassOf ns1:Wealth .
+
+ns1:New rdfs:label "new" .
+
+ns1:NewGreatHero rdfs:subClassOf ns1:GreatHero .
+
+ns1:Say rdfs:label "said" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Strike rdfs:label "strike" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Vehicle a owl:Class ;
+    rdfs:label "vehicle" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Wealth a owl:Class ;
+    rdfs:label "wealth" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Withdraw rdfs:label "withdrawing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:World rdfs:label "world" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:aim_1 a ns1:Aim ;
+    rdfs:label "aimed" ;
+    vn.role:Theme ns1:strike_1 ;
+    ns1:at ns1:thing_1,
+        ns1:thing_2 .
+
+ns1:block_1 a ns1:Block ;
+    rdfs:label "blocking" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Theme ns1:vehicle_1 .
+
+ns1:hero_1 a ns1:Leader,
+        ns1:NewGreatHero ;
+    rdfs:label "heroes" ;
+    dul:hasQuality ns1:Great,
+        ns1:New ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:newGreatHeroOf ns1:John_gorte .
+
+ns1:idea_1 a ns1:Idea ;
+    rdfs:label "idea" ;
+    quant:hasDeterminer quant:the ;
+    ns1:ideaOf ns1:individual_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Conducive,
+        ns1:aim_1,
+        ns1:block_1,
+        ns1:individual_1,
+        ns1:wealth_1,
+        ns1:withdraw_1 ;
+    ns1:to ns1:wealth_1 .
+
+ns1:strike_1 a ns1:Strike ;
+    rdfs:label "strike" ;
+    quant:hasDeterminer quant:the .
+
+ns1:withdraw_1 a ns1:Withdraw ;
+    rdfs:label "withdrawing" ;
+    vn.role:Agent ns1:thing_2 ;
+    vn.role:Theme ns1:idea_1 .
+
+ns1:world_1 a ns1:World ;
+    rdfs:label "world" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Motor a owl:Class ;
+    rdfs:label "motor" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:National a owl:Class ;
+    rdfs:label "national" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:thing_2 a owl:Thing .
+
+ns1:vehicle_1 a ns1:MotorVehicle ;
+    rdfs:label "vehicle" ;
+    ns1:motorVehicleOf ns1:world_1 .
+
+ns1:wealth_1 a ns1:Achievement,
+        ns1:NationalWealth ;
+    rdfs:label "wealth" ;
+    dul:hasQuality ns1:National ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Conducive rdfs:label "conducive" .
+
+ns1:individual_1 a ns1:Individual ;
+    rdfs:label "individuals" ;
+    dul:hasQuality ns1:Conducive ;
+    quant:hasQuantifier quant:multiple .
+

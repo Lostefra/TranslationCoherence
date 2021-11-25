@@ -1,0 +1,204 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence520.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence520.ttl a owl:Ontology ;
+    rdfs:label "de_sentence520" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence520" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:At rdfs:label "at" .
+
+ns1:Include rdfs:label "including" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Theme rdfs:label "necessary" .
+
+ns1:Where rdfs:label "where" .
+
+ns1:be_1 a ns1:Be ;
+    rdfs:label "is" ;
+    boxer:agent ns1:aim_1 ;
+    boxer:theme ns1:help_1 .
+
+ns1:docuverse earmark:hasContent "The aim is that these priorities should help to optimise the optimal and efficient use of Community participation, including Bradbourn, and, where necessary, to use the performance reserve specifically aimed at the optimal and efficient use of European public funds."^^xsd:string .
+
+ns1:performance_1 a ns1:Performance ;
+    rdfs:label "performance" ;
+    dul:associatedWith ns1:reserve_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:Be rdfs:label "is" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Bradbourn rdfs:label "Bradbourn" ;
+    boxer:possibleType owl:Thing .
+
+ns1:Community rdfs:label "Community" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Community .
+
+ns1:Efficient a owl:Class ;
+    rdfs:label "efficient" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:EfficientUse a owl:Class ;
+    rdfs:label "efficient use" ;
+    dul:hasQuality ns1:Efficient ;
+    rdfs:subClassOf ns1:Use .
+
+ns1:European rdfs:label "European" .
+
+ns1:EuropeanPublicFund rdfs:subClassOf ns1:PublicFund .
+
+ns1:Fund rdfs:label "funds" .
+
+ns1:Help rdfs:label "help" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Optimal rdfs:label "Optimal",
+        "optimal" .
+
+ns1:Optimise rdfs:label "optimise" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Participation rdfs:label "participation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:PerformanceReserve a owl:Class ;
+    rdfs:label "Performance Reserve" ;
+    dul:associatedWith ns1:Performance ;
+    rdfs:subClassOf ns1:Reserve .
+
+ns1:Priority rdfs:label "priorities" .
+
+ns1:Public rdfs:label "public" .
+
+ns1:PublicFund rdfs:subClassOf ns1:Fund .
+
+ns1:Reserve a owl:Class ;
+    rdfs:label "reserve" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Specifically rdfs:label "specifically" .
+
+ns1:SpecificallyAim rdfs:subClassOf ns1:Aim .
+
+ns1:aim_1 a ns1:Aim ;
+    rdfs:label "aim" ;
+    quant:hasDeterminer quant:the .
+
+ns1:aim_2 a ns1:SpecificallyAim ;
+    rdfs:label "aimed" ;
+    dul:hasQuality ns1:Specifically ;
+    vn.role:Theme ns1:reserve_1 ;
+    ns1:at ns1:use_1 .
+
+ns1:help_1 a ns1:Help ;
+    rdfs:label "help" ;
+    boxer:theme ns1:situation_1 ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:priority_1 .
+
+ns1:optimise_1 a ns1:Optimise ;
+    rdfs:label "optimise" ;
+    boxer:agent ns1:priority_1 ;
+    boxer:patient ns1:use_1 ;
+    ns1:include ns1:Bradbourn ;
+    ns1:where ns1:thing_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:aim_2,
+        ns1:fund_1,
+        ns1:optimise_1,
+        ns1:participation_1,
+        ns1:use_2 .
+
+ns1:thing_1 a owl:Thing ;
+    boxer:theme ns1:thing_2 .
+
+ns1:thing_2 a owl:Thing .
+
+ns1:use_2 a ns1:Use ;
+    rdfs:label "use" ;
+    vn.role:Agent ns1:priority_1 ;
+    vn.role:Theme ns1:reserve_1 .
+
+ns1:Aim rdfs:label "aim",
+        "aimed" ;
+    rdfs:subClassOf dul:Event,
+        dul:Goal .
+
+ns1:Performance a owl:Class ;
+    rdfs:label "performance" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Use a owl:Class ;
+    rdfs:label "use" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity>,
+        dul:Event .
+
+ns1:fund_1 a ns1:EuropeanPublicFund ;
+    rdfs:label "funds" ;
+    dul:hasQuality ns1:European,
+        ns1:Public ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:participation_1 a ns1:Participation ;
+    rdfs:label "participation" ;
+    dul:associatedWith ns1:Community .
+
+ns1:use_1 a ns1:EfficientUse ;
+    rdfs:label "use" ;
+    dul:hasQuality ns1:Optimal ;
+    quant:hasDeterminer quant:the ;
+    ns1:efficientUseOf ns1:fund_1,
+        ns1:participation_1 .
+
+ns1:priority_1 a ns1:Priority ;
+    rdfs:label "priorities" ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:reserve_1 a ns1:PerformanceReserve ;
+    rdfs:label "reserve" .
+

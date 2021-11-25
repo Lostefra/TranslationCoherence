@@ -1,0 +1,127 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%> .
+@prefix ns2: <https://w3id.org/stlab/ke/amiala/de_sentence91.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+ns1:5E%5Elargest rdfs:label "largest" .
+
+translation_coherence:de_sentence91.ttl a owl:Ontology ;
+    rdfs:label "de_sentence91" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence91" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns2:Eq rdfs:label "was" .
+
+ns2:In rdfs:label "in" .
+
+ns2:Of rdfs:label "of" .
+
+ns2:Over rdfs:label "over" .
+
+ns2:city_1 rdfs:label "city" .
+
+ns2:docuverse earmark:hasContent "Birmingham was the 19th largest city in the USA and held over 30% of the population of the state."^^xsd:string .
+
+ns2:hold_1 a ns2:Hold ;
+    rdfs:label "held" ;
+    vn.role:Theme ns2:Birmingham ;
+    ns2:over ns2:percent_1 .
+
+dbpedia:Birmingham a schema:City,
+        schema:Place .
+
+<http://dbpedia.org/resource/Birmingham,_Alabama> a schema:City,
+        schema:Place .
+
+dbpedia:United_States a schema:Country,
+        schema:Place .
+
+ns1:5Elargest rdfs:label "largest" .
+
+ns2:19th rdfs:label "19th" .
+
+ns2:19th%5ElargestCity rdfs:subClassOf ns2:City .
+
+ns2:Birmingham a ns2:19th%5ElargestCity,
+        ns2:City ;
+    rdfs:label "Birmingham" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality ns1:5Elargest,
+        ns2:19th ;
+    ns1:5ElargestAmong ns2:City ;
+    quant:hasDeterminer quant:the ;
+    owl:sameAs dbpedia:Birmingham,
+        <http://dbpedia.org/resource/Birmingham,_Alabama> ;
+    ns2:in ns2:Usa .
+
+ns2:Hold rdfs:label "held" ;
+    rdfs:subClassOf dul:Event .
+
+ns2:Percent rdfs:label "%" .
+
+ns2:Population rdfs:label "population" ;
+    rdfs:subClassOf dul:Collection .
+
+ns2:State rdfs:label "state" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns2:Usa rdfs:label "USA" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:United_States .
+
+ns2:percent_1 a ns2:Percent ;
+    rdfs:label "%" ;
+    dul:hasDataValue "30"^^xsd:nonNegativeInteger ;
+    ns2:percentOf ns2:population_1 .
+
+ns2:population_1 a ns2:Population ;
+    rdfs:label "population" ;
+    quant:hasDeterminer quant:the ;
+    ns2:populationOf ns2:state_1 .
+
+ns2:state_1 a ns2:State ;
+    rdfs:label "state" ;
+    quant:hasDeterminer quant:the .
+
+ns2:City rdfs:label "city" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+

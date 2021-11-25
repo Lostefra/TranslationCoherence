@@ -1,0 +1,144 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence600.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Oblique rdfs:label "with" .
+
+translation_coherence:nl_sentence600.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence600" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence600" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Angry rdfs:label "angry" .
+
+ns1:At rdfs:label "at" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Quantity rdfs:label "many" .
+
+ns1:To rdfs:label "to" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:Without rdfs:label "with" .
+
+ns1:agree_2 a ns1:Agree ;
+    rdfs:label "agree" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Actor ns1:thing_1 ;
+    ns1:union ns1:agree_1 ;
+    ns1:without ns1:Rand .
+
+ns1:docuverse earmark:hasContent "Rand wasn't impressed with many of the NBI students and held them to strict standards, often reacted cold or angry at those who didn't agree with her."^^xsd:string .
+
+ns1:hold_1 a ns1:Hold ;
+    rdfs:label "held" ;
+    vn.role:Agent ns1:Rand ;
+    vn.role:Theme ns1:thing_1 ;
+    ns1:to ns1:standard_1 .
+
+ns1:impress_1 a ns1:Impress ;
+    rdfs:label "impressed" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Experiencer ns1:Rand .
+
+ns1:react_1 a ns1:OftenReact ;
+    rdfs:label "reacted" ;
+    dul:hasQuality ns1:Often ;
+    vn.role:Experiencer ns1:Rand .
+
+ns1:student_1 a ns1:Student ;
+    rdfs:label "students" ;
+    dul:associatedWith ns1:Nbi ;
+    quant:hasQuantifier quant:multiple .
+
+owl:Thing rdfs:label "them" .
+
+ns1:Cold rdfs:label "cold" .
+
+ns1:Female rdfs:label "her" .
+
+ns1:Hold rdfs:label "held" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Impress rdfs:label "impressed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Nbi rdfs:label "NBI" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Often rdfs:label "often" .
+
+ns1:OftenReact rdfs:subClassOf ns1:React .
+
+ns1:React rdfs:label "reacted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Standard rdfs:label "standards" .
+
+ns1:Strict rdfs:label "strict" .
+
+ns1:StrictStandard rdfs:subClassOf ns1:Standard .
+
+ns1:Student rdfs:label "students" .
+
+ns1:agree_1 a ns1:Agree ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Actor ns1:thing_1 ;
+    ns1:without ns1:Rand .
+
+ns1:standard_1 a ns1:StrictStandard ;
+    rdfs:label "standards" ;
+    dul:hasQuality ns1:Strict ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Agree rdfs:label "agree" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "them" .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Cold,
+        ns1:Female ;
+    ns1:angryAt ns1:thing_1 .
+

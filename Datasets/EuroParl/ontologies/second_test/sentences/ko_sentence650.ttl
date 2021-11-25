@@ -1,0 +1,219 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence650.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "in" .
+
+vn.role:Theme rdfs:label "in" .
+
+translation_coherence:ko_sentence650.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence650" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence650" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Because rdfs:label "because" .
+
+ns1:Of rdfs:label "My",
+        "our" .
+
+ns1:determine_1 a ns1:Determine ;
+    rdfs:label "determine" ;
+    vn.role:Agent ns1:Commission,
+        ns1:President,
+        ns1:audit_1 ;
+    vn.role:Theme ns1:succeed_1 .
+
+ns1:docuverse earmark:hasContent "President, Commission, My audits determine that the European_citizens have succeeded in our work because they move to rapporteur to handle this very important report, and develop in social and economic situations."^^xsd:string .
+
+ns1:Audit rdfs:label "audits" .
+
+ns1:Commission rdfs:label "Commission" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Determine rdfs:label "determine" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Develop a owl:Class ;
+    rdfs:label "develop" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Economic_development .
+
+ns1:Economic rdfs:label "economic" .
+
+ns1:EconomicSituation rdfs:subClassOf ns1:Situation .
+
+ns1:European_citizens a owl:Class ;
+    rdfs:label "European citizens" ;
+    owl:equivalentClass dbpedia:Citizenship_of_the_European_Union .
+
+ns1:Important a owl:Class ;
+    rdfs:label "important" ;
+    dul:hasQuality ns1:Very ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ImportantReport a owl:Class ;
+    rdfs:label "important report" ;
+    dul:hasQuality ns1:Important ;
+    rdfs:subClassOf ns1:Report .
+
+ns1:Move rdfs:label "move" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:President rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:President .
+
+ns1:Rapporteur rdfs:label "rapporteur" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Report a owl:Class ;
+    rdfs:label "report" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Social rdfs:label "social" .
+
+ns1:Succeed rdfs:label "succeeded" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Very rdfs:label "very" .
+
+ns1:VeryImportantReport a owl:Class ;
+    rdfs:label "Very Important Report" ;
+    rdfs:subClassOf ns1:ImportantReport .
+
+ns1:Work rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:audit_1 a ns1:Audit ;
+    rdfs:label "audits" ;
+    ns1:auditOf ns1:person_3 .
+
+ns1:european_citizens_1 a ns1:European_citizens ;
+    rdfs:label "European citizens" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:person_1 a ns1:Person .
+
+ns1:person_2 a ns1:Person .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "My" .
+
+ns1:person_4 a ns1:Person ;
+    rdfs:label "our" .
+
+ns1:report_1 a ns1:VeryImportantReport ;
+    rdfs:label "report" ;
+    quant:hasDeterminer quant:this .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Handle,
+        ns1:develop_1,
+        ns1:handle_1,
+        ns1:move_1,
+        ns1:rapporteur_1,
+        ns1:situation_4 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Handle,
+        ns1:develop_1,
+        ns1:handle_1,
+        ns1:move_1,
+        ns1:rapporteur_1,
+        ns1:situation_4 .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves ns1:Handle,
+        ns1:develop_1,
+        ns1:handle_1,
+        ns1:move_1,
+        ns1:rapporteur_1,
+        ns1:situation_4 .
+
+ns1:succeed_1 a ns1:Succeed ;
+    rdfs:label "succeeded" ;
+    vn.role:Agent ns1:european_citizens_1 ;
+    vn.role:Theme ns1:work_1 ;
+    ns1:because ns1:situation_1,
+        ns1:situation_2,
+        ns1:situation_3 .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "work" ;
+    ns1:workOf ns1:person_1,
+        ns1:person_2,
+        ns1:person_4 .
+
+owl:Thing rdfs:label "they" .
+
+ns1:develop_1 a ns1:Develop ;
+    rdfs:label "develop" ;
+    vn.role:Location ns1:situation_4 ;
+    vn.role:Theme ns1:thing_1 .
+
+ns1:move_1 a ns1:Move ;
+    rdfs:label "move" ;
+    vn.role:Theme ns1:thing_1 .
+
+ns1:rapporteur_1 a ns1:Rapporteur ;
+    rdfs:label "rapporteur" ;
+    boxer:agent ns1:thing_1 ;
+    boxer:theme ns1:handle_1 .
+
+ns1:Handle rdfs:label "handle" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Situation rdfs:label "situations" .
+
+ns1:handle_1 a ns1:Handle ;
+    rdfs:label "handle" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Theme ns1:report_1 .
+
+ns1:situation_4 a ns1:EconomicSituation ;
+    rdfs:label "situations" ;
+    dul:hasQuality ns1:Economic,
+        ns1:Social ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "they" .
+

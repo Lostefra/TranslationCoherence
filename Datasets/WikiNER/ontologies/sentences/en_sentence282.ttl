@@ -1,0 +1,114 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence282.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "to" .
+
+vn.role:Theme rdfs:label "in" .
+
+translation_coherence:en_sentence282.ttl a owl:Ontology ;
+    rdfs:label "en_sentence282" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence282" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "their" .
+
+ns1:When rdfs:label "when" .
+
+ns1:believe_1 a ns1:Believe ;
+    rdfs:label "believe" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Experiencer ns1:Lincolns ;
+    vn.role:Theme ns1:boundary_1,
+        ns1:rule_1 ;
+    ns1:when ns1:come_1 .
+
+ns1:docuverse earmark:hasContent "The Lincolns did not believe in strict rules and tight boundaries when it came to their children."^^xsd:string .
+
+ns1:thing_1 coref:coref ns1:Lincolns .
+
+ns1:Believe rdfs:label "believe" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Boundary rdfs:label "boundaries" .
+
+ns1:Child rdfs:label "children" .
+
+ns1:Come rdfs:label "came" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Rule rdfs:label "rules" .
+
+ns1:Strict rdfs:label "strict" .
+
+ns1:StrictRule rdfs:subClassOf ns1:Rule .
+
+ns1:Tight rdfs:label "tight" .
+
+ns1:TightBoundary rdfs:subClassOf ns1:Boundary .
+
+ns1:boundary_1 a ns1:TightBoundary ;
+    rdfs:label "boundaries" ;
+    dul:hasQuality ns1:Tight ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:child_1 a ns1:Child ;
+    rdfs:label "children" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:childOf ns1:Lincolns .
+
+ns1:come_1 a ns1:Come ;
+    rdfs:label "came" ;
+    vn.role:Location ns1:child_1 ;
+    vn.role:Theme ns1:Lincolns .
+
+ns1:rule_1 a ns1:StrictRule ;
+    rdfs:label "rules" ;
+    dul:hasQuality ns1:Strict ;
+    quant:hasQuantifier quant:multiple .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Lincolns a owl:Thing ;
+    rdfs:label "Lincolns",
+        "their" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality owl:Thing .
+

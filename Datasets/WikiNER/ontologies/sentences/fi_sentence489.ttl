@@ -1,0 +1,158 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence489.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:fi_sentence489.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence489" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence489" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:During rdfs:label "during" .
+
+ns1:For rdfs:label "for" .
+
+ns1:award_1 a ns1:Award ;
+    rdfs:label "awarded" ;
+    vn.role:Recipient ns1:professional_1 ;
+    vn.role:Theme ns1:work_1 .
+
+ns1:award_2 a ns1:Award ;
+    rdfs:label "awarded" ;
+    vn.role:Recipient ns1:E._jannings ;
+    vn.role:Theme ns1:award_3 ;
+    ns1:for ns1:example_1 .
+
+ns1:docuverse earmark:hasContent "Rented professionals were awarded all the work performed during a particular category, for example, E. Jannings was awarded the award for two films he played during that time."^^xsd:string .
+
+ns1:perform_1 a ns1:Perform ;
+    rdfs:label "performed" ;
+    vn.role:Agent ns1:professional_1 ;
+    ns1:during ns1:category_1 .
+
+ns1:play_1 a ns1:Play ;
+    rdfs:label "played" ;
+    vn.role:Agent ns1:E._jannings ;
+    vn.role:Theme ns1:film_1 ;
+    ns1:during ns1:time_1 .
+
+ns1:rent_1 a ns1:Rent ;
+    rdfs:label "Rented" ;
+    vn.role:Theme ns1:professional_1 .
+
+ns1:Example rdfs:label "example" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Film rdfs:label "films" .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Particular a owl:Class ;
+    rdfs:label "particular" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ParticularCategory a owl:Class ;
+    rdfs:label "Particular Category" ;
+    dul:hasQuality ns1:Particular ;
+    rdfs:subClassOf ns1:Category .
+
+ns1:Perform rdfs:label "performed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Play rdfs:label "played" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Professional rdfs:label "professionals" .
+
+ns1:Rent rdfs:label "Rented" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Time rdfs:label "time" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Work rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:award_3 a ns1:Award ;
+    rdfs:label "award" ;
+    quant:hasDeterminer quant:the ;
+    ns1:for ns1:film_1 .
+
+ns1:example_1 a ns1:Example ;
+    rdfs:label "example" .
+
+ns1:time_1 a ns1:Time ;
+    rdfs:label "time" ;
+    quant:hasDeterminer quant:that .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "work" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Category a owl:Class ;
+    rdfs:label "category" ;
+    rdfs:subClassOf dul:Organism .
+
+ns1:E._jannings rdfs:label "E. Jannings" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Male .
+
+ns1:category_1 a ns1:Category,
+        ns1:ParticularCategory ;
+    rdfs:label "category" ;
+    quant:hasDeterminer quant:a .
+
+ns1:film_1 a ns1:Film ;
+    rdfs:label "films" ;
+    dul:hasDataValue "2"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple,
+        quant:two .
+
+ns1:Award rdfs:label "Award",
+        "award",
+        "awarded" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:professional_1 a ns1:Professional ;
+    rdfs:label "professionals" ;
+    quant:hasQuantifier quant:multiple ;
+    owl:sameAs ns1:category_1 .
+

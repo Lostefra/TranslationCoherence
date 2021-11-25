@@ -1,0 +1,136 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence272.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence272.ttl a owl:Ontology ;
+    rdfs:label "en_sentence272" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence272" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "By approving this amendment, we take account of the fact that it can be very cold in the northern parts of the European_Union."^^xsd:string .
+
+ns1:neuter_1 coref:coref ns1:amendment_1 .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "take" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Source ns1:approve_1 ;
+    vn.role:Theme ns1:account_1 .
+
+ns1:Account rdfs:label "account" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Amendment rdfs:label "amendment" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Approve rdfs:label "approving" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:European_union rdfs:label "European Union" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:European_Union .
+
+ns1:Fact rdfs:label "fact" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Northern rdfs:label "northern" .
+
+ns1:NorthernPart rdfs:subClassOf ns1:Part .
+
+ns1:Part rdfs:label "parts" .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Take rdfs:label "take" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:account_1 a ns1:Account ;
+    rdfs:label "account" ;
+    ns1:accountOf ns1:fact_1 .
+
+ns1:approve_1 a ns1:Approve ;
+    rdfs:label "approving" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Theme ns1:amendment_1 .
+
+ns1:fact_1 a ns1:Fact ;
+    rdfs:label "fact" ;
+    boxer:theme ns1:situation_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:part_1 a ns1:NorthernPart ;
+    rdfs:label "parts" ;
+    dul:hasQuality ns1:Northern ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:northernPartOf ns1:European_union .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Possible ;
+    boxing:involves ns1:Cold,
+        ns1:Very,
+        ns1:amendment_1 ;
+    ns1:in ns1:part_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "By" .
+
+ns1:Cold rdfs:label "cold" ;
+    dul:hasQuality ns1:Very .
+
+ns1:Very rdfs:label "very" .
+
+owl:Thing rdfs:label "By",
+        "it" .
+
+ns1:amendment_1 a owl:Thing,
+        ns1:Amendment ;
+    rdfs:label "amendment",
+        "it" ;
+    dul:hasQuality ns1:Cold ;
+    quant:hasDeterminer quant:this .
+

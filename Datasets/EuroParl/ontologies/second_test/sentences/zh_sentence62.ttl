@@ -1,0 +1,197 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence62.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence62.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence62" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence62" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:At rdfs:label "at" .
+
+ns1:By rdfs:label "by" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:Prodi rdfs:label "Prodi" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#President> .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Unanimously rdfs:label "unanimously" .
+
+ns1:accept_1 a ns1:AlsoExplicitlyAccept ;
+    rdfs:label "accepted" ;
+    dul:hasQuality ns1:Also,
+        ns1:Explicitly .
+
+ns1:adopt_1 a ns1:Adopt ;
+    rdfs:label "adopted" ;
+    vn.role:Theme ns1:President ;
+    ns1:unanimouslyAt ns1:meeting_1 .
+
+ns1:docuverse earmark:hasContent "The President, the presentation of the Political Programme of all legislative organs of the Prodi_Commission, which was initially a proposal by the European_Socialist_Party Group, was adopted unanimously at the September meeting of the President, and President Prodi was also explicitly accepted and he reiterated his inauguration."^^xsd:string .
+
+ns1:inauguration_1 a ns1:Inauguration ;
+    rdfs:label "inauguration" ;
+    ns1:inaugurationOf ns1:male_1 .
+
+ns1:proposal_1 rdfs:label "proposal" .
+
+ns1:reiterate_1 a ns1:Reiterate ;
+    rdfs:label "reiterated" ;
+    vn.role:Agent ns1:male_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:organ_1 ;
+    ns1:entails ns1:situation_2 .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves ns1:Prodi_commission,
+        ns1:Proposal ;
+    dul:hasQuality ns1:Initially .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#President> rdfs:label "President" ;
+    boxer:possibleType dul:Role ;
+    owl:sameAs dbpedia:President,
+        dbpedia:President_of_France .
+
+ns1:Accept rdfs:label "accepted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Adopt rdfs:label "adopted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoExplicitlyAccept rdfs:subClassOf ns1:ExplicitlyAccept .
+
+ns1:European_socialist_party_group rdfs:label "European Socialist Party Group" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Explicitly rdfs:label "explicitly" .
+
+ns1:ExplicitlyAccept rdfs:subClassOf ns1:Accept .
+
+ns1:Inauguration rdfs:label "inauguration" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Initially rdfs:label "initially" .
+
+ns1:Legislative rdfs:label "legislative" .
+
+ns1:LegislativeOrgan rdfs:subClassOf ns1:Organ .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Meeting rdfs:label "meeting" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Organ rdfs:label "organs" .
+
+ns1:PoliticalProgramme a owl:Class ;
+    rdfs:label "Political Programme" ;
+    dul:hasQuality ns1:Political ;
+    rdfs:subClassOf ns1:Programme .
+
+ns1:Presentation rdfs:label "presentation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Programme a owl:Class ;
+    rdfs:label "Programme" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Reiterate rdfs:label "reiterated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:meeting_1 a ns1:Meeting ;
+    rdfs:label "meeting" ;
+    ns1:at "0001-09-01"^^xsd:date ;
+    ns1:meetingOf ns1:President .
+
+ns1:presentation_1 a ns1:Presentation ;
+    rdfs:label "presentation" ;
+    quant:hasDeterminer quant:the ;
+    ns1:presentationOf ns1:programme_1 .
+
+ns1:programme_1 a ns1:PoliticalProgramme ;
+    rdfs:label "Programme" ;
+    dul:hasQuality ns1:Political ;
+    quant:hasDeterminer quant:the ;
+    ns1:politicalProgrammeOf ns1:organ_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Prodi_commission .
+
+ns1:Political a owl:Class ;
+    rdfs:label "Political" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:President rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith ns1:presentation_1 ;
+    owl:sameAs dbpedia:President,
+        dbpedia:President_of_France .
+
+ns1:Proposal rdfs:label "Prodi Commission",
+        "proposal" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "he",
+        "his" .
+
+ns1:organ_1 a ns1:LegislativeOrgan ;
+    rdfs:label "organs" ;
+    dul:hasQuality ns1:Legislative ;
+    quant:hasQuantifier quant:all,
+        quant:multiple ;
+    ns1:legislativeOrganOf ns1:Prodi_commission .
+
+ns1:Prodi_commission a ns1:Proposal ;
+    rdfs:label "Prodi Commission",
+        "proposal" ;
+    boxer:possibleType foaf:Organisation ;
+    quant:hasDeterminer quant:a ;
+    owl:sameAs dbpedia:Prodi_Commission ;
+    ns1:proposalBy ns1:European_socialist_party_group .
+

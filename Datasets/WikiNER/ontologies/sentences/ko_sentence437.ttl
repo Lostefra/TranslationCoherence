@@ -1,0 +1,162 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence437.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence437.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence437" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence437" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:Rel rdfs:label "(" .
+
+ns1:adult_1 a ns1:Adult ;
+    rdfs:label "adult" ;
+    dul:associatedWith ns1:hometown_1 .
+
+ns1:die_1 a ns1:HereDie ;
+    rdfs:label "died" ;
+    dul:associatedWith ns1:reconstruction_1 ;
+    dul:hasQuality ns1:Here ;
+    vn.role:Theme ns1:Petersen_house,
+        ns1:Theatre .
+
+ns1:docuverse earmark:hasContent "In addition, New_Salem__Illinois (A reconstruction of Lincoln's early adult hometown), Ford's Theatre and Petersen_House (here died) are preserved as a museum."^^xsd:string .
+
+ns1:preserve_1 a ns1:Preserve ;
+    rdfs:label "preserved" ;
+    vn.role:Theme ns1:New_salem__illinois ;
+    ns1:as ns1:museum_1 ;
+    ns1:in ns1:addition_1 .
+
+<http://dbpedia.org/resource/Lincoln,_Nebraska> a schema:City,
+        schema:Place .
+
+ns1:Addition rdfs:label "addition" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:AdultHometown a owl:Class ;
+    rdfs:label "Adult Hometown" ;
+    dul:associatedWith ns1:Adult ;
+    rdfs:subClassOf ns1:Hometown .
+
+ns1:Die rdfs:label "died" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Early a owl:Class ;
+    rdfs:label "early" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:EarlyAdult a owl:Class ;
+    dul:hasQuality ns1:Early ;
+    rdfs:subClassOf ns1:Adult .
+
+ns1:EarlyAdultHometown a owl:Class ;
+    rdfs:label "early adult hometown" ;
+    dul:associatedWith ns1:EarlyAdult ;
+    rdfs:subClassOf ns1:AdultHometown .
+
+ns1:Ford rdfs:label "Ford" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Here rdfs:label "here" .
+
+ns1:HereDie rdfs:subClassOf ns1:Die .
+
+ns1:Hometown a owl:Class ;
+    rdfs:label "hometown" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs <http://dbpedia.org/resource/Lincoln,_Nebraska> .
+
+ns1:Museum rdfs:label "museum" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:New_salem__illinois rdfs:label "New Salem  Illinois" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:reconstruction_1 ;
+    owl:sameAs <http://dbpedia.org/resource/Lincoln's_New_Salem> .
+
+ns1:Petersen_house rdfs:label "Petersen House" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Petersen_House .
+
+ns1:Preserve rdfs:label "preserved" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Reconstruction a owl:Class ;
+    rdfs:label "reconstruction" ;
+    rdfs:subClassOf dul:TimeInterval ;
+    owl:equivalentClass dbpedia:Reconstruction_Era .
+
+ns1:Theatre rdfs:label "Theatre" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs <http://dbpedia.org/resource/Ford's_Theatre>,
+        dbpedia:Theatre ;
+    ns1:of ns1:Ford .
+
+ns1:addition_1 a ns1:Addition ;
+    rdfs:label "addition" .
+
+ns1:museum_1 a ns1:Museum ;
+    rdfs:label "museum" ;
+    quant:hasDeterminer quant:a .
+
+ns1:hometown_1 a ns1:EarlyAdultHometown ;
+    rdfs:label "hometown" ;
+    ns1:earlyAdultHometownOf ns1:Lincoln .
+
+ns1:reconstruction_1 a ns1:Reconstruction ;
+    rdfs:label "reconstruction" ;
+    quant:hasDeterminer quant:a ;
+    ns1:reconstructionOf ns1:hometown_1 .
+
+ns1:Adult a owl:Class ;
+    rdfs:label "adult" ;
+    rdfs:subClassOf dul:Person .
+

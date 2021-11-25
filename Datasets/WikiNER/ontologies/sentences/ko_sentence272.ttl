@@ -1,0 +1,125 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence272.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "In" .
+
+translation_coherence:ko_sentence272.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence272" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence272" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "In 1830, fearing ancillary lesion, family settled in the public land of Macon_County, Ill.."^^xsd:string .
+
+ns1:fear_1 a ns1:Fear ;
+    rdfs:label "fearing" ;
+    vn.role:Experiencer ns1:thing_1 ;
+    vn.role:Theme ns1:lesion_1 .
+
+ns1:settle_1 a ns1:Settle ;
+    rdfs:label "settled" ;
+    vn.role:Location "1830-01-01"^^xsd:date ;
+    vn.role:Theme ns1:family_1 ;
+    ns1:in ns1:land_1 .
+
+ns1:Ancillary a owl:Class ;
+    rdfs:label "ancillary" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:AncillaryLesion a owl:Class ;
+    rdfs:label "ancillary lesion" ;
+    dul:hasQuality ns1:Ancillary ;
+    rdfs:subClassOf ns1:Lesion .
+
+ns1:Family rdfs:label "family" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Fear rdfs:label "fearing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Ill rdfs:label "Ill" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Land a owl:Class ;
+    rdfs:label "land" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Lesion a owl:Class ;
+    rdfs:label "lesion" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Lesion .
+
+ns1:Macon_county rdfs:label "Macon County" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Ill ;
+    owl:sameAs <http://dbpedia.org/resource/Macon_County,_Missouri> .
+
+ns1:PublicLand a owl:Class ;
+    rdfs:label "Public Land" ;
+    dul:hasQuality ns1:Public ;
+    rdfs:subClassOf ns1:Land .
+
+ns1:Settle rdfs:label "settled" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:family_1 a ns1:Family ;
+    rdfs:label "family" .
+
+ns1:land_1 a ns1:PublicLand ;
+    rdfs:label "land" ;
+    dul:hasQuality ns1:Public ;
+    quant:hasDeterminer quant:the ;
+    ns1:publicLandOf ns1:Macon_county .
+
+ns1:lesion_1 a ns1:AncillaryLesion ;
+    rdfs:label "lesion" .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:Public a owl:Class ;
+    rdfs:label "public" ;
+    rdfs:subClassOf dul:Quality .
+

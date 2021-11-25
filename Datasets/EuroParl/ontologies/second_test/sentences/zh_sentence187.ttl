@@ -1,0 +1,185 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence187.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme rdfs:label "with" .
+
+translation_coherence:zh_sentence187.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence187" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence187" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Onorganizationof rdfs:label "on the organization of" .
+
+ns1:appear_1 a ns1:Appear ;
+    rdfs:label "appears" ;
+    vn.role:Predicate ns1:situation_1 ;
+    vn.role:Theme ns1:95%2F35%2Fec .
+
+ns1:docuverse earmark:hasContent "Another instruction 95/35/EC sets out the criteria and appears to be sufficient to provide people with information on the organization of dangerous goods in a responsible manner."^^xsd:string .
+
+ns1:instruction_2 rdfs:label "instruction" .
+
+ns1:organization_1 a ns1:Organization ;
+    rdfs:label "organization" ;
+    quant:hasDeterminer quant:the .
+
+ns1:set_1 a ns1:Set ;
+    rdfs:label "sets" ;
+    dul:hasQuality ns1:Out ;
+    vn.role:Agent ns1:95%2F35%2Fec ;
+    vn.role:Theme ns1:criterion_1 .
+
+ns1:Appear rdfs:label "appears" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Criterion rdfs:label "criteria" .
+
+ns1:DangerousGoods a owl:Class ;
+    rdfs:label "dangerous goods" ;
+    dul:hasQuality ns1:Dangerous ;
+    rdfs:subClassOf ns1:Goods ;
+    owl:equivalentClass dbpedia:Dangerous_goods .
+
+ns1:Instruction rdfs:label "95/35/EC",
+        "instruction" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Organization a owl:Class ;
+    rdfs:label "organization" ;
+    rdfs:subClassOf dul:Organization ;
+    owl:equivalentClass dbpedia:Organization .
+
+ns1:Out rdfs:label "out" .
+
+ns1:ResponsibleManner a owl:Class ;
+    rdfs:label "responsible manner" ;
+    dul:hasQuality ns1:Responsible ;
+    rdfs:subClassOf ns1:Manner .
+
+ns1:Set rdfs:label "sets" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:criterion_1 a ns1:Criterion ;
+    rdfs:label "criteria" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:goods_1 a ns1:DangerousGoods ;
+    rdfs:label "goods" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:information_1 a ns1:Information ;
+    rdfs:label "information" ;
+    ns1:onOrganizationOf ns1:goods_1 .
+
+ns1:manner_1 a ns1:ResponsibleManner ;
+    rdfs:label "manner" ;
+    quant:hasDeterminer quant:a .
+
+ns1:people_1 a ns1:People ;
+    rdfs:label "people" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:provide_1 a ns1:Provide ;
+    rdfs:label "provide" ;
+    vn.role:Agent ns1:95%2F35%2Fec ;
+    vn.role:Recipient ns1:people_1 ;
+    vn.role:Theme ns1:information_1 ;
+    ns1:in ns1:manner_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Dangerous,
+        ns1:Goods,
+        ns1:Information,
+        ns1:Manner,
+        ns1:People,
+        ns1:Provide,
+        ns1:Responsible,
+        ns1:Sufficient,
+        ns1:sufficient_1 .
+
+ns1:sufficient_1 a ns1:Sufficient ;
+    rdfs:label "sufficient" ;
+    boxer:agent ns1:95%2F35%2Fec ;
+    boxer:theme ns1:provide_1 .
+
+ns1:Dangerous a owl:Class ;
+    rdfs:label "dangerous" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Goods a owl:Class ;
+    rdfs:label "goods" .
+
+ns1:Information a owl:Class ;
+    rdfs:label "information" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> ;
+    owl:equivalentClass dbpedia:Information .
+
+ns1:Manner a owl:Class ;
+    rdfs:label "manner" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Methodology .
+
+ns1:People a owl:Class ;
+    rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Person .
+
+ns1:Provide rdfs:label "provide" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Responsible a owl:Class ;
+    rdfs:label "responsible" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Sufficient rdfs:label "sufficient" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:95%2F35%2Fec a ns1:Instruction ;
+    rdfs:label "95/35/EC",
+        "instruction" ;
+    boxer:possibleType owl:Thing ;
+    quant:hasDeterminer quant:another .
+

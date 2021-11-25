@@ -1,0 +1,219 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence358.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence358.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence358" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence358" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Be rdfs:label "'s" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of",
+        "our" .
+
+ns1:That rdfs:label "that" .
+
+ns1:docuverse earmark:hasContent "It's important to identify the skills and potential of our areas in the hi-tech sector. It's most important in the light of defeats in the media that Europe quickly loses the ground in the hi-tech growth industry of the future."^^xsd:string .
+
+ns1:growth_1 a ns1:Growth ;
+    rdfs:label "growth" ;
+    dul:associatedWith ns1:industry_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:identify_1 a ns1:Identify ;
+    rdfs:label "identify" ;
+    boxer:patient ns1:skill_1 ;
+    vn.role:Experiencer ns1:neuter_1 ;
+    ns1:be ns1:important_1 .
+
+ns1:light_1 a ns1:Light ;
+    rdfs:label "light" ;
+    quant:hasDeterminer quant:the .
+
+ns1:potential_1 rdfs:label "potential" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Important,
+        ns1:Most,
+        ns1:neuter_1 ;
+    ns1:inLightOf ns1:defeat_1 .
+
+dbpedia:Europe a schema:Continent,
+        schema:Place .
+
+owl:Thing rdfs:label "It" .
+
+ns1:Area rdfs:label "areas" .
+
+ns1:Defeat rdfs:label "defeats" .
+
+ns1:Europe rdfs:label "Europe" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Europe .
+
+ns1:Future rdfs:label "future" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Ground rdfs:label "ground" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:GrowthIndustry a owl:Class ;
+    rdfs:label "Growth Industry" ;
+    dul:associatedWith ns1:Growth ;
+    rdfs:subClassOf dul:Organization,
+        ns1:Industry .
+
+ns1:Hi-techGrowth a owl:Class .
+
+ns1:Hi-techGrowthIndustry a owl:Class ;
+    rdfs:label "hi-tech growth industry" ;
+    dul:associatedWith ns1:Hi-techGrowth ;
+    rdfs:subClassOf ns1:GrowthIndustry .
+
+ns1:Hi-techSector a owl:Class ;
+    rdfs:label "hi-tech sector" ;
+    dul:hasQuality ns1:Hi-tech ;
+    rdfs:subClassOf ns1:Sector .
+
+ns1:Identify rdfs:label "identify" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Industry a owl:Class ;
+    rdfs:label "industry" ;
+    rdfs:subClassOf dul:Organization ;
+    owl:equivalentClass dbpedia:Industry .
+
+ns1:Light rdfs:label "light" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Lose rdfs:label "loses" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Media rdfs:label "media" .
+
+ns1:Potential rdfs:label "potential" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Quickly rdfs:label "quickly" .
+
+ns1:QuicklyLose rdfs:subClassOf ns1:Lose .
+
+ns1:Sector a owl:Class ;
+    rdfs:label "sector" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Skill rdfs:label "skills" .
+
+ns1:area_1 a ns1:Area ;
+    rdfs:label "areas" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:areaOf ns1:person_1 ;
+    ns1:in ns1:sector_1 .
+
+ns1:defeat_1 a ns1:Defeat ;
+    rdfs:label "defeats" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:media_1 .
+
+ns1:future_1 a ns1:Future ;
+    rdfs:label "future" ;
+    quant:hasDeterminer quant:the .
+
+ns1:ground_1 a ns1:Ground ;
+    rdfs:label "ground" ;
+    quant:hasDeterminer quant:the ;
+    ns1:in ns1:industry_1 .
+
+ns1:important_1 a ns1:Important ;
+    rdfs:label "important" .
+
+ns1:lose_1 a ns1:QuicklyLose ;
+    rdfs:label "loses" ;
+    dul:hasQuality ns1:Quickly ;
+    vn.role:Agent ns1:Europe ;
+    vn.role:Theme ns1:ground_1 .
+
+ns1:media_1 a ns1:Media ;
+    rdfs:label "media" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:that ns1:lose_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "our" .
+
+ns1:sector_1 a ns1:Hi-techSector ;
+    rdfs:label "sector" ;
+    dul:hasQuality ns1:Hi-tech ;
+    quant:hasDeterminer quant:the .
+
+ns1:skill_1 a dbpedia:Skill,
+        ns1:Potential,
+        ns1:Skill ;
+    rdfs:label "skills" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:skillOf ns1:area_1 .
+
+ns1:Growth a owl:Class ;
+    rdfs:label "growth" ;
+    rdfs:subClassOf dul:Process .
+
+ns1:Hi-tech a owl:Class ;
+    rdfs:label "hi-tech" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:High_tech .
+
+ns1:Most rdfs:label "most" .
+
+ns1:industry_1 a ns1:Hi-techGrowthIndustry ;
+    rdfs:label "industry" ;
+    ns1:hi-techGrowthIndustryOf ns1:future_1 .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "It" ;
+    dul:hasQuality ns1:Important,
+        ns1:Most .
+
+ns1:Important rdfs:label "important" .
+

@@ -1,0 +1,238 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence104.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence104.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence104" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence104" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Before rdfs:label "before" .
+
+ns1:In rdfs:label "in" .
+
+ns1:To rdfs:label "to" .
+
+ns1:announce_1 a ns1:Announce ;
+    rdfs:label "announced" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:associatedWith ns1:day_1 ;
+    vn.role:Theme ns1:neuter_1 ;
+    ns1:before ns1:situation_1 .
+
+ns1:docuverse earmark:hasContent "I also say that the committee is ready to be ready to get this debate every time it is prepared and convenient, and it will be ready to do so in this week as we had the original agreement. It will be announced a day before it is open to the Congress group."^^xsd:string .
+
+ns1:say_1 a ns1:AlsoSay ;
+    rdfs:label "say" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Topic ns1:situation_2 .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoSay rdfs:label "also say" ;
+    rdfs:subClassOf ns1:Say .
+
+ns1:Announce rdfs:label "announced" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Committee rdfs:label "committee" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Congress rdfs:label "Congress" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Day rdfs:label "day" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:Debate rdfs:label "debate" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Do rdfs:label "do" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Group rdfs:label "group" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Original a owl:Class ;
+    rdfs:label "original" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:OriginalAgreement a owl:Class ;
+    rdfs:label "Original Agreement" ;
+    dul:hasQuality ns1:Original ;
+    rdfs:subClassOf ns1:Agreement .
+
+ns1:Say rdfs:label "say" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:So rdfs:label "so" .
+
+ns1:Week rdfs:label "week" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:day_1 a ns1:Day ;
+    rdfs:label "day" ;
+    quant:hasDeterminer quant:a .
+
+ns1:debate_1 a ns1:Debate ;
+    rdfs:label "debate" ;
+    quant:hasDeterminer quant:this .
+
+ns1:group_1 a ns1:Group ;
+    rdfs:label "group" ;
+    dul:associatedWith ns1:Congress .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:ready_1 a ns1:Ready ;
+    rdfs:label "ready" ;
+    vn.role:Agent ns1:committee_1 ;
+    vn.role:Product ns1:situation_2 .
+
+ns1:ready_2 a ns1:Ready ;
+    rdfs:label "ready" ;
+    vn.role:Agent ns1:committee_1 ;
+    vn.role:Product ns1:get_1 .
+
+ns1:ready_3 a ns1:Ready ;
+    rdfs:label "ready" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:neuter_1 ;
+    vn.role:Product ns1:do_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:Open,
+        ns1:neuter_1 ;
+    ns1:to ns1:group_1 .
+
+ns1:week_1 a ns1:Week ;
+    rdfs:label "week" ;
+    quant:hasDeterminer quant:this .
+
+ns1:Agreement a owl:Class ;
+    rdfs:label "agreement" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Convenient rdfs:label "convenient" .
+
+ns1:Get rdfs:label "get" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Have rdfs:label "had" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Open rdfs:label "open" ;
+    dul:hasQuality ns1:So .
+
+ns1:Person rdfs:label "I",
+        "we" .
+
+ns1:Prepared rdfs:label "prepared" .
+
+ns1:Time rdfs:label "time" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:agreement_1 a ns1:Agreement,
+        ns1:OriginalAgreement ;
+    rdfs:label "agreement" ;
+    quant:hasDeterminer quant:the .
+
+ns1:do_1 a ns1:Do ;
+    rdfs:label "do" ;
+    boxer:agent ns1:neuter_1 ;
+    ns1:as ns1:have_1 ;
+    ns1:in ns1:week_1 .
+
+ns1:get_1 a ns1:Get ;
+    rdfs:label "get" ;
+    dul:associatedWith ns1:time_1 ;
+    vn.role:Agent ns1:committee_1 ;
+    vn.role:Theme ns1:debate_1 .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "had" ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Patient ns1:agreement_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Convenient,
+        ns1:Get,
+        ns1:Have,
+        ns1:Prepared,
+        ns1:Ready,
+        ns1:Time,
+        ns1:do_1,
+        ns1:get_1,
+        ns1:have_1,
+        ns1:neuter_1,
+        ns1:ready_1,
+        ns1:ready_2,
+        ns1:ready_3,
+        ns1:time_1 .
+
+ns1:time_1 a ns1:Time ;
+    rdfs:label "time" ;
+    quant:hasQuantifier quant:every .
+
+ns1:committee_1 a ns1:Committee ;
+    rdfs:label "committee" ;
+    quant:hasDeterminer quant:the ;
+    owl:sameAs ns1:agreement_1 .
+
+ns1:Ready rdfs:label "Ready",
+        "ready" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "it" ;
+    dul:hasQuality ns1:Convenient,
+        ns1:Open,
+        ns1:Prepared .
+

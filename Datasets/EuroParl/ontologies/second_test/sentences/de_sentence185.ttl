@@ -1,0 +1,149 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence185.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence185.ttl a owl:Ontology ;
+    rdfs:label "de_sentence185" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence185" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Through rdfs:label "through" .
+
+ns1:docuverse earmark:hasContent "The growing volume of goods through Europe means all kinds of risks, known and unknown, for workers and social conditions."^^xsd:string .
+
+ns1:grow_1 a ns1:Grow ;
+    rdfs:label "growing" ;
+    vn.role:Agent ns1:volume_1 .
+
+ns1:know_1 a ns1:Know ;
+    rdfs:label "known" ;
+    vn.role:Theme ns1:kind_1 .
+
+ns1:mean_1 a ns1:Mean ;
+    rdfs:label "means" ;
+    vn.role:Agent ns1:volume_1 ;
+    vn.role:Theme ns1:kind_1,
+        ns1:unknown_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:kind_1 ;
+    ns1:entails ns1:situation_2 .
+
+dbpedia:Europe a schema:Continent,
+        schema:Place .
+
+ns1:Condition rdfs:label "conditions" .
+
+ns1:Europe rdfs:label "Europe" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Europe .
+
+ns1:Goods a owl:Class ;
+    rdfs:label "goods" ;
+    owl:equivalentClass dbpedia:Good_(economics) .
+
+ns1:Grow rdfs:label "growing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Kind rdfs:label "kinds" .
+
+ns1:Know rdfs:label "known" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Mean rdfs:label "means" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Risk rdfs:label "risks" .
+
+ns1:Social rdfs:label "social" ;
+    owl:sameAs dbpedia:Society .
+
+ns1:SocialCondition rdfs:subClassOf ns1:Condition .
+
+ns1:Unknown rdfs:label "unknown" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Volume rdfs:label "volume" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Worker rdfs:label "workers" .
+
+ns1:condition_1 a ns1:SocialCondition ;
+    rdfs:label "conditions" ;
+    dul:hasQuality ns1:Social ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:goods_1 a ns1:Goods ;
+    rdfs:label "goods" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:kind_1,
+        ns1:risk_1 .
+
+ns1:unknown_1 a ns1:Unknown ;
+    rdfs:label "unknown" ;
+    ns1:for ns1:condition_1,
+        ns1:worker_1 .
+
+ns1:worker_1 a ns1:Worker ;
+    rdfs:label "workers" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:risk_1 a ns1:Risk ;
+    rdfs:label "risks" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:volume_1 a ns1:Volume ;
+    rdfs:label "volume" ;
+    quant:hasDeterminer quant:the ;
+    ns1:through ns1:Europe ;
+    ns1:volumeOf ns1:goods_1 .
+
+ns1:kind_1 a ns1:Kind ;
+    rdfs:label "kinds" ;
+    quant:hasQuantifier quant:all,
+        quant:multiple ;
+    ns1:kindOf ns1:risk_1 .
+

@@ -1,0 +1,213 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence627.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+foaf:Person rdfs:label "per" .
+
+translation_coherence:it_sentence627.ttl a owl:Ontology ;
+    rdfs:label "it_sentence627" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence627" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Certainly rdfs:label "certainly" .
+
+ns1:During rdfs:label "during" .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Objective_1 a dbpedia:Regional_policy_of_the_European_Union ;
+    rdfs:label "Objective 1" .
+
+ns1:Over rdfs:label "over" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "The efforts made to increase GDP per head in Objective_1 regions do not always involve such an increase, not just a satisfactory result for a period during which, certainly over the last two years, there has been economic growth."^^xsd:string .
+
+ns1:growth_1 rdfs:label "growth" .
+
+ns1:increase_1 a ns1:Increase ;
+    rdfs:label "increase" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:effort_1 ;
+    vn.role:Patient ns1:Gdp .
+
+ns1:involve_1 a ns1:AlwaysInvolve ;
+    rdfs:label "involve" ;
+    boxing:hasTruthValue boxing:False ;
+    dul:hasQuality ns1:Always ;
+    vn.role:Agent ns1:effort_1 ;
+    vn.role:Theme ns1:increase_2 .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "made" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Theme ns1:effort_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves ns1:Economic,
+        ns1:EconomicGrowth,
+        ns1:Growth,
+        ns1:there_1 ;
+    ns1:certainlyOver ns1:year_1 ;
+    ns1:during ns1:period_1 .
+
+ns1:Always rdfs:label "always" .
+
+ns1:AlwaysInvolve rdfs:label "always involve" ;
+    rdfs:subClassOf ns1:Involve .
+
+ns1:Effort rdfs:label "efforts" .
+
+ns1:Gdp rdfs:label "GDP" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Gross_domestic_product .
+
+ns1:Head a owl:Class ;
+    rdfs:label "head" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Gross_domestic_product .
+
+ns1:Involve rdfs:label "involve" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Just rdfs:label "just" .
+
+ns1:Last rdfs:label "last" .
+
+ns1:Make rdfs:label "made" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Objective_1Region rdfs:subClassOf ns1:Region .
+
+ns1:Period rdfs:label "period" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Region rdfs:label "regions" .
+
+ns1:Result a owl:Class ;
+    rdfs:label "result" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Satisfactory a owl:Class ;
+    rdfs:label "satisfactory" ;
+    dul:hasQuality ns1:Just ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SatisfactoryResult a owl:Class ;
+    rdfs:label "satisfactory result" ;
+    dul:hasQuality ns1:Satisfactory ;
+    rdfs:subClassOf ns1:Result .
+
+ns1:Such rdfs:label "such" .
+
+ns1:There rdfs:label "there" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Year rdfs:label "years" .
+
+ns1:head_1 a ns1:Head ;
+    rdfs:label "head" ;
+    ns1:in ns1:region_1 .
+
+ns1:increase_2 a ns1:Increase ;
+    rdfs:label "increase" ;
+    dul:associatedWith ns1:result_1,
+        ns1:such_1 ;
+    quant:hasDeterminer quant:an .
+
+ns1:region_1 a ns1:Objective_1Region ;
+    rdfs:label "regions" ;
+    quant:hasQuantifier quant:multiple,
+        quant:objective_1 .
+
+ns1:result_1 a ns1:SatisfactoryResult ;
+    rdfs:label "result" ;
+    quant:hasDeterminer quant:a ;
+    ns1:for ns1:period_1 .
+
+ns1:such_1 a ns1:Such ;
+    rdfs:label "such" .
+
+ns1:there_1 a ns1:EconomicGrowth,
+        ns1:There ;
+    rdfs:label "there" .
+
+ns1:year_1 a ns1:Year ;
+    rdfs:label "years" ;
+    dul:hasDataValue "2"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:Last ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple,
+        quant:two .
+
+ns1:Economic a owl:Class ;
+    rdfs:label "economic" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:EconomicGrowth a owl:Class ;
+    rdfs:label "Economic Growth" ;
+    dul:hasQuality ns1:Economic ;
+    rdfs:subClassOf ns1:Growth ;
+    owl:equivalentClass dbpedia:Gross_domestic_product .
+
+ns1:Growth a owl:Class ;
+    rdfs:label "growth" ;
+    rdfs:subClassOf dul:Process .
+
+ns1:Increase rdfs:label "increase" ;
+    rdfs:subClassOf dul:Amount,
+        dul:Event .
+
+ns1:period_1 a ns1:Period ;
+    rdfs:label "period" ;
+    quant:hasDeterminer quant:a .
+
+ns1:effort_1 a ns1:Effort ;
+    rdfs:label "efforts" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:per ns1:head_1 .
+

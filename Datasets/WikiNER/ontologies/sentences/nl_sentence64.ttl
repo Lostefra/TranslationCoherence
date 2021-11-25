@@ -1,0 +1,184 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence64.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence64.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence64" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence64" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:characteristic_1 rdfs:label "characteristics" .
+
+ns1:consider_1 a ns1:StillConsider ;
+    rdfs:label "considered" ;
+    dul:hasQuality ns1:Still ;
+    vn.role:Agent ns1:almost_1 .
+
+ns1:describe_1 a ns1:Describe ;
+    rdfs:label "described" ;
+    vn.role:Theme ns1:almost_1 ;
+    ns1:in ns1:way_1 ;
+    ns1:inFirstPaperOf ns1:Kanner .
+
+ns1:docuverse earmark:hasContent "Almost all the characteristics described in Kanner's first paper on the subject, autistic solitaryity and insistence in the same way, are still considered typical of the autistic spectrum of disorders."^^xsd:string .
+
+ns1:insistence_1 rdfs:label "insistence" .
+
+ns1:paper_1 a ns1:FirstPaper ;
+    rdfs:label "paper" ;
+    ns1:on ns1:subject_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Typical,
+        ns1:almost_1 ;
+    ns1:situationOf ns1:spectrum_1 .
+
+ns1:solitaryity_1 rdfs:label "solitaryity" .
+
+ns1:Almost rdfs:label "Almost" .
+
+ns1:AutisticSolitaryity a owl:Class ;
+    rdfs:label "Autistic Solitaryity" ;
+    dul:hasQuality ns1:Autistic ;
+    rdfs:subClassOf ns1:Solitaryity .
+
+ns1:AutisticSpectrum a owl:Class ;
+    rdfs:label "autistic spectrum" ;
+    rdfs:subClassOf ns1:Spectrum ;
+    owl:equivalentClass dbpedia:Autism_spectrum .
+
+ns1:Characteristic rdfs:label "characteristics" .
+
+ns1:Consider rdfs:label "considered" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Describe rdfs:label "described" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Disorder rdfs:label "disorders" .
+
+ns1:First a owl:Class ;
+    rdfs:label "first" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FirstPaper a owl:Class ;
+    rdfs:label "First Paper" ;
+    dul:hasQuality ns1:First ;
+    rdfs:subClassOf ns1:Paper .
+
+ns1:Insistence rdfs:label "insistence" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Kanner rdfs:label "Kanner" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Paper a owl:Class ;
+    rdfs:label "paper" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Same a owl:Class ;
+    rdfs:label "same" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SameWay a owl:Class ;
+    rdfs:label "same way" ;
+    dul:hasQuality ns1:Same ;
+    rdfs:subClassOf ns1:Way .
+
+ns1:Solitaryity a owl:Class ;
+    rdfs:label "solitaryity" .
+
+ns1:Spectrum rdfs:label "spectrum" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Still rdfs:label "still" .
+
+ns1:StillConsider rdfs:subClassOf ns1:Consider .
+
+ns1:Subject rdfs:label "subject" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Way a owl:Class ;
+    rdfs:label "way" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:disorder_1 a dbpedia:Mental_disorder,
+        ns1:Disorder ;
+    rdfs:label "disorders" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:spectrum_1 a ns1:AutisticSpectrum ;
+    rdfs:label "spectrum" ;
+    dul:hasQuality ns1:Autistic ;
+    quant:hasDeterminer quant:the ;
+    ns1:autisticSpectrumOf ns1:disorder_1 .
+
+ns1:subject_1 a ns1:AutisticSolitaryity,
+        ns1:Insistence,
+        ns1:Subject ;
+    rdfs:label "subject" ;
+    dul:hasQuality ns1:Autistic ;
+    quant:hasDeterminer quant:the .
+
+ns1:way_1 a ns1:SameWay ;
+    rdfs:label "way" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Typical rdfs:label "typical" .
+
+ns1:Autistic a owl:Class ;
+    rdfs:label "autistic" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Autism_spectrum .
+
+ns1:almost_1 a ns1:Almost,
+        ns1:Characteristic ;
+    rdfs:label "Almost" ;
+    dul:hasQuality ns1:Typical ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+

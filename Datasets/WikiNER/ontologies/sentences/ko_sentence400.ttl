@@ -1,0 +1,116 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence400.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%28> rdfs:label "(" .
+
+translation_coherence:ko_sentence400.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence400" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence400" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "was" .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "In 1861 the Lincoln was the second and third Morrill_Tariff (the first was the law of James_Buchanan)."^^xsd:string .
+
+ns1:first_1 rdfs:label "first" .
+
+ns1:law_1 a ns1:First,
+        ns1:Law ;
+    rdfs:label "law" ;
+    quant:hasDeterminer quant:the ;
+    ns1:lawOf ns1:James_buchanan .
+
+ns1:lincoln_1 rdfs:label "Lincoln" .
+
+ns1:morrill_tariff_1 a ns1:Lincoln,
+        ns1:ThirdMorrill_tariff ;
+    rdfs:label "Morrill Tariff" ;
+    boxing:parentheticAssociation ns1:situation_1 ;
+    dul:hasQuality ns1:Second ;
+    quant:hasDeterminer quant:the .
+
+dbpedia:Abraham_Lincoln rdfs:subClassOf schema:Person .
+
+dbpedia:James_Buchanan a schema:Person .
+
+ns1:First a owl:Class ;
+    rdfs:label "first" ;
+    rdfs:subClassOf dul:Role,
+        ns1:Law ;
+    owl:equivalentClass dbpedia:First_Amendment_to_the_United_States_Constitution .
+
+ns1:James_buchanan rdfs:label "James Buchanan" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:James_Buchanan .
+
+ns1:Lincoln a owl:Class ;
+    rdfs:label "Lincoln" ;
+    rdfs:subClassOf dul:Person,
+        ns1:ThirdMorrill_tariff ;
+    owl:equivalentClass dbpedia:Abraham_Lincoln .
+
+ns1:Morrill_tariff a owl:Class ;
+    rdfs:label "Morrill Tariff" ;
+    owl:equivalentClass dbpedia:Morrill_Tariff .
+
+ns1:Second rdfs:label "second" ;
+    owl:sameAs dbpedia:2nd_United_States_Congress .
+
+ns1:Third a owl:Class ;
+    rdfs:label "third" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:3rd_United_States_Congress .
+
+ns1:situation_1 a ns1:Situation ;
+    ns1:in "1861-01-01"^^xsd:date .
+
+ns1:Law rdfs:label "law" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:ThirdMorrill_tariff a owl:Class ;
+    rdfs:label "Third Morrill tariff" ;
+    dul:hasQuality ns1:Third ;
+    rdfs:subClassOf ns1:Morrill_tariff .
+

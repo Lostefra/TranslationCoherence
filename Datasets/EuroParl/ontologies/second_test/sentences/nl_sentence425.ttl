@@ -1,0 +1,142 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence425.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "in" .
+
+vn.role:Topic rdfs:label "of" .
+
+translation_coherence:nl_sentence425.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence425" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence425" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "As" .
+
+ns1:Between rdfs:label "between" .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "As for us in parliament, I should like to remind you of the code of behavior between the commission and the Parliament signed in May."^^xsd:string .
+
+ns1:like_1 a ns1:Like ;
+    rdfs:label "like" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Experiencer ns1:person_2 ;
+    vn.role:Theme ns1:situation_1 ;
+    ns1:asFor ns1:person_1 .
+
+ns1:Behavior rdfs:label "behavior" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Code rdfs:label "code" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Commission rdfs:label "commission" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Like rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Remind rdfs:label "remind" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Sign rdfs:label "signed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:commission_1 a ns1:Commission ;
+    rdfs:label "commission" ;
+    quant:hasDeterminer quant:the .
+
+ns1:parliament_1 a ns1:Parliament ;
+    rdfs:label "parliament" .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "us" ;
+    ns1:in ns1:parliament_1 .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "you" .
+
+ns1:remind_1 a ns1:Remind ;
+    rdfs:label "remind" ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Recipient ns1:person_3 ;
+    vn.role:Topic ns1:code_1 .
+
+ns1:sign_1 a ns1:Sign ;
+    rdfs:label "signed" ;
+    vn.role:Destination "0001-05-01"^^xsd:date ;
+    vn.role:Theme ns1:code_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:behavior_1,
+        ns1:remind_1,
+        ns1:sign_1 .
+
+ns1:Parliament a owl:Class ;
+    rdfs:label "Parliament",
+        "parliament" ;
+    boxer:possibleType foaf:Organisation ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Parliament .
+
+ns1:behavior_1 a ns1:Behavior ;
+    rdfs:label "behavior" ;
+    ns1:between ns1:Parliament,
+        ns1:commission_1 .
+
+ns1:code_1 a ns1:Code ;
+    rdfs:label "code" ;
+    quant:hasDeterminer quant:the ;
+    ns1:codeOf ns1:behavior_1 .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:Person rdfs:label "I",
+        "us",
+        "you" .
+

@@ -1,0 +1,195 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence735.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence735.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence735" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence735" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:During rdfs:label "During" .
+
+ns1:From rdfs:label "from" .
+
+ns1:In rdfs:label "in" .
+
+ns1:National rdfs:label "national" .
+
+ns1:Noteq rdfs:label "other" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Russian rdfs:label "Russian" ;
+    owl:sameAs dbpedia:Russia .
+
+ns1:With rdfs:label "with" .
+
+ns1:accordance_1 a ns1:Accordance ;
+    rdfs:label "accordance" .
+
+ns1:agree_1 a ns1:Agree ;
+    rdfs:label "agreed" ;
+    vn.role:Actor ns1:Bouteflika ;
+    vn.role:Theme ns1:purchase_1 ;
+    ns1:during ns1:return_1 .
+
+ns1:air_1 a ns1:Air ;
+    rdfs:label "air" ;
+    dul:associatedWith ns1:system_1 .
+
+ns1:arm_1 a ns1:Arm ;
+    rdfs:label "arms" ;
+    dul:associatedWith ns1:exporter_2 ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:docuverse earmark:hasContent "During his return, President Bouteflika agreed to purchase plans, air systems and other weapons from Russia in accordance with the position of Rosoboron exporter of Russian national arms exporters."^^xsd:string .
+
+ns1:male_1 rdfs:label "his" .
+
+ns1:Accordance rdfs:label "accordance" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Agree rdfs:label "agreed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Air rdfs:label "air" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:AirSystem rdfs:subClassOf ns1:System .
+
+ns1:Arm rdfs:label "arms" .
+
+ns1:ArmExporter rdfs:subClassOf ns1:Exporter .
+
+ns1:NationalArmExporter rdfs:subClassOf ns1:ArmExporter .
+
+ns1:Plan rdfs:label "plans" .
+
+ns1:Position rdfs:label "position" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Purchase rdfs:label "purchase" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Return rdfs:label "return" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Rosoboron rdfs:label "Rosoboron" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Russia rdfs:label "Russia" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Russia .
+
+ns1:RussianNationalArmExporter rdfs:subClassOf ns1:NationalArmExporter .
+
+ns1:System rdfs:label "systems" .
+
+ns1:exporter_1 a ns1:Exporter ;
+    rdfs:label "exporter" ;
+    dul:associatedWith ns1:Rosoboron ;
+    ns1:exporterOf ns1:exporter_2 .
+
+ns1:plan_1 a ns1:Plan ;
+    rdfs:label "plans" ;
+    dul:associatedWith ns1:system_1,
+        ns1:weapon_1 ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:position_1 a ns1:Position ;
+    rdfs:label "position" ;
+    quant:hasDeterminer quant:the ;
+    ns1:positionOf ns1:exporter_1 .
+
+ns1:purchase_1 a ns1:Purchase ;
+    rdfs:label "purchase" ;
+    vn.role:Agent ns1:Bouteflika ;
+    vn.role:Theme ns1:plan_1 ;
+    ns1:inAccordanceWith ns1:position_1 .
+
+ns1:return_1 a ns1:Return ;
+    rdfs:label "return" ;
+    ns1:returnOf ns1:Bouteflika .
+
+ns1:weapon_1 a ns1:Weapon ;
+    rdfs:label "other" ;
+    owl:differentFrom ns1:weapon_2 ;
+    ns1:from ns1:Russia .
+
+ns1:weapon_2 a ns1:Weapon ;
+    rdfs:label "weapons" ;
+    quant:hasDeterminer quant:other ;
+    quant:hasQuantifier quant:multiple .
+
+dbpedia:Russia a schema:Country,
+        schema:Place .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#President> a ns1:Male ;
+    rdfs:label "President" ;
+    boxer:possibleType dul:Role ;
+    owl:sameAs dbpedia:President .
+
+ns1:Exporter rdfs:label "exporter",
+        "exporters" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Male rdfs:label "Bouteflika",
+        "President" .
+
+ns1:Weapon rdfs:label "other",
+        "weapons" .
+
+ns1:exporter_2 a ns1:RussianNationalArmExporter ;
+    rdfs:label "exporters" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:system_1 a ns1:AirSystem ;
+    rdfs:label "systems" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Bouteflika a ns1:Male ;
+    rdfs:label "Bouteflika" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#President> ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#President> .
+

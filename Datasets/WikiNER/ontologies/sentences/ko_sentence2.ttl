@@ -1,0 +1,131 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence2.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence2.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence2" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence2" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:After rdfs:label "After" .
+
+ns1:More rdfs:label "more" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Than rdfs:label "than" .
+
+ns1:docuverse earmark:hasContent "After all, aarchist historian Daniel_Guerin some anarchists personalize more than society, more social than personalization."^^xsd:string .
+
+ns1:historian_1 rdfs:label "historian" ;
+    quant:hasQuantifier quant:all .
+
+ns1:situation_1 a ns1:Situation ;
+    ns1:entails ns1:situation_2 .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:Aarchist a owl:Class ;
+    rdfs:label "aarchist" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:AarchistHistorian a owl:Class ;
+    rdfs:label "Aarchist Historian" ;
+    dul:hasQuality ns1:Aarchist ;
+    rdfs:subClassOf ns1:Historian .
+
+ns1:Anarchist rdfs:label "anarchists" .
+
+ns1:Historian a owl:Class ;
+    rdfs:label "Daniel Guerin",
+        "historian" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Personalization a owl:Class ;
+    rdfs:label "personalization" ;
+    owl:equivalentClass dbpedia:Personalization .
+
+ns1:Personalize rdfs:label "personalize" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Social rdfs:label "social" ;
+    owl:sameAs dbpedia:Society .
+
+ns1:Society a owl:Class ;
+    rdfs:label "society" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Society .
+
+ns1:anarchist_1 a dbpedia:Anarchism,
+        ns1:Anarchist ;
+    rdfs:label "anarchists" ;
+    dul:hasQuality ns1:Social ;
+    quant:hasQuantifier quant:multiple,
+        quant:some ;
+    ns1:moreAnarchistMoreSocialThan ns1:personalization_1 ;
+    ns1:moreThan ns1:society_1 .
+
+ns1:personalization_1 a ns1:Personalization ;
+    rdfs:label "personalization" .
+
+ns1:personalize_1 a ns1:Personalize ;
+    rdfs:label "personalize" ;
+    boxer:agent ns1:anarchist_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Daniel_guerin,
+        ns1:thing_2 .
+
+ns1:society_1 a ns1:Society ;
+    rdfs:label "society" .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "all" ;
+    dul:associatedWith ns1:Daniel_guerin ;
+    ns1:after ns1:personalize_1 .
+
+ns1:Daniel_guerin a ns1:AarchistHistorian ;
+    rdfs:label "Daniel Guerin",
+        "historian" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Daniel_Guérin .
+
+owl:Thing rdfs:label "all" .
+

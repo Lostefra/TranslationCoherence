@@ -1,0 +1,117 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence258.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Predicate rdfs:label "for" .
+
+translation_coherence:zh_sentence258.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence258" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence258" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Noteq rdfs:label "other" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:criticize_1 a ns1:Criticize ;
+    rdfs:label "criticized" ;
+    vn.role:Agent ns1:warr_1 ;
+    vn.role:Predicate ns1:thing_1 ;
+    vn.role:Theme ns1:Lincoln .
+
+ns1:docuverse earmark:hasContent "The warrs and other opposition criticized Lincoln for refusing to compromise the problem of slavery."^^xsd:string .
+
+ns1:opposition_2 rdfs:label "opposition" .
+
+ns1:refuse_1 a ns1:Refuse ;
+    rdfs:label "refusing" ;
+    boxer:agent ns1:thing_1 ;
+    boxer:theme ns1:compromise_1 .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+ns1:Compromise rdfs:label "compromise" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Criticize rdfs:label "criticized" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+
+ns1:Opposition rdfs:label "opposition" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Problem rdfs:label "problem" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Refuse rdfs:label "refusing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Slavery a owl:Class ;
+    rdfs:label "slavery" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Slavery .
+
+ns1:Warr rdfs:label "warrs" .
+
+ns1:compromise_1 a ns1:Compromise ;
+    rdfs:label "compromise" ;
+    boxer:patient ns1:problem_1 ;
+    vn.role:Actor ns1:thing_1 .
+
+ns1:problem_1 a ns1:Problem ;
+    rdfs:label "problem" ;
+    quant:hasDeterminer quant:the ;
+    ns1:problemOf ns1:slavery_1 .
+
+ns1:slavery_1 a ns1:Slavery ;
+    rdfs:label "slavery" .
+
+ns1:warr_1 a ns1:Opposition,
+        ns1:Warr ;
+    rdfs:label "warrs" ;
+    quant:hasDeterminer quant:other,
+        quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:thing_1 a owl:Thing .
+

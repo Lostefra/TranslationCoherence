@@ -1,0 +1,159 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence491.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:ko_sentence491.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence491" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence491" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Few rdfs:label "few" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Inreportof rdfs:label "in this report of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "President, I say a few words to highlight two points in this report of the basic strategic significance on how we can see the Union."^^xsd:string .
+
+ns1:highlight_1 a ns1:Highlight ;
+    rdfs:label "highlight" ;
+    vn.role:Agent ns1:President ;
+    vn.role:Patient ns1:point_1 ;
+    ns1:inReportOf ns1:significance_1 .
+
+ns1:report_1 a ns1:Report ;
+    rdfs:label "report" ;
+    quant:hasDeterminer quant:this .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "say" ;
+    vn.role:Agent ns1:President ;
+    vn.role:Topic ns1:word_1 .
+
+ns1:Basic rdfs:label "basic" .
+
+ns1:BasicStrategicSignificance a owl:Class ;
+    rdfs:label "basic strategic significance" ;
+    rdfs:subClassOf ns1:StrategicSignificance .
+
+ns1:FewWord rdfs:subClassOf ns1:Word .
+
+ns1:Highlight rdfs:label "highlight" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Manner rdfs:label "how" .
+
+ns1:Point rdfs:label "points" .
+
+ns1:Report rdfs:label "report" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Say rdfs:label "say" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:See rdfs:label "see" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Significance a owl:Class ;
+    rdfs:label "significance" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Strategic a owl:Class ;
+    rdfs:label "strategic" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:StrategicSignificance a owl:Class ;
+    rdfs:label "Strategic Significance" ;
+    dul:hasQuality ns1:Strategic ;
+    rdfs:subClassOf ns1:Significance .
+
+ns1:Union rdfs:label "Union" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Word rdfs:label "words" .
+
+ns1:manner_1 a ns1:Manner ;
+    rdfs:label "how" .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:point_1 a ns1:Point ;
+    rdfs:label "points" ;
+    dul:hasDataValue "2"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple,
+        quant:two .
+
+ns1:see_1 a ns1:See ;
+    rdfs:label "see" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Theme ns1:Union ;
+    ns1:manner_rel ns1:manner_1 .
+
+ns1:significance_1 a ns1:BasicStrategicSignificance ;
+    rdfs:label "significance" ;
+    dul:hasQuality ns1:Basic ;
+    quant:hasDeterminer quant:the ;
+    ns1:on ns1:see_1 .
+
+ns1:word_1 a ns1:FewWord ;
+    rdfs:label "words" ;
+    quant:hasDeterminer quant:a ;
+    quant:hasQuantifier quant:few,
+        quant:multiple .
+
+ns1:Person rdfs:label "I",
+        "we" .
+
+ns1:President rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith ns1:person_1 ;
+    owl:sameAs dbpedia:President .
+

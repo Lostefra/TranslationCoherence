@@ -1,0 +1,151 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence308.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Predicate rdfs:label "in" .
+
+translation_coherence:fi_sentence308.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence308" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence308" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "His" .
+
+ns1:On rdfs:label "on" .
+
+ns1:appear_1 a ns1:Appear ;
+    rdfs:label "appeared" ;
+    vn.role:Predicate ns1:U.s._supreme_court ;
+    vn.role:Theme ns1:kasvous_1,
+        ns1:male_1 .
+
+ns1:boat_1 rdfs:label "boat" ;
+    quant:hasDeterminer quant:a .
+
+ns1:claim_1 a ns1:Claim ;
+    rdfs:label "claiming" ;
+    vn.role:Agent ns1:kasvous_1,
+        ns1:male_1 ;
+    vn.role:Theme ns1:situation_1,
+        ns1:situation_2 .
+
+ns1:docuverse earmark:hasContent "His reputation kasvoi, and he appeared in the U.S._Supreme_Court, claiming it was a canal boat that sank on the.."^^xsd:string .
+
+ns1:reputation_1 a ns1:Reputation ;
+    rdfs:label "reputation" ;
+    dul:associatedWith ns1:kasvous_1,
+        ns1:situation_1 .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Appear rdfs:label "appeared" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:CanalBoat a owl:Class ;
+    rdfs:label "Canal Boat" ;
+    dul:hasQuality ns1:Canal ;
+    rdfs:subClassOf ns1:Boat ;
+    owl:equivalentClass dbpedia:Barge .
+
+ns1:Claim rdfs:label "claiming" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Kasvous rdfs:label "kasvoi" .
+
+ns1:Reputation rdfs:label "reputation" ;
+    rdfs:subClassOf dul:Role .
+
+ns1:ReputationKasvous rdfs:subClassOf ns1:Kasvous .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Boat,
+        ns1:Canal,
+        ns1:Sink,
+        ns1:The,
+        ns1:U.s._supreme_court,
+        ns1:sink_1,
+        ns1:the_1 .
+
+ns1:sink_1 a ns1:Sink ;
+    rdfs:label "sank" ;
+    vn.role:Patient ns1:U.s._supreme_court ;
+    ns1:on ns1:the_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Boat,
+        ns1:Canal,
+        ns1:Sink,
+        ns1:The,
+        ns1:U.s._supreme_court,
+        ns1:sink_1,
+        ns1:the_1 .
+
+ns1:Boat a owl:Class ;
+    rdfs:label "U.S. Supreme Court",
+        "boat" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Canal a owl:Class ;
+    rdfs:label "canal" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Sink rdfs:label "sank" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:The rdfs:label "the" .
+
+ns1:kasvous_1 a ns1:ReputationKasvous ;
+    rdfs:label "kasvoi" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:reputationKasvousOf ns1:male_1 .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "His" .
+
+ns1:the_1 a ns1:The ;
+    rdfs:label "the" .
+
+ns1:U.s._supreme_court a ns1:CanalBoat ;
+    rdfs:label "U.S. Supreme Court",
+        "boat" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality owl:Thing ;
+    owl:sameAs dbpedia:Supreme_Court_of_the_United_States .
+

@@ -1,0 +1,145 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence527.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Source rdfs:label "from" .
+
+translation_coherence:zh_sentence527.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence527" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence527" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:To rdfs:label "to" .
+
+ns1:With rdfs:label "With" .
+
+ns1:docuverse earmark:hasContent "With regard to the most remote regions, we have received only a memorandum from Governments, but this is not a pretext for interpretation."^^xsd:string .
+
+ns1:pretext_1 rdfs:label "pretext" .
+
+ns1:receive_2 a ns1:Receive ;
+    rdfs:label "received" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Source ns1:government_1 ;
+    vn.role:Theme ns1:memorandum_1 ;
+    ns1:withRegardTo ns1:region_1 .
+
+ns1:regard_1 a ns1:Regard ;
+    rdfs:label "regard" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:receive_1 ;
+    ns1:entails ns1:situation_2 .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves ns1:interpretation_1,
+        ns1:thing_2 .
+
+ns1:Government rdfs:label "Governments" .
+
+ns1:Interpretation rdfs:label "interpretation" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Memorandum rdfs:label "memorandum" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Most rdfs:label "most" .
+
+ns1:MostRemoteRegion rdfs:subClassOf ns1:RemoteRegion .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Pretext rdfs:label "pretext" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Regard rdfs:label "regard" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Region rdfs:label "regions" .
+
+ns1:Remote rdfs:label "remote" .
+
+ns1:RemoteRegion rdfs:subClassOf ns1:Region .
+
+ns1:memorandum_1 a ns1:Memorandum ;
+    rdfs:label "memorandum" ;
+    quant:hasDeterminer quant:a .
+
+ns1:receive_1 a ns1:Receive ;
+    vn.role:Source ns1:government_1 ;
+    vn.role:Theme ns1:thing_1 .
+
+ns1:region_1 a ns1:MostRemoteRegion ;
+    rdfs:label "regions" ;
+    dul:hasQuality ns1:Most,
+        ns1:Remote ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:person_1 .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:thing_2 a owl:Thing,
+        ns1:Pretext ;
+    rdfs:label "this" ;
+    quant:hasDeterminer quant:a,
+        quant:this ;
+    ns1:for ns1:interpretation_1 .
+
+owl:Thing rdfs:label "this" .
+
+ns1:Receive rdfs:label "received" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:government_1 a ns1:Government ;
+    rdfs:label "Governments" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:interpretation_1 a ns1:Interpretation ;
+    rdfs:label "interpretation" .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+

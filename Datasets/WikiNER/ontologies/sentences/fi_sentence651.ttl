@@ -1,0 +1,184 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence651.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme2 rdfs:label "to" .
+
+translation_coherence:fi_sentence651.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence651" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence651" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:attitude_1 a ns1:TraditionalReaicanAttitude ;
+    rdfs:label "attitude" ;
+    dul:hasQuality ns1:Topic,
+        ns1:Traditional ;
+    ns1:as ns1:atheist_1,
+        ns1:member_1 ;
+    ns1:traditionalReaicanAttitudeOf ns1:Rand .
+
+ns1:docuverse earmark:hasContent "Deli Rand's traditional reaican attitude as an alternative-teit atheist, political figures referring to Rand's influence are often conservative or libertarian members of the Republican_Party."^^xsd:string .
+
+ns1:refer_1 a ns1:Refer ;
+    rdfs:label "referring" ;
+    vn.role:Theme1 ns1:figure_1 ;
+    vn.role:Theme2 ns1:influence_1 ;
+    ns1:union ns1:situation_1 .
+
+dbpedia:Ayn_Rand a schema:Person .
+
+dbpedia:Immanuel_Kant rdfs:subClassOf schema:Person .
+
+dbpedia:Republican_Party_(United_States) rdfs:subClassOf schema:Organization .
+
+ns1:Alternative-teit a owl:Class ;
+    rdfs:label "alternative-teit" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Alternative-teitAtheist a owl:Class ;
+    rdfs:label "Alternative-teit Atheist" ;
+    dul:hasQuality ns1:Alternative-teit ;
+    rdfs:subClassOf ns1:Atheist .
+
+ns1:Atheist a owl:Class ;
+    rdfs:label "atheist" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Atheism .
+
+ns1:Attitude a owl:Class ;
+    rdfs:label "attitude" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> ;
+    owl:equivalentClass dbpedia:Attitude_(psychology) .
+
+ns1:Deli rdfs:label "Deli" ;
+    boxer:possibleType owl:Thing .
+
+ns1:Figure rdfs:label "figures" .
+
+ns1:Influence a owl:Class ;
+    rdfs:label "influence" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Immanuel_Kant .
+
+ns1:Libertarian rdfs:label "libertarian" ;
+    owl:sameAs dbpedia:Libertarianism .
+
+ns1:LibertarianMember rdfs:subClassOf ns1:Member .
+
+ns1:Member rdfs:label "members" .
+
+ns1:Often rdfs:label "often" .
+
+ns1:Political rdfs:label "political" ;
+    owl:sameAs dbpedia:Politics .
+
+ns1:PoliticalFigure rdfs:subClassOf ns1:Figure .
+
+ns1:Reaican a owl:Class ;
+    rdfs:label "reaican" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ReaicanAttitude a owl:Class ;
+    rdfs:label "reaican attitude" ;
+    dul:hasQuality ns1:Reaican ;
+    rdfs:subClassOf ns1:Attitude .
+
+ns1:Refer rdfs:label "referring" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:RepublicanParty rdfs:subClassOf dul:Organization .
+
+ns1:Republican_party a owl:Class ;
+    rdfs:label "Republican Party" ;
+    rdfs:subClassOf ns1:RepublicanParty ;
+    owl:equivalentClass dbpedia:Republican_Party_(United_States) .
+
+ns1:Traditional rdfs:label "traditional" ;
+    owl:sameAs dbpedia:Tradition .
+
+ns1:TraditionalReaicanAttitude a owl:Class ;
+    rdfs:label "traditional reaican attitude" ;
+    rdfs:subClassOf ns1:ReaicanAttitude .
+
+ns1:influence_1 a ns1:Influence ;
+    rdfs:label "influence" ;
+    ns1:influenceOf ns1:Rand .
+
+ns1:member_1 a ns1:LibertarianMember ;
+    rdfs:label "members" ;
+    dul:hasQuality ns1:Libertarian ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:libertarianMemberOf ns1:republican_party_1 .
+
+ns1:republican_party_1 a ns1:Republican_party ;
+    rdfs:label "Republican Party" ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Conservative,
+        ns1:figure_1 ;
+    dul:associatedWith ns1:atheist_1 ;
+    dul:hasQuality ns1:Often .
+
+ns1:Conservative rdfs:label "conservative" ;
+    owl:sameAs dbpedia:Conservatism .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:Deli ;
+    owl:sameAs dbpedia:Ayn_Rand .
+
+ns1:atheist_1 a ns1:Alternative-teitAtheist ;
+    rdfs:label "atheist" ;
+    quant:hasDeterminer quant:an .
+
+ns1:figure_1 a ns1:PoliticalFigure ;
+    rdfs:label "figures" ;
+    dul:hasQuality ns1:Conservative,
+        ns1:Political ;
+    quant:hasQuantifier quant:multiple .
+

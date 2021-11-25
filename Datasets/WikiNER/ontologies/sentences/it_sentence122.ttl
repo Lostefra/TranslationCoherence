@@ -1,0 +1,217 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence122.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence122.ttl a owl:Ontology ;
+    rdfs:label "it_sentence122" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence122" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Although rdfs:label "Although" .
+
+ns1:Few rdfs:label "few" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "Although snow is a rare event in most of the Alabama, the state areas north of Montgomery can receive a snow dust sometimes every winter, with occasional moderately heavy snowfall every few years."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:most_1,
+        ns1:snow_1 ;
+    ns1:although ns1:receive_1 .
+
+ns1:snow_2 a ns1:Snow ;
+    rdfs:label "snow" ;
+    dul:associatedWith ns1:dust_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:state_1 a ns1:State ;
+    rdfs:label "state" ;
+    dul:associatedWith ns1:area_1 ;
+    quant:hasDeterminer quant:the .
+
+<http://dbpedia.org/resource/Montgomery,_Alabama> a schema:City,
+        schema:Place .
+
+ns1:Alabama rdfs:label "Alabama" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Alabama .
+
+ns1:Area rdfs:label "areas" .
+
+ns1:Dust rdfs:label "dust" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Event a owl:Class ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:FewYear rdfs:subClassOf ns1:Year .
+
+ns1:Heavy a owl:Class ;
+    rdfs:label "heavy" ;
+    dul:hasQuality ns1:Moderately ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:HeavySnowfall a owl:Class ;
+    rdfs:label "Heavy Snowfall" ;
+    dul:hasQuality ns1:Heavy ;
+    rdfs:subClassOf ns1:Snowfall .
+
+ns1:Moderately rdfs:label "moderately" .
+
+ns1:ModeratelyHeavySnowfall a owl:Class ;
+    rdfs:label "Moderately Heavy Snowfall" ;
+    rdfs:subClassOf ns1:HeavySnowfall .
+
+ns1:Montgomery rdfs:label "Montgomery" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs <http://dbpedia.org/resource/Montgomery,_Alabama> .
+
+ns1:Most rdfs:label "most" .
+
+ns1:North rdfs:label "north" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Occasional rdfs:label "occasional" .
+
+ns1:OccasionalModeratelyHeavySnowfall a owl:Class ;
+    rdfs:label "Occasional Moderately Heavy Snowfall" ;
+    rdfs:subClassOf ns1:ModeratelyHeavySnowfall .
+
+ns1:Rare a owl:Class ;
+    rdfs:label "rare" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:RareEvent a owl:Class ;
+    rdfs:label "rare event" ;
+    dul:hasQuality ns1:Rare ;
+    rdfs:subClassOf dul:Event,
+        ns1:Event .
+
+ns1:Receive rdfs:label "receive" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:SnowDust rdfs:label "Snow Dust" ;
+    rdfs:subClassOf ns1:Dust .
+
+ns1:Snowfall a owl:Class ;
+    rdfs:label "snowfall" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Snow .
+
+ns1:Sometimes rdfs:label "sometimes" .
+
+ns1:State a owl:Class ;
+    rdfs:label "state" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> ;
+    owl:equivalentClass dbpedia:Alabama .
+
+ns1:StateArea rdfs:subClassOf ns1:Area .
+
+ns1:Winter rdfs:label "winter" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Year rdfs:label "years" .
+
+ns1:event_1 a dul:Event ;
+    rdfs:label "event" ;
+    quant:hasDeterminer quant:a .
+
+ns1:most_1 a ns1:Most ;
+    rdfs:label "most" .
+
+ns1:north_1 a ns1:North ;
+    rdfs:label "north" .
+
+ns1:receive_1 a ns1:Receive ;
+    rdfs:label "receive" ;
+    boxing:hasModality boxing:Possible ;
+    dul:associatedWith ns1:winter_1,
+        ns1:year_1 ;
+    dul:hasQuality ns1:Sometimes ;
+    vn.role:Agent ns1:area_1 ;
+    vn.role:Theme ns1:dust_1 ;
+    ns1:with ns1:snowfall_1 .
+
+ns1:snow_1 a ns1:RareEvent,
+        ns1:Snow ;
+    rdfs:label "snow" ;
+    owl:sameAs ns1:event_1 ;
+    ns1:inMostOf ns1:Alabama .
+
+ns1:snowfall_1 a ns1:OccasionalModeratelyHeavySnowfall ;
+    rdfs:label "snowfall" ;
+    dul:hasQuality ns1:Occasional .
+
+ns1:winter_1 a ns1:Winter ;
+    rdfs:label "winter" ;
+    quant:hasQuantifier quant:every .
+
+ns1:year_1 a ns1:FewYear ;
+    rdfs:label "years" ;
+    quant:hasQuantifier quant:every,
+        quant:few,
+        quant:multiple .
+
+dbpedia:Alabama a schema:AdministrativeArea,
+        schema:Place ;
+    rdfs:subClassOf schema:AdministrativeArea,
+        schema:Place .
+
+ns1:Snow a owl:Class ;
+    rdfs:label "snow" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Snow .
+
+ns1:area_1 a ns1:StateArea ;
+    rdfs:label "areas" ;
+    dul:associatedWith ns1:north_1 ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:stateAreaOf ns1:Montgomery .
+
+ns1:dust_1 a ns1:SnowDust ;
+    rdfs:label "dust" .
+
+dul:Event rdfs:label "event" .
+

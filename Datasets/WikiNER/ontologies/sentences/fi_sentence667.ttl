@@ -1,0 +1,157 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence667.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence667.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence667" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence667" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Include rdfs:label "including" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "Connes has performed his work in the fields of mathematics and theoretical physics, including readingte, differential differentmetry and particle physics."^^xsd:string .
+
+ns1:field_1 a ns1:Field ;
+    rdfs:label "fields" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:include ns1:readingte_1 .
+
+ns1:male_1 coref:coref ns1:Connes .
+
+ns1:particle_1 a ns1:Particle ;
+    rdfs:label "particle" ;
+    dul:associatedWith ns1:physics_2 .
+
+ns1:perform_1 a ns1:Perform ;
+    rdfs:label "performed" ;
+    vn.role:Agent ns1:Connes ;
+    vn.role:Theme ns1:work_1 .
+
+ns1:physics_1 a ns1:TheoreticalPhysics ;
+    rdfs:label "physics" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Differential a owl:Class ;
+    rdfs:label "differential" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Differential_equation .
+
+ns1:DifferentialDifferentmetry a owl:Class ;
+    rdfs:label "Differential Differentmetry" ;
+    dul:hasQuality ns1:Differential ;
+    rdfs:subClassOf ns1:Differentmetry .
+
+ns1:Differentmetry a owl:Class ;
+    rdfs:label "differentmetry" .
+
+ns1:Field rdfs:label "fields" .
+
+ns1:Mathematics a owl:Class ;
+    rdfs:label "mathematics" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> ;
+    owl:equivalentClass dbpedia:Mathematics .
+
+ns1:Particle rdfs:label "particle" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:ParticlePhysics a owl:Class ;
+    rdfs:label "Particle Physics" ;
+    rdfs:subClassOf ns1:Physics ;
+    owl:equivalentClass dbpedia:Particle_physics .
+
+ns1:Perform rdfs:label "performed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Readingte rdfs:label "readingte" .
+
+ns1:Theoretical a owl:Class ;
+    rdfs:label "theoretical" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:TheoreticalPhysics a owl:Class ;
+    rdfs:label "Theoretical Physics" ;
+    dul:hasQuality ns1:Theoretical ;
+    rdfs:subClassOf ns1:Physics ;
+    owl:equivalentClass dbpedia:Theoretical_physics .
+
+ns1:Work a owl:Class ;
+    rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Work_(physics) .
+
+ns1:differentmetry_1 a ns1:DifferentialDifferentmetry ;
+    rdfs:label "differentmetry" .
+
+ns1:mathematics_1 a ns1:Mathematics ;
+    rdfs:label "mathematics" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:readingte_1 a ns1:Readingte ;
+    rdfs:label "readingte" ;
+    dul:associatedWith ns1:differentmetry_1,
+        ns1:physics_2 .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "work" ;
+    ns1:inFieldOf ns1:mathematics_1 ;
+    ns1:workOf ns1:Connes .
+
+ns1:Physics a owl:Class ;
+    rdfs:label "physics" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:physics_2 a ns1:ParticlePhysics ;
+    rdfs:label "physics" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Connes a ns1:Male ;
+    rdfs:label "Connes",
+        "his" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Alain_Connes .
+

@@ -1,0 +1,171 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence467.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence467.ttl a owl:Ontology ;
+    rdfs:label "it_sentence467" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence467" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:During rdfs:label "during" .
+
+ns1:In rdfs:label "In",
+        "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "In the opinion of the story, Apellicon tried to repair some of the damages that were done during the stay of manuscripts in the basement, introducing a number of errors in the text."^^xsd:string .
+
+ns1:introduce_1 a ns1:Introduce ;
+    rdfs:label "introducing" ;
+    vn.role:Agent ns1:Apellicon ;
+    vn.role:Theme ns1:number_1 .
+
+ns1:opinion_1 a ns1:Opinion ;
+    rdfs:label "opinion" ;
+    quant:hasDeterminer quant:the .
+
+ns1:try_1 a ns1:Try ;
+    rdfs:label "tried" ;
+    vn.role:Agent ns1:Apellicon ;
+    vn.role:Predicate ns1:situation_1 ;
+    ns1:inOpinionOf ns1:story_1 .
+
+owl:Thing rdfs:label "some" .
+
+ns1:Basement rdfs:label "basement" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Damages rdfs:label "damages" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Do rdfs:label "done" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Error rdfs:label "errors" .
+
+ns1:Introduce rdfs:label "introducing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Manuscript rdfs:label "manuscripts" .
+
+ns1:Number rdfs:label "number" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Opinion rdfs:label "opinion" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Repair rdfs:label "repair" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Stay rdfs:label "stay" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Story rdfs:label "story" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Text rdfs:label "text" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Try rdfs:label "tried" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:basement_1 a ns1:Basement ;
+    rdfs:label "basement" ;
+    quant:hasDeterminer quant:the .
+
+ns1:do_1 a ns1:Do ;
+    rdfs:label "done" ;
+    boxer:patient ns1:damages_1 ;
+    ns1:during ns1:stay_1 ;
+    ns1:in ns1:basement_1 .
+
+ns1:error_1 a ns1:Error ;
+    rdfs:label "errors" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:text_1 .
+
+ns1:number_1 a ns1:Number ;
+    rdfs:label "number" ;
+    quant:hasDeterminer quant:a ;
+    ns1:numberOf ns1:error_1 .
+
+ns1:repair_1 a ns1:Repair ;
+    rdfs:label "repair" ;
+    boxer:agent ns1:Apellicon ;
+    boxer:patient ns1:thing_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:do_1,
+        ns1:manuscript_1,
+        ns1:repair_1,
+        ns1:thing_1 .
+
+ns1:stay_1 a ns1:Stay ;
+    rdfs:label "stay" ;
+    quant:hasDeterminer quant:the ;
+    ns1:stayOf ns1:manuscript_1 .
+
+ns1:story_1 a ns1:Story ;
+    rdfs:label "story" ;
+    quant:hasDeterminer quant:the .
+
+ns1:text_1 a ns1:Text ;
+    rdfs:label "text" ;
+    quant:hasDeterminer quant:the .
+
+ns1:damages_1 a ns1:Damages ;
+    rdfs:label "damages" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple,
+        quant:some .
+
+ns1:manuscript_1 a ns1:Manuscript ;
+    rdfs:label "manuscripts" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "some" ;
+    ns1:thingOf ns1:damages_1 .
+
+ns1:Apellicon rdfs:label "Apellicon" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Apellicon_of_Teos .
+

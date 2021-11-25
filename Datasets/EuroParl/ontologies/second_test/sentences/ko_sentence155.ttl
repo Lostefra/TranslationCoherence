@@ -1,0 +1,88 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence155.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence155.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence155" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence155" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "We are not another field to resolve the shortcomings of enforcement later."^^xsd:string .
+
+ns1:field_2 rdfs:label "field" .
+
+ns1:resolve_1 a ns1:Resolve ;
+    rdfs:label "resolve" ;
+    boxer:patient ns1:shortcoming_1 ;
+    boxing:hasTruthValue boxing:False ;
+    dul:hasQuality ns1:Later ;
+    vn.role:Actor ns1:person_1 .
+
+ns1:Enforcement rdfs:label "enforcement" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Field rdfs:label "field" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Later rdfs:label "later" .
+
+ns1:Person rdfs:label "We" .
+
+ns1:Resolve rdfs:label "resolve" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Shortcoming rdfs:label "shortcomings" .
+
+ns1:enforcement_1 a ns1:Enforcement ;
+    rdfs:label "enforcement" .
+
+ns1:person_1 a ns1:Field,
+        ns1:Person ;
+    rdfs:label "We" ;
+    quant:hasDeterminer quant:another .
+
+ns1:shortcoming_1 a ns1:Shortcoming ;
+    rdfs:label "shortcomings" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:shortcomingOf ns1:enforcement_1 .
+

@@ -1,0 +1,152 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence369.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "to" .
+
+vn.role:Location rdfs:label "from" .
+
+translation_coherence:de_sentence369.ttl a owl:Ontology ;
+    rdfs:label "de_sentence369" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence369" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "been" .
+
+ns1:Militaryly rdfs:label "militaryly" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "The Confederacy was excluded from substitutes, so Lee has been forced 's militaryly with any fight to bring them back to the walls outside of Saint_Petersburg."^^xsd:string .
+
+ns1:exclude_1 a ns1:Exclude ;
+    rdfs:label "excluded" ;
+    vn.role:Location ns1:substitute_1 ;
+    vn.role:Theme ns1:confederacy_1 .
+
+ns1:force_1 a ns1:Force ;
+    rdfs:label "forced" ;
+    vn.role:Patient ns1:Lee .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:bring_1 ;
+    ns1:entails ns1:situation_2 .
+
+ns1:thing_1 coref:coref <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s_1> .
+
+ns1:wall_1 a ns1:Wall ;
+    rdfs:label "walls" ;
+    dul:associatedWith ns1:outside_1 ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+dbpedia:Saint_Petersburg a schema:AdministrativeArea,
+        schema:Place .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s> rdfs:label "'s" .
+
+owl:Thing rdfs:label "them" .
+
+ns1:Bring rdfs:label "bring" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Confederacy rdfs:label "Confederacy" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Exclude rdfs:label "excluded" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Fight rdfs:label "fight" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Force rdfs:label "forced" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Lee a <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s> ;
+    rdfs:label "Lee" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:So ;
+    ns1:militarylyWith ns1:fight_1 .
+
+ns1:Outside rdfs:label "outside" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Saint_petersburg rdfs:label "Saint Petersburg" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Saint_Petersburg .
+
+ns1:So rdfs:label "so" .
+
+ns1:Substitute rdfs:label "substitutes" .
+
+ns1:Wall rdfs:label "walls" .
+
+ns1:WallOutside rdfs:subClassOf ns1:Outside .
+
+ns1:confederacy_1 a ns1:Confederacy ;
+    rdfs:label "Confederacy" ;
+    quant:hasDeterminer quant:the .
+
+ns1:fight_1 a ns1:Fight ;
+    rdfs:label "fight" ;
+    quant:hasQuantifier quant:any .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s_1>,
+        ns1:bring_1 .
+
+ns1:substitute_1 a ns1:Substitute ;
+    rdfs:label "substitutes" ;
+    quant:hasQuantifier quant:multiple .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s_1> a owl:Thing ;
+    rdfs:label "'s",
+        "them" .
+
+ns1:bring_1 a ns1:Bring ;
+    rdfs:label "bring" ;
+    vn.role:Destination ns1:outside_1 .
+
+ns1:outside_1 a ns1:WallOutside ;
+    rdfs:label "outside" ;
+    ns1:wallOutsideOf ns1:Saint_petersburg .
+

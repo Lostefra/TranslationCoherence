@@ -1,0 +1,124 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence361.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence361.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence361" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence361" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:After rdfs:label "After" .
+
+ns1:Despite rdfs:label "despite" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:criticism_1 rdfs:label "criticism" .
+
+ns1:docuverse earmark:hasContent "After a sudden attack on Federationburg in December, Joseph Hekel Command, despite his loose conversations and criticism of former commanders."^^xsd:string .
+
+ns1:event_1 a dul:Event ;
+    ns1:after ns1:attack_1 ;
+    ns1:despite ns1:conversation_1 .
+
+ns1:Attack a owl:Class ;
+    rdfs:label "attack" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Commander rdfs:label "commanders" .
+
+ns1:Conversation rdfs:label "conversations" .
+
+ns1:Criticism rdfs:label "criticism" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Federationburg rdfs:label "Federationburg" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Former rdfs:label "former" .
+
+ns1:FormerCommander rdfs:subClassOf ns1:Commander .
+
+ns1:Joseph_hekel_command rdfs:label "Joseph Hekel Command" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Loose rdfs:label "loose" .
+
+ns1:LooseConversation rdfs:subClassOf ns1:Conversation .
+
+ns1:Sudden a owl:Class ;
+    rdfs:label "sudden" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SuddenAttack a owl:Class ;
+    rdfs:label "sudden attack" ;
+    dul:hasQuality ns1:Sudden ;
+    rdfs:subClassOf ns1:Attack .
+
+ns1:attack_1 a ns1:SuddenAttack ;
+    rdfs:label "attack" ;
+    dul:associatedWith ns1:Joseph_hekel_command ;
+    quant:hasDeterminer quant:a ;
+    ns1:in "0001-12-01"^^xsd:date ;
+    ns1:on ns1:Federationburg .
+
+ns1:commander_1 a ns1:FormerCommander ;
+    rdfs:label "commanders" ;
+    dul:hasQuality ns1:Former ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:conversation_1 a ns1:Criticism,
+        ns1:LooseConversation ;
+    rdfs:label "conversations" ;
+    dul:hasQuality ns1:Loose ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:criticismOf ns1:male_1 ;
+    ns1:looseConversationOf ns1:commander_1 .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "his" .
+

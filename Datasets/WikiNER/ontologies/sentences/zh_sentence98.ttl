@@ -1,0 +1,161 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence98.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "to" .
+
+vn.role:Source rdfs:label "After" .
+
+translation_coherence:zh_sentence98.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence98" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence98" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:also_1 rdfs:label "also" .
+
+ns1:docuverse earmark:hasContent "After 1972, the country's white voters transferred a large number of support to the Republic's candidates in the presidential elections (and also in southern neighbouring countries)."^^xsd:string .
+
+ns1:transfer_1 a ns1:Transfer ;
+    rdfs:label "transferred" ;
+    vn.role:Agent ns1:voter_1 ;
+    vn.role:Destination ns1:candidate_1 ;
+    vn.role:Source "1972-01-01"^^xsd:date ;
+    vn.role:Theme ns1:number_1 .
+
+ns1:Also rdfs:label "also" .
+
+ns1:Candidate rdfs:label "candidates" .
+
+ns1:Election rdfs:label "elections" .
+
+ns1:Large a owl:Class ;
+    rdfs:label "large" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:LargeNumber a owl:Class ;
+    rdfs:label "large number" ;
+    dul:hasQuality ns1:Large ;
+    rdfs:subClassOf ns1:Number .
+
+ns1:Neighbouring rdfs:label "neighbouring" .
+
+ns1:NeighbouringCountry rdfs:subClassOf ns1:Country .
+
+ns1:Number a owl:Class ;
+    rdfs:label "number" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Presidential rdfs:label "presidential" ;
+    owl:sameAs dbpedia:Election .
+
+ns1:PresidentialElection rdfs:subClassOf ns1:Election .
+
+ns1:Republic rdfs:label "Republic" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Republic .
+
+ns1:Southern rdfs:label "southern" ;
+    owl:sameAs dbpedia:Southern_United_States .
+
+ns1:SouthernNeighbouringCountry rdfs:subClassOf ns1:NeighbouringCountry .
+
+ns1:Support rdfs:label "support" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Transfer rdfs:label "transferred" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Voter rdfs:label "voters" .
+
+ns1:White rdfs:label "white" ;
+    owl:sameAs dbpedia:White_people .
+
+ns1:WhiteVoter rdfs:subClassOf ns1:Voter .
+
+ns1:candidate_1 a ns1:Also,
+        ns1:Candidate ;
+    rdfs:label "candidates" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:alsoOf ns1:Republic ;
+    ns1:in ns1:country_2,
+        ns1:election_1 .
+
+ns1:country_1 a ns1:Country ;
+    rdfs:label "country" ;
+    quant:hasDeterminer quant:the .
+
+ns1:country_2 a ns1:SouthernNeighbouringCountry ;
+    rdfs:label "countries" ;
+    dul:hasQuality ns1:Neighbouring,
+        ns1:Southern ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:election_1 a ns1:PresidentialElection ;
+    rdfs:label "elections" ;
+    dul:hasQuality ns1:Presidential ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:number_1 a ns1:LargeNumber ;
+    rdfs:label "number" ;
+    quant:hasDeterminer quant:a ;
+    ns1:largeNumberOf ns1:support_1 .
+
+ns1:support_1 a ns1:Support ;
+    rdfs:label "support" .
+
+ns1:voter_1 a dbpedia:Voting,
+        ns1:WhiteVoter ;
+    rdfs:label "voters" ;
+    dul:hasQuality ns1:White ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:whiteVoterOf ns1:country_1 .
+
+ns1:Country a owl:Class ;
+    rdfs:label "countries",
+        "country" ;
+    rdfs:subClassOf dul:Organization ;
+    owl:equivalentClass dbpedia:Nation_state .
+

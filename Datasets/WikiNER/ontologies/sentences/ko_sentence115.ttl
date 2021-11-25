@@ -1,0 +1,191 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence115.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:ko_sentence115.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence115" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence115" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:From rdfs:label "from" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "(" .
+
+ns1:docuverse earmark:hasContent "Alabama annually receives an average of 56 inches (1400 mm) of rainfall and enjoys a long growth season of up to 300 days from the south part of the country."^^xsd:string .
+
+ns1:enjoy_1 a ns1:Enjoy ;
+    rdfs:label "enjoys" ;
+    dul:hasQuality ns1:Annually ;
+    vn.role:Experiencer ns1:Alabama ;
+    vn.role:Theme ns1:season_1 .
+
+ns1:growth_1 a ns1:Growth ;
+    rdfs:label "growth" ;
+    dul:associatedWith ns1:season_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:receive_1 a ns1:AnnuallyReceive ;
+    rdfs:label "receives" ;
+    dul:hasQuality ns1:Annually ;
+    vn.role:Agent ns1:Alabama ;
+    vn.role:Theme ns1:average_1 .
+
+dbpedia:Alabama a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:AnnuallyReceive rdfs:subClassOf ns1:Receive .
+
+ns1:Average rdfs:label "average" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Country rdfs:label "country" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Day rdfs:label "days" .
+
+ns1:Enjoy rdfs:label "enjoys" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:GrowthSeason a owl:Class ;
+    rdfs:label "Growth Season" ;
+    dul:associatedWith ns1:Growth ;
+    rdfs:subClassOf ns1:Season .
+
+ns1:Inch rdfs:label "inches" .
+
+ns1:Long a owl:Class ;
+    rdfs:label "long" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:LongGrowth a owl:Class ;
+    dul:hasQuality ns1:Long ;
+    rdfs:subClassOf ns1:Growth .
+
+ns1:LongGrowthSeason a owl:Class ;
+    rdfs:label "long growth season" ;
+    dul:associatedWith ns1:LongGrowth ;
+    rdfs:subClassOf ns1:GrowthSeason .
+
+ns1:Mm rdfs:label "mm" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:Part a owl:Class ;
+    rdfs:label "part" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Rainfall a owl:Class ;
+    rdfs:label "rainfall" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Rain .
+
+ns1:Receive rdfs:label "receives" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Season a owl:Class ;
+    rdfs:label "season" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:South a owl:Class ;
+    rdfs:label "south" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SouthPart a owl:Class ;
+    rdfs:label "South Part" ;
+    dul:hasQuality ns1:South ;
+    rdfs:subClassOf ns1:Part .
+
+ns1:To rdfs:label "to" .
+
+ns1:Up rdfs:label "up" .
+
+ns1:average_1 a ns1:Average ;
+    rdfs:label "average" ;
+    dul:associatedWith ns1:mm_1 ;
+    quant:hasDeterminer quant:an ;
+    ns1:averageOf ns1:inch_1,
+        ns1:rainfall_1 .
+
+ns1:country_1 a ns1:Country ;
+    rdfs:label "country" ;
+    quant:hasDeterminer quant:the .
+
+ns1:day_1 a ns1:Day ;
+    rdfs:label "days" ;
+    dul:hasDataValue "300"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:To,
+        ns1:Up ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:from ns1:part_1 .
+
+ns1:inch_1 a ns1:Inch ;
+    rdfs:label "inches" ;
+    dul:hasDataValue "56"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:mm_1 a ns1:Mm ;
+    rdfs:label "mm" ;
+    dul:hasDataValue "1400"^^xsd:nonNegativeInteger .
+
+ns1:part_1 a ns1:SouthPart ;
+    rdfs:label "part" ;
+    quant:hasDeterminer quant:the ;
+    ns1:southPartOf ns1:country_1 .
+
+ns1:rainfall_1 a ns1:Rainfall ;
+    rdfs:label "rainfall" .
+
+ns1:Alabama rdfs:label "Alabama" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Alabama .
+
+ns1:Annually rdfs:label "annually" .
+
+ns1:season_1 a ns1:LongGrowthSeason ;
+    rdfs:label "season" ;
+    ns1:longGrowthSeasonOf ns1:day_1 .
+
+ns1:Growth a owl:Class ;
+    rdfs:label "growth" ;
+    rdfs:subClassOf dul:Process .
+

@@ -1,0 +1,125 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence301.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence301.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence301" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence301" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:On rdfs:label "On" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "On 1841, Lincoln practice William_Herndon, who think Lincoln is a studio young man."^^xsd:string .
+
+ns1:event_1 a dul:Event ;
+    dul:associatedWith ns1:William_herndon ;
+    ns1:on "1841-01-01"^^xsd:date .
+
+ns1:man_1 rdfs:label "man" .
+
+ns1:practice_1 rdfs:label "practice" .
+
+ns1:studio_1 a ns1:Studio ;
+    rdfs:label "studio" ;
+    dul:associatedWith ns1:William_herndon ;
+    quant:hasDeterminer quant:a .
+
+ns1:think_1 a ns1:Think ;
+    rdfs:label "think" ;
+    vn.role:Agent ns1:William_herndon ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:Lincoln a ns1:StudioYoungMan ;
+    rdfs:label "Lincoln",
+        "man",
+        "studio" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Practice rdfs:label "William Herndon",
+        "practice" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Think rdfs:label "think" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:YoungMan a owl:Class ;
+    rdfs:label "young man" ;
+    dul:hasQuality ns1:Young ;
+    rdfs:subClassOf dul:Person,
+        ns1:Man .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Man,
+        ns1:Studio,
+        ns1:StudioYoungMan,
+        ns1:William_herndon,
+        ns1:Young .
+
+ns1:Man a owl:Class ;
+    rdfs:label "Lincoln",
+        "William Herndon",
+        "man" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Studio rdfs:label "Lincoln",
+        "William Herndon",
+        "studio" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Young a owl:Class ;
+    rdfs:label "young" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:StudioYoungMan a owl:Class ;
+    rdfs:label "studio young man" ;
+    rdfs:subClassOf ns1:YoungMan .
+
+ns1:William_herndon a ns1:Practice,
+        ns1:StudioYoungMan ;
+    rdfs:label "William Herndon",
+        "man",
+        "practice",
+        "studio" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:Lincoln ;
+    owl:sameAs dbpedia:William_Herndon_(lawyer) .
+

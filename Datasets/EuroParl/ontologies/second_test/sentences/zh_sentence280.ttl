@@ -1,0 +1,181 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence280.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme rdfs:label "with" .
+
+translation_coherence:zh_sentence280.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence280" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence280" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Between rdfs:label "between" .
+
+ns1:Entails rdfs:label "If" .
+
+ns1:Eq rdfs:label "was" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:able_1 a ns1:Able ;
+    rdfs:label "able" ;
+    boxer:agent ns1:Commissioner ;
+    boxing:hasTruthValue boxing:False ;
+    dul:associatedWith ns1:today_1 ;
+    dul:hasQuality ns1:So ;
+    ns1:entails ns1:prepare_1 .
+
+ns1:deal_1 rdfs:label "deal" .
+
+ns1:docuverse earmark:hasContent "If the Commissioner was not able to do so today, she was prepared to inform the Committee in writing on how to deal with the matter and what was the stage of negotiations between the Christian and the Economic Commission?"^^xsd:string .
+
+ns1:thing_3 rdfs:label "what" .
+
+ns1:Able rdfs:label "able" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Christian rdfs:label "Christian" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Christian .
+
+ns1:Commissioner rdfs:label "Commissioner" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Commissioner .
+
+ns1:Committee rdfs:label "Committee" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Committee .
+
+ns1:Deal rdfs:label "deal" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Economic_commission rdfs:label "Economic Commission" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Female rdfs:label "she" .
+
+ns1:Inform rdfs:label "inform" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Manner rdfs:label "how" .
+
+ns1:Matter rdfs:label "matter" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Prepare rdfs:label "prepared" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:So rdfs:label "so" .
+
+ns1:Today rdfs:label "today" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Write rdfs:label "writing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:inform_1 a ns1:Inform ;
+    rdfs:label "inform" ;
+    vn.role:Agent ns1:female_1 ;
+    vn.role:Recipient ns1:Committee ;
+    ns1:in ns1:thing_2 .
+
+ns1:matter_1 a ns1:Matter ;
+    rdfs:label "matter" ;
+    quant:hasDeterminer quant:the .
+
+ns1:prepare_1 a ns1:Prepare ;
+    rdfs:label "prepared" ;
+    boxer:theme ns1:situation_1 ;
+    vn.role:Theme ns1:female_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Negotiation,
+        ns1:inform_1,
+        ns1:manner_1,
+        ns1:negotiation_1,
+        ns1:stage_1,
+        ns1:write_1 .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:today_1 a ns1:Today ;
+    rdfs:label "today" .
+
+ns1:write_1 a ns1:Write ;
+    rdfs:label "writing" ;
+    vn.role:Agent ns1:thing_2 ;
+    ns1:on ns1:manner_1 .
+
+ns1:Negotiation rdfs:label "negotiations" .
+
+ns1:Stage rdfs:label "stage" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:female_1 a ns1:Female ;
+    rdfs:label "she" .
+
+ns1:manner_1 a ns1:Deal,
+        ns1:Manner ;
+    rdfs:label "how" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Theme ns1:matter_1,
+        ns1:stage_1 .
+
+ns1:negotiation_1 a ns1:Negotiation ;
+    rdfs:label "negotiations" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:between ns1:Christian,
+        ns1:Economic_commission .
+
+ns1:stage_1 a owl:Thing,
+        ns1:Stage ;
+    rdfs:label "stage" ;
+    quant:hasDeterminer quant:the ;
+    ns1:stageOf ns1:negotiation_1 .
+
+ns1:thing_2 a owl:Thing .
+
+owl:Thing rdfs:label "what" ;
+    rdfs:subClassOf ns1:Stage .
+

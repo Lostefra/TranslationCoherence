@@ -1,0 +1,139 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence177.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence177.ttl a owl:Ontology ;
+    rdfs:label "de_sentence177" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence177" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Noteq rdfs:label "other" .
+
+ns1:Of rdfs:label "of",
+        "their" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:With rdfs:label "with" .
+
+ns1:cause_1 a ns1:Cause ;
+    rdfs:label "causing" ;
+    vn.role:Theme1 ns1:company_1 ;
+    vn.role:Theme2 ns1:problem_1 .
+
+ns1:dispose_1 a ns1:EitherDispose ;
+    rdfs:label "dispose" ;
+    dul:hasQuality ns1:Either ;
+    vn.role:Agent ns1:company_1 ;
+    ns1:eitherDisposeOf ns1:cargo_1 ;
+    ns1:union ns1:sell_1 .
+
+ns1:docuverse earmark:hasContent "These smaller companies either dispose of their cargo or sell it with other freight, causing problems."^^xsd:string .
+
+ns1:Cargo a owl:Class ;
+    rdfs:label "cargo" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Cargo .
+
+ns1:Cause rdfs:label "causing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Company rdfs:label "companies" .
+
+ns1:Dispose rdfs:label "dispose" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:EitherDispose rdfs:label "either dispose" ;
+    rdfs:subClassOf ns1:Dispose .
+
+ns1:Problem rdfs:label "problems" .
+
+ns1:Sell rdfs:label "sell" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Smaller rdfs:label "smaller" .
+
+ns1:SmallerCompany rdfs:subClassOf ns1:Company .
+
+ns1:cargo_1 a ns1:Cargo ;
+    rdfs:label "cargo" ;
+    ns1:cargoOf ns1:thing_1 .
+
+ns1:freight_1 a ns1:Freight ;
+    rdfs:label "other" ;
+    owl:differentFrom ns1:freight_2 .
+
+ns1:freight_2 a ns1:Freight ;
+    rdfs:label "freight" ;
+    quant:hasDeterminer quant:other .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "it" .
+
+ns1:problem_1 a ns1:Problem ;
+    rdfs:label "problems" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:sell_1 a ns1:Sell ;
+    rdfs:label "sell" ;
+    dul:hasQuality ns1:Either ;
+    vn.role:Agent ns1:company_1 ;
+    vn.role:Theme ns1:neuter_1 ;
+    ns1:with ns1:freight_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "their" .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Either rdfs:label "either" .
+
+ns1:Freight a owl:Class ;
+    rdfs:label "freight",
+        "other" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Cargo .
+
+ns1:company_1 a ns1:SmallerCompany ;
+    rdfs:label "companies" ;
+    dul:hasQuality ns1:Smaller ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple .
+

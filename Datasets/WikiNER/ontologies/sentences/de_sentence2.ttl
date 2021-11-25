@@ -1,0 +1,113 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence2.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence2.ttl a owl:Ontology ;
+    rdfs:label "de_sentence2" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence2" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:More rdfs:label "more" .
+
+ns1:Morearchicistdaniel_guerinindividualthan rdfs:label "archicist Daniel Guerin is more individual than" .
+
+ns1:Than rdfs:label "than" .
+
+ns1:archicist_1 a ns1:Archicist ;
+    rdfs:label "archicist" ;
+    dul:associatedWith ns1:daniel_guerin_1,
+        ns1:situation_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:docuverse earmark:hasContent "Ultimately, a archicist Daniel_Guerin is more individual than social, slightly more social than individual."^^xsd:string .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:thing_2 a owl:Thing .
+
+ns1:thing_3 a owl:Thing .
+
+ns1:ArchicistDaniel_guerin a owl:Class ;
+    rdfs:label "Archicist Daniel guerin" ;
+    dul:associatedWith ns1:Archicist ;
+    rdfs:subClassOf ns1:Daniel_guerin .
+
+ns1:Daniel_guerin a owl:Class ;
+    rdfs:label "Daniel Guerin" ;
+    owl:equivalentClass dbpedia:Daniel_Guérin .
+
+ns1:Slightly rdfs:label "slightly" .
+
+ns1:Ultimately rdfs:label "Ultimately" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:daniel_guerin_1,
+        ns1:individual_1,
+        ns1:slightly_1,
+        ns1:social_1 ;
+    dul:hasQuality ns1:Ultimately .
+
+ns1:slightly_1 a ns1:Slightly ;
+    rdfs:label "slightly" ;
+    dul:hasQuality ns1:Social ;
+    ns1:moreSlightlySocialThan ns1:individual_1 .
+
+ns1:Archicist a owl:Class ;
+    rdfs:label "archicist" .
+
+ns1:Individual a owl:Class ;
+    rdfs:label "individual" ;
+    owl:equivalentClass dbpedia:Individual .
+
+ns1:Social a owl:Class ;
+    rdfs:label "social" ;
+    owl:equivalentClass dbpedia:Social_anarchism .
+
+ns1:daniel_guerin_1 a ns1:ArchicistDaniel_guerin ;
+    rdfs:label "Daniel Guerin" ;
+    dul:hasQuality ns1:Individual ;
+    ns1:moreArchicistDaniel_guerinIndividualThan ns1:social_1 .
+
+ns1:individual_1 a ns1:Individual ;
+    rdfs:label "individual" .
+
+ns1:social_1 a ns1:Social ;
+    rdfs:label "social" .
+

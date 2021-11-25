@@ -1,0 +1,143 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence511.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+foaf:Person rdfs:label "per" .
+
+translation_coherence:zh_sentence511.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence511" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence511" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:benefit_1 a ns1:Benefit ;
+    rdfs:label "benefited" ;
+    boxer:agent ns1:award_1 ;
+    boxer:patient ns1:audience_1 .
+
+ns1:docuverse earmark:hasContent "The 78 school awards for low-budgeting, independent movie Crash benefited 38,646 million audiences, and the household rating was 22.91 per cent."^^xsd:string .
+
+ns1:household_1 a ns1:Household ;
+    rdfs:label "household" ;
+    dul:associatedWith ns1:rating_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:movie_1 rdfs:label "movie" .
+
+ns1:school_1 a ns1:School ;
+    rdfs:label "school" ;
+    dul:associatedWith ns1:award_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:Audience rdfs:label "audiences" .
+
+ns1:Award rdfs:label "awards" .
+
+ns1:Benefit rdfs:label "benefited" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Cent rdfs:label "cent" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:Crash a ns1:IndependentMovie ;
+    rdfs:label "Crash",
+        "movie" ;
+    boxer:possibleType owl:Thing ;
+    dul:hasQuality ns1:Low-budgeting .
+
+ns1:HouseholdRating a owl:Class ;
+    rdfs:label "household rating" ;
+    dul:associatedWith ns1:Household ;
+    rdfs:subClassOf ns1:Rating .
+
+ns1:Independent a owl:Class ;
+    rdfs:label "independent" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:IndependentMovie a owl:Class ;
+    rdfs:label "Independent Movie" ;
+    dul:hasQuality ns1:Independent ;
+    rdfs:subClassOf ns1:Movie .
+
+ns1:Low-budgeting rdfs:label "low-budgeting" .
+
+ns1:Movie a owl:Class ;
+    rdfs:label "Crash",
+        "movie" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity>,
+        dul:InformationEntity .
+
+ns1:Rating a owl:Class ;
+    rdfs:label "rating" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:School rdfs:label "school" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:SchoolAward rdfs:subClassOf ns1:Award .
+
+ns1:audience_1 a ns1:Audience ;
+    rdfs:label "audiences" ;
+    dul:hasDataValue "38646000000"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:38%2C646,
+        quant:million,
+        quant:multiple .
+
+ns1:cent_1 a ns1:Cent ;
+    rdfs:label "cent" .
+
+ns1:rating_1 a ns1:HouseholdRating ;
+    rdfs:label "rating" ;
+    dul:hasDataValue "22.91"^^xsd:nonNegativeInteger ;
+    ns1:per ns1:cent_1 .
+
+ns1:Household a owl:Class ;
+    rdfs:label "household" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:award_1 a ns1:SchoolAward ;
+    rdfs:label "awards" ;
+    dul:hasDataValue "78"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:for ns1:Crash .
+

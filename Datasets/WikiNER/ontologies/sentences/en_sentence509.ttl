@@ -1,0 +1,243 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence509.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Oblique rdfs:label "in" .
+
+vn.role:Patient2 rdfs:label "into" .
+
+translation_coherence:en_sentence509.ttl a owl:Ontology ;
+    rdfs:label "en_sentence509" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence509" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:At rdfs:label "at" .
+
+ns1:During rdfs:label "during" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Since rdfs:label "Since" .
+
+ns1:announce_1 a ns1:Announce ;
+    rdfs:label "announced" ;
+    vn.role:Agent ns1:Al_gore,
+        ns1:Leonardo_dicaprio ;
+    vn.role:Topic ns1:integrate_1 ;
+    ns1:during ns1:telecast_1 .
+
+ns1:docuverse earmark:hasContent "Since 2002, celebrities have been seen arriving at the Academy Awards in hybrid vehicles; during the telecast of the 79th Academy Awards in 2007, Leonardo_DiCaprio and former vice president Al_Gore announced that ecologically intelligent practices had been integrated into the planning and execution of the Oscar presentation and several related events."^^xsd:string .
+
+ns1:execution_1 rdfs:label "execution" .
+
+ns1:president_1 rdfs:label "president" .
+
+ns1:see_1 a ns1:See ;
+    rdfs:label "seen" ;
+    boxer:theme ns1:arrive_1 ;
+    vn.role:Theme ns1:celebrity_1 ;
+    ns1:since "2002-01-01"^^xsd:date .
+
+ns1:vice_1 a ns1:Vice ;
+    rdfs:label "vice" ;
+    dul:associatedWith ns1:Al_gore .
+
+dbpedia:Al_Gore a schema:Person .
+
+dbpedia:Leonardo_DiCaprio a schema:Person .
+
+ns1:79th rdfs:label "79th" .
+
+ns1:Announce rdfs:label "announced" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Arrive rdfs:label "arriving" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Celebrity rdfs:label "celebrities" .
+
+ns1:Ecologically rdfs:label "ecologically" .
+
+ns1:EcologicallyIntelligentPractice rdfs:subClassOf ns1:IntelligentPractice .
+
+ns1:Execution rdfs:label "execution" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Former a owl:Class ;
+    rdfs:label "former" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FormerVice a owl:Class ;
+    dul:hasQuality ns1:Former ;
+    rdfs:subClassOf ns1:Vice .
+
+ns1:FormerVicePresident a owl:Class ;
+    rdfs:label "former vice president" ;
+    dul:associatedWith ns1:FormerVice ;
+    rdfs:subClassOf ns1:VicePresident .
+
+ns1:Hybrid rdfs:label "hybrid" ;
+    owl:sameAs dbpedia:Hybrid_vehicle .
+
+ns1:HybridVehicle rdfs:subClassOf ns1:Vehicle .
+
+ns1:Integrate rdfs:label "integrated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Intelligent rdfs:label "intelligent" ;
+    dul:hasQuality ns1:Ecologically .
+
+ns1:IntelligentPractice rdfs:subClassOf ns1:Practice .
+
+ns1:Leonardo_dicaprio rdfs:label "Leonardo DiCaprio" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Leonardo_DiCaprio .
+
+ns1:Oscar rdfs:label "Oscar" ;
+    boxer:possibleType time:Interval ;
+    owl:sameAs dbpedia:Academy_Awards .
+
+ns1:Planning rdfs:label "planning" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Practice rdfs:label "practices" .
+
+ns1:Presentation rdfs:label "presentation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:President a owl:Class ;
+    rdfs:label "Al Gore",
+        "president" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Related rdfs:label "related" .
+
+ns1:RelatedEvent rdfs:subClassOf dul:Event .
+
+ns1:See rdfs:label "seen" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Several rdfs:label "several" .
+
+ns1:SeveralRelatedEvent rdfs:subClassOf ns1:RelatedEvent .
+
+ns1:Telecast rdfs:label "telecast" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Vehicle rdfs:label "vehicles" .
+
+ns1:VicePresident a owl:Class ;
+    rdfs:label "Vice President" ;
+    dul:associatedWith ns1:Vice ;
+    rdfs:subClassOf dul:Person,
+        ns1:President ;
+    owl:equivalentClass dbpedia:Vice_President_of_the_United_States .
+
+ns1:arrive_1 a ns1:Arrive ;
+    rdfs:label "arriving" ;
+    vn.role:Oblique ns1:vehicle_1 ;
+    vn.role:Theme ns1:celebrity_1 ;
+    ns1:at ns1:Academy_awards .
+
+ns1:event_1 a ns1:SeveralRelatedEvent ;
+    rdfs:label "events" ;
+    dul:hasQuality ns1:Related,
+        ns1:Several ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:integrate_1 a ns1:Integrate ;
+    rdfs:label "integrated" ;
+    vn.role:Patient1 ns1:practice_1 ;
+    vn.role:Patient2 ns1:planning_1 .
+
+ns1:planning_1 a ns1:Execution,
+        ns1:Planning ;
+    rdfs:label "planning" ;
+    quant:hasDeterminer quant:the ;
+    ns1:planningOf ns1:event_1,
+        ns1:presentation_1 .
+
+ns1:practice_1 a ns1:EcologicallyIntelligentPractice ;
+    rdfs:label "practices" ;
+    dul:hasQuality ns1:Intelligent ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:presentation_1 a ns1:Presentation ;
+    rdfs:label "presentation" ;
+    dul:associatedWith ns1:Oscar .
+
+ns1:telecast_1 a ns1:Telecast ;
+    rdfs:label "telecast" ;
+    quant:hasDeterminer quant:the ;
+    ns1:in "2007-01-01"^^xsd:date ;
+    ns1:telecastOf ns1:Academy_awards .
+
+ns1:vehicle_1 a dbpedia:Hybrid_vehicle,
+        ns1:HybridVehicle ;
+    rdfs:label "vehicles" ;
+    dul:hasQuality ns1:Hybrid ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Academy_awards rdfs:label "Academy Awards" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality ns1:79th ;
+    owl:sameAs dbpedia:Academy_Award,
+        dbpedia:Academy_Awards .
+
+ns1:Al_gore a ns1:FormerVicePresident ;
+    rdfs:label "Al Gore",
+        "president",
+        "vice" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Al_Gore .
+
+ns1:celebrity_1 a ns1:Celebrity ;
+    rdfs:label "celebrities" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Vice a owl:Class ;
+    rdfs:label "Al Gore",
+        "vice" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+dul:Event rdfs:label "events" .
+

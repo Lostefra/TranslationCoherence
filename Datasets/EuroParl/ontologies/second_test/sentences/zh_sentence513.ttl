@@ -1,0 +1,188 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence513.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence513.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence513" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence513" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Because rdfs:label "because" .
+
+ns1:Of rdfs:label "its",
+        "of" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:disjunct_1 a ns1:Disjunct ;
+    boxing:involves ns1:Reliable,
+        ns1:cannot_1 ;
+    ns1:union ns1:disjunct_2 .
+
+ns1:docuverse earmark:hasContent "There is a need to further strengthen the policy of convergence because a Europe that fully ignores its regional standard of living cannot be reliable or viable."^^xsd:string .
+
+ns1:need_1 rdfs:label "need" .
+
+ns1:strengthen_1 a ns1:FurtherStrengthen ;
+    rdfs:label "strengthen" ;
+    dul:hasQuality ns1:Further ;
+    vn.role:Agent ns1:there_1 ;
+    vn.role:Patient ns1:policy_1 ;
+    ns1:because ns1:situation_1 .
+
+dbpedia:Europe a schema:Continent,
+        schema:Place .
+
+ns1:Cannot rdfs:label "cannot" .
+
+ns1:Convergence a owl:Class ;
+    rdfs:label "convergence" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Technological_convergence .
+
+ns1:Europe rdfs:label "Europe" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:hasQuality owl:Thing ;
+    owl:sameAs dbpedia:Europe .
+
+ns1:Fully rdfs:label "fully" .
+
+ns1:FullyIgnore rdfs:subClassOf ns1:Ignore .
+
+ns1:Further rdfs:label "further" .
+
+ns1:FurtherStrengthen rdfs:label "further strengthen" ;
+    rdfs:subClassOf ns1:Strengthen .
+
+ns1:Ignore rdfs:label "ignores" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Live rdfs:label "living" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Need rdfs:label "need" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Policy a owl:Class ;
+    rdfs:label "policy" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Public_policy .
+
+ns1:RegionalStandard a owl:Class ;
+    rdfs:label "regional standard" ;
+    dul:hasQuality ns1:Regional ;
+    rdfs:subClassOf ns1:Standard .
+
+ns1:Standard a owl:Class ;
+    rdfs:label "standard" ;
+    rdfs:subClassOf dul:Amount ;
+    owl:equivalentClass dbpedia:Standard_of_living .
+
+ns1:Strengthen rdfs:label "strengthen" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:That rdfs:label "that" .
+
+ns1:There rdfs:label "There" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:convergence_1 a ns1:Convergence ;
+    rdfs:label "convergence" .
+
+ns1:disjunct_2 a ns1:Disjunct ;
+    boxing:involves ns1:Viable,
+        ns1:cannot_1 .
+
+ns1:ignore_1 a ns1:FullyIgnore ;
+    rdfs:label "ignores" ;
+    boxer:agent ns1:that_1 ;
+    boxer:patient ns1:standard_1 ;
+    dul:hasQuality ns1:Fully .
+
+ns1:live_1 a ns1:Live ;
+    rdfs:label "living" ;
+    boxer:theme ns1:situation_1 ;
+    vn.role:Theme ns1:standard_1 .
+
+ns1:policy_1 a ns1:Policy ;
+    rdfs:label "policy" ;
+    quant:hasDeterminer quant:the ;
+    ns1:policyOf ns1:convergence_1 .
+
+ns1:there_1 a ns1:Need,
+        ns1:There ;
+    rdfs:label "There" ;
+    quant:hasDeterminer quant:a .
+
+ns1:Regional a owl:Class ;
+    rdfs:label "regional" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Regional_planning .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Reliable,
+        ns1:Viable,
+        ns1:cannot_1,
+        ns1:ignore_1,
+        ns1:live_1,
+        ns1:standard_1,
+        ns1:that_1 .
+
+ns1:Reliable rdfs:label "reliable" .
+
+ns1:Viable rdfs:label "viable" ;
+    owl:sameAs dbpedia:Environmental_economics .
+
+ns1:cannot_1 a ns1:Cannot ;
+    rdfs:label "cannot" ;
+    dul:hasQuality ns1:Reliable,
+        ns1:Viable .
+
+ns1:standard_1 a ns1:RegionalStandard ;
+    rdfs:label "standard" ;
+    dul:hasQuality ns1:Regional ;
+    ns1:regionalStandardOf ns1:that_1 .
+
+ns1:that_1 a ns1:That ;
+    rdfs:label "its",
+        "that" ;
+    dul:associatedWith ns1:Europe ;
+    dul:hasQuality owl:Thing .
+

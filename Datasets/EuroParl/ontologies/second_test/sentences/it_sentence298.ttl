@@ -1,0 +1,166 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence298.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Stimulus rdfs:label "for" .
+
+translation_coherence:it_sentence298.ttl a owl:Ontology ;
+    rdfs:label "it_sentence298" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence298" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "We are therefore looking for the Structural Funds programme not only to see industrial restructuring, but also to improve the entire economic base of the Principality."^^xsd:string .
+
+ns1:look_1 a ns1:ThereforeLook ;
+    rdfs:label "looking" ;
+    dul:hasQuality ns1:Therefore ;
+    vn.role:Experiencer ns1:person_1 ;
+    vn.role:Stimulus ns1:fund_1 .
+
+ns1:programme_1 a ns1:Programme ;
+    rdfs:label "programme" ;
+    boxer:agent ns1:fund_1 ;
+    boxer:theme ns1:situation_1 ;
+    boxing:hasTruthValue boxing:False .
+
+ns1:Also rdfs:label "also" .
+
+ns1:Base a owl:Class ;
+    rdfs:label "base" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Economic a owl:Class ;
+    rdfs:label "economic" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:EconomicBase a owl:Class ;
+    rdfs:label "Economic Base" ;
+    dul:hasQuality ns1:Economic ;
+    rdfs:subClassOf ns1:Base .
+
+ns1:Entire rdfs:label "entire" .
+
+ns1:EntireEconomicBase a owl:Class ;
+    rdfs:label "Entire Economic Base" ;
+    rdfs:subClassOf ns1:EconomicBase .
+
+ns1:Fund rdfs:label "Funds" .
+
+ns1:Improve rdfs:label "improve" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:IndustrialRestructuring a owl:Class ;
+    rdfs:label "industrial restructuring" ;
+    dul:hasQuality ns1:Industrial ;
+    rdfs:subClassOf ns1:Restructuring .
+
+ns1:Look rdfs:label "looking" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Only rdfs:label "only" .
+
+ns1:Person rdfs:label "We" .
+
+ns1:Principality rdfs:label "Principality" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Programme rdfs:label "programme" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Restructuring a owl:Class ;
+    rdfs:label "restructuring" .
+
+ns1:See rdfs:label "see" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Structural rdfs:label "Structural" .
+
+ns1:StructuralFund rdfs:subClassOf ns1:Fund .
+
+ns1:Therefore rdfs:label "therefore" .
+
+ns1:ThereforeLook rdfs:subClassOf ns1:Look .
+
+ns1:base_1 a ns1:EntireEconomicBase ;
+    rdfs:label "base" ;
+    dul:hasQuality ns1:Entire ;
+    quant:hasDeterminer quant:the ;
+    ns1:entireEconomicBaseOf ns1:principality_1 .
+
+ns1:improve_1 a ns1:Improve ;
+    rdfs:label "improve" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Agent ns1:fund_1 ;
+    vn.role:Patient ns1:base_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "We" .
+
+ns1:principality_1 a ns1:Principality ;
+    rdfs:label "Principality" ;
+    quant:hasDeterminer quant:the .
+
+ns1:see_1 a ns1:See ;
+    rdfs:label "see" ;
+    dul:hasQuality ns1:Only ;
+    vn.role:Agent ns1:fund_1 ;
+    vn.role:Theme ns1:restructuring_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:improve_1,
+        ns1:restructuring_1,
+        ns1:see_1 .
+
+ns1:Industrial a owl:Class ;
+    rdfs:label "industrial" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:restructuring_1 a ns1:IndustrialRestructuring ;
+    rdfs:label "restructuring" ;
+    dul:hasQuality ns1:Industrial .
+
+ns1:fund_1 a ns1:StructuralFund ;
+    rdfs:label "Funds" ;
+    dul:hasQuality ns1:Structural ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+

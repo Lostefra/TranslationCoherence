@@ -1,0 +1,148 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence230.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence230.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence230" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence230" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:After rdfs:label "After" .
+
+ns1:Of rdfs:label "her",
+        "his",
+        "of" .
+
+ns1:docuverse earmark:hasContent "After the dismissal of her nomadic pastor and the recognition of his de facto killing, he was brutally speaking of his suicide."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Speaking,
+        ns1:speaking_1 ;
+    dul:hasQuality ns1:Brutally ;
+    ns1:after ns1:dismissal_1 .
+
+ns1:Brutally rdfs:label "brutally" .
+
+ns1:De rdfs:label "de" .
+
+ns1:DeFacto a owl:Class ;
+    rdfs:subClassOf ns1:Facto .
+
+ns1:DeFactoKilling a owl:Class ;
+    rdfs:label "De Facto Killing" ;
+    dul:associatedWith ns1:DeFacto ;
+    rdfs:subClassOf ns1:FactoKilling .
+
+ns1:Dismissal rdfs:label "dismissal" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:FactoKilling a owl:Class ;
+    rdfs:label "Facto Killing" ;
+    rdfs:subClassOf ns1:Killing .
+
+ns1:Killing a owl:Class ;
+    rdfs:label "killing" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Nomadic a owl:Class ;
+    rdfs:label "nomadic" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:NomadicPastor a owl:Class ;
+    rdfs:label "nomadic pastor" ;
+    dul:hasQuality ns1:Nomadic ;
+    rdfs:subClassOf ns1:Pastor .
+
+ns1:Pastor a owl:Class ;
+    rdfs:label "pastor" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Pastor .
+
+ns1:Recognition rdfs:label "recognition" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Suicide a owl:Class ;
+    rdfs:label "suicide" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Suicide .
+
+ns1:dismissal_1 a ns1:Dismissal ;
+    rdfs:label "dismissal" ;
+    quant:hasDeterminer quant:the ;
+    ns1:dismissalOf ns1:pastor_1,
+        ns1:recognition_1 .
+
+ns1:female_1 a ns1:Female ;
+    rdfs:label "her" .
+
+ns1:killing_1 a ns1:DeFactoKilling ;
+    rdfs:label "killing" ;
+    dul:hasQuality ns1:De,
+        ns1:Facto ;
+    ns1:deFactoKillingOf ns1:speaking_1 .
+
+ns1:pastor_1 a ns1:NomadicPastor ;
+    rdfs:label "pastor" ;
+    ns1:nomadicPastorOf ns1:female_1 .
+
+ns1:recognition_1 a ns1:Recognition ;
+    rdfs:label "recognition" ;
+    quant:hasDeterminer quant:the ;
+    ns1:recognitionOf ns1:killing_1 .
+
+ns1:suicide_1 a ns1:Suicide ;
+    rdfs:label "suicide" ;
+    ns1:suicideOf ns1:speaking_1 .
+
+ns1:Facto a owl:Class ;
+    rdfs:label "facto" ;
+    owl:equivalentClass dbpedia:De_facto .
+
+ns1:Speaking rdfs:label "speaking" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:speaking_1 a ns1:Speaking ;
+    rdfs:label "his",
+        "speaking" ;
+    dul:hasQuality ns1:Male ;
+    ns1:speakingOf ns1:suicide_1 .
+

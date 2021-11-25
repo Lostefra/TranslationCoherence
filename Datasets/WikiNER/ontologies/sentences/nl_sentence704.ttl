@@ -1,0 +1,159 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence704.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:nl_sentence704.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence704" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence704" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Contradictive rdfs:label "contradictive" .
+
+ns1:Include rdfs:label "including" .
+
+ns1:With rdfs:label "with" .
+
+ns1:develop_1 a ns1:Develop ;
+    rdfs:label "developed" ;
+    vn.role:Agent ns1:generation_1 ;
+    vn.role:Product ns1:movement_1 .
+
+ns1:docuverse earmark:hasContent "The new generation struggled with the cultural obsession with the war years and developed two contradictive protest movements, including Berber I.D.s, and Islamic integrists."^^xsd:string .
+
+ns1:protest_1 a ns1:Protest ;
+    rdfs:label "protest" ;
+    dul:associatedWith ns1:movement_1 ;
+    quant:hasQuantifier quant:two .
+
+ns1:struggle_1 a ns1:Struggle ;
+    rdfs:label "struggled" ;
+    vn.role:Actor ns1:generation_1 ;
+    ns1:with ns1:obsession_1,
+        ns1:year_1 .
+
+ns1:war_1 a ns1:War ;
+    rdfs:label "war" ;
+    dul:associatedWith ns1:year_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:Berber_i.d.s rdfs:label "Berber I.D.s" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:ContradictiveProtestMovement rdfs:subClassOf ns1:ProtestMovement .
+
+ns1:Cultural a owl:Class ;
+    rdfs:label "cultural" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:CulturalObsession a owl:Class ;
+    rdfs:label "Cultural Obsession" ;
+    dul:hasQuality ns1:Cultural ;
+    rdfs:subClassOf ns1:Obsession .
+
+ns1:Develop rdfs:label "developed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Generation a owl:Class ;
+    rdfs:label "generation" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Integrist rdfs:label "integrists" .
+
+ns1:Islamic rdfs:label "Islamic" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Islamism .
+
+ns1:Movement rdfs:label "movements" .
+
+ns1:New a owl:Class ;
+    rdfs:label "new" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:NewGeneration a owl:Class ;
+    rdfs:label "new generation" ;
+    dul:hasQuality ns1:New ;
+    rdfs:subClassOf ns1:Generation .
+
+ns1:Obsession a owl:Class ;
+    rdfs:label "obsession" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Protest rdfs:label "protest" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:ProtestMovement rdfs:subClassOf ns1:Movement .
+
+ns1:Struggle rdfs:label "struggled" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:War rdfs:label "war" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:WarYear rdfs:subClassOf ns1:Year .
+
+ns1:Year rdfs:label "years" .
+
+ns1:integrist_1 a dbpedia:Integrism,
+        ns1:Integrist ;
+    rdfs:label "integrists" ;
+    dul:associatedWith ns1:Islamic ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:obsession_1 a ns1:CulturalObsession ;
+    rdfs:label "obsession" ;
+    quant:hasDeterminer quant:the .
+
+ns1:generation_1 a ns1:NewGeneration ;
+    rdfs:label "generation" ;
+    quant:hasDeterminer quant:the .
+
+ns1:movement_1 a ns1:ContradictiveProtestMovement ;
+    rdfs:label "movements" ;
+    dul:hasDataValue "2"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:include ns1:Berber_i.d.s,
+        ns1:integrist_1 .
+
+ns1:year_1 a ns1:WarYear ;
+    rdfs:label "years" ;
+    quant:hasQuantifier quant:multiple .
+

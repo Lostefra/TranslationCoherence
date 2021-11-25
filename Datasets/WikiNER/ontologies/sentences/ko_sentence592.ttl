@@ -1,0 +1,178 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence592.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:ko_sentence592.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence592" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence592" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Around rdfs:label "around" .
+
+ns1:By rdfs:label "by" .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:contribute_1 a ns1:Contribute ;
+    rdfs:label "contribute" ;
+    vn.role:Agent ns1:individual_1 ;
+    vn.role:Recipient ns1:achievement_1,
+        ns1:property_1 .
+
+ns1:docuverse earmark:hasContent "John_Galt, the leader of the novel's heroes and strikes, explains the strike by stopping the motors around the world and deploying the minds of individuals who contribute to national property and achievements."^^xsd:string .
+
+ns1:explain_1 a ns1:Explain ;
+    rdfs:label "explains" ;
+    vn.role:Agent ns1:John_galt ;
+    vn.role:Topic ns1:hero_1 ;
+    ns1:explainBy ns1:deploy_1,
+        ns1:stop_1 .
+
+ns1:strike_1 rdfs:label "strikes" .
+
+ns1:Achievement rdfs:label "achievements" .
+
+ns1:Contribute rdfs:label "contribute" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Deploy rdfs:label "deploying" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Explain rdfs:label "explains" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Hero rdfs:label "heroes" .
+
+ns1:Individual rdfs:label "individuals" .
+
+ns1:Leader rdfs:label "leader" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Mind rdfs:label "minds" .
+
+ns1:Motor rdfs:label "motors" .
+
+ns1:NationalProperty a owl:Class ;
+    rdfs:label "National Property" ;
+    dul:hasQuality ns1:National ;
+    rdfs:subClassOf ns1:Property .
+
+ns1:Novel rdfs:label "novel" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Property a owl:Class ;
+    rdfs:label "property" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Stop rdfs:label "stopping" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Strike rdfs:label "strikes" .
+
+ns1:World rdfs:label "world" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:achievement_1 a ns1:Achievement ;
+    rdfs:label "achievements" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:deploy_1 a ns1:Deploy ;
+    rdfs:label "deploying" ;
+    boxer:agent ns1:John_galt ;
+    boxer:patient ns1:mind_1 .
+
+ns1:leader_1 a ns1:Leader ;
+    rdfs:label "leader" ;
+    quant:hasDeterminer quant:the ;
+    ns1:leaderOf ns1:hero_1 .
+
+ns1:mind_1 a ns1:Mind ;
+    rdfs:label "minds" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:mindOf ns1:individual_1 .
+
+ns1:motor_1 a ns1:Motor ;
+    rdfs:label "motors" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:novel_1 a ns1:Novel ;
+    rdfs:label "novel" ;
+    quant:hasDeterminer quant:the .
+
+ns1:property_1 a ns1:NationalProperty ;
+    rdfs:label "property" ;
+    dul:hasQuality ns1:National .
+
+ns1:stop_1 a ns1:Stop ;
+    rdfs:label "stopping" ;
+    vn.role:Agent ns1:John_galt ;
+    vn.role:Theme ns1:motor_1 ;
+    ns1:around ns1:world_1 .
+
+ns1:world_1 a ns1:World ;
+    rdfs:label "world" ;
+    quant:hasDeterminer quant:the .
+
+ns1:National a owl:Class ;
+    rdfs:label "national" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:hero_1 a ns1:Hero,
+        ns1:Strike ;
+    rdfs:label "heroes" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:strikeOf ns1:novel_1 .
+
+ns1:individual_1 a ns1:Individual ;
+    rdfs:label "individuals" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:John_galt rdfs:label "John Galt" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith ns1:leader_1 ;
+    owl:sameAs dbpedia:John_Galt .
+

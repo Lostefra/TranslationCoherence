@@ -1,0 +1,166 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence602.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence602.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence602" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence602" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Behind rdfs:label "behind" .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "In this connection, we also need to be given weight to the decisive importance of SMEs as employers and forces behind regional development."^^xsd:string .
+
+ns1:need_1 a ns1:AlsoNeed ;
+    rdfs:label "need" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Experiencer ns1:person_1 ;
+    vn.role:Theme ns1:situation_1 ;
+    ns1:in ns1:connection_1 .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoNeed rdfs:label "Also Need" ;
+    rdfs:subClassOf ns1:Need .
+
+ns1:Connection rdfs:label "connection" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Decisive a owl:Class ;
+    rdfs:label "decisive" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:DecisiveImportance a owl:Class ;
+    rdfs:label "Decisive Importance" ;
+    dul:hasQuality ns1:Decisive ;
+    rdfs:subClassOf ns1:Importance .
+
+ns1:Development a owl:Class ;
+    rdfs:label "development" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Employer rdfs:label "employers" .
+
+ns1:Force rdfs:label "forces" .
+
+ns1:Give rdfs:label "given" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Importance a owl:Class ;
+    rdfs:label "importance" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Need rdfs:label "need" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Person rdfs:label "we" .
+
+ns1:RegionalDevelopment a owl:Class ;
+    rdfs:label "regional development" ;
+    dul:hasQuality ns1:Regional ;
+    rdfs:subClassOf ns1:Development .
+
+ns1:Sme a owl:Class ;
+    rdfs:label "SMEs" ;
+    owl:equivalentClass dbpedia:Small_and_medium-sized_enterprises .
+
+ns1:Weight rdfs:label "weight" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:connection_1 a ns1:Connection ;
+    rdfs:label "connection" ;
+    quant:hasDeterminer quant:this .
+
+ns1:give_1 a ns1:Give ;
+    rdfs:label "given" ;
+    vn.role:Recipient ns1:person_1 ;
+    vn.role:Theme ns1:weight_1 ;
+    ns1:behind ns1:development_1 .
+
+ns1:importance_1 a ns1:DecisiveImportance ;
+    rdfs:label "importance" ;
+    quant:hasDeterminer quant:the ;
+    ns1:decisiveImportanceOf ns1:sme_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:development_1,
+        ns1:employer_1,
+        ns1:force_1,
+        ns1:give_1,
+        ns1:sme_1,
+        ns1:weight_1 .
+
+ns1:Regional a owl:Class ;
+    rdfs:label "regional" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:development_1 a ns1:RegionalDevelopment ;
+    rdfs:label "development" ;
+    dul:hasQuality ns1:Regional .
+
+ns1:employer_1 a ns1:Employer ;
+    rdfs:label "employers" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:force_1 a ns1:Force ;
+    rdfs:label "forces" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:sme_1 a ns1:Sme ;
+    rdfs:label "SMEs" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:as ns1:employer_1,
+        ns1:force_1 .
+
+ns1:weight_1 a ns1:Weight ;
+    rdfs:label "weight" ;
+    ns1:to ns1:importance_1 .
+

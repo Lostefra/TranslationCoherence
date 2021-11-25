@@ -1,0 +1,161 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence377.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence377.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence377" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence377" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "its",
+        "of" .
+
+ns1:docuverse earmark:hasContent "We oppose the exnive control of the central government of the EU and its Member States and require the reduction of bureaucracy in the preparation and implementation of programmes."^^xsd:string .
+
+ns1:implementation_1 rdfs:label "implementation" .
+
+ns1:neuter_1 rdfs:label "its" .
+
+ns1:oppose_1 a ns1:Oppose ;
+    rdfs:label "oppose" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Patient ns1:control_1 .
+
+ns1:require_1 a ns1:Require ;
+    rdfs:label "require" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Patient ns1:reduction_1 .
+
+owl:Thing rdfs:label "EU" .
+
+ns1:Bureaucracy a owl:Class ;
+    rdfs:label "bureaucracy" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Bureaucracy .
+
+ns1:Central a owl:Class ;
+    rdfs:label "central" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:CentralGovernment a owl:Class ;
+    rdfs:label "Central Government" ;
+    dul:hasQuality ns1:Central ;
+    rdfs:subClassOf ns1:Government .
+
+ns1:Control a owl:Class ;
+    rdfs:label "control" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Exnive a owl:Class ;
+    rdfs:label "exnive" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ExniveControl a owl:Class ;
+    rdfs:label "Exnive Control" ;
+    dul:hasQuality ns1:Exnive ;
+    rdfs:subClassOf ns1:Control .
+
+ns1:Government a owl:Class ;
+    rdfs:label "government" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Implementation rdfs:label "implementation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Member_states rdfs:label "Member States" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    ns1:of ns1:Eu .
+
+ns1:Oppose rdfs:label "oppose" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Person rdfs:label "We" .
+
+ns1:Preparation rdfs:label "preparation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Programme rdfs:label "programmes" .
+
+ns1:Reduction rdfs:label "reduction" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Require rdfs:label "require" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:bureaucracy_1 a ns1:Bureaucracy ;
+    rdfs:label "bureaucracy" .
+
+ns1:control_1 a ns1:ExniveControl ;
+    rdfs:label "control" ;
+    quant:hasDeterminer quant:the ;
+    ns1:exniveControlOf ns1:government_1 .
+
+ns1:government_1 a ns1:CentralGovernment ;
+    rdfs:label "government" ;
+    quant:hasDeterminer quant:the ;
+    ns1:centralGovernmentOf ns1:Eu,
+        ns1:Member_states .
+
+ns1:preparation_1 a ns1:Implementation,
+        ns1:Preparation ;
+    rdfs:label "preparation" ;
+    quant:hasDeterminer quant:the ;
+    ns1:preparationOf ns1:programme_1 .
+
+ns1:programme_1 a ns1:Programme ;
+    rdfs:label "programmes" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:reduction_1 a ns1:Reduction ;
+    rdfs:label "reduction" ;
+    quant:hasDeterminer quant:the ;
+    ns1:in ns1:preparation_1 ;
+    ns1:reductionOf ns1:bureaucracy_1 .
+
+ns1:Eu a owl:Thing ;
+    rdfs:label "EU" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:European_Union .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "We" .
+

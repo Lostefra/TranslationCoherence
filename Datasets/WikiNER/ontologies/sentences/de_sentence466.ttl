@@ -1,0 +1,154 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix fred: <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence466.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fred: rdfs:label ":"^^xsd:string .
+
+translation_coherence:de_sentence466.ttl a owl:Ontology ;
+    rdfs:label "de_sentence466" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence466" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:Where rdfs:label "where" .
+
+ns1:With rdfs:label "with" .
+
+ns1:conclusion_1 a ns1:Conclusion ;
+    rdfs:label "Conclusions" ;
+    dul:hasQuality ns1:Topic ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:conclusionOf ns1:poetic_1 .
+
+ns1:disjunct_1 a ns1:Disjunct ;
+    boxing:involves ns1:Epische,
+        ns1:epische_1 ;
+    ns1:union ns1:disjunct_2 .
+
+ns1:docuverse earmark:hasContent "Conclusions of the European_Parliament Poetics with a discussion where either thought is: epische or tragic migraine."^^xsd:string .
+
+ns1:european_parliament_1 a ns1:European_parliament ;
+    rdfs:label "European Parliament" ;
+    dul:associatedWith ns1:poetic_1,
+        ns1:situation_2 ;
+    quant:hasDeterminer quant:the .
+
+ns1:migraine_1 rdfs:label "migraine" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:thought_1 ;
+    ns1:entails ns1:situation_2 .
+
+dbpedia:European_Parliament rdfs:subClassOf schema:Organization .
+
+ns1:Conclusion rdfs:label "Conclusions" .
+
+ns1:Discussion rdfs:label "discussion" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:European_parliament a owl:Class ;
+    rdfs:label "European Parliament" ;
+    owl:equivalentClass dbpedia:European_Parliament .
+
+ns1:European_parliamentPoetic rdfs:subClassOf ns1:Poetic .
+
+ns1:Poetic a owl:Class ;
+    rdfs:label "Poetics" ;
+    owl:equivalentClass dbpedia:Poetics_(Aristotle) .
+
+ns1:Thought a owl:Class ;
+    rdfs:label "thought" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Thought .
+
+ns1:TragicMigraine a owl:Class ;
+    rdfs:label "Tragic Migraine" ;
+    dul:hasQuality ns1:Tragic ;
+    rdfs:subClassOf ns1:Migraine .
+
+ns1:discussion_1 a ns1:Discussion ;
+    rdfs:label "discussion" ;
+    quant:hasDeterminer quant:a ;
+    ns1:where ns1:situation_3 .
+
+ns1:disjunct_2 a ns1:Disjunct ;
+    boxing:involves ns1:Migraine,
+        ns1:Tragic,
+        ns1:epische_1 .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves ns1:Epische,
+        ns1:Migraine,
+        ns1:Tragic,
+        ns1:epische_1,
+        ns1:thought_1 .
+
+ns1:poetic_1 a ns1:European_parliamentPoetic ;
+    rdfs:label "Poetics" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:with ns1:discussion_1 .
+
+ns1:situation_2 a ns1:Situation .
+
+ns1:thought_1 a ns1:Thought ;
+    rdfs:label "thought" ;
+    boxing:declaration ns1:epische_1 ;
+    quant:hasQuantifier quant:either .
+
+ns1:Epische rdfs:label "epische" .
+
+ns1:Migraine a owl:Class ;
+    rdfs:label "migraine" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Migraine .
+
+ns1:Tragic a owl:Class ;
+    rdfs:label "tragic" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:epische_1 a ns1:Epische,
+        ns1:TragicMigraine ;
+    rdfs:label "epische" ;
+    dul:hasQuality ns1:Tragic .
+

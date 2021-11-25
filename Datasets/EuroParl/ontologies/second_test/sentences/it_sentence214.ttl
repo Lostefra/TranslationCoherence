@@ -1,0 +1,145 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence214.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Ehighest> rdfs:label "highest" .
+
+translation_coherence:it_sentence214.ttl a owl:Ontology ;
+    rdfs:label "it_sentence214" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence214" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "Therefore, we will have to see how the requirements that guarantee the highest degree of safety can be further improved."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "have" ;
+    boxer:theme ns1:see_1 ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Therefore ;
+    vn.role:Agent ns1:person_1 .
+
+ns1:Further rdfs:label "further" .
+
+ns1:FurtherImprove rdfs:subClassOf ns1:Improve .
+
+ns1:Guarantee rdfs:label "guarantee" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Highest a owl:Class ;
+    rdfs:label "highest" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:HighestDegree a owl:Class ;
+    rdfs:label "highest degree" ;
+    dul:hasQuality ns1:Highest ;
+    rdfs:subClassOf ns1:Degree .
+
+ns1:Improve rdfs:label "improved" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Manner rdfs:label "how" .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Requirement rdfs:label "requirements" .
+
+ns1:Safety rdfs:label "safety" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:See rdfs:label "see" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Therefore rdfs:label "Therefore" .
+
+ns1:degree_1 a ns1:Degree,
+        ns1:HighestDegree ;
+    rdfs:label "degree" ;
+    quant:hasDeterminer quant:the ;
+    ns1:highestAmong ns1:Degree ;
+    ns1:highestDegreeOf ns1:safety_1 .
+
+ns1:guarantee_1 a ns1:Guarantee ;
+    rdfs:label "guarantee" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Agent ns1:requirement_1 ;
+    vn.role:Theme ns1:degree_1 .
+
+ns1:improve_1 a ns1:FurtherImprove ;
+    rdfs:label "improved" ;
+    boxing:hasModality boxing:Possible ;
+    dul:hasQuality ns1:Further ;
+    vn.role:Patient ns1:requirement_1 ;
+    ns1:manner_rel ns1:manner_1 .
+
+ns1:see_1 a ns1:See ;
+    rdfs:label "see" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:guarantee_1,
+        ns1:improve_1,
+        ns1:manner_1,
+        ns1:safety_1 .
+
+ns1:manner_1 a ns1:Manner ;
+    rdfs:label "how" .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:requirement_1 a ns1:Requirement ;
+    rdfs:label "requirements" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:safety_1 a ns1:Safety ;
+    rdfs:label "safety" .
+
+ns1:Degree a owl:Class ;
+    rdfs:label "degree" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+

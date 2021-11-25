@@ -1,0 +1,148 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence690.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:de_sentence690.ttl a owl:Ontology ;
+    rdfs:label "de_sentence690" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence690" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:In rdfs:label "In",
+        "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:catch_1 a ns1:Catch ;
+    rdfs:label "caught" ;
+    vn.role:Agent ns1:Corsicans ;
+    vn.role:Theme ns1:city_1 ;
+    ns1:in "1558-01-01"^^xsd:date .
+
+ns1:destroy_1 a ns1:Destroy ;
+    rdfs:label "destroyed" ;
+    vn.role:Agent ns1:Corsicans ;
+    vn.role:Patient ns1:thing_1 ;
+    ns1:in "1558-01-01"^^xsd:date .
+
+ns1:docuverse earmark:hasContent "In 1558, Corsicans caught the city of Zaf, destroyed them, slaughtered the inhabitants and killed 3,000 survivors in Istanbul as a slave."^^xsd:string .
+
+ns1:kill_1 a ns1:Kill ;
+    rdfs:label "killed" ;
+    vn.role:Agent ns1:Corsicans ;
+    vn.role:Patient ns1:survivor_1 ;
+    ns1:as ns1:slave_1 ;
+    ns1:in "1558-01-01"^^xsd:date ;
+    ns1:locatedIn ns1:Istanbul .
+
+ns1:slaughter_1 a ns1:Slaughter ;
+    rdfs:label "slaughtered" ;
+    vn.role:Agent ns1:Corsicans ;
+    vn.role:Theme ns1:inhabitant_1 ;
+    ns1:in "1558-01-01"^^xsd:date .
+
+dbpedia:Carole_King rdfs:subClassOf schema:MusicGroup,
+        schema:Person .
+
+dbpedia:Istanbul a schema:City,
+        schema:Place .
+
+ns1:Catch rdfs:label "caught" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:City a owl:Class ;
+    rdfs:label "city" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> ;
+    owl:equivalentClass dbpedia:Carole_King .
+
+ns1:Destroy rdfs:label "destroyed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Inhabitant rdfs:label "inhabitants" .
+
+ns1:Istanbul rdfs:label "Istanbul" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Istanbul .
+
+ns1:Kill rdfs:label "killed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Slaughter rdfs:label "slaughtered" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Slave rdfs:label "slave" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Survivor rdfs:label "survivors" .
+
+ns1:Zaf rdfs:label "Zaf" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:city_1 a ns1:City ;
+    rdfs:label "city" ;
+    quant:hasDeterminer quant:the ;
+    ns1:cityOf ns1:Zaf .
+
+ns1:inhabitant_1 a ns1:Inhabitant ;
+    rdfs:label "inhabitants" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:slave_1 a ns1:Slave ;
+    rdfs:label "slave" ;
+    quant:hasDeterminer quant:a .
+
+ns1:survivor_1 a ns1:Survivor ;
+    rdfs:label "survivors" ;
+    dul:hasDataValue "3000"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:3%2C000,
+        quant:multiple .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "them" .
+
+owl:Thing rdfs:label "them" .
+
+ns1:Corsicans rdfs:label "Corsicans" ;
+    boxer:possibleType owl:Thing .
+

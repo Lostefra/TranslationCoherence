@@ -1,0 +1,141 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence179.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "In" .
+
+translation_coherence:fi_sentence179.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence179" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence179" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "its" .
+
+ns1:docuverse earmark:hasContent "In 2007, the Alabama legisla passed a resolution expressing deep remorse for slavery and its pro viied influence."^^xsd:string .
+
+ns1:express_1 a ns1:Express ;
+    rdfs:label "expressing" ;
+    vn.role:Agent ns1:legislum_1 ;
+    vn.role:Theme ns1:remorse_1 .
+
+ns1:influence_1 a ns1:ProViiedInfluence ;
+    rdfs:label "influence" ;
+    dul:hasQuality ns1:Pro .
+
+ns1:pass_1 a ns1:Pass ;
+    rdfs:label "passed" ;
+    vn.role:Agent ns1:legislum_1 ;
+    vn.role:Destination "2007-01-01"^^xsd:date ;
+    vn.role:Theme ns1:resolution_1 .
+
+ns1:slavery_1 a ns1:Slavery ;
+    rdfs:label "slavery" .
+
+dbpedia:Alabama a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:Alabama rdfs:label "Alabama" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality owl:Thing ;
+    owl:sameAs dbpedia:Alabama .
+
+ns1:Deep a owl:Class ;
+    rdfs:label "deep" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:DeepRemorse a owl:Class ;
+    rdfs:label "Deep Remorse" ;
+    dul:hasQuality ns1:Deep ;
+    rdfs:subClassOf ns1:Remorse .
+
+ns1:Express rdfs:label "expressing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Influence a owl:Class ;
+    rdfs:label "influence" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Legislum rdfs:label "legisla" .
+
+ns1:Pass rdfs:label "passed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Pro rdfs:label "pro" .
+
+ns1:ProViiedInfluence a owl:Class ;
+    rdfs:label "pro viied influence" ;
+    rdfs:subClassOf ns1:ViiedInfluence .
+
+ns1:Remorse a owl:Class ;
+    rdfs:label "remorse" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Resolution rdfs:label "resolution" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Slavery a owl:Class ;
+    rdfs:label "slavery" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Slavery .
+
+ns1:Viied a owl:Class ;
+    rdfs:label "viied" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ViiedInfluence a owl:Class ;
+    rdfs:label "Viied Influence" ;
+    dul:hasQuality ns1:Viied ;
+    rdfs:subClassOf ns1:Influence .
+
+ns1:remorse_1 a ns1:DeepRemorse ;
+    rdfs:label "remorse" ;
+    ns1:forProViiedInfluenceOf ns1:legislum_1 .
+
+ns1:resolution_1 a ns1:Resolution ;
+    rdfs:label "resolution" ;
+    quant:hasDeterminer quant:a .
+
+ns1:legislum_1 a ns1:Legislum ;
+    rdfs:label "legisla" ;
+    dul:associatedWith ns1:Alabama ;
+    dul:hasQuality owl:Thing .
+

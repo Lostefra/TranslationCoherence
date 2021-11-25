@@ -1,0 +1,179 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence222.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "in" .
+
+translation_coherence:de_sentence222.ttl a owl:Ontology ;
+    rdfs:label "de_sentence222" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence222" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "was" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:brother_1 rdfs:label "brother" .
+
+ns1:coexistence_1 rdfs:label "coexistence" .
+
+ns1:death_1 a ns1:Death ;
+    rdfs:label "death" ;
+    quant:hasDeterminer quant:the ;
+    ns1:deathOf ns1:kind_1 .
+
+ns1:deny_1 a ns1:Deny ;
+    rdfs:label "deny" ;
+    vn.role:Agent ns1:version_1 ;
+    ns1:denyOf ns1:conception_1 .
+
+ns1:docuverse earmark:hasContent "Both versions deny the death of any kind of Valor because of the common conception that Paris was a coexistence and was not the man of his brother Hector, and Achilles remained in the battlefield."^^xsd:string .
+
+ns1:man_1 rdfs:label "man" .
+
+ns1:remain_1 a ns1:Remain ;
+    rdfs:label "remained" ;
+    vn.role:Location ns1:battlefield_1 ;
+    vn.role:Theme ns1:Achilles .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:kind_1 ;
+    ns1:entails ns1:situation_2 .
+
+dbpedia:Paris a schema:Place .
+
+ns1:Achilles rdfs:label "Achilles" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Achilles .
+
+ns1:Battlefield rdfs:label "battlefield" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Brother rdfs:label "Hector",
+        "brother" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Common a owl:Class ;
+    rdfs:label "common" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:CommonConception a owl:Class ;
+    rdfs:label "common conception" ;
+    dul:hasQuality ns1:Common ;
+    rdfs:subClassOf ns1:Conception .
+
+ns1:Conception a owl:Class ;
+    rdfs:label "conception" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Death rdfs:label "death" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Deny rdfs:label "deny" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Hector a ns1:Brother ;
+    rdfs:label "Hector",
+        "brother" ;
+    boxer:possibleType foaf:Person ;
+    ns1:of ns1:male_1 .
+
+ns1:Kind rdfs:label "kind" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Paris a ns1:Coexistence,
+        ns1:Man ;
+    rdfs:label "Paris",
+        "coexistence" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    quant:hasDeterminer quant:a,
+        quant:the ;
+    owl:sameAs dbpedia:Paris,
+        dbpedia:Paris_(mythology) ;
+    ns1:manOf ns1:Hector .
+
+ns1:Remain rdfs:label "remained" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Version rdfs:label "versions" .
+
+ns1:battlefield_1 a ns1:Battlefield ;
+    rdfs:label "battlefield" ;
+    quant:hasDeterminer quant:the .
+
+ns1:conception_1 a ns1:CommonConception ;
+    rdfs:label "conception" ;
+    boxer:theme ns1:situation_3 ;
+    quant:hasDeterminer quant:the .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "his" .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Valor .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves ns1:Coexistence,
+        ns1:Paris .
+
+ns1:version_1 a ns1:Version ;
+    rdfs:label "versions" ;
+    quant:hasQuantifier quant:both,
+        quant:multiple .
+
+ns1:Coexistence rdfs:label "Paris",
+        "coexistence" ;
+    rdfs:subClassOf dul:Situation,
+        ns1:Man .
+
+ns1:Man rdfs:label "man" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Valor rdfs:label "Valor" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Courage .
+
+ns1:kind_1 a ns1:Kind ;
+    rdfs:label "kind" ;
+    quant:hasQuantifier quant:any ;
+    ns1:kindOf ns1:Valor .
+

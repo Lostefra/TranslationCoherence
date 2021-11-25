@@ -1,0 +1,184 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence25.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "against" .
+
+translation_coherence:de_sentence25.ttl a owl:Ontology ;
+    rdfs:label "de_sentence25" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence25" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Inrebelof rdfs:label "in the rebels of" .
+
+ns1:Left rdfs:label "left" .
+
+ns1:Noteq rdfs:label "other" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:culminate_1 a ns1:Culminate ;
+    rdfs:label "culminated" ;
+    boxer:agent ns1:conflict_1 ;
+    ns1:inRebelOf ns1:Prince .
+
+ns1:docuverse earmark:hasContent "However, the Czechoslovakia soon turned against the anarchist and other left opposition parties, a conflict that culminated in the rebels of the Prince of the Crown city of 1921, which suppressed the new government."^^xsd:string .
+
+ns1:opposition_2 a ns1:Opposition ;
+    rdfs:label "opposition" ;
+    dul:associatedWith ns1:anarchist_1 ;
+    quant:hasDeterminer quant:other .
+
+ns1:party_2 rdfs:label "parties" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:rebel_1 a dbpedia:Rebellion,
+        ns1:Rebel ;
+    rdfs:label "rebels" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:suppress_1 a dbpedia:Censorship,
+        ns1:Suppress ;
+    rdfs:label "suppressed" ;
+    vn.role:Agent ns1:Prince ;
+    vn.role:Patient ns1:government_1 .
+
+ns1:turn_1 a ns1:SoonTurn ;
+    rdfs:label "turned" ;
+    dul:hasQuality ns1:However,
+        ns1:Soon ;
+    vn.role:Location ns1:anarchist_1 ;
+    vn.role:Theme ns1:Czechoslovakia .
+
+dbpedia:Czechoslovakia a schema:Country,
+        schema:Place .
+
+ns1:Anarchist a owl:Class ;
+    rdfs:label "anarchist" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Anarchism .
+
+ns1:City rdfs:label "city" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Conflict a owl:Class ;
+    rdfs:label "conflict" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:War .
+
+ns1:Crown rdfs:label "Crown" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Culminate rdfs:label "culminated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Czechoslovakia rdfs:label "Czechoslovakia" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Czechoslovakia .
+
+ns1:Government a owl:Class ;
+    rdfs:label "government" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:However rdfs:label "However" .
+
+ns1:LeftOppositionParty rdfs:subClassOf ns1:OppositionParty .
+
+ns1:New a owl:Class ;
+    rdfs:label "new" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:NewGovernment a owl:Class ;
+    rdfs:label "new government" ;
+    dul:hasQuality ns1:New ;
+    rdfs:subClassOf ns1:Government ;
+    owl:equivalentClass dbpedia:Bolsheviks .
+
+ns1:Opposition a owl:Class ;
+    rdfs:label "opposition" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Left_Opposition,
+        dbpedia:Opposition_(politics) .
+
+ns1:OppositionParty rdfs:subClassOf ns1:Party .
+
+ns1:Party rdfs:label "parties" .
+
+ns1:Rebel rdfs:label "rebels" .
+
+ns1:Soon rdfs:label "soon" .
+
+ns1:SoonTurn rdfs:subClassOf ns1:Turn .
+
+ns1:Suppress rdfs:label "suppressed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Turn rdfs:label "turned" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:city_1 a ns1:City ;
+    rdfs:label "city" ;
+    dul:associatedWith ns1:Crown ;
+    ns1:cityOf "1921-01-01"^^xsd:date .
+
+ns1:government_1 a ns1:NewGovernment ;
+    rdfs:label "government" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Prince rdfs:label "Prince" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Prince ;
+    ns1:of ns1:city_1 .
+
+ns1:anarchist_1 a ns1:Anarchist,
+        ns1:LeftOppositionParty ;
+    rdfs:label "anarchist" ;
+    dul:associatedWith ns1:conflict_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:conflict_1 a ns1:Conflict ;
+    rdfs:label "conflict" ;
+    quant:hasDeterminer quant:a .
+

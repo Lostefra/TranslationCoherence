@@ -1,0 +1,133 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence426.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence426.ttl a owl:Ontology ;
+    rdfs:label "de_sentence426" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence426" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:About rdfs:label "about" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Parliament rdfs:label "Parliament" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Parliament .
+
+ns1:code_1 a ns1:Code ;
+    rdfs:label "code" ;
+    dul:hasQuality ns1:Respected ;
+    quant:hasDeterminer quant:this .
+
+ns1:detail_1 rdfs:label "details" .
+
+ns1:docuverse earmark:hasContent "I am absolutely sure that this code is respected and that the Parliament will keep all developments and details about the implementation of the programmes updated."^^xsd:string .
+
+ns1:keep_1 a ns1:Keep ;
+    rdfs:label "keep" ;
+    boxing:hasModality boxing:Necessary .
+
+ns1:situation_1 a ns1:Situation ;
+    ns1:entails ns1:situation_2 .
+
+ns1:sure_1 a ns1:AbsolutelySure ;
+    rdfs:label "sure" ;
+    boxer:agent ns1:person_1 ;
+    dul:hasQuality ns1:Absolutely .
+
+ns1:update_1 a ns1:Update ;
+    rdfs:label "updated" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Recipient ns1:programme_1 .
+
+ns1:Absolutely rdfs:label "absolutely" .
+
+ns1:AbsolutelySure rdfs:label "absolutely sure" ;
+    rdfs:subClassOf ns1:Sure .
+
+ns1:Code rdfs:label "code" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Detail rdfs:label "details" .
+
+ns1:Development rdfs:label "developments" .
+
+ns1:Implementation rdfs:label "implementation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Keep rdfs:label "keep" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Person rdfs:label "I" .
+
+ns1:Programme rdfs:label "programmes" .
+
+ns1:Respected rdfs:label "respected" .
+
+ns1:Sure rdfs:label "sure" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Update rdfs:label "updated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:development_1 a ns1:Detail,
+        ns1:Development ;
+    rdfs:label "developments" ;
+    quant:hasQuantifier quant:all,
+        quant:multiple ;
+    ns1:about ns1:implementation_1 .
+
+ns1:implementation_1 a ns1:Implementation ;
+    rdfs:label "implementation" ;
+    quant:hasDeterminer quant:the ;
+    ns1:implementationOf ns1:programme_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:development_1 .
+
+ns1:programme_1 a ns1:Programme ;
+    rdfs:label "programmes" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+

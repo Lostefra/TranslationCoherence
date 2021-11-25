@@ -1,0 +1,186 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence253.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+vn.role:Theme2 rdfs:label "to" .
+
+translation_coherence:de_sentence253.ttl a owl:Ontology ;
+    rdfs:label "de_sentence253" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence253" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Agent rdfs:label "by" .
+
+ns1:During rdfs:label "during" .
+
+ns1:Include rdfs:label "including" .
+
+ns1:Of rdfs:label "its",
+        "of" .
+
+ns1:When rdfs:label "when" .
+
+ns1:docuverse earmark:hasContent "The tragedies relate to the deeds of Achilles during the Kimber War, including its crash of Hector and the possible death, when a pillar initiated by Paris and led by Apollo Pkten expresses its track."^^xsd:string .
+
+ns1:neuter_1 coref:coref ns1:pillar_1 .
+
+ns1:relate_1 a ns1:Relate ;
+    rdfs:label "relate" ;
+    vn.role:Theme1 ns1:tragedy_1 ;
+    vn.role:Theme2 ns1:deed_1 .
+
+dbpedia:Paris a schema:Place .
+
+boxing:Possible rdfs:label "possible" .
+
+owl:Thing rdfs:label "Kimber War" .
+
+ns1:Achilles rdfs:label "Achilles" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Achilles .
+
+ns1:Crash rdfs:label "crash" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Death a owl:Class ;
+    rdfs:label "death" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Deed rdfs:label "deeds" .
+
+ns1:Express rdfs:label "expresses" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Hector rdfs:label "Hector" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Initiate rdfs:label "initiated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Lead rdfs:label "led" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Paris rdfs:label "Paris" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Paris,
+        dbpedia:Paris_(mythology) .
+
+ns1:Pillar rdfs:label "pillar" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Possible a owl:Class .
+
+ns1:PossibleDeath rdfs:label "possible death" ;
+    dul:associatedWith ns1:Death ;
+    dul:hasModality ns1:Possible .
+
+ns1:Relate rdfs:label "relate" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Track rdfs:label "track" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Tragedy rdfs:label "tragedies" .
+
+ns1:crash_1 a ns1:Crash ;
+    rdfs:label "crash" ;
+    ns1:crashOf ns1:Hector,
+        ns1:Kimber_war .
+
+ns1:death_1 a ns1:PossibleDeath ;
+    rdfs:label "death" ;
+    dul:hasQuality boxing:Possible ;
+    quant:hasDeterminer quant:the ;
+    ns1:when ns1:situation_1 .
+
+ns1:deed_1 a ns1:Deed ;
+    rdfs:label "deeds" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:deedOf ns1:Achilles ;
+    ns1:during ns1:Kimber_war ;
+    ns1:include ns1:crash_1,
+        ns1:death_1 .
+
+ns1:express_1 a ns1:Express ;
+    rdfs:label "expresses" ;
+    vn.role:Agent ns1:pillar_1 ;
+    vn.role:Theme ns1:track_1 .
+
+ns1:initiate_1 a ns1:Initiate ;
+    rdfs:label "initiated" ;
+    boxer:agent ns1:Paris ;
+    vn.role:Agent ns1:Apollo_pkten ;
+    vn.role:Theme ns1:pillar_1 .
+
+ns1:lead_1 a ns1:Lead ;
+    rdfs:label "led" ;
+    vn.role:Agent ns1:Apollo_pkten ;
+    vn.role:Theme ns1:pillar_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:express_1,
+        ns1:initiate_1,
+        ns1:lead_1,
+        ns1:pillar_1 .
+
+ns1:track_1 a ns1:Track ;
+    rdfs:label "track" ;
+    ns1:trackOf ns1:Kimber_war .
+
+ns1:tragedy_1 a ns1:Tragedy ;
+    rdfs:label "tragedies" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Apollo_pkten rdfs:label "Apollo Pkten" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Kimber_war a owl:Thing ;
+    rdfs:label "Kimber War" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:pillar_1 a ns1:Pillar ;
+    rdfs:label "its",
+        "pillar" ;
+    quant:hasDeterminer quant:a .
+

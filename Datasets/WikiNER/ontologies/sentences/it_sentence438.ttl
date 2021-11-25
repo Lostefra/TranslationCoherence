@@ -1,0 +1,136 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence438.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "on" .
+
+translation_coherence:it_sentence438.ttl a owl:Ontology ;
+    rdfs:label "it_sentence438" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence438" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Since rdfs:label "since" .
+
+ns1:appear_1 a ns1:ContinuallyAppear ;
+    rdfs:label "appeared" ;
+    dul:hasQuality ns1:Continually ;
+    vn.role:Location ns1:illinois_plates_1 ;
+    vn.role:Theme ns1:slogan_1 .
+
+ns1:docuverse earmark:hasContent "The state nickname for Illinois is Land of Lincoln; the slogan has continually appeared on almost all Illinois_plates issued since 1954."^^xsd:string .
+
+ns1:issue_1 a ns1:Issue ;
+    rdfs:label "issued" ;
+    vn.role:Theme ns1:illinois_plates_1 ;
+    ns1:since "1954-01-01"^^xsd:date .
+
+ns1:land_1 rdfs:label "Land" .
+
+ns1:state_1 a ns1:State ;
+    rdfs:label "state" ;
+    dul:associatedWith ns1:nickname_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:Almost rdfs:label "almost" .
+
+ns1:Appear rdfs:label "appeared" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Continually rdfs:label "continually" .
+
+ns1:ContinuallyAppear rdfs:subClassOf ns1:Appear .
+
+ns1:Illinois rdfs:label "Illinois" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Illinois .
+
+ns1:Illinois_plates a owl:Class ;
+    rdfs:label "Illinois plates" ;
+    owl:equivalentClass dbpedia:Mississippian_copper_plates .
+
+ns1:Issue rdfs:label "issued" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Land rdfs:label "Land" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Illinois .
+
+ns1:Nickname a owl:Class ;
+    rdfs:label "nickname" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Slogan rdfs:label "slogan" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:StateNickname a owl:Class ;
+    rdfs:label "State Nickname" ;
+    dul:associatedWith ns1:State ;
+    rdfs:subClassOf ns1:Nickname .
+
+ns1:nickname_1 a ns1:Land,
+        ns1:StateNickname ;
+    rdfs:label "nickname" ;
+    ns1:for ns1:Illinois ;
+    ns1:stateNicknameOf ns1:Lincoln .
+
+ns1:slogan_1 a ns1:Slogan ;
+    rdfs:label "slogan" ;
+    quant:hasDeterminer quant:the .
+
+dbpedia:Illinois a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:State a owl:Class ;
+    rdfs:label "state" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:illinois_plates_1 a ns1:Illinois_plates ;
+    rdfs:label "Illinois plates" ;
+    dul:hasQuality ns1:Almost ;
+    quant:hasQuantifier quant:all,
+        quant:multiple .
+

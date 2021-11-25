@@ -1,0 +1,125 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence294.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Predicate rdfs:label "in" .
+
+translation_coherence:de_sentence294.ttl a owl:Ontology ;
+    rdfs:label "de_sentence294" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence294" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Although rdfs:label "although" .
+
+ns1:As rdfs:label "as" .
+
+ns1:Before rdfs:label "Before" .
+
+ns1:During rdfs:label "during" .
+
+ns1:docuverse earmark:hasContent "Before the election, he served as master in a Swiss_militia company during the Black_Hawk_War, although he never fought."^^xsd:string .
+
+ns1:serve_1 a ns1:Serve ;
+    rdfs:label "served" ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Predicate ns1:company_1 ;
+    ns1:although ns1:fight_1 ;
+    ns1:as ns1:master_1 ;
+    ns1:before ns1:election_1 ;
+    ns1:during ns1:Black_hawk_war .
+
+ns1:swiss_militia_1 a ns1:Swiss_militia ;
+    rdfs:label "Swiss militia" ;
+    dul:associatedWith ns1:company_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:Black_hawk_war rdfs:label "Black Hawk War" ;
+    boxer:possibleType time:Interval ;
+    owl:sameAs dbpedia:Black_Hawk_War .
+
+ns1:Company a owl:Class ;
+    rdfs:label "company" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Election rdfs:label "election" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Fight rdfs:label "fought" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Master rdfs:label "master" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Never rdfs:label "never" .
+
+ns1:NeverFight rdfs:subClassOf ns1:Fight .
+
+ns1:Serve rdfs:label "served" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Swiss_militiaCompany a owl:Class ;
+    rdfs:label "Swiss militia Company" ;
+    dul:associatedWith ns1:Swiss_militia ;
+    rdfs:subClassOf ns1:Company .
+
+ns1:election_1 a ns1:Election ;
+    rdfs:label "election" ;
+    quant:hasDeterminer quant:the .
+
+ns1:fight_1 a ns1:NeverFight ;
+    rdfs:label "fought" ;
+    dul:hasQuality ns1:Never ;
+    vn.role:Actor ns1:male_1 .
+
+ns1:master_1 a ns1:Master ;
+    rdfs:label "master" .
+
+ns1:Swiss_militia a owl:Class ;
+    rdfs:label "Swiss militia" ;
+    owl:equivalentClass dbpedia:Military_of_Switzerland .
+
+ns1:company_1 a ns1:Swiss_militiaCompany ;
+    rdfs:label "company" .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "he" .
+

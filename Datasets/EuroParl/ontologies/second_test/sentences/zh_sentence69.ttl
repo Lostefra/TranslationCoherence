@@ -1,0 +1,243 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence69.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:zh_sentence69.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence69" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence69" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Entails rdfs:label "if" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:believe_1 a ns1:Believe ;
+    rdfs:label "believe" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:docuverse earmark:hasContent "Given that the Committee is represented by the Vice-Chairman, Depalata, I believe that if the Committee knows whether it is ready to propose the programme in an agreed manner, it will help us. Alternatively, there is no parliamentary readiness to review the programme, as some seem to suggest."^^xsd:string .
+
+ns1:give_1 a ns1:Give ;
+    rdfs:label "Given" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Theme ns1:represent_1 .
+
+ns1:readiness_1 rdfs:label "readiness" ;
+    quant:hasQuantifier quant:no .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:review_1,
+        ns1:situation_3,
+        ns1:there_1 ;
+    dul:hasQuality ns1:Alternatively .
+
+ns1:AgreedManner a owl:Class ;
+    rdfs:label "agreed manner" ;
+    dul:hasQuality ns1:Agreed ;
+    rdfs:subClassOf ns1:Manner .
+
+ns1:Alternatively rdfs:label "Alternatively" .
+
+ns1:Believe rdfs:label "believe" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Depalata rdfs:label "Depalata" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Give rdfs:label "Given" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Help rdfs:label "help" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Know rdfs:label "knows" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Parliamentary a owl:Class ;
+    rdfs:label "parliamentary" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ParliamentaryReadiness a owl:Class ;
+    rdfs:label "Parliamentary Readiness" ;
+    dul:hasQuality ns1:Parliamentary ;
+    rdfs:subClassOf ns1:Readiness .
+
+ns1:Programme rdfs:label "programme" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Readiness a owl:Class ;
+    rdfs:label "readiness" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Represent rdfs:label "represented" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Review rdfs:label "review" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Seem rdfs:label "seem" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Suggest rdfs:label "suggest" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:There rdfs:label "there" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Vice-chairman rdfs:label "Vice-Chairman" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:Depalata .
+
+ns1:help_1 a ns1:Help ;
+    rdfs:label "help" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:Committee ;
+    vn.role:Beneficiary ns1:person_2 .
+
+ns1:know_1 a ns1:Know ;
+    rdfs:label "knows" ;
+    vn.role:Agent ns1:Committee ;
+    vn.role:Theme ns1:situation_1 ;
+    ns1:entails ns1:situation_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "us" .
+
+ns1:ready_1 a ns1:Ready ;
+    rdfs:label "ready" ;
+    vn.role:Agent ns1:Committee ;
+    vn.role:Product ns1:propose_1 .
+
+ns1:represent_1 a ns1:Represent ;
+    rdfs:label "represented" ;
+    vn.role:Agent ns1:Vice-chairman ;
+    vn.role:Theme ns1:Committee .
+
+ns1:review_1 a ns1:Review ;
+    rdfs:label "review" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:there_1 ;
+    vn.role:Theme ns1:programme_1 ;
+    ns1:as ns1:seem_1 .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves ns1:seem_1,
+        ns1:thing_2 .
+
+ns1:suggest_1 a ns1:Suggest ;
+    rdfs:label "suggest" ;
+    vn.role:Agent ns1:thing_2 .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:Agreed a owl:Class ;
+    rdfs:label "agreed" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Person rdfs:label "I",
+        "us" .
+
+ns1:Propose rdfs:label "propose" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Ready rdfs:label "ready" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:programme_1 a ns1:Programme ;
+    rdfs:label "programme" ;
+    quant:hasDeterminer quant:the .
+
+ns1:propose_1 a ns1:Propose ;
+    rdfs:label "propose" ;
+    vn.role:Agent ns1:Committee ;
+    vn.role:Theme ns1:programme_1 ;
+    ns1:in ns1:manner_1 .
+
+ns1:seem_1 a ns1:Seem ;
+    rdfs:label "seem" ;
+    vn.role:Predicate ns1:suggest_1 ;
+    vn.role:Theme ns1:thing_2 .
+
+ns1:there_1 a ns1:ParliamentaryReadiness,
+        ns1:There ;
+    rdfs:label "there" .
+
+owl:Thing rdfs:label "it",
+        "some" .
+
+ns1:Manner a owl:Class ;
+    rdfs:label "manner" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:manner_1 a ns1:AgreedManner,
+        ns1:Manner ;
+    rdfs:label "manner" ;
+    quant:hasDeterminer quant:an .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Agreed,
+        ns1:Manner,
+        ns1:Propose,
+        ns1:Ready,
+        ns1:help_1,
+        ns1:know_1,
+        ns1:manner_1,
+        ns1:propose_1,
+        ns1:ready_1 .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "some" .
+
+ns1:Committee rdfs:label "Committee" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality owl:Thing ;
+    owl:sameAs dbpedia:Committee,
+        ns1:manner_1 .
+

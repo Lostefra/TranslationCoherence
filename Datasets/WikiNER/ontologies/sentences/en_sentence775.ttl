@@ -1,0 +1,138 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence775.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence775.ttl a owl:Ontology ;
+    rdfs:label "en_sentence775" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence775" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Across rdfs:label "across" .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "Marco_Polo 's systematic observations of nature, anthropology, and geography are another example of studying human variation across space."^^xsd:string .
+
+ns1:example_3 rdfs:label "example" .
+
+ns1:observation_1 a dbpedia:Observation,
+        ns1:SystematicObservation ;
+    rdfs:label "observations" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:study_1 a ns1:Study ;
+    rdfs:label "studying" ;
+    vn.role:Agent ns1:geography_1 ;
+    vn.role:Theme ns1:variation_1 ;
+    ns1:across ns1:space_1 .
+
+dbpedia:Marco_Polo a schema:Person .
+
+ns1:Anthropology a owl:Class ;
+    rdfs:label "anthropology" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> ;
+    owl:equivalentClass dbpedia:Anthropology .
+
+ns1:Example rdfs:label "example" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Geography rdfs:label "geography" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Human a owl:Class ;
+    rdfs:label "human" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:HumanVariation a owl:Class ;
+    rdfs:label "Human Variation" ;
+    dul:hasQuality ns1:Human ;
+    rdfs:subClassOf ns1:Variation .
+
+ns1:Marco_polo rdfs:label "Marco Polo" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Marco_Polo .
+
+ns1:Nature a owl:Class ;
+    rdfs:label "nature" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Nature .
+
+ns1:Observation rdfs:label "observations" .
+
+ns1:Space a owl:Class ;
+    rdfs:label "space" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> ;
+    owl:equivalentClass dbpedia:Space .
+
+ns1:Study rdfs:label "studying" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Systematic rdfs:label "systematic" .
+
+ns1:SystematicObservation rdfs:subClassOf ns1:Observation .
+
+ns1:Variation a owl:Class ;
+    rdfs:label "variation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:anthropology_1 a ns1:Anthropology ;
+    rdfs:label "anthropology" .
+
+ns1:geography_1 a ns1:Example,
+        ns1:Geography ;
+    rdfs:label "geography" ;
+    dul:hasQuality ns1:Systematic ;
+    quant:hasDeterminer quant:another ;
+    ns1:exampleOf ns1:Marco_polo ;
+    ns1:systematicObservationOf ns1:nature_1 .
+
+ns1:nature_1 a ns1:Nature ;
+    rdfs:label "nature" ;
+    dul:associatedWith ns1:anthropology_1 .
+
+ns1:space_1 a ns1:Space ;
+    rdfs:label "space" .
+
+ns1:variation_1 a ns1:HumanVariation ;
+    rdfs:label "variation" .
+

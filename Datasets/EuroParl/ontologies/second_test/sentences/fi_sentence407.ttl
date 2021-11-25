@@ -1,0 +1,175 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence407.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:fi_sentence407.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence407" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence407" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:At rdfs:label "at" .
+
+ns1:With rdfs:label "with" .
+
+ns1:continue_1 a ns1:Continue ;
+    rdfs:label "continues" ;
+    vn.role:Agent ns1:process_1 ;
+    vn.role:Theme ns1:innnce_1 ;
+    ns1:with ns1:anta_1 .
+
+ns1:docuverse earmark:hasContent "The process continues innnce with the financial exnditure anta issued by EU leaders at the Berlin Summit last year, supported by the Parliament at the plenary session last year."^^xsd:string .
+
+ns1:exnditure_1 a ns1:Exnditure ;
+    rdfs:label "exnditure" ;
+    dul:associatedWith ns1:anta_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:issue_1 a ns1:Issue ;
+    rdfs:label "issued" ;
+    dul:associatedWith ns1:year_1 ;
+    dul:hasQuality ns1:Last ;
+    vn.role:Agent ns1:leader_1 ;
+    vn.role:Theme ns1:anta_1 .
+
+ns1:support_1 a ns1:Support ;
+    rdfs:label "supported" ;
+    dul:associatedWith ns1:year_2 ;
+    dul:hasQuality ns1:Last ;
+    vn.role:Agent ns1:Parliament ;
+    vn.role:Beneficiary ns1:process_1 ;
+    ns1:at ns1:session_1 .
+
+ns1:Anta a owl:Class ;
+    rdfs:label "anta" .
+
+ns1:Berlin_summit rdfs:label "Berlin Summit" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Continue rdfs:label "continues" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Eu rdfs:label "EU" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:European_Union .
+
+ns1:ExnditureAnta a owl:Class ;
+    rdfs:label "Exnditure Anta" ;
+    dul:associatedWith ns1:Exnditure ;
+    rdfs:subClassOf ns1:Anta .
+
+ns1:Financial a owl:Class ;
+    rdfs:label "financial" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FinancialExnditure a owl:Class ;
+    dul:hasQuality ns1:Financial ;
+    rdfs:subClassOf ns1:Exnditure .
+
+ns1:FinancialExnditureAnta a owl:Class ;
+    rdfs:label "Financial Exnditure Anta" ;
+    dul:associatedWith ns1:FinancialExnditure ;
+    rdfs:subClassOf ns1:ExnditureAnta .
+
+ns1:Innnce rdfs:label "innnce" .
+
+ns1:Issue rdfs:label "issued" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Leader rdfs:label "leaders" .
+
+ns1:Parliament rdfs:label "Parliament" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Parliament .
+
+ns1:Plenary a owl:Class ;
+    rdfs:label "plenary" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:PlenarySession a owl:Class ;
+    rdfs:label "plenary session" ;
+    dul:hasQuality ns1:Plenary ;
+    rdfs:subClassOf ns1:Session .
+
+ns1:Process rdfs:label "process" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Session a owl:Class ;
+    rdfs:label "session" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Support rdfs:label "supported" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:innnce_1 a ns1:Innnce ;
+    rdfs:label "innnce" .
+
+ns1:leader_1 a ns1:Leader ;
+    rdfs:label "leaders" ;
+    dul:associatedWith ns1:Eu ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:at ns1:Berlin_summit .
+
+ns1:session_1 a ns1:PlenarySession ;
+    rdfs:label "session" ;
+    quant:hasDeterminer quant:the .
+
+ns1:year_1 a ns1:Year ;
+    rdfs:label "year" .
+
+ns1:year_2 a ns1:Year ;
+    rdfs:label "year" .
+
+ns1:Last rdfs:label "last" .
+
+ns1:Year rdfs:label "year" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:process_1 a ns1:Process ;
+    rdfs:label "process" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Exnditure a owl:Class ;
+    rdfs:label "exnditure" .
+
+ns1:anta_1 a ns1:FinancialExnditureAnta ;
+    rdfs:label "anta" .
+

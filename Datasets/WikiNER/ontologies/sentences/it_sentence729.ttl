@@ -1,0 +1,125 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence729.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence729.ttl a owl:Ontology ;
+    rdfs:label "it_sentence729" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence729" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "In the opinion of the Algerian_constitution, a province is a territorial community that enjoys a certain economic freedom."^^xsd:string .
+
+ns1:enjoy_1 a ns1:Enjoy ;
+    rdfs:label "enjoys" ;
+    vn.role:Experiencer ns1:province_1 ;
+    vn.role:Theme ns1:freedom_1 ;
+    ns1:inOpinionOf ns1:Algerian_constitution .
+
+ns1:opinion_1 a ns1:Opinion ;
+    rdfs:label "opinion" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Algerian_constitution rdfs:label "Algerian constitution" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Constitution_of_Algeria .
+
+ns1:Certain rdfs:label "certain" .
+
+ns1:CertainEconomicFreedom a owl:Class ;
+    rdfs:label "Certain Economic Freedom" ;
+    rdfs:subClassOf ns1:EconomicFreedom .
+
+ns1:Economic a owl:Class ;
+    rdfs:label "economic" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:EconomicFreedom a owl:Class ;
+    rdfs:label "Economic Freedom" ;
+    dul:hasQuality ns1:Economic ;
+    rdfs:subClassOf ns1:Freedom ;
+    owl:equivalentClass dbpedia:Economic_freedom .
+
+ns1:Enjoy rdfs:label "enjoys" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Freedom a owl:Class ;
+    rdfs:label "freedom" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Opinion a owl:Class ;
+    rdfs:label "opinion" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Freedom_of_speech .
+
+ns1:Province rdfs:label "province" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Territorial a owl:Class ;
+    rdfs:label "territorial" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:TerritorialCommunity a owl:Class ;
+    rdfs:label "territorial community" ;
+    dul:hasQuality ns1:Territorial ;
+    rdfs:subClassOf ns1:Community .
+
+ns1:community_1 a ns1:Community ;
+    rdfs:label "community" ;
+    quant:hasDeterminer quant:a .
+
+ns1:freedom_1 a ns1:CertainEconomicFreedom ;
+    rdfs:label "freedom" ;
+    dul:hasQuality ns1:Certain ;
+    quant:hasDeterminer quant:a .
+
+ns1:province_1 a ns1:Province,
+        ns1:TerritorialCommunity ;
+    rdfs:label "province" ;
+    quant:hasDeterminer quant:a ;
+    owl:sameAs ns1:community_1 .
+
+ns1:Community a owl:Class ;
+    rdfs:label "community" ;
+    rdfs:subClassOf dul:Collection .
+

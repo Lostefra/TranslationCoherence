@@ -1,0 +1,239 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix fred: <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence613.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fred: rdfs:label ":"^^xsd:string .
+
+vn.role:Destination rdfs:label "on" .
+
+vn.role:Product rdfs:label "into" .
+
+translation_coherence:ko_sentence613.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence613" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence613" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Below rdfs:label "below" .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:For rdfs:label "For",
+        "for" .
+
+ns1:Of rdfs:label "of",
+        "our",
+        "your" .
+
+ns1:docuverse earmark:hasContent "For example, the first edition of our life is translated into ruthless elitism: what is your mass? But mud is placed on the ground below feet, and the fuel is burned for those who have value?"^^xsd:string .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:burn_1,
+        ns1:edition_1,
+        ns1:elitism_1,
+        ns1:example_1,
+        ns1:foot_1,
+        ns1:ground_1,
+        ns1:life_1,
+        ns1:mass_1,
+        ns1:person_1,
+        ns1:person_2,
+        ns1:place_1,
+        ns1:situation_1,
+        ns1:thing_2,
+        ns1:translate_1 ;
+    ns1:for ns1:example_1 .
+
+ns1:thing_1 rdfs:label "what" .
+
+ns1:Burn rdfs:label "burned" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:But rdfs:label "But" .
+
+ns1:Edition a owl:Class ;
+    rdfs:label "edition" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Elitism a owl:Class ;
+    rdfs:label "elitism" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> ;
+    owl:equivalentClass dbpedia:Elitism .
+
+ns1:Example rdfs:label "example" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:First a owl:Class ;
+    rdfs:label "first" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FirstEdition a owl:Class ;
+    rdfs:label "First Edition" ;
+    dul:hasQuality ns1:First ;
+    rdfs:subClassOf ns1:Edition .
+
+ns1:Foot rdfs:label "feet" .
+
+ns1:Fuel rdfs:label "fuel" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Ground rdfs:label "ground" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Life rdfs:label "life" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Mud rdfs:label "mud" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Place rdfs:label "placed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:RuthlessElitism a owl:Class ;
+    rdfs:label "Ruthless Elitism" ;
+    dul:hasQuality ns1:Ruthless ;
+    rdfs:subClassOf ns1:Elitism .
+
+ns1:Translate rdfs:label "translated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Value rdfs:label "value" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:fuel_1 a ns1:Fuel ;
+    rdfs:label "fuel" ;
+    quant:hasDeterminer quant:the .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "have" ;
+    vn.role:Agent ns1:mass_1,
+        ns1:thing_2 ;
+    vn.role:Patient ns1:value_1 .
+
+ns1:translate_1 a ns1:Translate ;
+    rdfs:label "translated" ;
+    boxing:declaration ns1:situation_1 ;
+    vn.role:Patient ns1:edition_1 ;
+    vn.role:Product ns1:elitism_1 .
+
+owl:Thing rdfs:label "those",
+        "what" ;
+    rdfs:subClassOf ns1:Mass .
+
+ns1:Mass rdfs:label "mass" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic>,
+        dul:Amount .
+
+ns1:Ruthless a owl:Class ;
+    rdfs:label "ruthless" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:burn_1 a ns1:Burn ;
+    rdfs:label "burned" ;
+    vn.role:Theme ns1:fuel_1,
+        ns1:mass_1 ;
+    ns1:for ns1:mass_1,
+        ns1:thing_2 .
+
+ns1:edition_1 a ns1:FirstEdition ;
+    rdfs:label "edition" ;
+    quant:hasDeterminer quant:the ;
+    ns1:firstEditionOf ns1:life_1 .
+
+ns1:elitism_1 a ns1:RuthlessElitism ;
+    rdfs:label "elitism" ;
+    dul:hasQuality ns1:Ruthless .
+
+ns1:example_1 a ns1:Example ;
+    rdfs:label "example" .
+
+ns1:ground_1 a ns1:Ground ;
+    rdfs:label "ground" ;
+    quant:hasDeterminer quant:the ;
+    ns1:below ns1:foot_1 .
+
+ns1:life_1 a ns1:Life ;
+    rdfs:label "life" ;
+    ns1:lifeOf ns1:person_1 .
+
+ns1:mud_1 a ns1:Mud ;
+    rdfs:label "mud" .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "our" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "your" .
+
+ns1:place_1 a ns1:Place ;
+    rdfs:label "placed" ;
+    dul:associatedWith ns1:mass_1 ;
+    dul:hasQuality ns1:But ;
+    vn.role:Destination ns1:ground_1 ;
+    vn.role:Theme ns1:mud_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:burn_1,
+        ns1:foot_1,
+        ns1:have_1,
+        ns1:mass_1,
+        ns1:mud_1,
+        ns1:place_1,
+        ns1:value_1 .
+
+ns1:value_1 a ns1:Value ;
+    rdfs:label "value" ;
+    quant:hasDeterminer quant:those .
+
+ns1:foot_1 a ns1:Foot ;
+    rdfs:label "feet" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "those" .
+
+ns1:mass_1 a owl:Thing,
+        ns1:Mass ;
+    rdfs:label "mass" ;
+    ns1:massOf ns1:person_2 .
+

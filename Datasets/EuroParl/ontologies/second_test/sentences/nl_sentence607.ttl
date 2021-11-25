@@ -1,0 +1,211 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence607.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:nl_sentence607.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence607" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence607" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:communication_1 a ns1:Communication ;
+    rdfs:label "communications" ;
+    dul:associatedWith ns1:radiation_1 ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:docuverse earmark:hasContent "Given this situation, the report should be approved by the Parliament to increase the necessity of measures that are inevitably inevitable to fight relatively poverty and unemployment and unemployment, measures of the city's communications radiation."^^xsd:string .
+
+ns1:give_1 a ns1:Give ;
+    rdfs:label "Given" ;
+    vn.role:Agent ns1:situation_3 ;
+    vn.role:Theme ns1:situation_2 .
+
+dbpedia:Carole_King rdfs:subClassOf schema:MusicGroup,
+        schema:Person .
+
+ns1:Approve rdfs:label "approved" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:City a owl:Class ;
+    rdfs:label "city" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> ;
+    owl:equivalentClass dbpedia:Carole_King .
+
+ns1:Communication rdfs:label "communications" .
+
+ns1:CommunicationRadiation rdfs:subClassOf ns1:Radiation .
+
+ns1:Fight rdfs:label "fight" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Give rdfs:label "Given" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Increase rdfs:label "increase" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Inevitable rdfs:label "inevitable" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Inevitably rdfs:label "inevitably" .
+
+ns1:InevitablyInevitable rdfs:label "inevitably inevitable" ;
+    rdfs:subClassOf ns1:Inevitable .
+
+ns1:Necessity rdfs:label "necessity" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Parliament rdfs:label "Parliament" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Parliament .
+
+ns1:Poverty a owl:Class ;
+    rdfs:label "poverty" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Radiation rdfs:label "radiation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Relatively a owl:Class ;
+    rdfs:label "relatively" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:RelativelyPoverty a owl:Class ;
+    rdfs:label "relatively poverty" ;
+    dul:hasQuality ns1:Relatively ;
+    rdfs:subClassOf ns1:Poverty .
+
+ns1:Report rdfs:label "report" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:approve_1 a ns1:Approve ;
+    rdfs:label "approved" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:Parliament ;
+    vn.role:Theme ns1:report_1 .
+
+ns1:city_1 a ns1:City ;
+    rdfs:label "city" ;
+    quant:hasDeterminer quant:the .
+
+ns1:fight_1 a ns1:Fight ;
+    rdfs:label "fight" ;
+    vn.role:Actor1 ns1:measure_1 ;
+    vn.role:Actor2 ns1:poverty_1,
+        ns1:unemployment_1,
+        ns1:unemployment_2 .
+
+ns1:increase_1 a ns1:Increase ;
+    rdfs:label "increase" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:report_1 ;
+    vn.role:Patient ns1:necessity_1 .
+
+ns1:inevitable_1 a ns1:InevitablyInevitable ;
+    rdfs:label "inevitable" ;
+    boxer:agent ns1:measure_1 ;
+    boxer:theme ns1:situation_1 ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Inevitably .
+
+ns1:necessity_1 a ns1:Necessity ;
+    rdfs:label "necessity" ;
+    quant:hasDeterminer quant:the ;
+    ns1:necessityOf ns1:measure_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:approve_1,
+        ns1:increase_1,
+        ns1:inevitable_1,
+        ns1:measure_1,
+        ns1:situation_1 .
+
+ns1:situation_3 a ns1:Situation ;
+    rdfs:label "situation" ;
+    quant:hasDeterminer quant:this .
+
+ns1:Measure rdfs:label "measures" .
+
+ns1:Unemployment rdfs:label "unemployment" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:measure_2 a ns1:Measure ;
+    rdfs:label "measures" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:measureOf ns1:radiation_1 .
+
+ns1:poverty_1 a ns1:RelativelyPoverty ;
+    rdfs:label "poverty" .
+
+ns1:radiation_1 a ns1:CommunicationRadiation ;
+    rdfs:label "radiation" ;
+    ns1:communicationRadiationOf ns1:city_1 .
+
+ns1:report_1 a ns1:Report ;
+    rdfs:label "report" ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:fight_1,
+        ns1:measure_2,
+        ns1:poverty_1,
+        ns1:unemployment_1,
+        ns1:unemployment_2 .
+
+ns1:unemployment_1 a ns1:Unemployment ;
+    rdfs:label "unemployment" .
+
+ns1:unemployment_2 a ns1:Unemployment ;
+    rdfs:label "unemployment" ;
+    dul:associatedWith ns1:measure_2 .
+
+ns1:Situation rdfs:label "situation" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:measure_1 a ns1:Measure ;
+    rdfs:label "measures" ;
+    quant:hasQuantifier quant:multiple .
+

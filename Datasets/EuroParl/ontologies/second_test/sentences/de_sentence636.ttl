@@ -1,0 +1,119 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence636.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Oblique rdfs:label "to" .
+
+translation_coherence:de_sentence636.ttl a owl:Ontology ;
+    rdfs:label "de_sentence636" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence636" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:avoid_1 a ns1:Avoid ;
+    rdfs:label "avoid" ;
+    boxing:hasModality boxing:Possible ;
+    dul:hasQuality ns1:Later ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:problem_1 ;
+    ns1:avoidBy ns1:change_1 .
+
+ns1:docuverse earmark:hasContent "By changing the criteria of the regions to the Member States, we can avoid a big problem later."^^xsd:string .
+
+owl:Thing rdfs:label "By" .
+
+ns1:Avoid rdfs:label "avoid" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Big a owl:Class ;
+    rdfs:label "big" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:BigProblem a owl:Class ;
+    rdfs:label "big problem" ;
+    dul:hasQuality ns1:Big ;
+    rdfs:subClassOf ns1:Problem .
+
+ns1:Change rdfs:label "changing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Criterion rdfs:label "criteria" .
+
+ns1:Later rdfs:label "later" .
+
+ns1:Member_states rdfs:label "Member States" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Problem a owl:Class ;
+    rdfs:label "problem" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Region rdfs:label "regions" .
+
+ns1:change_1 a ns1:Change ;
+    rdfs:label "changing" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Oblique ns1:Member_states ;
+    vn.role:Patient ns1:criterion_1 .
+
+ns1:criterion_1 a ns1:Criterion ;
+    rdfs:label "criteria" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:criterionOf ns1:region_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:problem_1 a ns1:BigProblem ;
+    rdfs:label "problem" ;
+    quant:hasDeterminer quant:a .
+
+ns1:region_1 a ns1:Region ;
+    rdfs:label "regions" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "By" .
+

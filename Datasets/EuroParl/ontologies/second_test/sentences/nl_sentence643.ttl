@@ -1,0 +1,125 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence643.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Eworst> rdfs:label "worst" .
+
+vn.role:Oblique rdfs:label "in" .
+
+translation_coherence:nl_sentence643.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence643" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence643" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:docuverse earmark:hasContent "Some unemployment levels in the worst affected regions barely fell, indeed they rose in some cases."^^xsd:string .
+
+ns1:fall_1 a ns1:BarelyFall ;
+    rdfs:label "fell" ;
+    dul:hasQuality ns1:Barely ;
+    vn.role:Theme ns1:level_1 .
+
+ns1:rise_1 a ns1:Rise ;
+    rdfs:label "rose" ;
+    dul:hasQuality ns1:Indeed ;
+    vn.role:Oblique ns1:case_1 ;
+    vn.role:Theme ns1:thing_1 .
+
+ns1:unemployment_1 a ns1:Unemployment ;
+    rdfs:label "unemployment" ;
+    dul:associatedWith ns1:level_1 ;
+    quant:hasQuantifier quant:some .
+
+owl:Thing rdfs:label "they" .
+
+ns1:Affected rdfs:label "affected" .
+
+ns1:Barely rdfs:label "barely" .
+
+ns1:BarelyFall rdfs:subClassOf ns1:Fall .
+
+ns1:Case rdfs:label "cases" .
+
+ns1:Fall rdfs:label "fell" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Indeed rdfs:label "indeed" .
+
+ns1:Level rdfs:label "levels" .
+
+ns1:Region rdfs:label "regions" .
+
+ns1:Rise rdfs:label "rose" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Unemployment rdfs:label "unemployment" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:UnemploymentLevel rdfs:subClassOf ns1:Level .
+
+ns1:Worst rdfs:label "worst" .
+
+ns1:WorstAffectedRegion rdfs:subClassOf ns1:AffectedRegion .
+
+ns1:case_1 a ns1:Case ;
+    rdfs:label "cases" ;
+    quant:hasQuantifier quant:multiple,
+        quant:some .
+
+ns1:region_1 a ns1:AffectedRegion,
+        ns1:WorstAffectedRegion ;
+    rdfs:label "regions" ;
+    dul:hasQuality ns1:Affected,
+        ns1:Worst ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:worstAmong ns1:AffectedRegion .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "they" .
+
+ns1:level_1 a ns1:UnemploymentLevel ;
+    rdfs:label "levels" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:region_1 .
+
+ns1:AffectedRegion rdfs:subClassOf ns1:Region .
+

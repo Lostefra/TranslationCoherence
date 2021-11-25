@@ -1,0 +1,244 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence314.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "for" .
+
+translation_coherence:zh_sentence314.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence314" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence314" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:In rdfs:label "in" .
+
+ns1:area_1 a ns1:IndustrialWork,
+        ns1:RichArea ;
+    rdfs:label "areas" ;
+    dul:hasQuality ns1:Industrial,
+        ns1:Rich ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:burden_1 rdfs:label "burden" .
+
+ns1:call_1 a ns1:Call ;
+    rdfs:label "call" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Recipient ns1:service_1 ;
+    ns1:as ns1:situation_2 .
+
+ns1:docuverse earmark:hasContent "The rich areas are industrial work, but today they are likely to be a burden, which means that we must invest in new industrial sectors, such as electronic production, and I may call for and produce services, as they are future industries."^^xsd:string .
+
+ns1:industry_1 a dbpedia:Industry ;
+    rdfs:label "industries" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:likely_1 a ns1:Likely ;
+    rdfs:label "likely" ;
+    boxer:agent ns1:thing_1 ;
+    boxer:theme ns1:situation_1 ;
+    dul:associatedWith ns1:today_1 .
+
+ns1:produce_1 a ns1:Produce ;
+    rdfs:label "produce" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Theme ns1:service_1 ;
+    ns1:as ns1:situation_3 .
+
+ns1:work_1 rdfs:label "work" .
+
+ns1:Area rdfs:label "areas" .
+
+ns1:Call rdfs:label "call" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:ElectronicProduction a owl:Class ;
+    rdfs:label "Electronic Production" ;
+    dul:hasQuality ns1:Electronic ;
+    rdfs:subClassOf ns1:Production .
+
+ns1:IndustrialSector rdfs:subClassOf ns1:Sector .
+
+ns1:IndustrialWork a owl:Class ;
+    rdfs:label "industrial work" ;
+    dul:hasQuality ns1:Industrial ;
+    rdfs:subClassOf ns1:Work .
+
+ns1:Likely rdfs:label "likely" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:NewIndustrialSector rdfs:subClassOf ns1:IndustrialSector .
+
+ns1:Produce rdfs:label "produce" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Rich rdfs:label "rich" .
+
+ns1:RichArea rdfs:subClassOf ns1:Area .
+
+ns1:Service rdfs:label "services" .
+
+ns1:Today rdfs:label "today" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Work a owl:Class ;
+    rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Employment .
+
+ns1:mean_1 a ns1:Mean ;
+    rdfs:label "means" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Theme ns1:invest_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Burden,
+        ns1:Electronic,
+        ns1:Industrial,
+        ns1:Invest,
+        ns1:Mean,
+        ns1:New,
+        ns1:Production,
+        ns1:Sector,
+        ns1:invest_1,
+        ns1:mean_1,
+        ns1:production_1,
+        ns1:sector_1,
+        ns1:thing_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:hasModality boxing:Possible ;
+    boxing:involves ns1:Future,
+        ns1:FutureIndustry,
+        ns1:Industry,
+        ns1:thing_2 .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:hasModality boxing:Possible ;
+    boxing:involves ns1:Future,
+        ns1:FutureIndustry,
+        ns1:Industry,
+        ns1:thing_2 .
+
+ns1:today_1 a ns1:Today ;
+    rdfs:label "today" .
+
+owl:Thing rdfs:label "they" .
+
+ns1:Burden rdfs:label "burden" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Electronic a owl:Class ;
+    rdfs:label "electronic" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Invest a owl:Class ;
+    rdfs:label "invest" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Investment .
+
+ns1:Mean rdfs:label "means" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:New rdfs:label "new" .
+
+ns1:Person rdfs:label "I",
+        "we" .
+
+ns1:Production a owl:Class ;
+    rdfs:label "production" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Production_(economics) .
+
+ns1:Sector rdfs:label "sectors" .
+
+ns1:invest_1 a ns1:Invest ;
+    rdfs:label "invest" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_1 ;
+    ns1:in ns1:sector_1 .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:production_1 a ns1:ElectronicProduction ;
+    rdfs:label "production" ;
+    quant:hasDeterminer quant:such .
+
+ns1:sector_1 a ns1:NewIndustrialSector ;
+    rdfs:label "sectors" ;
+    dul:hasQuality ns1:Industrial,
+        ns1:New ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:service_1 a dbpedia:Service_(economics),
+        ns1:Service ;
+    rdfs:label "services" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:thing_2 a owl:Thing,
+        ns1:FutureIndustry ;
+    rdfs:label "they" ;
+    dul:hasQuality ns1:Future .
+
+ns1:Future rdfs:label "future" .
+
+ns1:FutureIndustry rdfs:subClassOf ns1:Industry .
+
+ns1:Industry rdfs:label "industries" .
+
+ns1:thing_1 a owl:Thing,
+        ns1:Burden ;
+    rdfs:label "they" ;
+    quant:hasDeterminer quant:a ;
+    ns1:as ns1:production_1 .
+
+ns1:Industrial a owl:Class ;
+    rdfs:label "industrial" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Industry .
+

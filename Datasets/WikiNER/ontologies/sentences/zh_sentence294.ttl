@@ -1,0 +1,155 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence294.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:zh_sentence294.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence294" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence294" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Despite rdfs:label "despite" .
+
+ns1:During rdfs:label "during" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "Prior to the elections, he served as a member of the Ilino militia company during the War of Whitehik, despite the fact that he had never seen fighting."^^xsd:string .
+
+ns1:militia_1 a ns1:Militia ;
+    rdfs:label "militia" ;
+    dul:associatedWith ns1:company_1 .
+
+ns1:serve_1 a ns1:Serve ;
+    rdfs:label "served" ;
+    dul:hasQuality ns1:Prior ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Recipient ns1:election_1 ;
+    ns1:as ns1:member_1 ;
+    ns1:despite ns1:fact_1 ;
+    ns1:during ns1:War .
+
+ns1:Company a owl:Class ;
+    rdfs:label "Ilino",
+        "company" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Election rdfs:label "elections" .
+
+ns1:Fact rdfs:label "fact" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Fighting rdfs:label "fighting" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Ilino rdfs:label "Ilino",
+        "company" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs <http://dbpedia.org/resource/Ilino,_Goražde> .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Member rdfs:label "member" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:MilitiaCompany a owl:Class ;
+    rdfs:label "Militia Company" ;
+    dul:associatedWith ns1:Militia ;
+    rdfs:subClassOf ns1:Company .
+
+ns1:Never rdfs:label "never" .
+
+ns1:NeverSee rdfs:subClassOf ns1:See .
+
+ns1:Prior rdfs:label "Prior" .
+
+ns1:See rdfs:label "seen" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Serve rdfs:label "served" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:War rdfs:label "War" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:War ;
+    ns1:of ns1:Whitehik .
+
+ns1:Whitehik rdfs:label "Whitehik" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:election_1 a ns1:Election ;
+    rdfs:label "elections" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:fact_1 a ns1:Fact ;
+    rdfs:label "fact" ;
+    boxer:theme ns1:see_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:fighting_1 a ns1:Fighting ;
+    rdfs:label "fighting" .
+
+ns1:member_1 a ns1:Member ;
+    rdfs:label "member" ;
+    quant:hasDeterminer quant:a ;
+    ns1:memberOf ns1:company_1 .
+
+ns1:see_1 a ns1:NeverSee ;
+    rdfs:label "seen" ;
+    dul:hasQuality ns1:Never ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Theme ns1:fighting_1 .
+
+ns1:Militia a owl:Class ;
+    rdfs:label "militia" ;
+    rdfs:subClassOf dul:Organization ;
+    owl:equivalentClass dbpedia:Militia .
+
+ns1:company_1 a ns1:MilitiaCompany ;
+    rdfs:label "company" ;
+    dul:associatedWith ns1:Ilino .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "he" .
+

@@ -1,0 +1,153 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence681.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+vn.role:Location rdfs:label "from" .
+
+translation_coherence:fi_sentence681.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence681" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence681" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:become_1 a ns1:Become ;
+    rdfs:label "become" ;
+    boxer:agent ns1:opportunity_1 .
+
+ns1:begin_1 a ns1:Begin ;
+    rdfs:label "began" ;
+    vn.role:Agent ns1:kingdom_1 ;
+    vn.role:Theme ns1:emerge_1 .
+
+ns1:docuverse earmark:hasContent "The Berbers took hold of the opportunities offered by the Red Wars to become independent of Carthage, and the kingdoms of Berber began to emerge, especially from Numidia."^^xsd:string .
+
+ns1:offer_1 a ns1:Offer ;
+    rdfs:label "offered" ;
+    vn.role:Agent ns1:Red_wars ;
+    vn.role:Theme ns1:opportunity_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Independent,
+        ns1:opportunity_1 ;
+    ns1:situationOf ns1:Carthage .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "took" ;
+    vn.role:Agent ns1:berber_1 ;
+    vn.role:Theme ns1:hold_1 .
+
+dbpedia:Carthage a schema:Place .
+
+ns1:Become rdfs:label "become" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Begin rdfs:label "began" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Carthage rdfs:label "Carthage" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Carthage .
+
+ns1:Emerge rdfs:label "emerge" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Especially rdfs:label "especially" .
+
+ns1:Hold rdfs:label "hold" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Kingdom rdfs:label "kingdoms" .
+
+ns1:Numidia rdfs:label "Numidia" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Numidia .
+
+ns1:Offer rdfs:label "offered" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Opportunity rdfs:label "opportunities" .
+
+ns1:Red_wars rdfs:label "Red Wars" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Take rdfs:label "took" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:berber_1 a ns1:Berber ;
+    rdfs:label "Berber"^^xsd:string,
+        "Berbers" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:emerge_1 a ns1:Emerge ;
+    rdfs:label "emerge" ;
+    dul:hasQuality ns1:Especially ;
+    vn.role:Location ns1:Numidia ;
+    vn.role:Theme ns1:kingdom_1 .
+
+ns1:hold_1 a ns1:Hold ;
+    rdfs:label "hold" ;
+    ns1:holdOf ns1:opportunity_1 .
+
+ns1:Berber a owl:Class ;
+    rdfs:label "Berber",
+        "Berbers" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:equivalentClass dbpedia:Berbers .
+
+ns1:Independent rdfs:label "independent" ;
+    owl:sameAs dbpedia:Independence .
+
+ns1:kingdom_1 a dbpedia:Monarchy,
+        ns1:Kingdom ;
+    rdfs:label "kingdoms" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:kingdomOf ns1:Berber .
+
+ns1:opportunity_1 a ns1:Opportunity ;
+    rdfs:label "opportunities" ;
+    dul:hasQuality ns1:Independent ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+

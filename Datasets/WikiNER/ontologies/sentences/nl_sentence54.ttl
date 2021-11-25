@@ -1,0 +1,143 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence54.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence54.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence54" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence54" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "In",
+        "in" .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "In New_York's Greenwich_Village, bohemian feminists and socialists who plead self-realisation and pleasure for women and men in here and now."^^xsd:string .
+
+ns1:event_1 a dul:Event ;
+    ns1:inGreenwich_villageOf ns1:New_york .
+
+ns1:greenwich_village_1 a ns1:Greenwich_village ;
+    rdfs:label "Greenwich Village" ;
+    dul:associatedWith ns1:feminist_1,
+        ns1:socialist_1 .
+
+ns1:man_1 rdfs:label "men" .
+
+ns1:plead_1 a ns1:Plead ;
+    rdfs:label "plead" ;
+    boxer:agent ns1:socialist_1 ;
+    boxer:patient ns1:pleasure_1,
+        ns1:self-realisation_1 ;
+    dul:hasQuality ns1:Now ;
+    ns1:for ns1:woman_1 ;
+    ns1:in ns1:here_1 .
+
+dbpedia:Greenwich_Village rdfs:subClassOf schema:Place .
+
+dbpedia:New_York_City a schema:City,
+        schema:Place .
+
+ns1:Bohemian rdfs:label "bohemian" ;
+    owl:sameAs dbpedia:Bohemianism .
+
+ns1:BohemianFeminist rdfs:subClassOf ns1:Feminist .
+
+ns1:Feminist rdfs:label "feminists" .
+
+ns1:GreenwichVillage rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Greenwich_village a owl:Class ;
+    rdfs:label "Greenwich Village" ;
+    rdfs:subClassOf ns1:GreenwichVillage ;
+    owl:equivalentClass dbpedia:Greenwich_Village .
+
+ns1:Here rdfs:label "here" .
+
+ns1:Man rdfs:label "men" .
+
+ns1:New_york rdfs:label "New York" ;
+    boxer:possibleType time:Interval ;
+    owl:sameAs dbpedia:New_York_City .
+
+ns1:Now rdfs:label "now" .
+
+ns1:Plead rdfs:label "plead" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Pleasure rdfs:label "pleasure" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Self-realisation rdfs:label "self-realisation" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Socialist rdfs:label "socialists" .
+
+ns1:Woman rdfs:label "women" .
+
+ns1:feminist_1 a dbpedia:Feminism,
+        ns1:BohemianFeminist ;
+    rdfs:label "feminists" ;
+    dul:hasQuality ns1:Bohemian ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:here_1 a ns1:Here ;
+    rdfs:label "here" .
+
+ns1:pleasure_1 a ns1:Pleasure ;
+    rdfs:label "pleasure" .
+
+ns1:self-realisation_1 a ns1:Self-realisation ;
+    rdfs:label "self-realisation" .
+
+ns1:woman_1 a ns1:Man,
+        ns1:Woman ;
+    rdfs:label "women" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:socialist_1 a dbpedia:Socialism,
+        ns1:Socialist ;
+    rdfs:label "socialists" ;
+    quant:hasQuantifier quant:multiple .
+

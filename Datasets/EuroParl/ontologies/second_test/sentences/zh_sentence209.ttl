@@ -1,0 +1,128 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence209.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence209.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence209" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence209" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "As" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:docuverse earmark:hasContent "As Mr. Simpson said very rightly, this is a process that we never cannot abandon or consider."^^xsd:string .
+
+ns1:process_1 rdfs:label "process" .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "said" ;
+    dul:hasQuality ns1:Rightly,
+        ns1:Very ;
+    vn.role:Agent ns1:Simpson ;
+    vn.role:Topic ns1:situation_2 ;
+    ns1:as ns1:situation_1 .
+
+owl:Thing rdfs:label "this" .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Rightly rdfs:label "rightly" .
+
+ns1:Say rdfs:label "said" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Simpson rdfs:label "Simpson" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> .
+
+ns1:Very rdfs:label "very" .
+
+ns1:abandon_1 a ns1:Abandon ;
+    rdfs:label "abandon" ;
+    dul:hasQuality ns1:Never ;
+    vn.role:Source ns1:thing_1 ;
+    vn.role:Theme ns1:person_1 ;
+    ns1:union ns1:consider_1 .
+
+ns1:event_1 a dul:Event .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:event_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Abandon,
+        ns1:Consider,
+        ns1:Never,
+        ns1:Process,
+        ns1:abandon_1,
+        ns1:consider_1,
+        ns1:thing_1 .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> rdfs:label "Mr." ;
+    boxer:possibleType dul:Role .
+
+ns1:Abandon rdfs:label "abandon" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Consider rdfs:label "consider" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Process rdfs:label "process" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:consider_1 a ns1:Consider ;
+    rdfs:label "consider" ;
+    dul:hasQuality ns1:Never ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:thing_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:Never rdfs:label "never" .
+
+ns1:thing_1 a owl:Thing,
+        ns1:Process ;
+    rdfs:label "this" ;
+    quant:hasDeterminer quant:a,
+        quant:this .
+

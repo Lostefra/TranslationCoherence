@@ -1,0 +1,123 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence623.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence623.ttl a owl:Ontology ;
+    rdfs:label "de_sentence623" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence623" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Noteq rdfs:label "Other" .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:docuverse earmark:hasContent "Other negative evaluations indicated the signs of unsympathetic and edge 's style offensive pedestrians."^^xsd:string .
+
+ns1:indicate_1 a ns1:Indicate ;
+    rdfs:label "indicated" ;
+    vn.role:Cause ns1:evaluation_1 ;
+    vn.role:Topic ns1:sign_1 .
+
+ns1:style_1 a ns1:Style ;
+    rdfs:label "style" ;
+    dul:associatedWith ns1:offensive_1 .
+
+ns1:Edge rdfs:label "edge" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Indicate rdfs:label "indicated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Negative rdfs:label "negative" .
+
+ns1:NegativeEvaluation rdfs:subClassOf ns1:Evaluation .
+
+ns1:Offensive a owl:Class ;
+    rdfs:label "offensive" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Pedestrian rdfs:label "pedestrians" .
+
+ns1:Sign rdfs:label "signs" .
+
+ns1:StyleOffensive a owl:Class ;
+    rdfs:label "style offensive" ;
+    dul:associatedWith ns1:Style ;
+    rdfs:subClassOf ns1:Offensive .
+
+ns1:Unsympathetic rdfs:label "unsympathetic" .
+
+ns1:edge_1 a ns1:Edge ;
+    rdfs:label "edge" ;
+    dul:hasQuality ns1:Unsympathetic .
+
+ns1:evaluation_1 a ns1:Evaluation ;
+    rdfs:label "Other" ;
+    owl:differentFrom ns1:evaluation_2 .
+
+ns1:evaluation_2 a ns1:NegativeEvaluation ;
+    rdfs:label "evaluations" ;
+    dul:hasQuality ns1:Negative ;
+    quant:hasDeterminer quant:other ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:pedestrian_1 a ns1:Pedestrian ;
+    rdfs:label "pedestrians" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:sign_1 a ns1:Sign ;
+    rdfs:label "signs" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:signOf ns1:offensive_1 .
+
+ns1:Evaluation rdfs:label "Other",
+        "evaluations" .
+
+ns1:Style a owl:Class ;
+    rdfs:label "style" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:offensive_1 a ns1:StyleOffensive ;
+    rdfs:label "offensive" ;
+    dul:associatedWith ns1:pedestrian_1 ;
+    ns1:styleOffensiveOf ns1:edge_1 .
+

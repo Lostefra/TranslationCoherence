@@ -1,0 +1,183 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence789.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "from" .
+
+translation_coherence:en_sentence789.ttl a owl:Ontology ;
+    rdfs:label "en_sentence789" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence789" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "'s",
+        "their" .
+
+ns1:Up rdfs:label "up" .
+
+ns1:docuverse earmark:hasContent "Malinowski and Radcliffe-Brown 's influence stemmed from the fact that they, like Boas, actively trained students and aggressively built up institutions that furthered their programmatic ambitions."^^xsd:string .
+
+ns1:stem_1 a ns1:Stem ;
+    rdfs:label "stemmed" ;
+    vn.role:Location ns1:fact_1 ;
+    vn.role:Theme ns1:Malinowski,
+        ns1:influence_1 .
+
+ns1:student_1 rdfs:label "students" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Actively rdfs:label "actively" .
+
+ns1:ActivelyTrainedStudent rdfs:subClassOf ns1:TrainedStudent .
+
+ns1:Aggressively rdfs:label "aggressively" .
+
+ns1:AggressivelyBuild rdfs:subClassOf ns1:Build .
+
+ns1:Ambition rdfs:label "ambitions" .
+
+ns1:Build rdfs:label "built" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Fact rdfs:label "fact" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Further rdfs:label "furthered" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Influence rdfs:label "influence" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Institution rdfs:label "institutions" .
+
+ns1:Like rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Malinowski rdfs:label "Malinowski" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Bronisław_Malinowski .
+
+ns1:Programmatic rdfs:label "programmatic" .
+
+ns1:ProgrammaticAmbition rdfs:subClassOf ns1:Ambition .
+
+ns1:Radcliffe-brown rdfs:label "Radcliffe-Brown" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Alfred_Radcliffe-Brown .
+
+ns1:Stem rdfs:label "stemmed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Student rdfs:label "Boas",
+        "students" .
+
+ns1:Trained rdfs:label "trained" ;
+    dul:hasQuality ns1:Actively .
+
+ns1:TrainedStudent rdfs:subClassOf ns1:Student .
+
+ns1:ambition_1 a ns1:ProgrammaticAmbition ;
+    rdfs:label "ambitions" ;
+    dul:hasQuality ns1:Programmatic ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:programmaticAmbitionOf ns1:thing_1,
+        ns1:thing_2 .
+
+ns1:fact_1 a ns1:Fact ;
+    rdfs:label "fact" ;
+    boxer:theme ns1:situation_1,
+        ns1:situation_2 ;
+    quant:hasDeterminer quant:the .
+
+ns1:influence_1 a ns1:Influence ;
+    rdfs:label "influence" ;
+    ns1:influenceOf ns1:Radcliffe-brown .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Boas,
+        ns1:build_1,
+        ns1:further_1,
+        ns1:institution_1,
+        ns1:like_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Boas,
+        ns1:build_1,
+        ns1:further_1,
+        ns1:institution_1,
+        ns1:like_1 .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "their" .
+
+ns1:build_1 a ns1:AggressivelyBuild ;
+    rdfs:label "built" ;
+    dul:hasQuality ns1:Aggressively ;
+    vn.role:Agent ns1:thing_3 ;
+    vn.role:Product ns1:ambition_1 ;
+    ns1:up ns1:institution_1 .
+
+ns1:further_1 a ns1:Further ;
+    rdfs:label "furthered" ;
+    vn.role:Agent ns1:institution_1 .
+
+ns1:like_1 a ns1:Like ;
+    rdfs:label "like" ;
+    vn.role:Experiencer ns1:thing_3 ;
+    vn.role:Theme ns1:Boas .
+
+ns1:thing_3 a owl:Thing ;
+    rdfs:label "they" .
+
+owl:Thing rdfs:label "they" .
+
+ns1:Boas a ns1:ActivelyTrainedStudent ;
+    rdfs:label "Boas",
+        "students" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:hasQuality ns1:Trained ;
+    owl:sameAs dbpedia:Franz_Boas .
+
+ns1:institution_1 a dbpedia:Institution,
+        ns1:Institution ;
+    rdfs:label "institutions" ;
+    quant:hasQuantifier quant:multiple .
+

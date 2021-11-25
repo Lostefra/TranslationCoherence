@@ -1,0 +1,170 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence453.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Predicate rdfs:label "for" .
+
+translation_coherence:ko_sentence453.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence453" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence453" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:At rdfs:label "At" .
+
+ns1:Include rdfs:label "including" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:capacity_1 rdfs:label "capacity" .
+
+ns1:docuverse earmark:hasContent "At this end, as the whole of Europe, each member country must be individually used for the optimal use of all available resources and capacity, including structure funds."^^xsd:string .
+
+ns1:member_1 a ns1:Member ;
+    rdfs:label "member" ;
+    dul:associatedWith ns1:country_1 ;
+    quant:hasQuantifier quant:each .
+
+ns1:situation_1 a ns1:Situation ;
+    ns1:entails ns1:situation_2 .
+
+ns1:structure_1 a ns1:Structure ;
+    rdfs:label "structure" ;
+    dul:associatedWith ns1:fund_1 .
+
+ns1:use_1 a ns1:IndividuallyUse ;
+    rdfs:label "used" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Individually ;
+    vn.role:Predicate ns1:use_2 ;
+    vn.role:Theme ns1:country_1 ;
+    ns1:at ns1:end_1 .
+
+dbpedia:Europe a schema:Continent,
+        schema:Place .
+
+ns1:Available rdfs:label "available" .
+
+ns1:AvailableResource rdfs:subClassOf ns1:Resource .
+
+ns1:Capacity rdfs:label "capacity" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Country a owl:Class ;
+    rdfs:label "country" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:End rdfs:label "end" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Europe rdfs:label "Europe" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Europe .
+
+ns1:Fund rdfs:label "funds" .
+
+ns1:Individually rdfs:label "individually" .
+
+ns1:IndividuallyUse rdfs:subClassOf ns1:Use .
+
+ns1:MemberCountry a owl:Class ;
+    rdfs:label "Member Country" ;
+    dul:associatedWith ns1:Member ;
+    rdfs:subClassOf ns1:Country .
+
+ns1:Optimal rdfs:label "optimal" .
+
+ns1:OptimalUse rdfs:label "optimal use" ;
+    rdfs:subClassOf ns1:Use .
+
+ns1:Resource rdfs:label "resources" .
+
+ns1:Structure rdfs:label "structure" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:StructureFund rdfs:subClassOf ns1:Fund .
+
+ns1:Whole rdfs:label "whole" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#System> .
+
+ns1:end_1 a ns1:End ;
+    rdfs:label "end" ;
+    quant:hasDeterminer quant:this ;
+    ns1:as ns1:whole_1 .
+
+ns1:resource_1 a ns1:AvailableResource,
+        ns1:Capacity ;
+    rdfs:label "resources" ;
+    dul:hasQuality ns1:Available ;
+    quant:hasQuantifier quant:all,
+        quant:multiple .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:country_1 .
+
+ns1:use_2 a ns1:OptimalUse ;
+    rdfs:label "use" ;
+    dul:hasQuality ns1:Optimal ;
+    quant:hasDeterminer quant:the ;
+    ns1:include ns1:fund_1 ;
+    ns1:optimalUseOf ns1:resource_1 .
+
+ns1:whole_1 a ns1:Whole ;
+    rdfs:label "whole" ;
+    quant:hasDeterminer quant:the ;
+    ns1:wholeOf ns1:Europe .
+
+ns1:Member a owl:Class ;
+    rdfs:label "member" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Use rdfs:label "use",
+        "used" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity>,
+        dul:Event .
+
+ns1:fund_1 a ns1:StructureFund ;
+    rdfs:label "funds" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:country_1 a ns1:MemberCountry ;
+    rdfs:label "country" .
+

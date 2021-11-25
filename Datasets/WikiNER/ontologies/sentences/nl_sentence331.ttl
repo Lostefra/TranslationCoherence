@@ -1,0 +1,104 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence331.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence331.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence331" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence331" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Morehismodestthan rdfs:label "His expressed opinion of slavery was considered more modest than" .
+
+ns1:consider_1 a ns1:Consider ;
+    rdfs:label "considered" ;
+    vn.role:Agent ns1:his_1 .
+
+ns1:docuverse earmark:hasContent "His expressed opinion of slavery was considered more modest than rival Seward and Chase's."^^xsd:string .
+
+ns1:express_1 a ns1:Express ;
+    rdfs:label "expressed" ;
+    vn.role:Agent ns1:his_1 ;
+    vn.role:Theme ns1:opinion_1 .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:thing_2 a owl:Thing .
+
+ns1:Chase rdfs:label "Chase" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Consider rdfs:label "considered" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Express rdfs:label "expressed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:His rdfs:label "His" .
+
+ns1:Modest rdfs:label "modest" .
+
+ns1:Opinion rdfs:label "opinion" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Rival rdfs:label "rival" .
+
+ns1:Seward rdfs:label "Seward" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Rival ;
+    owl:sameAs dbpedia:William_H._Seward ;
+    ns1:of ns1:Chase .
+
+ns1:Slavery a owl:Class ;
+    rdfs:label "slavery" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Slavery .
+
+ns1:opinion_1 a ns1:Opinion ;
+    rdfs:label "opinion" .
+
+ns1:slavery_1 a ns1:Slavery ;
+    rdfs:label "slavery" .
+
+ns1:his_1 a ns1:His ;
+    rdfs:label "His" ;
+    dul:hasQuality ns1:Modest ;
+    ns1:hisOf ns1:slavery_1 ;
+    ns1:moreHisModestThan ns1:Seward .
+

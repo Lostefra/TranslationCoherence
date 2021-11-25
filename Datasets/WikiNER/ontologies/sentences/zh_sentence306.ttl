@@ -1,0 +1,165 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence306.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "in" .
+
+translation_coherence:zh_sentence306.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence306" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence306" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:debate_1 a ns1:EvenDebate ;
+    rdfs:label "debated" ;
+    dul:hasQuality ns1:Even ;
+    vn.role:Actor1 ns1:National_assembly ;
+    vn.role:Actor2 ns1:resolution_2 .
+
+ns1:docuverse earmark:hasContent "The National_Assembly has never enacted resolutions or even debated the resolution, which has resulted in the loss of political support in Lgna in his region; a Irno has reported that he was chewing."^^xsd:string .
+
+ns1:enact_1 a ns1:NeverEnact ;
+    rdfs:label "enacted" ;
+    dul:hasQuality ns1:Never ;
+    vn.role:Agent ns1:National_assembly ;
+    vn.role:Theme ns1:resolution_1 ;
+    ns1:union ns1:result_1 .
+
+ns1:report_1 a ns1:Report ;
+    rdfs:label "reported" ;
+    vn.role:Agent ns1:Irno ;
+    vn.role:Theme ns1:chew_1 .
+
+ns1:Chew rdfs:label "chewing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Debate rdfs:label "debated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Enact rdfs:label "enacted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Even rdfs:label "even" .
+
+ns1:EvenDebate rdfs:subClassOf ns1:Debate .
+
+ns1:Irno rdfs:label "Irno" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Lgna rdfs:label "Lgna" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Loss rdfs:label "loss" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Never rdfs:label "never" .
+
+ns1:NeverEnact rdfs:subClassOf ns1:Enact .
+
+ns1:Political a owl:Class ;
+    rdfs:label "political" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:PoliticalSupport a owl:Class ;
+    rdfs:label "Political Support" ;
+    dul:hasQuality ns1:Political ;
+    rdfs:subClassOf ns1:Support .
+
+ns1:Region rdfs:label "region" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Report rdfs:label "reported" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Result rdfs:label "resulted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Support a owl:Class ;
+    rdfs:label "support" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:chew_1 a ns1:Chew ;
+    rdfs:label "chewing" ;
+    vn.role:Agent ns1:male_1 .
+
+ns1:loss_1 a ns1:Loss ;
+    rdfs:label "loss" ;
+    quant:hasDeterminer quant:the ;
+    ns1:in ns1:region_1 ;
+    ns1:locatedIn ns1:Lgna ;
+    ns1:lossOf ns1:support_1 .
+
+ns1:region_1 a ns1:Region ;
+    rdfs:label "region" ;
+    ns1:regionOf ns1:male_1 .
+
+ns1:resolution_1 a ns1:Resolution ;
+    rdfs:label "resolutions" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:result_1 a ns1:Result ;
+    rdfs:label "resulted" ;
+    vn.role:Location ns1:loss_1 ;
+    vn.role:Theme ns1:resolution_2 .
+
+ns1:support_1 a ns1:PoliticalSupport ;
+    rdfs:label "support" .
+
+ns1:National_assembly rdfs:label "National Assembly" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:National_Assembly_(South_Korea) .
+
+ns1:Resolution rdfs:label "resolution",
+        "resolutions" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "his" .
+
+ns1:resolution_2 a ns1:Resolution ;
+    rdfs:label "resolution" ;
+    quant:hasDeterminer quant:the .
+

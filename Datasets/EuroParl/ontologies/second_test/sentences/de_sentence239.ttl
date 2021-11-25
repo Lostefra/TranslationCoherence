@@ -1,0 +1,198 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence239.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Source rdfs:label "as" .
+
+translation_coherence:de_sentence239.ttl a owl:Ontology ;
+    rdfs:label "de_sentence239" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence239" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:At rdfs:label "at" .
+
+ns1:Below rdfs:label "below" .
+
+ns1:For rdfs:label "for" .
+
+ns1:Particular rdfs:label "particular" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:When rdfs:label "when" .
+
+ns1:allow_1 a ns1:Allow ;
+    rdfs:label "allows" ;
+    vn.role:Agent ns1:change_1 ;
+    vn.role:Theme ns1:introduce_1 .
+
+ns1:docuverse earmark:hasContent "A further change allows Member States to introduce stricter requirements, in particular for vacuum tankers, when work is done or goods are transported as a priority at temperatures far below -20o C."^^xsd:string .
+
+ns1:stricter_1 a ns1:Stricter ;
+    rdfs:label "stricter" ;
+    dul:associatedWith ns1:requirement_1 .
+
+ns1:temperature_1 a ns1:Temperature ;
+    rdfs:label "temperatures" ;
+    dul:associatedWith ns1:far_1 ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:vacuum_1 a ns1:Vacuum ;
+    rdfs:label "vacuum" ;
+    dul:associatedWith ns1:tanker_1 .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#-20o> rdfs:label "-20o" .
+
+ns1:Allow rdfs:label "allows" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:C rdfs:label "C" ;
+    boxer:possibleType owl:Thing ;
+    dul:hasQuality <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#-20o> .
+
+ns1:Change a owl:Class ;
+    rdfs:label "change" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Do rdfs:label "done" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Far rdfs:label "far" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Further a owl:Class ;
+    rdfs:label "further" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FurtherChange a owl:Class ;
+    rdfs:label "further change" ;
+    dul:hasQuality ns1:Further ;
+    rdfs:subClassOf ns1:Change .
+
+ns1:Goods rdfs:label "goods" .
+
+ns1:Introduce rdfs:label "introduce" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Member_states rdfs:label "Member States" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Priority rdfs:label "priority" ;
+    rdfs:subClassOf dul:Role .
+
+ns1:Requirement rdfs:label "requirements" .
+
+ns1:Stricter rdfs:label "stricter" .
+
+ns1:StricterRequirement rdfs:subClassOf ns1:Requirement .
+
+ns1:Tanker rdfs:label "tankers" .
+
+ns1:Temperature rdfs:label "temperatures" .
+
+ns1:TemperatureFar rdfs:subClassOf ns1:Far .
+
+ns1:Transport rdfs:label "transported" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Vacuum a owl:Class ;
+    rdfs:label "vacuum" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Vacuum .
+
+ns1:VacuumTanker rdfs:subClassOf ns1:Tanker .
+
+ns1:Work rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:change_1 a ns1:FurtherChange ;
+    rdfs:label "change" ;
+    quant:hasDeterminer quant:a .
+
+ns1:do_1 a ns1:Do ;
+    rdfs:label "done" ;
+    boxer:patient ns1:work_1 ;
+    ns1:union ns1:transport_1 .
+
+ns1:introduce_1 a ns1:Introduce ;
+    rdfs:label "introduce" ;
+    vn.role:Agent ns1:Member_states ;
+    vn.role:Theme ns1:requirement_1 ;
+    ns1:when ns1:situation_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:do_1,
+        ns1:far_1,
+        ns1:goods_1,
+        ns1:priority_1,
+        ns1:transport_1,
+        ns1:work_1 .
+
+ns1:goods_1 a ns1:Goods ;
+    rdfs:label "goods" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:priority_1 a ns1:Priority ;
+    rdfs:label "priority" ;
+    quant:hasDeterminer quant:a .
+
+ns1:requirement_1 a ns1:StricterRequirement ;
+    rdfs:label "requirements" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:particularFor ns1:tanker_1 .
+
+ns1:tanker_1 a ns1:VacuumTanker ;
+    rdfs:label "tankers" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:transport_1 a dbpedia:Transport,
+        ns1:Transport ;
+    rdfs:label "transported" ;
+    vn.role:Source ns1:priority_1 ;
+    vn.role:Theme ns1:goods_1 ;
+    ns1:at ns1:far_1 .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "work" .
+
+ns1:far_1 a ns1:TemperatureFar ;
+    rdfs:label "far" ;
+    ns1:below ns1:C .
+

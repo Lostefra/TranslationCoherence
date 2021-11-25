@@ -1,0 +1,128 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence756.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "while" .
+
+translation_coherence:it_sentence756.ttl a owl:Ontology ;
+    rdfs:label "it_sentence756" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence756" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Among rdfs:label "Among" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "Among the famous novels of the 20th century include Mohammed_Dib, Albert_Camus and Kateb_Yacine, while Assia_Djebar is widely translated."^^xsd:string .
+
+ns1:include_1 a ns1:Include ;
+    rdfs:label "include" ;
+    vn.role:Agent ns1:century_1 ;
+    vn.role:Location ns1:translate_1 ;
+    vn.role:Theme ns1:Mohammed_dib .
+
+ns1:topic_1 a ns1:Topic ;
+    ns1:among ns1:novel_1 .
+
+dbpedia:Albert_Camus a schema:Person .
+
+ns1:20th rdfs:label "20th" .
+
+ns1:20thCentury a owl:Class ;
+    rdfs:label "20th Century" ;
+    rdfs:subClassOf ns1:Century ;
+    owl:equivalentClass dbpedia:20th-century_French_literature .
+
+ns1:Albert_camus rdfs:label "Albert Camus" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Albert_Camus .
+
+ns1:Assia_djebar rdfs:label "Assia Djebar" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Assia_Djebar .
+
+ns1:Century rdfs:label "century" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Famous rdfs:label "famous" .
+
+ns1:FamousNovel rdfs:subClassOf ns1:Novel .
+
+ns1:Include rdfs:label "include" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Kateb_yacine rdfs:label "Kateb Yacine" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Kateb_Yacine .
+
+ns1:Mohammed_dib rdfs:label "Mohammed Dib" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Albert_camus,
+        ns1:Kateb_yacine ;
+    owl:sameAs dbpedia:Mohammed_Dib .
+
+ns1:Novel rdfs:label "novels" .
+
+ns1:Translate rdfs:label "translated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Widely rdfs:label "widely" .
+
+ns1:WidelyTranslate rdfs:subClassOf ns1:Translate .
+
+ns1:novel_1 a ns1:FamousNovel ;
+    rdfs:label "novels" ;
+    dul:hasQuality ns1:Famous ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:famousNovelOf ns1:century_1 .
+
+ns1:translate_1 a ns1:WidelyTranslate ;
+    rdfs:label "translated" ;
+    dul:hasQuality ns1:Widely ;
+    vn.role:Patient ns1:Assia_djebar .
+
+ns1:century_1 a ns1:20thCentury ;
+    rdfs:label "century" ;
+    dul:hasQuality ns1:20th ;
+    quant:hasDeterminer quant:the .
+

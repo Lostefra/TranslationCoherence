@@ -1,0 +1,78 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence445.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence445.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence445" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence445" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:appoint_1 a ns1:Appoint ;
+    rdfs:label "appointed" ;
+    vn.role:Predicate ns1:President ;
+    vn.role:Theme <https://w3id.org/stlab/ke/amiala/fi_sentence445.ttl/Aristo.> .
+
+ns1:docuverse earmark:hasContent "Aristo. was appointed President of the Royal_Academy of Macedon."^^xsd:string .
+
+dbpedia:Macedonia_(ancient_kingdom) a schema:Country,
+        schema:Place .
+
+ns1:Appoint rdfs:label "appointed" ;
+    rdfs:subClassOf dul:Event .
+
+<https://w3id.org/stlab/ke/amiala/fi_sentence445.ttl/Aristo.> rdfs:label "Aristo." ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Macedon rdfs:label "Macedon" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Macedonia_(ancient_kingdom) .
+
+ns1:President rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:President ;
+    ns1:of ns1:Royal_academy .
+
+ns1:Royal_academy rdfs:label "Royal Academy" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Royal_Academy_of_Arts ;
+    ns1:of ns1:Macedon .
+

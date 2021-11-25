@@ -1,0 +1,154 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence587.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence587.ttl a owl:Ontology ;
+    rdfs:label "it_sentence587" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence587" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:docuverse earmark:hasContent "At first the group was an informal meeting of friends who met Rand on weekends in his apartment to discuss philosophy."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:discuss_1,
+        ns1:friend_1,
+        ns1:group_1,
+        ns1:meet_1,
+        ns1:philosophy_1,
+        ns1:rand_1,
+        ns1:weekend_1 ;
+    ns1:at ns1:thing_1 .
+
+owl:Thing rdfs:label "At" .
+
+ns1:Apartment rdfs:label "apartment" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Discuss rdfs:label "discuss" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:First rdfs:label "first" .
+
+ns1:Friend rdfs:label "friends" .
+
+ns1:Group rdfs:label "group" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Informal a owl:Class ;
+    rdfs:label "informal" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:InformalMeeting a owl:Class ;
+    rdfs:label "Informal Meeting" ;
+    dul:hasQuality ns1:Informal ;
+    rdfs:subClassOf ns1:Meeting .
+
+ns1:Meet rdfs:label "met" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Philosophy a owl:Class ;
+    rdfs:label "philosophy" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Philosophy .
+
+ns1:Rand rdfs:label "Rand" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:Weekend rdfs:label "weekends" .
+
+ns1:apartment_1 a ns1:Apartment ;
+    rdfs:label "apartment" ;
+    ns1:apartmentOf ns1:male_1 .
+
+ns1:discuss_1 a ns1:Discuss ;
+    rdfs:label "discuss" ;
+    boxer:agent ns1:group_1 ;
+    boxer:patient ns1:philosophy_1 .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "his" .
+
+ns1:meet_1 a ns1:Meet ;
+    rdfs:label "met" ;
+    dul:associatedWith ns1:rand_1 ;
+    vn.role:Actor ns1:group_1 ;
+    ns1:in ns1:apartment_1 ;
+    ns1:on ns1:weekend_1 .
+
+ns1:meeting_1 a ns1:Meeting ;
+    rdfs:label "meeting" ;
+    quant:hasDeterminer quant:an .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "At" ;
+    dul:hasQuality ns1:First .
+
+ns1:Meeting a owl:Class ;
+    rdfs:label "meeting" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:friend_1 a ns1:Friend ;
+    rdfs:label "friends" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:philosophy_1 a ns1:Philosophy ;
+    rdfs:label "philosophy" .
+
+ns1:rand_1 a ns1:Rand ;
+    rdfs:label "Rand" .
+
+ns1:weekend_1 a ns1:Weekend ;
+    rdfs:label "weekends" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:group_1 a ns1:Group,
+        ns1:InformalMeeting ;
+    rdfs:label "group" ;
+    quant:hasDeterminer quant:the ;
+    owl:sameAs ns1:meeting_1 ;
+    ns1:groupOf ns1:friend_1 .
+

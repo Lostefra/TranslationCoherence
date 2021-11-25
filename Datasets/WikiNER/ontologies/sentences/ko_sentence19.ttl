@@ -1,0 +1,170 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence19.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence19.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence19" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence19" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Well rdfs:label "well" .
+
+ns1:Without rdfs:label "without" .
+
+ns1:anarchist_1 a ns1:Anarchist ;
+    rdfs:label "anarchist" ;
+    dul:associatedWith ns1:involvement_1 .
+
+ns1:do_1 a ns1:Do ;
+    rdfs:label "do" ;
+    boxer:agent ns1:Fernand_pelloutier ;
+    boxing:hasModality boxing:Possible ;
+    dul:associatedWith ns1:anarcho-syndicalist_1 ;
+    dul:hasQuality ns1:Very ;
+    ns1:wellWithout ns1:dynamiter_1 .
+
+ns1:docuverse earmark:hasContent "  anarcho-syndicalist, Fernand_Pelloutier, argumentd in 1895 for updated anarchist involvement in the labor movement on the anarchism could do very well without the personal dynamiter."^^xsd:string .
+
+ns1:labor_1 a ns1:Labor ;
+    rdfs:label "labor" ;
+    dul:associatedWith ns1:movement_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:update_1 a ns1:Update ;
+    rdfs:label "updated" ;
+    vn.role:Recipient ns1:involvement_1 .
+
+ns1:Anarchism a owl:Class ;
+    rdfs:label "anarchism" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> ;
+    owl:equivalentClass dbpedia:Anarchism .
+
+ns1:AnarchistInvolvement a owl:Class ;
+    rdfs:label "Anarchist Involvement" ;
+    dul:associatedWith ns1:Anarchist ;
+    rdfs:subClassOf ns1:Involvement .
+
+ns1:Anarcho-syndicalist a owl:Class ;
+    rdfs:label "anarcho-syndicalist" ;
+    owl:equivalentClass dbpedia:Anarcho-syndicalism .
+
+ns1:Argumentd rdfs:label "argumentd" .
+
+ns1:Do rdfs:label "do" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Dynamiter a owl:Class ;
+    rdfs:label "dynamiter" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Fernand_pelloutier rdfs:label "Fernand Pelloutier" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith ns1:argumentd_1 ;
+    owl:sameAs dbpedia:Fernand_Pelloutier .
+
+ns1:Involvement a owl:Class ;
+    rdfs:label "involvement" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:LaborMovement a owl:Class ;
+    rdfs:label "Labor Movement" ;
+    dul:associatedWith ns1:Labor ;
+    rdfs:subClassOf ns1:Movement ;
+    owl:equivalentClass dbpedia:Labour_movement .
+
+ns1:Movement a owl:Class ;
+    rdfs:label "movement" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Personal a owl:Class ;
+    rdfs:label "personal" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:PersonalDynamiter a owl:Class ;
+    rdfs:label "personal dynamiter" ;
+    dul:hasQuality ns1:Personal ;
+    rdfs:subClassOf ns1:Dynamiter .
+
+ns1:Update rdfs:label "updated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Very rdfs:label "very" .
+
+ns1:anarchism_1 a ns1:Anarchism ;
+    rdfs:label "anarchism" ;
+    quant:hasDeterminer quant:the .
+
+ns1:anarcho-syndicalist_1 a ns1:Anarcho-syndicalist ;
+    rdfs:label "anarcho-syndicalist" .
+
+ns1:argumentd_1 a ns1:Argumentd ;
+    rdfs:label "argumentd" ;
+    ns1:for ns1:involvement_1 ;
+    ns1:in "1895-01-01"^^xsd:date .
+
+ns1:dynamiter_1 a ns1:PersonalDynamiter ;
+    rdfs:label "dynamiter" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Anarchist a owl:Class ;
+    rdfs:label "anarchist" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Anarchism .
+
+ns1:Labor a owl:Class ;
+    rdfs:label "labor" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:movement_1 a ns1:LaborMovement ;
+    rdfs:label "movement" .
+
+ns1:involvement_1 a ns1:AnarchistInvolvement ;
+    rdfs:label "involvement" ;
+    ns1:in ns1:movement_1 ;
+    ns1:on ns1:anarchism_1 .
+

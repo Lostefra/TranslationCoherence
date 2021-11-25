@@ -1,0 +1,196 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix fred: <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence781.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+fred: rdfs:label ":"^^xsd:string .
+
+vn.role:Theme2 rdfs:label "on" .
+
+translation_coherence:fi_sentence781.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence781" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence781" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:From rdfs:label "from" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Noteq rdfs:label "different" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:To rdfs:label "to" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:base_1 a ns1:Base ;
+    rdfs:label "based" ;
+    vn.role:Theme1 ns1:theory_1 ;
+    vn.role:Theme2 ns1:way_1 .
+
+ns1:disjunct_1 a ns1:Disjunct ;
+    boxing:involves ns1:Form,
+        ns1:form_1 ;
+    ns1:union ns1:disjunct_2 .
+
+ns1:docuverse earmark:hasContent "The theories of Cultural_Diffusionism are based on three ways in which different groups can have similar cultural forms or techniques: an independent invention, the transition from one race to another."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "have" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Agent ns1:group_1 ;
+    vn.role:Patient ns1:form_1 ;
+    ns1:in ns1:way_1 .
+
+ns1:technique_1 a dbpedia:Skill ;
+    rdfs:label "techniques" .
+
+owl:Thing rdfs:label "another" .
+
+ns1:Base rdfs:label "based" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Cultural rdfs:label "cultural" .
+
+ns1:CulturalForm rdfs:subClassOf ns1:Form .
+
+ns1:Cultural_diffusionism rdfs:label "Cultural Diffusionism" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Trans-cultural_diffusion,
+        ns1:invention_1 .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Independent a owl:Class ;
+    rdfs:label "independent" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:IndependentInvention a owl:Class ;
+    rdfs:label "Independent Invention" ;
+    dul:hasQuality ns1:Independent ;
+    rdfs:subClassOf ns1:Invention .
+
+ns1:Race a owl:Class ;
+    rdfs:label "race" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Race_(human_categorization) .
+
+ns1:Similar rdfs:label "similar" .
+
+ns1:SimilarCulturalForm rdfs:subClassOf ns1:CulturalForm .
+
+ns1:Theory rdfs:label "theories" .
+
+ns1:Transition rdfs:label "transition" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Way rdfs:label "ways" .
+
+ns1:disjunct_2 a ns1:Disjunct ;
+    boxing:involves ns1:Technique,
+        ns1:form_1 .
+
+ns1:group_1 a ns1:Group ;
+    rdfs:label "different" ;
+    owl:differentFrom ns1:group_2 .
+
+ns1:group_2 a ns1:Group ;
+    rdfs:label "groups" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:race_1 a ns1:Race ;
+    rdfs:label "race" ;
+    dul:hasDataValue "1"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:one ;
+    ns1:to ns1:thing_1 .
+
+ns1:theory_1 a dbpedia:Theory,
+        ns1:Theory ;
+    rdfs:label "theories" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:theoryOf ns1:Cultural_diffusionism .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "another" .
+
+ns1:transition_1 a ns1:Transition ;
+    rdfs:label "transition" ;
+    quant:hasDeterminer quant:the ;
+    ns1:from ns1:race_1 .
+
+ns1:Form rdfs:label "forms" .
+
+ns1:Group rdfs:label "different",
+        "groups" .
+
+ns1:Invention a owl:Class ;
+    rdfs:label "invention" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Technique rdfs:label "techniques" .
+
+ns1:invention_1 a ns1:IndependentInvention,
+        ns1:Invention ;
+    rdfs:label "invention" ;
+    dul:associatedWith ns1:transition_1 ;
+    quant:hasDeterminer quant:an .
+
+ns1:way_1 a ns1:Way ;
+    rdfs:label "ways" ;
+    dul:hasDataValue "3"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple,
+        quant:three .
+
+ns1:form_1 a dbpedia:Theory_of_Forms,
+        ns1:SimilarCulturalForm,
+        ns1:Technique ;
+    rdfs:label "forms" ;
+    boxing:declaration ns1:invention_1 ;
+    dul:hasQuality ns1:Cultural,
+        ns1:Similar ;
+    quant:hasQuantifier quant:multiple .
+

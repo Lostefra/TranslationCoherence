@@ -1,0 +1,147 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence367.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "In" .
+
+translation_coherence:de_sentence367.ttl a owl:Ontology ;
+    rdfs:label "de_sentence367" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence367" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Account rdfs:label "account" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Into rdfs:label "into" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Quantity rdfs:label "many" .
+
+ns1:committee_1 a ns1:Committee ;
+    rdfs:label "committee" ;
+    dul:associatedWith ns1:debate_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:context_1 a ns1:Context ;
+    rdfs:label "context" ;
+    quant:hasDeterminer quant:the .
+
+ns1:docuverse earmark:hasContent "In some way, it was included in the topic, and in the committee debate it took into account many of the changes presented in the context of this report."^^xsd:string .
+
+ns1:include_1 a ns1:Include ;
+    rdfs:label "included" ;
+    vn.role:Destination ns1:way_1 ;
+    vn.role:Theme ns1:way_1 ;
+    ns1:in ns1:topic_1 .
+
+ns1:neuter_1 coref:coref ns1:way_1 .
+
+ns1:present_1 a ns1:Present ;
+    rdfs:label "presented" ;
+    vn.role:Theme ns1:change_1 ;
+    ns1:inContextOf ns1:report_1 .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "took" ;
+    vn.role:Agent ns1:way_1 ;
+    ns1:in ns1:debate_1 .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Change rdfs:label "changes" .
+
+ns1:CommitteeDebate a owl:Class ;
+    rdfs:label "Committee Debate" ;
+    dul:associatedWith ns1:Committee ;
+    rdfs:subClassOf ns1:Debate .
+
+ns1:Context rdfs:label "context" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Debate a owl:Class ;
+    rdfs:label "debate" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Include rdfs:label "included" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Present rdfs:label "presented" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Report rdfs:label "report" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Take rdfs:label "took" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Topic rdfs:label "topic" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Way rdfs:label "way" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:change_1 a ns1:Change ;
+    rdfs:label "changes" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:report_1 a ns1:Report ;
+    rdfs:label "report" ;
+    quant:hasDeterminer quant:this .
+
+ns1:topic_1 a ns1:Topic ;
+    rdfs:label "topic" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Committee a owl:Class ;
+    rdfs:label "committee" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:debate_1 a ns1:CommitteeDebate ;
+    rdfs:label "debate" .
+
+ns1:way_1 a owl:Thing,
+        ns1:Way ;
+    rdfs:label "it",
+        "way" ;
+    quant:hasQuantifier quant:some .
+

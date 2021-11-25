@@ -1,0 +1,239 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence652.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Beneficiary rdfs:label "for" ;
+    owl:sameAs dbpedia:Mark_Sanford .
+
+vn.role:Patient2 rdfs:label "to" .
+
+translation_coherence:en_sentence652.ttl a owl:Ontology ;
+    rdfs:label "en_sentence652" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence652" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:After rdfs:label "after" .
+
+ns1:Of rdfs:label "her",
+        "of" .
+
+ns1:Where rdfs:label "where" .
+
+ns1:While rdfs:label "while" .
+
+ns1:docuverse earmark:hasContent "Republican South_Carolina_Governor Mark_Sanford wrote a 2009 review for Newsweek where he spoke of how he was blown away after first reading The Fountainhead and Atlas_Shrugged, while tying her signifigance to understanding the 2008 financial crisis."^^xsd:string .
+
+ns1:female_1 coref:coref ns1:atlas_shrugged_1 .
+
+ns1:reading_1 a ns1:Reading ;
+    rdfs:label "reading" ;
+    dul:associatedWith ns1:fountainhead_1 .
+
+ns1:write_1 a ns1:Write ;
+    rdfs:label "wrote" ;
+    vn.role:Agent ns1:Republican_south_carolina_governor_mark_sanford ;
+    vn.role:Beneficiary ns1:Newsweek ;
+    vn.role:Theme ns1:review_1 .
+
+dbpedia:Newsweek a schema:CreativeWork .
+
+ns1:Atlas_shrugged a owl:Class ;
+    rdfs:label "Atlas Shrugged" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Atlas_Shrugged .
+
+ns1:Away rdfs:label "away" .
+
+ns1:Blow rdfs:label "blown" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Crisis a owl:Class ;
+    rdfs:label "crisis" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Financial a owl:Class ;
+    rdfs:label "financial" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FinancialCrisis a owl:Class ;
+    rdfs:label "financial crisis" ;
+    dul:hasQuality ns1:Financial ;
+    rdfs:subClassOf ns1:Crisis ;
+    owl:equivalentClass <http://dbpedia.org/resource/Financial_crisis_of_2007–08> .
+
+ns1:First a owl:Class ;
+    rdfs:label "first" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FirstReading a owl:Class ;
+    dul:hasQuality ns1:First ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity>,
+        ns1:Reading .
+
+ns1:FirstReadingThe a owl:Class ;
+    dul:associatedWith ns1:FirstReading ;
+    rdfs:subClassOf ns1:ReadingThe .
+
+ns1:FirstReadingTheFountainhead a owl:Class ;
+    rdfs:label "first reading The Fountainhead" ;
+    dul:associatedWith ns1:FirstReadingThe ;
+    rdfs:subClassOf ns1:ReadingTheFountainhead .
+
+ns1:Fountainhead a owl:Class ;
+    rdfs:label "Fountainhead" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:The_Fountainhead .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Manner rdfs:label "how" .
+
+ns1:Newsweek rdfs:label "Newsweek" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Newsweek ;
+    ns1:where ns1:situation_1 .
+
+ns1:ReadingTheFountainhead a owl:Class ;
+    rdfs:label "Reading The Fountainhead" ;
+    dul:associatedWith ns1:ReadingThe ;
+    rdfs:subClassOf ns1:TheFountainhead .
+
+ns1:Republican_south_carolina_governor_mark_sanford rdfs:label "Republican South Carolina Governor Mark Sanford" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Review rdfs:label "review" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Signifigance rdfs:label "signifigance" .
+
+ns1:Speak rdfs:label "spoke" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:TheFountainhead a owl:Class ;
+    rdfs:label "The Fountainhead" ;
+    dul:associatedWith ns1:The ;
+    rdfs:subClassOf ns1:Fountainhead .
+
+ns1:Tie rdfs:label "tying" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Understand rdfs:label "understanding" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Write rdfs:label "wrote" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:crisis_1 a ns1:FinancialCrisis ;
+    rdfs:label "crisis" ;
+    quant:hasDeterminer quant:the ;
+    ns1:at "2008-01-01"^^xsd:date .
+
+ns1:review_1 a ns1:Review ;
+    rdfs:label "review" ;
+    quant:hasDeterminer quant:a ;
+    ns1:at "2009-01-01"^^xsd:date .
+
+ns1:signifigance_1 a ns1:Signifigance ;
+    rdfs:label "signifigance" ;
+    ns1:signifiganceOf ns1:atlas_shrugged_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:atlas_shrugged_1,
+        ns1:blow_1,
+        ns1:fountainhead_1,
+        ns1:male_1,
+        ns1:manner_1,
+        ns1:speak_1,
+        ns1:tie_1,
+        ns1:understand_1 .
+
+ns1:speak_1 a ns1:Speak ;
+    rdfs:label "spoke" ;
+    vn.role:Agent ns1:male_1 ;
+    ns1:speakOf ns1:blow_1 .
+
+ns1:understand_1 a ns1:Understand ;
+    rdfs:label "understanding" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Proposition ns1:crisis_1 .
+
+ns1:ReadingThe a owl:Class ;
+    dul:associatedWith ns1:Reading ;
+    rdfs:subClassOf ns1:The .
+
+ns1:The a owl:Class ;
+    rdfs:label "The" .
+
+ns1:blow_1 a ns1:Blow ;
+    rdfs:label "blown" ;
+    vn.role:Location ns1:manner_1 ;
+    vn.role:Theme ns1:male_1 ;
+    ns1:after ns1:fountainhead_1 .
+
+ns1:manner_1 a ns1:Manner ;
+    rdfs:label "how" .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:tie_1 a ns1:Tie ;
+    rdfs:label "tying" ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Patient1 ns1:signifigance_1 ;
+    vn.role:Patient2 ns1:thing_1 .
+
+ns1:Reading a owl:Class ;
+    rdfs:label "reading" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:atlas_shrugged_1 a ns1:Atlas_shrugged,
+        ns1:Female ;
+    rdfs:label "Atlas Shrugged",
+        "her" ;
+    boxer:agent ns1:male_1 ;
+    ns1:while ns1:tie_1 .
+
+ns1:fountainhead_1 a ns1:FirstReadingTheFountainhead ;
+    rdfs:label "Fountainhead" ;
+    quant:hasDeterminer quant:the .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "he" ;
+    dul:hasQuality ns1:Away .
+

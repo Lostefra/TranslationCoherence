@@ -1,0 +1,74 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Oblique rdfs:label "into" .
+
+translation_coherence:nl_sentence728.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence728" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence728" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+<https://w3id.org/stlab/ke/amiala/nl_sentence728.ttl/divide_1> a <https://w3id.org/stlab/ke/amiala/nl_sentence728.ttl/Divide> ;
+    rdfs:label "divided" ;
+    vn.role:Oblique <https://w3id.org/stlab/ke/amiala/nl_sentence728.ttl/county_1> ;
+    vn.role:Patient <https://w3id.org/stlab/ke/amiala/nl_sentence728.ttl/Algeria> .
+
+<https://w3id.org/stlab/ke/amiala/nl_sentence728.ttl/docuverse> earmark:hasContent "Algeria is divided into 48 counties."^^xsd:string .
+
+dbpedia:Algeria a schema:Country,
+        schema:Place .
+
+<https://w3id.org/stlab/ke/amiala/nl_sentence728.ttl/Algeria> rdfs:label "Algeria" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Algeria,
+        <http://it.dbpedia.org/resource/Algeria> .
+
+<https://w3id.org/stlab/ke/amiala/nl_sentence728.ttl/County> rdfs:label "counties" .
+
+<https://w3id.org/stlab/ke/amiala/nl_sentence728.ttl/Divide> rdfs:label "divided" ;
+    rdfs:subClassOf dul:Event .
+
+<https://w3id.org/stlab/ke/amiala/nl_sentence728.ttl/county_1> a <https://w3id.org/stlab/ke/amiala/nl_sentence728.ttl/County> ;
+    rdfs:label "counties" ;
+    dul:hasDataValue "48"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple .
+

@@ -1,0 +1,150 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence548.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence548.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence548" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence548" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:collect_1 a ns1:Collect ;
+    rdfs:label "collected" ;
+    vn.role:Agent ns1:Bowles ;
+    vn.role:Theme ns1:datum_1 .
+
+ns1:docuverse earmark:hasContent "Bowles collected genetic, climactic, archaeological, ethnographic and experimental data to investigate the gender-benefit ratio of human cooperation in the ancient population."^^xsd:string .
+
+ns1:investigate_1 a ns1:Investigate ;
+    rdfs:label "investigate" ;
+    vn.role:Agent ns1:datum_1 ;
+    vn.role:Location ns1:ratio_1 .
+
+ns1:Ancient a owl:Class ;
+    rdfs:label "ancient" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:AncientPopulation a owl:Class ;
+    rdfs:label "Ancient Population" ;
+    dul:hasQuality ns1:Ancient ;
+    rdfs:subClassOf ns1:Population .
+
+ns1:Archaeological rdfs:label "archaeological" ;
+    owl:sameAs dbpedia:Archaeology .
+
+ns1:Bowles rdfs:label "Bowles" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Climactic rdfs:label "climactic" .
+
+ns1:Collect rdfs:label "collected" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Cooperation a owl:Class ;
+    rdfs:label "cooperation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Datum rdfs:label "data" .
+
+ns1:Ethnographic rdfs:label "ethnographic" ;
+    owl:sameAs dbpedia:Ethnography .
+
+ns1:Experimental rdfs:label "experimental" ;
+    owl:sameAs dbpedia:Experiment .
+
+ns1:ExperimentalDatum rdfs:subClassOf ns1:Datum .
+
+ns1:Gender-benefit a owl:Class ;
+    rdfs:label "gender-benefit" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Gender-benefitRatio a owl:Class ;
+    rdfs:label "gender-benefit ratio" ;
+    dul:hasQuality ns1:Gender-benefit ;
+    rdfs:subClassOf ns1:Ratio .
+
+ns1:Genetic rdfs:label "genetic" .
+
+ns1:Human a owl:Class ;
+    rdfs:label "human" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Human .
+
+ns1:HumanCooperation a owl:Class ;
+    rdfs:label "Human Cooperation" ;
+    dul:hasQuality ns1:Human ;
+    rdfs:subClassOf ns1:Cooperation .
+
+ns1:Investigate rdfs:label "investigate" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Population a owl:Class ;
+    rdfs:label "population" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Ratio a owl:Class ;
+    rdfs:label "ratio" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:cooperation_1 a ns1:HumanCooperation ;
+    rdfs:label "cooperation" ;
+    ns1:in ns1:population_1 .
+
+ns1:population_1 a ns1:AncientPopulation ;
+    rdfs:label "population" ;
+    quant:hasDeterminer quant:the .
+
+ns1:ratio_1 a ns1:Gender-benefitRatio ;
+    rdfs:label "ratio" ;
+    quant:hasDeterminer quant:the ;
+    ns1:gender-benefitRatioOf ns1:cooperation_1 .
+
+ns1:datum_1 a ns1:ExperimentalDatum ;
+    rdfs:label "data" ;
+    dul:hasQuality ns1:Archaeological,
+        ns1:Climactic,
+        ns1:Ethnographic,
+        ns1:Experimental,
+        ns1:Genetic ;
+    quant:hasQuantifier quant:multiple .
+

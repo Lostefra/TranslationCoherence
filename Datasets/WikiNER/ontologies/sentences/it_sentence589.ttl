@@ -1,0 +1,125 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence589.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence589.ttl a owl:Ontology ;
+    rdfs:label "it_sentence589" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence589" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "'s",
+        "of",
+        "their" .
+
+ns1:With rdfs:label "with" .
+
+ns1:become_1 a ns1:Become ;
+    rdfs:label "became" ;
+    boxer:agent ns1:relationship_1 ;
+    boxer:patient ns1:relationship_2 ;
+    ns1:inCloseRelationshipOf ns1:Rand ;
+    ns1:withConsentOf ns1:spouse_1 .
+
+ns1:consent_1 a ns1:Consent ;
+    rdfs:label "consent" ;
+    quant:hasDeterminer quant:the .
+
+ns1:docuverse earmark:hasContent "In 1954 Rand's close relationship with the younger Nathaniel_Branden became a romantic relationship, with the consent of their spouses."^^xsd:string .
+
+ns1:Become rdfs:label "became" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Close a owl:Class ;
+    rdfs:label "close" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:CloseRelationship a owl:Class ;
+    rdfs:label "Close Relationship" ;
+    dul:hasQuality ns1:Close ;
+    rdfs:subClassOf ns1:Relationship ;
+    owl:equivalentClass dbpedia:Interpersonal_relationship .
+
+ns1:Consent rdfs:label "consent" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Nathaniel_branden rdfs:label "Nathaniel Branden" ;
+    boxer:possibleType time:Interval ;
+    dul:hasQuality ns1:Younger ;
+    owl:sameAs dbpedia:Nathaniel_Branden .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType time:Interval .
+
+ns1:Romantic rdfs:label "romantic" ;
+    owl:sameAs dbpedia:Romance_(love) .
+
+ns1:RomanticRelationship a owl:Class ;
+    rdfs:label "Romantic Relationship" ;
+    rdfs:subClassOf ns1:Relationship ;
+    owl:equivalentClass dbpedia:Romance_(love) .
+
+ns1:Spouse rdfs:label "spouses" .
+
+ns1:Younger rdfs:label "younger" .
+
+ns1:relationship_1 a ns1:CloseRelationship ;
+    rdfs:label "relationship" ;
+    ns1:with ns1:Nathaniel_branden .
+
+ns1:relationship_2 a ns1:RomanticRelationship ;
+    rdfs:label "relationship" ;
+    dul:hasQuality ns1:Romantic ;
+    quant:hasDeterminer quant:a .
+
+ns1:spouse_1 a dbpedia:Spouse,
+        ns1:Spouse ;
+    rdfs:label "spouses" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:spouseOf ns1:thing_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "their" .
+
+ns1:Relationship a owl:Class ;
+    rdfs:label "relationship" ;
+    rdfs:subClassOf dul:Description .
+

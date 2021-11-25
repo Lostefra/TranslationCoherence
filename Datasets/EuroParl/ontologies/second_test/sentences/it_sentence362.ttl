@@ -1,0 +1,117 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence362.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence362.ttl a owl:Ontology ;
+    rdfs:label "it_sentence362" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence362" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:With rdfs:label "with" .
+
+ns1:accordance_1 a ns1:Accordance ;
+    rdfs:label "accordance" .
+
+ns1:direction_1 a ns1:Direction ;
+    rdfs:label "direction" ;
+    quant:hasDeterminer quant:the ;
+    ns1:inAccordanceWith ns1:aspect_1 .
+
+ns1:docuverse earmark:hasContent "Internal coherence is needed in the direction of the Commission, in accordance with the specific local and regional aspects of the Commission's programmes."^^xsd:string .
+
+ns1:need_1 a ns1:Need ;
+    rdfs:label "needed" ;
+    vn.role:Patient ns1:coherence_1 ;
+    ns1:inDirectionOf ns1:Commission .
+
+ns1:Accordance rdfs:label "accordance" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Aspect rdfs:label "aspects" .
+
+ns1:Coherence rdfs:label "coherence" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Direction rdfs:label "direction" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Internal rdfs:label "Internal" ;
+    boxer:possibleType owl:Thing .
+
+ns1:Local rdfs:label "local" .
+
+ns1:Need rdfs:label "needed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Programme rdfs:label "programmes" .
+
+ns1:Regional rdfs:label "regional" .
+
+ns1:RegionalAspect rdfs:subClassOf ns1:Aspect .
+
+ns1:Specific rdfs:label "specific" .
+
+ns1:aspect_1 a ns1:RegionalAspect ;
+    rdfs:label "aspects" ;
+    dul:hasQuality ns1:Local,
+        ns1:Regional,
+        ns1:Specific ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:regionalAspectOf ns1:programme_1 .
+
+ns1:coherence_1 a ns1:Coherence ;
+    rdfs:label "coherence" ;
+    dul:associatedWith ns1:Internal .
+
+ns1:programme_1 a ns1:Programme ;
+    rdfs:label "programmes" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:programmeOf ns1:Commission .
+
+ns1:Commission rdfs:label "Commission" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:European_Commission .
+

@@ -1,0 +1,104 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence747.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme rdfs:label "in" .
+
+translation_coherence:fi_sentence747.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence747" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence747" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:collaborate_1 a ns1:PartlyCollaborate ;
+    rdfs:label "collaborated" ;
+    boxer:patient ns1:Kabyle_theatre ;
+    dul:hasQuality ns1:Partly ;
+    vn.role:Theme ns1:Kabyl .
+
+ns1:docuverse earmark:hasContent "The Kabyle Theatre, the most spoken Berber Theatre in the country, is taught and partly collaborated in Kabyl."^^xsd:string .
+
+ns1:speak_1 a dbpedia:Speech,
+        ns1:Speak ;
+    rdfs:label "spoken" ;
+    boxer:patient ns1:Berber_theatre .
+
+ns1:teach_1 a ns1:Teach ;
+    rdfs:label "taught" ;
+    vn.role:Topic ns1:Kabyle_theatre .
+
+ns1:Collaborate rdfs:label "collaborated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Country rdfs:label "country" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Kabyl rdfs:label "Kabyl" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Kabyle_language .
+
+ns1:Most rdfs:label "most" .
+
+ns1:Partly rdfs:label "partly" .
+
+ns1:PartlyCollaborate rdfs:subClassOf ns1:Collaborate .
+
+ns1:Speak rdfs:label "spoken" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Teach rdfs:label "taught" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:country_1 a ns1:Country ;
+    rdfs:label "country" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Berber_theatre rdfs:label "Berber Theatre" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality ns1:Most ;
+    ns1:in ns1:country_1 .
+
+ns1:Kabyle_theatre rdfs:label "Kabyle Theatre" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Berber_theatre .
+

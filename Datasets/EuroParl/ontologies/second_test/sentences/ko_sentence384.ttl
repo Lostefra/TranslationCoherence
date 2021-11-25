@@ -1,0 +1,189 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence384.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence384.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence384" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence384" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Inofficeof rdfs:label "in the office of" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Quantity rdfs:label "many" .
+
+ns1:Since rdfs:label "Since" .
+
+ns1:adjustment_1 a ns1:Adjustment ;
+    rdfs:label "adjustment" ;
+    dul:associatedWith ns1:consulting_1 .
+
+ns1:agency_1 rdfs:label "agency" .
+
+ns1:docuverse earmark:hasContent "Since this parliament didn't overcome the role as a consulting and adjustment agency, the Commission was sitting in the office of the Council for many months, with an excellent report of Elisabeth_Schroedter, a associate member of the Board."^^xsd:string .
+
+ns1:office_1 a ns1:Office ;
+    rdfs:label "office" ;
+    quant:hasDeterminer quant:the .
+
+ns1:sit_1 a ns1:Sit ;
+    rdfs:label "sitting" ;
+    vn.role:Agent ns1:Commission ;
+    vn.role:Location ns1:report_1 ;
+    ns1:inOfficeOf ns1:Council ;
+    ns1:since ns1:overcome_1 .
+
+ns1:AdjustmentAgency a owl:Class ;
+    rdfs:label "adjustment agency" ;
+    dul:associatedWith ns1:Adjustment ;
+    rdfs:subClassOf ns1:Agency .
+
+ns1:Agency a owl:Class ;
+    rdfs:label "agency" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Associate a owl:Class ;
+    rdfs:label "associate" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:AssociateMember a owl:Class ;
+    rdfs:label "Associate Member" ;
+    dul:hasQuality ns1:Associate ;
+    rdfs:subClassOf ns1:Member .
+
+ns1:Board rdfs:label "Board" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Commission rdfs:label "Commission" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs ns1:member_1,
+        ns1:report_1 .
+
+ns1:Consulting rdfs:label "consulting" .
+
+ns1:Council rdfs:label "Council" ;
+    boxer:possibleType foaf:Organisation ;
+    ns1:for ns1:month_1 .
+
+ns1:Elisabeth_schroedter rdfs:label "Elisabeth Schroedter" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith ns1:member_1 ;
+    owl:sameAs dbpedia:Elisabeth_Schroedter .
+
+ns1:Excellent a owl:Class ;
+    rdfs:label "excellent" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ExcellentReport a owl:Class ;
+    rdfs:label "excellent report" ;
+    dul:hasQuality ns1:Excellent ;
+    rdfs:subClassOf ns1:Report .
+
+ns1:Month rdfs:label "months" .
+
+ns1:Office rdfs:label "office" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Overcome rdfs:label "overcome" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Parliament rdfs:label "parliament" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Role rdfs:label "role" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Sit rdfs:label "sitting" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:month_1 a ns1:Month ;
+    rdfs:label "months" ;
+    quant:hasQuantifier quant:many,
+        quant:multiple .
+
+ns1:overcome_1 a ns1:Overcome ;
+    rdfs:label "overcome" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Theme1 ns1:parliament_1 ;
+    vn.role:Theme2 ns1:role_1 .
+
+ns1:parliament_1 a ns1:Parliament ;
+    rdfs:label "parliament" ;
+    quant:hasDeterminer quant:this .
+
+ns1:role_1 a ns1:Role ;
+    rdfs:label "role" ;
+    quant:hasDeterminer quant:the ;
+    ns1:as ns1:consulting_1 .
+
+ns1:Adjustment a owl:Class ;
+    rdfs:label "adjustment" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Member a owl:Class ;
+    rdfs:label "member" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Report a owl:Class ;
+    rdfs:label "report" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:consulting_1 a ns1:AdjustmentAgency,
+        ns1:Consulting ;
+    rdfs:label "consulting" ;
+    quant:hasDeterminer quant:a .
+
+ns1:member_1 a ns1:AssociateMember,
+        ns1:Member ;
+    rdfs:label "member" ;
+    quant:hasDeterminer quant:a ;
+    ns1:associateMemberOf ns1:Board .
+
+ns1:report_1 a ns1:ExcellentReport,
+        ns1:Report ;
+    rdfs:label "report" ;
+    quant:hasDeterminer quant:an ;
+    ns1:excellentReportOf ns1:Elisabeth_schroedter .
+

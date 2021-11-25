@@ -1,0 +1,187 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence544.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Beneficiary rdfs:label "for" .
+
+vn.role:Source rdfs:label "into" .
+
+translation_coherence:zh_sentence544.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence544" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence544" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In",
+        "in" .
+
+ns1:Of rdfs:label "of",
+        "your" .
+
+ns1:On rdfs:label "on" .
+
+ns1:ask_1 a ns1:Ask ;
+    rdfs:label "asked" ;
+    vn.role:Agent ns1:person_3 ;
+    vn.role:Topic ns1:ask_2 ;
+    ns1:inCourseOf ns1:negotiation_1 .
+
+ns1:assure_1 a ns1:Assure ;
+    rdfs:label "assured" ;
+    vn.role:Agent ns1:person_2,
+        ns1:thing_1 ;
+    vn.role:Topic ns1:person_3 ;
+    ns1:in ns1:Chamber .
+
+ns1:begin_1 a ns1:JustBegin ;
+    rdfs:label "begun" ;
+    dul:hasQuality ns1:Just ;
+    vn.role:Agent ns1:programme_1 ;
+    vn.role:Theme ns1:Hetzidaki .
+
+ns1:course_1 a ns1:Course ;
+    rdfs:label "course" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:all .
+
+ns1:docuverse earmark:hasContent "In this Chamber, you and all assured you that, in the course of negotiations on a programme that had just begun, Mr. Hetzidaki asked me to ask this issue and, for Member States, your views would certainly be taken into account."^^xsd:string .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "taken" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Certainly ;
+    vn.role:Beneficiary ns1:Member_states ;
+    vn.role:Source ns1:account_1 ;
+    vn.role:Theme ns1:view_1 .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> rdfs:label "Mr." ;
+    boxer:possibleType dul:Role .
+
+owl:Thing rdfs:label "all" .
+
+ns1:Account rdfs:label "account" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Assure rdfs:label "assured" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Begin rdfs:label "begun" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Certainly rdfs:label "certainly" .
+
+ns1:Chamber rdfs:label "Chamber" ;
+    boxer:possibleType time:Interval .
+
+ns1:Course rdfs:label "course" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Hetzidaki rdfs:label "Hetzidaki" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> .
+
+ns1:Issue rdfs:label "issue" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Just rdfs:label "just" .
+
+ns1:JustBegin rdfs:subClassOf ns1:Begin .
+
+ns1:Member_states rdfs:label "Member States" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Negotiation rdfs:label "negotiations" .
+
+ns1:Programme rdfs:label "programme" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Take rdfs:label "taken" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:View rdfs:label "views" .
+
+ns1:account_1 a ns1:Account ;
+    rdfs:label "account" .
+
+ns1:ask_2 a ns1:Ask ;
+    rdfs:label "ask" ;
+    vn.role:Agent ns1:person_4 ;
+    vn.role:Patient ns1:issue_1 .
+
+ns1:issue_1 a ns1:Issue ;
+    rdfs:label "issue" ;
+    quant:hasDeterminer quant:this .
+
+ns1:negotiation_1 a ns1:Negotiation ;
+    rdfs:label "negotiations" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:on ns1:programme_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "your" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "you" .
+
+ns1:person_4 a ns1:Person ;
+    rdfs:label "me" .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "all" .
+
+ns1:view_1 a ns1:View ;
+    rdfs:label "views" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:viewOf ns1:person_1 .
+
+ns1:Ask rdfs:label "Ask",
+        "ask",
+        "asked" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "you" .
+
+ns1:programme_1 a ns1:Programme ;
+    rdfs:label "programme" ;
+    quant:hasDeterminer quant:a .
+
+ns1:Person rdfs:label "me",
+        "you" .
+

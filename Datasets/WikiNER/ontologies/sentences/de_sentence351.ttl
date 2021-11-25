@@ -1,0 +1,136 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence351.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence351.ttl a owl:Ontology ;
+    rdfs:label "de_sentence351" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence351" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "Missouri, Kentucky and Md. threatened secession, but neither they nor the slave status of Del. were removed."^^xsd:string .
+
+ns1:remove_1 a ns1:Remove ;
+    vn.role:Theme ns1:thing_1 .
+
+ns1:remove_2 a ns1:Remove ;
+    rdfs:label "removed" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Theme ns1:status_1 .
+
+ns1:slave_1 a ns1:Slave ;
+    rdfs:label "slave" ;
+    dul:associatedWith ns1:status_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:threaten_1 a ns1:Threaten ;
+    rdfs:label "threatened" ;
+    vn.role:Cause ns1:Missouri ;
+    vn.role:Experiencer ns1:secession_1 .
+
+dbpedia:Kentucky a schema:AdministrativeArea,
+        schema:Place .
+
+dbpedia:Missouri a schema:AdministrativeArea,
+        schema:Place .
+
+owl:Thing rdfs:label "they" .
+
+<https://w3id.org/stlab/ke/amiala/de_sentence351.ttl/Del.> rdfs:label "Del." ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Kentucky rdfs:label "Kentucky" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Kentucky .
+
+<https://w3id.org/stlab/ke/amiala/de_sentence351.ttl/Md.> rdfs:label "Md." ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Missouri rdfs:label "Missouri" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Kentucky,
+        <https://w3id.org/stlab/ke/amiala/de_sentence351.ttl/Md.> ;
+    owl:sameAs dbpedia:Missouri .
+
+ns1:Neither rdfs:label "neither" .
+
+ns1:Secession a owl:Class ;
+    rdfs:label "secession" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Secession .
+
+ns1:SlaveStatus a owl:Class ;
+    rdfs:label "slave status" ;
+    dul:associatedWith ns1:Slave ;
+    rdfs:subClassOf ns1:Status .
+
+ns1:Status a owl:Class ;
+    rdfs:label "status" ;
+    rdfs:subClassOf dul:Role .
+
+ns1:Threaten rdfs:label "threatened" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:secession_1 a ns1:Secession ;
+    rdfs:label "secession" .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "they" ;
+    dul:associatedWith ns1:neither_1 .
+
+ns1:Remove rdfs:label "removed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Slave a owl:Class ;
+    rdfs:label "slave" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Slavery .
+
+ns1:neither_1 a ns1:Neither ;
+    rdfs:label "neither" .
+
+ns1:status_1 a ns1:SlaveStatus ;
+    rdfs:label "status" ;
+    dul:associatedWith ns1:neither_1 ;
+    ns1:slaveStatusOf <https://w3id.org/stlab/ke/amiala/de_sentence351.ttl/Del.> .
+

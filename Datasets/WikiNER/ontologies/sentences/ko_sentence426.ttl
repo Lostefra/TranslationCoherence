@@ -1,0 +1,151 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence426.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence426.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence426" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence426" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:During rdfs:label "during" .
+
+ns1:Especially rdfs:label "especially" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:With rdfs:label "with" .
+
+ns1:affect_1 a ns1:Affect ;
+    rdfs:label "affects" ;
+    dul:associatedWith ns1:period_1 ;
+    vn.role:Cause ns1:thought_1 ;
+    vn.role:Experiencer ns1:expression_1 .
+
+ns1:docuverse earmark:hasContent "Lincoln matured, especially during his period as president, the thought of divine affects more popular expressions that interact with human sins."^^xsd:string .
+
+ns1:interact_1 a ns1:Interact ;
+    rdfs:label "interact" ;
+    vn.role:Actor ns1:expression_1 ;
+    ns1:with ns1:sin_1 .
+
+ns1:male_1 coref:coref ns1:Lincoln .
+
+ns1:mature_1 a ns1:Mature ;
+    rdfs:label "matured" ;
+    vn.role:Patient ns1:Lincoln ;
+    ns1:especiallyDuring ns1:period_1 .
+
+ns1:Affect rdfs:label "affects" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Divine a owl:Class ;
+    rdfs:label "divine" ;
+    rdfs:subClassOf dul:Personification ;
+    owl:equivalentClass dbpedia:Divinity .
+
+ns1:Expression rdfs:label "expressions" .
+
+ns1:Human rdfs:label "human" .
+
+ns1:HumanSin rdfs:subClassOf ns1:Sin .
+
+ns1:Interact rdfs:label "interact" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Male rdfs:label "Lincoln" .
+
+ns1:Mature rdfs:label "matured" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:More rdfs:label "more" .
+
+ns1:MorePopularExpression rdfs:subClassOf ns1:PopularExpression .
+
+ns1:Period rdfs:label "period" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Popular rdfs:label "popular" .
+
+ns1:PopularExpression rdfs:subClassOf ns1:Expression .
+
+ns1:President rdfs:label "president" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Sin rdfs:label "sins" .
+
+ns1:Thought rdfs:label "thought" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:divine_1 a ns1:Divine ;
+    rdfs:label "divine" .
+
+ns1:president_1 a ns1:President ;
+    rdfs:label "president" .
+
+ns1:sin_1 a dbpedia:Sin,
+        ns1:HumanSin ;
+    rdfs:label "sins" ;
+    dul:hasQuality ns1:Human ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:thought_1 a ns1:Thought ;
+    rdfs:label "thought" ;
+    quant:hasDeterminer quant:the ;
+    ns1:thoughtOf ns1:divine_1 .
+
+ns1:expression_1 a ns1:MorePopularExpression ;
+    rdfs:label "expressions" ;
+    dul:hasQuality ns1:More,
+        ns1:Popular ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:period_1 a ns1:Period ;
+    rdfs:label "period" ;
+    ns1:as ns1:president_1 ;
+    ns1:periodOf ns1:Lincoln .
+
+ns1:Lincoln a ns1:Male ;
+    rdfs:label "Lincoln",
+        "his" ;
+    boxer:possibleType foaf:Person .
+

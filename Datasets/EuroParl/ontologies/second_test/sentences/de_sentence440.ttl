@@ -1,0 +1,151 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence440.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence440.ttl a owl:Ontology ;
+    rdfs:label "de_sentence440" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence440" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Although rdfs:label "although" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:agree_1 a ns1:Agree ;
+    rdfs:label "agree" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Actor ns1:press_1 ;
+    vn.role:Theme ns1:give_2 ;
+    ns1:although ns1:give_1 .
+
+ns1:docuverse earmark:hasContent "The public and the press today do not agree to give a reply, although we will finance a large part of the national operations."^^xsd:string .
+
+ns1:Agree rdfs:label "agree" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Finance rdfs:label "finance" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Large a owl:Class ;
+    rdfs:label "large" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:LargePart a owl:Class ;
+    rdfs:label "large part" ;
+    dul:hasQuality ns1:Large ;
+    rdfs:subClassOf ns1:Part .
+
+ns1:National rdfs:label "national" .
+
+ns1:NationalOperation rdfs:subClassOf ns1:Operation .
+
+ns1:Operation rdfs:label "operations" .
+
+ns1:Part a owl:Class ;
+    rdfs:label "part" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Press rdfs:label "press" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Public rdfs:label "public" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Reply rdfs:label "reply" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Today rdfs:label "today" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:finance_1 a ns1:Finance ;
+    rdfs:label "finance" ;
+    boxer:agent ns1:person_1 ;
+    boxer:patient ns1:part_1 ;
+    boxing:hasModality boxing:Necessary .
+
+ns1:give_1 a ns1:Give ;
+    boxer:agent ns1:person_1 ;
+    boxer:patient ns1:part_1 ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Actor ns1:public_1 ;
+    vn.role:Agent ns1:public_1 ;
+    vn.role:Theme ns1:reply_1 ;
+    ns1:although ns1:finance_1 .
+
+ns1:give_2 a ns1:Give ;
+    rdfs:label "give" ;
+    vn.role:Agent ns1:press_1 ;
+    vn.role:Theme ns1:reply_1 .
+
+ns1:operation_1 a ns1:NationalOperation ;
+    rdfs:label "operations" ;
+    dul:hasQuality ns1:National ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:today_1 a ns1:Today ;
+    rdfs:label "today" .
+
+ns1:Give rdfs:label "give" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:part_1 a ns1:LargePart ;
+    rdfs:label "part" ;
+    quant:hasDeterminer quant:a ;
+    ns1:largePartOf ns1:operation_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:press_1 a ns1:Press ;
+    rdfs:label "press" ;
+    dul:associatedWith ns1:today_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:public_1 a ns1:Public ;
+    rdfs:label "public" ;
+    quant:hasDeterminer quant:the .
+
+ns1:reply_1 a ns1:Reply ;
+    rdfs:label "reply" .
+

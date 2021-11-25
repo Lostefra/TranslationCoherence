@@ -1,0 +1,138 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence277.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Actor2 rdfs:label "with" .
+
+vn.role:Oblique rdfs:label "to" .
+
+translation_coherence:zh_sentence277.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence277" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence277" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:By rdfs:label "by" .
+
+ns1:For rdfs:label "for" .
+
+ns1:That rdfs:label "that" .
+
+ns1:docuverse earmark:hasContent "He met with her for the first time that he had moved to the new Salim and had reached an unethical understanding by 1835."^^xsd:string .
+
+ns1:meet_1 a ns1:Meet ;
+    rdfs:label "met" ;
+    vn.role:Actor1 ns1:male_1 ;
+    vn.role:Actor2 ns1:female_1 ;
+    ns1:for ns1:time_1 .
+
+ns1:reach_1 a ns1:Reach ;
+    rdfs:label "reached" ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Theme ns1:understanding_1 .
+
+ns1:Female rdfs:label "her" .
+
+ns1:First a owl:Class ;
+    rdfs:label "first" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FirstTime a owl:Class ;
+    rdfs:label "first time" ;
+    dul:hasQuality ns1:First ;
+    rdfs:subClassOf ns1:Time .
+
+ns1:Male rdfs:label "He" .
+
+ns1:Meet rdfs:label "met" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Move rdfs:label "moved" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:New rdfs:label "new" .
+
+ns1:Reach rdfs:label "reached" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Salim rdfs:label "Salim" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:hasQuality ns1:New .
+
+ns1:Time a owl:Class ;
+    rdfs:label "time" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Time .
+
+ns1:Understanding a owl:Class ;
+    rdfs:label "understanding" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:UnethicalUnderstanding a owl:Class ;
+    rdfs:label "unethical understanding" ;
+    dul:hasQuality ns1:Unethical ;
+    rdfs:subClassOf ns1:Understanding .
+
+ns1:female_1 a ns1:Female ;
+    rdfs:label "her" .
+
+ns1:move_1 a ns1:Move ;
+    rdfs:label "moved" ;
+    vn.role:Oblique ns1:Salim ;
+    vn.role:Theme ns1:male_1 .
+
+ns1:time_1 a ns1:FirstTime ;
+    rdfs:label "time" ;
+    quant:hasDeterminer quant:the ;
+    ns1:that ns1:move_1 .
+
+ns1:understanding_1 a ns1:UnethicalUnderstanding ;
+    rdfs:label "understanding" ;
+    dul:hasQuality ns1:Unethical ;
+    quant:hasDeterminer quant:an ;
+    ns1:unethicalUnderstandingBy "1835-01-01"^^xsd:date .
+
+ns1:Unethical a owl:Class ;
+    rdfs:label "unethical" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Ethics .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "He" .
+

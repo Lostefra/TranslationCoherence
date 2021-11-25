@@ -1,0 +1,199 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence539.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence539.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence539" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence539" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Among rdfs:label "among" .
+
+ns1:Because rdfs:label "because" .
+
+ns1:Eq rdfs:label "are" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Noteq rdfs:label "different" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Why rdfs:label "why" .
+
+ns1:With rdfs:label "with" .
+
+ns1:accordance_1 a ns1:Accordance ;
+    rdfs:label "accordance" .
+
+ns1:docuverse earmark:hasContent "These are the reasons why the directives are presented in the opinion of the thematic priorities, because they need to be considered, among each of the objective objects, in different measures, in accordance with the specific situation of Meber and Meber."^^xsd:string .
+
+ns1:opinion_1 a ns1:Opinion ;
+    rdfs:label "opinion" ;
+    quant:hasDeterminer quant:the .
+
+ns1:reason_1 a owl:Thing,
+        ns1:Reason ;
+    rdfs:label "reasons" ;
+    quant:hasDeterminer quant:the,
+        quant:these ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:why ns1:present_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:thing_3 ;
+    ns1:entails ns1:situation_2 .
+
+ns1:thing_1 rdfs:label "These" .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "they" .
+
+ns1:Accordance rdfs:label "accordance" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Consider rdfs:label "considered" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Directive rdfs:label "directives" .
+
+ns1:Meber rdfs:label "Meber" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Need rdfs:label "need" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Object rdfs:label "objects" .
+
+ns1:Objective rdfs:label "objective" .
+
+ns1:ObjectiveObject rdfs:subClassOf ns1:Object .
+
+ns1:Opinion rdfs:label "opinion" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Present rdfs:label "presented" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Priority rdfs:label "priorities" .
+
+ns1:Specific a owl:Class ;
+    rdfs:label "specific" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SpecificSituation a owl:Class ;
+    rdfs:label "Specific Situation" ;
+    dul:hasQuality ns1:Specific ;
+    rdfs:subClassOf ns1:Situation .
+
+ns1:Thematic rdfs:label "thematic" .
+
+ns1:ThematicPriority rdfs:subClassOf ns1:Priority .
+
+ns1:consider_1 a ns1:Consider ;
+    rdfs:label "considered" ;
+    ns1:among ns1:thing_3 ;
+    ns1:inConsiderWith ns1:situation_3 .
+
+ns1:directive_1 a ns1:Directive ;
+    rdfs:label "directives" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    owl:sameAs ns1:situation_3 .
+
+ns1:measure_2 a ns1:Measure ;
+    rdfs:label "measures" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:need_1 a ns1:Need ;
+    rdfs:label "need" ;
+    vn.role:Theme ns1:consider_1 .
+
+ns1:object_1 a ns1:ObjectiveObject ;
+    rdfs:label "objects" ;
+    dul:hasQuality ns1:Objective ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:each,
+        quant:multiple .
+
+ns1:present_1 a ns1:Present ;
+    rdfs:label "presented" ;
+    vn.role:Theme ns1:directive_1 ;
+    ns1:because ns1:need_1 ;
+    ns1:inOpinionOf ns1:priority_1 .
+
+ns1:priority_1 a ns1:ThematicPriority ;
+    rdfs:label "priorities" ;
+    dul:hasQuality ns1:Thematic ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:measure_1 .
+
+ns1:Measure rdfs:label "different",
+        "measures" .
+
+ns1:Reason rdfs:label "reasons" .
+
+ns1:measure_1 a ns1:Measure ;
+    rdfs:label "different" ;
+    owl:differentFrom ns1:measure_2 .
+
+ns1:situation_3 a ns1:Situation,
+        ns1:SpecificSituation ;
+    rdfs:label "situation" ;
+    quant:hasDeterminer quant:the ;
+    ns1:specificSituationOf ns1:Meber .
+
+ns1:thing_3 a owl:Thing ;
+    rdfs:label "each" ;
+    ns1:in ns1:measure_1 ;
+    ns1:thingOf ns1:object_1 .
+
+owl:Thing rdfs:label "These",
+        "each",
+        "they" ;
+    rdfs:subClassOf ns1:Reason .
+
+ns1:Situation a owl:Class ;
+    rdfs:label "situation" ;
+    rdfs:subClassOf dul:Situation .
+

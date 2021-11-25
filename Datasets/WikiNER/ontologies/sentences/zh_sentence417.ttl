@@ -1,0 +1,127 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence417.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Patient2 rdfs:label "to" .
+
+translation_coherence:zh_sentence417.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence417" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence417" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Loincoln_tomb a ns1:Foot ;
+    rdfs:label "Loincoln Tomb",
+        "feet" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:grave_1,
+        ns1:m_1,
+        ns1:year_1 ;
+    dul:hasDataValue "177"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:Tall ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "(",
+        "," .
+
+ns1:docuverse earmark:hasContent "Loincoln Tomb, Oak Ridge Ce graves, is 177 feet (54 m) tall, 1874 years linked to a number of Lincoln blocks."^^xsd:string .
+
+ns1:foot_1 rdfs:label "feet" .
+
+ns1:link_1 a ns1:Link ;
+    rdfs:label "linked" ;
+    vn.role:Patient1 ns1:year_1 ;
+    vn.role:Patient2 ns1:number_1 .
+
+ns1:Block rdfs:label "blocks" .
+
+ns1:Foot rdfs:label "Loincoln Tomb",
+        "feet" .
+
+ns1:Grave rdfs:label "graves" .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Link rdfs:label "linked" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:M a owl:Class ;
+    rdfs:label "m" ;
+    rdfs:subClassOf dul:Amount ;
+    owl:equivalentClass dbpedia:Tomb .
+
+ns1:Number rdfs:label "number" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Oak_ridge_ce rdfs:label "Oak Ridge Ce" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Tall rdfs:label "tall" .
+
+ns1:Year rdfs:label "years" .
+
+ns1:block_1 a ns1:Block ;
+    rdfs:label "blocks" ;
+    dul:associatedWith ns1:Lincoln ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:grave_1 a ns1:Grave ;
+    rdfs:label "graves" ;
+    dul:associatedWith ns1:Oak_ridge_ce ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:m_1 a ns1:M ;
+    rdfs:label "m" ;
+    dul:hasDataValue "54"^^xsd:nonNegativeInteger .
+
+ns1:number_1 a ns1:Number ;
+    rdfs:label "number" ;
+    quant:hasDeterminer quant:a ;
+    ns1:numberOf ns1:block_1 .
+
+ns1:year_1 a ns1:Year ;
+    rdfs:label "years" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:at "1874-01-01"^^xsd:date .
+

@@ -1,0 +1,148 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence117.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "when" .
+
+translation_coherence:fi_sentence117.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence117" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence117" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:From rdfs:label "from" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "State areas that are far from the Persian_Gulf are notmuumune to the effects of storms that often pour huge rains when they move inland and weaken."^^xsd:string .
+
+ns1:pour_1 a ns1:OftenPour ;
+    rdfs:label "pour" ;
+    dul:hasQuality ns1:Often ;
+    vn.role:Agent ns1:storm_1 ;
+    vn.role:Location ns1:situation_1 ;
+    vn.role:Theme ns1:rain_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Far,
+        ns1:area_1 ;
+    ns1:from ns1:Persian_gulf .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves ns1:Notmuumune,
+        ns1:area_1 ;
+    ns1:to ns1:effect_1 .
+
+owl:Thing rdfs:label "they" .
+
+ns1:Area rdfs:label "areas" .
+
+ns1:Effect rdfs:label "effects" .
+
+ns1:Huge rdfs:label "huge" .
+
+ns1:HugeRain rdfs:subClassOf ns1:Rain .
+
+ns1:Inland rdfs:label "inland" .
+
+ns1:Move rdfs:label "move" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Often rdfs:label "often" .
+
+ns1:OftenPour rdfs:label "Often Pour" ;
+    rdfs:subClassOf ns1:Pour .
+
+ns1:Persian_gulf rdfs:label "Persian Gulf" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Persian_Gulf .
+
+ns1:Pour rdfs:label "pour" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Rain rdfs:label "rains" .
+
+ns1:State rdfs:label "State" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality ns1:Notmuumune .
+
+ns1:Storm rdfs:label "storms" .
+
+ns1:Weaken rdfs:label "weaken" .
+
+ns1:effect_1 a ns1:Effect ;
+    rdfs:label "effects" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:effectOf ns1:storm_1 .
+
+ns1:move_1 a ns1:Move ;
+    rdfs:label "move" ;
+    dul:hasQuality ns1:Inland,
+        ns1:Weaken ;
+    vn.role:Theme ns1:thing_1 .
+
+ns1:rain_1 a ns1:HugeRain ;
+    rdfs:label "rains" ;
+    dul:hasQuality ns1:Huge ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:move_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "they" .
+
+ns1:Far rdfs:label "far" .
+
+ns1:area_1 a ns1:Area ;
+    rdfs:label "areas" ;
+    dul:associatedWith ns1:State ;
+    dul:hasQuality ns1:Notmuumune ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:storm_1 a ns1:Storm ;
+    rdfs:label "storms" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Notmuumune rdfs:label "notmuumune" ;
+    dul:hasQuality ns1:Far .
+

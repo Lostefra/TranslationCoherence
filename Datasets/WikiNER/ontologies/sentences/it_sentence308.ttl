@@ -1,0 +1,164 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence308.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "before" .
+
+translation_coherence:it_sentence308.ttl a owl:Ontology ;
+    rdfs:label "it_sentence308" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence308" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:After rdfs:label "after" .
+
+ns1:Of rdfs:label "His" .
+
+ns1:appear_1 a ns1:Appear ;
+    rdfs:label "appeared" ;
+    vn.role:Location ns1:U.s._supreme_court ;
+    vn.role:Theme ns1:reputation_1 .
+
+ns1:claim_1 a ns1:Claim ;
+    rdfs:label "claiming" ;
+    vn.role:Agent ns1:reputation_1 ;
+    vn.role:Theme ns1:case_1 .
+
+ns1:docuverse earmark:hasContent "His reputation grew, and appeared before the U.S._Supreme_Court, claiming a case involving a sinking canal boat after hitting a bridge."^^xsd:string .
+
+ns1:grow_1 a ns1:Grow ;
+    rdfs:label "grew" ;
+    vn.role:Agent ns1:reputation_1 .
+
+ns1:involve_1 a ns1:Involve ;
+    rdfs:label "involving" ;
+    vn.role:Agent ns1:case_1 ;
+    vn.role:Theme ns1:boat_1 ;
+    ns1:after ns1:hit_1 .
+
+ns1:sinking_1 a ns1:Sinking ;
+    rdfs:label "sinking" ;
+    dul:associatedWith ns1:boat_1,
+        ns1:canal_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:Appear rdfs:label "appeared" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Boat a owl:Class ;
+    rdfs:label "boat" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Bridge rdfs:label "bridge" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:CanalBoat a owl:Class ;
+    rdfs:label "Canal Boat" ;
+    dul:associatedWith ns1:Canal ;
+    rdfs:subClassOf dul:PhysicalObject,
+        ns1:Boat ;
+    owl:equivalentClass dbpedia:Barge .
+
+ns1:Case rdfs:label "case" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Claim rdfs:label "claiming" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Grow rdfs:label "grew" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Hit rdfs:label "hitting" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Involve rdfs:label "involving" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Reputation rdfs:label "reputation" ;
+    rdfs:subClassOf dul:Role .
+
+ns1:SinkingCanalBoat a owl:Class ;
+    rdfs:label "Sinking Canal Boat" ;
+    dul:associatedWith ns1:SinkingCanal ;
+    rdfs:subClassOf ns1:CanalBoat .
+
+ns1:U.s._supreme_court rdfs:label "U.S. Supreme Court" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Supreme_Court_of_the_United_States .
+
+ns1:bridge_1 a ns1:Bridge ;
+    rdfs:label "bridge" ;
+    quant:hasDeterminer quant:a .
+
+ns1:canal_1 a ns1:SinkingCanal ;
+    rdfs:label "canal" ;
+    dul:associatedWith ns1:boat_1 .
+
+ns1:hit_1 a ns1:Hit ;
+    rdfs:label "hitting" ;
+    vn.role:Agent ns1:case_1 ;
+    vn.role:Theme ns1:bridge_1 .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "His" .
+
+ns1:Canal a owl:Class ;
+    rdfs:label "canal" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Sinking a owl:Class ;
+    rdfs:label "sinking" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:SinkingCanal a owl:Class ;
+    rdfs:label "Sinking Canal" ;
+    dul:associatedWith ns1:Sinking ;
+    rdfs:subClassOf ns1:Canal .
+
+ns1:boat_1 a ns1:SinkingCanalBoat ;
+    rdfs:label "boat" .
+
+ns1:case_1 a ns1:Case ;
+    rdfs:label "case" ;
+    quant:hasDeterminer quant:a .
+
+ns1:reputation_1 a ns1:Reputation ;
+    rdfs:label "reputation" ;
+    ns1:reputationOf ns1:male_1 .
+

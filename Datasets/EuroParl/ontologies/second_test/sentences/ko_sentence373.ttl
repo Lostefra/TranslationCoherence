@@ -1,0 +1,156 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence373.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "in" .
+
+translation_coherence:ko_sentence373.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence373" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence373" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In" .
+
+ns1:docuverse earmark:hasContent "In this step we will use this process to assess how to use bearings in mind that targets are meaningful to reduce local complaints."^^xsd:string .
+
+ns1:meaningful_1 a ns1:Meaningful ;
+    rdfs:label "meaningful" ;
+    boxer:agent ns1:target_1 ;
+    boxer:theme ns1:reduce_1 ;
+    ns1:in ns1:step_1 .
+
+ns1:use_1 a ns1:Use ;
+    rdfs:label "use" ;
+    boxer:theme ns1:assess_1 ;
+    boxing:hasModality boxing:Necessary ;
+    dul:associatedWith ns1:step_1 ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:process_1 .
+
+ns1:use_2 rdfs:label "use" .
+
+ns1:Assess rdfs:label "assess" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Bearing rdfs:label "bearings" .
+
+ns1:Complaint rdfs:label "complaints" .
+
+ns1:Local rdfs:label "local" .
+
+ns1:LocalComplaint rdfs:subClassOf ns1:Complaint .
+
+ns1:Manner rdfs:label "how" .
+
+ns1:Meaningful rdfs:label "meaningful" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Mind a owl:Class ;
+    rdfs:label "mind" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> ;
+    owl:equivalentClass dbpedia:Mind .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Process a owl:Class ;
+    rdfs:label "process" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Process_philosophy .
+
+ns1:Reduce a owl:Class ;
+    rdfs:label "reduce" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Reductionism .
+
+ns1:Step rdfs:label "step" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Target rdfs:label "targets" .
+
+ns1:assess_1 a ns1:Assess ;
+    rdfs:label "assess" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:manner_1 .
+
+ns1:bearing_1 a ns1:Bearing ;
+    rdfs:label "bearings" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:complaint_1 a ns1:LocalComplaint ;
+    rdfs:label "complaints" ;
+    dul:hasQuality ns1:Local ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:manner_1 a ns1:Manner,
+        ns1:Use ;
+    rdfs:label "how" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Location ns1:mind_1 ;
+    vn.role:Value ns1:bearing_1 .
+
+ns1:mind_1 a ns1:Mind ;
+    rdfs:label "mind" .
+
+ns1:process_1 a ns1:Process ;
+    rdfs:label "process" ;
+    quant:hasDeterminer quant:this .
+
+ns1:reduce_1 a ns1:Reduce ;
+    rdfs:label "reduce" ;
+    vn.role:Agent ns1:target_1 ;
+    vn.role:Patient ns1:complaint_1 .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:Use rdfs:label "use" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:step_1 a ns1:Step ;
+    rdfs:label "step" ;
+    quant:hasDeterminer quant:this .
+
+ns1:target_1 a ns1:Target ;
+    rdfs:label "targets" ;
+    quant:hasQuantifier quant:multiple .
+

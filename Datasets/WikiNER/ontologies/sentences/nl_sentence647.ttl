@@ -1,0 +1,202 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence647.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence647.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence647" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence647" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Where rdfs:label "where" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "Nick_Gillespie, editor of Reason, has noticed that Rand's is a tortured immortality, one where she's probably a punch line as a protagonist... with Jibes in the Randman culture."^^xsd:string .
+
+ns1:immortality_1 rdfs:label "immortality" ;
+    quant:hasDeterminer quant:a .
+
+ns1:line_1 rdfs:label "line" .
+
+ns1:notice_1 a ns1:Notice ;
+    rdfs:label "noticed" ;
+    vn.role:Experiencer ns1:Nick_gillespie ;
+    vn.role:Stimulus ns1:situation_2 .
+
+ns1:punch_1 a ns1:Punch ;
+    rdfs:label "punch" ;
+    dul:associatedWith ns1:Nick_gillespie ;
+    quant:hasDeterminer quant:a ;
+    quant:hasQuantifier quant:one .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Nick_gillespie,
+        ns1:jibe_1,
+        ns1:protagonist_1 ;
+    dul:hasQuality ns1:Probably .
+
+dbpedia:Ayn_Rand a schema:Person .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s> rdfs:label "'s" .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s_1> a <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s>,
+        ns1:TorturedImmortality ;
+    rdfs:label "'s" ;
+    dul:associatedWith ns1:Rand,
+        "1"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:Tortured ;
+    ns1:where ns1:situation_3 .
+
+ns1:Culture rdfs:label "culture" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Editor rdfs:label "editor" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Female rdfs:label "she" .
+
+ns1:Immortality a owl:Class ;
+    rdfs:label "Rand",
+        "immortality" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Immortality .
+
+ns1:Notice rdfs:label "noticed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:PunchLine a owl:Class ;
+    rdfs:label "Punch Line" ;
+    dul:associatedWith ns1:Punch ;
+    rdfs:subClassOf ns1:Line ;
+    owl:equivalentClass dbpedia:Punch_line .
+
+ns1:Rand a ns1:TorturedImmortality ;
+    rdfs:label "Rand",
+        "immortality" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality ns1:Tortured ;
+    owl:sameAs dbpedia:Ayn_Rand .
+
+ns1:Randman rdfs:label "Randman" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Reason rdfs:label "Reason" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Reason .
+
+ns1:culture_1 a ns1:Culture ;
+    rdfs:label "culture" ;
+    dul:associatedWith ns1:Randman .
+
+ns1:editor_1 a ns1:Editor ;
+    rdfs:label "editor" ;
+    ns1:editorOf ns1:Reason .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s_1>,
+        ns1:situation_3,
+        "1"^^xsd:nonNegativeInteger .
+
+ns1:Jibe rdfs:label "Jibes" .
+
+ns1:Line a owl:Class ;
+    rdfs:label "Nick Gillespie",
+        "line" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Probably rdfs:label "probably" .
+
+ns1:Protagonist a owl:Class ;
+    rdfs:label "protagonist" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Protagonist .
+
+ns1:TorturedImmortality a owl:Class ;
+    rdfs:label "Tortured Immortality" ;
+    dul:hasQuality ns1:Tortured ;
+    rdfs:subClassOf ns1:Immortality .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves ns1:Jibe,
+        ns1:Line,
+        ns1:Nick_gillespie,
+        ns1:Probably,
+        ns1:Protagonist,
+        ns1:Punch,
+        ns1:jibe_1,
+        ns1:protagonist_1 .
+
+ns1:Punch a owl:Class ;
+    rdfs:label "Nick Gillespie",
+        "punch" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Tortured a owl:Class ;
+    rdfs:label "tortured" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:jibe_1 a ns1:Jibe ;
+    rdfs:label "Jibes" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:culture_1 .
+
+ns1:protagonist_1 a ns1:Protagonist ;
+    rdfs:label "protagonist" ;
+    quant:hasDeterminer quant:a .
+
+ns1:Nick_gillespie a ns1:PunchLine ;
+    rdfs:label "Nick Gillespie",
+        "line",
+        "punch" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith ns1:editor_1 ;
+    dul:hasQuality ns1:Female ;
+    owl:sameAs dbpedia:Nick_Gillespie ;
+    ns1:as ns1:protagonist_1 ;
+    ns1:with ns1:jibe_1 .
+

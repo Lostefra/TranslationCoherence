@@ -1,0 +1,231 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence526.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Predicate rdfs:label "as" .
+
+translation_coherence:zh_sentence526.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence526" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence526" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Before rdfs:label "before" .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "this" .
+
+ns1:To rdfs:label "to" .
+
+ns1:ask_1 a ns1:Ask ;
+    rdfs:label "asked" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Agent ns1:Castro ;
+    vn.role:Topic ns1:understand_1 .
+
+ns1:brief_1 a ns1:Brief ;
+    rdfs:label "brief" ;
+    boxing:hasModality boxing:Possible ;
+    dul:hasQuality ns1:Perhaps ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Recipient ns1:Ribeiro ;
+    ns1:forExtensionOf ns1:week_1 .
+
+ns1:docuverse earmark:hasContent "Perhaps I could brief Mr. Ribeiro e Castro, who asked me to understand this point, that, as I write to every President in these most remote areas, the Committee did request for an extension of weeks before the publication of the expected report."^^xsd:string .
+
+ns1:e_1 a ns1:E ;
+    rdfs:label "e" ;
+    boxer:agent ns1:Ribeiro ;
+    boxer:patient ns1:Castro ;
+    boxing:hasModality boxing:Possible .
+
+ns1:expect_1 a ns1:Expect ;
+    rdfs:label "expected" ;
+    vn.role:Theme ns1:report_1 .
+
+ns1:extension_1 a ns1:Extension ;
+    rdfs:label "extension" ;
+    quant:hasDeterminer quant:an ;
+    ns1:before ns1:publication_1 .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> rdfs:label "Mr." ;
+    boxer:possibleType dul:Role .
+
+ns1:Area rdfs:label "areas" .
+
+ns1:Ask rdfs:label "asked" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Brief rdfs:label "brief" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Committee rdfs:label "Committee" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Committee .
+
+ns1:Do rdfs:label "did" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:E rdfs:label "E",
+        "e" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Expect rdfs:label "expected" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Extension rdfs:label "extension" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Most rdfs:label "most" .
+
+ns1:MostRemoteArea rdfs:subClassOf ns1:RemoteArea .
+
+ns1:Perhaps rdfs:label "Perhaps" .
+
+ns1:Point rdfs:label "point" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Publication rdfs:label "publication" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Remote rdfs:label "remote" .
+
+ns1:RemoteArea rdfs:subClassOf ns1:Area .
+
+ns1:Report rdfs:label "report" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Request rdfs:label "request" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Understand rdfs:label "understand" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Week rdfs:label "weeks" .
+
+ns1:Write rdfs:label "write" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:do_1 a ns1:Do ;
+    rdfs:label "did" ;
+    boxer:agent ns1:Committee ;
+    boxer:patient ns1:request_1 ;
+    dul:associatedWith ns1:area_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "me" .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:point_1 a ns1:Point ;
+    rdfs:label "point" ;
+    dul:hasQuality ns1:Current ;
+    quant:hasDeterminer quant:this .
+
+ns1:publication_1 a ns1:Publication ;
+    rdfs:label "publication" ;
+    quant:hasDeterminer quant:the ;
+    ns1:publicationOf ns1:report_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:President,
+        ns1:do_1,
+        ns1:request_1,
+        ns1:write_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "that" .
+
+ns1:understand_1 a ns1:Understand ;
+    rdfs:label "understand" ;
+    boxing:hasModality boxing:Possible ;
+    dul:associatedWith ns1:point_1 ;
+    vn.role:Experiencer ns1:person_2 ;
+    vn.role:Predicate ns1:situation_1 ;
+    vn.role:Proposition ns1:thing_1 .
+
+ns1:week_1 a ns1:Week ;
+    rdfs:label "weeks" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:write_1 a ns1:Write ;
+    rdfs:label "write" ;
+    vn.role:Agent ns1:person_3 ;
+    ns1:in ns1:area_1 ;
+    ns1:to ns1:President .
+
+owl:Thing rdfs:label "that" .
+
+ns1:Castro rdfs:label "Castro" ;
+    boxer:possibleType foaf:Person .
+
+ns1:President rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:President .
+
+ns1:Ribeiro rdfs:label "Ribeiro" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> .
+
+ns1:area_1 a ns1:MostRemoteArea ;
+    rdfs:label "areas" ;
+    dul:hasQuality ns1:Most,
+        ns1:Remote ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:report_1 a ns1:Report ;
+    rdfs:label "report" ;
+    quant:hasDeterminer quant:the .
+
+ns1:request_1 a ns1:Request ;
+    rdfs:label "request" .
+
+ns1:Person rdfs:label "I",
+        "me" .
+

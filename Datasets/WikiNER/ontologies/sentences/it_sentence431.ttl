@@ -1,0 +1,113 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence431.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Source rdfs:label "from" .
+
+translation_coherence:it_sentence431.ttl a owl:Ontology ;
+    rdfs:label "it_sentence431" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence431" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "its" .
+
+ns1:brand_1 rdfs:label "brand" .
+
+ns1:car_1 a ns1:Car ;
+    rdfs:label "car" ;
+    dul:associatedWith ns1:Lincoln ;
+    quant:hasDeterminer quant:the .
+
+ns1:docuverse earmark:hasContent "The car brand Lincoln also takes its name from him."^^xsd:string .
+
+ns1:neuter_1 coref:coref ns1:Lincoln .
+
+ns1:take_1 a ns1:AlsoTake ;
+    rdfs:label "takes" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Source ns1:Lincoln ;
+    vn.role:Theme1 ns1:Lincoln ;
+    vn.role:Theme2 ns1:name_1 .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoTake rdfs:subClassOf ns1:Take .
+
+ns1:Brand a owl:Class ;
+    rdfs:label "Lincoln",
+        "brand" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Brand .
+
+ns1:CarBrand a owl:Class ;
+    rdfs:label "Car Brand" ;
+    dul:associatedWith ns1:Car ;
+    rdfs:subClassOf ns1:Brand .
+
+ns1:Male rdfs:label "him" .
+
+ns1:Name a owl:Class ;
+    rdfs:label "name" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Brand .
+
+ns1:Take rdfs:label "takes" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:name_1 a ns1:Name ;
+    rdfs:label "name" ;
+    ns1:nameOf ns1:Lincoln .
+
+ns1:Car a owl:Class ;
+    rdfs:label "Lincoln",
+        "car" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Car .
+
+ns1:Lincoln a owl:Thing,
+        ns1:CarBrand ;
+    rdfs:label "Lincoln",
+        "brand",
+        "car",
+        "its" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Male ;
+    owl:sameAs dbpedia:Lincoln_Motor_Company .
+

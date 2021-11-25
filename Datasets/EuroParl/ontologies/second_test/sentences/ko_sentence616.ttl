@@ -1,0 +1,185 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence616.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Oblique rdfs:label "in" .
+
+translation_coherence:ko_sentence616.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence616" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence616" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Because rdfs:label "because" .
+
+ns1:Entails rdfs:label "If" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:To rdfs:label "to" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "If you only support the competitiveness of the enterprise, you can never be rewarded to link with economic and social development, Simply because there is no foundation for self-supporting rising in these objectives."^^xsd:string .
+
+ns1:foundation_1 rdfs:label "foundation" .
+
+ns1:support_1 a ns1:OnlySupport ;
+    rdfs:label "support" ;
+    dul:hasQuality ns1:Only ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Beneficiary ns1:competitiveness_1 ;
+    ns1:entails ns1:reward_1 .
+
+ns1:Competitiveness a owl:Class ;
+    rdfs:label "competitiveness" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Competitiveness .
+
+ns1:Development a owl:Class ;
+    rdfs:label "development" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Economic rdfs:label "economic" ;
+    owl:sameAs dbpedia:Economy .
+
+ns1:Enterprise a owl:Class ;
+    rdfs:label "enterprise" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Organization .
+
+ns1:Foundation rdfs:label "foundation" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Link rdfs:label "link" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Never rdfs:label "never" .
+
+ns1:Objective rdfs:label "objectives" .
+
+ns1:Only rdfs:label "only" .
+
+ns1:OnlySupport rdfs:label "only support" ;
+    rdfs:subClassOf ns1:Support .
+
+ns1:Reward rdfs:label "rewarded" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Rise rdfs:label "rising" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Self-supporting rdfs:label "self-supporting" .
+
+ns1:Self-supportingRise rdfs:subClassOf ns1:Rise .
+
+ns1:Simply rdfs:label "Simply" .
+
+ns1:Social a owl:Class ;
+    rdfs:label "social" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SocialDevelopment a owl:Class ;
+    rdfs:label "Social Development" ;
+    dul:hasQuality ns1:Social ;
+    rdfs:subClassOf ns1:Development ;
+    owl:equivalentClass dbpedia:Social_change .
+
+ns1:Support rdfs:label "support" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:There rdfs:label "there" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:competitiveness_1 a ns1:Competitiveness ;
+    rdfs:label "competitiveness" ;
+    quant:hasDeterminer quant:the ;
+    ns1:competitivenessOf ns1:enterprise_1 .
+
+ns1:development_1 a ns1:SocialDevelopment ;
+    rdfs:label "development" ;
+    dul:hasQuality ns1:Economic .
+
+ns1:enterprise_1 a ns1:Enterprise ;
+    rdfs:label "enterprise" ;
+    quant:hasDeterminer quant:the .
+
+ns1:link_1 a ns1:Link ;
+    rdfs:label "link" ;
+    ns1:with ns1:development_1 .
+
+ns1:objective_1 a ns1:Objective ;
+    rdfs:label "objectives" ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "you" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "you" .
+
+ns1:reward_1 a ns1:Reward ;
+    rdfs:label "rewarded" ;
+    boxing:hasModality boxing:Possible ;
+    dul:hasQuality ns1:Never,
+        ns1:Simply ;
+    vn.role:Theme ns1:person_2 ;
+    ns1:because ns1:situation_1 ;
+    ns1:to ns1:link_1 .
+
+ns1:rise_1 a ns1:Self-supportingRise ;
+    rdfs:label "rising" ;
+    boxing:hasTruthValue boxing:False ;
+    dul:hasQuality ns1:Self-supporting ;
+    vn.role:Oblique ns1:objective_1 ;
+    vn.role:Theme ns1:there_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Possible ;
+    boxing:involves ns1:rise_1,
+        ns1:there_1 .
+
+ns1:Person rdfs:label "you" .
+
+ns1:there_1 a ns1:Foundation,
+        ns1:There ;
+    rdfs:label "there" ;
+    quant:hasQuantifier quant:no .
+

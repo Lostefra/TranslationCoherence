@@ -1,0 +1,121 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence674.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme rdfs:label "In" .
+
+translation_coherence:ko_sentence674.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence674" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence674" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Amount rdfs:label "much" .
+
+ns1:Until rdfs:label "until" .
+
+ns1:commission_1 a ns1:Commission ;
+    rdfs:label "commission" ;
+    dul:associatedWith ns1:document_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:delay_1 a ns1:Delay ;
+    rdfs:label "delayed" ;
+    vn.role:Theme ns1:document_1,
+        "1999-12-01"^^xsd:date ;
+    ns1:until "0001-01-01"^^xsd:date .
+
+ns1:docuverse earmark:hasContent "In December 1999, the commission document is delayed until January, and the initial accident does not fill much optimisation."^^xsd:string .
+
+ns1:fill_1 a ns1:Fill ;
+    rdfs:label "fill" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:accident_1 ;
+    vn.role:Destination ns1:optimisation_1 ;
+    vn.role:Theme "1999-12-01"^^xsd:date .
+
+ns1:CommissionDocument a owl:Class ;
+    rdfs:label "Commission Document" ;
+    dul:associatedWith ns1:Commission ;
+    rdfs:subClassOf ns1:Document .
+
+ns1:Delay rdfs:label "delayed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Document a owl:Class ;
+    rdfs:label "document" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Fill rdfs:label "fill" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:InitialAccident a owl:Class ;
+    rdfs:label "initial accident" ;
+    dul:hasQuality ns1:Initial ;
+    rdfs:subClassOf ns1:Accident .
+
+ns1:Optimisation rdfs:label "optimisation" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:optimisation_1 a ns1:Optimisation ;
+    rdfs:label "optimisation" ;
+    quant:hasQuantifier quant:much .
+
+ns1:Accident a owl:Class ;
+    rdfs:label "accident" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Commission a owl:Class ;
+    rdfs:label "commission" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Initial a owl:Class ;
+    rdfs:label "initial" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:accident_1 a ns1:Accident,
+        ns1:InitialAccident ;
+    rdfs:label "accident" ;
+    dul:hasQuality ns1:Initial ;
+    quant:hasDeterminer quant:the .
+
+ns1:document_1 a ns1:CommissionDocument ;
+    rdfs:label "document" ;
+    owl:sameAs ns1:accident_1 .
+

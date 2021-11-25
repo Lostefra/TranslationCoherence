@@ -1,0 +1,115 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence603.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Actor2 rdfs:label "with" .
+
+translation_coherence:zh_sentence603.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence603" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence603" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In" .
+
+ns1:Subsequently rdfs:label "subsequently" .
+
+ns1:begin_1 a ns1:Begin ;
+    rdfs:label "began" ;
+    vn.role:Agent ns1:Nathaniel_branden ;
+    vn.role:Theme ns1:situation_1 ;
+    ns1:in "1964-01-01"^^xsd:date .
+
+ns1:docuverse earmark:hasContent "In 1964, Nathaniel_Branden began working with young people who he had subsequently married."^^xsd:string .
+
+ns1:male_1 coref:coref ns1:Nathaniel_branden .
+
+ns1:Begin rdfs:label "began" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Marry rdfs:label "married" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:People a owl:Class ;
+    rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:SubsequentlyMarry rdfs:subClassOf ns1:Marry .
+
+ns1:Work rdfs:label "working" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Young a owl:Class ;
+    rdfs:label "young" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:YoungPeople a owl:Class ;
+    rdfs:label "young people" ;
+    dul:hasQuality ns1:Young ;
+    rdfs:subClassOf ns1:People ;
+    owl:equivalentClass dbpedia:Adolescence .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:marry_1,
+        ns1:people_1,
+        ns1:work_1 .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "working" ;
+    vn.role:Actor1 ns1:Nathaniel_branden ;
+    vn.role:Actor2 ns1:people_1 ;
+    ns1:subsequently ns1:marry_1 .
+
+ns1:marry_1 a ns1:SubsequentlyMarry ;
+    rdfs:label "married" ;
+    vn.role:Agent ns1:Nathaniel_branden ;
+    vn.role:Patient ns1:people_1 .
+
+ns1:people_1 a ns1:YoungPeople ;
+    rdfs:label "people" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Nathaniel_branden a ns1:Male ;
+    rdfs:label "Nathaniel Branden",
+        "he" ;
+    boxer:possibleType time:Interval ;
+    owl:sameAs dbpedia:Nathaniel_Branden .
+

@@ -1,0 +1,142 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix fred: <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence654.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fred: rdfs:label ":"^^xsd:string .
+
+translation_coherence:zh_sentence654.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence654" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence654" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In",
+        "in" .
+
+ns1:Noteq rdfs:label "other" .
+
+ns1:On rdfs:label "on" .
+
+ns1:comment_1 a ns1:Comment ;
+    rdfs:label "comment" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:French_speaker ;
+    ns1:in ns1:regard_1 ;
+    ns1:on ns1:sentence_1 .
+
+ns1:docuverse earmark:hasContent "In that regard, the French_speaker will comment on the first sentence: in other words, I have voted on the European_Union."^^xsd:string .
+
+dbpedia:French_language a schema:Language .
+
+ns1:Comment a owl:Class ;
+    rdfs:label "comment" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Topic_and_comment .
+
+ns1:EuropeanUnion rdfs:subClassOf dul:Organization .
+
+ns1:European_union a owl:Class ;
+    rdfs:label "European Union" ;
+    rdfs:subClassOf ns1:EuropeanUnion ;
+    owl:equivalentClass dbpedia:European_Union .
+
+ns1:First a owl:Class ;
+    rdfs:label "first" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:First_language .
+
+ns1:FirstSentence a owl:Class ;
+    rdfs:label "first sentence" ;
+    dul:hasQuality ns1:First ;
+    rdfs:subClassOf ns1:Sentence .
+
+ns1:French_speaker rdfs:label "French speaker" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:French_language .
+
+ns1:Person rdfs:label "I" .
+
+ns1:Regard rdfs:label "regard" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Sentence a owl:Class ;
+    rdfs:label "sentence" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Sentence_(linguistics) .
+
+ns1:Vote rdfs:label "voted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:european_union_1 a ns1:European_union ;
+    rdfs:label "European Union" ;
+    quant:hasDeterminer quant:the .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:regard_1 a ns1:Regard ;
+    rdfs:label "regard" ;
+    quant:hasDeterminer quant:that .
+
+ns1:sentence_1 a ns1:FirstSentence ;
+    rdfs:label "sentence" ;
+    boxing:declaration ns1:vote_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:vote_1 a ns1:Vote ;
+    rdfs:label "voted" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_1 ;
+    ns1:in ns1:word_1 ;
+    ns1:on ns1:european_union_1 .
+
+ns1:word_1 a ns1:Word ;
+    rdfs:label "other" ;
+    owl:differentFrom ns1:word_2 .
+
+ns1:word_2 a dbpedia:Word,
+        ns1:Word ;
+    rdfs:label "words" ;
+    quant:hasDeterminer quant:other ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Word rdfs:label "other",
+        "words" .
+

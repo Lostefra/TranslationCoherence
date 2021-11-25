@@ -1,0 +1,184 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence311.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence311.ttl a owl:Ontology ;
+    rdfs:label "en_sentence311" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence311" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Onpartof rdfs:label "on the part of" .
+
+ns1:Out rdfs:label "out" .
+
+ns1:Theme rdfs:label "possible" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "This will be possible with action on the part of governments, and such decentralisation of higher education will be an unquestionably useful policy in evening out development."^^xsd:string .
+
+ns1:policy_1 rdfs:label "policy" ;
+    quant:hasDeterminer quant:an .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:action_1,
+        ns1:decentralisation_1,
+        ns1:development_1,
+        ns1:education_1,
+        ns1:evening_1,
+        ns1:government_1,
+        ns1:part_1,
+        ns1:thing_1,
+        ns1:thing_2 ;
+    ns1:with ns1:action_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:decentralisation_1,
+        ns1:development_1,
+        ns1:evening_1 .
+
+ns1:Action rdfs:label "action" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Decentralisation a owl:Class ;
+    rdfs:label "decentralisation" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Decentralization .
+
+ns1:Development rdfs:label "development" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Education a owl:Class ;
+    rdfs:label "education" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Evening rdfs:label "evening" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Government rdfs:label "governments" .
+
+ns1:Higher a owl:Class ;
+    rdfs:label "higher" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:HigherEducation a owl:Class ;
+    rdfs:label "higher education" ;
+    dul:hasQuality ns1:Higher ;
+    rdfs:subClassOf ns1:Education .
+
+ns1:Part rdfs:label "part" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Policy a owl:Class ;
+    rdfs:label "policy" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Policy .
+
+ns1:Such a owl:Class ;
+    rdfs:label "such" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SuchDecentralisation a owl:Class ;
+    rdfs:label "Such Decentralisation" ;
+    dul:hasQuality ns1:Such ;
+    rdfs:subClassOf ns1:Decentralisation .
+
+ns1:Unquestionably rdfs:label "unquestionably" .
+
+ns1:UnquestionablyUsefulPolicy a owl:Class ;
+    rdfs:label "unquestionably useful policy" ;
+    rdfs:subClassOf ns1:UsefulPolicy .
+
+ns1:Useful a owl:Class ;
+    rdfs:label "useful" ;
+    dul:hasQuality ns1:Unquestionably ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:UsefulPolicy a owl:Class ;
+    rdfs:label "useful policy" ;
+    dul:hasQuality ns1:Useful ;
+    rdfs:subClassOf ns1:Policy .
+
+ns1:part_1 a ns1:Part ;
+    rdfs:label "part" ;
+    quant:hasDeterminer quant:the .
+
+ns1:thing_1 a owl:Thing ;
+    boxer:theme ns1:thing_2 .
+
+owl:Thing rdfs:label "This" .
+
+ns1:action_1 a ns1:Action ;
+    rdfs:label "action" ;
+    quant:hasDeterminer quant:this ;
+    ns1:onPartOf ns1:government_1 .
+
+ns1:decentralisation_1 a ns1:SuchDecentralisation,
+        ns1:UnquestionablyUsefulPolicy ;
+    rdfs:label "decentralisation" ;
+    quant:hasDeterminer quant:such ;
+    ns1:in ns1:evening_1 ;
+    ns1:suchDecentralisationOf ns1:education_1 .
+
+ns1:education_1 a ns1:HigherEducation ;
+    rdfs:label "education" .
+
+ns1:government_1 a ns1:Government ;
+    rdfs:label "governments" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "This" .
+
+ns1:development_1 a ns1:Development ;
+    rdfs:label "development" .
+
+ns1:evening_1 a ns1:Evening ;
+    rdfs:label "evening" ;
+    ns1:out ns1:development_1 .
+

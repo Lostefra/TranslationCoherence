@@ -1,0 +1,207 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence615.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "into" .
+
+translation_coherence:ko_sentence615.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence615" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence615" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "Rand was strongly opposed to that reason seems to be able to know the reality of itself. She joined Kant, and she took into account the correct anti-her philosophy of Kant's in all basic matters."^^xsd:string .
+
+ns1:join_1 a ns1:Join ;
+    rdfs:label "joined" ;
+    vn.role:Agent ns1:Rand ;
+    vn.role:Patient ns1:Kant .
+
+ns1:oppose_1 a ns1:StronglyOppose ;
+    rdfs:label "opposed" ;
+    dul:hasQuality ns1:Strongly ;
+    vn.role:Patient ns1:Rand ;
+    ns1:to ns1:reason_1 .
+
+ns1:seem_1 a ns1:Seem ;
+    rdfs:label "seems" ;
+    vn.role:Predicate ns1:situation_1 ;
+    vn.role:Theme ns1:reason_1 .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "took" ;
+    vn.role:Agent ns1:Rand ;
+    vn.role:Destination ns1:account_1 ;
+    vn.role:Theme ns1:philosophy_1 ;
+    ns1:in ns1:matter_1 .
+
+dbpedia:Ayn_Rand a schema:Person .
+
+dbpedia:Immanuel_Kant a schema:Person .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s> rdfs:label "'s" .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s_1> a <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s> ;
+    rdfs:label "'s" ;
+    dul:associatedWith ns1:Kant .
+
+owl:Thing rdfs:label "itself" .
+
+ns1:Account rdfs:label "account" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Anti-her a owl:Class ;
+    rdfs:label "anti-her" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Anti-herPhilosophy a owl:Class ;
+    rdfs:label "anti-her philosophy" ;
+    dul:hasQuality ns1:Anti-her ;
+    rdfs:subClassOf ns1:Philosophy .
+
+ns1:Basic rdfs:label "basic" .
+
+ns1:BasicMatter rdfs:subClassOf ns1:Matter .
+
+ns1:Correct rdfs:label "correct" .
+
+ns1:CorrectAnti-herPhilosophy a owl:Class ;
+    rdfs:label "correct anti-her philosophy" ;
+    rdfs:subClassOf ns1:Anti-herPhilosophy .
+
+ns1:Female rdfs:label "She" .
+
+ns1:Join rdfs:label "joined" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Matter rdfs:label "matters" .
+
+ns1:Oppose rdfs:label "opposed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Philosophy a owl:Class ;
+    rdfs:label "philosophy" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Kantianism,
+        dbpedia:Philosophy .
+
+ns1:Reality a owl:Class ;
+    rdfs:label "reality" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Reality .
+
+ns1:Reason a owl:Class ;
+    rdfs:label "reason" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> ;
+    owl:equivalentClass dbpedia:Reason .
+
+ns1:Seem rdfs:label "seems" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Strongly rdfs:label "strongly" .
+
+ns1:StronglyOppose rdfs:subClassOf ns1:Oppose .
+
+ns1:Take rdfs:label "took" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:able_1 a ns1:Able ;
+    rdfs:label "able" ;
+    boxer:agent ns1:reason_1 ;
+    boxer:theme ns1:know_1 .
+
+ns1:account_1 a ns1:Account ;
+    rdfs:label "account" .
+
+ns1:matter_1 a ns1:BasicMatter ;
+    rdfs:label "matters" ;
+    dul:hasQuality ns1:Basic ;
+    quant:hasQuantifier quant:all,
+        quant:multiple .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "itself" .
+
+ns1:philosophy_1 a ns1:CorrectAnti-herPhilosophy ;
+    rdfs:label "philosophy" ;
+    dul:hasQuality ns1:Correct ;
+    quant:hasDeterminer quant:the ;
+    ns1:correctAnti-herPhilosophyOf <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s_1> .
+
+ns1:reality_1 a ns1:Reality ;
+    rdfs:label "reality" ;
+    quant:hasDeterminer quant:the ;
+    ns1:realityOf ns1:neuter_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Able,
+        ns1:Know,
+        ns1:able_1,
+        ns1:know_1 .
+
+ns1:Able rdfs:label "able" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Kant rdfs:label "Kant" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Immanuel_Kant .
+
+ns1:Know rdfs:label "know" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:know_1 a ns1:Know ;
+    rdfs:label "know" ;
+    vn.role:Agent ns1:reason_1 ;
+    vn.role:Theme ns1:reality_1 .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Female ;
+    owl:sameAs dbpedia:Ayn_Rand .
+
+ns1:reason_1 a ns1:Reason ;
+    rdfs:label "reason" ;
+    quant:hasDeterminer quant:that .
+

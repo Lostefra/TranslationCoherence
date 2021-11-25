@@ -1,0 +1,203 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence287.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:ko_sentence287.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence287" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence287" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Between rdfs:label "between" .
+
+ns1:Eq rdfs:label "been" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:delay_1 a ns1:Delay ;
+    rdfs:label "delayed" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:Cen ;
+    vn.role:Theme ns1:person_1 .
+
+ns1:docuverse earmark:hasContent "Finally, Mr President has been pointed out the basic issues that define this revision of the directive. We must be delayed by CEN, the correction of specific provisions, the content of consistency and the Annex between the text of the instructions and more specific."^^xsd:string .
+
+ns1:issue_1 rdfs:label "issues" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:point_1 a ns1:Point ;
+    rdfs:label "pointed" ;
+    dul:hasQuality ns1:Out ;
+    vn.role:Theme ns1:President .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Define,
+        ns1:define_1 ;
+    dul:hasQuality ns1:Finally .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> rdfs:label "Mr" ;
+    boxer:possibleType dul:Role .
+
+ns1:Annex rdfs:label "Annex" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Basic rdfs:label "basic" .
+
+ns1:BasicIssue rdfs:subClassOf ns1:Issue .
+
+ns1:Cen rdfs:label "CEN" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:correction_1 .
+
+ns1:Consistency rdfs:label "consistency" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Content rdfs:label "content" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Correction rdfs:label "correction" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Delay rdfs:label "delayed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Directive rdfs:label "directive" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Finally rdfs:label "Finally" .
+
+ns1:Instruction rdfs:label "instructions" .
+
+ns1:Issue rdfs:label "issues" .
+
+ns1:More rdfs:label "more" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Out rdfs:label "out" .
+
+ns1:Person rdfs:label "We" .
+
+ns1:Point rdfs:label "pointed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Provision rdfs:label "provisions" .
+
+ns1:Revision rdfs:label "revision" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:SpecificProvision rdfs:subClassOf ns1:Provision .
+
+ns1:Text rdfs:label "text" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:annex_1 a ns1:Annex ;
+    rdfs:label "Annex" ;
+    quant:hasDeterminer quant:the ;
+    ns1:between ns1:text_1 .
+
+ns1:consistency_1 a ns1:Consistency ;
+    rdfs:label "consistency" .
+
+ns1:content_1 a ns1:Content ;
+    rdfs:label "content" ;
+    quant:hasDeterminer quant:the ;
+    ns1:contentOf ns1:consistency_1 .
+
+ns1:correction_1 a ns1:Correction ;
+    rdfs:label "correction" ;
+    dul:associatedWith ns1:annex_1,
+        ns1:content_1 ;
+    quant:hasDeterminer quant:the ;
+    ns1:correctionOf ns1:provision_1 .
+
+ns1:define_1 a ns1:Define ;
+    rdfs:label "define" ;
+    vn.role:Agent ns1:President ;
+    vn.role:Theme ns1:revision_1 .
+
+ns1:directive_1 a ns1:Directive ;
+    rdfs:label "directive" ;
+    quant:hasDeterminer quant:the .
+
+ns1:instruction_1 a ns1:Instruction ;
+    rdfs:label "instructions" ;
+    dul:hasQuality ns1:Specific ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:more_1 a ns1:More ;
+    rdfs:label "more" ;
+    dul:hasQuality ns1:Specific .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "We" .
+
+ns1:provision_1 a ns1:SpecificProvision ;
+    rdfs:label "provisions" ;
+    dul:hasQuality ns1:Specific ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:revision_1 a ns1:Revision ;
+    rdfs:label "revision" ;
+    quant:hasDeterminer quant:this ;
+    ns1:revisionOf ns1:directive_1 .
+
+ns1:text_1 a ns1:Text ;
+    rdfs:label "text" ;
+    quant:hasDeterminer quant:the ;
+    ns1:textOf ns1:instruction_1,
+        ns1:more_1 .
+
+ns1:Define rdfs:label "define" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:President a ns1:BasicIssue ;
+    rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    dul:hasQuality ns1:Basic ;
+    owl:sameAs dbpedia:President .
+
+ns1:Specific rdfs:label "specific" .
+

@@ -1,0 +1,133 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence39.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence39.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence39" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence39" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "Proudhon wrote his target as third form of society, the synthesis of communism and property."^^xsd:string .
+
+ns1:male_1 coref:coref ns1:Proudhon .
+
+ns1:write_1 a ns1:Write ;
+    rdfs:label "wrote" ;
+    vn.role:Agent ns1:Proudhon ;
+    vn.role:Theme ns1:target_1 .
+
+ns1:Communism a owl:Class ;
+    rdfs:label "communism" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#System> ;
+    owl:equivalentClass dbpedia:Communism .
+
+ns1:Form a owl:Class ;
+    rdfs:label "form" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Property a owl:Class ;
+    rdfs:label "property" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Property .
+
+ns1:Society a owl:Class ;
+    rdfs:label "society" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Society .
+
+ns1:Synthesis a owl:Class ;
+    rdfs:label "synthesis" ;
+    rdfs:subClassOf dul:Process ;
+    owl:equivalentClass dbpedia:Synthesis_anarchism .
+
+ns1:Target rdfs:label "target" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Third a owl:Class ;
+    rdfs:label "third" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Third_World .
+
+ns1:ThirdForm a owl:Class ;
+    rdfs:label "Third Form" ;
+    dul:hasQuality ns1:Third ;
+    rdfs:subClassOf ns1:Form .
+
+ns1:Write rdfs:label "wrote" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:communism_1 a ns1:Communism ;
+    rdfs:label "communism" .
+
+ns1:form_1 a ns1:ThirdForm ;
+    rdfs:label "form" ;
+    dul:associatedWith ns1:property_1,
+        ns1:synthesis_1 ;
+    ns1:thirdFormOf ns1:society_1 .
+
+ns1:property_1 a ns1:Property ;
+    rdfs:label "property" .
+
+ns1:society_1 a ns1:Society ;
+    rdfs:label "society" .
+
+ns1:synthesis_1 a ns1:Synthesis ;
+    rdfs:label "synthesis" ;
+    quant:hasDeterminer quant:the ;
+    ns1:synthesisOf ns1:communism_1 .
+
+ns1:target_1 a ns1:Target ;
+    rdfs:label "target" ;
+    ns1:as ns1:form_1 ;
+    ns1:targetOf ns1:Proudhon .
+
+ns1:Proudhon a ns1:Male ;
+    rdfs:label "Proudhon",
+        "his" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Pierre-Joseph_Proudhon .
+

@@ -1,0 +1,146 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence195.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence195.ttl a owl:Ontology ;
+    rdfs:label "en_sentence195" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence195" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In" .
+
+ns1:consult_1 a ns1:Consult ;
+    rdfs:label "consulted" ;
+    vn.role:Agent ns1:Telephus ;
+    vn.role:Topic ns1:oracle_1 .
+
+ns1:docuverse earmark:hasContent "In the resulting battle, Achilles gave Telephus a wound that would not heal; Telephus consulted an oracle, who stated that he that wounded shall heal."^^xsd:string .
+
+ns1:give_1 a ns1:Give ;
+    rdfs:label "gave" ;
+    vn.role:Agent ns1:Achilles ;
+    vn.role:Recipient ns1:Telephus ;
+    vn.role:Theme ns1:wound_1 ;
+    ns1:in ns1:battle_1 .
+
+ns1:heal_1 a ns1:Heal ;
+    rdfs:label "heal" ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Patient ns1:wound_1 .
+
+ns1:state_1 a ns1:State ;
+    rdfs:label "stated" ;
+    vn.role:Agent ns1:oracle_1 ;
+    vn.role:Topic ns1:situation_1 .
+
+ns1:Battle a owl:Class ;
+    rdfs:label "battle" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Consult rdfs:label "consulted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Give rdfs:label "gave" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Oracle a owl:Class ;
+    rdfs:label "oracle" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> ;
+    owl:equivalentClass dbpedia:Oracle .
+
+ns1:Resulting a owl:Class ;
+    rdfs:label "resulting" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ResultingBattle a owl:Class ;
+    rdfs:label "resulting battle" ;
+    dul:hasQuality ns1:Resulting ;
+    rdfs:subClassOf ns1:Battle .
+
+ns1:State rdfs:label "stated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:battle_1 a ns1:ResultingBattle ;
+    rdfs:label "battle" ;
+    quant:hasDeterminer quant:the .
+
+ns1:heal_2 a ns1:Heal ;
+    rdfs:label "heal" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Patient ns1:Achilles .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:heal_2,
+        ns1:wound_2 .
+
+ns1:wound_2 a ns1:Wound ;
+    rdfs:label "wounded" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Cause ns1:Achilles .
+
+ns1:Heal rdfs:label "Heal",
+        "heal" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Telephus rdfs:label "Telephus" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Telephus .
+
+ns1:Wound rdfs:label "wound",
+        "wounded" ;
+    rdfs:subClassOf dul:Event,
+        dul:Situation .
+
+ns1:oracle_1 a ns1:Oracle ;
+    rdfs:label "oracle" ;
+    quant:hasDeterminer quant:an .
+
+ns1:wound_1 a ns1:Wound ;
+    rdfs:label "wound" ;
+    quant:hasDeterminer quant:a .
+
+ns1:Achilles rdfs:label "Achilles" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Male ;
+    owl:sameAs dbpedia:Achilles .
+

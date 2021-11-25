@@ -1,0 +1,125 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence309.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Instrument rdfs:label "with" .
+
+translation_coherence:zh_sentence309.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence309" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence309" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:From rdfs:label "from" .
+
+ns1:Of rdfs:label "my",
+        "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:begin_1 a ns1:Begin ;
+    rdfs:label "beginning" ;
+    vn.role:Instrument ns1:statement_1 .
+
+ns1:docuverse earmark:hasContent "We, Mr. President, have seen these issues very differently, beginning with my statement from the perspective of the study."^^xsd:string .
+
+ns1:see_1 a ns1:See ;
+    rdfs:label "seen" ;
+    dul:hasQuality ns1:Differently,
+        ns1:Very ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Theme ns1:issue_1 .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> rdfs:label "Mr." ;
+    boxer:possibleType dul:Role .
+
+ns1:Begin rdfs:label "beginning" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Differently rdfs:label "differently" .
+
+ns1:Issue rdfs:label "issues" .
+
+ns1:Perspective rdfs:label "perspective" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:President rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    owl:sameAs dbpedia:President .
+
+ns1:See rdfs:label "seen" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Statement rdfs:label "statement" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Study rdfs:label "study" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Very rdfs:label "very" .
+
+ns1:issue_1 a ns1:Issue ;
+    rdfs:label "issues" ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "my" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "We" ;
+    dul:associatedWith ns1:President .
+
+ns1:perspective_1 a ns1:Perspective ;
+    rdfs:label "perspective" ;
+    quant:hasDeterminer quant:the ;
+    ns1:perspectiveOf ns1:study_1 .
+
+ns1:statement_1 a ns1:Statement ;
+    rdfs:label "statement" ;
+    ns1:from ns1:perspective_1 ;
+    ns1:statementOf ns1:person_1 .
+
+ns1:study_1 a ns1:Study ;
+    rdfs:label "study" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Person rdfs:label "We" .
+

@@ -1,0 +1,123 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence295.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence295.ttl a owl:Ontology ;
+    rdfs:label "it_sentence295" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence295" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Under rdfs:label "under" .
+
+ns1:achieve_1 a ns1:Achieve ;
+    rdfs:label "achieved" ;
+    vn.role:Agent ns1:part_1 ;
+    vn.role:Theme ns1:status_1 .
+
+ns1:docuverse earmark:hasContent "A major part of Wales, as you know, has achieved objective 1 status under the Structural_Funds programme."^^xsd:string .
+
+dbpedia:Wales a schema:Country,
+        schema:Place .
+
+ns1:Achieve rdfs:label "achieved" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Know rdfs:label "know" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Major a owl:Class ;
+    rdfs:label "major" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:MajorPart a owl:Class ;
+    rdfs:label "Major Part" ;
+    dul:hasQuality ns1:Major ;
+    rdfs:subClassOf ns1:Part .
+
+ns1:Objective rdfs:label "objective" ;
+    owl:sameAs dbpedia:Regional_policy_of_the_European_Union .
+
+ns1:Part a owl:Class ;
+    rdfs:label "part" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Person rdfs:label "you" .
+
+ns1:Programme rdfs:label "programme" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Status rdfs:label "status" ;
+    rdfs:subClassOf dul:Role .
+
+ns1:Structural_funds rdfs:label "Structural Funds" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Structural_Funds_and_Cohesion_Fund .
+
+ns1:Wales rdfs:label "Wales" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Wales ;
+    ns1:as ns1:know_1 .
+
+ns1:know_1 a ns1:Know ;
+    rdfs:label "know" ;
+    vn.role:Agent ns1:person_1 .
+
+ns1:part_1 a ns1:MajorPart ;
+    rdfs:label "part" ;
+    quant:hasDeterminer quant:a ;
+    ns1:majorPartOf ns1:Wales .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "you" .
+
+ns1:programme_1 a ns1:Programme ;
+    rdfs:label "programme" ;
+    dul:associatedWith ns1:Structural_funds .
+
+ns1:status_1 a ns1:Status ;
+    rdfs:label "status" ;
+    dul:hasQuality ns1:Objective ;
+    ns1:at "0001-01-01"^^xsd:date ;
+    ns1:under ns1:programme_1 .
+

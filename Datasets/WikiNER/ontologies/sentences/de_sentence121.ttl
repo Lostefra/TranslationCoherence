@@ -1,0 +1,133 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence121.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:de_sentence121.ttl a owl:Ontology ;
+    rdfs:label "de_sentence121" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence121" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+<https://w3id.org/stlab/ke/amiala/de_sentence121.ttl/Ala.> rdfs:label "Ala." ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:hasDataValue "1"^^xsd:nonNegativeInteger ;
+    ns1:of ns1:place_1 .
+
+ns1:Few rdfs:label "few" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "(" .
+
+ns1:docuverse earmark:hasContent "Ala. is one of the few places in the world that have a twot-Sammado-Saison (November and December) and the spring and weather season."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "have" ;
+    vn.role:Agent ns1:place_1 ;
+    vn.role:Patient ns1:season_1,
+        ns1:spring_1,
+        ns1:twot-sammado-saison_1 .
+
+ns1:weather_1 a ns1:Weather ;
+    rdfs:label "weather" ;
+    dul:associatedWith ns1:season_1 .
+
+ns1:FewPlace rdfs:subClassOf ns1:Place .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Place rdfs:label "places" .
+
+ns1:Season a owl:Class ;
+    rdfs:label "season" ;
+    rdfs:subClassOf dul:TimeInterval ;
+    owl:equivalentClass dbpedia:Season .
+
+ns1:Spring a owl:Class ;
+    rdfs:label "spring" ;
+    rdfs:subClassOf dul:TimeInterval ;
+    owl:equivalentClass dbpedia:Spring_(season) .
+
+ns1:Twot-sammado-saison rdfs:label "twot-Sammado-Saison" .
+
+ns1:WeatherSeason a owl:Class ;
+    rdfs:label "Weather Season" ;
+    dul:associatedWith ns1:Weather ;
+    rdfs:subClassOf ns1:Season .
+
+ns1:World a owl:Class ;
+    rdfs:label "world" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:World .
+
+ns1:spring_1 a ns1:Spring ;
+    rdfs:label "spring" ;
+    quant:hasDeterminer quant:the .
+
+ns1:twot-sammado-saison_1 a ns1:Twot-sammado-saison ;
+    rdfs:label "twot-Sammado-Saison" ;
+    dul:associatedWith "0001-11-01"^^xsd:date,
+        "0001-12-01"^^xsd:date ;
+    quant:hasDeterminer quant:a .
+
+ns1:world_1 a ns1:World ;
+    rdfs:label "world" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Weather a owl:Class ;
+    rdfs:label "weather" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Weather .
+
+ns1:place_1 a ns1:FewPlace ;
+    rdfs:label "places" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:few,
+        quant:multiple,
+        quant:one ;
+    ns1:in ns1:world_1 .
+
+ns1:season_1 a ns1:WeatherSeason ;
+    rdfs:label "season" .
+

@@ -1,0 +1,141 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence88.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#quantity_rate.+1910> rdfs:subClassOf ns1:quantity_1 .
+
+translation_coherence:ko_sentence88.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence88" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence88" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:docuverse earmark:hasContent "Ala's population growth rate. 1910   1920, reflecting the impact of emigration."^^xsd:string .
+
+ns1:population_1 a ns1:Population ;
+    rdfs:label "population" ;
+    dul:associatedWith ns1:1910_1,
+        ns1:growth_1,
+        ns1:rate._1 .
+
+ns1:quantity_1920_1 a ns1:quantity_1 .
+
+ns1:reflect_1 a ns1:Reflect ;
+    rdfs:label "reflecting" ;
+    boxer:patient ns1:impact_1 ;
+    vn.role:Experiencer ns1:1910_1 .
+
+dbpedia:American_Library_Association a schema:Organization .
+
+ns1:Ala rdfs:label "Ala" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:American_Library_Association .
+
+ns1:Emigration a owl:Class ;
+    rdfs:label "emigration" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Human_migration .
+
+ns1:Growth a owl:Class ;
+    rdfs:label "growth" ;
+    rdfs:subClassOf dul:Process .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence88.ttl/GrowthRate.> rdfs:subClassOf <https://w3id.org/stlab/ke/amiala/ko_sentence88.ttl/Rate.> .
+
+ns1:GrowthRate.1910 rdfs:subClassOf ns1:Quantity_rate.1910 .
+
+ns1:Impact rdfs:label "impact" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:PopulationGrowth a owl:Class ;
+    rdfs:label "Population Growth" ;
+    dul:associatedWith ns1:Population ;
+    rdfs:subClassOf ns1:Growth ;
+    owl:equivalentClass dbpedia:Population_growth .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence88.ttl/PopulationGrowthRate.> rdfs:subClassOf <https://w3id.org/stlab/ke/amiala/ko_sentence88.ttl/GrowthRate.> .
+
+ns1:PopulationGrowthRate.1910 rdfs:subClassOf ns1:GrowthRate.1910 .
+
+ns1:Quantity_1920_1 rdfs:label "1920" .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence88.ttl/Rate.> rdfs:label "rate." .
+
+ns1:Reflect rdfs:label "reflecting" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:emigration_1 a ns1:Emigration ;
+    rdfs:label "emigration" .
+
+ns1:growth_1 a ns1:PopulationGrowth ;
+    rdfs:label "growth" ;
+    dul:associatedWith ns1:1910_1,
+        ns1:rate._1 .
+
+ns1:impact_1 a ns1:Impact ;
+    rdfs:label "impact" ;
+    quant:hasDeterminer quant:the ;
+    ns1:impactOf ns1:emigration_1 .
+
+"1910"^^xsd:nonNegativeInteger rdfs:label "1910" .
+
+"1920"^^xsd:nonNegativeInteger rdfs:label "1920" .
+
+ns1:Population a owl:Class ;
+    rdfs:label "population" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:quantity_1 dul:hasDataValue "1910"^^xsd:nonNegativeInteger,
+        "1920"^^xsd:nonNegativeInteger .
+
+ns1:rate._1 a <https://w3id.org/stlab/ke/amiala/ko_sentence88.ttl/PopulationGrowthRate.> ;
+    rdfs:label "rate." ;
+    dul:associatedWith ns1:1910_1 .
+
+ns1:1910_1 a ns1:PopulationGrowthRate.1910 ;
+    rdfs:label "1910" ;
+    dul:associatedWith ns1:Quantity_1920_1 ;
+    dul:hasQuality ns1:Topic ;
+    ns1:populationGrowthRate.1910Of ns1:Ala .
+

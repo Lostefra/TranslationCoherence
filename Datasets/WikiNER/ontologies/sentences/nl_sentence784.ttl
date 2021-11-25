@@ -1,0 +1,162 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence784.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence784.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence784" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence784" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "His",
+        "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:analyze_1 a dbpedia:Psychoanalysis,
+        ns1:Analyze ;
+    rdfs:label "analyzed" ;
+    vn.role:Agent ns1:study_1 ;
+    vn.role:Theme ns1:globalism_1,
+        ns1:similarity_1 .
+
+ns1:docuverse earmark:hasContent "His comparative studies, the most influential in the numerous edition of The Golden_Bough, analyzed similarities in religious belief and symbolism globalism."^^xsd:string .
+
+ns1:symbolism_1 a ns1:Symbolism ;
+    rdfs:label "symbolism" ;
+    dul:associatedWith ns1:globalism_1 .
+
+ns1:Analyze rdfs:label "analyzed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Belief a owl:Class ;
+    rdfs:label "belief" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Comparative rdfs:label "comparative" ;
+    owl:sameAs dbpedia:Cross-cultural_studies .
+
+ns1:ComparativeStudy rdfs:subClassOf ns1:Study .
+
+ns1:Edition a owl:Class ;
+    rdfs:label "edition" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Globalism a owl:Class ;
+    rdfs:label "globalism" ;
+    owl:equivalentClass dbpedia:Globalism .
+
+ns1:Golden_bough rdfs:label "Golden Bough" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:The_Golden_Bough .
+
+ns1:Influential rdfs:label "influential" .
+
+ns1:Most rdfs:label "most" .
+
+ns1:MostInfluential rdfs:label "most influential" ;
+    rdfs:subClassOf ns1:Influential .
+
+ns1:NumerousEdition a owl:Class ;
+    rdfs:label "numerous edition" ;
+    dul:hasQuality ns1:Numerous ;
+    rdfs:subClassOf ns1:Edition .
+
+ns1:Religious a owl:Class ;
+    rdfs:label "religious" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ReligiousBelief a owl:Class ;
+    rdfs:label "religious belief" ;
+    dul:hasQuality ns1:Religious ;
+    rdfs:subClassOf ns1:Belief ;
+    owl:equivalentClass dbpedia:Belief .
+
+ns1:Similarity rdfs:label "similarities" .
+
+ns1:Study rdfs:label "studies" .
+
+ns1:SymbolismGlobalism a owl:Class ;
+    rdfs:label "symbolism globalism" ;
+    dul:associatedWith ns1:Symbolism ;
+    rdfs:subClassOf ns1:Globalism .
+
+ns1:belief_1 a ns1:ReligiousBelief ;
+    rdfs:label "belief" .
+
+ns1:edition_1 a ns1:NumerousEdition ;
+    rdfs:label "edition" ;
+    dul:hasQuality ns1:Numerous ;
+    quant:hasDeterminer quant:the ;
+    ns1:numerousEditionOf ns1:Golden_bough .
+
+ns1:influential_1 a ns1:MostInfluential ;
+    rdfs:label "influential" ;
+    dul:hasQuality ns1:Most ;
+    ns1:in ns1:edition_1 .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "His" .
+
+ns1:similarity_1 a ns1:Similarity ;
+    rdfs:label "similarities" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:belief_1 .
+
+ns1:study_1 a ns1:ComparativeStudy ;
+    rdfs:label "studies" ;
+    dul:associatedWith ns1:influential_1 ;
+    dul:hasQuality ns1:Comparative ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:comparativeStudyOf ns1:male_1 .
+
+ns1:Numerous a owl:Class ;
+    rdfs:label "numerous" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Symbolism a owl:Class ;
+    rdfs:label "symbolism" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Symbol .
+
+ns1:globalism_1 a ns1:SymbolismGlobalism ;
+    rdfs:label "globalism" .
+

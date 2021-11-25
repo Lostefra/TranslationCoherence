@@ -1,0 +1,155 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence185.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Source rdfs:label "through" .
+
+translation_coherence:zh_sentence185.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence185" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence185" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "The increasing number of goods transferred through Europe poses a wide range of known and unknown risks to employees and the social environment."^^xsd:string .
+
+ns1:increase_1 a ns1:Increase ;
+    rdfs:label "increasing" ;
+    vn.role:Patient ns1:number_1 .
+
+ns1:pose_1 a ns1:Pose ;
+    rdfs:label "poses" ;
+    vn.role:Agent ns1:number_1 ;
+    vn.role:Theme ns1:range_1 .
+
+ns1:transfer_1 a ns1:Transfer ;
+    rdfs:label "transferred" ;
+    vn.role:Source ns1:Europe ;
+    vn.role:Theme ns1:goods_1 .
+
+dbpedia:Europe a schema:Continent,
+        schema:Place .
+
+ns1:Employee rdfs:label "employees" .
+
+ns1:Environment a owl:Class ;
+    rdfs:label "environment" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Europe rdfs:label "Europe" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Europe .
+
+ns1:Goods rdfs:label "goods" .
+
+ns1:Increase rdfs:label "increasing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Known rdfs:label "known" .
+
+ns1:Number rdfs:label "number" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Pose rdfs:label "poses" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Range a owl:Class ;
+    rdfs:label "range" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Risk rdfs:label "risks" .
+
+ns1:Social a owl:Class ;
+    rdfs:label "social" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SocialEnvironment a owl:Class ;
+    rdfs:label "Social Environment" ;
+    dul:hasQuality ns1:Social ;
+    rdfs:subClassOf ns1:Environment .
+
+ns1:Transfer rdfs:label "transferred" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Unknown rdfs:label "unknown" .
+
+ns1:UnknownRisk rdfs:subClassOf ns1:Risk .
+
+ns1:Wide a owl:Class ;
+    rdfs:label "wide" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:WideRange a owl:Class ;
+    rdfs:label "Wide Range" ;
+    dul:hasQuality ns1:Wide ;
+    rdfs:subClassOf ns1:Range .
+
+ns1:employee_1 a ns1:Employee ;
+    rdfs:label "employees" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:environment_1 a ns1:SocialEnvironment ;
+    rdfs:label "environment" ;
+    quant:hasDeterminer quant:the .
+
+ns1:range_1 a ns1:WideRange ;
+    rdfs:label "range" ;
+    quant:hasDeterminer quant:a ;
+    ns1:to ns1:employee_1,
+        ns1:environment_1 ;
+    ns1:wideRangeOf ns1:risk_1 .
+
+ns1:risk_1 a ns1:UnknownRisk ;
+    rdfs:label "risks" ;
+    dul:hasQuality ns1:Known,
+        ns1:Unknown ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:goods_1 a ns1:Goods ;
+    rdfs:label "goods" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:number_1 a ns1:Number ;
+    rdfs:label "number" ;
+    quant:hasDeterminer quant:the ;
+    ns1:numberOf ns1:goods_1 .
+

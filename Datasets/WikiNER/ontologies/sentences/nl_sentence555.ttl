@@ -1,0 +1,138 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence555.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence555.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence555" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence555" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:docuverse earmark:hasContent "After graduating high school in Crimea, she kept a job shortly to learn to read Red_Army soldiers."^^xsd:string .
+
+ns1:keep_1 a ns1:Keep ;
+    rdfs:label "kept" ;
+    dul:hasQuality ns1:Shortly ;
+    vn.role:Agent ns1:female_1 ;
+    vn.role:Location ns1:graduate_1 ;
+    vn.role:Theme ns1:job_1 .
+
+ns1:learn_1 a ns1:Learn ;
+    rdfs:label "learn" ;
+    vn.role:Agent ns1:female_1 ;
+    vn.role:Theme ns1:read_1 .
+
+dbpedia:Crimea a schema:Country,
+        schema:Place .
+
+ns1:Crimea rdfs:label "Crimea" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Crimea .
+
+ns1:Female rdfs:label "she" .
+
+ns1:Graduate rdfs:label "graduating" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:High a owl:Class ;
+    rdfs:label "high" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:HighSchool a owl:Class ;
+    rdfs:label "High School" ;
+    dul:hasQuality ns1:High ;
+    rdfs:subClassOf ns1:School .
+
+ns1:Job rdfs:label "job" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Keep rdfs:label "kept" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Learn rdfs:label "learn" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Read rdfs:label "read" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Red_army rdfs:label "Red Army" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Red_Army .
+
+ns1:School a owl:Class ;
+    rdfs:label "school" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Shortly rdfs:label "shortly" .
+
+ns1:Soldier rdfs:label "soldiers" .
+
+ns1:graduate_1 a ns1:Graduate ;
+    rdfs:label "graduating" ;
+    boxer:agent ns1:thing_1 ;
+    boxer:patient ns1:school_1 .
+
+ns1:job_1 a ns1:Job ;
+    rdfs:label "job" ;
+    quant:hasDeterminer quant:a .
+
+ns1:read_1 a ns1:Read ;
+    rdfs:label "read" ;
+    vn.role:Agent ns1:female_1 ;
+    vn.role:Theme ns1:soldier_1 .
+
+ns1:school_1 a ns1:HighSchool ;
+    rdfs:label "school" ;
+    ns1:locatedIn ns1:Crimea .
+
+ns1:soldier_1 a ns1:Soldier ;
+    rdfs:label "soldiers" ;
+    dul:associatedWith ns1:Red_army ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "After" .
+
+owl:Thing rdfs:label "After" .
+
+ns1:female_1 a ns1:Female ;
+    rdfs:label "she" .
+

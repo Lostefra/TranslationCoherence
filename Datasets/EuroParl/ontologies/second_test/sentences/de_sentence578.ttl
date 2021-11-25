@@ -1,0 +1,201 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence578.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:de_sentence578.ttl a owl:Ontology ;
+    rdfs:label "de_sentence578" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence578" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Be rdfs:label "is" .
+
+ns1:Entails rdfs:label "if" .
+
+ns1:Of rdfs:label "'s",
+        "its",
+        "of" .
+
+ns1:Through rdfs:label "through" .
+
+ns1:docuverse earmark:hasContent "Even if the Commission does not yet express this, its regular report shows that it is urgent to promote the polycentric development of the Community area through the Union's structural policies and the approach initiated by the SEC."^^xsd:string .
+
+ns1:express_1 a ns1:YetExpress ;
+    rdfs:label "express" ;
+    boxing:hasTruthValue boxing:False ;
+    dul:hasQuality ns1:Yet ;
+    vn.role:Agent ns1:Commission ;
+    vn.role:Theme ns1:thing_1 ;
+    ns1:entails ns1:show_1 .
+
+ns1:neuter_1 coref:coref ns1:Commission .
+
+ns1:Approach rdfs:label "approach" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Area rdfs:label "area" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Community rdfs:label "Community" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Community .
+
+ns1:Development a owl:Class ;
+    rdfs:label "development" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Express rdfs:label "express" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Initiate rdfs:label "initiated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Policy rdfs:label "policies" .
+
+ns1:Polycentric a owl:Class ;
+    rdfs:label "polycentric" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:PolycentricDevelopment a owl:Class ;
+    rdfs:label "Polycentric Development" ;
+    dul:hasQuality ns1:Polycentric ;
+    rdfs:subClassOf ns1:Development .
+
+ns1:Regular a owl:Class ;
+    rdfs:label "regular" .
+
+ns1:RegularReport rdfs:label "Regular Report" ;
+    dul:associatedWith ns1:Report ;
+    dul:hasModality ns1:Regular .
+
+ns1:Report a owl:Class ;
+    rdfs:label "report" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Sec rdfs:label "SEC" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Show rdfs:label "shows" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Structural rdfs:label "structural" .
+
+ns1:StructuralPolicy rdfs:subClassOf ns1:Policy .
+
+ns1:Union rdfs:label "Union" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Urgent rdfs:label "urgent" .
+
+ns1:Yet rdfs:label "yet" .
+
+ns1:YetExpress rdfs:label "Yet Express" ;
+    rdfs:subClassOf ns1:Express .
+
+ns1:area_1 a ns1:Area ;
+    rdfs:label "area" ;
+    dul:associatedWith ns1:Community ;
+    ns1:through ns1:policy_1 .
+
+ns1:development_1 a ns1:PolycentricDevelopment ;
+    rdfs:label "development" ;
+    quant:hasDeterminer quant:the ;
+    ns1:polycentricDevelopmentOf ns1:area_1 .
+
+ns1:initiate_1 a ns1:Initiate ;
+    rdfs:label "initiated" ;
+    vn.role:Agent ns1:Sec ;
+    vn.role:Theme ns1:approach_1 .
+
+ns1:policy_1 a ns1:StructuralPolicy ;
+    rdfs:label "policies" ;
+    dul:hasQuality ns1:Structural ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:structuralPolicyOf ns1:Union .
+
+ns1:promote_1 a ns1:Promote ;
+    vn.role:Agent ns1:Commission ;
+    vn.role:Theme ns1:development_1 ;
+    ns1:be ns1:urgent_1 .
+
+ns1:promote_2 a ns1:Promote ;
+    rdfs:label "promote" ;
+    vn.role:Agent ns1:Commission ;
+    vn.role:Theme ns1:approach_1 ;
+    ns1:be ns1:urgent_1 .
+
+ns1:report_1 a ns1:RegularReport ;
+    rdfs:label "report" ;
+    quant:hasDeterminer quant:this ;
+    ns1:regularReportOf ns1:Commission .
+
+ns1:show_1 a ns1:Show ;
+    rdfs:label "shows" ;
+    vn.role:Agent ns1:report_1 ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:initiate_1,
+        ns1:promote_1,
+        ns1:promote_2,
+        ns1:urgent_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "this" .
+
+ns1:Promote rdfs:label "promote" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:approach_1 a ns1:Approach ;
+    rdfs:label "approach" ;
+    quant:hasDeterminer quant:the .
+
+owl:Thing rdfs:label "Commission",
+        "this" .
+
+ns1:urgent_1 a ns1:Urgent ;
+    rdfs:label "urgent" .
+
+ns1:Commission a owl:Thing ;
+    rdfs:label "Commission",
+        "its" ;
+    boxer:possibleType foaf:Organisation .
+

@@ -1,0 +1,144 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence463.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence463.ttl a owl:Ontology ;
+    rdfs:label "de_sentence463" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence463" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Although rdfs:label "although" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "Theophrastus also recognised the role of gender in the reproduction of some higher plants, although this last discovery was lost in later years."^^xsd:string .
+
+ns1:recognise_1 a ns1:AlsoRecognise ;
+    rdfs:label "recognised" ;
+    boxer:agent ns1:Theophrastus ;
+    boxer:patient ns1:role_1 ;
+    dul:hasQuality ns1:Also ;
+    ns1:although ns1:lose_1 .
+
+ns1:reproduction_1 a ns1:Reproduction ;
+    rdfs:label "reproduction" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoRecognise rdfs:subClassOf ns1:Recognise .
+
+ns1:Discovery a owl:Class ;
+    rdfs:label "discovery" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Gender rdfs:label "gender" ;
+    rdfs:subClassOf dul:Organism .
+
+ns1:Higher rdfs:label "higher" ;
+    owl:sameAs dbpedia:Vascular_plant .
+
+ns1:HigherPlant rdfs:subClassOf ns1:Plant .
+
+ns1:LastDiscovery a owl:Class ;
+    rdfs:label "Last Discovery" ;
+    dul:hasQuality ns1:Last ;
+    rdfs:subClassOf ns1:Discovery .
+
+ns1:Later rdfs:label "later" .
+
+ns1:LaterYear rdfs:subClassOf ns1:Year .
+
+ns1:Lose rdfs:label "lost" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Plant rdfs:label "plants" .
+
+ns1:Recognise rdfs:label "recognised" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Reproduction rdfs:label "reproduction" ;
+    rdfs:subClassOf dul:Process .
+
+ns1:Role rdfs:label "role" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Theophrastus rdfs:label "Theophrastus" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Theophrastus .
+
+ns1:Year rdfs:label "years" .
+
+ns1:discovery_1 a ns1:LastDiscovery ;
+    rdfs:label "discovery" ;
+    dul:hasQuality ns1:Last ;
+    quant:hasDeterminer quant:this .
+
+ns1:gender_1 a ns1:Gender ;
+    rdfs:label "gender" .
+
+ns1:lose_1 a ns1:Lose ;
+    rdfs:label "lost" ;
+    vn.role:Theme ns1:discovery_1 ;
+    ns1:in ns1:year_1 .
+
+ns1:plant_1 a ns1:HigherPlant ;
+    rdfs:label "plants" ;
+    dul:hasQuality ns1:Higher ;
+    quant:hasQuantifier quant:multiple,
+        quant:some .
+
+ns1:role_1 a ns1:Role ;
+    rdfs:label "role" ;
+    quant:hasDeterminer quant:the ;
+    ns1:inReproductionOf ns1:plant_1 ;
+    ns1:roleOf ns1:gender_1 .
+
+ns1:year_1 a ns1:LaterYear ;
+    rdfs:label "years" ;
+    dul:hasQuality ns1:Later ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Last a owl:Class ;
+    rdfs:label "last" ;
+    rdfs:subClassOf dul:Quality .
+

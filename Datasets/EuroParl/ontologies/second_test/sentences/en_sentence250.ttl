@@ -1,0 +1,147 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence250.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence250.ttl a owl:Ontology ;
+    rdfs:label "en_sentence250" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence250" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Be rdfs:label "is" .
+
+ns1:Commission rdfs:label "Commission" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:In rdfs:label "In",
+        "in" .
+
+ns1:Lower rdfs:label "lower" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Than rdfs:label "than" .
+
+ns1:docuverse earmark:hasContent "In the opinion of the Commission' s proposal -20oC would have been sufficient. On the shores of the Mediterranean, it is hard to imagine that in Lapland temperatures can fall considerably lower than that."^^xsd:string .
+
+ns1:fall_1 a ns1:Fall ;
+    rdfs:label "fall" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Theme ns1:temperature_1 .
+
+ns1:imagine_1 a ns1:Imagine ;
+    rdfs:label "imagine" ;
+    vn.role:Agent <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#-20oc> ;
+    vn.role:Theme ns1:thing_1 ;
+    ns1:be ns1:hard_1 ;
+    ns1:in ns1:temperature_1 ;
+    ns1:onShoreOf ns1:Mediterranean .
+
+ns1:proposal_1 rdfs:label "proposal" .
+
+ns1:shore_1 a ns1:Shore ;
+    rdfs:label "shores" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#-20oc>,
+        ns1:Sufficient ;
+    ns1:in ns1:opinion_1 .
+
+ns1:Fall rdfs:label "fall" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Hard rdfs:label "hard" .
+
+ns1:Imagine rdfs:label "imagine" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Lapland rdfs:label "Lapland" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:hasQuality ns1:Considerably ;
+    owl:sameAs dbpedia:Sápmi .
+
+ns1:Mediterranean rdfs:label "Mediterranean" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Mediterranean_Sea .
+
+ns1:Opinion rdfs:label "opinion" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Proposal rdfs:label "-20oC",
+        "proposal" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Shore rdfs:label "shores" .
+
+ns1:Temperature rdfs:label "temperatures" .
+
+ns1:hard_1 a ns1:Hard ;
+    rdfs:label "hard" .
+
+ns1:opinion_1 a ns1:Opinion ;
+    rdfs:label "opinion" ;
+    quant:hasDeterminer quant:the .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#-20oc> a ns1:Proposal ;
+    rdfs:label "-20oC",
+        "proposal" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:hasQuality owl:Thing,
+        ns1:Sufficient .
+
+owl:Thing rdfs:label "it",
+        "that" .
+
+ns1:Considerably rdfs:label "considerably" .
+
+ns1:Sufficient rdfs:label "sufficient" .
+
+ns1:temperature_1 a ns1:Temperature ;
+    rdfs:label "temperatures" ;
+    dul:associatedWith ns1:Lapland ;
+    dul:hasQuality ns1:Considerably ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:lowerThan ns1:thing_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "that" .
+

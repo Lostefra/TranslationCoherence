@@ -1,0 +1,105 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence51.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence51.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence51" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence51" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Before rdfs:label "before" .
+
+ns1:During rdfs:label "during" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:develop_1 a ns1:Develop ;
+    rdfs:label "developed" ;
+    vn.role:Agent ns1:neuter_1 ;
+    vn.role:Product ns1:most_1 ;
+    ns1:before ns1:Second_world_war ;
+    ns1:during ns1:Second_world_war .
+
+ns1:docuverse earmark:hasContent "It had developed most of the British Horan and the United_States before and during the Second_World_War."^^xsd:string .
+
+dbpedia:United_Kingdom a schema:Country,
+        schema:Place .
+
+dbpedia:United_States rdfs:subClassOf schema:Country,
+        schema:Place .
+
+ns1:British rdfs:label "British" ;
+    owl:sameAs dbpedia:United_Kingdom .
+
+ns1:Develop rdfs:label "developed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Horan rdfs:label "Horan" ;
+    boxer:possibleType owl:Thing ;
+    dul:hasQuality ns1:British .
+
+ns1:Most rdfs:label "most" .
+
+ns1:UnitedStates rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:United_states a owl:Class ;
+    rdfs:label "United States" ;
+    rdfs:subClassOf ns1:UnitedStates ;
+    owl:equivalentClass dbpedia:United_States .
+
+ns1:most_1 a ns1:Most ;
+    rdfs:label "most" ;
+    ns1:mostOf ns1:Horan,
+        ns1:united_states_1 .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "It" .
+
+ns1:united_states_1 a ns1:United_states ;
+    rdfs:label "United States" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+owl:Thing rdfs:label "It" .
+
+ns1:Second_world_war rdfs:label "Second World War" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:World_War_II .
+

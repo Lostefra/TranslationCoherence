@@ -1,0 +1,117 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence210.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence210.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence210" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence210" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:docuverse earmark:hasContent "Increasing safety margins and guarantees in transport is a process that needs to be improved daily."^^xsd:string .
+
+ns1:need_1 a ns1:Need ;
+    rdfs:label "needs" ;
+    vn.role:Experiencer ns1:increase_1 ;
+    vn.role:Theme ns1:improve_1 .
+
+ns1:process_1 rdfs:label "process" .
+
+ns1:safety_1 a ns1:Safety ;
+    rdfs:label "safety" ;
+    dul:associatedWith ns1:margin_1 .
+
+ns1:Daily rdfs:label "daily" .
+
+ns1:Guarantee rdfs:label "guarantees" .
+
+ns1:Improve rdfs:label "improved" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Increase rdfs:label "Increasing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Margin rdfs:label "margins" .
+
+ns1:Need rdfs:label "needs" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Process rdfs:label "process" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Safety rdfs:label "safety" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:SafetyMargin rdfs:subClassOf ns1:Margin .
+
+ns1:Transport a owl:Class ;
+    rdfs:label "transport" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Transport .
+
+ns1:guarantee_1 a dbpedia:Contract,
+        ns1:Guarantee ;
+    rdfs:label "guarantees" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:transport_1 .
+
+ns1:improve_1 a ns1:Improve ;
+    rdfs:label "improved" ;
+    dul:hasQuality ns1:Daily ;
+    vn.role:Patient ns1:increase_1 .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:transport_1 a ns1:Transport ;
+    rdfs:label "transport" .
+
+ns1:increase_1 a ns1:Increase,
+        ns1:Process ;
+    rdfs:label "Increasing" ;
+    quant:hasDeterminer quant:a ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Patient ns1:guarantee_1,
+        ns1:margin_1 .
+
+ns1:margin_1 a ns1:SafetyMargin ;
+    rdfs:label "margins" ;
+    quant:hasQuantifier quant:multiple .
+

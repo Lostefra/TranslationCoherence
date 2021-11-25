@@ -1,0 +1,208 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence495.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%2C> rdfs:label "," .
+
+translation_coherence:ko_sentence495.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence495" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence495" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of",
+        "your" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Rel rdfs:label "this" .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "This website uses cookies to improve your browsing experience. By continuing to use this site, you consent to the use of cookies on your device as described in our  . 6 Summary of Configuration."^^xsd:string .
+
+ns1:event_1 a dul:Event ;
+    ns1:causedBy ns1:continue_1 .
+
+ns1:use_1 a ns1:Use ;
+    rdfs:label "uses" ;
+    boxer:theme ns1:improve_1 ;
+    vn.role:Agent ns1:website_1 ;
+    vn.role:Theme ns1:cookie_1 .
+
+owl:Thing rdfs:label "By" .
+
+ns1:Browsing a owl:Class ;
+    rdfs:label "browsing" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Web_browser .
+
+ns1:BrowsingExperience a owl:Class ;
+    rdfs:label "Browsing Experience" ;
+    dul:hasQuality ns1:Browsing ;
+    rdfs:subClassOf ns1:Experience .
+
+ns1:Configuration rdfs:label "Configuration" ;
+    boxer:possibleType time:Interval .
+
+ns1:Consent rdfs:label "consent" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Continue rdfs:label "continuing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Describe rdfs:label "described" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Device rdfs:label "device" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Experience a owl:Class ;
+    rdfs:label "experience" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Improve rdfs:label "improve" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Our rdfs:label "our" .
+
+ns1:Site rdfs:label "site" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Summary rdfs:label "Summary" ;
+    boxer:possibleType time:Interval ;
+    ns1:at "0001-01-06"^^xsd:date ;
+    ns1:of ns1:Configuration .
+
+ns1:Website rdfs:label "website" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:You rdfs:label "you" .
+
+ns1:YouConsent rdfs:label "you consent" ;
+    rdfs:subClassOf ns1:Consent .
+
+ns1:continue_1 a ns1:Continue ;
+    rdfs:label "continuing" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Predicate ns1:situation_1 .
+
+ns1:cookie_1 a dbpedia:HTTP_cookie,
+        ns1:Cookie ;
+    rdfs:label "cookies" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:describe_1 a ns1:Describe ;
+    rdfs:label "described" ;
+    vn.role:Theme ns1:use_3 ;
+    ns1:in ns1:our_1 .
+
+ns1:device_1 a ns1:Device ;
+    rdfs:label "device" ;
+    ns1:deviceOf ns1:person_2 .
+
+ns1:experience_1 a ns1:BrowsingExperience ;
+    rdfs:label "experience" ;
+    ns1:browsingExperienceOf ns1:person_1 .
+
+ns1:improve_1 a ns1:Improve ;
+    rdfs:label "improve" ;
+    vn.role:Agent ns1:website_1 ;
+    vn.role:Patient ns1:experience_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "your" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "your" .
+
+ns1:site_1 a ns1:Site ;
+    rdfs:label "site" ;
+    dul:hasQuality ns1:Current ;
+    quant:hasDeterminer quant:this .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:consent_1,
+        ns1:cookie_2,
+        ns1:describe_1,
+        ns1:our_1,
+        ns1:use_2 .
+
+ns1:use_2 a ns1:Use ;
+    rdfs:label "use" ;
+    dul:associatedWith ns1:consent_1,
+        ns1:site_1 ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Theme ns1:Summary .
+
+ns1:Cookie rdfs:label "cookies" .
+
+ns1:consent_1 a ns1:YouConsent ;
+    rdfs:label "consent" ;
+    dul:hasQuality ns1:You ;
+    ns1:to ns1:use_3 .
+
+ns1:cookie_2 a dbpedia:HTTP_cookie,
+        ns1:Cookie ;
+    rdfs:label "cookies" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:our_1 a ns1:Our ;
+    rdfs:label "our" .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "By" .
+
+ns1:use_3 a ns1:Use ;
+    rdfs:label "use" ;
+    quant:hasDeterminer quant:the ;
+    ns1:on ns1:device_1 ;
+    ns1:useOf ns1:cookie_2 .
+
+ns1:website_1 a ns1:Website ;
+    rdfs:label "website" ;
+    quant:hasDeterminer quant:this .
+
+ns1:Use rdfs:label "use",
+        "uses" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity>,
+        dul:Event .
+

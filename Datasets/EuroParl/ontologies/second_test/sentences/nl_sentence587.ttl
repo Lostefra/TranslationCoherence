@@ -1,0 +1,209 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence587.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:nl_sentence587.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence587" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence587" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:For rdfs:label "for" .
+
+ns1:Noteq rdfs:label "other" .
+
+ns1:Of rdfs:label "my",
+        "of",
+        "their" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:ask_1 a ns1:Ask ;
+    rdfs:label "asking" ;
+    dul:associatedWith ns1:President ;
+    dul:hasQuality ns1:So ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Topic ns1:approve_1 .
+
+ns1:ask_2 a ns1:Ask ;
+    rdfs:label "asking" ;
+    vn.role:Agent ns1:person_3 ;
+    vn.role:Topic ns1:correct_1 ;
+    ns1:as ns1:do_1 .
+
+ns1:colleague_1 a ns1:Colleague ;
+    rdfs:label "colleague" ;
+    dul:associatedWith ns1:member_1 .
+
+ns1:docuverse earmark:hasContent "So, Mr. President, I'm asking my colleague Members to approve this report, and I'm asking the commission, as other speakers have done, to correct the conclusions of their sixth period as the sixth programme for the 2,000 period."^^xsd:string .
+
+ns1:thing_1 coref:coref ns1:speaker_2 .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> rdfs:label "Mr." ;
+    boxer:possibleType dul:Role .
+
+ns1:Approve rdfs:label "approve" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Colleague rdfs:label "colleague" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:ColleagueMember rdfs:subClassOf ns1:Member .
+
+ns1:Commission rdfs:label "commission" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Conclusion rdfs:label "conclusions" .
+
+ns1:Correct rdfs:label "correct" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Do rdfs:label "done" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Member rdfs:label "Members" .
+
+ns1:Period a owl:Class ;
+    rdfs:label "Period",
+        "period" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:President rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    owl:sameAs dbpedia:President .
+
+ns1:Programme rdfs:label "programme" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Report rdfs:label "report" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:SixthPeriod a owl:Class ;
+    rdfs:label "sixth period" ;
+    dul:hasQuality ns1:Sixth ;
+    rdfs:subClassOf ns1:Period .
+
+ns1:SixthProgramme rdfs:label "Sixth Programme" ;
+    rdfs:subClassOf ns1:Programme .
+
+ns1:So rdfs:label "So" .
+
+ns1:approve_1 a ns1:Approve ;
+    rdfs:label "approve" ;
+    vn.role:Agent ns1:member_1 ;
+    vn.role:Theme ns1:report_1 .
+
+ns1:commission_1 a ns1:Commission ;
+    rdfs:label "commission" ;
+    quant:hasDeterminer quant:the .
+
+ns1:conclusion_1 a ns1:Conclusion ;
+    rdfs:label "conclusions" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:conclusionOf ns1:period_1 .
+
+ns1:correct_1 a ns1:Correct ;
+    rdfs:label "correct" ;
+    vn.role:Agent ns1:commission_1 ;
+    vn.role:Patient ns1:conclusion_1 .
+
+ns1:do_1 a ns1:Do ;
+    rdfs:label "done" ;
+    boxer:agent ns1:speaker_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "my" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:programme_1 a ns1:SixthProgramme ;
+    rdfs:label "programme" ;
+    dul:hasQuality ns1:Sixth ;
+    quant:hasDeterminer quant:the ;
+    ns1:for ns1:period_1 .
+
+ns1:report_1 a ns1:Report ;
+    rdfs:label "report" ;
+    quant:hasDeterminer quant:this .
+
+ns1:speaker_1 a ns1:Speaker ;
+    rdfs:label "other" ;
+    owl:differentFrom ns1:speaker_2 .
+
+ns1:Ask rdfs:label "asking" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Sixth a owl:Class ;
+    rdfs:label "Sixth",
+        "sixth" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Speaker rdfs:label "other",
+        "speakers" .
+
+ns1:member_1 a ns1:ColleagueMember ;
+    rdfs:label "Members" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:colleagueMemberOf ns1:person_1 .
+
+ns1:period_1 a ns1:SixthPeriod ;
+    rdfs:label "period" ;
+    dul:hasDataValue "2000"^^xsd:nonNegativeInteger ;
+    ns1:as ns1:programme_1 ;
+    ns1:sixthPeriodOf ns1:speaker_2 .
+
+ns1:Person rdfs:label "I" .
+
+ns1:speaker_2 a owl:Thing,
+        ns1:Speaker ;
+    rdfs:label "speakers",
+        "their" ;
+    quant:hasDeterminer quant:other ;
+    quant:hasQuantifier quant:multiple .
+

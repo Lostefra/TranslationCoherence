@@ -1,0 +1,283 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence480.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Patient2 rdfs:label "to" .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:it_sentence480.ttl a owl:Ontology ;
+    rdfs:label "it_sentence480" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence480" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Because rdfs:label "because" .
+
+ns1:Of rdfs:label "of",
+        "their" .
+
+ns1:To rdfs:label "to" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:Unless rdfs:label "unless" .
+
+ns1:disjunct_1 a ns1:Disjunct ;
+    boxing:involves ns1:Bridge,
+        ns1:bridge_1 ;
+    ns1:union ns1:disjunct_2 .
+
+ns1:docuverse earmark:hasContent "We do not forget that greater consideration should be given to the islands and remote regions of the European_Union because their geographical position is an obstacle to their economic and social development, unless the Commission intends to build bridges or submarine tunnels linking them to the European mainland."^^xsd:string .
+
+ns1:forget_1 a ns1:Forget ;
+    rdfs:label "forget" ;
+    boxer:agent ns1:person_1 ;
+    boxer:theme ns1:situation_1 ;
+    boxing:hasTruthValue boxing:False .
+
+ns1:obstacle_1 rdfs:label "obstacle" .
+
+ns1:submarine_1 a ns1:Submarine ;
+    rdfs:label "submarine" ;
+    dul:associatedWith ns1:bridge_1 .
+
+ns1:tunnel_1 rdfs:label "tunnels" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Build rdfs:label "build" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Consideration a owl:Class ;
+    rdfs:label "consideration" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Development a owl:Class ;
+    rdfs:label "development" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Economic rdfs:label "economic" .
+
+ns1:European rdfs:label "European" .
+
+ns1:EuropeanMainland rdfs:label "European Mainland" ;
+    rdfs:subClassOf ns1:Mainland .
+
+ns1:EuropeanUnion rdfs:subClassOf dul:Organization .
+
+ns1:European_union a owl:Class ;
+    rdfs:label "European Union" ;
+    rdfs:subClassOf ns1:EuropeanUnion ;
+    owl:equivalentClass dbpedia:European_Union .
+
+ns1:Forget rdfs:label "forget" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Geographical a owl:Class ;
+    rdfs:label "geographical" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:GeographicalPosition a owl:Class ;
+    rdfs:label "Geographical Position" ;
+    dul:hasQuality ns1:Geographical ;
+    rdfs:subClassOf ns1:Position .
+
+ns1:Give rdfs:label "given" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Greater a owl:Class ;
+    rdfs:label "greater" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:GreaterConsideration a owl:Class ;
+    rdfs:label "Greater Consideration" ;
+    dul:hasQuality ns1:Greater ;
+    rdfs:subClassOf ns1:Consideration .
+
+ns1:Intend rdfs:label "intends" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Island rdfs:label "islands" .
+
+ns1:Link rdfs:label "linking" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Person rdfs:label "We" .
+
+ns1:Position a owl:Class ;
+    rdfs:label "position" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Region rdfs:label "regions" .
+
+ns1:Remote rdfs:label "remote" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Social a owl:Class ;
+    rdfs:label "social" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SocialDevelopment a owl:Class ;
+    rdfs:label "social development" ;
+    dul:hasQuality ns1:Social ;
+    rdfs:subClassOf ns1:Development .
+
+ns1:SubmarineTunnel rdfs:subClassOf ns1:Tunnel .
+
+ns1:build_1 a ns1:Build ;
+    rdfs:label "build" ;
+    vn.role:Agent ns1:Commission ;
+    vn.role:Product ns1:bridge_1 .
+
+ns1:development_1 a ns1:SocialDevelopment ;
+    rdfs:label "development" ;
+    dul:hasQuality ns1:Economic ;
+    ns1:socialDevelopmentOf ns1:thing_2 .
+
+ns1:disjunct_2 a ns1:Disjunct ;
+    boxing:involves ns1:Submarine,
+        ns1:Tunnel,
+        ns1:bridge_1 .
+
+ns1:european_union_1 a ns1:European_union ;
+    rdfs:label "European Union" ;
+    quant:hasDeterminer quant:the .
+
+ns1:give_1 a ns1:Give ;
+    rdfs:label "given" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Recipient ns1:island_1 ;
+    vn.role:Theme ns1:consideration_1 .
+
+ns1:island_1 a ns1:Island ;
+    rdfs:label "islands" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:link_1 a ns1:Link ;
+    rdfs:label "linking" ;
+    vn.role:Agent ns1:bridge_1 ;
+    vn.role:Patient1 ns1:thing_3 ;
+    vn.role:Patient2 ns1:mainland_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "We" .
+
+ns1:position_1 a ns1:GeographicalPosition,
+        ns1:Obstacle ;
+    rdfs:label "position" ;
+    quant:hasDeterminer quant:an ;
+    owl:sameAs ns1:mainland_1 ;
+    ns1:obstacleOf ns1:thing_1 ;
+    ns1:to ns1:development_1 .
+
+ns1:remote_1 a ns1:Remote ;
+    rdfs:label "remote" ;
+    boxer:agent ns1:consideration_1 ;
+    boxer:patient ns1:region_1 ;
+    boxing:hasModality boxing:Necessary ;
+    ns1:because ns1:situation_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "their" .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "their" .
+
+ns1:thing_3 a owl:Thing ;
+    rdfs:label "them" .
+
+ns1:Bridge rdfs:label "bridges" .
+
+ns1:Commission rdfs:label "Commission" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Mainland rdfs:label "mainland" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Obstacle rdfs:label "obstacle" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Submarine a owl:Class ;
+    rdfs:label "submarine" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Submarine .
+
+ns1:Tunnel rdfs:label "tunnels" .
+
+ns1:intend_1 a ns1:Intend ;
+    rdfs:label "intends" ;
+    vn.role:Agent ns1:Commission ;
+    vn.role:Predicate ns1:situation_1 .
+
+ns1:mainland_1 a ns1:EuropeanMainland,
+        ns1:Mainland ;
+    rdfs:label "mainland" ;
+    dul:hasQuality ns1:European ;
+    quant:hasDeterminer quant:the .
+
+ns1:region_1 a ns1:Region ;
+    rdfs:label "regions" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:regionOf ns1:european_union_1 .
+
+owl:Thing rdfs:label "them" .
+
+ns1:consideration_1 a ns1:GreaterConsideration ;
+    rdfs:label "consideration" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:Obstacle,
+        ns1:bridge_1,
+        ns1:build_1,
+        ns1:consideration_1,
+        ns1:give_1,
+        ns1:intend_1,
+        ns1:link_1,
+        ns1:position_1,
+        ns1:region_1,
+        ns1:remote_1 ;
+    ns1:unless ns1:intend_1 .
+
+ns1:bridge_1 a ns1:Bridge,
+        ns1:SubmarineTunnel ;
+    rdfs:label "bridges" ;
+    quant:hasQuantifier quant:multiple .
+

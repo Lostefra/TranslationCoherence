@@ -1,0 +1,170 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence452.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence452.ttl a owl:Ontology ;
+    rdfs:label "de_sentence452" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence452" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In",
+        "in" .
+
+ns1:Inviewof rdfs:label "in view of" .
+
+ns1:More rdfs:label "more" .
+
+ns1:Of rdfs:label "its",
+        "of" .
+
+ns1:docuverse earmark:hasContent "In the coming years, in view of the challenges of globalisation and enlargement of the East__Europe will need more than ever appropriate detailed guidelines for the planning and recovery of its economy."^^xsd:string .
+
+ns1:need_1 a ns1:Need ;
+    rdfs:label "need" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Experiencer ns1:enlargement_1 ;
+    vn.role:Theme ns1:have_1 ;
+    ns1:in ns1:year_1 ;
+    ns1:inViewOf ns1:challenge_1 ;
+    ns1:moreThan ns1:thing_1 .
+
+ns1:neuter_1 rdfs:label "its" .
+
+ns1:recovery_1 rdfs:label "recovery" .
+
+ns1:view_1 a ns1:View ;
+    rdfs:label "view" .
+
+ns1:Appropriate rdfs:label "appropriate" .
+
+ns1:AppropriateDetailedGuideline rdfs:subClassOf ns1:DetailedGuideline .
+
+ns1:Challenge rdfs:label "challenges" .
+
+ns1:Coming rdfs:label "coming" .
+
+ns1:ComingYear rdfs:subClassOf ns1:Year .
+
+ns1:Detailed rdfs:label "detailed" .
+
+ns1:DetailedGuideline rdfs:subClassOf ns1:Guideline .
+
+ns1:Economy rdfs:label "economy" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#System> .
+
+ns1:Enlargement rdfs:label "enlargement" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Ever rdfs:label "ever" .
+
+ns1:Globalisation a owl:Class ;
+    rdfs:label "globalisation" ;
+    rdfs:subClassOf dul:Process ;
+    owl:equivalentClass dbpedia:Globalization .
+
+ns1:Guideline rdfs:label "guidelines" .
+
+ns1:Have rdfs:subClassOf dul:Event .
+
+ns1:Need rdfs:label "need" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Planning rdfs:label "planning" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Recovery rdfs:label "recovery" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:View rdfs:label "view" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Year rdfs:label "years" .
+
+ns1:challenge_1 a ns1:Challenge ;
+    rdfs:label "challenges" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:challengeOf ns1:globalisation_1 .
+
+ns1:economy_1 a ns1:Economy ;
+    rdfs:label "economy" ;
+    ns1:economyOf ns1:East__europe .
+
+ns1:globalisation_1 a ns1:Globalisation ;
+    rdfs:label "globalisation" .
+
+ns1:guideline_1 a ns1:AppropriateDetailedGuideline ;
+    rdfs:label "guidelines" ;
+    dul:hasQuality ns1:Appropriate,
+        ns1:Detailed ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:for ns1:planning_1 .
+
+ns1:have_1 a ns1:Have ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:enlargement_1 ;
+    vn.role:Patient ns1:guideline_1 .
+
+ns1:planning_1 a ns1:Planning,
+        ns1:Recovery ;
+    rdfs:label "planning" ;
+    quant:hasDeterminer quant:the ;
+    ns1:planningOf ns1:economy_1 .
+
+ns1:thing_1 a owl:Thing ;
+    dul:hasQuality ns1:Ever .
+
+ns1:year_1 a ns1:ComingYear ;
+    rdfs:label "years" ;
+    dul:hasQuality ns1:Coming ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+owl:Thing rdfs:label "East  Europe" .
+
+ns1:East__europe a owl:Thing ;
+    rdfs:label "East  Europe" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Eastern_Europe .
+
+ns1:enlargement_1 a ns1:Enlargement ;
+    rdfs:label "enlargement" ;
+    ns1:enlargementOf ns1:East__europe .
+

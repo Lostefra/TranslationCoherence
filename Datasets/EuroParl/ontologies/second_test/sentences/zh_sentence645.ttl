@@ -1,0 +1,129 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence645.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Source rdfs:label "from" .
+
+translation_coherence:zh_sentence645.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence645" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence645" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Entails rdfs:label "if" .
+
+ns1:In rdfs:label "in" .
+
+ns1:accumulate_1 a ns1:Accumulate ;
+    rdfs:label "accumulated" ;
+    vn.role:Source ns1:Solidarity_fund ;
+    vn.role:Theme ns1:fund_1 ;
+    ns1:entails ns1:able_1 .
+
+ns1:country_1 rdfs:label "countries" .
+
+ns1:docuverse earmark:hasContent "Even if funds are accumulated from the Solidarity Fund, the Structural_Fund has not been able to produce expected results in all regions and countries."^^xsd:string .
+
+ns1:Able rdfs:label "able" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Accumulate rdfs:label "accumulated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Country rdfs:label "countries" .
+
+ns1:Expect rdfs:label "expected" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Fund rdfs:label "funds" .
+
+ns1:Produce rdfs:label "produce" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Region rdfs:label "regions" .
+
+ns1:Result rdfs:label "results" .
+
+ns1:Solidarity_fund rdfs:label "Solidarity Fund" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Structural_fund a owl:Class ;
+    rdfs:label "Structural Fund" ;
+    owl:equivalentClass dbpedia:Structural_Funds_and_Cohesion_Fund .
+
+ns1:able_1 a ns1:Able ;
+    rdfs:label "able" ;
+    boxer:agent ns1:structural_fund_1 ;
+    boxer:theme ns1:situation_1 ;
+    boxing:hasTruthValue boxing:False .
+
+ns1:expect_1 a ns1:Expect ;
+    rdfs:label "expected" ;
+    vn.role:Theme ns1:result_1 .
+
+ns1:fund_1 a ns1:Fund ;
+    rdfs:label "funds" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:produce_1 a ns1:Produce ;
+    rdfs:label "produce" ;
+    vn.role:Agent ns1:structural_fund_1 ;
+    vn.role:Theme ns1:result_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:expect_1,
+        ns1:produce_1,
+        ns1:region_1,
+        ns1:result_1 .
+
+ns1:region_1 a ns1:Country,
+        ns1:Region ;
+    rdfs:label "regions" ;
+    quant:hasQuantifier quant:all,
+        quant:multiple .
+
+ns1:structural_fund_1 a ns1:Structural_fund ;
+    rdfs:label "Structural Fund" ;
+    quant:hasDeterminer quant:the .
+
+ns1:result_1 a ns1:Result ;
+    rdfs:label "results" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:region_1 .
+

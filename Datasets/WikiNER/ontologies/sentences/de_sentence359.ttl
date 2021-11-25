@@ -1,0 +1,113 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence359.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence359.ttl a owl:Ontology ;
+    rdfs:label "de_sentence359" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence359" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "Burnside was politically neutral, which Lincoln wanted, and most of the Presidents supported the objectives."^^xsd:string .
+
+ns1:support_1 a ns1:Support ;
+    rdfs:label "supported" ;
+    vn.role:Agent ns1:Burnside,
+        ns1:most_1 ;
+    vn.role:Beneficiary ns1:objective_1 .
+
+ns1:want_1 a ns1:Want ;
+    rdfs:label "wanted" ;
+    vn.role:Experiencer ns1:Lincoln ;
+    vn.role:Theme ns1:have_1 .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+ns1:Have rdfs:subClassOf dul:Event .
+
+ns1:Most rdfs:label "most" .
+
+ns1:Neutral rdfs:label "neutral" ;
+    dul:hasQuality ns1:Politically ;
+    owl:sameAs dbpedia:Country_neutrality_(international_relations) .
+
+ns1:Objective rdfs:label "objectives" .
+
+ns1:Politically rdfs:label "politically" ;
+    owl:sameAs dbpedia:Country_neutrality_(international_relations) .
+
+ns1:President a owl:Class ;
+    rdfs:label "Presidents" ;
+    owl:equivalentClass dbpedia:President_of_the_United_States .
+
+ns1:Support rdfs:label "supported" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Want rdfs:label "wanted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:have_1 a ns1:Have ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Patient ns1:Burnside .
+
+ns1:most_1 a ns1:Most ;
+    rdfs:label "most" ;
+    ns1:mostOf ns1:president_1 .
+
+ns1:objective_1 a ns1:Objective ;
+    rdfs:label "objectives" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:president_1 a ns1:President ;
+    rdfs:label "Presidents" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Burnside rdfs:label "Burnside" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Neutral ;
+    owl:sameAs dbpedia:Ambrose_Burnside .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+

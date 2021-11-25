@@ -1,0 +1,141 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence402.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence402.ttl a owl:Ontology ;
+    rdfs:label "de_sentence402" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence402" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:By rdfs:label "by" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:allow_1 a ns1:Allow ;
+    rdfs:label "allowed" ;
+    vn.role:Agent ns1:creation_1 ;
+    vn.role:Theme ns1:establishment_1 .
+
+ns1:banking_1 a ns1:Banking ;
+    rdfs:label "banking" ;
+    dul:associatedWith ns1:law_1 .
+
+ns1:docuverse earmark:hasContent "The creation of the system of national banks by national banking laws of 1863, 1864 and 1865 allowed the establishment of a strong national financial system."^^xsd:string .
+
+ns1:Allow rdfs:label "allowed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Bank rdfs:label "banks" .
+
+ns1:Banking a owl:Class ;
+    rdfs:label "banking" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Bank .
+
+ns1:BankingLaw rdfs:subClassOf ns1:Law .
+
+ns1:Creation rdfs:label "creation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Establishment rdfs:label "establishment" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Financial rdfs:label "financial" .
+
+ns1:FinancialSystem rdfs:label "financial system" ;
+    rdfs:subClassOf ns1:System .
+
+ns1:Law rdfs:label "laws" .
+
+ns1:NationalBank rdfs:subClassOf ns1:Bank .
+
+ns1:NationalBankingLaw rdfs:subClassOf ns1:BankingLaw .
+
+ns1:NationalFinancialSystem rdfs:label "National Financial System" ;
+    rdfs:subClassOf ns1:FinancialSystem .
+
+ns1:Strong rdfs:label "strong" .
+
+ns1:StrongNationalFinancialSystem rdfs:label "Strong National Financial System" ;
+    rdfs:subClassOf ns1:NationalFinancialSystem .
+
+ns1:bank_1 a ns1:NationalBank ;
+    rdfs:label "banks" ;
+    dul:hasQuality ns1:National ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:creation_1 a ns1:Creation ;
+    rdfs:label "creation" ;
+    dul:associatedWith "1865-01-01"^^xsd:date ;
+    quant:hasDeterminer quant:the ;
+    ns1:creationOf ns1:system_1 .
+
+ns1:establishment_1 a ns1:Establishment ;
+    rdfs:label "establishment" ;
+    quant:hasDeterminer quant:the ;
+    ns1:establishmentOf ns1:system_2 .
+
+ns1:system_1 a ns1:System ;
+    rdfs:label "system" ;
+    quant:hasDeterminer quant:the ;
+    ns1:systemBy ns1:law_1 ;
+    ns1:systemOf ns1:bank_1 .
+
+ns1:system_2 a ns1:StrongNationalFinancialSystem ;
+    rdfs:label "system" ;
+    dul:hasQuality ns1:Financial,
+        ns1:National,
+        ns1:Strong ;
+    quant:hasDeterminer quant:a .
+
+ns1:National rdfs:label "National",
+        "national" .
+
+ns1:System rdfs:label "System",
+        "system" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:law_1 a ns1:NationalBankingLaw ;
+    rdfs:label "laws" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:nationalBankingLawOf "1863-01-01"^^xsd:date .
+

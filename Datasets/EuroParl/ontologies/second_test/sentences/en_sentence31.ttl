@@ -1,0 +1,223 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence31.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "during" .
+
+translation_coherence:en_sentence31.ttl a owl:Ontology ;
+    rdfs:label "en_sentence31" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence31" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of",
+        "our",
+        "your" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "Madam President, I would firstly like to compliment you on the fact that you have kept your word and that, during this first part-session of the new year, the number of television channels in our offices has indeed increased considerably."^^xsd:string .
+
+ns1:increase_1 a ns1:IndeedIncrease ;
+    rdfs:label "increased" ;
+    dul:hasQuality ns1:Considerably,
+        ns1:Indeed ;
+    vn.role:Patient ns1:President .
+
+ns1:like_1 a ns1:FirstlyLike ;
+    rdfs:label "like" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:associatedWith ns1:President ;
+    dul:hasQuality ns1:Firstly ;
+    vn.role:Experiencer ns1:person_3 ;
+    vn.role:Theme ns1:compliment_1 .
+
+ns1:television_1 a ns1:Television ;
+    rdfs:label "television" ;
+    dul:associatedWith ns1:channel_1 .
+
+ns1:Channel rdfs:label "channels" .
+
+ns1:Compliment rdfs:label "compliment" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Considerably rdfs:label "considerably" .
+
+ns1:Fact rdfs:label "fact" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:First rdfs:label "first" .
+
+ns1:FirstPart-session rdfs:label "First Part-session" ;
+    rdfs:subClassOf ns1:Part-session .
+
+ns1:Firstly rdfs:label "firstly" .
+
+ns1:FirstlyLike rdfs:label "firstly like" ;
+    rdfs:subClassOf ns1:Like .
+
+ns1:Increase rdfs:label "increased" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Indeed rdfs:label "indeed" .
+
+ns1:IndeedIncrease rdfs:subClassOf ns1:Increase .
+
+ns1:Keep rdfs:label "kept" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Like rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Madam rdfs:label "Madam" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:New a owl:Class ;
+    rdfs:label "new" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:NewYear a owl:Class ;
+    rdfs:label "new year" ;
+    dul:hasQuality ns1:New ;
+    rdfs:subClassOf ns1:Year .
+
+ns1:Number rdfs:label "number" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Office rdfs:label "offices" .
+
+ns1:Part-session rdfs:label "part-session" .
+
+ns1:Television rdfs:label "television" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:TelevisionChannel rdfs:subClassOf ns1:Channel .
+
+ns1:Word rdfs:label "word" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Year a owl:Class ;
+    rdfs:label "year" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:compliment_1 a ns1:Compliment ;
+    rdfs:label "compliment" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_3 ;
+    vn.role:Theme ns1:person_4 ;
+    ns1:on ns1:fact_1 .
+
+ns1:fact_1 a ns1:Fact ;
+    rdfs:label "fact" ;
+    boxer:theme ns1:situation_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:keep_1 a ns1:Keep ;
+    rdfs:label "kept" ;
+    vn.role:Agent ns1:person_5 ;
+    vn.role:Location ns1:part-session_1 ;
+    vn.role:Theme ns1:thing_1,
+        ns1:word_1 .
+
+ns1:number_1 a ns1:Number ;
+    rdfs:label "number" ;
+    quant:hasDeterminer quant:the ;
+    ns1:in ns1:office_1 ;
+    ns1:numberOf ns1:channel_1 .
+
+ns1:office_1 a ns1:Office ;
+    rdfs:label "offices" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:officeOf ns1:person_1 .
+
+ns1:part-session_1 a ns1:FirstPart-session ;
+    rdfs:label "part-session" ;
+    dul:hasQuality ns1:First ;
+    quant:hasDeterminer quant:that,
+        quant:this ;
+    ns1:firstPart-sessionOf ns1:year_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "our" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "your" .
+
+ns1:person_4 a ns1:Person ;
+    rdfs:label "you" .
+
+ns1:person_5 a ns1:Person ;
+    rdfs:label "you" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:keep_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "that" .
+
+ns1:word_1 a ns1:Word ;
+    rdfs:label "word" ;
+    ns1:wordOf ns1:person_2 .
+
+ns1:year_1 a ns1:NewYear ;
+    rdfs:label "year" ;
+    quant:hasDeterminer quant:the .
+
+owl:Thing rdfs:label "that" .
+
+ns1:President rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith ns1:Madam,
+        ns1:number_1 ;
+    owl:sameAs dbpedia:President .
+
+ns1:channel_1 a ns1:TelevisionChannel ;
+    rdfs:label "channels" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:Person rdfs:label "I",
+        "you" .
+

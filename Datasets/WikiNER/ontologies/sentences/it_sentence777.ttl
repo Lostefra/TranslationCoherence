@@ -1,0 +1,197 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence777.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Topic rdfs:label "about" .
+
+translation_coherence:it_sentence777.ttl a owl:Ontology ;
+    rdfs:label "it_sentence777" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence777" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "was" .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:carry_1 a ns1:Carry ;
+    rdfs:label "carry" ;
+    dul:hasQuality ns1:Out ;
+    vn.role:Agent ns1:Abu_rayhan_biruni ;
+    vn.role:Theme ns1:study_1 .
+
+ns1:custom_1 rdfs:label "customs" .
+
+ns1:docuverse earmark:hasContent "Another candidate for one of the first scholars to carry out comparative studies of ethnographic type in person was the medieval Persian scholar Abu Rayhan Biruni in the 11th century, who wrote about the peoples, customs and religions of the Indian_subcontinent."^^xsd:string .
+
+ns1:religion_1 a dbpedia:Religion ;
+    rdfs:label "religions" .
+
+ns1:scholar_1 rdfs:label "scholars" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple,
+        quant:one .
+
+ns1:write_1 a ns1:Write ;
+    rdfs:label "wrote" ;
+    vn.role:Agent ns1:Abu_rayhan_biruni ;
+    vn.role:Topic ns1:people_1 .
+
+dbpedia:Indian_subcontinent a schema:Continent,
+        schema:Place .
+
+ns1:11th rdfs:label "11th" .
+
+ns1:11thCentury rdfs:label "11th century" ;
+    rdfs:subClassOf ns1:Century .
+
+ns1:Carry rdfs:label "carry" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Comparative rdfs:label "comparative" .
+
+ns1:ComparativeStudy rdfs:subClassOf ns1:Study .
+
+ns1:Custom rdfs:label "customs" .
+
+ns1:Ethnographic a owl:Class ;
+    rdfs:label "ethnographic" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Ethnography .
+
+ns1:EthnographicType a owl:Class ;
+    rdfs:label "ethnographic type" ;
+    dul:hasQuality ns1:Ethnographic ;
+    rdfs:subClassOf ns1:Type .
+
+ns1:First rdfs:label "first" .
+
+ns1:Indian_subcontinent rdfs:label "Indian subcontinent" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Indian_subcontinent .
+
+ns1:Medieval rdfs:label "medieval" ;
+    owl:sameAs dbpedia:Middle_Ages .
+
+ns1:Out rdfs:label "out" .
+
+ns1:People rdfs:label "peoples" .
+
+ns1:Persian rdfs:label "Persian" ;
+    owl:sameAs dbpedia:Persian_people .
+
+ns1:Person rdfs:label "person" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Religion rdfs:label "religions" .
+
+ns1:Scholar rdfs:label "Abu Rayhan Biruni",
+        "scholar",
+        "scholars" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Study rdfs:label "studies" .
+
+ns1:Type a owl:Class ;
+    rdfs:label "type" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Write rdfs:label "wrote" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:candidate_2 a ns1:Candidate ;
+    rdfs:label "candidate" ;
+    quant:hasDeterminer quant:another .
+
+ns1:people_1 a ns1:Custom,
+        ns1:People,
+        ns1:Religion ;
+    rdfs:label "peoples" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:peopleOf ns1:Indian_subcontinent .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "person" ;
+    owl:sameAs ns1:century_1 .
+
+ns1:study_1 a ns1:ComparativeStudy ;
+    rdfs:label "studies" ;
+    dul:hasQuality ns1:Comparative ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:comparativeStudyOf ns1:type_1 .
+
+ns1:type_1 a ns1:EthnographicType ;
+    rdfs:label "type" ;
+    ns1:in ns1:person_1 .
+
+ns1:Abu_rayhan_biruni a ns1:Candidate,
+        ns1:FirstScholar ;
+    rdfs:label "Abu Rayhan Biruni",
+        "scholars" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasDataValue "1"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:First,
+        ns1:Medieval,
+        ns1:Persian ;
+    owl:differentFrom ns1:candidate_2 ;
+    owl:sameAs dbpedia:Al-Biruni ;
+    ns1:in ns1:century_1 .
+
+ns1:Candidate rdfs:label "candidate" ;
+    rdfs:subClassOf dul:Person,
+        ns1:FirstScholar .
+
+ns1:Century rdfs:label "century" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:FirstScholar rdfs:subClassOf ns1:Scholar .
+
+ns1:century_1 a ns1:11thCentury,
+        ns1:Century ;
+    rdfs:label "century" ;
+    dul:hasQuality ns1:11th ;
+    quant:hasDeterminer quant:the .
+

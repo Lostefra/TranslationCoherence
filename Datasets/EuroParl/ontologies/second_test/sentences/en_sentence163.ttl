@@ -1,0 +1,223 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence163.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Stimulus rdfs:label "to" .
+
+vn.role:Theme rdfs:label "with" .
+
+translation_coherence:en_sentence163.ttl a owl:Ontology ;
+    rdfs:label "en_sentence163" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence163" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "My",
+        "of",
+        "our" .
+
+ns1:Theme rdfs:label "possible" .
+
+ns1:docuverse earmark:hasContent "My Group will therefore support the common position and looks forward to the enactment of the legislation which will provide us with yet another tool in our fight to make transport in the European Union as safe as possible."^^xsd:string .
+
+ns1:look_1 a ns1:Look ;
+    rdfs:label "looks" ;
+    dul:hasQuality ns1:Forward ;
+    vn.role:Experiencer ns1:Group ;
+    vn.role:Stimulus ns1:enactment_1 .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "make" ;
+    vn.role:Agent ns1:fight_1 ;
+    vn.role:Theme ns1:transport_1 ;
+    ns1:in ns1:European_union .
+
+ns1:person_3 coref:coref ns1:person_4 .
+
+ns1:provide_1 a ns1:Provide ;
+    rdfs:label "provide" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:legislation_1 ;
+    vn.role:Recipient ns1:person_4 ;
+    vn.role:Theme ns1:tool_1 ;
+    ns1:in ns1:fight_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Possible ;
+    boxing:involves ns1:European_union,
+        ns1:Safe ;
+    dul:hasQuality ns1:As ;
+    ns1:as ns1:thing_1 .
+
+ns1:support_1 a ns1:ThereforeSupport ;
+    rdfs:label "support" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Therefore ;
+    vn.role:Agent ns1:Group ;
+    vn.role:Beneficiary ns1:position_1 .
+
+ns1:thing_2 a owl:Thing ;
+    boxer:theme ns1:thing_1 .
+
+ns1:AnotherTool a owl:Class ;
+    rdfs:label "Another Tool" ;
+    dul:associatedWith ns1:Another ;
+    rdfs:subClassOf ns1:Tool .
+
+ns1:As rdfs:label "As",
+        "as" .
+
+ns1:Common a owl:Class ;
+    rdfs:label "common" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:CommonPosition a owl:Class ;
+    rdfs:label "Common Position" ;
+    dul:hasQuality ns1:Common ;
+    rdfs:subClassOf ns1:Position .
+
+ns1:Enactment rdfs:label "enactment" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Fight rdfs:label "fight" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Forward rdfs:label "forward" .
+
+ns1:Legislation a owl:Class ;
+    rdfs:label "legislation" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Legislation .
+
+ns1:Look rdfs:label "looks" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Make rdfs:label "make" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Position a owl:Class ;
+    rdfs:label "position" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Provide rdfs:label "provide" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Support rdfs:label "support" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Therefore rdfs:label "therefore" .
+
+ns1:ThereforeSupport rdfs:label "Therefore Support" ;
+    rdfs:subClassOf ns1:Support .
+
+ns1:Tool a owl:Class ;
+    rdfs:label "tool" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Transport rdfs:label "transport" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:YetAnother a owl:Class ;
+    dul:hasQuality ns1:Yet ;
+    rdfs:subClassOf ns1:Another .
+
+ns1:YetAnotherTool a owl:Class ;
+    rdfs:label "Yet Another Tool" ;
+    dul:associatedWith ns1:YetAnother ;
+    rdfs:subClassOf ns1:AnotherTool .
+
+ns1:enactment_1 a ns1:Enactment ;
+    rdfs:label "enactment" ;
+    quant:hasDeterminer quant:the ;
+    ns1:enactmentOf ns1:legislation_1 .
+
+ns1:person_1 a ns1:Person .
+
+ns1:person_2 a ns1:Person .
+
+ns1:position_1 a ns1:CommonPosition ;
+    rdfs:label "position" ;
+    quant:hasDeterminer quant:the .
+
+ns1:tool_1 a ns1:YetAnotherTool ;
+    rdfs:label "tool" ;
+    dul:hasQuality ns1:Yet ;
+    quant:hasDeterminer quant:another .
+
+ns1:transport_1 a ns1:Transport ;
+    rdfs:label "transport" .
+
+ns1:Another a owl:Class ;
+    rdfs:label "another" .
+
+ns1:European_union rdfs:label "European Union" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality ns1:Safe ;
+    owl:sameAs dbpedia:European_Union,
+        dbpedia:Transport_in_the_European_Union .
+
+ns1:Group rdfs:label "Group" ;
+    boxer:possibleType foaf:Organisation ;
+    ns1:of ns1:person_1,
+        ns1:person_2 .
+
+ns1:Safe rdfs:label "safe" .
+
+ns1:Yet a owl:Class ;
+    rdfs:label "yet" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:fight_1 a ns1:Fight ;
+    rdfs:label "fight" ;
+    ns1:fightOf ns1:person_4 .
+
+ns1:legislation_1 a ns1:Legislation ;
+    rdfs:label "legislation" ;
+    quant:hasDeterminer quant:the .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:Person rdfs:label "us" .
+
+ns1:person_4 a ns1:Person ;
+    rdfs:label "our",
+        "us" .
+

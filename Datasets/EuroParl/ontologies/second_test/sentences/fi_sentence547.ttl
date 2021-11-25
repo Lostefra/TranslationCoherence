@@ -1,0 +1,208 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence547.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence547.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence547" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence547" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Noteq rdfs:label "different" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:disjunct_1 a ns1:Disjunct ;
+    boxing:involves ns1:Programming,
+        ns1:Regional,
+        ns1:programming_1 ;
+    ns1:union ns1:disjunct_2 .
+
+ns1:docuverse earmark:hasContent "I do not list them all, but they include implementing sector- toteuttaific policies, enhancing the use of public funds, helping different partners develop regional or national programming."^^xsd:string .
+
+ns1:include_1 a ns1:Include ;
+    rdfs:label "include" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Location ns1:situation_1 .
+
+ns1:list_1 a ns1:List ;
+    rdfs:label "list" ;
+    boxer:agent ns1:person_1 ;
+    boxer:patient ns1:thing_1 ;
+    boxing:hasTruthValue boxing:False .
+
+ns1:thing_2 coref:coref ns1:thing_1 .
+
+owl:Thing rdfs:label "them",
+        "they" .
+
+ns1:Develop a owl:Class ;
+    rdfs:label "develop" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Economic_development .
+
+ns1:Enhance rdfs:label "enhancing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Fund rdfs:label "funds" .
+
+ns1:Help rdfs:label "helping" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Implement rdfs:label "implementing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Include rdfs:label "include" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:List rdfs:label "list" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:NationalProgramming a owl:Class ;
+    rdfs:label "National Programming" ;
+    dul:hasQuality ns1:National ;
+    rdfs:subClassOf ns1:Programming .
+
+ns1:Person rdfs:label "I" .
+
+ns1:Policy rdfs:label "policies" .
+
+ns1:Public rdfs:label "public" .
+
+ns1:PublicFund rdfs:subClassOf ns1:Fund .
+
+ns1:Sector- rdfs:label "sector-" .
+
+ns1:Sector-ToteuttaificPolicy rdfs:subClassOf ns1:ToteuttaificPolicy .
+
+ns1:Toteuttaific rdfs:label "toteuttaific" .
+
+ns1:ToteuttaificPolicy rdfs:subClassOf ns1:Policy .
+
+ns1:Use rdfs:label "use" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:develop_1 a ns1:Develop ;
+    rdfs:label "develop" ;
+    vn.role:Agent ns1:partner_1 ;
+    vn.role:Product ns1:programming_1 .
+
+ns1:disjunct_2 a ns1:Disjunct ;
+    boxing:involves ns1:National,
+        ns1:Programming,
+        ns1:programming_1 .
+
+ns1:enhance_1 a ns1:Enhance ;
+    rdfs:label "enhancing" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Patient ns1:use_1 .
+
+ns1:help_1 a ns1:Help ;
+    rdfs:label "helping" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Beneficiary ns1:partner_1 .
+
+ns1:implement_1 a ns1:Implement ;
+    rdfs:label "implementing" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Theme ns1:policy_1 .
+
+ns1:partner_2 a ns1:Partner ;
+    rdfs:label "partners" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:develop_1,
+        ns1:enhance_1,
+        ns1:fund_1,
+        ns1:help_1,
+        ns1:implement_1,
+        ns1:partner_1,
+        ns1:policy_1,
+        ns1:programming_1 .
+
+ns1:use_1 a ns1:Use ;
+    rdfs:label "use" ;
+    quant:hasDeterminer quant:the ;
+    ns1:useOf ns1:fund_1 .
+
+ns1:Partner rdfs:label "different",
+        "partners" .
+
+ns1:Regional rdfs:label "regional" .
+
+ns1:fund_1 a ns1:PublicFund ;
+    rdfs:label "funds" ;
+    dul:hasQuality ns1:Public ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:policy_1 a dbpedia:Policy,
+        ns1:Sector-ToteuttaificPolicy ;
+    rdfs:label "policies" ;
+    dul:hasQuality ns1:Sector-,
+        ns1:Toteuttaific ;
+    quant:hasQuantifier quant:all,
+        quant:multiple .
+
+ns1:National a owl:Class ;
+    rdfs:label "national" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Programming a owl:Class ;
+    rdfs:label "programming" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:partner_1 a ns1:Partner ;
+    rdfs:label "different" ;
+    owl:differentFrom ns1:partner_2 .
+
+ns1:programming_1 a ns1:NationalProgramming ;
+    rdfs:label "programming" ;
+    dul:hasQuality ns1:National,
+        ns1:Regional .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "them",
+        "they" .
+

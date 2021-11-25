@@ -1,0 +1,202 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix fred: <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence591.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fred: rdfs:label ":"^^xsd:string .
+
+vn.role:Predicate rdfs:label "as" .
+
+translation_coherence:fi_sentence591.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence591" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence591" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:describe_1 a ns1:Describe ;
+    rdfs:label "describes" ;
+    vn.role:Agent ns1:Rand ;
+    vn.role:Predicate ns1:demonstration_1 ;
+    vn.role:Theme ns1:theme_1 ;
+    ns1:as ns1:role_1 .
+
+ns1:docuverse earmark:hasContent "Rand describes the theme of the novel as the role of the mind in human existence  and as a cor.t demonstration of a new moral philosophy: the morality of the rational self-interest."^^xsd:string .
+
+dbpedia:Ayn_Rand a schema:Person .
+
+ns1:Cor.t a owl:Class ;
+    rdfs:label "cor.t" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Cor.tDemonstration a owl:Class ;
+    rdfs:label "Cor.t Demonstration" ;
+    dul:hasQuality ns1:Cor.t ;
+    rdfs:subClassOf ns1:Demonstration .
+
+ns1:Demonstration a owl:Class ;
+    rdfs:label "demonstration" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Describe rdfs:label "describes" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Existence a owl:Class ;
+    rdfs:label "existence" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Human a owl:Class ;
+    rdfs:label "human" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Human .
+
+ns1:HumanExistence a owl:Class ;
+    rdfs:label "Human Existence" ;
+    dul:hasQuality ns1:Human ;
+    rdfs:subClassOf ns1:Existence ;
+    owl:equivalentClass dbpedia:Human_condition .
+
+ns1:Mind a owl:Class ;
+    rdfs:label "mind" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> ;
+    owl:equivalentClass dbpedia:Mind .
+
+ns1:MoralPhilosophy a owl:Class ;
+    rdfs:label "moral philosophy" ;
+    dul:hasQuality ns1:Moral ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic>,
+        ns1:Philosophy ;
+    owl:equivalentClass dbpedia:Ethics .
+
+ns1:Morality a owl:Class ;
+    rdfs:label "morality" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Morality .
+
+ns1:New rdfs:label "new" .
+
+ns1:NewMoralPhilosophy a owl:Class ;
+    rdfs:label "new moral philosophy" ;
+    rdfs:subClassOf ns1:MoralPhilosophy .
+
+ns1:Novel rdfs:label "novel" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Philosophy a owl:Class ;
+    rdfs:label "philosophy" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType time:Interval ;
+    owl:sameAs dbpedia:Ayn_Rand .
+
+ns1:Rational a owl:Class ;
+    rdfs:label "rational" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:RationalSelf-interest a owl:Class ;
+    rdfs:label "rational self-interest" ;
+    dul:hasQuality ns1:Rational ;
+    rdfs:subClassOf ns1:Self-interest ;
+    owl:equivalentClass dbpedia:Ethical_egoism .
+
+ns1:Role rdfs:label "role" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Self-interest a owl:Class ;
+    rdfs:label "self-interest" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Theme a owl:Class ;
+    rdfs:label "theme" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> ;
+    owl:equivalentClass dbpedia:Theme_(narrative) .
+
+ns1:demonstration_1 a ns1:Cor.tDemonstration ;
+    rdfs:label "demonstration" ;
+    quant:hasDeterminer quant:a ;
+    ns1:cor.tDemonstrationOf ns1:philosophy_1 .
+
+ns1:existence_1 a ns1:HumanExistence ;
+    rdfs:label "existence" .
+
+ns1:mind_1 a ns1:Mind ;
+    rdfs:label "mind" ;
+    quant:hasDeterminer quant:the .
+
+ns1:morality_1 a ns1:Morality ;
+    rdfs:label "morality" ;
+    quant:hasDeterminer quant:the ;
+    ns1:moralityOf ns1:self-interest_1 .
+
+ns1:novel_1 a ns1:Novel ;
+    rdfs:label "novel" ;
+    quant:hasDeterminer quant:the .
+
+ns1:philosophy_1 a ns1:NewMoralPhilosophy ;
+    rdfs:label "philosophy" ;
+    boxing:declaration ns1:morality_1 ;
+    dul:hasQuality ns1:Moral,
+        ns1:New ;
+    quant:hasDeterminer quant:a .
+
+ns1:role_1 a ns1:Role ;
+    rdfs:label "role" ;
+    quant:hasDeterminer quant:the ;
+    ns1:in ns1:existence_1 ;
+    ns1:roleOf ns1:mind_1 .
+
+ns1:self-interest_1 a ns1:RationalSelf-interest ;
+    rdfs:label "self-interest" ;
+    quant:hasDeterminer quant:the .
+
+ns1:theme_1 a ns1:Theme ;
+    rdfs:label "theme" ;
+    quant:hasDeterminer quant:the ;
+    ns1:themeOf ns1:novel_1 .
+
+ns1:Moral a owl:Class ;
+    rdfs:label "moral" ;
+    rdfs:subClassOf dul:Quality .
+

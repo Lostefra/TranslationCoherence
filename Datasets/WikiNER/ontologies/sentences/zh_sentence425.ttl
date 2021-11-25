@@ -1,0 +1,170 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence425.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Cause rdfs:label "by" .
+
+vn.role:Predicate rdfs:label "as" .
+
+translation_coherence:zh_sentence425.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence425" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence425" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:describe_1 a ns1:Describe ;
+    rdfs:label "described" ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Predicate ns1:situation_1 ;
+    vn.role:Theme ns1:effect_1 ;
+    ns1:in "1846-01-01"^^xsd:date .
+
+ns1:docuverse earmark:hasContent "In 1846, Lincoln described the effect of this doctrine as human beings were not fraternal to act or were occupied by certain powers, and people had no control."^^xsd:string .
+
+ns1:Act rdfs:label "act" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Being rdfs:label "beings" .
+
+ns1:Certain rdfs:label "certain" .
+
+ns1:CertainPower rdfs:subClassOf ns1:Power .
+
+ns1:Control rdfs:label "control" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Describe rdfs:label "described" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Doctrine rdfs:label "doctrine" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Effect rdfs:label "effect" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Fraternal rdfs:label "fraternal" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Have rdfs:label "had" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Human rdfs:label "human" ;
+    owl:sameAs dbpedia:Human .
+
+ns1:HumanBeing rdfs:subClassOf ns1:Being .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Occupy rdfs:label "occupied" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:People a owl:Class ;
+    rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Person .
+
+ns1:Power rdfs:label "powers" .
+
+ns1:act_1 a ns1:Act ;
+    rdfs:label "act" ;
+    boxer:agent ns1:being_1 .
+
+ns1:doctrine_1 a ns1:Doctrine ;
+    rdfs:label "doctrine" ;
+    quant:hasDeterminer quant:this .
+
+ns1:effect_1 a ns1:Effect ;
+    rdfs:label "effect" ;
+    quant:hasDeterminer quant:the ;
+    ns1:effectOf ns1:doctrine_1 .
+
+ns1:fraternal_1 a ns1:Fraternal ;
+    rdfs:label "fraternal" ;
+    boxer:agent ns1:being_1 ;
+    boxer:theme ns1:act_1 ;
+    boxing:hasTruthValue boxing:False ;
+    ns1:union ns1:occupy_1 .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "had" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:people_1 ;
+    vn.role:Patient ns1:control_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:being_1,
+        ns1:control_1,
+        ns1:fraternal_1,
+        ns1:have_1,
+        ns1:occupy_1,
+        ns1:people_1,
+        ns1:power_1 .
+
+ns1:control_1 a ns1:Control ;
+    rdfs:label "control" ;
+    quant:hasQuantifier quant:no .
+
+ns1:occupy_1 a ns1:Occupy ;
+    rdfs:label "occupied" ;
+    vn.role:Cause ns1:power_1 ;
+    vn.role:Experiencer ns1:being_1 .
+
+ns1:people_1 a ns1:People ;
+    rdfs:label "people" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:power_1 a dbpedia:Power_(social_and_political),
+        ns1:CertainPower ;
+    rdfs:label "powers" ;
+    dul:hasQuality ns1:Certain ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:being_1 a dbpedia:Human,
+        ns1:HumanBeing ;
+    rdfs:label "beings" ;
+    dul:hasQuality ns1:Human ;
+    quant:hasQuantifier quant:multiple .
+

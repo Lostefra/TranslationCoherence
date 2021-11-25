@@ -1,0 +1,197 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence531.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:it_sentence531.ttl a owl:Ontology ;
+    rdfs:label "it_sentence531" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence531" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Union rdfs:label "or" .
+
+ns1:award_1 a ns1:Award ;
+    rdfs:label "awarded" ;
+    dul:hasQuality ns1:Never ;
+    vn.role:Recipient ns1:film_1 ;
+    vn.role:Theme ns1:Best_picture_award .
+
+ns1:disjunct_1 a ns1:Disjunct ;
+    boxing:involves ns1:Fiction,
+        ns1:film_1 ;
+    ns1:union ns1:disjunct_2 .
+
+ns1:docuverse earmark:hasContent "The Best_Picture Award has never been awarded to a noir film, science fiction or animated film; and rarely are horror, fantasy, comedy and westerns recognized by AMPAS."^^xsd:string .
+
+ns1:fiction_1 rdfs:label "fiction" .
+
+ns1:film_2 rdfs:label "film" .
+
+ns1:horror_1 rdfs:label "horror" .
+
+ns1:noir_1 a ns1:Noir ;
+    rdfs:label "noir" ;
+    dul:associatedWith ns1:film_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:science_1 a ns1:Science ;
+    rdfs:label "science" ;
+    dul:associatedWith ns1:film_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Best_picture_award,
+        ns1:comedy_1,
+        ns1:fantasy_1,
+        ns1:recognize_1,
+        ns1:western_1 ;
+    dul:hasQuality ns1:Rarely .
+
+dbpedia:Academy_of_Motion_Picture_Arts_and_Sciences a schema:Organization .
+
+ns1:Ampas rdfs:label "AMPAS" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Academy_of_Motion_Picture_Arts_and_Sciences .
+
+ns1:Award a owl:Class ;
+    rdfs:label "Award",
+        "awarded" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Award .
+
+ns1:Comedy rdfs:label "comedy" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Fantasy a owl:Class ;
+    rdfs:label "fantasy" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Comedy_film,
+        dbpedia:Fantasy_film .
+
+ns1:Horror a owl:Class ;
+    rdfs:label "Best Picture Award",
+        "horror" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> ;
+    owl:equivalentClass dbpedia:Horror_fiction .
+
+ns1:Never rdfs:label "never" .
+
+ns1:NoirFilm a owl:Class ;
+    rdfs:label "noir film" ;
+    dul:associatedWith ns1:Noir ;
+    rdfs:subClassOf ns1:Film ;
+    owl:equivalentClass dbpedia:Film_noir .
+
+ns1:Rarely rdfs:label "rarely" .
+
+ns1:Recognize rdfs:label "recognized" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:ScienceFiction a owl:Class ;
+    rdfs:label "Science Fiction" ;
+    dul:associatedWith ns1:Science ;
+    rdfs:subClassOf ns1:Fiction ;
+    owl:equivalentClass dbpedia:Science_fiction_film .
+
+ns1:Western rdfs:label "westerns" .
+
+ns1:animate_1 a dbpedia:Animation,
+        ns1:Animate ;
+    rdfs:label "animated" ;
+    vn.role:Patient ns1:film_1 .
+
+ns1:disjunct_2 a ns1:Disjunct ;
+    boxing:involves ns1:Animate,
+        ns1:Film,
+        ns1:animate_1,
+        ns1:film_1 .
+
+ns1:recognize_1 a ns1:Recognize ;
+    rdfs:label "recognized" ;
+    vn.role:Agent ns1:Ampas ;
+    vn.role:Theme ns1:western_1 .
+
+ns1:Animate rdfs:label "animated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Best_picture_award a ns1:Horror ;
+    rdfs:label "Best Picture Award",
+        "horror" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:fantasy_1 .
+
+ns1:Fiction a owl:Class ;
+    rdfs:label "fiction" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Noir a owl:Class ;
+    rdfs:label "noir" .
+
+ns1:Science a owl:Class ;
+    rdfs:label "science" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:comedy_1 a ns1:Comedy ;
+    rdfs:label "comedy" .
+
+ns1:fantasy_1 a ns1:Fantasy ;
+    rdfs:label "fantasy" ;
+    dul:associatedWith ns1:comedy_1,
+        ns1:western_1 .
+
+ns1:Film a owl:Class ;
+    rdfs:label "film" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity>,
+        dul:InformationEntity .
+
+ns1:western_1 a dbpedia:Western_(genre),
+        ns1:Western ;
+    rdfs:label "westerns" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:film_1 a ns1:Film,
+        ns1:NoirFilm,
+        ns1:ScienceFiction ;
+    rdfs:label "film" .
+

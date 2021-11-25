@@ -1,0 +1,110 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence451.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence451.ttl a owl:Ontology ;
+    rdfs:label "it_sentence451" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence451" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "As" .
+
+ns1:More rdfs:label "more" .
+
+ns1:docuverse earmark:hasContent "As a result, Plato realized that a method of obtaining conclusions would be more beneficial."^^xsd:string .
+
+ns1:realize_1 a ns1:Realize ;
+    rdfs:label "realized" ;
+    vn.role:Agent ns1:Plato ;
+    vn.role:Theme ns1:obtain_1 ;
+    ns1:as ns1:result_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:Beneficial,
+        ns1:method_1 .
+
+dbpedia:Plato a schema:Person .
+
+ns1:Conclusion rdfs:label "conclusions" .
+
+ns1:Method a owl:Class ;
+    rdfs:label "method" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Scientific_method .
+
+ns1:Obtain rdfs:label "obtaining" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Plato rdfs:label "Plato" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Plato .
+
+ns1:Realize rdfs:label "realized" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Result rdfs:label "result" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:conclusion_1 a dbpedia:Logical_consequence,
+        ns1:Conclusion ;
+    rdfs:label "conclusions" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:obtain_1 a ns1:Obtain ;
+    rdfs:label "obtaining" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:method_1 ;
+    vn.role:Theme ns1:conclusion_1 .
+
+ns1:result_1 a ns1:Result ;
+    rdfs:label "result" ;
+    quant:hasDeterminer quant:a .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:Beneficial rdfs:label "beneficial" .
+
+ns1:method_1 a ns1:Method ;
+    rdfs:label "method" ;
+    dul:hasQuality ns1:Beneficial ;
+    quant:hasDeterminer quant:a ;
+    ns1:more ns1:thing_1 .
+

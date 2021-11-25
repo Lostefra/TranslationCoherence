@@ -1,0 +1,149 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence74.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence74.ttl a owl:Ontology ;
+    rdfs:label "de_sentence74" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence74" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:After rdfs:label "After" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:diversify_1 a ns1:Diversify ;
+    rdfs:label "diversifying" ;
+    vn.role:Patient ns1:interest_1 .
+
+ns1:docuverse earmark:hasContent "After the Second_World_War, the company experienced diversifying interests in heavy production, mineral extraction, education and technology."^^xsd:string .
+
+ns1:experience_1 a ns1:Experience ;
+    rdfs:label "experienced" ;
+    vn.role:Experiencer ns1:company_1 ;
+    vn.role:Stimulus ns1:interest_1 ;
+    ns1:after ns1:Second_world_war .
+
+ns1:mineral_1 a ns1:Mineral ;
+    rdfs:label "mineral" ;
+    dul:associatedWith ns1:extraction_1 .
+
+ns1:Company a owl:Class ;
+    rdfs:label "company" ;
+    rdfs:subClassOf dul:Organization ;
+    owl:equivalentClass dbpedia:Company .
+
+ns1:Diversify rdfs:label "diversifying" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Education a owl:Class ;
+    rdfs:label "education" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Education .
+
+ns1:Experience rdfs:label "experienced" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Extraction a owl:Class ;
+    rdfs:label "extraction" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Heavy a owl:Class ;
+    rdfs:label "heavy" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Heavy_industry .
+
+ns1:HeavyProduction a owl:Class ;
+    rdfs:label "heavy production" ;
+    dul:hasQuality ns1:Heavy ;
+    rdfs:subClassOf ns1:Production .
+
+ns1:Interest rdfs:label "interests" .
+
+ns1:MineralExtraction a owl:Class ;
+    rdfs:label "Mineral Extraction" ;
+    dul:associatedWith ns1:Mineral ;
+    rdfs:subClassOf ns1:Extraction ;
+    owl:equivalentClass dbpedia:Natural_resource .
+
+ns1:Production a owl:Class ;
+    rdfs:label "production" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Manufacturing .
+
+ns1:Second_world_war rdfs:label "Second World War" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:World_War_II .
+
+ns1:Technology a owl:Class ;
+    rdfs:label "technology" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Technology .
+
+ns1:company_1 a ns1:Company ;
+    rdfs:label "company" ;
+    quant:hasDeterminer quant:the .
+
+ns1:education_1 a ns1:Education ;
+    rdfs:label "education" .
+
+ns1:production_1 a ns1:HeavyProduction ;
+    rdfs:label "production" ;
+    dul:associatedWith ns1:extraction_1 .
+
+ns1:technology_1 a ns1:Technology ;
+    rdfs:label "technology" .
+
+ns1:Mineral a owl:Class ;
+    rdfs:label "mineral" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Mineral .
+
+ns1:extraction_1 a ns1:MineralExtraction ;
+    rdfs:label "extraction" ;
+    dul:associatedWith ns1:education_1,
+        ns1:technology_1 .
+
+ns1:interest_1 a ns1:Interest ;
+    rdfs:label "interests" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:production_1 .
+

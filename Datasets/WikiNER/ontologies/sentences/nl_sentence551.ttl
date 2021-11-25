@@ -1,0 +1,128 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence551.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence551.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence551" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence551" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "'" .
+
+ns1:bourgeois_1 a ns1:Bourgeois ;
+    rdfs:label "bourgeois" ;
+    dul:associatedWith ns1:family_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:docuverse earmark:hasContent "Rand was generated Alisa Zinov'yevna Rosenbaum in 1905, for a bourgeois family in Saint_Petersburg."^^xsd:string .
+
+ns1:generate_1 a ns1:Generate ;
+    rdfs:label "generated" ;
+    dul:associatedWith ns1:alisa_1,
+        ns1:zinov_1 ;
+    vn.role:Theme2 ns1:Rand .
+
+ns1:yevna_1 a ns1:Yevna ;
+    rdfs:label "yevna" ;
+    dul:associatedWith ns1:rosenbaum_1 .
+
+dbpedia:Saint_Petersburg a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:Alisa rdfs:label "Alisa" .
+
+ns1:BourgeoisFamily a owl:Class ;
+    rdfs:label "Bourgeois Family" ;
+    dul:associatedWith ns1:Bourgeois ;
+    rdfs:subClassOf ns1:Family .
+
+ns1:Family a owl:Class ;
+    rdfs:label "family" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Generate rdfs:label "generated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Rosenbaum a owl:Class ;
+    rdfs:label "Rosenbaum" .
+
+ns1:Saint_petersburg rdfs:label "Saint Petersburg" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Saint_Petersburg .
+
+ns1:YevnaRosenbaum a owl:Class ;
+    rdfs:label "Yevna Rosenbaum" ;
+    dul:associatedWith ns1:Yevna ;
+    rdfs:subClassOf ns1:Rosenbaum .
+
+ns1:Zinov rdfs:label "Zinov" .
+
+ns1:alisa_1 a ns1:Alisa ;
+    rdfs:label "Alisa" .
+
+ns1:rosenbaum_1 a ns1:YevnaRosenbaum ;
+    rdfs:label "Rosenbaum" ;
+    dul:hasQuality ns1:Topic ;
+    ns1:for ns1:family_1 ;
+    ns1:in "1905-01-01"^^xsd:date ;
+    ns1:yevnaRosenbaumOf ns1:Rand .
+
+ns1:zinov_1 a ns1:Zinov ;
+    rdfs:label "Zinov" .
+
+ns1:Bourgeois a owl:Class ;
+    rdfs:label "bourgeois" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Bourgeoisie .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Yevna a owl:Class ;
+    rdfs:label "yevna" .
+
+ns1:family_1 a ns1:BourgeoisFamily ;
+    rdfs:label "family" ;
+    ns1:locatedIn ns1:Saint_petersburg .
+

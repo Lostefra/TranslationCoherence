@@ -1,0 +1,205 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence682.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "in",
+        "to" .
+
+translation_coherence:en_sentence682.ttl a owl:Ontology ;
+    rdfs:label "en_sentence682" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence682" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:That rdfs:label "that" .
+
+ns1:docuverse earmark:hasContent "The Commission was certainly very anxious to ensure, Mr Berend, that this sixth periodic report should show that progress had been made and a threshold crossed in terms of the quality of the analysis submitted to you."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:anxious_1,
+        ns1:situation_2 ;
+    dul:hasQuality ns1:Certainly .
+
+ns1:Analysis rdfs:label "analysis" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Anxious rdfs:label "anxious" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Berend rdfs:label "Berend" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    ns1:that ns1:show_1 .
+
+ns1:Certainly rdfs:label "certainly" .
+
+ns1:Cross rdfs:label "crossed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Ensure rdfs:label "ensure" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Make rdfs:label "made" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:PeriodicReport a owl:Class ;
+    rdfs:label "Periodic Report" ;
+    dul:hasQuality ns1:Periodic ;
+    rdfs:subClassOf ns1:Report .
+
+ns1:Person rdfs:label "you" .
+
+ns1:Progress rdfs:label "progress" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Quality rdfs:label "quality" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Report a owl:Class ;
+    rdfs:label "report" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Show rdfs:label "show" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Sixth rdfs:label "sixth" .
+
+ns1:SixthPeriodicReport a owl:Class ;
+    rdfs:label "sixth periodic report" ;
+    rdfs:subClassOf ns1:PeriodicReport .
+
+ns1:Submit rdfs:label "submitted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Term rdfs:label "terms" .
+
+ns1:Threshold rdfs:label "threshold" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:Very rdfs:label "very" .
+
+ns1:VeryAnxious rdfs:label "Very Anxious" ;
+    rdfs:subClassOf ns1:Anxious .
+
+ns1:anxious_1 a ns1:VeryAnxious ;
+    rdfs:label "anxious" ;
+    boxer:agent ns1:Commission ;
+    boxer:theme ns1:situation_2 ;
+    dul:hasQuality ns1:Very .
+
+ns1:cross_1 a ns1:Cross ;
+    rdfs:label "crossed" ;
+    vn.role:Patient ns1:threshold_1 ;
+    vn.role:Recipient ns1:term_1 .
+
+ns1:ensure_1 a ns1:Ensure ;
+    rdfs:label "ensure" ;
+    vn.role:Cause ns1:Commission ;
+    vn.role:Theme ns1:Berend,
+        ns1:threshold_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "you" .
+
+ns1:quality_1 a ns1:Quality ;
+    rdfs:label "quality" ;
+    quant:hasDeterminer quant:the ;
+    ns1:qualityOf ns1:analysis_1 .
+
+ns1:report_1 a ns1:SixthPeriodicReport ;
+    rdfs:label "report" ;
+    dul:hasQuality ns1:Periodic,
+        ns1:Sixth ;
+    quant:hasDeterminer quant:this .
+
+ns1:submit_1 a ns1:Submit ;
+    rdfs:label "submitted" ;
+    vn.role:Recipient ns1:person_1 ;
+    vn.role:Theme ns1:analysis_1 .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> rdfs:label "Mr" ;
+    boxer:possibleType dul:Role .
+
+ns1:Commission rdfs:label "Commission" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Periodic a owl:Class ;
+    rdfs:label "periodic" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:analysis_1 a ns1:Analysis ;
+    rdfs:label "analysis" ;
+    quant:hasDeterminer quant:the .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "made" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Theme ns1:progress_1 .
+
+ns1:progress_1 a ns1:Progress ;
+    rdfs:label "progress" .
+
+ns1:show_1 a ns1:Show ;
+    rdfs:label "show" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:report_1 ;
+    vn.role:Theme ns1:make_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:cross_1,
+        ns1:ensure_1,
+        ns1:make_1,
+        ns1:progress_1,
+        ns1:show_1,
+        ns1:submit_1,
+        ns1:term_1,
+        ns1:threshold_1 .
+
+ns1:term_1 a ns1:Term ;
+    rdfs:label "terms" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:termOf ns1:quality_1 .
+
+ns1:threshold_1 a ns1:Threshold ;
+    rdfs:label "threshold" ;
+    quant:hasDeterminer quant:a .
+

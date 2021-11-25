@@ -1,0 +1,175 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix fred: <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence769.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+fred: rdfs:label ":"^^xsd:string .
+
+vn.role:Oblique rdfs:label "into" .
+
+vn.role:Theme2 rdfs:label "to" .
+
+translation_coherence:zh_sentence769.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence769" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence769" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:biological%2Fphysical_1 rdfs:label "biological/physical" .
+
+ns1:docuverse earmark:hasContent "In the United_States, modern humans tend to be divided into four subsectors: cultural humans (also referred to as social humans), archaeology, language and biological/physical."^^xsd:string .
+
+ns1:tend_1 a ns1:Tend ;
+    rdfs:label "tend" ;
+    boxer:agent ns1:human_1 ;
+    boxer:theme ns1:divide_1 ;
+    ns1:in ns1:united_states_1 .
+
+dbpedia:United_States rdfs:subClassOf schema:Country,
+        schema:Place .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoRefer rdfs:subClassOf ns1:Refer .
+
+ns1:Archaeology a owl:Class ;
+    rdfs:label "archaeology" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> ;
+    owl:equivalentClass dbpedia:Archaeology .
+
+ns1:As rdfs:label "as" .
+
+ns1:AsSocialHuman rdfs:subClassOf ns1:SocialHuman .
+
+ns1:Biological%2Fphysical rdfs:label "biological/physical" .
+
+ns1:Cultural rdfs:label "cultural" ;
+    owl:sameAs dbpedia:Culture .
+
+ns1:CulturalHuman rdfs:subClassOf ns1:Human .
+
+ns1:Divide rdfs:label "divided" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Language a owl:Class ;
+    rdfs:label "language" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Language .
+
+ns1:Modern rdfs:label "modern" ;
+    owl:sameAs dbpedia:Human .
+
+ns1:ModernHuman rdfs:subClassOf ns1:Human .
+
+ns1:Refer rdfs:label "referred" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Social rdfs:label "social" ;
+    owl:sameAs dbpedia:Social_science .
+
+ns1:SocialHuman rdfs:subClassOf ns1:Human .
+
+ns1:Subsector rdfs:label "subsectors" .
+
+ns1:Tend rdfs:label "tend" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:UnitedStates rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:United_states a owl:Class ;
+    rdfs:label "United States" ;
+    rdfs:subClassOf ns1:UnitedStates ;
+    owl:equivalentClass dbpedia:United_States .
+
+ns1:archaeology_1 a ns1:Archaeology ;
+    rdfs:label "archaeology" ;
+    dul:associatedWith ns1:language_1 .
+
+ns1:divide_1 a ns1:Divide ;
+    rdfs:label "divided" ;
+    vn.role:Oblique ns1:subsector_1 ;
+    vn.role:Patient ns1:human_1 .
+
+ns1:human_2 a ns1:CulturalHuman ;
+    rdfs:label "humans" ;
+    dul:hasQuality ns1:Cultural ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:human_3 a ns1:AsSocialHuman ;
+    rdfs:label "humans" ;
+    dul:associatedWith ns1:archaeology_1 ;
+    dul:hasQuality ns1:As,
+        ns1:Social ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:language_1 a ns1:Biological%2Fphysical,
+        ns1:Language ;
+    rdfs:label "language" .
+
+ns1:refer_1 a ns1:AlsoRefer ;
+    rdfs:label "referred" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Theme1 ns1:human_2 ;
+    vn.role:Theme2 ns1:human_3 .
+
+ns1:subsector_1 a ns1:Subsector ;
+    rdfs:label "subsectors" ;
+    boxing:declaration ns1:refer_1 ;
+    dul:hasDataValue "4"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:four,
+        quant:multiple .
+
+ns1:united_states_1 a ns1:United_states ;
+    rdfs:label "United States" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:human_1 a ns1:ModernHuman ;
+    rdfs:label "humans" ;
+    dul:hasQuality ns1:Modern ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Human rdfs:label "humans" .
+

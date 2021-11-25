@@ -1,0 +1,132 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence129.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Ehighest> rdfs:label "highest" .
+
+translation_coherence:ko_sentence129.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence129" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence129" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "Southern_Baptist_Convention has the highest number of compliance in the Alabama of 1,380,121, and comply with 327,734 members and Catholic_Church and 150,647."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "has" ;
+    vn.role:Agent ns1:Southern_baptist_convention ;
+    vn.role:Patient ns1:number_1 .
+
+dbpedia:Alabama a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:1%2C380%2C121 rdfs:label "1,380,121" .
+
+ns1:1%2C380%2C121_1 a ns1:1%2C380%2C121 ;
+    rdfs:label "1,380,121" .
+
+ns1:Alabama rdfs:label "Alabama" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Alabama ;
+    ns1:of ns1:1%2C380%2C121_1 .
+
+ns1:Catholic_church rdfs:label "Catholic Church" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Catholic_Church .
+
+ns1:Compliance rdfs:label "compliance" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Comply rdfs:label "comply" .
+
+ns1:Have rdfs:label "has" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Highest a owl:Class ;
+    rdfs:label "highest" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:HighestNumber a owl:Class ;
+    rdfs:label "highest number" ;
+    dul:hasQuality ns1:Highest ;
+    rdfs:subClassOf ns1:Number .
+
+ns1:Member rdfs:label "members" .
+
+ns1:Southern_baptist_convention rdfs:label "Southern Baptist Convention" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Southern_Baptist_Convention .
+
+ns1:compliance_1 a ns1:Compliance ;
+    rdfs:label "compliance" .
+
+ns1:comply_1 a ns1:Comply ;
+    rdfs:label "comply" ;
+    ns1:with ns1:Catholic_church,
+        ns1:member_1,
+        "150647"^^xsd:nonNegativeInteger .
+
+ns1:member_1 a ns1:Member ;
+    rdfs:label "members" ;
+    dul:hasDataValue "327734"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:1%2C380%2C121,
+        quant:327%2C734,
+        quant:multiple .
+
+ns1:number_1 a ns1:HighestNumber,
+        ns1:Number ;
+    rdfs:label "number" ;
+    quant:hasDeterminer quant:the ;
+    ns1:highestAmong ns1:Number ;
+    ns1:highestNumberOf ns1:compliance_1 ;
+    ns1:locatedIn ns1:Alabama,
+        ns1:comply_1 .
+
+ns1:Number a owl:Class ;
+    rdfs:label "number" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+

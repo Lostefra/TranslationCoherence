@@ -1,0 +1,217 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence246.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence246.ttl a owl:Ontology ;
+    rdfs:label "it_sentence246" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence246" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Into rdfs:label "into" .
+
+ns1:Inversionof rdfs:label "In another version of" .
+
+ns1:Of rdfs:label "its" .
+
+ns1:While rdfs:label "While",
+        "while" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "In another version of the story, Odysseus organizes a trumpet alarm to play while he was with Lycomedes women; While women fled into panic, Achilles prepares to defend the court, thus giving its identity."^^xsd:string .
+
+ns1:neuter_1 coref:coref ns1:court_1 .
+
+ns1:organize_1 a ns1:Organize ;
+    rdfs:label "organizes" ;
+    vn.role:Agent ns1:Odysseus ;
+    vn.role:Theme ns1:alarm_1 ;
+    ns1:inVersionOf ns1:story_1 .
+
+ns1:play_1 a ns1:Play ;
+    rdfs:label "play" ;
+    vn.role:Agent ns1:alarm_1 ;
+    vn.role:Theme ns1:thing_1 ;
+    ns1:while ns1:situation_1 .
+
+ns1:trumpet_1 a ns1:Trumpet ;
+    rdfs:label "trumpet" ;
+    dul:associatedWith ns1:alarm_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:version_1 a ns1:Version ;
+    owl:differentFrom ns1:version_2 .
+
+ns1:Alarm a owl:Class ;
+    rdfs:label "alarm" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Court rdfs:label "court" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Defend rdfs:label "defend" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Flee rdfs:label "fled" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Give rdfs:label "giving" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Identity rdfs:label "identity" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Lycomedes rdfs:label "Lycomedes" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Lycomedes .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Odysseus rdfs:label "Odysseus" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Male ;
+    owl:sameAs dbpedia:Odysseus ;
+    ns1:with ns1:woman_1 .
+
+ns1:Organize rdfs:label "organizes" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Panic rdfs:label "panic" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Play rdfs:label "play" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Prepare rdfs:label "prepares" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Story rdfs:label "story" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Thus rdfs:label "thus" .
+
+ns1:ThusGive rdfs:subClassOf ns1:Give .
+
+ns1:TrumpetAlarm a owl:Class ;
+    rdfs:label "trumpet alarm" ;
+    dul:associatedWith ns1:Trumpet ;
+    rdfs:subClassOf ns1:Alarm .
+
+ns1:defend_1 a ns1:Defend ;
+    rdfs:label "defend" ;
+    vn.role:Agent ns1:Achilles ;
+    vn.role:Theme ns1:court_1 .
+
+ns1:flee_1 a ns1:Flee ;
+    rdfs:label "fled" ;
+    vn.role:Theme ns1:woman_2 ;
+    ns1:into ns1:panic_1 ;
+    ns1:while ns1:prepare_1 .
+
+ns1:give_1 a ns1:ThusGive ;
+    rdfs:label "giving" ;
+    dul:hasQuality ns1:Thus ;
+    vn.role:Agent ns1:Achilles ;
+    vn.role:Theme ns1:identity_1 .
+
+ns1:identity_1 a ns1:Identity ;
+    rdfs:label "identity" ;
+    ns1:identityOf ns1:court_1 .
+
+ns1:story_1 a ns1:Story ;
+    rdfs:label "story" ;
+    quant:hasDeterminer quant:the .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:version_2 a ns1:Version ;
+    rdfs:label "version" ;
+    quant:hasDeterminer quant:another .
+
+ns1:Trumpet a owl:Class ;
+    rdfs:label "trumpet" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Trumpet .
+
+ns1:Version rdfs:label "version" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:panic_1 a ns1:Panic ;
+    rdfs:label "panic" .
+
+ns1:prepare_1 a ns1:Prepare ;
+    rdfs:label "prepares" ;
+    vn.role:Agent ns1:Achilles ;
+    vn.role:Product ns1:situation_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Woman,
+        ns1:defend_1,
+        ns1:flee_1,
+        ns1:give_1,
+        ns1:panic_1,
+        ns1:prepare_1,
+        ns1:woman_1,
+        ns1:woman_2 .
+
+ns1:woman_1 a ns1:Woman ;
+    rdfs:label "women" ;
+    dul:associatedWith ns1:Lycomedes ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:woman_2 a ns1:Woman ;
+    rdfs:label "women" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Achilles rdfs:label "Achilles" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Achilles .
+
+ns1:Woman rdfs:label "women" .
+
+ns1:alarm_1 a ns1:TrumpetAlarm ;
+    rdfs:label "alarm" .
+
+ns1:court_1 a owl:Thing,
+        ns1:Court ;
+    rdfs:label "court",
+        "its" ;
+    quant:hasDeterminer quant:the .
+

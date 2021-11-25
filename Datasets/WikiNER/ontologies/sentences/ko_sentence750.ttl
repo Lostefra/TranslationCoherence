@@ -1,0 +1,113 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence750.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence750.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence750" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence750" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Country rdfs:label "country" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "Arabic only remains the official language of Algeria, but Tamazight has recently been recognized in the country language."^^xsd:string .
+
+ns1:recognize_1 a ns1:Recognize ;
+    rdfs:label "recognized" ;
+    dul:hasQuality ns1:Recently ;
+    vn.role:Theme ns1:Tamazight ;
+    ns1:in ns1:language_1 .
+
+ns1:remain_1 a ns1:OnlyRemain ;
+    rdfs:label "remains" ;
+    boxer:patient ns1:language_1 ;
+    dul:hasQuality ns1:Only ;
+    vn.role:Theme ns1:Arabic .
+
+dbpedia:Algeria a schema:Country,
+        schema:Place .
+
+ns1:Algeria rdfs:label "Algeria" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Algeria .
+
+ns1:Arabic rdfs:label "Arabic" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Arabic .
+
+ns1:Language a owl:Class ;
+    rdfs:label "language" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Languages_of_Algeria .
+
+ns1:Official a owl:Class ;
+    rdfs:label "official" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:OfficialLanguage a owl:Class ;
+    rdfs:label "Official Language" ;
+    dul:hasQuality ns1:Official ;
+    rdfs:subClassOf ns1:Language ;
+    owl:equivalentClass dbpedia:Official_language .
+
+ns1:Only rdfs:label "only" .
+
+ns1:OnlyRemain rdfs:subClassOf ns1:Remain .
+
+ns1:Recently rdfs:label "recently" .
+
+ns1:Recognize rdfs:label "recognized" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Remain rdfs:label "remains" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Tamazight rdfs:label "Tamazight" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Berber_languages .
+
+ns1:language_1 a ns1:OfficialLanguage ;
+    rdfs:label "language" ;
+    quant:hasDeterminer quant:the ;
+    ns1:officialLanguageOf ns1:Algeria .
+

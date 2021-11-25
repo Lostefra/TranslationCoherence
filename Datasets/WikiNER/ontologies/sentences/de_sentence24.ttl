@@ -1,0 +1,139 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence24.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "in" .
+
+translation_coherence:de_sentence24.ttl a owl:Ontology ;
+    rdfs:label "de_sentence24" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence24" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:About rdfs:label "about" .
+
+ns1:In rdfs:label "in" .
+
+ns1:docuverse earmark:hasContent "The most senior members took part in the revolutions in both February and October, and were initially enthusiastic about the Soviet coup."^^xsd:string .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Enthusiastic,
+        ns1:situation_1 ;
+    dul:hasQuality ns1:Initially .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "took" ;
+    dul:associatedWith ns1:both_1 ;
+    vn.role:Agent ns1:member_1 ;
+    vn.role:Location "0001-02-01"^^xsd:date,
+        "0001-10-01"^^xsd:date ;
+    vn.role:Value ns1:part_1 ;
+    ns1:in ns1:revolution_1 .
+
+dbpedia:Soviet_Union rdfs:subClassOf schema:Country,
+        schema:Place .
+
+ns1:Both rdfs:label "both" .
+
+ns1:Coup a owl:Class ;
+    rdfs:label "coup" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass <http://dbpedia.org/resource/Coup_d'état> .
+
+ns1:Initially rdfs:label "initially" .
+
+ns1:Member rdfs:label "members" .
+
+ns1:Most rdfs:label "most" .
+
+ns1:MostSeniorMember rdfs:subClassOf ns1:SeniorMember .
+
+ns1:Part rdfs:label "part" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Revolution rdfs:label "revolutions" .
+
+ns1:Senior rdfs:label "senior" .
+
+ns1:SeniorMember rdfs:subClassOf ns1:Member .
+
+ns1:SovietCoup a owl:Class ;
+    rdfs:label "Soviet coup" ;
+    dul:hasQuality ns1:Soviet ;
+    rdfs:subClassOf ns1:Coup .
+
+ns1:Take rdfs:label "took" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:both_1 a ns1:Both ;
+    rdfs:label "both" .
+
+ns1:coup_1 a ns1:SovietCoup ;
+    rdfs:label "coup" ;
+    dul:hasQuality ns1:Soviet ;
+    quant:hasDeterminer quant:the .
+
+ns1:part_1 a ns1:Part ;
+    rdfs:label "part" .
+
+ns1:revolution_1 a ns1:Revolution ;
+    rdfs:label "revolutions" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Enthusiastic,
+        ns1:member_1 ;
+    ns1:about ns1:coup_1 .
+
+ns1:Soviet a owl:Class ;
+    rdfs:label "Soviet" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Soviet_Union .
+
+ns1:member_1 a ns1:MostSeniorMember ;
+    rdfs:label "members" ;
+    dul:hasQuality ns1:Enthusiastic,
+        ns1:Most,
+        ns1:Senior ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Enthusiastic rdfs:label "enthusiastic" .
+

@@ -1,0 +1,116 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence216.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence216.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence216" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence216" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "his" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "He wanted to go down and taisteleed Achilles with his only wea., his sword, but not."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:wea._1 ;
+    ns1:entails ns1:situation_2 .
+
+ns1:taisteleed_1 a ns1:Taisteleed ;
+    boxing:hasTruthValue boxing:False .
+
+ns1:taisteleed_2 a ns1:Taisteleed ;
+    rdfs:label "taisteleed" ;
+    boxer:patient ns1:achille_1 ;
+    ns1:with ns1:sword_1,
+        ns1:wea._1 .
+
+ns1:want_1 a ns1:Want ;
+    rdfs:label "wanted" ;
+    vn.role:Experiencer ns1:male_1 ;
+    vn.role:Theme ns1:go_1 .
+
+ns1:Achille a owl:Class ;
+    rdfs:label "Achilles" ;
+    owl:equivalentClass dbpedia:Achilles .
+
+ns1:Down rdfs:label "down" .
+
+ns1:Go rdfs:label "go" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Male rdfs:label "He" .
+
+ns1:Sword rdfs:label "sword" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Want rdfs:label "wanted" ;
+    rdfs:subClassOf dul:Event .
+
+<https://w3id.org/stlab/ke/amiala/fi_sentence216.ttl/Wea.> rdfs:label "wea." .
+
+ns1:achille_1 a ns1:Achille ;
+    rdfs:label "Achilles" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:go_1 a ns1:Go ;
+    rdfs:label "go" ;
+    dul:hasQuality ns1:Down ;
+    vn.role:Theme ns1:male_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:wea._1 .
+
+ns1:sword_1 a ns1:Sword ;
+    rdfs:label "sword" ;
+    ns1:swordOf ns1:male_1 .
+
+ns1:Taisteleed rdfs:label "taisteleed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:wea._1 a <https://w3id.org/stlab/ke/amiala/fi_sentence216.ttl/Wea.> ;
+    rdfs:label "wea." ;
+    ns1:wea.Of ns1:male_1 .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "He",
+        "his" .
+

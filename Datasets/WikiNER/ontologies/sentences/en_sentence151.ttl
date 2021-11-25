@@ -1,0 +1,122 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence151.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:en_sentence151.ttl a owl:Ontology ;
+    rdfs:label "en_sentence151" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence151" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Few rdfs:label "few" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:docuverse earmark:hasContent "Ala. is also one of the few remaining states that levies a tax on food and medicine."^^xsd:string .
+
+ns1:medicine_1 rdfs:label "medicine" .
+
+ns1:remain_1 a ns1:Remain ;
+    rdfs:label "remaining" ;
+    vn.role:Theme ns1:state_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves <https://w3id.org/stlab/ke/amiala/en_sentence151.ttl/Ala.>,
+        ns1:food_1,
+        ns1:levy_1,
+        ns1:tax_1 ;
+    dul:hasQuality ns1:Also .
+
+<https://w3id.org/stlab/ke/amiala/en_sentence151.ttl/Ala.> a ns1:Medicine ;
+    rdfs:label "Ala.",
+        "medicine" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:hasDataValue "1"^^xsd:nonNegativeInteger ;
+    ns1:medicineOf ns1:state_1 .
+
+ns1:Also rdfs:label "also" .
+
+ns1:Food rdfs:label "food" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Levy rdfs:label "levies" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Medicine a owl:Class ;
+    rdfs:label "Ala.",
+        "medicine" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> ;
+    owl:equivalentClass dbpedia:Medicine .
+
+ns1:Remain rdfs:label "remaining" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:State rdfs:label "states" .
+
+ns1:Tax a owl:Class ;
+    rdfs:label "tax" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Tax .
+
+ns1:levy_1 a dbpedia:Tax,
+        ns1:Levy ;
+    rdfs:label "levies" ;
+    boxer:agent ns1:state_1 ;
+    boxer:patient ns1:tax_1 .
+
+ns1:food_1 a ns1:Food ;
+    rdfs:label "food" .
+
+ns1:tax_1 a ns1:Tax ;
+    rdfs:label "tax" ;
+    quant:hasDeterminer quant:a ;
+    ns1:on ns1:food_1 .
+
+ns1:state_1 a dbpedia:State_(polity),
+        ns1:State ;
+    rdfs:label "states" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:few,
+        quant:multiple,
+        quant:one .
+

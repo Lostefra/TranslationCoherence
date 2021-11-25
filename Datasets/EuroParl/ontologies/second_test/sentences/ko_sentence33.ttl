@@ -1,0 +1,230 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence33.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Destination rdfs:label "to" .
+
+vn.role:Location rdfs:label "when" ;
+    owl:sameAs dbpedia:When_We_On .
+
+translation_coherence:ko_sentence33.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence33" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence33" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Because rdfs:label "because" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:channel_1 rdfs:label "channels" ;
+    quant:hasQuantifier quant:multiple,
+        quant:two .
+
+ns1:docuverse earmark:hasContent "There are now two Finnish channels and one Portuguese, but the Dutch channel is still not. The Dutch_people here are what they are asked because we can follow the news when we sent to this place of exile monthly."^^xsd:string .
+
+ns1:exile_1 a ns1:Exile ;
+    rdfs:label "exile" ;
+    dul:associatedWith ns1:monthly_1 .
+
+ns1:portuguese_1 rdfs:label "Portuguese" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Ask,
+        ns1:Exile,
+        ns1:Follow,
+        ns1:Monthly,
+        ns1:Send,
+        ns1:dutch_people_1 ;
+    dul:hasQuality ns1:Here .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Channel,
+        ns1:Finnish,
+        ns1:Portuguese,
+        ns1:there_1 ;
+    dul:hasQuality ns1:Now .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves ns1:Not,
+        ns1:channel_2 ;
+    dul:hasQuality ns1:Still .
+
+dbpedia:Finland a schema:Country,
+        schema:Place .
+
+dbpedia:Netherlands a schema:Country,
+        schema:Place .
+
+dbpedia:Portugal rdfs:subClassOf schema:Country,
+        schema:Place .
+
+owl:Thing rdfs:label "they" .
+
+ns1:Dutch rdfs:label "Dutch" ;
+    owl:sameAs dbpedia:Netherlands .
+
+ns1:DutchChannel rdfs:label "Dutch channel" ;
+    rdfs:subClassOf ns1:Channel .
+
+ns1:DutchPeople rdfs:subClassOf dul:Collection .
+
+ns1:Dutch_people a owl:Class ;
+    rdfs:label "Dutch people" ;
+    rdfs:subClassOf ns1:DutchPeople ;
+    owl:equivalentClass dbpedia:Dutch_people .
+
+ns1:ExileMonthly a owl:Class ;
+    rdfs:label "Exile Monthly" ;
+    dul:associatedWith ns1:Exile ;
+    rdfs:subClassOf ns1:Monthly .
+
+ns1:FinnishChannel rdfs:subClassOf ns1:Channel .
+
+ns1:Here rdfs:label "Here",
+        "here" .
+
+ns1:News rdfs:label "news" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Now rdfs:label "now" .
+
+ns1:Place rdfs:label "place" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Still rdfs:label "still" .
+
+ns1:There rdfs:label "There" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:ask_1 a ns1:Ask ;
+    rdfs:label "asked" ;
+    vn.role:Patient ns1:thing_1 ;
+    ns1:because ns1:follow_1 .
+
+ns1:channel_2 a ns1:DutchChannel ;
+    rdfs:label "channel" ;
+    dul:hasQuality ns1:Dutch,
+        ns1:Not ;
+    quant:hasDeterminer quant:the .
+
+ns1:dutch_people_1 a ns1:Dutch_people,
+        ns1:Situation ;
+    rdfs:label "Dutch people" ;
+    boxing:involves ns1:ask_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:follow_1 a ns1:Follow ;
+    rdfs:label "follow" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Location ns1:send_1 ;
+    vn.role:Theme ns1:news_1 .
+
+ns1:news_1 a ns1:News ;
+    rdfs:label "news" ;
+    quant:hasDeterminer quant:the .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:place_1 a ns1:Place ;
+    rdfs:label "place" ;
+    quant:hasDeterminer quant:this ;
+    ns1:placeOf ns1:monthly_1 .
+
+ns1:send_1 a ns1:Send ;
+    rdfs:label "sent" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Destination ns1:place_1 .
+
+ns1:there_1 a ns1:FinnishChannel,
+        ns1:Portuguese,
+        ns1:There ;
+    rdfs:label "There" ;
+    dul:hasDataValue "1"^^xsd:nonNegativeInteger,
+        "2"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:Finnish ;
+    quant:hasQuantifier quant:one .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "they" .
+
+ns1:Ask rdfs:label "asked" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Finnish rdfs:label "Finnish" ;
+    owl:sameAs dbpedia:Finland .
+
+ns1:Follow rdfs:label "follow" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Monthly a owl:Class ;
+    rdfs:label "monthly" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Not rdfs:label "not" .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Portuguese a owl:Class ;
+    rdfs:label "Portuguese" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Portugal .
+
+ns1:Send rdfs:label "sent" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:monthly_1 a ns1:ExileMonthly ;
+    rdfs:label "monthly" .
+
+ns1:Channel rdfs:label "channel",
+        "channels" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Exile a owl:Class ;
+    rdfs:label "exile" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+

@@ -1,0 +1,255 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence132.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence132.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence132" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence132" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In- rdfs:label "in-" .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:Rel rdfs:label "(",
+        "," .
+
+ns1:andurael_2 a ns1:Andurael ;
+    rdfs:label "andurael" ;
+    dul:associatedWith ns1:tube_1 .
+
+ns1:cura_1 a ns1:Cura ;
+    rdfs:label "cura" ;
+    dul:associatedWith ns1:tube_1 .
+
+ns1:docuverse earmark:hasContent "Alabama's industrial production includes iron andurael products (in- cura iron andurael tubes); paper, ti- and wood products;osing (mainly carbon); plastic products; cars and tr.s; and clothing."^^xsd:string .
+
+ns1:include_1 a ns1:Include ;
+    rdfs:label "includes" ;
+    vn.role:Agent ns1:production_1 ;
+    vn.role:Theme ns1:paper_1,
+        ns1:product_1 .
+
+ns1:iron_1 a ns1:Iron ;
+    rdfs:label "iron" ;
+    dul:associatedWith ns1:andurael_1,
+        ns1:product_1 .
+
+ns1:iron_2 a ns1:Iron ;
+    rdfs:label "iron" ;
+    dul:associatedWith ns1:tube_1 .
+
+ns1:plastic_1 a ns1:Plastic ;
+    rdfs:label "plastic" ;
+    dul:associatedWith ns1:product_3 .
+
+ns1:wood_1 a ns1:Wood ;
+    rdfs:label "wood" ;
+    dul:associatedWith ns1:product_2 .
+
+dbpedia:Alabama a schema:AdministrativeArea,
+        schema:Place .
+
+dbpedia:Alabama_(band) a schema:MusicGroup,
+        schema:Organization .
+
+ns1:Alabama rdfs:label "Alabama" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Alabama,
+        dbpedia:Alabama_(band) .
+
+ns1:AnduraelProduct rdfs:subClassOf ns1:Product .
+
+ns1:AnduraelTube rdfs:subClassOf ns1:Tube .
+
+ns1:Car rdfs:label "cars" .
+
+ns1:Carbon a owl:Class ;
+    rdfs:label "carbon" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Carbon .
+
+ns1:Clothing a owl:Class ;
+    rdfs:label "clothing" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Clothing .
+
+ns1:Cura rdfs:label "cura" .
+
+ns1:CuraIronAnduraelTube rdfs:subClassOf ns1:IronAnduraelTube .
+
+ns1:In-CuraIronAnduraelTube rdfs:subClassOf ns1:CuraIronAnduraelTube .
+
+ns1:Include rdfs:label "includes" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:IndustrialProduction a owl:Class ;
+    rdfs:label "Industrial Production" ;
+    dul:hasQuality ns1:Industrial ;
+    rdfs:subClassOf ns1:Production ;
+    owl:equivalentClass dbpedia:Industry .
+
+ns1:IronAndurael a owl:Class ;
+    rdfs:label "Iron Andurael",
+        "iron andurael" ;
+    dul:associatedWith ns1:Iron ;
+    rdfs:subClassOf ns1:Andurael .
+
+ns1:IronAnduraelProduct rdfs:subClassOf ns1:AnduraelProduct .
+
+ns1:IronAnduraelTube rdfs:subClassOf ns1:AnduraelTube .
+
+ns1:Mainly a owl:Class ;
+    rdfs:label "mainly" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:MainlyCarbon a owl:Class ;
+    rdfs:label "mainly carbon" ;
+    dul:hasQuality ns1:Mainly ;
+    rdfs:subClassOf ns1:Carbon .
+
+ns1:Ose rdfs:label "osing" .
+
+ns1:Paper a owl:Class ;
+    rdfs:label "paper" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Paper .
+
+ns1:Plastic a owl:Class ;
+    rdfs:label "plastic" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Plastic .
+
+ns1:PlasticProduct rdfs:subClassOf ns1:Product .
+
+ns1:Production a owl:Class ;
+    rdfs:label "production" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Ti- rdfs:label "ti-" .
+
+ns1:Tr.s rdfs:label "tr.s" .
+
+ns1:Tube rdfs:label "tubes" .
+
+ns1:Wood a owl:Class ;
+    rdfs:label "wood" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Wood .
+
+ns1:WoodProduct rdfs:subClassOf ns1:Product .
+
+ns1:andurael_1 a ns1:IronAndurael ;
+    rdfs:label "andurael" ;
+    dul:associatedWith ns1:product_1 .
+
+ns1:car_1 a dbpedia:Car,
+        ns1:Car ;
+    rdfs:label "cars" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:carbon_1 a ns1:MainlyCarbon ;
+    rdfs:label "carbon" .
+
+ns1:clothing_1 a ns1:Clothing ;
+    rdfs:label "clothing" .
+
+ns1:ose_1 a dbpedia:Osing_people,
+        ns1:Ose ;
+    rdfs:label "osing" ;
+    dul:associatedWith ns1:carbon_1 .
+
+ns1:paper_1 a ns1:Paper ;
+    rdfs:label "paper" ;
+    dul:associatedWith ns1:car_1,
+        ns1:clothing_1,
+        ns1:ose_1,
+        ns1:product_2,
+        ns1:product_3,
+        ns1:ti-_1,
+        ns1:tr.s_1 .
+
+ns1:production_1 a ns1:IndustrialProduction ;
+    rdfs:label "production" ;
+    dul:hasQuality ns1:Industrial ;
+    ns1:industrialProductionOf ns1:Alabama .
+
+ns1:ti-_1 a ns1:Ti- ;
+    rdfs:label "ti-" .
+
+ns1:tr.s_1 a ns1:Tr.s ;
+    rdfs:label "tr.s" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Andurael a owl:Class ;
+    rdfs:label "andurael" .
+
+ns1:Industrial a owl:Class ;
+    rdfs:label "industrial" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:product_2 a dbpedia:Cosmetics,
+        ns1:WoodProduct ;
+    rdfs:label "products" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:product_3 a dbpedia:Cosmetics,
+        ns1:PlasticProduct ;
+    rdfs:label "products" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Iron a owl:Class ;
+    rdfs:label "iron" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Iron .
+
+ns1:Product rdfs:label "products" .
+
+ns1:product_1 a dbpedia:Cosmetics,
+        ns1:IronAnduraelProduct ;
+    rdfs:label "products" ;
+    dul:associatedWith ns1:tube_1 ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:tube_1 a dbpedia:Tire,
+        ns1:In-CuraIronAnduraelTube ;
+    rdfs:label "tubes" ;
+    quant:hasQuantifier quant:multiple .
+

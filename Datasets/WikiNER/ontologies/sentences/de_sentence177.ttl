@@ -1,0 +1,143 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence177.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:de_sentence177.ttl a owl:Ontology ;
+    rdfs:label "de_sentence177" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence177" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Against rdfs:label "against" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:When rdfs:label "when" .
+
+ns1:docuverse earmark:hasContent "370 State policies in the 1950s and 1960s in the American Civil_Law Movement, when the majority of white bureaucratic and sometimes violent protests against electoral and social reforms have been won."^^xsd:string .
+
+ns1:state_1 a ns1:State ;
+    rdfs:label "State" ;
+    dul:associatedWith ns1:policy_1 .
+
+ns1:American rdfs:label "American" .
+
+ns1:Bureaucratic rdfs:label "bureaucratic" ;
+    owl:sameAs dbpedia:Bureaucracy .
+
+ns1:Civil_law_movement rdfs:label "Civil Law Movement" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality ns1:American ;
+    ns1:when ns1:win_1 .
+
+ns1:Electoral rdfs:label "electoral" ;
+    owl:sameAs dbpedia:Election .
+
+ns1:Majority rdfs:label "majority" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Policy rdfs:label "policies" .
+
+ns1:Protest rdfs:label "protests" .
+
+ns1:Reform rdfs:label "reforms" .
+
+ns1:Social rdfs:label "social" ;
+    owl:sameAs dbpedia:Society .
+
+ns1:SocialReform rdfs:subClassOf ns1:Reform .
+
+ns1:Sometimes rdfs:label "sometimes" .
+
+ns1:SometimesViolentProtest rdfs:subClassOf ns1:ViolentProtest .
+
+ns1:State a owl:Class ;
+    rdfs:label "State" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> ;
+    owl:equivalentClass dbpedia:State_(polity) .
+
+ns1:StatePolicy rdfs:subClassOf ns1:Policy .
+
+ns1:Violent rdfs:label "violent" ;
+    dul:hasQuality ns1:Sometimes .
+
+ns1:ViolentProtest rdfs:subClassOf ns1:Protest .
+
+ns1:White rdfs:label "white" ;
+    owl:sameAs dbpedia:White_people .
+
+ns1:Win rdfs:label "won" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:majority_1 a ns1:Majority ;
+    rdfs:label "majority" ;
+    quant:hasDeterminer quant:the ;
+    ns1:majorityOf ns1:protest_1 .
+
+ns1:policy_1 a dbpedia:Policy,
+        ns1:StatePolicy ;
+    rdfs:label "policies" ;
+    dul:hasDataValue "370"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:Topic ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:196x-xx-xx,
+        ns1:Civil_law_movement .
+
+ns1:protest_1 a ns1:SometimesViolentProtest ;
+    rdfs:label "protests" ;
+    dul:hasQuality ns1:Bureaucratic,
+        ns1:Violent,
+        ns1:White ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:against ns1:reform_1 .
+
+ns1:reform_1 a ns1:SocialReform ;
+    rdfs:label "reforms" ;
+    dul:hasQuality ns1:Electoral,
+        ns1:Social ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:win_1 a ns1:Win ;
+    rdfs:label "won" ;
+    vn.role:Theme ns1:majority_1 .
+

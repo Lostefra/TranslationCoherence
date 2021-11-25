@@ -1,0 +1,102 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence725.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence725.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence725" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence725" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In" .
+
+ns1:docuverse earmark:hasContent "In recent years, Algeria has been working to diversify military material."^^xsd:string .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "working" ;
+    boxer:theme ns1:diversify_1 ;
+    vn.role:Actor ns1:Algeria ;
+    ns1:in ns1:year_1 .
+
+dbpedia:Algeria a schema:Country,
+        schema:Place .
+
+ns1:Diversify rdfs:label "diversify" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Material a owl:Class ;
+    rdfs:label "material" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:MilitaryMaterial a owl:Class ;
+    rdfs:label "military material" ;
+    dul:hasQuality ns1:Military ;
+    rdfs:subClassOf ns1:Material .
+
+ns1:Recent rdfs:label "recent" .
+
+ns1:RecentYear rdfs:subClassOf ns1:Year .
+
+ns1:Work rdfs:label "working" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Year rdfs:label "years" .
+
+ns1:diversify_1 a ns1:Diversify ;
+    rdfs:label "diversify" ;
+    vn.role:Agent ns1:Algeria ;
+    vn.role:Patient ns1:material_1 .
+
+ns1:material_1 a ns1:MilitaryMaterial ;
+    rdfs:label "material" ;
+    dul:hasQuality ns1:Military .
+
+ns1:year_1 a ns1:RecentYear ;
+    rdfs:label "years" ;
+    dul:hasQuality ns1:Recent ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Algeria rdfs:label "Algeria" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Algeria .
+
+ns1:Military a owl:Class ;
+    rdfs:label "military" ;
+    rdfs:subClassOf dul:Quality .
+

@@ -1,0 +1,116 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence135.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme rdfs:label "In" .
+
+translation_coherence:fi_sentence135.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence135" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence135" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:change_1 a ns1:Change ;
+    rdfs:label "changed" ;
+    boxer:patient ns1:investment_1 ;
+    vn.role:Agent ns1:University_of_alabama ;
+    vn.role:Theme ns1:197x-xx-xx,
+        ns1:198x-xx-xx .
+
+ns1:docuverse earmark:hasContent "In the 1970s and 1980s, the University_of_Alabama changed Birmingham's investment in biotechnology and medical research."^^xsd:string .
+
+ns1:research_1 rdfs:label "research" .
+
+dbpedia:Birmingham a schema:City,
+        schema:Place .
+
+<http://dbpedia.org/resource/Birmingham,_Alabama> a schema:City,
+        schema:Place .
+
+dbpedia:University_of_Alabama a schema:CollegeOrUniversity,
+        schema:EducationalOrganization,
+        schema:Organization .
+
+ns1:Biotechnology a owl:Class ;
+    rdfs:label "biotechnology" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> ;
+    owl:equivalentClass dbpedia:Biotechnology .
+
+ns1:Birmingham rdfs:label "Birmingham" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Birmingham,
+        <http://dbpedia.org/resource/Birmingham,_Alabama> .
+
+ns1:Change rdfs:label "changed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Investment rdfs:label "investment" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Medical a owl:Class ;
+    rdfs:label "medical" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:MedicalResearch a owl:Class ;
+    rdfs:label "medical research" ;
+    dul:hasQuality ns1:Medical ;
+    rdfs:subClassOf ns1:Research ;
+    owl:equivalentClass dbpedia:Medical_research .
+
+ns1:Research a owl:Class ;
+    rdfs:label "research" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:University_of_alabama rdfs:label "University of Alabama" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:University_of_Alabama .
+
+ns1:biotechnology_1 a ns1:Biotechnology,
+        ns1:MedicalResearch ;
+    rdfs:label "biotechnology" .
+
+ns1:investment_1 a ns1:Investment ;
+    rdfs:label "investment" ;
+    ns1:in ns1:biotechnology_1 ;
+    ns1:investmentOf ns1:Birmingham .
+

@@ -1,0 +1,188 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence294.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:ko_sentence294.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence294" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence294" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Be rdfs:label "is" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Namely rdfs:label "namely" .
+
+ns1:Of rdfs:label "my",
+        "of" .
+
+ns1:Within rdfs:label "within" .
+
+ns1:consider_1 a ns1:Consider ;
+    rdfs:label "considered" ;
+    vn.role:Predicate ns1:matter_1 ;
+    vn.role:Theme ns1:european_parliament_1 .
+
+ns1:docuverse earmark:hasContent "President, it is especially pleased me to make my first speech in the European_Parliament, which is considered the most important matter within that part of the UK represented by the Parliament, namely Wales."^^xsd:string .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "make" ;
+    dul:hasQuality ns1:I ;
+    vn.role:Agent ns1:President,
+        ns1:Uk ;
+    vn.role:Theme ns1:speech_1 ;
+    ns1:be ns1:especially_1 .
+
+ns1:represent_1 a ns1:Represent ;
+    rdfs:label "represented" ;
+    vn.role:Agent ns1:Parliament ;
+    vn.role:Theme ns1:Uk .
+
+dbpedia:European_Parliament rdfs:subClassOf schema:Organization .
+
+dbpedia:Wales a schema:Country,
+        schema:Place .
+
+ns1:Consider rdfs:label "considered" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Especially rdfs:label "especially" .
+
+ns1:European_parliament a owl:Class ;
+    rdfs:label "European Parliament" ;
+    owl:equivalentClass dbpedia:European_Parliament .
+
+ns1:First a owl:Class ;
+    rdfs:label "first" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FirstSpeech a owl:Class ;
+    rdfs:label "first speech" ;
+    dul:hasQuality ns1:First ;
+    rdfs:subClassOf ns1:Speech .
+
+ns1:I rdfs:label "me" .
+
+ns1:Important a owl:Class ;
+    rdfs:label "important" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ImportantMatter a owl:Class ;
+    rdfs:label "Important Matter" ;
+    dul:hasQuality ns1:Important ;
+    rdfs:subClassOf ns1:Matter .
+
+ns1:Make rdfs:label "make" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Matter a owl:Class ;
+    rdfs:label "matter" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Most rdfs:label "most" .
+
+ns1:MostImportantMatter a owl:Class ;
+    rdfs:label "Most Important Matter" ;
+    rdfs:subClassOf ns1:ImportantMatter .
+
+ns1:Parliament rdfs:label "Parliament" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Parliament .
+
+ns1:Part rdfs:label "part" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Pleased rdfs:label "pleased" ;
+    owl:sameAs dbpedia:The_Pleased .
+
+ns1:President rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:President .
+
+ns1:Represent rdfs:label "represented" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Speech a owl:Class ;
+    rdfs:label "speech" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Wales rdfs:label "Wales" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Wales .
+
+ns1:especially_1 a ns1:Especially ;
+    rdfs:label "especially" ;
+    dul:hasQuality ns1:Pleased .
+
+ns1:matter_1 a ns1:MostImportantMatter ;
+    rdfs:label "matter" ;
+    dul:hasQuality ns1:Most ;
+    quant:hasDeterminer quant:the ;
+    ns1:within ns1:part_1 .
+
+ns1:part_1 a ns1:Part ;
+    rdfs:label "part" ;
+    quant:hasDeterminer quant:that ;
+    ns1:partOf ns1:Uk .
+
+ns1:person_1 a ns1:Person .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "my" .
+
+ns1:speech_1 a ns1:FirstSpeech ;
+    rdfs:label "speech" ;
+    ns1:firstSpeechOf ns1:person_1,
+        ns1:person_2 ;
+    ns1:in ns1:european_parliament_1 ;
+    ns1:namely ns1:Wales .
+
+owl:Thing rdfs:label "it" .
+
+ns1:european_parliament_1 a ns1:European_parliament ;
+    rdfs:label "European Parliament" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Uk rdfs:label "UK" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality owl:Thing .
+

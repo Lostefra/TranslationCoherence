@@ -1,0 +1,223 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence365.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Destination rdfs:label "In" .
+
+translation_coherence:de_sentence365.ttl a owl:Ontology ;
+    rdfs:label "de_sentence365" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence365" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:To rdfs:label "to" .
+
+ns1:bank_1 a ns1:Bank ;
+    rdfs:label "banks" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:docuverse earmark:hasContent "In a letter to Andrew_Johnson, the military governor of the Tennessee, he encouraged to pave the way for the rise of the black troops, wrote Lincoln, the mere view of 50 thousand armed and drilled black soldiers on the banks of the Pacific."^^xsd:string .
+
+ns1:encourage_1 a ns1:Encourage ;
+    rdfs:label "encouraged" ;
+    boxer:patient ns1:male_1 ;
+    vn.role:Theme ns1:pave_1 .
+
+ns1:rise_1 a ns1:Rise ;
+    rdfs:label "rise" ;
+    quant:hasDeterminer quant:the .
+
+ns1:write_1 a ns1:Write ;
+    rdfs:label "wrote" ;
+    vn.role:Agent ns1:governor_1 ;
+    vn.role:Destination ns1:letter_1 ;
+    vn.role:Theme ns1:Lincoln .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+dbpedia:Andrew_Johnson a schema:Person .
+
+dbpedia:Tennessee a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:Andrew_johnson rdfs:label "Andrew Johnson" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Andrew_Johnson .
+
+ns1:Armed rdfs:label "armed" .
+
+ns1:Bank rdfs:label "banks" .
+
+ns1:BlackSoldier rdfs:subClassOf ns1:Soldier .
+
+ns1:BlackTroops a owl:Class ;
+    rdfs:label "Black Troops" ;
+    dul:hasQuality ns1:Black ;
+    rdfs:subClassOf ns1:Troops .
+
+ns1:Drilled rdfs:label "drilled" .
+
+ns1:DrilledBlackSoldier rdfs:subClassOf ns1:BlackSoldier .
+
+ns1:Encourage rdfs:label "encouraged" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Governor a owl:Class ;
+    rdfs:label "governor" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Letter rdfs:label "letter" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith ns1:view_1 ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Mere a owl:Class ;
+    rdfs:label "mere" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:MereView a owl:Class ;
+    rdfs:label "mere view" ;
+    dul:hasQuality ns1:Mere ;
+    rdfs:subClassOf ns1:View .
+
+ns1:MilitaryGovernor a owl:Class ;
+    rdfs:label "military governor" ;
+    dul:hasQuality ns1:Military ;
+    rdfs:subClassOf ns1:Governor .
+
+ns1:Pacific rdfs:label "Pacific" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Pave rdfs:label "pave" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Rise rdfs:label "rise" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Soldier rdfs:label "soldiers" .
+
+ns1:Tennessee rdfs:label "Tennessee" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:male_1 ;
+    owl:sameAs dbpedia:Tennessee .
+
+ns1:Troops a owl:Class ;
+    rdfs:label "troops" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:View a owl:Class ;
+    rdfs:label "view" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Way rdfs:label "way" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Write rdfs:label "wrote" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:governor_1 a ns1:MilitaryGovernor ;
+    rdfs:label "governor" ;
+    dul:hasQuality ns1:Military ;
+    quant:hasDeterminer quant:the ;
+    ns1:militaryGovernorOf ns1:Tennessee .
+
+ns1:letter_1 a ns1:Letter ;
+    rdfs:label "letter" ;
+    quant:hasDeterminer quant:a ;
+    ns1:to ns1:Andrew_johnson .
+
+ns1:pave_1 a ns1:Pave ;
+    rdfs:label "pave" ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Destination ns1:way_1 ;
+    ns1:forRiseOf ns1:troops_1 .
+
+ns1:soldier_1 a ns1:DrilledBlackSoldier ;
+    rdfs:label "soldiers" ;
+    dul:hasDataValue "50000"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:Armed,
+        ns1:Black,
+        ns1:Drilled ;
+    quant:hasQuantifier quant:multiple,
+        quant:thousand .
+
+ns1:troops_1 a ns1:BlackTroops ;
+    rdfs:label "troops" ;
+    dul:hasQuality ns1:Black ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:view_1 a ns1:MereView ;
+    rdfs:label "view" ;
+    quant:hasDeterminer quant:the ;
+    ns1:mereViewOf ns1:soldier_1 ;
+    ns1:onBankOf ns1:Pacific .
+
+ns1:way_1 a ns1:Way ;
+    rdfs:label "way" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Military a owl:Class ;
+    rdfs:label "military" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Black a owl:Class ;
+    rdfs:label "Black",
+        "black" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "he" .
+

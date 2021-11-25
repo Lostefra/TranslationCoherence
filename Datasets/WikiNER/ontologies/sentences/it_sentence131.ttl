@@ -1,0 +1,188 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence131.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence131.ttl a owl:Ontology ;
+    rdfs:label "it_sentence131" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence131" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "Alabama's agricultural productions include poultry and eggs, cattle, nurseries, peanuts, cotton, cereals such as corn and sorghum, vegetables, milk, soybeans and peaches."^^xsd:string .
+
+ns1:include_1 a ns1:Include ;
+    rdfs:label "include" ;
+    vn.role:Agent ns1:production_1 ;
+    vn.role:Theme ns1:egg_1,
+        ns1:poultry_1 .
+
+ns1:milk_1 rdfs:label "milk" .
+
+ns1:peach_1 a dbpedia:Peach ;
+    rdfs:label "peaches" .
+
+ns1:sorghum_1 rdfs:label "sorghum" .
+
+ns1:soybean_1 a dbpedia:Soybean ;
+    rdfs:label "soybeans" .
+
+dbpedia:Alabama a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:Agricultural rdfs:label "agricultural" ;
+    owl:sameAs dbpedia:Agriculture .
+
+ns1:AgriculturalProduction rdfs:subClassOf ns1:Production .
+
+ns1:Alabama rdfs:label "Alabama" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Alabama .
+
+ns1:Cattle a owl:Class ;
+    rdfs:label "cattle" ;
+    rdfs:subClassOf dul:Organism ;
+    owl:equivalentClass dbpedia:Cattle .
+
+ns1:Cereal rdfs:label "cereals" .
+
+ns1:Corn a owl:Class ;
+    rdfs:label "corn" ;
+    rdfs:subClassOf dul:Organism ;
+    owl:equivalentClass dbpedia:Maize .
+
+ns1:Cotton a owl:Class ;
+    rdfs:label "cotton" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Cotton .
+
+ns1:Egg rdfs:label "eggs" .
+
+ns1:Include rdfs:label "include" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Milk a owl:Class ;
+    rdfs:label "milk" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Milk .
+
+ns1:Nursery rdfs:label "nurseries" .
+
+ns1:Peach rdfs:label "peaches" .
+
+ns1:Peanut rdfs:label "peanuts" .
+
+ns1:Poultry a owl:Class ;
+    rdfs:label "poultry" ;
+    rdfs:subClassOf dul:Organism ;
+    owl:equivalentClass dbpedia:Poultry .
+
+ns1:Production rdfs:label "productions" .
+
+ns1:Sorghum a owl:Class ;
+    rdfs:label "sorghum" ;
+    rdfs:subClassOf dul:Organism ;
+    owl:equivalentClass dbpedia:Sorghum .
+
+ns1:Soybean rdfs:label "soybeans" .
+
+ns1:Vegetable rdfs:label "vegetables" .
+
+ns1:cereal_1 a dbpedia:Cereal,
+        ns1:Cereal ;
+    rdfs:label "cereals" ;
+    dul:associatedWith ns1:vegetable_1 ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:as ns1:corn_1 .
+
+ns1:corn_1 a ns1:Corn,
+        ns1:Sorghum ;
+    rdfs:label "corn" ;
+    quant:hasDeterminer quant:such .
+
+ns1:cotton_1 a ns1:Cotton ;
+    rdfs:label "cotton" ;
+    dul:associatedWith ns1:cereal_1 .
+
+ns1:egg_1 a dbpedia:Egg_(food),
+        ns1:Egg ;
+    rdfs:label "eggs" ;
+    dul:associatedWith ns1:cattle_1 ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:nursery_1 a dbpedia:Horticulture,
+        ns1:Nursery ;
+    rdfs:label "nurseries" ;
+    dul:associatedWith ns1:peanut_1 ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:peanut_1 a dbpedia:Peanut,
+        ns1:Peanut ;
+    rdfs:label "peanuts" ;
+    dul:associatedWith ns1:cotton_1 ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:poultry_1 a ns1:Poultry ;
+    rdfs:label "poultry" ;
+    dul:associatedWith ns1:cattle_1 .
+
+ns1:production_1 a ns1:AgriculturalProduction ;
+    rdfs:label "productions" ;
+    dul:hasQuality ns1:Agricultural ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:agriculturalProductionOf ns1:Alabama .
+
+ns1:vegetable_1 a dbpedia:Vegetable,
+        ns1:Milk,
+        ns1:Peach,
+        ns1:Soybean,
+        ns1:Vegetable ;
+    rdfs:label "vegetables" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:cattle_1 a ns1:Cattle ;
+    rdfs:label "cattle" ;
+    dul:associatedWith ns1:nursery_1 ;
+    quant:hasQuantifier quant:multiple .
+

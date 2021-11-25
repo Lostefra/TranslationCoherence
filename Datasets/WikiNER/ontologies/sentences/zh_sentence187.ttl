@@ -1,0 +1,144 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence187.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:zh_sentence187.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence187" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence187" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Until rdfs:label "until" .
+
+ns1:With rdfs:label "with" .
+
+ns1:compete_1 a ns1:Compete ;
+    rdfs:label "competing" ;
+    vn.role:Actor ns1:Poseidon,
+        ns1:Zus ;
+    ns1:until ns1:Soleus ;
+    ns1:with ns1:Setis .
+
+ns1:docuverse earmark:hasContent "Zus and Poseidon have been competing with the Setis, until Soleus, Fire Team Lead, warning Zeus of a profcy that thetis will be more than one of his fathers."^^xsd:string .
+
+ns1:male_1 rdfs:label "his" .
+
+ns1:warn_1 a ns1:Warn ;
+    rdfs:label "warning" ;
+    vn.role:Agent ns1:Zeus .
+
+ns1:Compete rdfs:label "competing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Father rdfs:label "fathers" .
+
+ns1:Fire_team_lead rdfs:label "Fire Team Lead" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:Zeus .
+
+ns1:Male rdfs:label "Zus" .
+
+ns1:Poseidon rdfs:label "Poseidon" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Poseidon .
+
+ns1:Profcy rdfs:label "profcy" .
+
+ns1:Setis rdfs:label "Setis" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Joint_Research_Centre .
+
+ns1:Soleus rdfs:label "Soleus" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Fire_team_lead ;
+    owl:sameAs dbpedia:Soleus_muscle .
+
+ns1:Theti rdfs:label "thetis" .
+
+ns1:Warn rdfs:label "warning" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:father_1 a ns1:Father ;
+    rdfs:label "fathers" ;
+    quant:hasQuantifier quant:multiple,
+        quant:one ;
+    ns1:fatherOf ns1:Zus .
+
+ns1:profcy_1 a ns1:Profcy ;
+    rdfs:label "profcy" ;
+    boxer:theme ns1:situation_1,
+        ns1:situation_2 ;
+    quant:hasDeterminer quant:a .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:More,
+        ns1:theti_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:More,
+        ns1:theti_1 .
+
+ns1:Zeus rdfs:label "Zeus" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Zeus ;
+    ns1:of ns1:profcy_1 .
+
+ns1:Zus a ns1:Male ;
+    rdfs:label "Zus" ;
+    boxer:possibleType foaf:Person .
+
+ns1:theti_1 a dbpedia:Thetis,
+        ns1:Theti ;
+    rdfs:label "thetis" ;
+    dul:hasDataValue "1"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:More ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:thetiOf ns1:father_1 .
+
+ns1:More rdfs:label "more" .
+

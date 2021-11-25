@@ -1,0 +1,173 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence521.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme2 rdfs:label "to" .
+
+translation_coherence:it_sentence521.ttl a owl:Ontology ;
+    rdfs:label "it_sentence521" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence521" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:When rdfs:label "When" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "When I speak of optimum use, I refer to both national and regional levels. Mr Seppanen, I am also referring to this point, speaking of the national level, of the link with the Cohesion_Fund."^^xsd:string .
+
+ns1:refer_1 a ns1:Refer ;
+    rdfs:label "refer" ;
+    vn.role:Theme1 ns1:person_2 ;
+    vn.role:Theme2 ns1:level_1 ;
+    ns1:when ns1:speak_1 .
+
+ns1:refer_2 a ns1:AlsoRefer ;
+    rdfs:label "referring" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Theme1 ns1:Seppanen ;
+    vn.role:Theme2 ns1:point_1 .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoRefer rdfs:subClassOf ns1:Refer .
+
+ns1:Cohesion_fund a owl:Class ;
+    rdfs:label "Cohesion Fund" ;
+    owl:equivalentClass dbpedia:Structural_Funds_and_Cohesion_Fund .
+
+ns1:Level rdfs:label "Level",
+        "levels" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Link rdfs:label "link" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:National rdfs:label "National",
+        "national" .
+
+ns1:Optimum a owl:Class ;
+    rdfs:label "optimum" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:OptimumUse a owl:Class ;
+    rdfs:label "optimum use" ;
+    dul:hasQuality ns1:Optimum ;
+    rdfs:subClassOf ns1:Use .
+
+ns1:Point rdfs:label "point" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Regional rdfs:label "regional" .
+
+ns1:RegionalLevel rdfs:subClassOf ns1:Level .
+
+ns1:Seppanen rdfs:label "Seppanen" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister>,
+        ns1:person_3 ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    owl:sameAs dbpedia:Iiro_Seppänen .
+
+ns1:Speak rdfs:label "speak" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Speaking rdfs:label "speaking" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Use a owl:Class ;
+    rdfs:label "use" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:cohesion_fund_1 a ns1:Cohesion_fund ;
+    rdfs:label "Cohesion Fund" ;
+    quant:hasDeterminer quant:the .
+
+ns1:link_1 a ns1:Link ;
+    rdfs:label "link" ;
+    quant:hasDeterminer quant:the ;
+    ns1:with ns1:cohesion_fund_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:point_1 a ns1:Point ;
+    rdfs:label "point" ;
+    dul:associatedWith ns1:speaking_1 ;
+    quant:hasDeterminer quant:this .
+
+ns1:speak_1 a ns1:Speak ;
+    rdfs:label "speak" ;
+    vn.role:Agent ns1:person_1 ;
+    ns1:speakOf ns1:use_1 .
+
+ns1:speaking_1 a ns1:Speaking ;
+    rdfs:label "speaking" ;
+    ns1:speakingOf ns1:level_1 .
+
+ns1:use_1 a ns1:OptimumUse ;
+    rdfs:label "use" .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> rdfs:label "Mr" ;
+    boxer:possibleType dul:Role .
+
+ns1:Refer rdfs:label "refer",
+        "referring" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:level_1 a ns1:RegionalLevel ;
+    rdfs:label "levels" ;
+    dul:hasQuality ns1:National,
+        ns1:Regional ;
+    quant:hasQuantifier quant:both,
+        quant:multiple ;
+    ns1:regionalLevelOf ns1:link_1 .
+
+ns1:Person rdfs:label "I" .
+

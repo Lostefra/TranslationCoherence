@@ -1,0 +1,165 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence508.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence508.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence508" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence508" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Because rdfs:label "because" .
+
+ns1:Between rdfs:label "between" .
+
+ns1:In rdfs:label "in" .
+
+ns1:difference_1 rdfs:label "difference" .
+
+ns1:docuverse earmark:hasContent "They're upping the competition, but they're not all experienced an increase in wealth, because there's no increase in action and there's still a difference in business between regions."^^xsd:string .
+
+ns1:increase_1 rdfs:label "increase" .
+
+ns1:increase_2 rdfs:label "increase" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:business_1,
+        ns1:region_1,
+        ns1:there_2 ;
+    dul:hasQuality ns1:Still .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves ns1:thing_1,
+        ns1:wealth_1 ;
+    dul:hasQuality ns1:All ;
+    ns1:because ns1:situation_3 .
+
+ns1:thing_2 coref:coref ns1:thing_1 .
+
+ns1:up_1 a ns1:Up ;
+    rdfs:label "upping" ;
+    boxer:agent ns1:thing_1 ;
+    boxer:patient ns1:competition_1 .
+
+owl:Thing rdfs:label "They",
+        "they" .
+
+ns1:Action rdfs:label "action" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:All rdfs:label "all" .
+
+ns1:Business a owl:Class ;
+    rdfs:label "business" ;
+    rdfs:subClassOf dul:Organization ;
+    owl:equivalentClass dbpedia:Business .
+
+ns1:Competition rdfs:label "competition" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Difference rdfs:label "difference" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Experience rdfs:label "experienced" .
+
+ns1:Region rdfs:label "regions" .
+
+ns1:Still rdfs:label "still" .
+
+ns1:Up rdfs:label "upping" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Wealth a owl:Class ;
+    rdfs:label "wealth" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Wealth .
+
+ns1:competition_1 a ns1:Competition ;
+    rdfs:label "competition" ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves ns1:action_1,
+        ns1:business_1,
+        ns1:region_1,
+        ns1:there_1,
+        ns1:there_2 .
+
+ns1:there_1 a ns1:Increase,
+        ns1:There ;
+    rdfs:label "there" ;
+    quant:hasQuantifier quant:no ;
+    ns1:in ns1:action_1 .
+
+ns1:Increase rdfs:label "increase" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:There rdfs:label "there" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:action_1 a ns1:Action ;
+    rdfs:label "action" .
+
+ns1:there_2 a ns1:Difference,
+        ns1:There ;
+    rdfs:label "there" ;
+    quant:hasDeterminer quant:a ;
+    ns1:between ns1:region_1 ;
+    ns1:in ns1:business_1 .
+
+ns1:wealth_1 a ns1:Wealth ;
+    rdfs:label "wealth" .
+
+ns1:business_1 a ns1:Business ;
+    rdfs:label "business" .
+
+ns1:region_1 a ns1:Region ;
+    rdfs:label "regions" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:thing_1 a owl:Thing,
+        ns1:Increase ;
+    rdfs:label "They",
+        "they" ;
+    dul:hasQuality ns1:Experience ;
+    quant:hasDeterminer quant:an ;
+    quant:hasQuantifier quant:all ;
+    ns1:in ns1:wealth_1 .
+

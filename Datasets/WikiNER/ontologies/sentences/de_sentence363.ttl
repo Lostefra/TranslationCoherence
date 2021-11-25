@@ -1,0 +1,161 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence363.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence363.ttl a owl:Ontology ;
+    rdfs:label "de_sentence363" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence363" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:With rdfs:label "with" .
+
+ns1:agree_1 a ns1:Agree ;
+    rdfs:label "agree" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Actor ns1:Witter ;
+    ns1:withWishOf ns1:Lincoln .
+
+ns1:docuverse earmark:hasContent "Witter did not agree with the wish of Lincoln to split up his troops and possibly force Lee to do the same and to cancel his resignation accepted."^^xsd:string .
+
+ns1:force_1 a ns1:PossiblyForce ;
+    rdfs:label "force" ;
+    boxer:theme ns1:situation_1 ;
+    boxing:hasTruthValue boxing:False ;
+    dul:hasQuality ns1:Possibly ;
+    vn.role:Agent ns1:Witter .
+
+ns1:male_1 coref:coref ns1:Witter .
+
+ns1:split_1 a ns1:Split ;
+    rdfs:label "split" ;
+    boxing:hasTruthValue boxing:False ;
+    dul:hasQuality ns1:Up ;
+    vn.role:Agent ns1:Witter ;
+    vn.role:Patient ns1:troops_1 .
+
+ns1:wish_1 a ns1:Wish ;
+    rdfs:label "wish" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Accept rdfs:label "accepted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Agree rdfs:label "agree" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Cancel rdfs:label "cancel" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Do rdfs:label "do" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Force rdfs:label "force" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Male rdfs:label "Witter" .
+
+ns1:Possibly rdfs:label "possibly" .
+
+ns1:PossiblyForce rdfs:label "Possibly Force" ;
+    rdfs:subClassOf ns1:Force .
+
+ns1:Resignation rdfs:label "resignation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Same rdfs:label "same" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Split rdfs:label "split" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Troops rdfs:label "troops" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Up rdfs:label "up" .
+
+ns1:Wish rdfs:label "wish" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:accept_1 a ns1:Accept ;
+    rdfs:label "accepted" ;
+    vn.role:Agent ns1:resignation_1 .
+
+ns1:cancel_1 a ns1:Cancel ;
+    rdfs:label "cancel" ;
+    boxer:agent ns1:Lee ;
+    boxer:patient ns1:resignation_1 .
+
+ns1:do_1 a ns1:Do ;
+    rdfs:label "do" ;
+    boxer:agent ns1:Lee ;
+    boxer:patient ns1:same_1 .
+
+ns1:same_1 a ns1:Same ;
+    rdfs:label "same" ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:accept_1,
+        ns1:cancel_1,
+        ns1:do_1 .
+
+ns1:troops_1 a ns1:Troops ;
+    rdfs:label "troops" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:troopsOf ns1:Witter .
+
+ns1:Lee rdfs:label "Lee" ;
+    boxer:possibleType foaf:Person .
+
+ns1:resignation_1 a ns1:Resignation ;
+    rdfs:label "resignation" ;
+    ns1:resignationOf ns1:Witter .
+
+ns1:Witter a ns1:Male ;
+    rdfs:label "Witter",
+        "his" ;
+    boxer:possibleType foaf:Person .
+

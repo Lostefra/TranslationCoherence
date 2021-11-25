@@ -1,0 +1,184 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence307.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "before" .
+
+translation_coherence:it_sentence307.ttl a owl:Ontology ;
+    rdfs:label "it_sentence307" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence307" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:come_1 a ns1:Come ;
+    rdfs:label "come" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Location ns1:lawyer_1 ;
+    vn.role:Theme ns1:sort_1 .
+
+ns1:do_1 a ns1:Do ;
+    rdfs:label "do" ;
+    boxer:agent ns1:Lincoln .
+
+ns1:docuverse earmark:hasContent "In Springfield, Lincoln transformed most of his energies to do a living law, occupying all sorts of activities that could come before a prairie lawyer."^^xsd:string .
+
+ns1:living_1 a ns1:Living ;
+    rdfs:label "living" ;
+    dul:associatedWith ns1:law_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:male_1 coref:coref ns1:Lincoln .
+
+ns1:occupy_1 a ns1:Occupy ;
+    rdfs:label "occupying" ;
+    vn.role:Experiencer ns1:sort_1 .
+
+ns1:prairie_1 a ns1:Prairie ;
+    rdfs:label "prairie" ;
+    dul:associatedWith ns1:lawyer_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:sort_1 ;
+    ns1:entails ns1:situation_2 .
+
+ns1:transform_1 a ns1:Transform ;
+    rdfs:label "transformed" ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Patient ns1:most_1 ;
+    ns1:locatedIn ns1:Springfield .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+<http://dbpedia.org/resource/Springfield,_Illinois> a schema:Place .
+
+ns1:Activity rdfs:label "activities" .
+
+ns1:Come rdfs:label "come" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Do rdfs:label "do" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Energy rdfs:label "energies" .
+
+ns1:Law a owl:Class ;
+    rdfs:label "law" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Lawyer a owl:Class ;
+    rdfs:label "lawyer" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:LivingLaw a owl:Class ;
+    rdfs:label "living law" ;
+    dul:associatedWith ns1:Living ;
+    rdfs:subClassOf ns1:Law ;
+    owl:equivalentClass dbpedia:Living_with_the_Law_(album) .
+
+ns1:Male rdfs:label "Lincoln" .
+
+ns1:Most rdfs:label "most" .
+
+ns1:Occupy rdfs:label "occupying" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:PrairieLawyer a owl:Class ;
+    rdfs:label "Prairie Lawyer" ;
+    dul:associatedWith ns1:Prairie ;
+    rdfs:subClassOf ns1:Lawyer .
+
+ns1:Sort rdfs:label "sorts" .
+
+ns1:Springfield rdfs:label "Springfield" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs <http://dbpedia.org/resource/Springfield,_Illinois> .
+
+ns1:Transform rdfs:label "transformed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:energy_1 a ns1:Energy ;
+    rdfs:label "energies" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:energyOf ns1:Lincoln .
+
+ns1:law_1 a ns1:LivingLaw ;
+    rdfs:label "law" .
+
+ns1:most_1 a ns1:Most ;
+    rdfs:label "most" ;
+    ns1:mostOf ns1:energy_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:activity_1,
+        ns1:sort_1 .
+
+ns1:Living a owl:Class ;
+    rdfs:label "living" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Prairie a owl:Class ;
+    rdfs:label "prairie" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location>,
+        dul:Collection .
+
+ns1:activity_1 a ns1:Activity ;
+    rdfs:label "activities" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:lawyer_1 a ns1:PrairieLawyer ;
+    rdfs:label "lawyer" .
+
+ns1:Lincoln a ns1:Male ;
+    rdfs:label "Lincoln",
+        "his" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+
+ns1:sort_1 a ns1:Sort ;
+    rdfs:label "sorts" ;
+    quant:hasQuantifier quant:all,
+        quant:multiple ;
+    ns1:sortOf ns1:activity_1 .
+

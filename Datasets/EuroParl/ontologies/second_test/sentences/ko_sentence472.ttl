@@ -1,0 +1,189 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence472.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Emost> rdfs:label "most" .
+
+vn.role:Location rdfs:label "In" .
+
+vn.role:Oblique rdfs:label "In" .
+
+translation_coherence:ko_sentence472.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence472" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence472" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:From rdfs:label "from" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Type rdfs:label "type" .
+
+ns1:capital_1 a ns1:Capital ;
+    rdfs:label "capital" ;
+    dul:associatedWith ns1:plan_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:docuverse earmark:hasContent "In addition, the type of project funds should be moved away from small profit-based projects. This is difficult to monitor. In most cases as a capital plan, the benefits can be seen all."^^xsd:string .
+
+ns1:move_1 a ns1:Move ;
+    rdfs:label "moved" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Location ns1:addition_1 ;
+    vn.role:Theme ns1:type_1 ;
+    ns1:from ns1:project_2 .
+
+ns1:project_1 a ns1:Project ;
+    rdfs:label "project" ;
+    dul:associatedWith ns1:fund_1 .
+
+ns1:see_1 a ns1:See ;
+    rdfs:label "seen" ;
+    boxing:hasModality boxing:Possible ;
+    dul:hasQuality ns1:All ;
+    vn.role:Oblique ns1:case_1 ;
+    vn.role:Stimulus ns1:benefit_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:monitor_1,
+        ns1:thing_1 ;
+    dul:hasQuality ns1:Difficult .
+
+ns1:Addition rdfs:label "addition" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:All rdfs:label "all" .
+
+ns1:Benefit rdfs:label "benefits" .
+
+ns1:CapitalPlan a owl:Class ;
+    rdfs:label "Capital Plan" ;
+    dul:associatedWith ns1:Capital ;
+    rdfs:subClassOf ns1:Plan .
+
+ns1:Difficult rdfs:label "difficult" .
+
+ns1:Fund rdfs:label "funds" .
+
+ns1:Monitor rdfs:label "monitor" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Most rdfs:label "most" .
+
+ns1:MostCase rdfs:subClassOf ns1:Case .
+
+ns1:Move rdfs:label "moved" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Plan a owl:Class ;
+    rdfs:label "plan" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Profit-based rdfs:label "profit-based" .
+
+ns1:Profit-basedProject rdfs:subClassOf ns1:Project .
+
+ns1:ProjectFund rdfs:subClassOf ns1:Fund .
+
+ns1:See rdfs:label "seen" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Small rdfs:label "small" .
+
+ns1:SmallProfit-basedProject rdfs:subClassOf ns1:Profit-basedProject .
+
+ns1:addition_1 a ns1:Addition ;
+    rdfs:label "addition" .
+
+ns1:benefit_1 a ns1:Benefit ;
+    rdfs:label "benefits" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:case_1 a ns1:Case,
+        ns1:MostCase ;
+    rdfs:label "cases" ;
+    dul:hasQuality ns1:Most ;
+    quant:hasDeterminer quant:this ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:as ns1:plan_1 ;
+    ns1:mostAmong ns1:Case .
+
+ns1:monitor_1 a ns1:Monitor ;
+    rdfs:label "monitor" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Location ns1:thing_2 .
+
+ns1:project_2 a ns1:SmallProfit-basedProject ;
+    rdfs:label "projects" ;
+    dul:hasQuality ns1:Profit-based,
+        ns1:Small ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "This" .
+
+ns1:type_1 rdfs:label "type" ;
+    quant:hasDeterminer quant:the ;
+    ns1:typeOf ns1:fund_1 .
+
+owl:Thing rdfs:label "This" .
+
+ns1:Capital a owl:Class ;
+    rdfs:label "capital" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Project rdfs:label "project",
+        "projects" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:fund_1 a ns1:ProjectFund ;
+    rdfs:label "funds" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:plan_1 a ns1:CapitalPlan ;
+    rdfs:label "plan" .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:Case rdfs:label "cases" .
+

@@ -1,0 +1,234 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence772.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence772.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence772" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence772" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Because rdfs:label "because" .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:To rdfs:label "to" .
+
+ns1:anthropo_1 a ns1:Anthropo ;
+    rdfs:label "anthropo",
+        "his" ;
+    dul:associatedWith ns1:Kant ;
+    quant:hasDeterminer quant:a .
+
+ns1:docuverse earmark:hasContent "However, Kant is not usually a modern anthropo koska because he never left Germany and never studied any cultures in addition to his own, and describes the need for anthropology in the cor.t field of conscience."^^xsd:string .
+
+ns1:koska_1 rdfs:label "koska" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves ns1:Kant ;
+    dul:hasQuality ns1:However,
+        ns1:Usually ;
+    ns1:because ns1:situation_2 .
+
+dbpedia:German_Empire a schema:Country,
+        schema:Place .
+
+dbpedia:Germany a schema:Country,
+        schema:Place .
+
+dbpedia:Immanuel_Kant a schema:Person .
+
+ns1:Addition rdfs:label "addition" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:AnthropoKoska a owl:Class ;
+    rdfs:label "Anthropo Koska" ;
+    dul:associatedWith ns1:Anthropo ;
+    rdfs:subClassOf ns1:Koska .
+
+ns1:Anthropology a owl:Class ;
+    rdfs:label "anthropology" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> ;
+    owl:equivalentClass dbpedia:Anthropology .
+
+ns1:Conscience rdfs:label "conscience" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Cor.t a owl:Class ;
+    rdfs:label "cor.t" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Cor.tField a owl:Class ;
+    rdfs:label "cor.t field" ;
+    dul:hasQuality ns1:Cor.t ;
+    rdfs:subClassOf ns1:Field .
+
+ns1:Culture rdfs:label "cultures" .
+
+ns1:Describe rdfs:label "describes" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Germany rdfs:label "Germany" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:German_Empire,
+        dbpedia:Germany .
+
+ns1:However rdfs:label "However" .
+
+ns1:Koska a owl:Class ;
+    rdfs:label "Kant",
+        "koska" ;
+    owl:equivalentClass dbpedia:Koška .
+
+ns1:Leave rdfs:label "left" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Modern a owl:Class ;
+    rdfs:label "modern" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ModernAnthropo a owl:Class ;
+    dul:hasQuality ns1:Modern ;
+    rdfs:subClassOf ns1:Anthropo .
+
+ns1:ModernAnthropoKoska a owl:Class ;
+    rdfs:label "modern anthropo koska" ;
+    dul:associatedWith ns1:ModernAnthropo ;
+    rdfs:subClassOf ns1:AnthropoKoska .
+
+ns1:Need rdfs:label "need" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:NeverLeave rdfs:subClassOf ns1:Leave .
+
+ns1:NeverStudy rdfs:subClassOf ns1:Study .
+
+ns1:Own rdfs:label "own" .
+
+ns1:Study rdfs:label "studied" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Usually rdfs:label "usually" .
+
+ns1:addition_1 a ns1:Addition ;
+    rdfs:label "addition" .
+
+ns1:describe_1 a ns1:Describe ;
+    rdfs:label "describes" ;
+    dul:hasQuality ns1:Never ;
+    vn.role:Agent ns1:Kant ;
+    vn.role:Theme ns1:need_1 ;
+    ns1:for ns1:anthropology_1 .
+
+ns1:leave_1 a ns1:NeverLeave ;
+    rdfs:label "left" ;
+    dul:hasQuality ns1:Never ;
+    vn.role:Agent ns1:Kant ;
+    vn.role:Theme ns1:Germany .
+
+ns1:need_1 a ns1:Need ;
+    rdfs:label "need" ;
+    quant:hasDeterminer quant:the .
+
+ns1:own_1 a ns1:Own ;
+    rdfs:label "own" ;
+    ns1:ownOf ns1:Kant .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:addition_1,
+        ns1:anthropology_1,
+        ns1:conscience_1,
+        ns1:culture_1,
+        ns1:describe_1,
+        ns1:leave_1,
+        ns1:study_1 .
+
+ns1:study_1 a ns1:NeverStudy ;
+    rdfs:label "studied" ;
+    dul:hasQuality ns1:Never ;
+    vn.role:Agent ns1:Kant ;
+    vn.role:Theme ns1:culture_1 ;
+    ns1:inAdditionTo ns1:own_1 .
+
+ns1:Field a owl:Class ;
+    rdfs:label "field" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:anthropology_1 a ns1:Anthropology ;
+    rdfs:label "anthropology" ;
+    ns1:in ns1:field_1 .
+
+ns1:conscience_1 a ns1:Conscience ;
+    rdfs:label "conscience" .
+
+ns1:culture_1 a dbpedia:Culture,
+        ns1:Culture ;
+    rdfs:label "cultures" ;
+    quant:hasQuantifier quant:any,
+        quant:multiple .
+
+ns1:field_1 a ns1:Cor.tField,
+        ns1:Field ;
+    rdfs:label "field" ;
+    quant:hasDeterminer quant:the ;
+    ns1:cor.tFieldOf ns1:conscience_1 .
+
+ns1:Anthropo a owl:Class ;
+    rdfs:label "Kant",
+        "anthropo" .
+
+ns1:Never rdfs:label "never" .
+
+ns1:Kant a ns1:ModernAnthropoKoska ;
+    rdfs:label "Kant",
+        "anthropo",
+        "koska" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Male ;
+    owl:sameAs dbpedia:Immanuel_Kant,
+        ns1:field_1 .
+

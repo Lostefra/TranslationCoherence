@@ -1,0 +1,170 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence497.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "for" .
+
+translation_coherence:it_sentence497.ttl a owl:Ontology ;
+    rdfs:label "it_sentence497" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence497" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Ongroundsof rdfs:label "on the grounds of" .
+
+ns1:docuverse earmark:hasContent "I should like to ask whether the Commission is able to enlighten us on the grounds of delay in the Commission's report on the outermost regions, which Parliament has long been waiting for?"^^xsd:string .
+
+ns1:grounds_1 a ns1:Grounds ;
+    rdfs:label "grounds" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:like_1 a ns1:Like ;
+    rdfs:label "like" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Experiencer ns1:person_1 ;
+    vn.role:Theme ns1:ask_1 .
+
+ns1:outermost_1 a ns1:Outermost ;
+    rdfs:label "outermost" ;
+    dul:associatedWith ns1:region_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:report_1 a ns1:Report ;
+    rdfs:label "report" ;
+    ns1:on ns1:region_1 .
+
+ns1:Ask rdfs:label "ask" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Grounds rdfs:label "grounds" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Like rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Outermost a owl:Class ;
+    rdfs:label "outermost" ;
+    owl:equivalentClass dbpedia:Special_member_state_territories_and_the_European_Union .
+
+ns1:OutermostRegion rdfs:subClassOf ns1:Region .
+
+ns1:Parliament rdfs:label "Parliament" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Parliament .
+
+ns1:Region rdfs:label "regions" .
+
+ns1:Report rdfs:label "report" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:able_1 a ns1:Able ;
+    rdfs:label "able" ;
+    boxer:agent ns1:Commission ;
+    boxer:theme ns1:situation_1 .
+
+ns1:ask_1 a ns1:Ask ;
+    rdfs:label "ask" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Topic ns1:situation_1 .
+
+ns1:enlighten_1 a ns1:Enlighten ;
+    rdfs:label "enlighten" ;
+    vn.role:Cause ns1:Commission ;
+    vn.role:Experiencer ns1:person_2 ;
+    ns1:onGroundsOf ns1:delay_1 .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "us" .
+
+ns1:wait_1 a ns1:Wait ;
+    rdfs:label "waiting" ;
+    dul:hasQuality ns1:Long ;
+    vn.role:Location ns1:delay_1 ;
+    vn.role:Theme ns1:Parliament .
+
+ns1:Able rdfs:label "able" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Delay rdfs:label "delay" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Enlighten rdfs:label "enlighten" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Long rdfs:label "long" .
+
+ns1:Person rdfs:label "I",
+        "us" .
+
+ns1:Wait rdfs:label "waiting" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:region_1 a ns1:OutermostRegion ;
+    rdfs:label "regions" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Able,
+        ns1:Delay,
+        ns1:Enlighten,
+        ns1:Long,
+        ns1:Wait,
+        ns1:able_1,
+        ns1:delay_1,
+        ns1:enlighten_1,
+        ns1:wait_1 .
+
+ns1:Commission rdfs:label "Commission" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:delay_1 a ns1:Delay ;
+    rdfs:label "delay" ;
+    ns1:inReportOf ns1:Commission .
+

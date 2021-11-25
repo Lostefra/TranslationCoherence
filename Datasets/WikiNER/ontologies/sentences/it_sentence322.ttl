@@ -1,0 +1,170 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence322.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "At" .
+
+translation_coherence:it_sentence322.ttl a owl:Ontology ;
+    rdfs:label "it_sentence322" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence322" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:become_1 a ns1:Become ;
+    rdfs:label "become" ;
+    boxer:agent ns1:competition_1 ;
+    boxer:patient ns1:candidate_1 .
+
+ns1:docuverse earmark:hasContent "At the Republican Convention in 1856, Lincoln placed the second position in the competition to become the party candidate for the vice president."^^xsd:string .
+
+ns1:party_1 a ns1:Party ;
+    rdfs:label "party" ;
+    dul:associatedWith ns1:candidate_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:place_1 a ns1:Place ;
+    rdfs:label "placed" ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Destination ns1:convention_1 ;
+    vn.role:Theme ns1:position_1 ;
+    ns1:in ns1:competition_1 .
+
+ns1:vice_1 a ns1:Vice ;
+    rdfs:label "vice" ;
+    dul:associatedWith ns1:president_1 ;
+    quant:hasDeterminer quant:the .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+dbpedia:Republican_Party_(United_States) rdfs:subClassOf schema:Organization .
+
+ns1:Become rdfs:label "become" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Candidate a owl:Class ;
+    rdfs:label "candidate" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Competition rdfs:label "competition" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Convention a owl:Class ;
+    rdfs:label "Convention" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Republican_National_Convention .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+
+ns1:PartyCandidate a owl:Class ;
+    rdfs:label "Party Candidate" ;
+    dul:associatedWith ns1:Party ;
+    rdfs:subClassOf ns1:Candidate .
+
+ns1:Place rdfs:label "placed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Position a owl:Class ;
+    rdfs:label "position" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:President a owl:Class ;
+    rdfs:label "president" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:RepublicanConvention a owl:Class ;
+    rdfs:label "Republican Convention" ;
+    dul:hasQuality ns1:Republican ;
+    rdfs:subClassOf ns1:Convention .
+
+ns1:Second a owl:Class ;
+    rdfs:label "second" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SecondPosition a owl:Class ;
+    rdfs:label "second position" ;
+    dul:hasQuality ns1:Second ;
+    rdfs:subClassOf ns1:Position .
+
+ns1:VicePresident a owl:Class ;
+    rdfs:label "Vice President" ;
+    dul:associatedWith ns1:Vice ;
+    rdfs:subClassOf ns1:President ;
+    owl:equivalentClass dbpedia:Vice_President_of_the_United_States .
+
+ns1:convention_1 a ns1:RepublicanConvention ;
+    rdfs:label "Convention" ;
+    dul:hasQuality ns1:Republican ;
+    quant:hasDeterminer quant:the ;
+    ns1:in "1856-01-01"^^xsd:date .
+
+ns1:position_1 a ns1:SecondPosition ;
+    rdfs:label "position" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Party a owl:Class ;
+    rdfs:label "party" ;
+    rdfs:subClassOf dul:Organization ;
+    owl:equivalentClass dbpedia:Triumph_Heritage_Empowerment_Party .
+
+ns1:Republican a owl:Class ;
+    rdfs:label "Republican" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Republican_Party_(United_States) .
+
+ns1:Vice a owl:Class ;
+    rdfs:label "vice" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:candidate_1 a ns1:PartyCandidate ;
+    rdfs:label "candidate" ;
+    ns1:for ns1:president_1 .
+
+ns1:competition_1 a ns1:Competition ;
+    rdfs:label "competition" ;
+    quant:hasDeterminer quant:the .
+
+ns1:president_1 a ns1:VicePresident ;
+    rdfs:label "president" .
+

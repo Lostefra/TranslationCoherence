@@ -1,0 +1,236 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence54.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Predicate rdfs:label "as" .
+
+translation_coherence:zh_sentence54.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence54" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence54" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:About rdfs:label "about" .
+
+ns1:Against rdfs:label "against" .
+
+ns1:Of rdfs:label "of",
+        "our" .
+
+ns1:To rdfs:label "to" .
+
+ns1:Whether rdfs:label "whether" .
+
+ns1:With rdfs:label "with" .
+
+ns1:arm_1 a ns1:Arm ;
+    rdfs:label "arms" ;
+    dul:associatedWith ns1:embargo_1 ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:docuverse earmark:hasContent "I would like to know, Mr. President, whether we will send a clear message to Parliament about our dissatisfaction with the decision to reject an extension of the arms embargo against Indonesia today, as the vast majority of the current Parliament endorses the Indonesian arms embargo?"^^xsd:string .
+
+ns1:like_1 a ns1:Like ;
+    rdfs:label "like" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Experiencer ns1:person_2 ;
+    vn.role:Theme ns1:know_1 .
+
+ns1:person_1 coref:coref ns1:person_3 .
+
+ns1:reject_1 a ns1:Reject ;
+    rdfs:label "reject" ;
+    dul:associatedWith ns1:today_1 ;
+    vn.role:Agent ns1:decision_1 ;
+    vn.role:Proposition ns1:extension_1 .
+
+dbpedia:Bosnian_War rdfs:subClassOf schema:Event .
+
+dbpedia:Indonesia a schema:Country,
+        schema:Place .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> rdfs:label "Mr." ;
+    boxer:possibleType dul:Role .
+
+ns1:Arm rdfs:label "arms" .
+
+ns1:ArmEmbargo rdfs:subClassOf ns1:Embargo .
+
+ns1:Clear a owl:Class ;
+    rdfs:label "clear" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ClearMessage a owl:Class ;
+    rdfs:label "clear message" ;
+    dul:hasQuality ns1:Clear ;
+    rdfs:subClassOf ns1:Message .
+
+ns1:Current rdfs:label "current" .
+
+ns1:Decision a owl:Class ;
+    rdfs:label "decision" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Voices_of_Animals_and_Men .
+
+ns1:Dissatisfaction rdfs:label "dissatisfaction" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Embargo a owl:Class ;
+    rdfs:label "Embargo",
+        "embargo" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> ;
+    owl:equivalentClass dbpedia:Bosnian_War .
+
+ns1:Endorse rdfs:label "endorses" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Extension rdfs:label "extension" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Indonesia rdfs:label "Indonesia" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Indonesia .
+
+ns1:Indonesian rdfs:label "Indonesian" .
+
+ns1:Know rdfs:label "know" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Like rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Majority a owl:Class ;
+    rdfs:label "majority" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Message a owl:Class ;
+    rdfs:label "message" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:President rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    owl:sameAs dbpedia:President ;
+    ns1:whether ns1:send_1 .
+
+ns1:Reject rdfs:label "reject" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Send rdfs:label "send" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Today rdfs:label "today" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Vast a owl:Class ;
+    rdfs:label "vast" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:VastMajority a owl:Class ;
+    rdfs:label "vast majority" ;
+    dul:hasQuality ns1:Vast ;
+    rdfs:subClassOf ns1:Majority .
+
+ns1:dissatisfaction_1 a ns1:Dissatisfaction ;
+    rdfs:label "dissatisfaction" ;
+    ns1:dissatisfactionOf ns1:person_3 ;
+    ns1:with ns1:decision_1 .
+
+ns1:endorse_1 a ns1:Endorse ;
+    rdfs:label "endorses" ;
+    vn.role:Agent ns1:majority_1 ;
+    vn.role:Destination ns1:embargo_1 .
+
+ns1:extension_1 a ns1:Extension ;
+    rdfs:label "extension" ;
+    quant:hasDeterminer quant:an ;
+    ns1:extensionOf ns1:embargo_1 .
+
+ns1:know_1 a ns1:Know ;
+    rdfs:label "know" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Predicate ns1:endorse_1 ;
+    vn.role:Theme ns1:President .
+
+ns1:majority_1 a ns1:VastMajority ;
+    rdfs:label "majority" ;
+    quant:hasDeterminer quant:the ;
+    ns1:vastMajorityOf ns1:Parliament .
+
+ns1:message_1 a ns1:ClearMessage ;
+    rdfs:label "message" ;
+    quant:hasDeterminer quant:a ;
+    ns1:about ns1:dissatisfaction_1 ;
+    ns1:to ns1:Parliament .
+
+ns1:send_1 a ns1:Send ;
+    rdfs:label "send" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_3 ;
+    vn.role:Theme ns1:message_1 .
+
+ns1:today_1 a ns1:Today ;
+    rdfs:label "today" .
+
+ns1:Parliament rdfs:label "Parliament" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality ns1:Current ;
+    owl:sameAs dbpedia:Parliament .
+
+ns1:Person rdfs:label "I",
+        "we" .
+
+ns1:decision_1 a ns1:Decision ;
+    rdfs:label "decision" ;
+    quant:hasDeterminer quant:the .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:embargo_1 a ns1:ArmEmbargo ;
+    rdfs:label "embargo" ;
+    dul:hasQuality ns1:Indonesian ;
+    ns1:against ns1:Indonesia .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "our",
+        "we" .
+

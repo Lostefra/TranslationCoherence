@@ -1,0 +1,179 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence255.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Proposition rdfs:label "to" .
+
+translation_coherence:ko_sentence255.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence255" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence255" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:create_1 a ns1:Create ;
+    rdfs:label "created" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Product ns1:site_1 .
+
+ns1:dedicate_1 a ns1:Dedicate ;
+    rdfs:label "dedicated" ;
+    vn.role:Proposition ns1:app_1 ;
+    vn.role:Theme ns1:website_1 .
+
+ns1:docuverse earmark:hasContent "This website is dedicated to the app. We created this site for the purpose of providing genuine apps and games. 4AppsApk.com is a registered trademark of Sony Corporation. All rights reserved."^^xsd:string .
+
+ns1:games._1 a <https://w3id.org/stlab/ke/amiala/ko_sentence255.ttl/Games.> ;
+    rdfs:label "games." ;
+    dul:associatedWith ns1:4appsapk.com_1 .
+
+ns1:provide_1 a ns1:Provide ;
+    rdfs:label "providing" ;
+    vn.role:Agent ns1:purpose_1 ;
+    vn.role:Theme ns1:app_2 .
+
+ns1:reserve_1 a ns1:Reserve ;
+    rdfs:label "reserved" ;
+    vn.role:Theme ns1:rights_1 .
+
+dbpedia:Sony a schema:Organization .
+
+ns1:4appsapk.com rdfs:label "4AppsApk.com" .
+
+ns1:4appsapk.com_1 a ns1:Games.4appsapk.com,
+        ns1:RegisteredTrademark ;
+    rdfs:label "4AppsApk.com" ;
+    owl:sameAs ns1:trademark_1 ;
+    ns1:games.4appsapk.comOf ns1:Sony_corporation .
+
+ns1:Create rdfs:label "created" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Dedicate rdfs:label "dedicated" ;
+    rdfs:subClassOf dul:Event .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence255.ttl/Games.> rdfs:label "games." .
+
+ns1:Games.4appsapk.com rdfs:subClassOf ns1:4appsapk.com .
+
+ns1:Genuine rdfs:label "genuine" .
+
+ns1:GenuineApp rdfs:subClassOf ns1:App .
+
+ns1:Person rdfs:label "We" .
+
+ns1:Provide rdfs:label "providing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Purpose a owl:Class ;
+    rdfs:label "purpose" ;
+    rdfs:subClassOf dul:Goal ;
+    owl:equivalentClass dbpedia:X86 .
+
+ns1:Registered a owl:Class ;
+    rdfs:label "registered" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:RegisteredTrademark a owl:Class ;
+    rdfs:label "Registered Trademark" ;
+    dul:hasQuality ns1:Registered ;
+    rdfs:subClassOf ns1:Trademark ;
+    owl:equivalentClass dbpedia:Trademark .
+
+ns1:Reserve rdfs:label "reserved" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Rights rdfs:label "rights" .
+
+ns1:Site rdfs:label "site" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Sony_corporation rdfs:label "Sony Corporation" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Sony .
+
+ns1:Website rdfs:label "website" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:app_1 a ns1:App ;
+    rdfs:label "app" ;
+    quant:hasDeterminer quant:the .
+
+ns1:app_2 a dbpedia:Mobile_app,
+        ns1:GenuineApp ;
+    rdfs:label "apps" ;
+    dul:hasQuality ns1:Genuine ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "We" .
+
+ns1:rights_1 a ns1:Rights ;
+    rdfs:label "rights" ;
+    quant:hasQuantifier quant:all,
+        quant:multiple .
+
+ns1:site_1 a ns1:Site ;
+    rdfs:label "site" ;
+    quant:hasDeterminer quant:this ;
+    ns1:for ns1:purpose_1 .
+
+ns1:trademark_1 a ns1:Trademark ;
+    rdfs:label "trademark" ;
+    quant:hasDeterminer quant:a .
+
+ns1:website_1 a ns1:Website ;
+    rdfs:label "website" ;
+    quant:hasDeterminer quant:this .
+
+ns1:App a owl:Class ;
+    rdfs:label "app",
+        "apps" .
+
+ns1:Trademark a owl:Class ;
+    rdfs:label "trademark" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:purpose_1 a ns1:Purpose ;
+    rdfs:label "purpose" ;
+    quant:hasDeterminer quant:the .
+

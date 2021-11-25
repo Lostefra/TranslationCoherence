@@ -1,0 +1,128 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence796.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme2 rdfs:label "For" .
+
+translation_coherence:ko_sentence796.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence796" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence796" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:From rdfs:label "from" .
+
+ns1:behavior_2 rdfs:label "behavior" .
+
+ns1:change_1 a ns1:Change ;
+    rdfs:label "changed" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:Boas ;
+    vn.role:Theme1 ns1:race_1 ;
+    vn.role:Theme2 ns1:example_1 .
+
+ns1:docuverse earmark:hasContent "For example, Boas has not changed biological races, and human behavior and behavior originated from nuclear than nature."^^xsd:string .
+
+ns1:originate_1 a ns1:Originate ;
+    rdfs:label "originated" ;
+    vn.role:Agent ns1:behavior_1 ;
+    vn.role:Theme2 ns1:example_1 ;
+    ns1:from ns1:nature_1 .
+
+dbpedia:Nature_(journal) rdfs:subClassOf schema:CreativeWork .
+
+ns1:Biological rdfs:label "biological" ;
+    owl:sameAs dbpedia:Biology .
+
+ns1:BiologicalRace rdfs:subClassOf ns1:Race .
+
+ns1:Boas rdfs:label "Boas" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Franz_Boas .
+
+ns1:Change rdfs:label "changed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Example rdfs:label "example" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Human a owl:Class ;
+    rdfs:label "human" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:HumanBehavior a owl:Class ;
+    rdfs:label "human behavior" ;
+    dul:hasQuality ns1:Human ;
+    rdfs:subClassOf ns1:Behavior ;
+    owl:equivalentClass dbpedia:Human_behavior .
+
+ns1:Nature a owl:Class ;
+    rdfs:label "nature" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Nature_(journal) .
+
+ns1:Nuclear rdfs:label "nuclear" .
+
+ns1:Originate rdfs:label "originated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Race rdfs:label "races" .
+
+ns1:behavior_1 a ns1:Behavior,
+        ns1:HumanBehavior ;
+    rdfs:label "behavior" .
+
+ns1:nature_1 a ns1:Nature ;
+    rdfs:label "nature" ;
+    dul:hasQuality ns1:Nuclear .
+
+ns1:race_1 a dbpedia:Race_(human_categorization),
+        ns1:BiologicalRace ;
+    rdfs:label "races" ;
+    dul:hasQuality ns1:Biological ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Behavior a owl:Class ;
+    rdfs:label "Behavior",
+        "behavior" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:example_1 a ns1:Example ;
+    rdfs:label "example" .
+

@@ -1,0 +1,191 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence583.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%2C> rdfs:label "," .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:nl_sentence583.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence583" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence583" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Although rdfs:label "although" .
+
+ns1:In rdfs:label "in" .
+
+ns1:be_1 a ns1:Be ;
+    rdfs:label "is" ;
+    boxer:agent ns1:first_1 ;
+    boxer:theme ns1:situation_1 .
+
+ns1:communion_1 a ns1:Communion ;
+    rdfs:label "communion" ;
+    dul:associatedWith ns1:fund_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:docuverse earmark:hasContent "The first is that there have been significant progresses made in regional and social conspiracy by the Union and that the communion Funds has been a great one, although not decisive, factor in reduced regionality in qualities."^^xsd:string .
+
+ns1:progress_1 rdfs:label "progresses" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Be rdfs:label "is" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Communion rdfs:label "communion" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:CommunionFund rdfs:subClassOf ns1:Fund .
+
+ns1:Conspiracy a owl:Class ;
+    rdfs:label "conspiracy" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Decisive rdfs:label "decisive" .
+
+ns1:Factor rdfs:label "factor" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:First rdfs:label "first" ;
+    rdfs:subClassOf dul:Role .
+
+ns1:Fund rdfs:label "Funds" .
+
+ns1:Make rdfs:label "made" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Progress rdfs:label "progresses" .
+
+ns1:Quality rdfs:label "qualities" .
+
+ns1:Reduced a owl:Class ;
+    rdfs:label "reduced" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ReducedRegionality a owl:Class ;
+    rdfs:label "Reduced Regionality" ;
+    dul:hasQuality ns1:Reduced ;
+    rdfs:subClassOf ns1:Regionality .
+
+ns1:Regional rdfs:label "regional" .
+
+ns1:Regionality a owl:Class ;
+    rdfs:label "regionality" .
+
+ns1:Significant rdfs:label "significant" .
+
+ns1:SignificantProgress rdfs:subClassOf ns1:Progress .
+
+ns1:Social a owl:Class ;
+    rdfs:label "social" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Society .
+
+ns1:SocialConspiracy a owl:Class ;
+    rdfs:label "social conspiracy" ;
+    dul:hasQuality ns1:Social ;
+    rdfs:subClassOf ns1:Conspiracy .
+
+ns1:There rdfs:label "there" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Union rdfs:label "Union" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:first_1 a ns1:First ;
+    rdfs:label "first" ;
+    quant:hasDeterminer quant:the .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "made" ;
+    vn.role:Agent ns1:Union ;
+    vn.role:Theme ns1:there_1 ;
+    ns1:in ns1:conspiracy_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Great,
+        ns1:conspiracy_1,
+        ns1:decisive_1,
+        ns1:factor_1,
+        ns1:fund_1,
+        ns1:make_1,
+        ns1:quality_1,
+        ns1:regionality_1,
+        ns1:there_1 ;
+    dul:associatedWith ns1:factor_1 ;
+    ns1:although ns1:decisive_1 .
+
+ns1:Great rdfs:label "great" .
+
+ns1:conspiracy_1 a ns1:SocialConspiracy ;
+    rdfs:label "conspiracy" ;
+    dul:hasQuality ns1:Regional .
+
+ns1:decisive_1 a ns1:Decisive ;
+    rdfs:label "decisive" .
+
+ns1:factor_1 a ns1:Factor ;
+    rdfs:label "factor" ;
+    quant:hasDeterminer quant:a ;
+    quant:hasQuantifier quant:one ;
+    ns1:in ns1:regionality_1 .
+
+ns1:fund_1 a ns1:CommunionFund ;
+    rdfs:label "Funds" ;
+    dul:hasDataValue "1"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:Great ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:quality_1 a ns1:Quality ;
+    rdfs:label "qualities" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:regionality_1 a ns1:ReducedRegionality ;
+    rdfs:label "regionality" ;
+    ns1:in ns1:quality_1 .
+
+ns1:there_1 a ns1:SignificantProgress,
+        ns1:There ;
+    rdfs:label "there" ;
+    dul:hasQuality ns1:Significant .
+

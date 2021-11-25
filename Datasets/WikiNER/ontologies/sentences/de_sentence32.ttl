@@ -1,0 +1,133 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence32.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Patient2 rdfs:label "to" .
+
+translation_coherence:de_sentence32.ttl a owl:Ontology ;
+    rdfs:label "de_sentence32" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence32" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Agent rdfs:label "by" .
+
+ns1:As rdfs:label "as" .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "In the U.K., this was linked to the bright movement as it was exacerbated by bandwidths such as Crass and the sex of Pistols."^^xsd:string .
+
+ns1:link_1 a ns1:Link ;
+    rdfs:label "linked" ;
+    vn.role:Patient1 ns1:thing_1 ;
+    vn.role:Patient2 ns1:movement_1 ;
+    ns1:as ns1:exacerbate_1 ;
+    ns1:locatedIn <https://w3id.org/stlab/ke/amiala/de_sentence32.ttl/U.k.> .
+
+ns1:neuter_1 coref:coref <https://w3id.org/stlab/ke/amiala/de_sentence32.ttl/U.k.> .
+
+ns1:Bandwidth rdfs:label "bandwidths" .
+
+ns1:BrightMovement a owl:Class ;
+    rdfs:label "bright movement" ;
+    dul:hasQuality ns1:Bright ;
+    rdfs:subClassOf ns1:Movement ;
+    owl:equivalentClass dbpedia:Brights_movement .
+
+ns1:Crass rdfs:label "Crass" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Crass .
+
+ns1:Exacerbate rdfs:label "exacerbated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Link rdfs:label "linked" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Movement a owl:Class ;
+    rdfs:label "movement" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Pistols rdfs:label "Pistols" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Pistol .
+
+ns1:Sex rdfs:label "sex" ;
+    rdfs:subClassOf dul:Process .
+
+ns1:bandwidth_1 a ns1:Bandwidth ;
+    rdfs:label "bandwidths" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:as ns1:Crass,
+        ns1:sex_1 .
+
+ns1:exacerbate_1 a ns1:Exacerbate ;
+    rdfs:label "exacerbated" ;
+    boxer:agent ns1:bandwidth_1 ;
+    boxer:patient <https://w3id.org/stlab/ke/amiala/de_sentence32.ttl/U.k.> .
+
+ns1:movement_1 a ns1:BrightMovement ;
+    rdfs:label "movement" ;
+    dul:hasQuality ns1:Bright ;
+    quant:hasDeterminer quant:the,
+        quant:this .
+
+ns1:sex_1 a ns1:Sex ;
+    rdfs:label "sex" ;
+    quant:hasDeterminer quant:the ;
+    ns1:sexOf ns1:Pistols .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "this" .
+
+ns1:Bright a owl:Class ;
+    rdfs:label "bright" ;
+    rdfs:subClassOf dul:Quality .
+
+owl:Thing rdfs:label "it",
+        "this" .
+
+<https://w3id.org/stlab/ke/amiala/de_sentence32.ttl/U.k.> a owl:Thing ;
+    rdfs:label "U.K.",
+        "it" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+

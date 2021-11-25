@@ -1,0 +1,195 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence670.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:nl_sentence670.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence670" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence670" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Catastrophic rdfs:label "catastrophic" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Within rdfs:label "within" .
+
+ns1:divide_1 a ns1:Divide ;
+    rdfs:label "divided" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Theme ns1:First ;
+    ns1:within ns1:Union .
+
+ns1:docuverse earmark:hasContent "First of all, let me make a statement, the fruits of growth are not divided within the Union. The most remote areas, still hit hard by catastrophic unemployment numbers, offer an example of this."^^xsd:string .
+
+ns1:hit_1 a ns1:StillHit ;
+    rdfs:label "hit" ;
+    dul:hasQuality ns1:Hard ;
+    vn.role:Agent ns1:number_1 ;
+    vn.role:Theme ns1:area_1 .
+
+ns1:let_1 a ns1:Let ;
+    rdfs:label "let" ;
+    boxer:agent ns1:thing_1 ;
+    boxer:theme ns1:make_1 ;
+    boxing:hasTruthValue boxing:False .
+
+ns1:offer_1 a ns1:Offer ;
+    rdfs:label "offer" ;
+    vn.role:Agent ns1:area_1 ;
+    vn.role:Theme ns1:example_1 .
+
+ns1:unemployment_1 a ns1:Unemployment ;
+    rdfs:label "unemployment" ;
+    dul:associatedWith ns1:number_1 .
+
+ns1:Area rdfs:label "areas" .
+
+ns1:CatastrophicUnemploymentNumber rdfs:subClassOf ns1:UnemploymentNumber .
+
+ns1:Divide rdfs:label "divided" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Example rdfs:label "example" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:First rdfs:label "First" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith ns1:fruit_1 ;
+    ns1:of ns1:thing_1 .
+
+ns1:Fruit rdfs:label "fruits" .
+
+ns1:Growth rdfs:label "growth" ;
+    rdfs:subClassOf dul:Process .
+
+ns1:Hard rdfs:label "hard" ;
+    dul:hasQuality ns1:Still .
+
+ns1:Hit rdfs:label "hit" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Let rdfs:label "let" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Make rdfs:label "make" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Most rdfs:label "most" .
+
+ns1:MostRemoteArea rdfs:subClassOf ns1:RemoteArea .
+
+ns1:Number rdfs:label "numbers" .
+
+ns1:Offer rdfs:label "offer" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Person rdfs:label "me" .
+
+ns1:Remote rdfs:label "remote" .
+
+ns1:RemoteArea rdfs:subClassOf ns1:Area .
+
+ns1:Statement rdfs:label "statement" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Still rdfs:label "still" .
+
+ns1:StillHit rdfs:label "Still Hit" ;
+    rdfs:subClassOf ns1:Hit .
+
+ns1:Unemployment rdfs:label "unemployment" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:UnemploymentNumber rdfs:subClassOf ns1:Number .
+
+ns1:Union rdfs:label "Union" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:example_1 a ns1:Example ;
+    rdfs:label "example" ;
+    quant:hasDeterminer quant:an ;
+    ns1:exampleOf ns1:thing_2 .
+
+ns1:fruit_1 a ns1:Fruit ;
+    rdfs:label "fruits" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:fruitOf ns1:growth_1 .
+
+ns1:growth_1 a ns1:Growth ;
+    rdfs:label "growth" .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "make" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:statement_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "me" .
+
+ns1:statement_1 a ns1:Statement ;
+    rdfs:label "statement" ;
+    quant:hasDeterminer quant:a ;
+    quant:hasQuantifier quant:all .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "this" .
+
+ns1:area_1 a ns1:MostRemoteArea ;
+    rdfs:label "areas" ;
+    dul:hasQuality ns1:Most,
+        ns1:Remote ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:number_1 a ns1:CatastrophicUnemploymentNumber ;
+    rdfs:label "numbers" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "all" .
+
+owl:Thing rdfs:label "all",
+        "this" .
+

@@ -1,0 +1,163 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence168.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence168.ttl a owl:Ontology ;
+    rdfs:label "en_sentence168" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence168" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:On rdfs:label "on" .
+
+ns1:Onsaleof rdfs:label "on the sale of" .
+
+ns1:beverage_1 a ns1:Beverage ;
+    rdfs:label "beverage" ;
+    dul:associatedWith ns1:Alabama ;
+    quant:hasDeterminer quant:an .
+
+ns1:control_1 a ns1:Control ;
+    rdfs:label "control" ;
+    dul:associatedWith ns1:Alabama .
+
+ns1:docuverse earmark:hasContent "Alabama is an alcoholic beverage control state; the government holds a monopoly on the sale of alcohol."^^xsd:string .
+
+ns1:hold_1 a ns1:Hold ;
+    rdfs:label "holds" ;
+    vn.role:Agent ns1:government_1 ;
+    vn.role:Theme ns1:monopoly_1 ;
+    ns1:onSaleOf ns1:alcohol_1 .
+
+ns1:sale_1 a ns1:Sale ;
+    rdfs:label "sale" ;
+    quant:hasDeterminer quant:the .
+
+ns1:state_1 rdfs:label "state" .
+
+dbpedia:Alabama a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:Alcohol rdfs:label "alcohol" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Alcoholic a owl:Class ;
+    rdfs:label "alcoholic" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Alcoholic_beverage .
+
+ns1:AlcoholicBeverage a owl:Class ;
+    dul:hasQuality ns1:Alcoholic ;
+    rdfs:subClassOf dul:PhysicalObject,
+        ns1:Beverage .
+
+ns1:AlcoholicBeverageControl a owl:Class ;
+    dul:associatedWith ns1:AlcoholicBeverage ;
+    rdfs:subClassOf ns1:BeverageControl .
+
+ns1:AlcoholicBeverageControlState a owl:Class ;
+    rdfs:label "alcoholic beverage control state" ;
+    dul:associatedWith ns1:AlcoholicBeverageControl ;
+    rdfs:subClassOf ns1:BeverageControlState .
+
+ns1:BeverageControlState a owl:Class ;
+    rdfs:label "beverage control state" ;
+    dul:associatedWith ns1:BeverageControl ;
+    rdfs:subClassOf ns1:ControlState .
+
+ns1:ControlState a owl:Class ;
+    rdfs:label "Control State" ;
+    dul:associatedWith ns1:Control ;
+    rdfs:subClassOf ns1:State .
+
+ns1:Government a owl:Class ;
+    rdfs:label "government" ;
+    rdfs:subClassOf dul:Organization ;
+    owl:equivalentClass dbpedia:Government .
+
+ns1:Hold rdfs:label "holds" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Monopoly a owl:Class ;
+    rdfs:label "monopoly" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Monopoly .
+
+ns1:Sale rdfs:label "sale" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:State a owl:Class ;
+    rdfs:label "Alabama",
+        "state" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> ;
+    owl:equivalentClass dbpedia:State_(polity) .
+
+ns1:alcohol_1 a ns1:Alcohol ;
+    rdfs:label "alcohol" .
+
+ns1:government_1 a ns1:Government ;
+    rdfs:label "government" ;
+    quant:hasDeterminer quant:the .
+
+ns1:monopoly_1 a ns1:Monopoly ;
+    rdfs:label "monopoly" ;
+    quant:hasDeterminer quant:a .
+
+ns1:Alabama a ns1:AlcoholicBeverageControlState ;
+    rdfs:label "Alabama",
+        "beverage",
+        "control",
+        "state" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Alabama .
+
+ns1:BeverageControl a owl:Class ;
+    dul:associatedWith ns1:Beverage ;
+    rdfs:subClassOf ns1:Control .
+
+ns1:Beverage a owl:Class ;
+    rdfs:label "Alabama",
+        "beverage" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Control a owl:Class ;
+    rdfs:label "Alabama",
+        "control" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+

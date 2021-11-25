@@ -1,0 +1,107 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence265.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence265.ttl a owl:Ontology ;
+    rdfs:label "it_sentence265" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence265" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Foradequatestandardof rdfs:label "adequate standards for transport of" .
+
+ns1:Theme rdfs:label "necessary" .
+
+ns1:Type rdfs:label "type" .
+
+ns1:docuverse earmark:hasContent "This makes it necessary to have adequate standards for transport of this type."^^xsd:string .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "makes" ;
+    boxer:theme ns1:have_1 ;
+    vn.role:Agent ns1:thing_2 ;
+    vn.role:Theme ns1:thing_2 .
+
+ns1:neuter_1 coref:coref ns1:thing_2 .
+
+ns1:thing_1 a owl:Thing ;
+    boxer:theme ns1:have_1 .
+
+ns1:transport_1 a ns1:Transport ;
+    rdfs:label "transport" .
+
+ns1:Adequate rdfs:label "adequate" .
+
+ns1:AdequateStandard rdfs:subClassOf ns1:Standard .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Make rdfs:label "makes" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Standard rdfs:label "standards" .
+
+ns1:Transport rdfs:label "transport" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:standard_1 a dbpedia:Technical_standard,
+        ns1:AdequateStandard ;
+    rdfs:label "standards" ;
+    dul:hasQuality ns1:Adequate ;
+    quant:hasDeterminer quant:this ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:forAdequateStandardOf ns1:type_1 .
+
+ns1:type_1 rdfs:label "type" ;
+    quant:hasDeterminer quant:this .
+
+owl:Thing rdfs:label "This",
+        "it" .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "have" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:thing_2 ;
+    vn.role:Patient ns1:standard_1 .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "This",
+        "it" .
+

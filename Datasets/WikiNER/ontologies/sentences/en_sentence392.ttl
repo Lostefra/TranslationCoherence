@@ -1,0 +1,195 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence392.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:en_sentence392.ttl a owl:Ontology ;
+    rdfs:label "en_sentence392" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence392" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Of rdfs:label "Of",
+        "of" .
+
+ns1:To rdfs:label "to" .
+
+ns1:When rdfs:label "when" .
+
+ns1:Where rdfs:label "where" .
+
+ns1:be_1 a ns1:Be ;
+    rdfs:label "were" ;
+    boxer:agent ns1:Louisiana,
+        ns1:Tennessee ;
+    ns1:beOf ns1:importance_1 .
+
+ns1:docuverse earmark:hasContent "Of special importance were Tennessee, where Lincoln appointed Andrew_Johnson as governor, and Louisiana, where Lincoln attempted a plan that would restore statehood when 10% of the voters agreed to it."^^xsd:string .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+dbpedia:Andrew_Johnson a schema:Person .
+
+dbpedia:Louisiana a schema:AdministrativeArea,
+        schema:Place .
+
+dbpedia:Tennessee a schema:AdministrativeArea,
+        schema:Place .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Agree rdfs:label "agreed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Andrew_johnson rdfs:label "Andrew Johnson" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Andrew_Johnson .
+
+ns1:Appoint rdfs:label "appointed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Attempt rdfs:label "attempted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Be rdfs:label "were" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Governor a owl:Class ;
+    rdfs:label "governor" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Governor_of_California .
+
+ns1:Importance a owl:Class ;
+    rdfs:label "importance" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Louisiana rdfs:label "Louisiana" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Louisiana ;
+    ns1:where ns1:situation_1 .
+
+ns1:Percent rdfs:label "%" .
+
+ns1:Plan rdfs:label "plan" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Restore rdfs:label "restore" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Special a owl:Class ;
+    rdfs:label "special" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SpecialImportance a owl:Class ;
+    rdfs:label "Special Importance" ;
+    dul:hasQuality ns1:Special ;
+    rdfs:subClassOf ns1:Importance .
+
+ns1:Statehood rdfs:label "statehood" .
+
+ns1:Voter rdfs:label "voters" .
+
+ns1:appoint_1 a ns1:Appoint ;
+    rdfs:label "appointed" ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Theme ns1:Andrew_johnson ;
+    ns1:as ns1:governor_1 .
+
+ns1:attempt_1 a ns1:Attempt ;
+    rdfs:label "attempted" ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Theme ns1:plan_1 .
+
+ns1:governor_1 a ns1:Governor ;
+    rdfs:label "governor" .
+
+ns1:importance_1 a ns1:SpecialImportance ;
+    rdfs:label "importance" .
+
+ns1:restore_1 a ns1:Restore ;
+    rdfs:label "restore" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:plan_1 ;
+    vn.role:Theme ns1:statehood_1 ;
+    ns1:when ns1:agree_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:agree_1,
+        ns1:attempt_1,
+        ns1:percent_1,
+        ns1:plan_1,
+        ns1:restore_1,
+        ns1:statehood_1 .
+
+ns1:voter_1 a ns1:Voter ;
+    rdfs:label "voters" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+
+ns1:Tennessee rdfs:label "Tennessee" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:hasQuality owl:Thing ;
+    owl:sameAs dbpedia:Tennessee ;
+    ns1:where ns1:appoint_1 .
+
+ns1:agree_1 a ns1:Agree ;
+    rdfs:label "agreed" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Actor ns1:percent_1 ;
+    ns1:to ns1:Tennessee .
+
+ns1:percent_1 a ns1:Percent ;
+    rdfs:label "%" ;
+    dul:hasDataValue "10"^^xsd:nonNegativeInteger ;
+    ns1:percentOf ns1:voter_1 .
+
+ns1:statehood_1 a ns1:Statehood ;
+    rdfs:label "statehood" .
+
+ns1:plan_1 a ns1:Plan ;
+    rdfs:label "plan" ;
+    quant:hasDeterminer quant:a .
+

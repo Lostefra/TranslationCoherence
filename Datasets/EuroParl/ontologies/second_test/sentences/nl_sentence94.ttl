@@ -1,0 +1,154 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence94.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "from" .
+
+translation_coherence:nl_sentence94.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence94" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence94" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "However, in the parliament, we also have a supervisory role regarding the committee, and we don't have to agree with anything that comes from the committee."^^xsd:string .
+
+ns1:have_1 a ns1:AlsoHave ;
+    rdfs:label "have" ;
+    dul:hasQuality ns1:Also,
+        ns1:However ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Patient ns1:role_1 ;
+    ns1:in ns1:parliament_1 .
+
+ns1:have_2 a ns1:Have ;
+    rdfs:label "have" ;
+    boxer:theme ns1:situation_1 ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:person_2 .
+
+ns1:regard_1 a ns1:Regard ;
+    rdfs:label "regarding" ;
+    vn.role:Experiencer ns1:role_1 ;
+    vn.role:Stimulus ns1:committee_1 .
+
+owl:Thing rdfs:label "anything" .
+
+ns1:Agree rdfs:label "agree" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoHave rdfs:label "also have" ;
+    rdfs:subClassOf ns1:Have .
+
+ns1:Come rdfs:label "comes" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Committee rdfs:label "committee" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:However rdfs:label "However" .
+
+ns1:Parliament a owl:Class ;
+    rdfs:label "parliament" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Parliament .
+
+ns1:Regard rdfs:label "regarding" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Role a owl:Class ;
+    rdfs:label "role" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Supervisory a owl:Class ;
+    rdfs:label "supervisory" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SupervisoryRole a owl:Class ;
+    rdfs:label "Supervisory Role" ;
+    dul:hasQuality ns1:Supervisory ;
+    rdfs:subClassOf ns1:Role .
+
+ns1:agree_1 a ns1:Agree ;
+    rdfs:label "agree" ;
+    vn.role:Actor ns1:person_2 ;
+    ns1:with ns1:thing_1 .
+
+ns1:come_1 a ns1:Come ;
+    rdfs:label "comes" ;
+    vn.role:Location ns1:committee_1 ;
+    vn.role:Theme ns1:thing_1 .
+
+ns1:parliament_1 a ns1:Parliament ;
+    rdfs:label "parliament" ;
+    quant:hasDeterminer quant:the .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:agree_1,
+        ns1:come_1,
+        ns1:thing_1 .
+
+ns1:Have rdfs:label "Have",
+        "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Person rdfs:label "we" .
+
+ns1:committee_1 a ns1:Committee ;
+    rdfs:label "committee" ;
+    quant:hasDeterminer quant:the .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:role_1 a ns1:SupervisoryRole ;
+    rdfs:label "role" ;
+    quant:hasDeterminer quant:a .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "anything" .
+

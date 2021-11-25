@@ -1,0 +1,162 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence547.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence547.ttl a owl:Ontology ;
+    rdfs:label "en_sentence547" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence547" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Differently rdfs:label "differently" .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "In",
+        "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:behave_1 a ns1:Behave ;
+    rdfs:label "behaves" ;
+    boxer:agent ns1:brain_1 ;
+    ns1:differentlyFor ns1:people_1 .
+
+ns1:docuverse earmark:hasContent "In the study published in the February 2007 print issue of Nature_Neuroscience, researchers have found a part of the brain that behaves differently for altruistic and selfish people."^^xsd:string .
+
+ns1:find_1 a ns1:Find ;
+    rdfs:label "found" ;
+    vn.role:Agent ns1:researcher_1 ;
+    vn.role:Theme ns1:part_1 ;
+    ns1:in ns1:study_1 .
+
+ns1:print_1 a ns1:Print ;
+    rdfs:label "print" ;
+    dul:associatedWith ns1:issue_1 .
+
+ns1:publish_1 a ns1:Publish ;
+    rdfs:label "published" ;
+    vn.role:Product ns1:study_1 ;
+    ns1:in ns1:issue_1 .
+
+ns1:Altruistic rdfs:label "altruistic" ;
+    owl:sameAs dbpedia:Altruism .
+
+ns1:Behave rdfs:label "behaves" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Brain a owl:Class ;
+    rdfs:label "brain" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Brain .
+
+ns1:Find rdfs:label "found" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Issue a owl:Class ;
+    rdfs:label "issue" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Nature_neuroscience rdfs:label "Nature Neuroscience" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Nature_Neuroscience .
+
+ns1:Part rdfs:label "part" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:People a owl:Class ;
+    rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:PrintIssue a owl:Class ;
+    rdfs:label "Print Issue" ;
+    dul:associatedWith ns1:Print ;
+    rdfs:subClassOf ns1:Issue .
+
+ns1:Publish rdfs:label "published" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Researcher rdfs:label "researchers" .
+
+ns1:Selfish a owl:Class ;
+    rdfs:label "selfish" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SelfishPeople a owl:Class ;
+    rdfs:label "Selfish People" ;
+    dul:hasQuality ns1:Selfish ;
+    rdfs:subClassOf ns1:People .
+
+ns1:Study a owl:Class ;
+    rdfs:label "study" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Research .
+
+ns1:part_1 a ns1:Part ;
+    rdfs:label "part" ;
+    quant:hasDeterminer quant:a ;
+    ns1:partOf ns1:brain_1 .
+
+ns1:people_1 a ns1:SelfishPeople ;
+    rdfs:label "people" ;
+    dul:hasQuality ns1:Altruistic ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:researcher_1 a dbpedia:Research,
+        ns1:Researcher ;
+    rdfs:label "researchers" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Print a owl:Class ;
+    rdfs:label "print" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:brain_1 a ns1:Brain ;
+    rdfs:label "brain" ;
+    quant:hasDeterminer quant:the .
+
+ns1:issue_1 a ns1:PrintIssue ;
+    rdfs:label "issue" ;
+    ns1:at "2007-02-01"^^xsd:date ;
+    ns1:printIssueOf ns1:Nature_neuroscience .
+
+ns1:study_1 a ns1:Study ;
+    rdfs:label "study" ;
+    quant:hasDeterminer quant:the .
+

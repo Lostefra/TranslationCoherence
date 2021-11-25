@@ -1,0 +1,148 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence400.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence400.ttl a owl:Ontology ;
+    rdfs:label "de_sentence400" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence400" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of",
+        "their" .
+
+ns1:With rdfs:label "with" .
+
+ns1:communication_1 rdfs:label "communication" .
+
+ns1:docuverse earmark:hasContent "You must see the political dimension of work to see that officials assume their responsibility and that there is communication with citizens."^^xsd:string .
+
+ns1:see_1 a ns1:See ;
+    rdfs:label "see" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:dimension_1 .
+
+ns1:see_2 a ns1:See ;
+    rdfs:label "see" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:assume_1 .
+
+ns1:there_1 a ns1:Communication,
+        ns1:There ;
+    rdfs:label "there" ;
+    ns1:with ns1:citizen_1 .
+
+ns1:thing_1 coref:coref ns1:official_1 .
+
+ns1:Assume rdfs:label "assume" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Citizen rdfs:label "citizens" .
+
+ns1:Communication a owl:Class ;
+    rdfs:label "communication" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Communication .
+
+ns1:Dimension a owl:Class ;
+    rdfs:label "dimension" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Official rdfs:label "officials" .
+
+ns1:Person rdfs:label "You" .
+
+ns1:Political a owl:Class ;
+    rdfs:label "political" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:PoliticalDimension a owl:Class ;
+    rdfs:label "political dimension" ;
+    dul:hasQuality ns1:Political ;
+    rdfs:subClassOf ns1:Dimension .
+
+ns1:Responsibility a owl:Class ;
+    rdfs:label "responsibility" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Duty .
+
+ns1:There rdfs:label "there" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Work a owl:Class ;
+    rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Employment .
+
+ns1:assume_1 a ns1:Assume ;
+    rdfs:label "assume" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:official_1 ;
+    vn.role:Theme ns1:responsibility_1 .
+
+ns1:citizen_1 a ns1:Citizen ;
+    rdfs:label "citizens" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:dimension_1 a ns1:PoliticalDimension ;
+    rdfs:label "dimension" ;
+    quant:hasDeterminer quant:the ;
+    ns1:politicalDimensionOf ns1:work_1 .
+
+ns1:responsibility_1 a ns1:Responsibility ;
+    rdfs:label "responsibility" ;
+    ns1:responsibilityOf ns1:official_1 .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "work" .
+
+ns1:See rdfs:label "see" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "You" .
+
+ns1:official_1 a owl:Thing,
+        ns1:Official ;
+    rdfs:label "officials",
+        "their" ;
+    quant:hasQuantifier quant:multiple .
+

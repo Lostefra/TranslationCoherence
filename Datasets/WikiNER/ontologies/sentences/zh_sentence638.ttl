@@ -1,0 +1,132 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence638.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme2 rdfs:label "on" .
+
+translation_coherence:zh_sentence638.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence638" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence638" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "her",
+        "of" .
+
+ns1:base_1 a ns1:Base ;
+    rdfs:label "based" ;
+    vn.role:Theme1 ns1:number_1 ;
+    vn.role:Theme2 ns1:author_1 .
+
+ns1:docuverse earmark:hasContent "The number of her figures is based on the authors of William_F._Buckley, Manary Gaits skills, Mat Ruff, J._Neil_Schulman and Kay_Nolte_Smith."^^xsd:string .
+
+ns1:skill_1 rdfs:label "skills" .
+
+ns1:Author rdfs:label "authors" .
+
+ns1:Base rdfs:label "based" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Figure rdfs:label "figures" .
+
+ns1:J._neil_schulman a ns1:Skill ;
+    rdfs:label "J. Neil Schulman",
+        "skills" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Manary_gaits,
+        ns1:Mat_ruff,
+        ns1:William_f._buckley ;
+    owl:sameAs dbpedia:J._Neil_Schulman .
+
+ns1:Kay_nolte_smith a ns1:Skill ;
+    rdfs:label "Kay Nolte Smith",
+        "skills" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:J._neil_schulman,
+        ns1:Manary_gaits,
+        ns1:Mat_ruff,
+        ns1:William_f._buckley ;
+    quant:hasQuantifier quant:multiple ;
+    owl:sameAs dbpedia:Kay_Nolte_Smith .
+
+ns1:Number rdfs:label "number" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:author_1 a ns1:Author ;
+    rdfs:label "authors" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:authorOf ns1:Kay_nolte_smith .
+
+ns1:female_1 a ns1:Female ;
+    rdfs:label "her" .
+
+ns1:figure_1 a ns1:Figure ;
+    rdfs:label "figures" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:figureOf ns1:female_1 .
+
+ns1:number_1 a ns1:Number ;
+    rdfs:label "number" ;
+    quant:hasDeterminer quant:the ;
+    ns1:numberOf ns1:figure_1 .
+
+ns1:Mat_ruff a ns1:Skill ;
+    rdfs:label "Mat Ruff",
+        "skills" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith ns1:Manary_gaits,
+        ns1:William_f._buckley .
+
+ns1:Manary_gaits rdfs:label "Manary Gaits" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith ns1:William_f._buckley .
+
+ns1:Skill rdfs:label "J. Neil Schulman",
+        "Kay Nolte Smith",
+        "Mat Ruff",
+        "William F. Buckley",
+        "skills" .
+
+ns1:William_f._buckley a ns1:Skill ;
+    rdfs:label "William F. Buckley",
+        "skills" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs <http://dbpedia.org/resource/William_F._Buckley,_Jr.> .
+

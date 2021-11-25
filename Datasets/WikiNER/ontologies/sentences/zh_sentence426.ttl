@@ -1,0 +1,158 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence426.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence426.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence426" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence426" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "As" .
+
+ns1:By rdfs:label "by" .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:Of rdfs:label "his" .
+
+ns1:When rdfs:label "when" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "As Lincoln mature, particularly when he is President, a sacred idea will increasingly affect his public statements by interacting with human affairs."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:affair_1,
+        ns1:affect_1,
+        ns1:idea_1,
+        ns1:interact_1 ;
+    ns1:as ns1:mature_1 .
+
+ns1:Affair rdfs:label "affairs" .
+
+ns1:Affect rdfs:label "affect" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Human rdfs:label "human" .
+
+ns1:HumanAffair rdfs:subClassOf ns1:Affair .
+
+ns1:Idea a owl:Class ;
+    rdfs:label "idea" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Idea .
+
+ns1:Increasingly rdfs:label "increasingly" .
+
+ns1:IncreasinglyAffect rdfs:label "Increasingly Affect" ;
+    rdfs:subClassOf ns1:Affect .
+
+ns1:Interact rdfs:label "interacting" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Mature rdfs:label "mature" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Particularly rdfs:label "particularly" .
+
+ns1:Public rdfs:label "public" .
+
+ns1:PublicStatement rdfs:subClassOf ns1:Statement .
+
+ns1:Sacred a owl:Class ;
+    rdfs:label "sacred" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SacredIdea a owl:Class ;
+    rdfs:label "sacred idea" ;
+    dul:hasQuality ns1:Sacred ;
+    rdfs:subClassOf ns1:Idea .
+
+ns1:Statement rdfs:label "statements" .
+
+ns1:affect_1 a ns1:IncreasinglyAffect ;
+    rdfs:label "affect" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Increasingly ;
+    vn.role:Cause ns1:idea_1 ;
+    vn.role:Experiencer ns1:statement_1 ;
+    ns1:increasinglyAffectBy ns1:interact_1 .
+
+ns1:mature_1 a ns1:Mature ;
+    rdfs:label "mature" ;
+    dul:hasQuality ns1:Particularly ;
+    vn.role:Patient ns1:Lincoln ;
+    ns1:when ns1:situation_2 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:President .
+
+ns1:statement_1 a ns1:PublicStatement ;
+    rdfs:label "statements" ;
+    dul:hasQuality ns1:Public ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:publicStatementOf ns1:Lincoln .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Male ;
+    owl:sameAs ns1:President .
+
+ns1:President rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:President .
+
+ns1:affair_1 a ns1:HumanAffair ;
+    rdfs:label "affairs" ;
+    dul:hasQuality ns1:Human ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:interact_1 a ns1:Interact ;
+    rdfs:label "interacting" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Actor ns1:idea_1 ;
+    ns1:with ns1:affair_1 .
+
+ns1:idea_1 a ns1:SacredIdea ;
+    rdfs:label "idea" ;
+    quant:hasDeterminer quant:a .
+

@@ -1,0 +1,169 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence554.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:de_sentence554.ttl a owl:Ontology ;
+    rdfs:label "de_sentence554" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence554" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:During rdfs:label "during" .
+
+ns1:Of rdfs:label "'s",
+        "Her",
+        "of" .
+
+ns1:To rdfs:label "to" .
+
+ns1:Under rdfs:label "under" .
+
+ns1:docuverse earmark:hasContent "Her father 's pharmacist was seized by Czechoslovakia, and the family that had fled to the criminals was first under the control of the white army during the Russian_civil_war."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Czechoslovakia,
+        ns1:Russian_civil_war,
+        ns1:army_1,
+        ns1:control_1,
+        ns1:criminal_1,
+        ns1:family_1,
+        ns1:father_1,
+        ns1:female_1,
+        ns1:flee_1,
+        ns1:pharmacist_1,
+        ns1:seize_1 ;
+    dul:hasQuality ns1:First ;
+    ns1:during ns1:Russian_civil_war .
+
+dbpedia:Czechoslovakia a schema:Country,
+        schema:Place .
+
+dbpedia:Russian_Civil_War a schema:Event .
+
+ns1:Control rdfs:label "control" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Criminal rdfs:label "criminals" .
+
+ns1:Family rdfs:label "family" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Father rdfs:label "father" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:First rdfs:label "first" .
+
+ns1:Flee rdfs:label "fled" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Pharmacist a owl:Class ;
+    rdfs:label "pharmacist" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Pharmacy .
+
+ns1:Seize rdfs:label "seized" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:WhiteArmy a owl:Class ;
+    rdfs:label "White Army" ;
+    dul:hasQuality ns1:White ;
+    rdfs:subClassOf ns1:Army ;
+    owl:equivalentClass dbpedia:White_movement .
+
+ns1:flee_1 a ns1:Flee ;
+    rdfs:label "fled" ;
+    vn.role:Theme ns1:family_1 ;
+    ns1:to ns1:criminal_1 .
+
+ns1:seize_1 a ns1:Seize ;
+    rdfs:label "seized" ;
+    vn.role:Agent ns1:Czechoslovakia ;
+    vn.role:Theme ns1:pharmacist_1 .
+
+ns1:Army a owl:Class ;
+    rdfs:label "army" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Czechoslovakia rdfs:label "Czechoslovakia" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Czechoslovakia .
+
+ns1:Russian_civil_war rdfs:label "Russian civil war" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Russian_Civil_War .
+
+ns1:White a owl:Class ;
+    rdfs:label "white" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:control_1 a ns1:Control ;
+    rdfs:label "control" ;
+    quant:hasDeterminer quant:the ;
+    ns1:controlOf ns1:army_1 .
+
+ns1:criminal_1 a ns1:Criminal ;
+    rdfs:label "criminals" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    owl:sameAs ns1:army_1 .
+
+ns1:family_1 a ns1:Family ;
+    rdfs:label "family" ;
+    quant:hasDeterminer quant:the ;
+    ns1:under ns1:control_1 .
+
+ns1:father_1 a ns1:Father ;
+    rdfs:label "father" ;
+    ns1:fatherOf ns1:female_1 .
+
+ns1:female_1 a ns1:Female ;
+    rdfs:label "Her" .
+
+ns1:pharmacist_1 a ns1:Pharmacist ;
+    rdfs:label "pharmacist" ;
+    ns1:pharmacistOf ns1:father_1 .
+
+ns1:army_1 a ns1:Army,
+        ns1:WhiteArmy ;
+    rdfs:label "army" ;
+    dul:hasQuality ns1:White ;
+    quant:hasDeterminer quant:the .
+

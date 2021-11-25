@@ -1,0 +1,182 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence131.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence131.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence131" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence131" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:cattle_1 rdfs:label "cattle" .
+
+ns1:cotton_1 rdfs:label "cotton" .
+
+ns1:docuverse earmark:hasContent "The agricultural output of Alabama includes poultry and eggs, cattle, vegetable nurses, milk powder, cotton, maize and rice, vegetables, milk and soy."^^xsd:string .
+
+ns1:egg_1 a dbpedia:Egg_(food) ;
+    rdfs:label "eggs" .
+
+ns1:include_1 a ns1:Include ;
+    rdfs:label "includes" ;
+    vn.role:Agent ns1:output_1 ;
+    vn.role:Theme ns1:poultry_1 .
+
+ns1:maize_1 rdfs:label "maize" .
+
+ns1:milk_1 a ns1:Milk ;
+    rdfs:label "milk" ;
+    dul:associatedWith ns1:poultry_1 .
+
+ns1:milk_2 rdfs:label "milk" .
+
+ns1:nurse_1 rdfs:label "nurses" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:powder_1 rdfs:label "powder" .
+
+ns1:rice_1 rdfs:label "rice" .
+
+ns1:soy_1 rdfs:label "soy" .
+
+ns1:vegetable_1 a dbpedia:Vegetable ;
+    rdfs:label "vegetables" .
+
+dbpedia:Alabama a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:Agricultural a owl:Class ;
+    rdfs:label "agricultural" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Agriculture .
+
+ns1:AgriculturalOutput a owl:Class ;
+    rdfs:label "agricultural output" ;
+    dul:hasQuality ns1:Agricultural ;
+    rdfs:subClassOf ns1:Output .
+
+ns1:Alabama rdfs:label "Alabama" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Alabama .
+
+ns1:Cattle a owl:Class ;
+    rdfs:label "cattle" ;
+    rdfs:subClassOf dul:Organism ;
+    owl:equivalentClass dbpedia:Cattle .
+
+ns1:Cotton a owl:Class ;
+    rdfs:label "cotton" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Cotton .
+
+ns1:Egg rdfs:label "eggs" .
+
+ns1:Include rdfs:label "includes" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Maize a owl:Class ;
+    rdfs:label "maize" ;
+    rdfs:subClassOf dul:Organism ;
+    owl:equivalentClass dbpedia:Maize .
+
+ns1:MilkPowder a owl:Class ;
+    rdfs:label "milk powder" ;
+    dul:associatedWith ns1:Milk ;
+    rdfs:subClassOf ns1:Powder ;
+    owl:equivalentClass dbpedia:Powdered_milk .
+
+ns1:Nurse rdfs:label "nurses" .
+
+ns1:Output a owl:Class ;
+    rdfs:label "output" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Gross_domestic_product .
+
+ns1:Poultry a owl:Class ;
+    rdfs:label "poultry" ;
+    rdfs:subClassOf dul:Organism ;
+    owl:equivalentClass dbpedia:Poultry .
+
+ns1:Powder a owl:Class ;
+    rdfs:label "powder" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Rice a owl:Class ;
+    rdfs:label "rice" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Rice .
+
+ns1:Soy a owl:Class ;
+    rdfs:label "soy" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Soybean .
+
+ns1:VegetableNurse rdfs:subClassOf ns1:Nurse .
+
+ns1:output_1 a ns1:AgriculturalOutput ;
+    rdfs:label "output" ;
+    quant:hasDeterminer quant:the ;
+    ns1:agriculturalOutputOf ns1:Alabama .
+
+ns1:Vegetable a owl:Class ;
+    rdfs:label "vegetable",
+        "vegetables" ;
+    owl:equivalentClass dbpedia:Vegetable .
+
+ns1:poultry_1 a ns1:Cattle,
+        ns1:Cotton,
+        ns1:Egg,
+        ns1:Maize,
+        ns1:Milk,
+        ns1:MilkPowder,
+        ns1:Poultry,
+        ns1:Rice,
+        ns1:Soy,
+        ns1:Vegetable,
+        ns1:VegetableNurse ;
+    rdfs:label "poultry" ;
+    dul:hasQuality ns1:Vegetable ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Milk a owl:Class ;
+    rdfs:label "milk" ;
+    rdfs:subClassOf dul:PhysicalObject .
+

@@ -1,0 +1,182 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence592.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:de_sentence592.ttl a owl:Ontology ;
+    rdfs:label "de_sentence592" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence592" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:By rdfs:label "by" .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:contribute_1 a ns1:Contribute ;
+    rdfs:label "contribute" ;
+    vn.role:Agent ns1:people_1 ;
+    vn.role:Recipient ns1:prosperity_1 ;
+    vn.role:Theme ns1:most_1 .
+
+ns1:describe_1 a ns1:Describe ;
+    rdfs:label "describes" ;
+    vn.role:Agent ns1:John_galt ;
+    vn.role:Theme ns1:strike_1 .
+
+ns1:docuverse earmark:hasContent "John_Galt, the new Kenner and the leading person of the strike, describes the strike that slows the world's engine by attracting the people who contribute most to the prosperity and performance of the nation."^^xsd:string .
+
+ns1:lead_1 a ns1:Lead ;
+    rdfs:label "leading" ;
+    vn.role:Agent ns1:person_1 .
+
+ns1:performance_1 rdfs:label "performance" .
+
+ns1:slow_1 a ns1:Slow ;
+    rdfs:label "slows" ;
+    vn.role:Agent ns1:strike_1 ;
+    vn.role:Patient ns1:engine_1 ;
+    ns1:slowBy ns1:attract_1 .
+
+ns1:Attract rdfs:label "attracting" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Contribute rdfs:label "contribute" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Describe rdfs:label "describes" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Engine rdfs:label "engine" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:John_galt rdfs:label "John Galt" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith ns1:Kenner,
+        ns1:person_1 ;
+    owl:sameAs dbpedia:John_Galt .
+
+ns1:Kenner rdfs:label "Kenner" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality ns1:New ;
+    owl:sameAs dbpedia:Hugh_Kenner .
+
+ns1:Lead rdfs:label "leading" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Most rdfs:label "most" .
+
+ns1:Nation a owl:Class ;
+    rdfs:label "nation" ;
+    rdfs:subClassOf dul:Organization ;
+    owl:equivalentClass dbpedia:Nation .
+
+ns1:New rdfs:label "new" .
+
+ns1:People a owl:Class ;
+    rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Person .
+
+ns1:Performance rdfs:label "performance" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Person a owl:Class ;
+    rdfs:label "person" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Person .
+
+ns1:Prosperity rdfs:label "prosperity" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Slow rdfs:label "slows" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Strike a owl:Class ;
+    rdfs:label "strike" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Strike_action .
+
+ns1:World rdfs:label "world" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:attract_1 a ns1:Attract ;
+    rdfs:label "attracting" ;
+    boxer:agent ns1:strike_1 ;
+    boxer:patient ns1:people_1 .
+
+ns1:engine_1 a ns1:Engine ;
+    rdfs:label "engine" ;
+    ns1:engineOf ns1:world_1 .
+
+ns1:most_1 a ns1:Most ;
+    rdfs:label "most" .
+
+ns1:nation_1 a ns1:Nation ;
+    rdfs:label "nation" ;
+    quant:hasDeterminer quant:the .
+
+ns1:prosperity_1 a ns1:Performance,
+        ns1:Prosperity ;
+    rdfs:label "prosperity" ;
+    quant:hasDeterminer quant:the ;
+    ns1:prosperityOf ns1:nation_1 .
+
+ns1:world_1 a ns1:World ;
+    rdfs:label "world" ;
+    quant:hasDeterminer quant:the .
+
+ns1:people_1 a ns1:People ;
+    rdfs:label "people" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "person" ;
+    quant:hasDeterminer quant:the ;
+    ns1:personOf ns1:strike_1 .
+
+ns1:strike_1 a ns1:Strike ;
+    rdfs:label "strike" ;
+    quant:hasDeterminer quant:the .
+

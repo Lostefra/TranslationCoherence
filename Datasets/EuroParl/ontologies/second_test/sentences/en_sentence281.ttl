@@ -1,0 +1,221 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence281.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "in" .
+
+translation_coherence:en_sentence281.ttl a owl:Ontology ;
+    rdfs:label "en_sentence281" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence281" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Noteq rdfs:label "other" .
+
+ns1:Of rdfs:label "his" .
+
+ns1:On rdfs:label "on" .
+
+ns1:docuverse earmark:hasContent "Mr President, I would once again like to congratulate Mr Koch on his magnificent work on this other report, which in a way supplements the debate which we held in October on rail transport."^^xsd:string .
+
+ns1:like_1 a ns1:OnceAgainLike ;
+    rdfs:label "like" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:associatedWith ns1:President ;
+    dul:hasQuality ns1:Once ;
+    vn.role:Experiencer ns1:person_1 ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:male_1 coref:coref ns1:President .
+
+ns1:rail_1 a ns1:Rail ;
+    rdfs:label "rail" ;
+    dul:associatedWith ns1:transport_1 .
+
+ns1:Again a owl:Class ;
+    rdfs:label "again" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:AgainLike a owl:Class ;
+    rdfs:label "again like" ;
+    dul:hasQuality ns1:Again ;
+    rdfs:subClassOf ns1:Like .
+
+ns1:Congratulate rdfs:label "congratulate" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Debate rdfs:label "debate" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Hold rdfs:label "held" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Like a owl:Class ;
+    rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Magnificent a owl:Class ;
+    rdfs:label "magnificent" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:MagnificentWork a owl:Class ;
+    rdfs:label "magnificent work" ;
+    dul:hasQuality ns1:Magnificent ;
+    rdfs:subClassOf ns1:Work .
+
+ns1:Once rdfs:label "once" .
+
+ns1:OnceAgainLike a owl:Class ;
+    rdfs:label "Once Again Like" ;
+    rdfs:subClassOf ns1:AgainLike .
+
+ns1:RailTransport a owl:Class ;
+    rdfs:label "rail transport" ;
+    dul:associatedWith ns1:Rail ;
+    rdfs:subClassOf ns1:Transport .
+
+ns1:Supplement rdfs:label "supplements" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Transport a owl:Class ;
+    rdfs:label "transport" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Way rdfs:label "way" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Work a owl:Class ;
+    rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:congratulate_1 a ns1:Congratulate ;
+    rdfs:label "congratulate" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:Koch ;
+    ns1:on ns1:work_1 .
+
+ns1:hold_1 a ns1:Hold ;
+    rdfs:label "held" ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Location "0001-10-01"^^xsd:date ;
+    vn.role:Value ns1:debate_1 ;
+    ns1:on ns1:transport_1 .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:report_2 a ns1:Report ;
+    rdfs:label "report" ;
+    quant:hasDeterminer quant:other,
+        quant:this .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:congratulate_1,
+        ns1:hold_1,
+        ns1:supplement_1,
+        ns1:transport_1,
+        ns1:way_1 .
+
+ns1:supplement_1 a ns1:Supplement ;
+    rdfs:label "supplements" ;
+    boxer:agent ns1:report_1 ;
+    boxer:patient ns1:debate_1 ;
+    ns1:in ns1:way_1 .
+
+ns1:work_1 a ns1:MagnificentWork ;
+    rdfs:label "work" ;
+    ns1:magnificentWorkOf ns1:Koch ;
+    ns1:on ns1:report_1 .
+
+ns1:Koch a ns1:Male ;
+    rdfs:label "Koch" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> .
+
+ns1:Male rdfs:label "Koch",
+        "Mr" .
+
+ns1:Person rdfs:label "I",
+        "we" .
+
+ns1:President a ns1:Topic ;
+    rdfs:label "President",
+        "his" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    owl:sameAs dbpedia:President .
+
+ns1:Rail a owl:Class ;
+    rdfs:label "rail" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Report rdfs:label "other",
+        "report" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Topic rdfs:label "Mr",
+        "President" .
+
+ns1:debate_1 a ns1:Debate ;
+    rdfs:label "debate" ;
+    quant:hasDeterminer quant:the .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:report_1 a ns1:Report ;
+    rdfs:label "other" ;
+    owl:differentFrom ns1:report_2 .
+
+ns1:way_1 a ns1:Way ;
+    rdfs:label "way" ;
+    quant:hasDeterminer quant:a .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> a ns1:Male,
+        ns1:Topic ;
+    rdfs:label "Mr" ;
+    boxer:possibleType dul:Role .
+
+ns1:transport_1 a ns1:RailTransport ;
+    rdfs:label "transport" .
+

@@ -1,0 +1,160 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence460.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence460.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence460" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence460" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Like rdfs:label "like" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:With rdfs:label "with" .
+
+ns1:contain_1 a ns1:Contain ;
+    rdfs:label "contain" ;
+    vn.role:Location ns1:particle_1,
+        ns1:work_1 ;
+    vn.role:Value ns1:interpretation_1,
+        ns1:observation_1 ;
+    ns1:with ns1:mistake_1,
+        ns1:myth_1 .
+
+ns1:docuverse earmark:hasContent "The work that reflect this investigation, like history of animals, generations of animals, and particles of animals contain observations and interpretations, along with sinful myths and mistakes."^^xsd:string .
+
+ns1:reflect_1 a ns1:Reflect ;
+    rdfs:label "reflect" ;
+    boxer:patient ns1:investigation_1 ;
+    vn.role:Experiencer ns1:work_1 .
+
+ns1:Contain rdfs:label "contain" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Generation rdfs:label "generations" .
+
+ns1:History rdfs:label "history" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Interpretation rdfs:label "interpretations" .
+
+ns1:Investigation rdfs:label "investigation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Mistake rdfs:label "mistakes" .
+
+ns1:Myth rdfs:label "myths" .
+
+ns1:Observation rdfs:label "observations" .
+
+ns1:Particle rdfs:label "particles" .
+
+ns1:Reflect rdfs:label "reflect" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Sinful rdfs:label "sinful" ;
+    owl:sameAs dbpedia:Sin .
+
+ns1:SinfulMyth rdfs:subClassOf ns1:Myth .
+
+ns1:Work rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:animal_1 a dbpedia:History_of_Animals,
+        ns1:Animal ;
+    rdfs:label "animals" ;
+    dul:associatedWith ns1:generation_1 ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:animal_2 a ns1:Animal ;
+    rdfs:label "animals" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:animal_3 a ns1:Animal ;
+    rdfs:label "animals" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:generation_1 a ns1:Generation ;
+    rdfs:label "generations" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:generationOf ns1:animal_2 .
+
+ns1:history_1 a ns1:History ;
+    rdfs:label "history" .
+
+ns1:interpretation_1 a dbpedia:Hermeneutics,
+        ns1:Interpretation ;
+    rdfs:label "interpretations" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:investigation_1 a ns1:Investigation ;
+    rdfs:label "investigation" ;
+    quant:hasDeterminer quant:this ;
+    ns1:investigationOf ns1:animal_1 ;
+    ns1:like ns1:history_1 .
+
+ns1:mistake_1 a ns1:Mistake ;
+    rdfs:label "mistakes" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:myth_1 a ns1:SinfulMyth ;
+    rdfs:label "myths" ;
+    dul:hasQuality ns1:Sinful ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:observation_1 a dbpedia:Observation,
+        ns1:Observation ;
+    rdfs:label "observations" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:particle_1 a ns1:Particle ;
+    rdfs:label "particles" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:particleOf ns1:animal_3 .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "work" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Animal rdfs:label "animals" .
+

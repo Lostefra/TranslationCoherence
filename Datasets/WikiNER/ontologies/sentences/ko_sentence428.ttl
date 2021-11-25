@@ -1,0 +1,211 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence428.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence428.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence428" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence428" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:claim_1 a ns1:Claim ;
+    rdfs:label "claim" ;
+    vn.role:Agent ns1:people_1 ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:docuverse earmark:hasContent "All people claim that free, Lincoln and Whigs claim to absorb the immigrant population, the economic development, expansion education, growth territory and the ability of growing countries."^^xsd:string .
+
+ns1:expansion_1 a ns1:Expansion ;
+    rdfs:label "expansion" ;
+    dul:associatedWith ns1:education_1 .
+
+ns1:grow_1 a ns1:Grow ;
+    rdfs:label "growing" ;
+    vn.role:Agent ns1:country_1 .
+
+ns1:growth_1 a ns1:Growth ;
+    rdfs:label "growth" ;
+    dul:associatedWith ns1:territory_1 .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+dbpedia:Whig_Party_(United_States) a schema:Organization .
+
+ns1:Ability rdfs:label "ability" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Country rdfs:label "countries" .
+
+ns1:Development a owl:Class ;
+    rdfs:label "development" ;
+    rdfs:subClassOf dul:Process .
+
+ns1:Economic a owl:Class ;
+    rdfs:label "economic" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:EconomicDevelopment a owl:Class ;
+    rdfs:label "Economic Development" ;
+    dul:hasQuality ns1:Economic ;
+    rdfs:subClassOf ns1:Development ;
+    owl:equivalentClass dbpedia:Economic_development .
+
+ns1:Education a owl:Class ;
+    rdfs:label "education" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Education .
+
+ns1:ExpansionEducation a owl:Class ;
+    rdfs:label "Expansion Education" ;
+    dul:associatedWith ns1:Expansion ;
+    rdfs:subClassOf ns1:Education .
+
+ns1:Free rdfs:label "free" ;
+    owl:sameAs dbpedia:Political_freedom .
+
+ns1:Grow rdfs:label "growing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:GrowthTerritory a owl:Class ;
+    rdfs:label "Growth Territory" ;
+    dul:associatedWith ns1:Growth ;
+    rdfs:subClassOf ns1:Territory .
+
+ns1:Immigrant a owl:Class ;
+    rdfs:label "immigrant" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Immigration .
+
+ns1:ImmigrantPopulation a owl:Class ;
+    rdfs:label "immigrant population" ;
+    dul:hasQuality ns1:Immigrant ;
+    rdfs:subClassOf ns1:Population .
+
+ns1:People rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Population a owl:Class ;
+    rdfs:label "population" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:World_population .
+
+ns1:Territory a owl:Class ;
+    rdfs:label "territory" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> ;
+    owl:equivalentClass dbpedia:United_States_territory .
+
+ns1:ability_1 a ns1:Ability ;
+    rdfs:label "ability" ;
+    quant:hasDeterminer quant:the ;
+    ns1:abilityOf ns1:country_1 .
+
+ns1:claim_2 a ns1:Claim ;
+    rdfs:label "claim" ;
+    vn.role:Agent ns1:Lincoln,
+        ns1:Whigs ;
+    vn.role:Theme ns1:absorb_1 .
+
+ns1:development_1 a ns1:EconomicDevelopment ;
+    rdfs:label "development" ;
+    dul:associatedWith ns1:education_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:people_1 a ns1:People ;
+    rdfs:label "people" ;
+    quant:hasQuantifier quant:all,
+        quant:multiple .
+
+ns1:population_1 a ns1:ImmigrantPopulation ;
+    rdfs:label "population" ;
+    dul:associatedWith ns1:development_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Absorb,
+        ns1:absorb_1,
+        ns1:claim_2 .
+
+ns1:Absorb rdfs:label "absorb" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Claim rdfs:label "claim" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Expansion a owl:Class ;
+    rdfs:label "expansion" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Economic_growth .
+
+ns1:Growth a owl:Class ;
+    rdfs:label "growth" ;
+    rdfs:subClassOf dul:Process ;
+    owl:equivalentClass dbpedia:Economic_growth .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Free ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+
+ns1:Whigs rdfs:label "Whigs" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Whig_Party_(United_States) .
+
+ns1:absorb_1 a ns1:Absorb ;
+    rdfs:label "absorb" ;
+    boxer:agent ns1:Lincoln,
+        ns1:Whigs ;
+    boxer:patient ns1:population_1 .
+
+ns1:country_1 a dbpedia:Nation,
+        ns1:Country ;
+    rdfs:label "countries" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:education_1 a ns1:ExpansionEducation ;
+    rdfs:label "education" ;
+    dul:associatedWith ns1:ability_1,
+        ns1:territory_1 .
+
+ns1:territory_1 a ns1:GrowthTerritory ;
+    rdfs:label "territory" .
+

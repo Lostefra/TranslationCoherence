@@ -1,0 +1,132 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence266.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:ko_sentence266.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence266" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence266" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:With rdfs:label "with" .
+
+ns1:compete_1 a ns1:Compete ;
+    rdfs:label "compete" ;
+    vn.role:Actor ns1:Father ;
+    ns1:with ns1:farm_1 .
+
+ns1:docuverse earmark:hasContent "The Father of Abraham is hard to compete with the farm and economicly operated by anaerobic and slave of slaves in religious land."^^xsd:string .
+
+ns1:operate_1 a ns1:EconomiclyOperate ;
+    rdfs:label "operated" ;
+    dul:hasQuality ns1:Economicly ;
+    vn.role:Agent ns1:slave_1 ;
+    vn.role:Patient ns1:Father ;
+    ns1:in ns1:land_1 .
+
+dbpedia:Abraham a schema:Person .
+
+ns1:Abraham rdfs:label "Abraham" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Abraham .
+
+ns1:Anaerobic rdfs:label "anaerobic" ;
+    owl:sameAs dbpedia:Hypoxia_(environmental) .
+
+ns1:Compete rdfs:label "compete" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Economicly rdfs:label "economicly" .
+
+ns1:EconomiclyOperate rdfs:subClassOf ns1:Operate .
+
+ns1:Farm rdfs:label "farm" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Hard rdfs:label "hard" .
+
+ns1:Land a owl:Class ;
+    rdfs:label "land" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Operate rdfs:label "operated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Religious a owl:Class ;
+    rdfs:label "religious" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ReligiousLand a owl:Class ;
+    rdfs:label "religious land" ;
+    dul:hasQuality ns1:Religious ;
+    rdfs:subClassOf ns1:Land .
+
+ns1:farm_1 a ns1:Farm ;
+    rdfs:label "farm" ;
+    quant:hasDeterminer quant:the .
+
+ns1:land_1 a ns1:ReligiousLand ;
+    rdfs:label "land" .
+
+ns1:slave_1 a ns1:Slave ;
+    rdfs:label "slave" ;
+    dul:hasQuality ns1:Anaerobic ;
+    ns1:slaveOf ns1:slave_2 .
+
+ns1:slave_2 a dbpedia:Slavery,
+        ns1:Slave ;
+    rdfs:label "slaves" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Father rdfs:label "Father" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality ns1:Hard ;
+    owl:sameAs dbpedia:Father ;
+    ns1:of ns1:Abraham .
+
+ns1:Slave rdfs:label "slave",
+        "slaves" ;
+    rdfs:subClassOf dul:Person .
+

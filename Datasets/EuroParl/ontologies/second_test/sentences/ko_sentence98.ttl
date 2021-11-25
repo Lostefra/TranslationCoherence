@@ -1,0 +1,167 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence98.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:ko_sentence98.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence98" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence98" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "my" .
+
+ns1:discuss_1 a ns1:Discuss ;
+    rdfs:label "discuss" ;
+    boxer:agent ns1:person_2 ;
+    boxer:patient ns1:fact_1 ;
+    boxing:hasModality boxing:Necessary ;
+    ns1:in ns1:program_1 .
+
+ns1:docuverse earmark:hasContent "The fact that the topic is linked is suggested that we should discuss in two programs together. Why my group refuses to offer made by socialist groups."^^xsd:string .
+
+ns1:refuse_1 a ns1:Refuse ;
+    rdfs:label "refuses" ;
+    boxer:agent ns1:group_1 ;
+    boxer:theme ns1:situation_1 ;
+    dul:hasQuality ns1:Why .
+
+ns1:Discuss rdfs:label "discuss" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Fact rdfs:label "fact" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Link rdfs:label "linked" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Make rdfs:label "made" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Offer rdfs:label "offer" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Program rdfs:label "programs" .
+
+ns1:Refuse rdfs:label "refuses" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Socialist rdfs:label "socialist" ;
+    owl:sameAs dbpedia:Socialism .
+
+ns1:SocialistGroup rdfs:subClassOf ns1:Group .
+
+ns1:Suggest rdfs:label "suggested" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Together rdfs:label "together" .
+
+ns1:Why rdfs:label "Why" .
+
+ns1:fact_1 a ns1:Fact ;
+    rdfs:label "fact" ;
+    boxer:theme ns1:situation_2 ;
+    dul:hasQuality ns1:Topic ;
+    quant:hasDeterminer quant:the .
+
+ns1:link_1 a ns1:Link ;
+    rdfs:label "linked" ;
+    vn.role:Patient ns1:topic_1 .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "made" ;
+    vn.role:Agent ns1:group_2 ;
+    vn.role:Theme ns1:group_1 .
+
+ns1:offer_1 a ns1:Offer ;
+    rdfs:label "offer" ;
+    vn.role:Agent ns1:group_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "my" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:program_1 a ns1:Program ;
+    rdfs:label "programs" ;
+    dul:hasDataValue "2"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:Together ;
+    quant:hasQuantifier quant:multiple,
+        quant:two .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:group_2,
+        ns1:make_1,
+        ns1:offer_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:link_1,
+        ns1:suggest_1 .
+
+ns1:suggest_1 a ns1:Suggest ;
+    rdfs:label "suggested" ;
+    vn.role:Theme ns1:topic_1 .
+
+ns1:Group rdfs:label "group",
+        "groups" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Topic rdfs:label "topic" .
+
+ns1:group_2 a ns1:SocialistGroup ;
+    rdfs:label "groups" ;
+    dul:hasQuality ns1:Socialist ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:topic_1 a ns1:Topic ;
+    rdfs:label "topic" ;
+    quant:hasDeterminer quant:the .
+
+ns1:group_1 a ns1:Group ;
+    rdfs:label "group" ;
+    ns1:groupOf ns1:person_1 .
+

@@ -1,0 +1,170 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence521.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Topic rdfs:label "about" .
+
+translation_coherence:fi_sentence521.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence521" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence521" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Between rdfs:label "between" .
+
+ns1:In rdfs:label "In" .
+
+ns1:When rdfs:label "When" .
+
+ns1:cohe._1 a <https://w3id.org/stlab/ke/amiala/fi_sentence521.ttl/Cohe.> ;
+    rdfs:label "cohe." ;
+    dul:associatedWith ns1:fund_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:docuverse earmark:hasContent "When I talk about optimal utilization, I mean both national and regional levels. In this context, we also mention the link between the cohe. fund and the national level."^^xsd:string .
+
+ns1:mean_1 a ns1:Mean ;
+    rdfs:label "mean" ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Theme ns1:level_1 ;
+    ns1:when ns1:talk_1 .
+
+ns1:mention_1 a ns1:AlsoMention ;
+    rdfs:label "mention" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Agent ns1:person_3 ;
+    vn.role:Topic ns1:link_1 ;
+    ns1:in ns1:context_1 .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoMention rdfs:label "also mention" ;
+    rdfs:subClassOf ns1:Mention .
+
+ns1:Cohe.Fund a owl:Class ;
+    rdfs:label "cohe. fund" ;
+    dul:associatedWith <https://w3id.org/stlab/ke/amiala/fi_sentence521.ttl/Cohe.> ;
+    rdfs:subClassOf ns1:Fund .
+
+ns1:Context rdfs:label "context" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Fund a owl:Class ;
+    rdfs:label "fund" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:Level rdfs:label "level",
+        "levels" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Link rdfs:label "link" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Mean rdfs:label "mean" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Mention rdfs:label "mention" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:National rdfs:label "National",
+        "national" .
+
+ns1:Optimal a owl:Class ;
+    rdfs:label "optimal" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:OptimalUtilization a owl:Class ;
+    rdfs:label "optimal utilization" ;
+    dul:hasQuality ns1:Optimal ;
+    rdfs:subClassOf ns1:Utilization .
+
+ns1:Regional rdfs:label "regional" .
+
+ns1:RegionalLevel rdfs:subClassOf ns1:Level .
+
+ns1:Talk rdfs:label "talk" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Utilization a owl:Class ;
+    rdfs:label "utilization" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:context_1 a ns1:Context ;
+    rdfs:label "context" ;
+    quant:hasDeterminer quant:this .
+
+ns1:link_1 a ns1:Link ;
+    rdfs:label "link" ;
+    quant:hasDeterminer quant:the ;
+    ns1:between ns1:fund_1,
+        ns1:level_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:talk_1 a ns1:Talk ;
+    rdfs:label "talk" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Topic ns1:utilization_1 .
+
+ns1:utilization_1 a ns1:OptimalUtilization ;
+    rdfs:label "utilization" .
+
+<https://w3id.org/stlab/ke/amiala/fi_sentence521.ttl/Cohe.> a owl:Class ;
+    rdfs:label "cohe." .
+
+ns1:fund_1 a ns1:Cohe.Fund ;
+    rdfs:label "fund" .
+
+ns1:level_1 a ns1:RegionalLevel ;
+    rdfs:label "levels" ;
+    dul:hasQuality ns1:National,
+        ns1:Regional ;
+    quant:hasQuantifier quant:both,
+        quant:multiple .
+
+ns1:Person rdfs:label "I",
+        "we" .
+

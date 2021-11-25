@@ -1,0 +1,199 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence454.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:nl_sentence454.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence454" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence454" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "For" .
+
+ns1:From rdfs:label "from" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Theme rdfs:label "possible" .
+
+ns1:docuverse earmark:hasContent "For this to be possible, what we need from the European_commission isn't just good intentions, but clearer guidelines and a firm dedication to use the way these resources are used by the Member States."^^xsd:string .
+
+ns1:firm_1 a ns1:Firm ;
+    rdfs:label "firm" ;
+    dul:associatedWith ns1:dedication_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:intention_1 rdfs:label "intentions" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves ns1:Member_states,
+        ns1:dedication_1,
+        ns1:european_commission_1,
+        ns1:guideline_1,
+        ns1:need_1,
+        ns1:situation_1,
+        ns1:thing_1,
+        ns1:thing_2,
+        ns1:use_2 .
+
+ns1:Clearer rdfs:label "clearer" .
+
+ns1:ClearerGuideline rdfs:subClassOf ns1:Guideline .
+
+ns1:Dedication a owl:Class ;
+    rdfs:label "dedication" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:European_commission a owl:Class ;
+    rdfs:label "European commission" ;
+    owl:equivalentClass dbpedia:European_Commission .
+
+ns1:FirmDedication a owl:Class ;
+    rdfs:label "Firm Dedication" ;
+    dul:associatedWith ns1:Firm ;
+    rdfs:subClassOf ns1:Dedication .
+
+ns1:Good rdfs:label "good" ;
+    dul:hasQuality ns1:Just .
+
+ns1:GoodIntention rdfs:subClassOf ns1:Intention .
+
+ns1:Guideline rdfs:label "guidelines" .
+
+ns1:Have rdfs:subClassOf dul:Event .
+
+ns1:Intention rdfs:label "intentions" .
+
+ns1:Just rdfs:label "just" .
+
+ns1:JustGoodIntention rdfs:subClassOf ns1:GoodIntention .
+
+ns1:Need rdfs:label "need" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Resource rdfs:label "resources" .
+
+ns1:Way rdfs:label "way" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:have_1 a ns1:Have ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Patient ns1:thing_2 .
+
+ns1:need_1 a ns1:Need ;
+    rdfs:label "need" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Experiencer ns1:person_1 ;
+    vn.role:Theme ns1:have_1 ;
+    ns1:from ns1:european_commission_1 .
+
+ns1:resource_1 a ns1:Resource ;
+    rdfs:label "resources" ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves ns1:dedication_1,
+        ns1:guideline_1,
+        ns1:thing_2,
+        ns1:use_1,
+        ns1:use_2 ;
+    ns1:for ns1:thing_2 .
+
+ns1:thing_1 a owl:Thing ;
+    boxer:theme ns1:thing_2 .
+
+ns1:use_1 a ns1:Use ;
+    rdfs:label "use" ;
+    vn.role:Agent ns1:dedication_1 ;
+    vn.role:Theme ns1:way_1 .
+
+owl:Thing rdfs:label "what" .
+
+ns1:Firm a owl:Class ;
+    rdfs:label "firm" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Member_states rdfs:label "Member States" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Use rdfs:label "use",
+        "used" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:european_commission_1 a ns1:European_commission ;
+    rdfs:label "European commission" ;
+    quant:hasDeterminer quant:the,
+        quant:this .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:use_2 a ns1:Use ;
+    rdfs:label "used" ;
+    dul:associatedWith ns1:way_1 ;
+    vn.role:Agent ns1:Member_states ;
+    vn.role:Theme ns1:resource_1 .
+
+ns1:way_1 a ns1:Way ;
+    rdfs:label "way" ;
+    quant:hasDeterminer quant:the .
+
+ns1:guideline_1 a ns1:ClearerGuideline ;
+    rdfs:label "guidelines" ;
+    dul:hasQuality ns1:Clearer ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:dedication_1 a ns1:FirmDedication ;
+    rdfs:label "dedication" .
+
+ns1:thing_2 a owl:Thing,
+        ns1:JustGoodIntention ;
+    rdfs:label "what" ;
+    dul:associatedWith ns1:dedication_1,
+        ns1:guideline_1 ;
+    dul:hasQuality ns1:Good .
+

@@ -1,0 +1,157 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence539.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "into" .
+
+translation_coherence:fi_sentence539.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence539" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence539" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Because rdfs:label "because" .
+
+ns1:Eq rdfs:label "are" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Noteq rdfs:label "different" .
+
+ns1:Why rdfs:label "why" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "These are the reasons why the te are presented in tence with thematic priorities because they must be taken into account in different ways in tavoittence with each Member State and region."^^xsd:string .
+
+ns1:reason_1 a owl:Thing,
+        ns1:Reason ;
+    rdfs:label "reasons" ;
+    quant:hasDeterminer quant:the,
+        quant:these ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:why ns1:present_1 .
+
+ns1:region_1 rdfs:label "region" .
+
+ns1:tavoittence_1 a ns1:Tavoittence ;
+    rdfs:label "tavoittence" .
+
+ns1:tence_1 a ns1:Tence ;
+    rdfs:label "tence" .
+
+ns1:thing_1 rdfs:label "These" .
+
+ns1:Account rdfs:label "account" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Member_state a ns1:Region ;
+    rdfs:label "Member State",
+        "region" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Present rdfs:label "presented" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Priority rdfs:label "priorities" .
+
+ns1:Region rdfs:label "Member State",
+        "region" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Take rdfs:label "taken" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Tavoittence rdfs:label "tavoittence" .
+
+ns1:Te rdfs:label "te" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Tence rdfs:label "tence" .
+
+ns1:Thematic rdfs:label "thematic" .
+
+ns1:ThematicPriority rdfs:subClassOf ns1:Priority .
+
+ns1:account_1 a ns1:Account ;
+    rdfs:label "account" .
+
+ns1:present_1 a ns1:Present ;
+    rdfs:label "presented" ;
+    vn.role:Theme ns1:te_1 ;
+    ns1:because ns1:take_1 ;
+    ns1:inTenceWith ns1:priority_1 .
+
+ns1:priority_1 a ns1:ThematicPriority ;
+    rdfs:label "priorities" ;
+    dul:hasQuality ns1:Thematic ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "taken" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Destination ns1:account_1 ;
+    vn.role:Theme ns1:thing_2 ;
+    ns1:in ns1:way_1 .
+
+ns1:te_1 a ns1:Te ;
+    rdfs:label "te" ;
+    quant:hasDeterminer quant:the .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "they" .
+
+ns1:way_1 a ns1:Way ;
+    rdfs:label "different" ;
+    owl:differentFrom ns1:way_2 ;
+    ns1:inWayWith ns1:Member_state .
+
+ns1:way_2 a ns1:Way ;
+    rdfs:label "ways" ;
+    quant:hasQuantifier quant:multiple .
+
+owl:Thing rdfs:label "These",
+        "they" ;
+    rdfs:subClassOf ns1:Reason .
+
+ns1:Reason rdfs:label "reasons" .
+
+ns1:Way rdfs:label "different",
+        "ways" .
+

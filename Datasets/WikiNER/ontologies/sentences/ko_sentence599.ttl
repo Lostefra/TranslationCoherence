@@ -1,0 +1,195 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence599.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence599.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence599" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence599" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:About rdfs:label "about" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Include rdfs:label "including" .
+
+ns1:Of rdfs:label "her",
+        "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "Rand expresses opinions about various topics including literature, music, sexual, and even facial hair, and some of her followers mimicked her preferences to purchase character and furniture in her mind."^^xsd:string .
+
+ns1:express_1 a ns1:Express ;
+    rdfs:label "expresses" ;
+    vn.role:Agent ns1:Rand ;
+    vn.role:Theme ns1:opinion_1 .
+
+ns1:female_1 rdfs:label "her" .
+
+ns1:mimic_1 a ns1:Mimic ;
+    rdfs:label "mimicked" ;
+    boxer:agent ns1:thing_1 ;
+    boxer:patient ns1:preference_1 .
+
+ns1:purchase_1 a ns1:Purchase ;
+    rdfs:label "purchase" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Theme ns1:character_1,
+        ns1:furniture_1 ;
+    ns1:in ns1:mind_1 .
+
+owl:Thing rdfs:label "some" .
+
+ns1:Character rdfs:label "character" ;
+    rdfs:subClassOf dul:Personification .
+
+ns1:Even rdfs:label "even" .
+
+ns1:EvenFacialHair a owl:Class ;
+    rdfs:label "Even Facial Hair" ;
+    rdfs:subClassOf ns1:FacialHair .
+
+ns1:Express rdfs:label "expresses" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Facial a owl:Class ;
+    rdfs:label "facial" ;
+    dul:hasQuality ns1:Even ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FacialHair a owl:Class ;
+    rdfs:label "facial hair" ;
+    dul:hasQuality ns1:Facial ;
+    rdfs:subClassOf dul:PhysicalObject,
+        ns1:Hair .
+
+ns1:Female rdfs:label "Rand" .
+
+ns1:Follower rdfs:label "followers" .
+
+ns1:Furniture rdfs:label "furniture" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Hair a owl:Class ;
+    rdfs:label "hair" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Literature rdfs:label "literature" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Mimic rdfs:label "mimicked" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Mind a owl:Class ;
+    rdfs:label "mind" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> ;
+    owl:equivalentClass dbpedia:Mind .
+
+ns1:Music rdfs:label "music" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Opinion rdfs:label "opinions" .
+
+ns1:Preference rdfs:label "preferences" .
+
+ns1:Purchase rdfs:label "purchase" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Sexual rdfs:label "sexual" .
+
+ns1:Topic rdfs:label "topics" .
+
+ns1:Various rdfs:label "various" .
+
+ns1:VariousTopic rdfs:subClassOf ns1:Topic .
+
+ns1:character_1 a ns1:Character ;
+    rdfs:label "character" .
+
+ns1:follower_1 a ns1:Follower ;
+    rdfs:label "followers" ;
+    quant:hasQuantifier quant:multiple,
+        quant:some ;
+    ns1:followerOf ns1:Rand .
+
+ns1:furniture_1 a ns1:Furniture ;
+    rdfs:label "furniture" .
+
+ns1:hair_1 a ns1:EvenFacialHair ;
+    rdfs:label "hair" .
+
+ns1:literature_1 a ns1:Literature ;
+    rdfs:label "literature" ;
+    dul:associatedWith ns1:hair_1,
+        ns1:music_1 .
+
+ns1:mind_1 a ns1:Mind ;
+    rdfs:label "mind" ;
+    ns1:mindOf ns1:Rand .
+
+ns1:music_1 a ns1:Music ;
+    rdfs:label "music" ;
+    dul:hasQuality ns1:Sexual .
+
+ns1:opinion_1 a ns1:Opinion ;
+    rdfs:label "opinions" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:about ns1:topic_1 ;
+    ns1:include ns1:literature_1 .
+
+ns1:preference_1 a ns1:Preference ;
+    rdfs:label "preferences" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:preferenceOf ns1:Rand .
+
+ns1:topic_1 a ns1:VariousTopic ;
+    rdfs:label "topics" ;
+    dul:hasQuality ns1:Various ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "some" ;
+    ns1:thingOf ns1:follower_1 .
+
+ns1:Rand a ns1:Female ;
+    rdfs:label "Rand" ;
+    boxer:possibleType foaf:Person .
+

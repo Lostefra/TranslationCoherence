@@ -1,0 +1,168 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence283.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence283.ttl a owl:Ontology ;
+    rdfs:label "en_sentence283" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence283" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:allow_1 a ns1:Allow ;
+    rdfs:label "allow" ;
+    vn.role:Agent ns1:amendment_1,
+        ns1:debate_1 ;
+    vn.role:Theme ns1:incorporate_1 .
+
+ns1:directive_1 a ns1:Directive ;
+    rdfs:label "directive" ;
+    dul:associatedWith ns1:currently_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:docuverse earmark:hasContent "This debate and the amendment of the directive currently in force allow us to incorporate differentiating elements which demonstrate the diversity of this Europe of ours."^^xsd:string .
+
+dbpedia:Europe a schema:Continent,
+        schema:Place .
+
+ns1:Allow rdfs:label "allow" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Amendment rdfs:label "amendment" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Currently rdfs:label "currently" .
+
+ns1:Debate rdfs:label "debate" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Demonstrate rdfs:label "demonstrate" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Differentiate rdfs:label "differentiating" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Directive rdfs:label "directive" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:DirectiveCurrently rdfs:label "Directive Currently" ;
+    rdfs:subClassOf ns1:Currently .
+
+ns1:Diversity rdfs:label "diversity" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Element rdfs:label "elements" .
+
+ns1:Europe rdfs:label "Europe" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Europe ;
+    ns1:of ns1:ours_1 .
+
+ns1:Force rdfs:label "force" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Incorporate rdfs:label "incorporate" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Ours rdfs:label "ours" .
+
+ns1:Person rdfs:label "us" .
+
+ns1:amendment_1 a ns1:Amendment ;
+    rdfs:label "amendment" ;
+    quant:hasDeterminer quant:the ;
+    ns1:amendmentOf ns1:currently_1 .
+
+ns1:debate_1 a ns1:Debate ;
+    rdfs:label "debate" ;
+    quant:hasDeterminer quant:this .
+
+ns1:diversity_1 a ns1:Diversity ;
+    rdfs:label "diversity" ;
+    quant:hasDeterminer quant:the ;
+    ns1:diversityOf ns1:Europe .
+
+ns1:force_1 a ns1:Force ;
+    rdfs:label "force" .
+
+ns1:incorporate_1 a ns1:Incorporate ;
+    rdfs:label "incorporate" ;
+    boxer:theme ns1:situation_1,
+        ns1:situation_2 ;
+    vn.role:Patient1 ns1:person_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:demonstrate_1,
+        ns1:differentiate_1,
+        ns1:element_1,
+        ns1:ours_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:demonstrate_1,
+        ns1:differentiate_1,
+        ns1:element_1,
+        ns1:ours_1 .
+
+ns1:currently_1 a ns1:DirectiveCurrently ;
+    rdfs:label "currently" ;
+    ns1:in ns1:force_1 .
+
+ns1:demonstrate_1 a ns1:Demonstrate ;
+    rdfs:label "demonstrate" ;
+    vn.role:Agent ns1:element_1 ;
+    vn.role:Topic ns1:diversity_1 .
+
+ns1:differentiate_1 a ns1:Differentiate ;
+    rdfs:label "differentiating" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Patient ns1:element_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "us" .
+
+ns1:ours_1 a ns1:Ours ;
+    rdfs:label "ours" .
+
+ns1:element_1 a ns1:Element ;
+    rdfs:label "elements" ;
+    quant:hasQuantifier quant:multiple .
+

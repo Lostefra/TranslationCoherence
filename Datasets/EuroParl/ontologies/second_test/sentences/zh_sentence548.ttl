@@ -1,0 +1,144 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence548.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Source rdfs:label "of" .
+
+translation_coherence:zh_sentence548.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence548" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence548" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Noteq rdfs:label "other" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "The Committee took note of these guidelines, but some of them were relevant to other documents, such as the Guide to Structural Reform or the Working Group on Methods."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Relevant,
+        ns1:thing_1 ;
+    ns1:to ns1:document_1 .
+
+ns1:structural_1 a ns1:Structural ;
+    rdfs:label "Structural" ;
+    boxer:agent ns1:Guide ;
+    boxer:patient ns1:reform_1 .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "took" ;
+    vn.role:Agent ns1:Committee ;
+    vn.role:Source ns1:guideline_1 ;
+    vn.role:Theme ns1:note_1 .
+
+ns1:Committee rdfs:label "Committee" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Committee .
+
+ns1:Guideline rdfs:label "guidelines" .
+
+ns1:Methods rdfs:label "Methods" ;
+    boxer:possibleType owl:Thing .
+
+ns1:Note rdfs:label "note" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Reform rdfs:label "Reform" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Structural rdfs:label "Structural" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Take rdfs:label "took" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Working_group rdfs:label "Working Group" ;
+    boxer:possibleType foaf:Organisation ;
+    ns1:on ns1:Methods .
+
+ns1:document_1 a ns1:Document ;
+    rdfs:label "other" ;
+    owl:differentFrom ns1:document_2 ;
+    ns1:as ns1:Guide,
+        ns1:Working_group .
+
+ns1:document_2 a dbpedia:Document,
+        ns1:Document ;
+    rdfs:label "documents" ;
+    quant:hasDeterminer quant:other ;
+    quant:hasQuantifier quant:multiple,
+        quant:some .
+
+ns1:guideline_1 a ns1:Guideline ;
+    rdfs:label "guidelines" ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:note_1 a ns1:Note ;
+    rdfs:label "note" .
+
+ns1:reform_1 a ns1:Reform ;
+    rdfs:label "Reform" .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "some" ;
+    dul:hasQuality ns1:Relevant ;
+    ns1:thingOf ns1:thing_2 .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "them" .
+
+ns1:Document rdfs:label "documents",
+        "other" .
+
+ns1:Guide rdfs:label "Guide" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Relevant rdfs:label "relevant" .
+
+owl:Thing rdfs:label "some",
+        "them" .
+

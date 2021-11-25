@@ -1,0 +1,127 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence521.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence521.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence521" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence521" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "Director William_Friedkin, an Oscar winner and producer of the Academy_Awards, this sentiment has spoken in a conference in New_York in 2009."^^xsd:string .
+
+ns1:producer_1 rdfs:label "producer" .
+
+ns1:speak_1 a ns1:Speak ;
+    rdfs:label "spoken" ;
+    vn.role:Agent ns1:William_friedkin,
+        ns1:sentiment_1,
+        ns1:winner_1 ;
+    ns1:in ns1:conference_1 .
+
+dbpedia:New_York_(magazine) a schema:CreativeWork .
+
+ns1:Academy_awards a owl:Class ;
+    rdfs:label "Academy Awards" ;
+    owl:equivalentClass dbpedia:Academy_Awards .
+
+ns1:Conference rdfs:label "conference" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Director rdfs:label "Director" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Film_director .
+
+ns1:New_york rdfs:label "New York" ;
+    boxer:possibleType time:Interval ;
+    owl:sameAs dbpedia:New_York_(magazine) .
+
+ns1:Oscar a ns1:Producer ;
+    rdfs:label "Oscar",
+        "producer" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Academy_Awards .
+
+ns1:Sentiment rdfs:label "sentiment" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Speak rdfs:label "spoken" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:William_friedkin rdfs:label "William Friedkin" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:Director ;
+    owl:sameAs dbpedia:William_Friedkin .
+
+ns1:Winner a owl:Class ;
+    rdfs:label "winner" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Academy_Awards .
+
+ns1:academy_awards_1 a ns1:Academy_awards ;
+    rdfs:label "Academy Awards" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:conference_1 a ns1:Conference ;
+    rdfs:label "conference" ;
+    quant:hasDeterminer quant:a ;
+    ns1:in ns1:New_york,
+        "2009-01-01"^^xsd:date .
+
+ns1:sentiment_1 a ns1:Sentiment ;
+    rdfs:label "sentiment" ;
+    quant:hasDeterminer quant:this .
+
+ns1:winner_1 a ns1:Producer,
+        ns1:Winner ;
+    rdfs:label "winner" ;
+    dul:associatedWith ns1:Oscar ;
+    ns1:winnerOf ns1:academy_awards_1 .
+
+ns1:Producer a owl:Class ;
+    rdfs:label "Oscar",
+        "producer" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Film_producer .
+

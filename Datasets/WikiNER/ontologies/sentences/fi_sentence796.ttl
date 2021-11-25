@@ -1,0 +1,162 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence796.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence796.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence796" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence796" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "For" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:behavior_2 rdfs:label "behavior" .
+
+ns1:docuverse earmark:hasContent "For example, Boas has studiedmmaan children to show that the biological race is not unchanged, and that human behavior and behavior is a result of the nurse and nature."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "has" ;
+    vn.role:Agent ns1:Boas ;
+    vn.role:Patient ns1:child_1 ;
+    ns1:for ns1:example_1 .
+
+ns1:nature_1 rdfs:label "nature" .
+
+ns1:result_1 rdfs:label "result" .
+
+ns1:show_1 a ns1:Show ;
+    rdfs:label "show" ;
+    vn.role:Agent ns1:child_1 ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:BiologicalRace a owl:Class ;
+    rdfs:label "Biological Race" ;
+    dul:hasQuality ns1:Biological ;
+    rdfs:subClassOf ns1:Race .
+
+ns1:Boas rdfs:label "Boas" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Child rdfs:label "children" .
+
+ns1:Example rdfs:label "example" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Have rdfs:label "has" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Human a owl:Class ;
+    rdfs:label "human" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:HumanBehavior a owl:Class ;
+    rdfs:label "Human Behavior" ;
+    dul:hasQuality ns1:Human ;
+    rdfs:subClassOf ns1:Behavior .
+
+ns1:Nature rdfs:label "nature" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Nurse rdfs:label "nurse" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Race a owl:Class ;
+    rdfs:label "race" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:The_Race_Is_On .
+
+ns1:Show a owl:Class ;
+    rdfs:label "show" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:The_T.O._Show .
+
+ns1:Studiedmmaan rdfs:label "studiedmmaan" .
+
+ns1:StudiedmmaanChild rdfs:subClassOf ns1:Child .
+
+ns1:example_1 a ns1:Example ;
+    rdfs:label "example" .
+
+ns1:nurse_1 a ns1:Nature,
+        ns1:Nurse ;
+    rdfs:label "nurse" ;
+    quant:hasDeterminer quant:the .
+
+ns1:race_1 a ns1:BiologicalRace ;
+    rdfs:label "race" ;
+    dul:hasQuality ns1:Biological,
+        ns1:Unchanged ;
+    quant:hasDeterminer quant:the ;
+    owl:sameAs ns1:behavior_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves ns1:Result,
+        ns1:Unchanged,
+        ns1:behavior_1,
+        ns1:race_1 .
+
+ns1:Behavior a owl:Class ;
+    rdfs:label "behavior" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Biological a owl:Class ;
+    rdfs:label "biological" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Result rdfs:label "result" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Unchanged rdfs:label "unchanged" .
+
+ns1:behavior_1 a ns1:Behavior,
+        ns1:HumanBehavior,
+        ns1:Result ;
+    rdfs:label "behavior" ;
+    quant:hasDeterminer quant:a,
+        quant:that ;
+    ns1:humanBehaviorOf ns1:nurse_1 .
+
+ns1:child_1 a ns1:StudiedmmaanChild ;
+    rdfs:label "children" ;
+    dul:hasQuality ns1:Studiedmmaan ;
+    quant:hasQuantifier quant:multiple .
+

@@ -1,0 +1,229 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence340.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Agent rdfs:label "by" .
+
+vn.role:Location rdfs:label "in",
+        "is" .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:it_sentence340.ttl a owl:Ontology ;
+    rdfs:label "it_sentence340" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence340" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "its",
+        "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "It is important to give priority to the general criteria for spatial planning and demographic balance, and to keep in mind the conclusions of the Committee_on_Agriculture_and_Rural_Development on the five fundamental issues, which were taken only partly by the Committee on Transport, Regional Policy and Tourism in its points 16 and 17."^^xsd:string .
+
+ns1:give_1 a ns1:Give ;
+    rdfs:label "give" ;
+    vn.role:Agent ns1:neuter_1 ;
+    vn.role:Location ns1:important_1 ;
+    vn.role:Recipient ns1:balance_1,
+        ns1:criterion_1 ;
+    vn.role:Theme ns1:priority_1 .
+
+ns1:keep_1 a ns1:Keep ;
+    rdfs:label "keep" ;
+    vn.role:Agent ns1:neuter_1 ;
+    vn.role:Location ns1:important_1 ;
+    vn.role:Theme ns1:conclusion_1 ;
+    ns1:in ns1:mind_1 ;
+    ns1:on ns1:issue_1 .
+
+ns1:point_1 a ns1:Point ;
+    rdfs:label "points" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:at "0001-01-16"^^xsd:date,
+        "0001-01-17"^^xsd:date ;
+    ns1:dateOf ns1:neuter_1 .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "taken" ;
+    dul:hasQuality ns1:Only,
+        ns1:Partly ;
+    vn.role:Agent ns1:Committee ;
+    vn.role:Location "0001-01-17"^^xsd:date ;
+    vn.role:Value ns1:issue_1 .
+
+owl:Thing rdfs:label "It" .
+
+ns1:Balance a owl:Class ;
+    rdfs:label "balance" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Committee rdfs:label "Committee" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:Regional_policy,
+        ns1:Tourism ;
+    ns1:on ns1:Transport .
+
+ns1:Committee_on_agriculture_and_rural_development a owl:Class ;
+    rdfs:label "Committee on Agriculture and Rural Development" ;
+    owl:equivalentClass dbpedia:European_Parliament_Committee_on_Agriculture_and_Rural_Development .
+
+ns1:Conclusion rdfs:label "conclusions" .
+
+ns1:Criterion rdfs:label "criteria" .
+
+ns1:Demographic a owl:Class ;
+    rdfs:label "demographic" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:DemographicBalance a owl:Class ;
+    rdfs:label "Demographic Balance" ;
+    dul:hasQuality ns1:Demographic ;
+    rdfs:subClassOf ns1:Balance .
+
+ns1:Fundamental rdfs:label "fundamental" .
+
+ns1:FundamentalIssue rdfs:subClassOf ns1:Issue .
+
+ns1:General rdfs:label "general" .
+
+ns1:GeneralCriterion rdfs:subClassOf ns1:Criterion .
+
+ns1:Give rdfs:label "give" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Important rdfs:label "important" .
+
+ns1:Issue rdfs:label "issues" .
+
+ns1:Keep rdfs:label "keep" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Mind rdfs:label "mind" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Only rdfs:label "only" .
+
+ns1:Partly rdfs:label "partly" .
+
+ns1:Planning a owl:Class ;
+    rdfs:label "planning" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Point rdfs:label "points" .
+
+ns1:Priority rdfs:label "priority" ;
+    rdfs:subClassOf dul:Role .
+
+ns1:Regional_policy rdfs:label "Regional Policy" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Spatial a owl:Class ;
+    rdfs:label "spatial" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SpatialPlanning a owl:Class ;
+    rdfs:label "spatial planning" ;
+    dul:hasQuality ns1:Spatial ;
+    rdfs:subClassOf ns1:Planning ;
+    owl:equivalentClass dbpedia:Spatial_planning .
+
+ns1:Take rdfs:label "taken" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Tourism rdfs:label "Tourism" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Tourism .
+
+ns1:Transport rdfs:label "Transport" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:balance_1 a ns1:DemographicBalance ;
+    rdfs:label "balance" .
+
+ns1:committee_on_agriculture_and_rural_development_1 a ns1:Committee_on_agriculture_and_rural_development ;
+    rdfs:label "Committee on Agriculture and Rural Development" ;
+    quant:hasDeterminer quant:the .
+
+ns1:conclusion_1 a ns1:Conclusion ;
+    rdfs:label "conclusions" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:conclusionOf ns1:committee_on_agriculture_and_rural_development_1 .
+
+ns1:criterion_1 a ns1:GeneralCriterion ;
+    rdfs:label "criteria" ;
+    dul:hasQuality ns1:General ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:for ns1:planning_1 .
+
+ns1:mind_1 a ns1:Mind ;
+    rdfs:label "mind" .
+
+ns1:planning_1 a ns1:SpatialPlanning ;
+    rdfs:label "planning" .
+
+ns1:priority_1 a ns1:Priority ;
+    rdfs:label "priority" .
+
+ns1:important_1 a ns1:Important ;
+    rdfs:label "important" .
+
+ns1:issue_1 a ns1:FundamentalIssue ;
+    rdfs:label "issues" ;
+    dul:hasDataValue "5"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:Fundamental ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:five,
+        quant:multiple .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "It",
+        "its" .
+

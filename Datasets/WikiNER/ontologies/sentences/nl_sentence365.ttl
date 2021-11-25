@@ -1,0 +1,240 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence365.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Proposition rdfs:label "into" .
+
+translation_coherence:nl_sentence365.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence365" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence365" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "In a letter to Andrew_Johnson, the military Governor_of_Tennessee, who encouraged him to lead the way into raising black troops, Lincoln wrote, the bare sight of 50,000 armed soldiers, and black soldiers would be on the rebels once."^^xsd:string .
+
+ns1:encourage_1 a ns1:Encourage ;
+    rdfs:label "encouraged" ;
+    vn.role:Agent ns1:letter_1 ;
+    vn.role:Theme ns1:situation_1,
+        ns1:situation_2 .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves ns1:Andrew_johnson,
+        ns1:Governor_of_tennessee,
+        ns1:lead_1,
+        ns1:letter_1,
+        ns1:raise_1,
+        ns1:rebel_1,
+        ns1:sight_1,
+        ns1:soldier_1,
+        ns1:soldier_2,
+        ns1:write_1 ;
+    dul:hasQuality ns1:Once .
+
+ns1:situation_4 a ns1:Situation ;
+    boxing:involves ns1:Andrew_johnson,
+        ns1:Governor_of_tennessee,
+        ns1:lead_1,
+        ns1:letter_1,
+        ns1:raise_1,
+        ns1:rebel_1,
+        ns1:sight_1,
+        ns1:soldier_1,
+        ns1:soldier_2,
+        ns1:write_1 ;
+    dul:hasQuality ns1:Once .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+dbpedia:Andrew_Johnson a schema:Person .
+
+ns1:Armed rdfs:label "armed" .
+
+ns1:ArmedSoldier rdfs:subClassOf ns1:Soldier .
+
+ns1:BareSight a owl:Class ;
+    rdfs:label "Bare Sight" ;
+    dul:hasQuality ns1:Bare ;
+    rdfs:subClassOf ns1:Sight .
+
+ns1:BlackSoldier rdfs:subClassOf ns1:Soldier .
+
+ns1:BlackTroops a owl:Class ;
+    rdfs:label "black troops" ;
+    dul:hasQuality ns1:Black ;
+    rdfs:subClassOf ns1:Troops .
+
+ns1:Encourage rdfs:label "encouraged" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Lead rdfs:label "lead" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Letter rdfs:label "letter" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Male rdfs:label "him" .
+
+ns1:Military rdfs:label "military" .
+
+ns1:Raise rdfs:label "raising" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Rebel rdfs:label "rebels" .
+
+ns1:Sight a owl:Class ;
+    rdfs:label "sight" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Troops a owl:Class ;
+    rdfs:label "troops" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Way rdfs:label "way" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Write rdfs:label "wrote" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:lead_1,
+        ns1:raise_1,
+        ns1:troops_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:lead_1,
+        ns1:raise_1,
+        ns1:troops_1 .
+
+ns1:situation_5 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:soldier_1,
+        ns1:soldier_2 .
+
+ns1:way_1 a ns1:Way ;
+    rdfs:label "way" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Bare a owl:Class ;
+    rdfs:label "bare" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Governor_of_tennessee rdfs:label "Governor of Tennessee" ;
+    boxer:possibleType owl:Thing ;
+    dul:hasQuality ns1:Military ;
+    owl:sameAs dbpedia:Governor_of_Tennessee .
+
+ns1:Once rdfs:label "once" .
+
+ns1:Soldier rdfs:label "soldiers" .
+
+ns1:sight_1 a ns1:BareSight ;
+    rdfs:label "sight" ;
+    dul:hasQuality ns1:Bare ;
+    quant:hasDeterminer quant:the ;
+    ns1:bareSightOf ns1:soldier_1,
+        ns1:soldier_2 ;
+    ns1:on ns1:rebel_1 .
+
+ns1:write_1 a ns1:Write ;
+    rdfs:label "wrote" ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Topic ns1:situation_5 ;
+    ns1:inLetterTo ns1:Andrew_johnson .
+
+ns1:Andrew_johnson rdfs:label "Andrew Johnson" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Andrew_Johnson .
+
+ns1:Black a owl:Class ;
+    rdfs:label "black" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Male ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+
+ns1:letter_1 a ns1:Letter ;
+    rdfs:label "letter" ;
+    quant:hasDeterminer quant:a .
+
+ns1:rebel_1 a ns1:Rebel ;
+    rdfs:label "rebels" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:troops_1 a ns1:BlackTroops ;
+    rdfs:label "troops" ;
+    dul:hasQuality ns1:Black ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:lead_1 a ns1:Lead ;
+    rdfs:label "lead" ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Patient ns1:way_1 ;
+    vn.role:Proposition ns1:raise_1 .
+
+ns1:soldier_1 a ns1:ArmedSoldier ;
+    rdfs:label "soldiers" ;
+    dul:hasDataValue "50000"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:Armed ;
+    quant:hasQuantifier quant:50%2C000,
+        quant:multiple .
+
+ns1:soldier_2 a ns1:BlackSoldier ;
+    rdfs:label "soldiers" ;
+    dul:hasQuality ns1:Black ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:raise_1 a ns1:Raise ;
+    rdfs:label "raising" ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Theme ns1:troops_1 .
+

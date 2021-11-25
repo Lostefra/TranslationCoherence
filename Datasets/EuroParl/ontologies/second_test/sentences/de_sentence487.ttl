@@ -1,0 +1,178 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence487.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "into",
+        "to" .
+
+translation_coherence:de_sentence487.ttl a owl:Ontology ;
+    rdfs:label "de_sentence487" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence487" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:At rdfs:label "at" .
+
+ns1:Entails rdfs:label "If" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of",
+        "whose" .
+
+ns1:communication_1 rdfs:label "communication" .
+
+ns1:docuverse earmark:hasContent "If at all, the major problems of the island regions of the Union, whose shortcomings in infrastructure, transport, communication and energy have led to a gradual depopulation, have not been taken into account."^^xsd:string .
+
+ns1:energy_1 rdfs:label "energy" .
+
+ns1:island_1 a ns1:Island ;
+    rdfs:label "island" ;
+    dul:associatedWith ns1:region_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:lead_1 a ns1:Lead ;
+    rdfs:label "led" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:shortcoming_1 ;
+    vn.role:Destination ns1:depopulation_1 ;
+    ns1:entails ns1:event_1 ;
+    ns1:in ns1:infrastructure_1 .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "taken" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Destination ns1:account_1 ;
+    vn.role:Theme ns1:problem_1 ;
+    ns1:at ns1:thing_1 .
+
+ns1:transport_1 rdfs:label "transport" .
+
+owl:Thing rdfs:label "all" .
+
+ns1:Account rdfs:label "account" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Communication rdfs:label "communication" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Depopulation a owl:Class ;
+    rdfs:label "depopulation" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Energy rdfs:label "energy" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Gradual a owl:Class ;
+    rdfs:label "gradual" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:GradualDepopulation a owl:Class ;
+    rdfs:label "gradual depopulation" ;
+    dul:hasQuality ns1:Gradual ;
+    rdfs:subClassOf ns1:Depopulation .
+
+ns1:Infrastructure a owl:Class ;
+    rdfs:label "infrastructure" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Infrastructure .
+
+ns1:Island rdfs:label "island" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:IslandRegion rdfs:subClassOf ns1:Region .
+
+ns1:Lead rdfs:label "led" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Major rdfs:label "major" .
+
+ns1:MajorProblem rdfs:subClassOf ns1:Problem .
+
+ns1:Problem rdfs:label "problems" .
+
+ns1:Region rdfs:label "regions" .
+
+ns1:Shortcoming rdfs:label "shortcomings" .
+
+ns1:Take rdfs:label "taken" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Transport rdfs:label "transport" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:account_1 a ns1:Account ;
+    rdfs:label "account" .
+
+ns1:depopulation_1 a ns1:GradualDepopulation ;
+    rdfs:label "depopulation" ;
+    quant:hasDeterminer quant:a .
+
+ns1:event_1 a dul:Event .
+
+ns1:infrastructure_1 a ns1:Communication,
+        ns1:Energy,
+        ns1:Infrastructure,
+        ns1:Transport ;
+    rdfs:label "infrastructure" .
+
+ns1:problem_1 a ns1:MajorProblem ;
+    rdfs:label "problems" ;
+    dul:hasQuality ns1:Major ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:all,
+        quant:multiple ;
+    ns1:majorProblemOf ns1:region_1 .
+
+ns1:shortcoming_1 a ns1:Shortcoming ;
+    rdfs:label "shortcomings" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:shortcomingOf ns1:Union .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "all" .
+
+ns1:Union rdfs:label "Union" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:region_1 a ns1:IslandRegion ;
+    rdfs:label "regions" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:islandRegionOf ns1:Union .
+

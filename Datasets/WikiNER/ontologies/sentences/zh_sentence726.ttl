@@ -1,0 +1,101 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence726.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:zh_sentence726.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence726" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence726" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:construct_1 a ns1:AlsoConstruct ;
+    rdfs:label "constructed" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Agent ns1:Russia ;
+    vn.role:Patient ns1:submarine_1 .
+
+ns1:diesel_1 a ns1:Diesel ;
+    rdfs:label "diesel" ;
+    dul:associatedWith ns1:submarine_1 ;
+    quant:hasQuantifier quant:two .
+
+ns1:docuverse earmark:hasContent "Russia has also constructed two 636 diesel submarines for Algeria."^^xsd:string .
+
+dbpedia:Algeria a schema:Country,
+        schema:Place .
+
+dbpedia:Russia a schema:Country,
+        schema:Place .
+
+ns1:Algeria rdfs:label "Algeria" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Algeria .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoConstruct rdfs:subClassOf ns1:Construct .
+
+ns1:Construct rdfs:label "constructed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Diesel a owl:Class ;
+    rdfs:label "diesel" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Diesel_engine .
+
+ns1:DieselSubmarine rdfs:subClassOf ns1:Submarine .
+
+ns1:Russia rdfs:label "Russia" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Russia,
+        dbpedia:Russian_Empire .
+
+ns1:Submarine rdfs:label "submarines" .
+
+ns1:submarine_1 a dbpedia:Submarine,
+        ns1:DieselSubmarine ;
+    rdfs:label "submarines" ;
+    dul:hasDataValue "1272"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:for ns1:Algeria .
+

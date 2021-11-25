@@ -1,0 +1,164 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence585.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Topic rdfs:label "about" .
+
+translation_coherence:nl_sentence585.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence585" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence585" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Although rdfs:label "Although" .
+
+ns1:From rdfs:label "from" .
+
+ns1:Noteq rdfs:label "other" .
+
+ns1:Of rdfs:label "'s",
+        "his" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "Although the Rand's screenplay used with minimal words, she didn't like the movie from the beginning, complained about his editing, acting and other elements."^^xsd:string .
+
+ns1:use_1 a ns1:Use ;
+    rdfs:label "used" ;
+    vn.role:Agent ns1:screenplay_1 ;
+    ns1:although ns1:situation_1 ;
+    ns1:with ns1:word_1 .
+
+ns1:Act rdfs:label "acting" .
+
+ns1:Beginning rdfs:label "beginning" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Complain rdfs:label "complained" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Edit rdfs:label "editing" .
+
+ns1:Female rdfs:label "she" .
+
+ns1:Like rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Minimal rdfs:label "minimal" .
+
+ns1:MinimalWord rdfs:subClassOf ns1:Word .
+
+ns1:Movie rdfs:label "movie" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity>,
+        dul:InformationEntity .
+
+ns1:Screenplay a owl:Class ;
+    rdfs:label "screenplay" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Screenplay .
+
+ns1:Use rdfs:label "used" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Word rdfs:label "words" .
+
+ns1:act_1 a ns1:Act ;
+    rdfs:label "acting" .
+
+ns1:beginning_1 a ns1:Beginning ;
+    rdfs:label "beginning" ;
+    quant:hasDeterminer quant:the .
+
+ns1:complain_1 a ns1:Complain ;
+    rdfs:label "complained" ;
+    vn.role:Agent ns1:Rand ;
+    vn.role:Topic ns1:edit_1,
+        ns1:element_1 .
+
+ns1:edit_1 a ns1:Edit ;
+    rdfs:label "editing" ;
+    dul:associatedWith ns1:act_1 ;
+    ns1:editOf ns1:male_1 .
+
+ns1:element_2 a ns1:Element ;
+    rdfs:label "elements" ;
+    quant:hasDeterminer quant:other ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:like_1 a ns1:Like ;
+    rdfs:label "like" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Experiencer ns1:Rand ;
+    vn.role:Theme ns1:movie_1 .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "his" .
+
+ns1:movie_1 a ns1:Movie ;
+    rdfs:label "movie" ;
+    quant:hasDeterminer quant:the ;
+    ns1:from ns1:beginning_1 .
+
+ns1:screenplay_1 a ns1:Screenplay ;
+    rdfs:label "screenplay" ;
+    ns1:screenplayOf ns1:Rand .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:complain_1,
+        ns1:element_1,
+        ns1:like_1 .
+
+ns1:word_1 a ns1:MinimalWord ;
+    rdfs:label "words" ;
+    dul:hasQuality ns1:Minimal ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Element rdfs:label "elements",
+        "other" .
+
+ns1:element_1 a ns1:Element ;
+    rdfs:label "other" ;
+    owl:differentFrom ns1:element_2 .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Female .
+

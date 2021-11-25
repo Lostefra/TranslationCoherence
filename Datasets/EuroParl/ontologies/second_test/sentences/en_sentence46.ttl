@@ -1,0 +1,167 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence46.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:en_sentence46.ttl a owl:Ontology ;
+    rdfs:label "en_sentence46" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence46" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:With rdfs:label "with" .
+
+ns1:certain_1 a ns1:Certain ;
+    rdfs:label "certain" ;
+    boxer:agent ns1:person_1 ;
+    boxer:theme ns1:situation_1 ;
+    dul:associatedWith ns1:person_1 .
+
+ns1:docuverse earmark:hasContent "I shall also refer the matter to the College of Quaestors, and I am certain that they will be keen to ensure that we comply with the regulations we ourselves vote on."^^xsd:string .
+
+ns1:person_2 coref:coref ns1:person_1 .
+
+ns1:refer_1 a ns1:AlsoRefer ;
+    rdfs:label "refer" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Recipient ns1:College ;
+    vn.role:Theme ns1:matter_1 .
+
+ns1:vote_1 a ns1:Vote ;
+    rdfs:label "vote" ;
+    dul:hasQuality ns1:On ;
+    vn.role:Agent ns1:person_1 .
+
+owl:Thing rdfs:label "they" .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoRefer rdfs:label "also refer" ;
+    rdfs:subClassOf ns1:Refer .
+
+ns1:Certain rdfs:label "certain" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:College rdfs:label "College" ;
+    boxer:possibleType foaf:Organisation ;
+    ns1:of ns1:Quaestors .
+
+ns1:Matter rdfs:label "matter" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:On rdfs:label "on" .
+
+ns1:Quaestors rdfs:label "Quaestors" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Quaestor_(European_Parliament) .
+
+ns1:Refer rdfs:label "refer" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Regulation rdfs:label "regulations" .
+
+ns1:Vote rdfs:label "vote" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:comply_1 a ns1:Comply ;
+    rdfs:label "comply" ;
+    boxer:agent ns1:person_3 ;
+    boxer:patient ns1:person_4 ;
+    dul:hasQuality ns1:Ourselves ;
+    ns1:with ns1:regulation_1 .
+
+ns1:keen_1 a ns1:Keen ;
+    rdfs:label "keen" ;
+    boxer:agent ns1:thing_1 ;
+    boxer:theme ns1:ensure_1 ;
+    boxing:hasModality boxing:Necessary .
+
+ns1:matter_1 a ns1:Matter ;
+    rdfs:label "matter" ;
+    quant:hasDeterminer quant:the .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:person_4 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:regulation_1 a ns1:Regulation ;
+    rdfs:label "regulations" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Comply,
+        ns1:Ensure,
+        ns1:Keen,
+        ns1:Ourselves,
+        ns1:ensure_1,
+        ns1:keen_1 .
+
+ns1:Comply rdfs:label "comply" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Ensure rdfs:label "ensure" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Keen rdfs:label "keen" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Ourselves rdfs:label "ourselves" .
+
+ns1:ensure_1 a ns1:Ensure ;
+    rdfs:label "ensure" ;
+    vn.role:Cause ns1:thing_1 ;
+    vn.role:Theme ns1:comply_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "they" .
+
+ns1:Person rdfs:label "I",
+        "we" .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+

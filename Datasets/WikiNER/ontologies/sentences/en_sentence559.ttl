@@ -1,0 +1,169 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence559.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "after" .
+
+translation_coherence:en_sentence559.ttl a owl:Ontology ;
+    rdfs:label "en_sentence559" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence559" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:From rdfs:label "from" .
+
+ns1:However rdfs:label "However" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of",
+        "their" .
+
+ns1:docuverse earmark:hasContent "However, after complaints from a group of visiting foreign scientists, some of the purged students were allowed to complete their work and graduate, which Rand did in October 1924."^^xsd:string .
+
+ns1:graduate_1 rdfs:label "graduate" .
+
+ns1:thing_1 coref:coref ns1:scientist_1 .
+
+ns1:visit_1 a ns1:Visit ;
+    rdfs:label "visiting" ;
+    vn.role:Actor1 ns1:group_1 ;
+    vn.role:Actor2 ns1:scientist_1 ;
+    ns1:however ns1:allow_1 .
+
+dbpedia:Ayn_Rand a schema:Person .
+
+ns1:Allow rdfs:label "allowed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Complaint rdfs:label "complaints" .
+
+ns1:Complete rdfs:label "complete" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Do rdfs:label "did" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Foreign rdfs:label "foreign" .
+
+ns1:ForeignScientist rdfs:subClassOf ns1:Scientist .
+
+ns1:Graduate rdfs:label "graduate" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Group a owl:Class ;
+    rdfs:label "group" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Social_group .
+
+ns1:Purged rdfs:label "purged" .
+
+ns1:PurgedStudent rdfs:subClassOf ns1:Student .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Ayn_Rand .
+
+ns1:Scientist rdfs:label "scientists" .
+
+ns1:Student rdfs:label "students" .
+
+ns1:Visit rdfs:label "visiting" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Work a owl:Class ;
+    rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Employment .
+
+ns1:allow_1 a ns1:Allow ;
+    rdfs:label "allowed" ;
+    boxer:theme ns1:situation_1 ;
+    vn.role:Location ns1:complaint_1 ;
+    vn.role:Theme ns1:thing_2 .
+
+ns1:complaint_1 a ns1:Complaint ;
+    rdfs:label "complaints" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:from ns1:group_1 .
+
+ns1:complete_1 a ns1:Complete ;
+    rdfs:label "complete" ;
+    vn.role:Agent ns1:thing_2 ;
+    vn.role:Theme ns1:work_1 .
+
+ns1:do_1 a ns1:Do ;
+    rdfs:label "did" ;
+    boxer:agent ns1:Rand ;
+    boxer:patient ns1:work_1 ;
+    ns1:in "1924-10-01"^^xsd:date .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:complete_1,
+        ns1:do_1 .
+
+ns1:student_1 a ns1:PurgedStudent ;
+    rdfs:label "students" ;
+    dul:hasQuality ns1:Purged ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple,
+        quant:some .
+
+owl:Thing rdfs:label "some" .
+
+ns1:group_1 a ns1:Group ;
+    rdfs:label "group" ;
+    quant:hasDeterminer quant:a .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "some" ;
+    ns1:thingOf ns1:student_1 .
+
+ns1:work_1 a ns1:Graduate,
+        ns1:Work ;
+    rdfs:label "work" ;
+    ns1:graduateOf ns1:scientist_1 .
+
+ns1:scientist_1 a owl:Thing,
+        ns1:ForeignScientist ;
+    rdfs:label "scientists",
+        "their" ;
+    dul:hasQuality ns1:Foreign ;
+    quant:hasQuantifier quant:multiple .
+

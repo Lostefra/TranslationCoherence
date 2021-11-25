@@ -1,0 +1,147 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence218.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence218.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence218" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence218" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:After rdfs:label "After" .
+
+ns1:Of rdfs:label "her",
+        "his" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "After his interim fighting with Puris, Amazon Vorreg Petrera had been fighting and killed, but her death was later deplorable."^^xsd:string .
+
+ns1:female_1 coref:coref ns1:Puris .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Deplorable,
+        ns1:fighting_1 ;
+    dul:hasQuality ns1:Later .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Deplorable,
+        ns1:fighting_1 ;
+    dul:hasQuality ns1:Later .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves ns1:Deplorable,
+        ns1:death_1 ;
+    dul:hasQuality ns1:Later .
+
+ns1:situation_4 a ns1:Situation ;
+    boxing:involves ns1:Deplorable,
+        ns1:death_1,
+        ns1:fight_1,
+        ns1:fighting_1,
+        ns1:kill_1 ;
+    ns1:after ns1:situation_5 .
+
+dbpedia:Puri a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:Amazon_vorreg_petrera rdfs:label "Amazon Vorreg Petrera" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Death rdfs:label "death" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Fight rdfs:label "fighting" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Fighting a owl:Class ;
+    rdfs:label "Fighting",
+        "fighting" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Interim a owl:Class ;
+    rdfs:label "interim" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:InterimFighting a owl:Class ;
+    rdfs:label "Interim Fighting" ;
+    dul:hasQuality ns1:Interim ;
+    rdfs:subClassOf ns1:Fighting .
+
+ns1:Kill rdfs:label "killed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:event_1 a dul:Event .
+
+ns1:fight_1 a ns1:Fight ;
+    rdfs:label "fighting" ;
+    vn.role:Actor1 ns1:Amazon_vorreg_petrera ;
+    vn.role:Actor2 ns1:fighting_1 .
+
+ns1:kill_1 a ns1:Kill ;
+    rdfs:label "killed" ;
+    vn.role:Patient ns1:fighting_1 .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "his" .
+
+ns1:situation_5 a ns1:Situation ;
+    boxing:involves ns1:event_1 .
+
+ns1:death_1 a ns1:Death ;
+    rdfs:label "death" ;
+    dul:hasQuality ns1:Deplorable ;
+    ns1:deathOf ns1:Puris .
+
+ns1:Later rdfs:label "later" .
+
+ns1:Puris a ns1:Female ;
+    rdfs:label "Puris",
+        "her" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Puri .
+
+ns1:fighting_1 a ns1:InterimFighting ;
+    rdfs:label "fighting" ;
+    dul:hasQuality ns1:Deplorable ;
+    ns1:interimFightingOf ns1:male_1 ;
+    ns1:with ns1:Puris .
+
+ns1:Deplorable rdfs:label "deplorable" .
+

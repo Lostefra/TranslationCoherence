@@ -1,0 +1,150 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence455.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence455.ttl a owl:Ontology ;
+    rdfs:label "it_sentence455" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence455" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Noteq rdfs:label "other" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Union rdfs:label "or" .
+
+ns1:With rdfs:label "with" .
+
+ns1:argue_1 a ns1:Argue ;
+    rdfs:label "argued" ;
+    vn.role:Actor ns1:predecessor_1 ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:docuverse earmark:hasContent "The predecessor of Aristotle, Plato, argued that all things have a universal form, which could be a property, or a relationship with other things."^^xsd:string .
+
+ns1:property_1 rdfs:label "property" .
+
+dbpedia:Aristotle a schema:Person .
+
+dbpedia:Plato a schema:Person .
+
+ns1:Argue rdfs:label "argued" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Aristotle rdfs:label "Aristotle" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Plato ;
+    owl:sameAs dbpedia:Aristotle .
+
+ns1:Form a owl:Class ;
+    rdfs:label "form" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Plato rdfs:label "Plato" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Plato .
+
+ns1:Predecessor rdfs:label "predecessor" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Relationship rdfs:label "relationship" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Universal a owl:Class ;
+    rdfs:label "universal" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:UniversalForm a owl:Class ;
+    rdfs:label "Universal Form" ;
+    dul:hasQuality ns1:Universal ;
+    rdfs:subClassOf ns1:Form .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "have" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Patient ns1:form_1,
+        ns1:relationship_1 ;
+    ns1:union ns1:situation_1 .
+
+ns1:predecessor_1 a ns1:Predecessor ;
+    rdfs:label "predecessor" ;
+    quant:hasDeterminer quant:the ;
+    ns1:predecessorOf ns1:Aristotle .
+
+owl:Thing rdfs:label "things" .
+
+ns1:Property rdfs:label "property" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:form_1 a ns1:Property,
+        ns1:UniversalForm ;
+    rdfs:label "form" ;
+    quant:hasDeterminer quant:a .
+
+ns1:relationship_1 a ns1:Relationship ;
+    rdfs:label "relationship" ;
+    quant:hasDeterminer quant:a ;
+    ns1:with ns1:thing_2 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Possible ;
+    boxing:involves ns1:Property,
+        ns1:form_1,
+        ns1:have_1,
+        ns1:relationship_1,
+        ns1:thing_1,
+        ns1:thing_2 .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "things" ;
+    quant:hasDeterminer quant:other ;
+    quant:hasQuantifier quant:multiple ;
+    owl:differentFrom ns1:thing_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "things" ;
+    quant:hasQuantifier quant:all,
+        quant:multiple .
+

@@ -1,0 +1,103 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence370.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence370.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence370" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence370" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:On rdfs:label "On" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:army_1 rdfs:label "army" .
+
+ns1:docuverse earmark:hasContent "On April 1865, this 's army finally Grant's pounding, Richmond fell."^^xsd:string .
+
+ns1:fall_1 a ns1:Fall ;
+    rdfs:label "fell" ;
+    vn.role:Oblique ns1:thing_1 ;
+    vn.role:Theme <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s_1> ;
+    ns1:on "1865-04-01"^^xsd:date .
+
+<http://dbpedia.org/resource/Richmond,_Virginia> a schema:Place .
+
+dbpedia:Ulysses_S._Grant a schema:Person .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s> rdfs:label "'s" .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s_1> a <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s> ;
+    rdfs:label "'s" ;
+    dul:associatedWith ns1:Grant,
+        ns1:Richmond,
+        ns1:pounding_1 ;
+    dul:hasQuality ns1:Finally .
+
+ns1:Army rdfs:label "army" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Fall rdfs:label "fell" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Grant rdfs:label "Grant" ;
+    boxer:possibleType owl:Thing ;
+    dul:hasQuality ns1:Finally ;
+    owl:sameAs dbpedia:Ulysses_S._Grant .
+
+ns1:Pounding rdfs:label "pounding" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Richmond rdfs:label "Richmond" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs <http://dbpedia.org/resource/Richmond,_Virginia> .
+
+ns1:pounding_1 a ns1:Pounding ;
+    rdfs:label "pounding" .
+
+ns1:thing_1 a owl:Thing,
+        ns1:Army ;
+    rdfs:label "this" ;
+    quant:hasDeterminer quant:this .
+
+owl:Thing rdfs:label "this" .
+
+ns1:Finally rdfs:label "finally" .
+

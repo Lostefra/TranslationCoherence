@@ -1,0 +1,145 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence342.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Actor2 rdfs:label "with" .
+
+translation_coherence:de_sentence342.ttl a owl:Ontology ;
+    rdfs:label "de_sentence342" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence342" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:believe_1 a ns1:Believe ;
+    rdfs:label "believe" ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Theme ns1:do_1 .
+
+ns1:docuverse earmark:hasContent "President of the Commission, Commissioner, I would like to start working with Mrs Schroedter, rapporteur. I believe that this work has been done very well."^^xsd:string .
+
+ns1:like_1 a ns1:Like ;
+    rdfs:label "like" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Experiencer ns1:President ;
+    vn.role:Theme ns1:start_1 .
+
+ns1:Believe rdfs:label "believe" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Commission rdfs:label "Commission" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:Commissioner ;
+    owl:sameAs dbpedia:Commissioner .
+
+ns1:Commissioner rdfs:label "Commissioner" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Commissioner .
+
+ns1:Do rdfs:label "done" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Like rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Rapporteur rdfs:label "rapporteur" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Schroedter rdfs:label "Schroedter" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis>,
+        ns1:rapporteur_1 ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis> .
+
+ns1:Start rdfs:label "start" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Very rdfs:label "very" .
+
+ns1:Well rdfs:label "well" .
+
+ns1:do_1 a ns1:Do ;
+    rdfs:label "done" ;
+    boxer:patient ns1:work_2 ;
+    dul:hasQuality ns1:Very,
+        ns1:Well .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:rapporteur_1 a ns1:Rapporteur ;
+    rdfs:label "rapporteur" .
+
+ns1:start_1 a ns1:Start ;
+    rdfs:label "start" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:President ;
+    vn.role:Theme ns1:work_1 .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "working" ;
+    vn.role:Actor1 ns1:President ;
+    vn.role:Actor2 ns1:Schroedter .
+
+ns1:work_2 a ns1:Work ;
+    rdfs:label "work" ;
+    quant:hasDeterminer quant:this .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis> rdfs:label "Mrs" ;
+    boxer:possibleType dul:Role .
+
+ns1:Person rdfs:label "I" .
+
+ns1:Work rdfs:label "Work",
+        "work",
+        "working" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:President rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith ns1:person_1 ;
+    owl:sameAs dbpedia:President ;
+    ns1:of ns1:Commission .
+

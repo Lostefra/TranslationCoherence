@@ -1,0 +1,122 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence457.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence457.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence457" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence457" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:At rdfs:label "at" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:agree_1 a ns1:Agree ;
+    rdfs:label "agreed" ;
+    vn.role:Actor ns1:Bertrand_russell ;
+    vn.role:Theme ns1:plato_1 .
+
+ns1:docuverse earmark:hasContent "Bertrand_Russell is a minor philosopher who agreed to Plato at the existence of unanswered universities."^^xsd:string .
+
+dbpedia:Bertrand_Russell a schema:Person .
+
+dbpedia:Plato rdfs:subClassOf schema:Person .
+
+ns1:Agree rdfs:label "agreed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Existence a owl:Class ;
+    rdfs:label "existence" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Existence .
+
+ns1:Minor a owl:Class ;
+    rdfs:label "minor" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:MinorPhilosopher a owl:Class ;
+    rdfs:label "Minor Philosopher" ;
+    dul:hasQuality ns1:Minor ;
+    rdfs:subClassOf ns1:Philosopher .
+
+ns1:Plato a owl:Class ;
+    rdfs:label "Plato" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Plato .
+
+ns1:Unanswered rdfs:label "unanswered" .
+
+ns1:UnansweredUniversity rdfs:subClassOf ns1:University .
+
+ns1:University rdfs:label "universities" .
+
+ns1:existence_1 a ns1:Existence ;
+    rdfs:label "existence" ;
+    quant:hasDeterminer quant:the ;
+    ns1:existenceOf ns1:university_1 .
+
+ns1:philosopher_1 a ns1:Philosopher ;
+    rdfs:label "philosopher" ;
+    quant:hasDeterminer quant:a .
+
+ns1:plato_1 a ns1:Plato ;
+    rdfs:label "Plato" ;
+    boxer:agent ns1:Bertrand_russell ;
+    ns1:at ns1:existence_1 .
+
+ns1:university_1 a dbpedia:Medieval_university,
+        ns1:UnansweredUniversity ;
+    rdfs:label "universities" ;
+    dul:hasQuality ns1:Unanswered ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Bertrand_russell a ns1:MinorPhilosopher ;
+    rdfs:label "Bertrand Russell",
+        "philosopher" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Bertrand_Russell,
+        ns1:philosopher_1 .
+
+ns1:Philosopher a owl:Class ;
+    rdfs:label "Bertrand Russell",
+        "philosopher" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Philosopher .
+

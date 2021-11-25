@@ -1,0 +1,163 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence567.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence567.ttl a owl:Ontology ;
+    rdfs:label "de_sentence567" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence567" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:At rdfs:label "at" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of",
+        "their",
+        "your" .
+
+ns1:To rdfs:label "to" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "I am very pleased with the support of your house at the Commission in defining these guidelines, which have been made available to the Member States in drawing up their own programmes."^^xsd:string .
+
+ns1:draw_1 a ns1:Draw ;
+    rdfs:label "drawing" ;
+    dul:hasQuality ns1:Up ;
+    vn.role:Agent ns1:guideline_1 ;
+    vn.role:Theme ns1:programme_1 .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "made" ;
+    vn.role:Agent ns1:guideline_1 ;
+    ns1:inOwnProgrammeOf ns1:thing_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Available,
+        ns1:guideline_1 ;
+    ns1:to ns1:Member_states .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Pleased,
+        ns1:person_2 ;
+    dul:hasQuality ns1:Very .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves ns1:Pleased,
+        ns1:Very,
+        ns1:person_2 ;
+    ns1:in ns1:define_1 ;
+    ns1:withSupportOf ns1:house_1 .
+
+ns1:support_1 a ns1:Support ;
+    rdfs:label "support" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Commission rdfs:label "Commission" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Define rdfs:label "defining" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Draw rdfs:label "drawing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Guideline rdfs:label "guidelines" .
+
+ns1:House rdfs:label "house" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Make rdfs:label "made" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Member_states rdfs:label "Member States" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Own rdfs:label "own" .
+
+ns1:OwnProgramme rdfs:subClassOf ns1:Programme .
+
+ns1:Programme rdfs:label "programmes" .
+
+ns1:Support rdfs:label "support" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Up rdfs:label "Up",
+        "up" .
+
+ns1:define_1 a ns1:Define ;
+    rdfs:label "defining" ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Theme ns1:guideline_1 .
+
+ns1:house_1 a ns1:House ;
+    rdfs:label "house" ;
+    ns1:at ns1:Commission ;
+    ns1:houseOf ns1:person_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "your" .
+
+ns1:programme_1 a ns1:OwnProgramme ;
+    rdfs:label "programmes" ;
+    dul:hasQuality ns1:Own ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:Available rdfs:label "available" .
+
+ns1:Person rdfs:label "I" .
+
+ns1:Very rdfs:label "very" .
+
+ns1:Pleased rdfs:label "pleased" ;
+    owl:sameAs dbpedia:The_Pleased .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "I" ;
+    dul:hasQuality ns1:Pleased .
+
+ns1:guideline_1 a ns1:Guideline ;
+    rdfs:label "guidelines" ;
+    dul:hasQuality ns1:Available ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple .
+

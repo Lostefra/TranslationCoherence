@@ -1,0 +1,224 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence239.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:zh_sentence239.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence239" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence239" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:C a ns1:Topic ;
+    rdfs:label "C" ;
+    boxer:possibleType owl:Thing .
+
+ns1:Entails rdfs:label "if" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Than rdfs:label "than" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:docuverse earmark:hasContent "A further amendment enables Member States to respond to the vacuum requirements, in particular the vacuum requirement, and if the work or the transport of goods is a priority item of less temperature than 20o. C."^^xsd:string .
+
+ns1:enable_1 a ns1:Enable ;
+    rdfs:label "enables" ;
+    boxer:agent ns1:amendment_1 ;
+    boxer:theme ns1:respond_1 .
+
+ns1:event_1 a dul:Event ;
+    dul:associatedWith ns1:amendment_1 .
+
+ns1:item_2 rdfs:label "item" .
+
+ns1:priority_2 a ns1:Priority ;
+    rdfs:label "priority" ;
+    dul:associatedWith ns1:transport_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:20o_1,
+        ns1:temperature_1,
+        ns1:transport_1 ;
+    ns1:entails ns1:event_2 ;
+    ns1:union ns1:situation_2 .
+
+ns1:vacuum_1 a ns1:Vacuum ;
+    rdfs:label "vacuum" ;
+    dul:associatedWith ns1:requirement_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:vacuum_2 a ns1:Vacuum ;
+    rdfs:label "vacuum" ;
+    dul:associatedWith ns1:requirement_2 ;
+    quant:hasDeterminer quant:the .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "work" ;
+    quant:hasDeterminer quant:the .
+
+ns1:20o rdfs:label "20o" .
+
+ns1:Amendment a owl:Class ;
+    rdfs:label "amendment" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Enable rdfs:label "enables" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Further a owl:Class ;
+    rdfs:label "further" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FurtherAmendment a owl:Class ;
+    rdfs:label "further amendment" ;
+    dul:hasQuality ns1:Further ;
+    rdfs:subClassOf ns1:Amendment .
+
+ns1:Goods rdfs:label "goods" .
+
+ns1:Item a owl:Class ;
+    rdfs:label "item" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Less a owl:Class ;
+    rdfs:label "less" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:LessTemperature a owl:Class ;
+    rdfs:label "Less Temperature" ;
+    dul:hasQuality ns1:Less ;
+    rdfs:subClassOf ns1:Temperature .
+
+ns1:Member_states rdfs:label "Member States" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Particular rdfs:label "particular" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:PriorityItem a owl:Class ;
+    rdfs:label "priority item" ;
+    dul:associatedWith ns1:Priority ;
+    rdfs:subClassOf ns1:Item .
+
+ns1:Requirement rdfs:label "requirement",
+        "requirements" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Respond rdfs:label "respond" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Temperature a owl:Class ;
+    rdfs:label "temperature" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic>,
+        dul:Amount .
+
+ns1:Topic rdfs:label "C" .
+
+ns1:Transport a owl:Class ;
+    rdfs:label "transport" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Transport .
+
+ns1:Work rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:event_2 a dul:Event .
+
+ns1:goods_1 a ns1:Goods ;
+    rdfs:label "goods" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:particular_1 a ns1:Particular ;
+    rdfs:label "particular" .
+
+ns1:respond_1 a ns1:Respond ;
+    rdfs:label "respond" ;
+    vn.role:Agent ns1:Member_states ;
+    vn.role:Recipient ns1:requirement_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:20o_1,
+        ns1:temperature_1,
+        ns1:transport_1 .
+
+ns1:Priority a owl:Class ;
+    rdfs:label "priority" ;
+    rdfs:subClassOf dul:Role .
+
+ns1:Vacuum rdfs:label "vacuum" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:VacuumRequirement rdfs:label "Vacuum Requirement" ;
+    rdfs:subClassOf ns1:Requirement .
+
+ns1:amendment_1 a ns1:FurtherAmendment ;
+    rdfs:label "amendment" ;
+    quant:hasDeterminer quant:a .
+
+ns1:requirement_1 a ns1:VacuumRequirement ;
+    rdfs:label "requirements" ;
+    dul:associatedWith ns1:requirement_2 ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:requirement_2 a ns1:VacuumRequirement ;
+    rdfs:label "requirement" ;
+    ns1:in ns1:particular_1 .
+
+ns1:20o_1 a ns1:20o ;
+    rdfs:label "20o" .
+
+ns1:temperature_1 a ns1:LessTemperature ;
+    rdfs:label "temperature" ;
+    ns1:than ns1:20o_1 .
+
+ns1:transport_1 a ns1:PriorityItem,
+        ns1:Transport ;
+    rdfs:label "transport" ;
+    quant:hasDeterminer quant:the ;
+    ns1:transportOf ns1:goods_1,
+        ns1:temperature_1 .
+

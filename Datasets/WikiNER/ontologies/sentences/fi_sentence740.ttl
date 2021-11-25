@@ -1,0 +1,186 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence740.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Ehighest> rdfs:label "highest" .
+
+foaf:Person rdfs:label "per" .
+
+translation_coherence:fi_sentence740.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence740" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence740" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Highest rdfs:label "highest" .
+
+ns1:In rdfs:label "In",
+        "in" .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:announce_1 a ns1:PubliclyAnnounce ;
+    rdfs:label "announced" ;
+    dul:hasQuality ns1:Publicly ;
+    vn.role:Agent ns1:official_1 ;
+    vn.role:Topic ns1:situation_3 .
+
+ns1:docuverse earmark:hasContent "In the opinion of UNDP, Algeria has one of the world's highest housing allowances per capita, and state officials have publicly announced that there are 1.5 million homes in the country."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "has" ;
+    vn.role:Agent ns1:Algeria ;
+    ns1:inOpinionOf ns1:Undp .
+
+ns1:home_1 rdfs:label "homes" .
+
+ns1:housing_1 a ns1:Housing ;
+    rdfs:label "housing" ;
+    dul:associatedWith ns1:allowance_1 .
+
+ns1:opinion_1 a ns1:Opinion ;
+    rdfs:label "opinion" ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_1 a ns1:Situation ;
+    ns1:entails ns1:situation_2 .
+
+ns1:state_1 a ns1:State ;
+    rdfs:label "state" ;
+    dul:associatedWith ns1:official_1 .
+
+dbpedia:Algeria a schema:Country,
+        schema:Place .
+
+ns1:Algeria rdfs:label "Algeria" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Algeria .
+
+ns1:Allowance rdfs:label "allowances" .
+
+ns1:Announce rdfs:label "announced" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Capita rdfs:label "capita" .
+
+ns1:Country rdfs:label "country" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Have rdfs:label "Have",
+        "has" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:HighestHousingAllowance rdfs:subClassOf ns1:HousingAllowance .
+
+ns1:Housing rdfs:label "housing" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Official rdfs:label "officials" .
+
+ns1:Opinion rdfs:label "opinion" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Publicly rdfs:label "publicly" .
+
+ns1:PubliclyAnnounce rdfs:subClassOf ns1:Announce .
+
+ns1:State a owl:Class ;
+    rdfs:label "state" ;
+    rdfs:subClassOf dul:Organization ;
+    owl:equivalentClass dbpedia:State_(polity) .
+
+ns1:StateOfficial rdfs:subClassOf ns1:Official .
+
+ns1:There rdfs:label "there" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Undp rdfs:label "UNDP" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:United_Nations_Development_Programme .
+
+ns1:World rdfs:label "world" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:capita_1 a ns1:Capita ;
+    rdfs:label "capita" .
+
+ns1:country_1 a ns1:Country ;
+    rdfs:label "country" ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:allowance_1 .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves ns1:Home,
+        ns1:there_1 .
+
+ns1:there_1 a ns1:Home,
+        ns1:There ;
+    rdfs:label "there" ;
+    dul:hasDataValue "1500000.0"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:million,
+        quant:multiple ;
+    ns1:in ns1:country_1 .
+
+ns1:world_1 a ns1:World ;
+    rdfs:label "world" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:one .
+
+ns1:Home rdfs:label "homes" .
+
+ns1:allowance_1 a ns1:HighestHousingAllowance,
+        ns1:HousingAllowance ;
+    rdfs:label "allowances" ;
+    dul:hasDataValue "1"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:highestAmong ns1:HousingAllowance ;
+    ns1:highestHousingAllowanceOf ns1:world_1 ;
+    ns1:per ns1:capita_1 .
+
+ns1:official_1 a ns1:StateOfficial ;
+    rdfs:label "officials" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:HousingAllowance rdfs:subClassOf ns1:Allowance .
+

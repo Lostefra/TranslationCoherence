@@ -1,0 +1,128 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence50.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "on" .
+
+vn.role:Predicate rdfs:label "in" .
+
+translation_coherence:de_sentence50.ttl a owl:Ontology ;
+    rdfs:label "de_sentence50" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence50" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:On rdfs:label "on" .
+
+ns1:Oninterventionof rdfs:label "on the intervention of" .
+
+ns1:appear_1 a ns1:Appear ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Predicate ns1:newspaper_1 ;
+    vn.role:Theme ns1:comment_1 ;
+    ns1:on "0001-11-18"^^xsd:date .
+
+ns1:appear_2 a ns1:Appear ;
+    rdfs:label "appeared" ;
+    vn.role:Predicate ns1:newspaper_1 ;
+    vn.role:Theme ns1:comment_1 ;
+    ns1:on "0001-11-18"^^xsd:date .
+
+ns1:docuverse earmark:hasContent "Questions previously raised on the intervention of Mrs de Palacio and not on those comments that appeared in the ABC newspaper on 18 November."^^xsd:string .
+
+ns1:intervention_1 a ns1:Intervention ;
+    rdfs:label "intervention" ;
+    quant:hasDeterminer quant:the .
+
+ns1:raise_1 a ns1:PreviouslyRaise ;
+    rdfs:label "raised" ;
+    boxing:hasTruthValue boxing:False ;
+    dul:hasQuality ns1:Previously ;
+    vn.role:Location ns1:comment_1 ;
+    vn.role:Theme ns1:question_1 ;
+    ns1:onInterventionOf ns1:De_palacio .
+
+dbpedia:American_Broadcasting_Company a schema:Organization .
+
+ns1:Abc rdfs:label "ABC" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:American_Broadcasting_Company .
+
+ns1:Comment rdfs:label "comments" .
+
+ns1:De_palacio rdfs:label "de Palacio" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis> ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis> .
+
+ns1:Intervention rdfs:label "intervention" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Newspaper rdfs:label "newspaper" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Previously rdfs:label "previously" .
+
+ns1:PreviouslyRaise rdfs:subClassOf ns1:Raise .
+
+ns1:Question rdfs:label "Questions" .
+
+ns1:Raise rdfs:label "raised" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:question_1 a ns1:Question ;
+    rdfs:label "Questions" ;
+    dul:hasQuality ns1:Topic ;
+    quant:hasQuantifier quant:multiple .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis> rdfs:label "Mrs" ;
+    boxer:possibleType dul:Role .
+
+ns1:Appear rdfs:label "appeared" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:newspaper_1 a ns1:Newspaper ;
+    rdfs:label "newspaper" ;
+    dul:associatedWith ns1:Abc .
+
+ns1:comment_1 a ns1:Comment ;
+    rdfs:label "comments" ;
+    quant:hasDeterminer quant:those ;
+    quant:hasQuantifier quant:multiple .
+

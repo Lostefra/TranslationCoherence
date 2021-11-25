@@ -1,0 +1,109 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence251.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:zh_sentence251.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence251" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence251" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "his",
+        "of" ;
+    owl:sameAs dbpedia:Son_of_God .
+
+ns1:docuverse earmark:hasContent "The King of Epis stated that his son Noptolemus was not bound by Ahelle."^^xsd:string .
+
+ns1:male_1 coref:coref ns1:king_1 .
+
+ns1:state_1 a ns1:State ;
+    rdfs:label "stated" ;
+    vn.role:Agent ns1:king_1 ;
+    vn.role:Topic ns1:bind_1 .
+
+dbpedia:Jesus rdfs:subClassOf schema:Person .
+
+ns1:Ahelle rdfs:label "Ahelle" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Bind a owl:Class ;
+    rdfs:label "bound" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Binding_of_Isaac .
+
+ns1:Epis rdfs:label "Epis" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Alec_Epis .
+
+ns1:King rdfs:label "King" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Noptolemus rdfs:label "Noptolemus" .
+
+ns1:Son a owl:Class ;
+    rdfs:label "son" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Jesus .
+
+ns1:State rdfs:label "stated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:bind_1 a ns1:Bind ;
+    rdfs:label "bound" ;
+    boxing:hasTruthValue boxing:False ;
+    dul:associatedWith ns1:noptolemus_1 ;
+    vn.role:Agent ns1:Ahelle ;
+    vn.role:Destination ns1:son_1 .
+
+ns1:noptolemus_1 a ns1:Noptolemus ;
+    rdfs:label "Noptolemus" .
+
+ns1:son_1 a ns1:Son ;
+    rdfs:label "son" ;
+    ns1:sonOf ns1:king_1 .
+
+ns1:king_1 a ns1:King,
+        ns1:Male ;
+    rdfs:label "King",
+        "his" ;
+    quant:hasDeterminer quant:the ;
+    ns1:kingOf ns1:Epis .
+

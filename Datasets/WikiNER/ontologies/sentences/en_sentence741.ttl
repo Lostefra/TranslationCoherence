@@ -1,0 +1,138 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence741.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:en_sentence741.ttl a owl:Ontology ;
+    rdfs:label "en_sentence741" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence741" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "'s",
+        "its",
+        "of" .
+
+ns1:docuverse earmark:hasContent "Women make up 70 percent of Algeria 's lawyers and 60 percent of its judges, and also dominate the field of medicine."^^xsd:string .
+
+ns1:dominate_1 a ns1:AlsoDominate ;
+    rdfs:label "dominate" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Theme1 ns1:woman_1 ;
+    vn.role:Theme2 ns1:field_1 .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "make" ;
+    dul:hasQuality ns1:Up ;
+    vn.role:Agent ns1:woman_1 ;
+    vn.role:Theme ns1:percent_1 .
+
+ns1:neuter_1 rdfs:label "its" .
+
+ns1:percent_2 rdfs:label "percent" .
+
+dbpedia:Algeria a schema:Country,
+        schema:Place .
+
+owl:Thing rdfs:label "Algeria" .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoDominate rdfs:label "also dominate" ;
+    rdfs:subClassOf ns1:Dominate .
+
+ns1:Dominate rdfs:label "dominate" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Field rdfs:label "field" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Judge rdfs:label "judges" .
+
+ns1:Lawyer rdfs:label "lawyers" .
+
+ns1:Make rdfs:label "make" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Medicine rdfs:label "medicine" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Up rdfs:label "up" .
+
+ns1:Woman rdfs:label "Women" .
+
+ns1:field_1 a ns1:Field ;
+    rdfs:label "field" ;
+    quant:hasDeterminer quant:the ;
+    ns1:fieldOf ns1:medicine_1 .
+
+ns1:judge_1 a ns1:Judge ;
+    rdfs:label "judges" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:judgeOf ns1:Algeria .
+
+ns1:lawyer_1 a ns1:Lawyer,
+        ns1:Percent ;
+    rdfs:label "lawyers" ;
+    dul:hasDataValue "60"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:lawyerOf ns1:judge_1 ;
+    ns1:percentOf ns1:Algeria .
+
+ns1:medicine_1 a ns1:Medicine ;
+    rdfs:label "medicine" .
+
+ns1:percent_1 a ns1:Percent ;
+    rdfs:label "percent" ;
+    dul:hasDataValue "70"^^xsd:nonNegativeInteger ;
+    ns1:percentOf ns1:lawyer_1 .
+
+ns1:Algeria a owl:Thing ;
+    rdfs:label "Algeria" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Algeria .
+
+ns1:Percent rdfs:label "percent" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:woman_1 a ns1:Woman ;
+    rdfs:label "Women" ;
+    quant:hasQuantifier quant:multiple .
+

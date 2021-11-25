@@ -1,0 +1,207 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence40.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence40.ttl a owl:Ontology ;
+    rdfs:label "de_sentence40" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence40" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Against rdfs:label "against" .
+
+ns1:As rdfs:label "as" .
+
+ns1:By rdfs:label "by" .
+
+ns1:From rdfs:label "from" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "Godwin, a philosophical anarche, from a rationalistic and utilitarian base against revolutionary action, saw a minimal state as a current scourge, which is increasingly irrelevant and ineffective by the gradual dissemination of knowledge."^^xsd:string .
+
+ns1:see_1 a ns1:See ;
+    rdfs:label "saw" ;
+    vn.role:Agent ns1:Godwin ;
+    vn.role:Theme ns1:state_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Ineffective,
+        ns1:state_1 ;
+    ns1:situationBy ns1:dissemination_1 .
+
+ns1:Action a owl:Class ;
+    rdfs:label "action" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Anarche a owl:Class ;
+    rdfs:label "anarche" .
+
+ns1:Base a owl:Class ;
+    rdfs:label "base" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Current a owl:Class ;
+    rdfs:label "current" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:CurrentScourge a owl:Class ;
+    rdfs:label "current scourge" ;
+    dul:hasQuality ns1:Current ;
+    rdfs:subClassOf ns1:Scourge .
+
+ns1:Dissemination a owl:Class ;
+    rdfs:label "dissemination" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Godwin rdfs:label "Godwin" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith ns1:anarche_1 ;
+    owl:sameAs dbpedia:William_Godwin .
+
+ns1:Gradual a owl:Class ;
+    rdfs:label "gradual" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:GradualDissemination a owl:Class ;
+    rdfs:label "gradual dissemination" ;
+    dul:hasQuality ns1:Gradual ;
+    rdfs:subClassOf ns1:Dissemination .
+
+ns1:Irrelevant rdfs:label "irrelevant" ;
+    dul:hasQuality ns1:Increasingly .
+
+ns1:Knowledge a owl:Class ;
+    rdfs:label "knowledge" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> ;
+    owl:equivalentClass dbpedia:Knowledge .
+
+ns1:Minimal a owl:Class ;
+    rdfs:label "minimal" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:MinimalState a owl:Class ;
+    rdfs:label "Minimal State" ;
+    dul:hasQuality ns1:Minimal ;
+    rdfs:subClassOf ns1:State ;
+    owl:equivalentClass dbpedia:Minarchism .
+
+ns1:Philosophical a owl:Class ;
+    rdfs:label "philosophical" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Philosophy_of_science .
+
+ns1:PhilosophicalAnarche a owl:Class ;
+    rdfs:label "philosophical anarche" ;
+    dul:hasQuality ns1:Philosophical ;
+    rdfs:subClassOf ns1:Anarche .
+
+ns1:Rationalistic rdfs:label "rationalistic" ;
+    owl:sameAs dbpedia:Rationalism .
+
+ns1:Revolutionary a owl:Class ;
+    rdfs:label "revolutionary" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:RevolutionaryAction a owl:Class ;
+    rdfs:label "Revolutionary Action" ;
+    dul:hasQuality ns1:Revolutionary ;
+    rdfs:subClassOf ns1:Action .
+
+ns1:Scourge a owl:Class ;
+    rdfs:label "scourge" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:See rdfs:label "saw" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:State a owl:Class ;
+    rdfs:label "state" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Utilitarian a owl:Class ;
+    rdfs:label "utilitarian" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Utilitarianism .
+
+ns1:UtilitarianBase a owl:Class ;
+    rdfs:label "Utilitarian Base" ;
+    dul:hasQuality ns1:Utilitarian ;
+    rdfs:subClassOf ns1:Base .
+
+ns1:action_1 a ns1:RevolutionaryAction ;
+    rdfs:label "action" .
+
+ns1:anarche_1 a ns1:PhilosophicalAnarche ;
+    rdfs:label "anarche" ;
+    quant:hasDeterminer quant:a ;
+    ns1:from ns1:base_1 .
+
+ns1:base_1 a ns1:UtilitarianBase ;
+    rdfs:label "base" ;
+    dul:hasQuality ns1:Rationalistic ;
+    quant:hasDeterminer quant:a ;
+    ns1:against ns1:action_1 .
+
+ns1:dissemination_1 a ns1:GradualDissemination ;
+    rdfs:label "dissemination" ;
+    quant:hasDeterminer quant:the ;
+    ns1:gradualDisseminationOf ns1:knowledge_1 .
+
+ns1:knowledge_1 a ns1:Knowledge ;
+    rdfs:label "knowledge" .
+
+ns1:scourge_1 a ns1:CurrentScourge ;
+    rdfs:label "scourge" ;
+    quant:hasDeterminer quant:a .
+
+ns1:Increasingly rdfs:label "increasingly" .
+
+ns1:Ineffective rdfs:label "ineffective" ;
+    dul:hasQuality ns1:Increasingly .
+
+ns1:state_1 a ns1:MinimalState ;
+    rdfs:label "state" ;
+    dul:hasQuality ns1:Ineffective,
+        ns1:Irrelevant ;
+    quant:hasDeterminer quant:a ;
+    ns1:as ns1:scourge_1 .
+

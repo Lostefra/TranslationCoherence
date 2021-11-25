@@ -1,0 +1,143 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence270.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Beneficiary rdfs:label "for" .
+
+translation_coherence:nl_sentence270.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence270" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence270" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:From rdfs:label "from" .
+
+ns1:Of rdfs:label "her",
+        "his",
+        "of" .
+
+ns1:call_1 a ns1:Call ;
+    rdfs:label "called" ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Beneficiary ns1:rest_1 ;
+    vn.role:Theme ns1:mother_1 .
+
+ns1:docuverse earmark:hasContent "Lincoln and his stepmom were close, he called her mother for the rest of his life, but he kept getting closer from his father."^^xsd:string .
+
+ns1:female_1 coref:coref ns1:stepmom_1 .
+
+ns1:keep_1 a ns1:Keep ;
+    rdfs:label "kept" ;
+    boxer:theme ns1:get_1 ;
+    vn.role:Agent ns1:Lincoln .
+
+ns1:male_1 rdfs:label "his" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Closer,
+        ns1:Lincoln ;
+    ns1:from ns1:father_1 .
+
+ns1:Call rdfs:label "called" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Father rdfs:label "father" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Get rdfs:label "getting" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Keep rdfs:label "kept" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Life rdfs:label "life" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Male rdfs:label "Lincoln" .
+
+ns1:Mother a owl:Class ;
+    rdfs:label "mother" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Mother .
+
+ns1:Rest rdfs:label "rest" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Stepmom a owl:Class ;
+    rdfs:label "stepmom" ;
+    owl:equivalentClass dbpedia:Stepmother .
+
+ns1:father_1 a ns1:Father ;
+    rdfs:label "father" ;
+    ns1:fatherOf ns1:Lincoln .
+
+ns1:get_1 a ns1:Get ;
+    rdfs:label "getting" ;
+    vn.role:Patient ns1:Lincoln .
+
+ns1:life_1 a ns1:Life ;
+    rdfs:label "life" ;
+    ns1:lifeOf ns1:Lincoln .
+
+ns1:mother_1 a ns1:Mother ;
+    rdfs:label "mother" ;
+    ns1:motherOf ns1:stepmom_1 .
+
+ns1:rest_1 a ns1:Rest ;
+    rdfs:label "rest" ;
+    quant:hasDeterminer quant:the ;
+    ns1:restOf ns1:life_1 .
+
+ns1:Close rdfs:label "close" .
+
+ns1:Closer rdfs:label "closer" .
+
+ns1:stepmom_1 a ns1:Female,
+        ns1:Stepmom ;
+    rdfs:label "her",
+        "stepmom" ;
+    dul:hasQuality ns1:Close ;
+    ns1:stepmomOf ns1:Lincoln .
+
+ns1:Lincoln a ns1:Male ;
+    rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Close,
+        ns1:Closer .
+

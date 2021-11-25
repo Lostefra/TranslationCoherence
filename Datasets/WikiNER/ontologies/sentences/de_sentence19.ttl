@@ -1,0 +1,154 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence19.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Actor2 rdfs:label "without" .
+
+translation_coherence:de_sentence19.ttl a owl:Ontology ;
+    rdfs:label "de_sentence19" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence19" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:In rdfs:label "in" .
+
+ns1:advocate_1 a ns1:Advocate ;
+    rdfs:label "advocated" ;
+    boxer:agent ns1:Fernand_pelloutier ;
+    boxer:patient ns1:participation_1 ;
+    ns1:as ns1:work_1 ;
+    ns1:in "1895-01-01"^^xsd:date .
+
+ns1:docuverse earmark:hasContent "Fernand_Pelloutier, who advocated a renewed participation in the labour movement in 1895, as a guidingism could work very well without the individual dynamics."^^xsd:string .
+
+ns1:labour_1 a ns1:Labour ;
+    rdfs:label "labour" ;
+    dul:associatedWith ns1:movement_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:Advocate rdfs:label "advocated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Dynamics a owl:Class ;
+    rdfs:label "dynamics" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Fernand_pelloutier a ns1:Topic ;
+    rdfs:label "Fernand Pelloutier" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Fernand_Pelloutier .
+
+ns1:Guidingism rdfs:label "guidingism" .
+
+ns1:Individual a owl:Class ;
+    rdfs:label "individual" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Individualism .
+
+ns1:IndividualDynamics a owl:Class ;
+    rdfs:label "individual dynamics" ;
+    dul:hasQuality ns1:Individual ;
+    rdfs:subClassOf ns1:Dynamics .
+
+ns1:LabourMovement a owl:Class ;
+    rdfs:label "Labour Movement" ;
+    dul:associatedWith ns1:Labour ;
+    rdfs:subClassOf ns1:Movement ;
+    owl:equivalentClass dbpedia:Labour_movement .
+
+ns1:Movement a owl:Class ;
+    rdfs:label "movement" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Participation a owl:Class ;
+    rdfs:label "participation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Participatory_democracy .
+
+ns1:Renewed a owl:Class ;
+    rdfs:label "renewed" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:RenewedParticipation a owl:Class ;
+    rdfs:label "Renewed Participation" ;
+    dul:hasQuality ns1:Renewed ;
+    rdfs:subClassOf ns1:Participation .
+
+ns1:Topic rdfs:label "Fernand Pelloutier" .
+
+ns1:Very rdfs:label "very" .
+
+ns1:Well rdfs:label "well" .
+
+ns1:Work a owl:Class ;
+    rdfs:label "work" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Employment .
+
+ns1:dynamics_1 a ns1:IndividualDynamics ;
+    rdfs:label "dynamics" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:guidingism_1 a ns1:Guidingism ;
+    rdfs:label "guidingism" ;
+    quant:hasDeterminer quant:a .
+
+ns1:participation_1 a ns1:RenewedParticipation ;
+    rdfs:label "participation" ;
+    quant:hasDeterminer quant:a ;
+    ns1:in ns1:movement_1 .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "work" ;
+    boxing:hasModality boxing:Possible ;
+    dul:hasQuality ns1:Very,
+        ns1:Well ;
+    vn.role:Actor1 ns1:guidingism_1 ;
+    vn.role:Actor2 ns1:dynamics_1 .
+
+ns1:Labour a owl:Class ;
+    rdfs:label "labour" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:movement_1 a ns1:LabourMovement ;
+    rdfs:label "movement" .
+

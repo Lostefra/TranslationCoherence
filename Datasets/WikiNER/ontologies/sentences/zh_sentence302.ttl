@@ -1,0 +1,104 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence302.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence302.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence302" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence302" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "He served as the Illinois House, a representative of the Sangamon District, linked to Whig_Party."^^xsd:string .
+
+ns1:link_1 a ns1:Link ;
+    rdfs:label "linked" ;
+    vn.role:Patient ns1:Sangamon_district .
+
+ns1:serve_1 a ns1:Serve ;
+    rdfs:label "served" ;
+    vn.role:Agent ns1:male_1 ;
+    ns1:as ns1:Illinois_house .
+
+ns1:whig_party_1 a ns1:Whig_party ;
+    rdfs:label "Whig Party" ;
+    boxer:agent ns1:Sangamon_district .
+
+dbpedia:United_States_House_of_Representatives rdfs:subClassOf schema:Organization .
+
+dbpedia:Whig_Party_(United_States) rdfs:subClassOf schema:Organization .
+
+ns1:Illinois_house rdfs:label "Illinois House" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:representative_1 .
+
+ns1:Link rdfs:label "linked" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Male rdfs:label "He" .
+
+ns1:Representative a owl:Class ;
+    rdfs:label "representative" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:United_States_House_of_Representatives .
+
+ns1:Serve rdfs:label "served" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Whig_party a owl:Class ;
+    rdfs:label "Whig Party" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Whig_Party_(United_States) .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "He" .
+
+ns1:representative_1 a ns1:Representative ;
+    rdfs:label "representative" ;
+    quant:hasDeterminer quant:a ;
+    ns1:representativeOf ns1:Sangamon_district .
+
+ns1:Sangamon_district rdfs:label "Sangamon District" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+

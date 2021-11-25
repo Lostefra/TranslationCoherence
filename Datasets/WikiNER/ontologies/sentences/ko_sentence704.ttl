@@ -1,0 +1,195 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix fred: <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence704.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+fred: rdfs:label ":"^^xsd:string .
+
+vn.role:Theme rdfs:label "on" .
+
+translation_coherence:ko_sentence704.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence704" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence704" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Include rdfs:label "including" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Static rdfs:label "static" .
+
+ns1:With rdfs:label "with" .
+
+ns1:beaver_1 a ns1:Beaver ;
+    rdfs:label "beaver" ;
+    dul:associatedWith ns1:exercise_2 .
+
+ns1:collision_1 a ns1:Collision ;
+    rdfs:label "collision" ;
+    dul:associatedWith ns1:exercise_1,
+        ns1:test_1 ;
+    quant:hasQuantifier quant:two .
+
+ns1:docuverse earmark:hasContent "The new generation struggles to rely on cultural quantitatives with war years and two collision test exercises: commemoratives including beaver static exercises, integristes of Islam."^^xsd:string .
+
+ns1:struggle_1 a ns1:Struggle ;
+    rdfs:label "struggles" ;
+    boxer:theme ns1:rely_1 ;
+    vn.role:Actor ns1:generation_1 .
+
+ns1:war_1 a ns1:War ;
+    rdfs:label "war" ;
+    dul:associatedWith ns1:year_1 .
+
+ns1:Beaver rdfs:label "beaver" ;
+    rdfs:subClassOf dul:Organism .
+
+ns1:BeaverStaticExercise rdfs:subClassOf ns1:StaticExercise .
+
+ns1:CollisionTest a owl:Class ;
+    rdfs:label "collision test" ;
+    dul:associatedWith ns1:Collision ;
+    rdfs:subClassOf ns1:Test .
+
+ns1:CollisionTestExercise rdfs:subClassOf ns1:TestExercise .
+
+ns1:Commemorative rdfs:label "commemoratives" .
+
+ns1:Cultural rdfs:label "cultural" .
+
+ns1:CulturalQuantitative rdfs:subClassOf ns1:Quantitative .
+
+ns1:Generation a owl:Class ;
+    rdfs:label "generation" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Integriste rdfs:label "integristes" .
+
+ns1:Islam rdfs:label "Islam" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Islam .
+
+ns1:New a owl:Class ;
+    rdfs:label "new" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:NewGeneration a owl:Class ;
+    rdfs:label "new generation" ;
+    dul:hasQuality ns1:New ;
+    rdfs:subClassOf ns1:Generation .
+
+ns1:Quantitative rdfs:label "quantitatives" .
+
+ns1:Rely rdfs:label "rely" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:StaticExercise rdfs:subClassOf ns1:Exercise .
+
+ns1:Struggle rdfs:label "struggles" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Test a owl:Class ;
+    rdfs:label "test" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:TestExercise rdfs:subClassOf ns1:Exercise .
+
+ns1:War rdfs:label "war" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:WarYear rdfs:subClassOf ns1:Year .
+
+ns1:Year rdfs:label "years" .
+
+ns1:commemorative_1 a ns1:Commemorative ;
+    rdfs:label "commemoratives" ;
+    dul:associatedWith ns1:integriste_1 ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:include ns1:exercise_2 .
+
+ns1:integriste_1 a ns1:Integriste ;
+    rdfs:label "integristes" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:integristeOf ns1:Islam .
+
+ns1:quantitative_1 a ns1:CulturalQuantitative ;
+    rdfs:label "quantitatives" ;
+    dul:hasQuality ns1:Cultural ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:with ns1:year_1 .
+
+ns1:rely_1 a ns1:Rely ;
+    rdfs:label "rely" ;
+    vn.role:Agent ns1:generation_1 ;
+    vn.role:Theme ns1:exercise_1,
+        ns1:quantitative_1 .
+
+ns1:test_1 a ns1:CollisionTest ;
+    rdfs:label "test" ;
+    dul:associatedWith ns1:exercise_1 .
+
+ns1:Collision a owl:Class ;
+    rdfs:label "collision" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Exercise rdfs:label "exercises" .
+
+ns1:exercise_2 a ns1:BeaverStaticExercise ;
+    rdfs:label "exercises" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:generation_1 a ns1:NewGeneration ;
+    rdfs:label "generation" ;
+    quant:hasDeterminer quant:the .
+
+ns1:year_1 a ns1:WarYear ;
+    rdfs:label "years" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:exercise_1 a ns1:CollisionTestExercise ;
+    rdfs:label "exercises" ;
+    boxing:declaration ns1:commemorative_1 ;
+    dul:hasDataValue "2"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple .
+

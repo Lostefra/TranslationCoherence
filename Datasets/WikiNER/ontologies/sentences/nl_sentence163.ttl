@@ -1,0 +1,139 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence163.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:nl_sentence163.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence163" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence163" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Agent rdfs:label "by" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:approve_1 a ns1:Approve ;
+    rdfs:label "approved" ;
+    boxer:agent ns1:law_1 ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Regular ;
+    vn.role:Agent ns1:reference_1 ;
+    vn.role:Theme ns1:change_1 .
+
+ns1:docuverse earmark:hasContent "Every policy change of the state must be approved by the entire Alabama law and regular, by the state reference."^^xsd:string .
+
+ns1:policy_1 a ns1:Policy ;
+    rdfs:label "policy" ;
+    dul:associatedWith ns1:change_1 ;
+    quant:hasQuantifier quant:every .
+
+ns1:situation_1 a ns1:Situation ;
+    ns1:entails ns1:situation_2 .
+
+ns1:state_2 a ns1:State ;
+    rdfs:label "state" ;
+    dul:associatedWith ns1:reference_1 ;
+    quant:hasDeterminer quant:the .
+
+dbpedia:Alabama a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:Alabama rdfs:label "Alabama" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:hasQuality ns1:Entire ;
+    owl:sameAs dbpedia:Alabama .
+
+ns1:Approve rdfs:label "approved" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Change a owl:Class ;
+    rdfs:label "change" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Law a owl:Class ;
+    rdfs:label "law" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Law .
+
+ns1:PolicyChange a owl:Class ;
+    rdfs:label "policy change" ;
+    dul:associatedWith ns1:Policy ;
+    rdfs:subClassOf ns1:Change .
+
+ns1:Reference rdfs:label "reference" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Regular rdfs:label "regular" .
+
+ns1:StateReference rdfs:label "State Reference" ;
+    rdfs:subClassOf ns1:Reference .
+
+ns1:law_1 a ns1:Law ;
+    rdfs:label "law" ;
+    dul:associatedWith ns1:Alabama ;
+    dul:hasQuality ns1:Entire .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:change_1 .
+
+ns1:state_1 a ns1:State ;
+    rdfs:label "state" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Entire rdfs:label "entire" .
+
+ns1:Policy a owl:Class ;
+    rdfs:label "policy" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Policy .
+
+ns1:State a owl:Class ;
+    rdfs:label "state" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> ;
+    owl:equivalentClass dbpedia:State_(polity) .
+
+ns1:reference_1 a ns1:StateReference ;
+    rdfs:label "reference" .
+
+ns1:change_1 a ns1:PolicyChange ;
+    rdfs:label "change" ;
+    ns1:policyChangeOf ns1:state_1 .
+

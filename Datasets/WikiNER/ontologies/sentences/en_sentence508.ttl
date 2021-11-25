@@ -1,0 +1,132 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence508.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "to" .
+
+translation_coherence:en_sentence508.ttl a owl:Ontology ;
+    rdfs:label "en_sentence508" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence508" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Forcriticismof rdfs:label "criticism for omission of" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "This section has led to some criticism for omission of notable persons such as Leonard_Schrader and Malcolm_Arnold in 2007 and Gene_Barry, Farrah_Fawcett, Henry_Gibson, and Bea_Arthur in 2010."^^xsd:string .
+
+ns1:lead_1 a ns1:Lead ;
+    rdfs:label "led" ;
+    vn.role:Agent ns1:section_1 ;
+    vn.role:Destination ns1:criticism_1 .
+
+ns1:omission_1 a ns1:Omission ;
+    rdfs:label "omission" .
+
+ns1:Criticism rdfs:label "criticism" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Gene_barry rdfs:label "Gene Barry" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Gene_Barry ;
+    ns1:at "2007-01-01"^^xsd:date .
+
+ns1:Henry_gibson rdfs:label "Henry Gibson" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Henry_Gibson .
+
+ns1:Lead rdfs:label "led" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Leonard_schrader rdfs:label "Leonard Schrader" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith ns1:Bea_arthur,
+        ns1:Farrah_fawcett ;
+    owl:sameAs dbpedia:Leonard_Schrader .
+
+ns1:Malcolm_arnold rdfs:label "Malcolm Arnold" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Bea_arthur,
+        ns1:Farrah_fawcett ;
+    owl:sameAs dbpedia:Malcolm_Arnold ;
+    ns1:locatedIn ns1:Gene_barry .
+
+ns1:Notable rdfs:label "notable" .
+
+ns1:NotablePerson rdfs:subClassOf ns1:Person .
+
+ns1:Omission rdfs:label "omission" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Person rdfs:label "persons" .
+
+ns1:Section rdfs:label "section" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:criticism_1 a ns1:Criticism ;
+    rdfs:label "criticism" ;
+    quant:hasQuantifier quant:some ;
+    ns1:as ns1:Leonard_schrader,
+        ns1:Malcolm_arnold ;
+    ns1:forCriticismOf ns1:person_1 ;
+    ns1:in "2010-01-01"^^xsd:date .
+
+ns1:person_1 a ns1:NotablePerson ;
+    rdfs:label "persons" ;
+    dul:hasQuality ns1:Notable ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:section_1 a ns1:Section ;
+    rdfs:label "section" ;
+    quant:hasDeterminer quant:this .
+
+ns1:Bea_arthur rdfs:label "Bea Arthur" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Bea_Arthur .
+
+ns1:Farrah_fawcett rdfs:label "Farrah Fawcett" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Henry_gibson ;
+    owl:sameAs dbpedia:Farrah_Fawcett .
+

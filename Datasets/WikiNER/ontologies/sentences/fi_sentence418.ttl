@@ -1,0 +1,159 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence418.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence418.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence418" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence418" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Legs quant:hasQuantifier quant:multiple .
+
+ns1:Multiple rdfs:label "multiple" .
+
+ns1:Of rdfs:label "'s",
+        "its" .
+
+ns1:Thick rdfs:label "thick" .
+
+ns1:With rdfs:label "with" .
+
+ns1:concrete_1 rdfs:label "concrete" .
+
+ns1:docuverse earmark:hasContent "To prevent repeated attempts to varaal Lincoln's body and hold its ransom, Robert_Todd_Lincoln was an exhausted and reincarnated concrete with multiple legs thick in 1901."^^xsd:string .
+
+ns1:exhaust_1 rdfs:label "exhausted" .
+
+ns1:hold_1 a ns1:Hold ;
+    rdfs:label "hold" ;
+    vn.role:Agent ns1:attempt_1 ;
+    vn.role:Theme ns1:ransom_1 .
+
+ns1:neuter_1 coref:coref ns1:Lincoln .
+
+ns1:prevent_1 a ns1:Prevent ;
+    rdfs:label "prevent" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Theme ns1:attempt_1 .
+
+ns1:reincarnate_1 a dbpedia:Reincarnation,
+        ns1:Reincarnate ;
+    rdfs:label "reincarnated" ;
+    boxer:patient ns1:Robert_todd_lincoln .
+
+ns1:varaal_1 a ns1:Varaal ;
+    rdfs:label "varaal" ;
+    boxer:agent ns1:attempt_1 ;
+    boxer:patient ns1:body_1 .
+
+ns1:Attempt rdfs:label "attempts" .
+
+ns1:Body rdfs:label "body" ;
+    rdfs:subClassOf dul:Organism .
+
+ns1:Concrete rdfs:label "Robert Todd Lincoln",
+        "concrete" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Exhaust rdfs:label "Robert Todd Lincoln",
+        "exhausted" .
+
+ns1:Hold rdfs:label "hold" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Leg rdfs:label "legs" .
+
+ns1:MultipleLeg rdfs:subClassOf ns1:Leg .
+
+ns1:Prevent rdfs:label "prevent" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Ransom rdfs:label "ransom" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Reincarnate rdfs:label "reincarnated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Repeated rdfs:label "repeated" .
+
+ns1:RepeatedAttempt rdfs:subClassOf ns1:Attempt .
+
+ns1:Robert_todd_lincoln a ns1:Concrete,
+        ns1:Exhaust ;
+    rdfs:label "Robert Todd Lincoln",
+        "concrete",
+        "exhausted" ;
+    boxer:possibleType foaf:Person ;
+    quant:hasDeterminer quant:an ;
+    owl:sameAs dbpedia:Robert_Todd_Lincoln ;
+    ns1:with ns1:leg_1 .
+
+ns1:Varaal a owl:Class ;
+    rdfs:label "varaal" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Channa_striata .
+
+ns1:body_1 a ns1:Body ;
+    rdfs:label "body" ;
+    ns1:bodyOf ns1:Lincoln .
+
+ns1:leg_1 a ns1:MultipleLeg ;
+    rdfs:label "legs" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:thickIn "1901-01-01"^^xsd:date .
+
+ns1:ransom_1 a ns1:Ransom ;
+    rdfs:label "ransom" ;
+    ns1:ransomOf ns1:Lincoln .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:Lincoln a owl:Thing ;
+    rdfs:label "Lincoln",
+        "its" ;
+    boxer:possibleType foaf:Person .
+
+ns1:attempt_1 a ns1:RepeatedAttempt ;
+    rdfs:label "attempts" ;
+    dul:hasQuality ns1:Repeated ;
+    quant:hasQuantifier quant:multiple .
+

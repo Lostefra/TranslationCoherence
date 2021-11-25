@@ -1,0 +1,175 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence660.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Emost> rdfs:label "most" .
+
+vn.role:Location rdfs:label "in" .
+
+translation_coherence:fi_sentence660.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence660" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence660" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Entails rdfs:label "if" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Where rdfs:label "where" .
+
+ns1:docuverse earmark:hasContent "However, most people would like to live in an area where they were generated and kasvad if they are given the opportunity, i.e., if there is work there."^^xsd:string .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:Work,
+        ns1:there_1 ;
+    dul:hasQuality ns1:There ;
+    ns1:entails ns1:like_1 .
+
+ns1:work_1 rdfs:label "work" .
+
+ns1:Area rdfs:label "area" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Generate rdfs:label "generated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Give rdfs:label "given" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:However rdfs:label "However" .
+
+<https://w3id.org/stlab/ke/amiala/fi_sentence660.ttl/I.e.> rdfs:label "i.e." .
+
+ns1:Kasvad rdfs:label "kasvad" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Like rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Live rdfs:label "live" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Most a owl:Class ;
+    rdfs:label "most" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:MostPeople a owl:Class ;
+    rdfs:label "Most People" ;
+    dul:hasQuality ns1:Most ;
+    rdfs:subClassOf ns1:People .
+
+ns1:Opportunity rdfs:label "opportunity" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:area_1 a ns1:Area ;
+    rdfs:label "area" ;
+    quant:hasDeterminer quant:an ;
+    ns1:where ns1:situation_1 .
+
+ns1:generate_1 a ns1:Generate ;
+    rdfs:label "generated" ;
+    vn.role:Theme2 ns1:thing_1 .
+
+ns1:give_1 a ns1:Give ;
+    rdfs:label "given" ;
+    vn.role:Recipient ns1:thing_2 ;
+    vn.role:Theme ns1:opportunity_1 ;
+    ns1:entails ns1:kasvad_1 .
+
+ns1:i.e._1 a <https://w3id.org/stlab/ke/amiala/fi_sentence660.ttl/I.e.> ;
+    rdfs:label "i.e." .
+
+ns1:like_1 a ns1:Like ;
+    rdfs:label "like" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:However ;
+    vn.role:Experiencer ns1:people_1 ;
+    vn.role:Theme ns1:live_1 .
+
+ns1:live_1 a ns1:Live ;
+    rdfs:label "live" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Location ns1:area_1 ;
+    vn.role:Theme ns1:people_1 .
+
+ns1:opportunity_1 a ns1:Opportunity ;
+    rdfs:label "opportunity" ;
+    dul:associatedWith ns1:i.e._1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:generate_1,
+        ns1:give_1,
+        ns1:kasvad_1 .
+
+ns1:there_1 a ns1:There,
+        ns1:Work ;
+    rdfs:label "there" .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "they" .
+
+owl:Thing rdfs:label "they" .
+
+ns1:There rdfs:label "There",
+        "there" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Work rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:kasvad_1 a ns1:Kasvad ;
+    rdfs:label "kasvad" ;
+    boxer:patient ns1:thing_1 .
+
+ns1:people_1 a ns1:MostPeople,
+        ns1:People ;
+    rdfs:label "people" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:mostAmong ns1:People .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "they" .
+
+ns1:People a owl:Class ;
+    rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection .
+

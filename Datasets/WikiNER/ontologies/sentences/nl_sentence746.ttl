@@ -1,0 +1,106 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence746.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+vn.role:Predicate rdfs:label "as" .
+
+translation_coherence:nl_sentence746.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence746" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence746" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Since rdfs:label "since" .
+
+ns1:docuverse earmark:hasContent "Besides, Berber has been identified as a national language by constitutional amendment since May 8, 2002."^^xsd:string .
+
+ns1:identify_1 a ns1:Identify ;
+    rdfs:label "identified" ;
+    dul:hasQuality ns1:Besides ;
+    vn.role:Agent ns1:amendment_1 ;
+    vn.role:Predicate ns1:language_1 ;
+    vn.role:Theme ns1:Berber ;
+    ns1:since "2002-05-08"^^xsd:date .
+
+ns1:Amendment a owl:Class ;
+    rdfs:label "amendment" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Berber rdfs:label "Berber" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Berbers .
+
+ns1:Besides rdfs:label "Besides" .
+
+ns1:Constitutional a owl:Class ;
+    rdfs:label "constitutional" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ConstitutionalAmendment a owl:Class ;
+    rdfs:label "constitutional amendment" ;
+    dul:hasQuality ns1:Constitutional ;
+    rdfs:subClassOf ns1:Amendment .
+
+ns1:Identify rdfs:label "identified" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Language a owl:Class ;
+    rdfs:label "language" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:NationalLanguage a owl:Class ;
+    rdfs:label "national language" ;
+    dul:hasQuality ns1:National ;
+    rdfs:subClassOf ns1:Language ;
+    owl:equivalentClass dbpedia:National_language .
+
+ns1:amendment_1 a ns1:ConstitutionalAmendment ;
+    rdfs:label "amendment" .
+
+ns1:language_1 a ns1:NationalLanguage ;
+    rdfs:label "language" ;
+    dul:hasQuality ns1:National ;
+    quant:hasDeterminer quant:a .
+
+ns1:National a owl:Class ;
+    rdfs:label "national" ;
+    rdfs:subClassOf dul:Quality .
+

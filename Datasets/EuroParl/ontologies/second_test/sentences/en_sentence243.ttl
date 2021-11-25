@@ -1,0 +1,111 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence243.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence243.ttl a owl:Ontology ;
+    rdfs:label "en_sentence243" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence243" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:President a ns1:Topic ;
+    rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister>,
+        ns1:colleague_1 ;
+    owl:sameAs dbpedia:President .
+
+ns1:Rel rdfs:label "," .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "Mr President, colleagues, a happy new year and millennium to you all."^^xsd:string .
+
+ns1:millennium_1 rdfs:label "millennium" .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> a ns1:Topic ;
+    rdfs:label "Mr" ;
+    boxer:possibleType dul:Role .
+
+ns1:Colleague rdfs:label "colleagues" .
+
+ns1:Happy rdfs:label "happy" .
+
+ns1:HappyNewYear a owl:Class ;
+    rdfs:label "Happy New Year" ;
+    rdfs:subClassOf ns1:NewYear ;
+    owl:equivalentClass dbpedia:Happy_New_Year_(song) .
+
+ns1:Millennium rdfs:label "millennium" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:New a owl:Class ;
+    rdfs:label "new" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:NewYear a owl:Class ;
+    rdfs:label "New Year" ;
+    dul:hasQuality ns1:New ;
+    rdfs:subClassOf dul:TimeInterval,
+        ns1:Year .
+
+ns1:Person rdfs:label "you" .
+
+ns1:Year a owl:Class ;
+    rdfs:label "year" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:colleague_1 a ns1:Colleague ;
+    rdfs:label "colleagues" ;
+    dul:associatedWith ns1:year_1 ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "you" .
+
+ns1:year_1 a ns1:HappyNewYear,
+        ns1:Millennium ;
+    rdfs:label "year" ;
+    dul:hasQuality ns1:Happy ;
+    quant:hasDeterminer quant:a ;
+    ns1:to ns1:person_1 .
+
+ns1:Topic rdfs:label "Mr",
+        "President" .
+

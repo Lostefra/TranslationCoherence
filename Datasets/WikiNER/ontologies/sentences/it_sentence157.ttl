@@ -1,0 +1,124 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence157.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:it_sentence157.ttl a owl:Ontology ;
+    rdfs:label "it_sentence157" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence157" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "For" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:budget_1 a ns1:Budget ;
+    rdfs:label "budget" ;
+    dul:associatedWith ns1:deficit_1 ;
+    quant:hasDeterminer quant:an .
+
+ns1:docuverse earmark:hasContent "For example, in 2003 Alabama had an annual budget deficit of 670 million dollars."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "had" ;
+    vn.role:Agent ns1:Alabama ;
+    vn.role:Patient ns1:deficit_1 ;
+    ns1:for ns1:example_1 ;
+    ns1:in "2003-01-01"^^xsd:date .
+
+dbpedia:Alabama a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:Alabama rdfs:label "Alabama" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Alabama .
+
+ns1:Annual a owl:Class ;
+    rdfs:label "annual" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:AnnualBudget a owl:Class ;
+    dul:hasQuality ns1:Annual ;
+    rdfs:subClassOf ns1:Budget .
+
+ns1:AnnualBudgetDeficit a owl:Class ;
+    rdfs:label "Annual Budget Deficit" ;
+    dul:associatedWith ns1:AnnualBudget ;
+    rdfs:subClassOf ns1:BudgetDeficit .
+
+ns1:BudgetDeficit a owl:Class ;
+    rdfs:label "Budget Deficit" ;
+    dul:associatedWith ns1:Budget ;
+    rdfs:subClassOf dul:Description,
+        ns1:Deficit ;
+    owl:equivalentClass dbpedia:Government_budget_balance .
+
+ns1:Deficit a owl:Class ;
+    rdfs:label "deficit" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Dollar rdfs:label "dollars" .
+
+ns1:Example rdfs:label "example" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Have rdfs:label "had" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:dollar_1 a ns1:Dollar ;
+    rdfs:label "dollars" ;
+    dul:hasDataValue "670000000"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:million,
+        quant:multiple .
+
+ns1:example_1 a ns1:Example ;
+    rdfs:label "example" .
+
+ns1:deficit_1 a ns1:AnnualBudgetDeficit ;
+    rdfs:label "deficit" ;
+    ns1:annualBudgetDeficitOf ns1:dollar_1 .
+
+ns1:Budget a owl:Class ;
+    rdfs:label "budget" ;
+    rdfs:subClassOf dul:Amount .
+

@@ -1,0 +1,144 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence688.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence688.ttl a owl:Ontology ;
+    rdfs:label "it_sentence688" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence688" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "As" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:This rdfs:label "this" .
+
+ns1:careful_1 a ns1:ExtremelyCareful ;
+    rdfs:label "careful" ;
+    boxer:agent ns1:person_1 ;
+    boxer:theme ns1:ensure_1 ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Extremely ;
+    ns1:as ns1:regards_1 .
+
+ns1:docuverse earmark:hasContent "As regards this partnership problem, I will be extremely careful to ensure that the terms of the Structural_Fund regulations are properly applied."^^xsd:string .
+
+ns1:partnership_1 a ns1:Partnership ;
+    rdfs:label "partnership" ;
+    dul:associatedWith ns1:problem_1 ;
+    quant:hasDeterminer quant:this .
+
+ns1:Apply rdfs:label "applied" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Careful rdfs:label "careful" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Ensure rdfs:label "ensure" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Extremely rdfs:label "extremely" .
+
+ns1:ExtremelyCareful rdfs:label "Extremely Careful" ;
+    rdfs:subClassOf ns1:Careful .
+
+ns1:PartnershipProblem a owl:Class ;
+    rdfs:label "Partnership Problem" ;
+    dul:associatedWith ns1:Partnership ;
+    rdfs:subClassOf ns1:Problem .
+
+ns1:Person rdfs:label "I" .
+
+ns1:Problem a owl:Class ;
+    rdfs:label "problem" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Properly rdfs:label "properly" .
+
+ns1:ProperlyApply rdfs:subClassOf ns1:Apply .
+
+ns1:Regards rdfs:label "regards" .
+
+ns1:Regulation rdfs:label "regulations" .
+
+ns1:Structural_fund rdfs:label "Structural Fund" ;
+    owl:sameAs dbpedia:Structural_Funds_and_Cohesion_Fund .
+
+ns1:Structural_fundRegulation rdfs:subClassOf ns1:Regulation .
+
+ns1:Term rdfs:label "terms" .
+
+ns1:apply_1 a ns1:ProperlyApply ;
+    rdfs:label "applied" ;
+    dul:hasQuality ns1:Properly ;
+    vn.role:Theme ns1:term_1 .
+
+ns1:ensure_1 a ns1:Ensure ;
+    rdfs:label "ensure" ;
+    vn.role:Cause ns1:person_1 ;
+    vn.role:Theme ns1:apply_1 .
+
+ns1:regards_1 a ns1:Regards ;
+    rdfs:label "regards" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:this ns1:problem_1 .
+
+ns1:regulation_1 a ns1:Structural_fundRegulation ;
+    rdfs:label "regulations" ;
+    dul:hasQuality ns1:Structural_fund ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:term_1 a ns1:Term ;
+    rdfs:label "terms" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:termOf ns1:regulation_1 .
+
+ns1:Partnership a owl:Class ;
+    rdfs:label "partnership" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:problem_1 a ns1:PartnershipProblem ;
+    rdfs:label "problem" .
+

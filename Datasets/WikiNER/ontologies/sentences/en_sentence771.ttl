@@ -1,0 +1,112 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence771.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence771.ttl a owl:Ontology ;
+    rdfs:label "en_sentence771" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence771" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:call_1 a ns1:AlsoCall ;
+    rdfs:label "called" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Predicate ns1:anthropology_2,
+        ns1:anthropology_3 ;
+    vn.role:Theme ns1:anthropology_1 .
+
+ns1:docuverse earmark:hasContent "Cultural anthropology is also called socio-cultural anthropology or social anthropology (especially in Great_Britain)."^^xsd:string .
+
+ns1:especially_1 rdfs:label "especially" .
+
+dbpedia:Great_Britain a schema:Place .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoCall rdfs:subClassOf ns1:Call .
+
+ns1:Call rdfs:label "called" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Cultural rdfs:label "Cultural",
+        "cultural" ;
+    boxer:possibleType owl:Thing .
+
+ns1:Especially rdfs:label "especially" .
+
+ns1:Great_britain rdfs:label "Great Britain" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Great_Britain .
+
+ns1:Social rdfs:label "social" .
+
+ns1:SocialAnthropology a owl:Class ;
+    rdfs:label "Social Anthropology" ;
+    rdfs:subClassOf ns1:Anthropology ;
+    owl:equivalentClass dbpedia:Social_anthropology .
+
+ns1:Socio-cultural rdfs:label "socio-cultural" .
+
+ns1:Socio-culturalAnthropology a owl:Class ;
+    rdfs:label "Socio-cultural Anthropology" ;
+    rdfs:subClassOf ns1:Anthropology ;
+    owl:equivalentClass dbpedia:Cultural_anthropology .
+
+ns1:anthropology_1 a ns1:Anthropology ;
+    rdfs:label "anthropology" ;
+    dul:associatedWith ns1:Cultural .
+
+ns1:anthropology_2 a ns1:Socio-culturalAnthropology ;
+    rdfs:label "anthropology" ;
+    dul:hasQuality ns1:Socio-cultural .
+
+ns1:anthropology_3 a ns1:Especially,
+        ns1:SocialAnthropology ;
+    rdfs:label "anthropology" ;
+    dul:hasQuality ns1:Social ;
+    ns1:locatedIn ns1:Great_britain .
+
+ns1:Anthropology rdfs:label "Anthropology",
+        "anthropology" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+

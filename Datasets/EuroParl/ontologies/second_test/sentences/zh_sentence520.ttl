@@ -1,0 +1,242 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence520.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Ebest> rdfs:label "best" .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:zh_sentence520.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence520" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence520" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:At rdfs:label "at" .
+
+ns1:Include rdfs:label "including" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Theme rdfs:label "necessary" .
+
+ns1:Where rdfs:label "where" .
+
+ns1:be_1 a ns1:Be ;
+    rdfs:label "is" ;
+    boxer:agent ns1:goal_1 ;
+    boxer:theme ns1:contribute_1 .
+
+ns1:docuverse earmark:hasContent "The goal is that these priorities should contribute to better use of the best and efficient use, as you wish, including Mr. Bradburg, and, where necessary, to make use of performance reserves aimed at encouraging optimal and efficient use of European bus."^^xsd:string .
+
+ns1:performance_1 a ns1:Performance ;
+    rdfs:label "performance" ;
+    dul:associatedWith ns1:reserve_1 .
+
+ns1:Aim rdfs:label "aimed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Be rdfs:label "is" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Best rdfs:label "best" .
+
+ns1:Better a owl:Class ;
+    rdfs:label "better" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:BetterUse a owl:Class ;
+    rdfs:label "Better Use" ;
+    dul:hasQuality ns1:Better ;
+    rdfs:subClassOf ns1:Use .
+
+ns1:Bradburg rdfs:label "Bradburg" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> .
+
+ns1:Bus a owl:Class ;
+    rdfs:label "bus" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Contribute rdfs:label "contribute" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Encourage rdfs:label "encouraging" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:EuropeanBus a owl:Class ;
+    rdfs:label "European Bus" ;
+    dul:hasQuality ns1:European ;
+    rdfs:subClassOf ns1:Bus .
+
+ns1:Goal rdfs:label "goal" ;
+    rdfs:subClassOf dul:Goal .
+
+ns1:Make rdfs:label "make" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Optimal rdfs:label "optimal" .
+
+ns1:Performance rdfs:label "performance" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:PerformanceReserve rdfs:subClassOf ns1:Reserve .
+
+ns1:Person rdfs:label "you" .
+
+ns1:Priority rdfs:label "priorities" .
+
+ns1:Reserve rdfs:label "reserves" .
+
+ns1:Wish rdfs:label "wish" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:aim_1 a ns1:Aim ;
+    rdfs:label "aimed" ;
+    vn.role:Theme ns1:reserve_1 ;
+    ns1:at ns1:thing_1,
+        ns1:thing_2 .
+
+ns1:contribute_1 a ns1:Contribute ;
+    rdfs:label "contribute" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:priority_1 ;
+    vn.role:Recipient ns1:use_1 ;
+    ns1:as ns1:situation_1 .
+
+ns1:encourage_1 a ns1:Encourage ;
+    rdfs:label "encouraging" ;
+    vn.role:Agent ns1:thing_1,
+        ns1:thing_2 ;
+    vn.role:Theme ns1:use_4 .
+
+ns1:goal_1 a ns1:Goal ;
+    rdfs:label "goal" ;
+    quant:hasDeterminer quant:the .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "make" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:use_3 .
+
+ns1:priority_1 a ns1:Priority ;
+    rdfs:label "priorities" ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:thing_3 a owl:Thing ;
+    boxer:theme ns1:thing_4 .
+
+ns1:thing_4 a owl:Thing .
+
+ns1:use_1 a ns1:BetterUse ;
+    rdfs:label "use" ;
+    ns1:betterUseOf ns1:use_2 .
+
+ns1:use_2 a ns1:EfficientUse,
+        ns1:Use ;
+    rdfs:label "use" ;
+    dul:hasQuality ns1:Best,
+        ns1:Efficient ;
+    quant:hasDeterminer quant:the ;
+    ns1:bestAmong ns1:Use .
+
+ns1:wish_1 a ns1:Wish ;
+    rdfs:label "wish" ;
+    vn.role:Experiencer ns1:person_1 ;
+    vn.role:Theme ns1:situation_1 ;
+    ns1:include ns1:Bradburg ;
+    ns1:where ns1:thing_3 .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> rdfs:label "Mr." ;
+    boxer:possibleType dul:Role .
+
+ns1:Efficient rdfs:label "efficient" .
+
+ns1:EfficientUse rdfs:label "Efficient Use" ;
+    rdfs:subClassOf ns1:Use .
+
+ns1:European a owl:Class ;
+    rdfs:label "European" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:bus_1 a ns1:EuropeanBus ;
+    rdfs:label "bus" ;
+    dul:hasQuality ns1:European .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "you" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:aim_1,
+        ns1:bus_1,
+        ns1:encourage_1,
+        ns1:make_1,
+        ns1:reserve_1,
+        ns1:use_3,
+        ns1:use_4,
+        ns1:wish_1 .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:thing_2 a owl:Thing .
+
+ns1:use_3 a ns1:Use ;
+    rdfs:label "use" ;
+    ns1:useOf ns1:reserve_1 .
+
+ns1:use_4 a ns1:EfficientUse ;
+    rdfs:label "use" ;
+    dul:hasQuality ns1:Efficient,
+        ns1:Optimal ;
+    ns1:efficientUseOf ns1:bus_1 .
+
+ns1:reserve_1 a ns1:PerformanceReserve ;
+    rdfs:label "reserves" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Use a owl:Class ;
+    rdfs:label "Use",
+        "use" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+

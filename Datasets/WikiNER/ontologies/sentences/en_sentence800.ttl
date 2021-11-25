@@ -1,0 +1,188 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence800.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+vn.role:Attribute rdfs:label "in" .
+
+translation_coherence:en_sentence800.ttl a owl:Ontology ;
+    rdfs:label "en_sentence800" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence800" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Include rdfs:label "including" .
+
+ns1:That rdfs:label "that" .
+
+ns1:docuverse earmark:hasContent "Influenced by psychoanalytic psychologists including Sigmund_Freud and Carl_Jung, these authors sought to understand the way that individual personalities were shaped by the wider cultural and social forces in which they grew up."^^xsd:string .
+
+ns1:influence_1 a ns1:Influence ;
+    rdfs:label "Influenced" ;
+    vn.role:Agent ns1:psychologist_1 ;
+    vn.role:Patient ns1:thing_1 .
+
+ns1:seek_1 a ns1:Seek ;
+    rdfs:label "sought" ;
+    boxer:theme ns1:understand_1 ;
+    vn.role:Agent ns1:author_1 .
+
+ns1:thing_2 coref:coref ns1:personality_1 .
+
+dbpedia:Carl_Jung a schema:Person .
+
+dbpedia:Sigmund_Freud a schema:Person .
+
+ns1:Author rdfs:label "authors" .
+
+ns1:Carl_jung rdfs:label "Carl Jung" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Carl_Jung .
+
+ns1:Cultural rdfs:label "cultural" ;
+    owl:sameAs dbpedia:Culture .
+
+ns1:Force rdfs:label "forces" .
+
+ns1:Grow rdfs:label "grew" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Individual rdfs:label "individual" ;
+    owl:sameAs dbpedia:Individualism .
+
+ns1:IndividualPersonality rdfs:subClassOf ns1:Personality .
+
+ns1:Influence rdfs:label "Influenced" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Personality rdfs:label "personalities" .
+
+ns1:Psychoanalytic rdfs:label "psychoanalytic" ;
+    owl:sameAs dbpedia:Psychoanalysis .
+
+ns1:PsychoanalyticPsychologist rdfs:subClassOf ns1:Psychologist .
+
+ns1:Psychologist rdfs:label "psychologists" .
+
+ns1:Seek rdfs:label "sought" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Shape rdfs:label "shaped" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Sigmund_freud rdfs:label "Sigmund Freud" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Sigmund_Freud .
+
+ns1:Social rdfs:label "social" .
+
+ns1:SocialForce rdfs:subClassOf ns1:Force .
+
+ns1:Understand a owl:Class ;
+    rdfs:label "understand" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Understanding .
+
+ns1:Up rdfs:label "up" .
+
+ns1:Way rdfs:label "way" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Wider rdfs:label "wider" .
+
+ns1:grow_1 a ns1:Grow ;
+    rdfs:label "grew" ;
+    dul:hasQuality ns1:Up ;
+    vn.role:Attribute ns1:force_1 ;
+    vn.role:Patient ns1:personality_1 .
+
+ns1:psychologist_1 a dbpedia:Psychologist,
+        ns1:PsychoanalyticPsychologist ;
+    rdfs:label "psychologists" ;
+    dul:hasQuality ns1:Psychoanalytic ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:include ns1:Carl_jung,
+        ns1:Sigmund_freud .
+
+ns1:shape_1 a ns1:Shape ;
+    rdfs:label "shaped" ;
+    vn.role:Agent ns1:force_1 ;
+    vn.role:Theme ns1:personality_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:grow_1,
+        ns1:personality_1,
+        ns1:shape_1 .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:understand_1 a ns1:Understand ;
+    rdfs:label "understand" ;
+    vn.role:Agent ns1:author_1 ;
+    vn.role:Proposition ns1:way_1 .
+
+ns1:way_1 a ns1:Way ;
+    rdfs:label "way" ;
+    quant:hasDeterminer quant:the ;
+    ns1:that ns1:situation_1 .
+
+owl:Thing rdfs:label "they" .
+
+ns1:author_1 a ns1:Author ;
+    rdfs:label "authors" ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:force_1 a ns1:SocialForce ;
+    rdfs:label "forces" ;
+    dul:hasQuality ns1:Cultural,
+        ns1:Social,
+        ns1:Wider ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:personality_1 a dbpedia:Personality_psychology,
+        owl:Thing,
+        ns1:IndividualPersonality ;
+    rdfs:label "personalities",
+        "they" ;
+    dul:hasQuality ns1:Individual ;
+    quant:hasQuantifier quant:multiple .
+

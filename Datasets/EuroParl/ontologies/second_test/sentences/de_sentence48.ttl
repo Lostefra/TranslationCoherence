@@ -1,0 +1,115 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence48.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "because" .
+
+translation_coherence:de_sentence48.ttl a owl:Ontology ;
+    rdfs:label "de_sentence48" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence48" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Noteq rdfs:label "previous" .
+
+ns1:On rdfs:label "on" .
+
+ns1:docuverse earmark:hasContent "The relevant services have not included them on the agenda because they were answered in a previous session."^^xsd:string .
+
+ns1:include_1 a ns1:Include ;
+    rdfs:label "included" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:service_1 ;
+    vn.role:Location ns1:answer_1 ;
+    vn.role:Theme ns1:thing_1 ;
+    ns1:on ns1:agenda_1 .
+
+ns1:thing_2 coref:coref ns1:thing_1 .
+
+owl:Thing rdfs:label "them",
+        "they" .
+
+ns1:Agenda rdfs:label "agenda" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Answer rdfs:label "answered" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Include rdfs:label "included" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Relevant rdfs:label "relevant" .
+
+ns1:RelevantService rdfs:subClassOf ns1:Service .
+
+ns1:Service rdfs:label "services" .
+
+ns1:agenda_1 a ns1:Agenda ;
+    rdfs:label "agenda" ;
+    quant:hasDeterminer quant:the .
+
+ns1:answer_1 a ns1:Answer ;
+    rdfs:label "answered" ;
+    boxer:patient ns1:thing_1 ;
+    ns1:in ns1:session_1 .
+
+ns1:service_1 a ns1:RelevantService ;
+    rdfs:label "services" ;
+    dul:hasQuality ns1:Relevant ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:session_1 a ns1:Session ;
+    rdfs:label "previous" ;
+    owl:differentFrom ns1:session_2 .
+
+ns1:session_2 a ns1:Session ;
+    rdfs:label "session" ;
+    quant:hasDeterminer quant:a .
+
+ns1:Session rdfs:label "previous",
+        "session" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "them",
+        "they" .
+

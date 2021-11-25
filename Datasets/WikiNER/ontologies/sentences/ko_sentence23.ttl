@@ -1,0 +1,164 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence23.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence23.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence23" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence23" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "This important element is the level of state compression, the organization of labor movement, and the influence of October_revolution [required quotation]."^^xsd:string .
+
+ns1:element_1 rdfs:label "element" ;
+    quant:hasDeterminer quant:this .
+
+ns1:labor_1 a ns1:Labor ;
+    rdfs:label "labor" ;
+    dul:associatedWith ns1:movement_1 .
+
+ns1:level_1 a ns1:ImportantElement,
+        ns1:Level ;
+    rdfs:label "level" ;
+    dul:associatedWith ns1:organization_1 ;
+    quant:hasDeterminer quant:the ;
+    ns1:levelOf ns1:compression_1 .
+
+ns1:quotation_1 a ns1:Quotation ;
+    rdfs:label "quotation" ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5D_1> .
+
+ns1:require_1 a ns1:Require ;
+    rdfs:label "required" ;
+    vn.role:Agent ns1:influence_1 ;
+    vn.role:Patient <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5D_1> .
+
+ns1:state_1 a ns1:State ;
+    rdfs:label "state" ;
+    dul:associatedWith ns1:compression_1 .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5D> rdfs:label "]" .
+
+ns1:Compression a owl:Class ;
+    rdfs:label "compression" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Element a owl:Class ;
+    rdfs:label "element" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Important a owl:Class ;
+    rdfs:label "important" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ImportantElement a owl:Class ;
+    rdfs:label "Important Element" ;
+    dul:hasQuality ns1:Important ;
+    rdfs:subClassOf ns1:Element,
+        ns1:Level .
+
+ns1:Influence rdfs:label "influence" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:LaborMovement a owl:Class ;
+    rdfs:label "Labor Movement" ;
+    dul:associatedWith ns1:Labor ;
+    rdfs:subClassOf ns1:Movement ;
+    owl:equivalentClass dbpedia:Labour_movement .
+
+ns1:Movement a owl:Class ;
+    rdfs:label "movement" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:October_revolution_%5B rdfs:label "October revolution [" ;
+    boxer:possibleType time:Interval .
+
+ns1:Organization rdfs:label "organization" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Quotation rdfs:label "quotation" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Quotation%5D rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5D> .
+
+ns1:Require rdfs:label "required" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:StateCompression a owl:Class ;
+    rdfs:label "State Compression" ;
+    dul:associatedWith ns1:State ;
+    rdfs:subClassOf ns1:Compression .
+
+ns1:influence_1 a ns1:Influence ;
+    rdfs:label "influence" ;
+    quant:hasDeterminer quant:the ;
+    ns1:influenceOf ns1:October_revolution_%5B .
+
+ns1:organization_1 a ns1:Organization ;
+    rdfs:label "organization" ;
+    quant:hasDeterminer quant:the ;
+    ns1:organizationOf ns1:movement_1 .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5D_1> a ns1:Quotation%5D ;
+    rdfs:label "]" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Labor a owl:Class ;
+    rdfs:label "labor" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Level rdfs:label "level" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:State a owl:Class ;
+    rdfs:label "state" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:compression_1 a ns1:StateCompression ;
+    rdfs:label "compression" .
+
+ns1:movement_1 a ns1:LaborMovement ;
+    rdfs:label "movement" .
+

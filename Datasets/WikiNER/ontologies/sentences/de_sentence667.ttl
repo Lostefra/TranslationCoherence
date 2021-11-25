@@ -1,0 +1,175 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence667.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence667.ttl a owl:Ontology ;
+    rdfs:label "de_sentence667" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence667" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Include rdfs:label "including" .
+
+ns1:Of rdfs:label "its" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:apply_1 a ns1:Apply ;
+    rdfs:label "applied" ;
+    vn.role:Theme ns1:Connes .
+
+ns1:differentiate_1 a dbpedia:Derivative,
+        ns1:Differentiate ;
+    rdfs:label "differentiated" ;
+    vn.role:Patient ns1:geometry_1 .
+
+ns1:docuverse earmark:hasContent "Connes has applied its work in mathematics and theoretical physics, including number theory, differentiated geometry and particle physics."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "has" ;
+    vn.role:Agent ns1:Connes ;
+    vn.role:Patient ns1:work_1 .
+
+ns1:neuter_1 coref:coref ns1:Connes .
+
+ns1:number_1 a ns1:Number ;
+    rdfs:label "number" ;
+    dul:associatedWith ns1:theory_1 .
+
+ns1:particle_1 a ns1:Particle ;
+    rdfs:label "particle" ;
+    dul:associatedWith ns1:physics_2 .
+
+owl:Thing rdfs:label "Connes" .
+
+ns1:Apply rdfs:label "applied" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Differentiate rdfs:label "differentiated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Geometry a owl:Class ;
+    rdfs:label "geometry" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> ;
+    owl:equivalentClass dbpedia:Geometry .
+
+ns1:Have rdfs:label "has" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Mathematics a owl:Class ;
+    rdfs:label "mathematics" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> ;
+    owl:equivalentClass dbpedia:Mathematics .
+
+ns1:NumberTheory a owl:Class ;
+    rdfs:label "Number Theory" ;
+    dul:associatedWith ns1:Number ;
+    rdfs:subClassOf ns1:Theory ;
+    owl:equivalentClass dbpedia:Number_theory .
+
+ns1:Particle rdfs:label "particle" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:ParticlePhysics a owl:Class ;
+    rdfs:label "particle physics" ;
+    rdfs:subClassOf ns1:Physics ;
+    owl:equivalentClass dbpedia:Particle_physics .
+
+ns1:Theoretical a owl:Class ;
+    rdfs:label "theoretical" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:TheoreticalPhysics a owl:Class ;
+    rdfs:label "theoretical physics" ;
+    dul:hasQuality ns1:Theoretical ;
+    rdfs:subClassOf ns1:Physics ;
+    owl:equivalentClass dbpedia:Theoretical_physics .
+
+ns1:Theory a owl:Class ;
+    rdfs:label "theory" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Work a owl:Class ;
+    rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Work_(physics) .
+
+ns1:mathematics_1 a ns1:Mathematics ;
+    rdfs:label "mathematics" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:physics_1 a ns1:TheoreticalPhysics ;
+    rdfs:label "physics" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:include ns1:theory_1 .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "work" ;
+    ns1:in ns1:mathematics_1,
+        ns1:physics_1 ;
+    ns1:workOf ns1:Connes .
+
+ns1:Number a owl:Class ;
+    rdfs:label "number" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Physics a owl:Class ;
+    rdfs:label "physics" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:geometry_1 a ns1:Geometry ;
+    rdfs:label "geometry" .
+
+ns1:physics_2 a ns1:ParticlePhysics ;
+    rdfs:label "physics" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:theory_1 a ns1:NumberTheory ;
+    rdfs:label "theory" ;
+    dul:associatedWith ns1:geometry_1,
+        ns1:physics_2 .
+
+ns1:Connes a owl:Thing ;
+    rdfs:label "Connes",
+        "its" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Alain_Connes .
+

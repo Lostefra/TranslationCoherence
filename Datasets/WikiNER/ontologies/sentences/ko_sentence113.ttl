@@ -1,0 +1,144 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence113.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "from" .
+
+translation_coherence:ko_sentence113.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence113" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence113" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Especially rdfs:label "especially" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "The temperature tends to come from the south part of the country, especially in the northern part of the country, slightly cooler tends to be close to the Gulf_of_Mexico."^^xsd:string .
+
+ns1:tend_1 a ns1:Tend ;
+    rdfs:label "tends" ;
+    boxer:agent ns1:temperature_1 ;
+    boxer:theme ns1:come_1 ;
+    ns1:especiallyIn ns1:part_1 .
+
+ns1:tend_2 a ns1:Tend ;
+    rdfs:label "tends" ;
+    boxer:agent ns1:cooler_1 ;
+    boxer:theme ns1:situation_1 .
+
+ns1:Close rdfs:label "close" .
+
+ns1:Come rdfs:label "come" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Cooler a owl:Class ;
+    rdfs:label "cooler" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Country rdfs:label "country" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Gulf_of_mexico rdfs:label "Gulf of Mexico" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Gulf_of_Mexico .
+
+ns1:Northern rdfs:label "northern" .
+
+ns1:Part a owl:Class ;
+    rdfs:label "Part",
+        "part" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Slightly a owl:Class ;
+    rdfs:label "slightly" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SlightlyCooler a owl:Class ;
+    rdfs:label "slightly cooler" ;
+    dul:hasQuality ns1:Slightly ;
+    rdfs:subClassOf ns1:Cooler .
+
+ns1:South a owl:Class ;
+    rdfs:label "south" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SouthPart a owl:Class ;
+    rdfs:label "South Part" ;
+    dul:hasQuality ns1:South ;
+    rdfs:subClassOf ns1:Part .
+
+ns1:Temperature rdfs:label "temperature" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic>,
+        dul:Amount .
+
+ns1:come_1 a ns1:Come ;
+    rdfs:label "come" ;
+    vn.role:Location ns1:part_1 ;
+    vn.role:Theme ns1:temperature_1 .
+
+ns1:country_1 a ns1:Country ;
+    rdfs:label "country" ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Close,
+        ns1:cooler_1 .
+
+ns1:Tend rdfs:label "tends" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:cooler_1 a ns1:SlightlyCooler ;
+    rdfs:label "cooler" ;
+    ns1:closeTo ns1:Gulf_of_mexico .
+
+ns1:part_1 a ns1:SouthPart ;
+    rdfs:label "part" ;
+    dul:hasQuality ns1:Northern ;
+    quant:hasDeterminer quant:the ;
+    ns1:southPartOf ns1:country_1 .
+
+ns1:temperature_1 a ns1:Temperature ;
+    rdfs:label "temperature" ;
+    quant:hasDeterminer quant:the .
+

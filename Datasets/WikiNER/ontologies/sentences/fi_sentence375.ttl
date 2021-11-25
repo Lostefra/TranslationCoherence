@@ -1,0 +1,110 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence375.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "Throughout" .
+
+translation_coherence:fi_sentence375.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence375" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence375" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:docuverse earmark:hasContent "Throughout the war, Lincoln showed a strong interest in military action."^^xsd:string .
+
+ns1:show_1 a ns1:Show ;
+    rdfs:label "showed" ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Patient ns1:interest_1 ;
+    vn.role:Recipient ns1:war_1 .
+
+ns1:Action a owl:Class ;
+    rdfs:label "action" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Interest a owl:Class ;
+    rdfs:label "interest" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person .
+
+ns1:MilitaryAction a owl:Class ;
+    rdfs:label "military action" ;
+    dul:hasQuality ns1:Military ;
+    rdfs:subClassOf ns1:Action ;
+    owl:equivalentClass dbpedia:War .
+
+ns1:Show rdfs:label "showed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Strong a owl:Class ;
+    rdfs:label "strong" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:StrongInterest a owl:Class ;
+    rdfs:label "strong interest" ;
+    dul:hasQuality ns1:Strong ;
+    rdfs:subClassOf ns1:Interest .
+
+ns1:War a owl:Class ;
+    rdfs:label "war" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:War .
+
+ns1:action_1 a ns1:MilitaryAction ;
+    rdfs:label "action" ;
+    dul:hasQuality ns1:Military .
+
+ns1:interest_1 a ns1:StrongInterest ;
+    rdfs:label "interest" ;
+    quant:hasDeterminer quant:a ;
+    ns1:in ns1:action_1 .
+
+ns1:war_1 a ns1:War ;
+    rdfs:label "war" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Military a owl:Class ;
+    rdfs:label "military" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Military .
+

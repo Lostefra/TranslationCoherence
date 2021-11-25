@@ -1,0 +1,255 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence683.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#-> rdfs:label "-" .
+
+vn.role:Theme rdfs:label "with" .
+
+translation_coherence:ko_sentence683.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence683" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence683" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:By rdfs:label "by" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:attempt_1 a ns1:Attempt ;
+    rdfs:label "attempts" ;
+    vn.role:Agent ns1:committee_1 ;
+    vn.role:Predicate ns1:situation_1 .
+
+ns1:chapter_1 a ns1:Chapter ;
+    rdfs:label "chapter" ;
+    dul:hasDataValue "2.1"^^xsd:nonNegativeInteger ;
+    quant:hasDeterminer quant:the ;
+    ns1:qtyOf ns1:report_1 .
+
+ns1:docuverse earmark:hasContent "I am a certain idea of the content of the chapter 2.1 of this report, the committee attempts to review more economic definitions of the local competitiveness and analyze the scope that this competitiveness can be supported, improvements and influences by factors - Mr Markov, now, and Mrs Raschhofer - were stressed with very strength."^^xsd:string .
+
+ns1:idea_1 rdfs:label "idea" ;
+    quant:hasDeterminer quant:a .
+
+ns1:person_1 a ns1:CertainIdea,
+        ns1:Person ;
+    rdfs:label "I" ;
+    ns1:personOf ns1:content_1 .
+
+ns1:stress_1 a ns1:Stress ;
+    rdfs:label "stressed" ;
+    vn.role:Destination ns1:improvement_1,
+        ns1:influence_1 ;
+    vn.role:Theme ns1:strength_1 .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis> rdfs:label "Mrs" ;
+    boxer:possibleType dul:Role .
+
+ns1:Analyze rdfs:label "analyze" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Attempt rdfs:label "attempts" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Certain a owl:Class ;
+    rdfs:label "certain" .
+
+ns1:CertainIdea rdfs:label "certain idea" ;
+    dul:associatedWith ns1:Idea ;
+    dul:hasModality ns1:Certain .
+
+ns1:Chapter rdfs:label "chapter" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Committee rdfs:label "committee" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Competitiveness a owl:Class ;
+    rdfs:label "competitiveness" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Content rdfs:label "content" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Definition rdfs:label "definitions" .
+
+ns1:Economic rdfs:label "economic" .
+
+ns1:EconomicDefinition rdfs:subClassOf ns1:Definition .
+
+ns1:Factor rdfs:label "factors" .
+
+ns1:Idea a owl:Class ;
+    rdfs:label "idea" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Improvement rdfs:label "improvements" .
+
+ns1:Influence rdfs:label "influences" .
+
+ns1:LocalCompetitiveness a owl:Class ;
+    rdfs:label "Local Competitiveness" ;
+    dul:hasQuality ns1:Local ;
+    rdfs:subClassOf ns1:Competitiveness .
+
+ns1:Markov rdfs:label "Markov" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    dul:hasQuality ns1:Now ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> .
+
+ns1:More rdfs:label "more" .
+
+ns1:MoreEconomicDefinition rdfs:subClassOf ns1:EconomicDefinition .
+
+ns1:Now rdfs:label "now" .
+
+ns1:Person rdfs:label "I" .
+
+ns1:Raschhofer rdfs:label "Raschhofer" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis> ;
+    owl:sameAs dbpedia:Daniela_Raschhofer .
+
+ns1:Report rdfs:label "report" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Review rdfs:label "review" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Scope rdfs:label "scope" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Strength a owl:Class ;
+    rdfs:label "strength" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Stress rdfs:label "stressed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Support rdfs:label "supported" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Very a owl:Class ;
+    rdfs:label "very" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:VeryStrength a owl:Class ;
+    rdfs:label "Very Strength" ;
+    dul:hasQuality ns1:Very ;
+    rdfs:subClassOf ns1:Strength .
+
+ns1:analyze_1 a ns1:Analyze ;
+    rdfs:label "analyze" ;
+    vn.role:Agent ns1:committee_1 ;
+    vn.role:Theme ns1:scope_1 .
+
+ns1:content_1 a ns1:Content ;
+    rdfs:label "content" ;
+    quant:hasDeterminer quant:the ;
+    ns1:contentOf "2.1"^^xsd:nonNegativeInteger .
+
+ns1:factor_1 a ns1:Factor ;
+    rdfs:label "factors" ;
+    <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#-> ns1:Markov,
+        ns1:Raschhofer ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:improvement_1 a ns1:Improvement ;
+    rdfs:label "improvements" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:influence_1 a ns1:Influence ;
+    rdfs:label "influences" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:influenceBy ns1:factor_1 .
+
+ns1:report_1 a ns1:Report ;
+    rdfs:label "report" ;
+    quant:hasDeterminer quant:this .
+
+ns1:review_1 a ns1:Review ;
+    rdfs:label "review" ;
+    vn.role:Agent ns1:committee_1 ;
+    vn.role:Theme ns1:definition_1 .
+
+ns1:scope_1 a ns1:Scope ;
+    rdfs:label "scope" ;
+    boxer:theme ns1:support_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:analyze_1,
+        ns1:definition_1,
+        ns1:review_1 .
+
+ns1:strength_1 a ns1:VeryStrength ;
+    rdfs:label "strength" .
+
+ns1:support_1 a ns1:Support ;
+    rdfs:label "supported" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Beneficiary ns1:competitiveness_1 .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> rdfs:label "Mr" ;
+    boxer:possibleType dul:Role .
+
+ns1:Local a owl:Class ;
+    rdfs:label "local" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:competitiveness_1 a ns1:LocalCompetitiveness ;
+    rdfs:label "competitiveness" ;
+    dul:hasQuality ns1:Local ;
+    quant:hasDeterminer quant:the .
+
+ns1:definition_1 a ns1:MoreEconomicDefinition ;
+    rdfs:label "definitions" ;
+    dul:hasQuality ns1:Economic,
+        ns1:More ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:moreEconomicDefinitionOf ns1:competitiveness_1 .
+
+ns1:committee_1 a ns1:Committee ;
+    rdfs:label "committee" ;
+    quant:hasDeterminer quant:the .
+

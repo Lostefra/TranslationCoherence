@@ -1,0 +1,109 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence285.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:ko_sentence285.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence285" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence285" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:After rdfs:label "after" .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "The grief of Lincoln for this loss is almost 11 months after the birth of William Willie_Wallace Lincoln, December 21."^^xsd:string .
+
+ns1:month_1 rdfs:label "months" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Almost,
+        ns1:Month,
+        ns1:grief_1 ;
+    ns1:after ns1:birth_1 .
+
+ns1:Birth rdfs:label "birth" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:Grief a owl:Class ;
+    rdfs:label "grief" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> ;
+    owl:equivalentClass dbpedia:Grief .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Loss a owl:Class ;
+    rdfs:label "loss" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Grief .
+
+ns1:William_willie_wallace_lincoln rdfs:label "William Willie Wallace Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith "0001-12-21"^^xsd:date .
+
+ns1:birth_1 a ns1:Birth ;
+    rdfs:label "birth" ;
+    quant:hasDeterminer quant:the ;
+    ns1:birthOf ns1:William_willie_wallace_lincoln .
+
+ns1:grief_1 a ns1:Grief,
+        ns1:Month ;
+    rdfs:label "grief" ;
+    dul:hasDataValue "11"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:Almost ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:for ns1:loss_1 ;
+    ns1:griefOf ns1:Lincoln .
+
+ns1:loss_1 a ns1:Loss ;
+    rdfs:label "loss" ;
+    quant:hasDeterminer quant:this .
+
+ns1:Almost rdfs:label "almost" .
+
+ns1:Month rdfs:label "months" .
+

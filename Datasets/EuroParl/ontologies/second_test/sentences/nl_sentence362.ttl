@@ -1,0 +1,142 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence362.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence362.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence362" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence362" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:While rdfs:label "while" .
+
+ns1:commission_1 a ns1:Commission ;
+    rdfs:label "commission" ;
+    dul:associatedWith ns1:program_1 .
+
+ns1:docuverse earmark:hasContent "There must be an internal error in the commissioner while he respects the specific local and regional aspects of commission programs."^^xsd:string .
+
+ns1:error_1 rdfs:label "error" ;
+    quant:hasDeterminer quant:an .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:Error,
+        ns1:Internal,
+        ns1:InternalError,
+        ns1:there_1 ;
+    ns1:while ns1:respect_1 .
+
+ns1:Aspect rdfs:label "aspects" .
+
+ns1:Commission rdfs:label "commission" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:CommissionProgram rdfs:subClassOf ns1:Program .
+
+ns1:Commissioner rdfs:label "commissioner" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Local rdfs:label "local" .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Program rdfs:label "programs" .
+
+ns1:Regional rdfs:label "regional" .
+
+ns1:RegionalAspect rdfs:subClassOf ns1:Aspect .
+
+ns1:Respect rdfs:label "respects" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Specific rdfs:label "specific" .
+
+ns1:There rdfs:label "There" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:aspect_1 a ns1:RegionalAspect ;
+    rdfs:label "aspects" ;
+    dul:hasQuality ns1:Local,
+        ns1:Regional,
+        ns1:Specific ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:regionalAspectOf ns1:program_1 .
+
+ns1:commissioner_1 a ns1:Commissioner ;
+    rdfs:label "commissioner" ;
+    quant:hasDeterminer quant:the .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "he" .
+
+ns1:respect_1 a ns1:Respect ;
+    rdfs:label "respects" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Experiencer ns1:male_1 ;
+    vn.role:Theme ns1:aspect_1 .
+
+ns1:there_1 a ns1:InternalError,
+        ns1:There ;
+    rdfs:label "There" ;
+    dul:hasQuality ns1:Internal ;
+    ns1:in ns1:commissioner_1 .
+
+ns1:Error a owl:Class ;
+    rdfs:label "error" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:InternalError a owl:Class ;
+    rdfs:label "internal error" ;
+    dul:hasQuality ns1:Internal ;
+    rdfs:subClassOf ns1:Error .
+
+ns1:program_1 a ns1:CommissionProgram ;
+    rdfs:label "programs" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Internal a owl:Class ;
+    rdfs:label "internal" ;
+    rdfs:subClassOf dul:Quality .
+

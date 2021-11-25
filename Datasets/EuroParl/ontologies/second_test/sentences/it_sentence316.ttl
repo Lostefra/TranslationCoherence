@@ -1,0 +1,301 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence316.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%2C> rdfs:label "," .
+
+vn.role:Agent rdfs:label "by" .
+
+vn.role:Destination rdfs:label "into" .
+
+translation_coherence:it_sentence316.ttl a owl:Ontology ;
+    rdfs:label "it_sentence316" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence316" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:From rdfs:label "from" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Inuseof rdfs:label "in the use of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Through rdfs:label "through" .
+
+ns1:cohesion_1 a ns1:Cohesion ;
+    rdfs:label "cohesion" ;
+    dul:associatedWith ns1:fund_1 .
+
+ns1:coordination_1 a ns1:Coordination ;
+    rdfs:label "coordination" ;
+    dul:associatedWith ns1:process_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:docuverse earmark:hasContent "Finally, as a Committee on Energy, we would like to emphasize even more the question of supporting renewable energy resources from cohesion funds and regional development, so, through a coordination process, the increase in the use of renewable energy so that the financing resources channelled into the energy programme could be compensated by these more substantial sums."^^xsd:string .
+
+ns1:energy_1 a ns1:Energy ;
+    rdfs:label "energy" ;
+    dul:associatedWith ns1:resource_1 .
+
+ns1:energy_3 a ns1:Energy ;
+    rdfs:label "energy" ;
+    dul:associatedWith ns1:programme_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:financing_1 a ns1:Financing ;
+    rdfs:label "financing" ;
+    dul:associatedWith ns1:resource_2 ;
+    quant:hasDeterminer quant:the .
+
+ns1:like_1 a ns1:Like ;
+    rdfs:label "like" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:associatedWith ns1:increase_1 ;
+    dul:hasQuality ns1:Finally,
+        ns1:So ;
+    vn.role:Experiencer ns1:person_1 ;
+    vn.role:Theme ns1:situation_1 ;
+    ns1:as ns1:Committee ;
+    ns1:so ns1:situation_2 ;
+    ns1:through ns1:process_1 .
+
+ns1:use_1 a ns1:Use ;
+    rdfs:label "use" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Channel rdfs:label "channelled" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Cohesion rdfs:label "cohesion" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:CohesionFund rdfs:subClassOf ns1:Fund .
+
+ns1:Committee rdfs:label "Committee" ;
+    boxer:possibleType foaf:Organisation ;
+    ns1:on ns1:Energy .
+
+ns1:Compensate rdfs:label "compensated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:CoordinationProcess a owl:Class ;
+    rdfs:label "coordination process" ;
+    dul:associatedWith ns1:Coordination ;
+    rdfs:subClassOf ns1:Process .
+
+ns1:Development a owl:Class ;
+    rdfs:label "development" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Emphasize rdfs:label "emphasize" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:EnergyProgramme rdfs:label "Energy Programme" ;
+    rdfs:subClassOf ns1:Programme .
+
+ns1:EnergyResource rdfs:subClassOf ns1:Resource .
+
+ns1:Even rdfs:label "even" .
+
+ns1:Finally rdfs:label "Finally" .
+
+ns1:Financing rdfs:label "financing" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:FinancingResource rdfs:subClassOf ns1:Resource .
+
+ns1:Fund rdfs:label "funds" .
+
+ns1:Increase rdfs:label "increase" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:Like rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:MoreSubstantialSum rdfs:subClassOf ns1:SubstantialSum .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Process a owl:Class ;
+    rdfs:label "process" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Programme rdfs:label "programme" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Question rdfs:label "question" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:RegionalDevelopment a owl:Class ;
+    rdfs:label "Regional Development" ;
+    dul:hasQuality ns1:Regional ;
+    rdfs:subClassOf ns1:Development .
+
+ns1:Renewable a owl:Class ;
+    rdfs:label "renewable" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:RenewableEnergy a owl:Class ;
+    rdfs:label "Renewable Energy",
+        "renewable energy" ;
+    dul:hasQuality ns1:Renewable ;
+    rdfs:subClassOf ns1:Energy ;
+    owl:equivalentClass dbpedia:Renewable_energy .
+
+ns1:RenewableEnergyResource rdfs:subClassOf ns1:EnergyResource .
+
+ns1:So rdfs:label "so" .
+
+ns1:Substantial rdfs:label "substantial" .
+
+ns1:SubstantialSum rdfs:subClassOf ns1:Sum .
+
+ns1:Sum rdfs:label "sums" .
+
+ns1:Support rdfs:label "supporting" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Use rdfs:label "use" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:channel_1 a ns1:Channel ;
+    rdfs:label "channelled" ;
+    vn.role:Agent ns1:resource_2 ;
+    vn.role:Destination ns1:programme_1 .
+
+ns1:compensate_1 a ns1:Compensate ;
+    rdfs:label "compensated" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Agent ns1:sum_1 ;
+    vn.role:Theme ns1:programme_1 .
+
+ns1:emphasize_1 a ns1:Emphasize ;
+    rdfs:label "emphasize" ;
+    dul:hasQuality ns1:Even,
+        ns1:More ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:question_1 .
+
+ns1:energy_2 a ns1:RenewableEnergy ;
+    rdfs:label "energy" .
+
+ns1:increase_1 a ns1:Increase ;
+    rdfs:label "increase" ;
+    quant:hasDeterminer quant:the ;
+    ns1:inUseOf ns1:energy_2 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:development_1,
+        ns1:emphasize_1,
+        ns1:fund_1,
+        ns1:resource_1,
+        ns1:support_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:channel_1,
+        ns1:compensate_1 .
+
+ns1:sum_1 a ns1:MoreSubstantialSum ;
+    rdfs:label "sums" ;
+    dul:hasQuality ns1:More,
+        ns1:Substantial ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:support_1 a ns1:Support ;
+    rdfs:label "supporting" ;
+    vn.role:Agent ns1:question_1 ;
+    vn.role:Beneficiary ns1:resource_1 .
+
+ns1:Coordination a owl:Class ;
+    rdfs:label "coordination" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:More rdfs:label "More",
+        "more" .
+
+ns1:Regional a owl:Class ;
+    rdfs:label "regional" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Resource rdfs:label "resources" .
+
+ns1:development_1 a ns1:RegionalDevelopment ;
+    rdfs:label "development" ;
+    dul:hasQuality ns1:Regional .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:process_1 a ns1:CoordinationProcess ;
+    rdfs:label "process" .
+
+ns1:question_1 a ns1:Question ;
+    rdfs:label "question" ;
+    quant:hasDeterminer quant:the .
+
+ns1:resource_2 a ns1:FinancingResource ;
+    rdfs:label "resources" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:fund_1 a ns1:CohesionFund ;
+    rdfs:label "funds" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:programme_1 a ns1:EnergyProgramme ;
+    rdfs:label "programme" .
+
+ns1:resource_1 a ns1:RenewableEnergyResource ;
+    rdfs:label "resources" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:from ns1:development_1,
+        ns1:fund_1 .
+
+ns1:Energy a owl:Class ;
+    rdfs:label "Energy",
+        "energy" ;
+    boxer:possibleType foaf:Organisation ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+

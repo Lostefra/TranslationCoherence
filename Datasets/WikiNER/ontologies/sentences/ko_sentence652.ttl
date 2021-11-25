@@ -1,0 +1,202 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence652.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence652.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence652" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence652" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:After rdfs:label "after" .
+
+ns1:Of rdfs:label "her" .
+
+ns1:On rdfs:label "on" .
+
+ns1:atlas_shrugged_1 a ns1:Atlas_shrugged ;
+    rdfs:label "Atlas Shrugged" ;
+    boxer:patient ns1:thing_1 .
+
+ns1:docuverse earmark:hasContent "United_Kingdom Mark_Sanford wrote a review on 2009 Newsweek He talked how it was called after the first reading. Fountainhead and Atlas_Shrugged tying her importance to understand the 2008 financial crisis."^^xsd:string .
+
+ns1:event_1 a dul:Event ;
+    dul:associatedWith ns1:fountainhead_1 .
+
+ns1:event_2 a dul:Event .
+
+ns1:talk_1 a ns1:Talk ;
+    rdfs:label "talked" ;
+    boxer:theme ns1:call_1 ;
+    dul:associatedWith ns1:review_1 ;
+    vn.role:Agent ns1:male_1 .
+
+ns1:tie_1 a ns1:Tie ;
+    rdfs:label "tying" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Patient ns1:importance_1 .
+
+ns1:understand_1 a ns1:Understand ;
+    rdfs:label "understand" ;
+    vn.role:Agent ns1:importance_1 ;
+    vn.role:Proposition ns1:crisis_1 .
+
+ns1:write_1 a ns1:Write ;
+    rdfs:label "wrote" ;
+    vn.role:Agent ns1:United_kingdom_mark_sanford ;
+    vn.role:Theme ns1:review_1 .
+
+dbpedia:Newsweek a schema:CreativeWork .
+
+dbpedia:United_Kingdom rdfs:subClassOf schema:Country,
+        schema:Place .
+
+ns1:Atlas_shrugged a owl:Class ;
+    rdfs:label "Atlas Shrugged" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Atlas_Shrugged .
+
+ns1:Call rdfs:label "called" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Crisis a owl:Class ;
+    rdfs:label "crisis" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Financial a owl:Class ;
+    rdfs:label "financial" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FinancialCrisis a owl:Class ;
+    rdfs:label "financial crisis" ;
+    dul:hasQuality ns1:Financial ;
+    rdfs:subClassOf ns1:Crisis ;
+    owl:equivalentClass <http://dbpedia.org/resource/Financial_crisis_of_2007–08> .
+
+ns1:First a owl:Class ;
+    rdfs:label "first" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FirstReading a owl:Class ;
+    rdfs:label "first reading" ;
+    dul:hasQuality ns1:First ;
+    rdfs:subClassOf ns1:Reading .
+
+ns1:Fountainhead a owl:Class ;
+    rdfs:label "Fountainhead" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:The_Fountainhead .
+
+ns1:Importance rdfs:label "importance" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Male rdfs:label "He" .
+
+ns1:Manner rdfs:label "how" .
+
+ns1:Reading a owl:Class ;
+    rdfs:label "reading" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Review rdfs:label "review" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Talk rdfs:label "talked" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Tie rdfs:label "tying" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Understand rdfs:label "understand" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:United_kingdom_mark_sanford rdfs:label "United Kingdom Mark Sanford" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Write rdfs:label "wrote" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:call_1 a ns1:Call ;
+    rdfs:label "called" ;
+    vn.role:Recipient ns1:manner_1 ;
+    vn.role:Topic ns1:Newsweek ;
+    ns1:after ns1:reading_1 .
+
+ns1:crisis_1 a ns1:FinancialCrisis ;
+    rdfs:label "crisis" ;
+    quant:hasDeterminer quant:the ;
+    ns1:at "2008-01-01"^^xsd:date .
+
+ns1:female_1 a ns1:Female ;
+    rdfs:label "her" .
+
+ns1:fountainhead_1 a ns1:Fountainhead ;
+    rdfs:label "Fountainhead" .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "He" .
+
+ns1:manner_1 a ns1:Manner ;
+    rdfs:label "how" .
+
+ns1:reading_1 a ns1:FirstReading ;
+    rdfs:label "reading" ;
+    quant:hasDeterminer quant:the .
+
+owl:Thing a owl:Class ;
+    rdfs:label "it" ;
+    owl:equivalentClass dbpedia:United_Kingdom .
+
+ns1:Newsweek rdfs:label "Newsweek" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality owl:Thing ;
+    owl:sameAs dbpedia:Newsweek ;
+    ns1:at "2009-01-01"^^xsd:date .
+
+ns1:importance_1 a ns1:Importance ;
+    rdfs:label "importance" ;
+    ns1:importanceOf ns1:female_1 .
+
+ns1:review_1 a ns1:Review ;
+    rdfs:label "review" ;
+    quant:hasDeterminer quant:a ;
+    ns1:on ns1:Newsweek .
+
+ns1:thing_1 a owl:Thing .
+

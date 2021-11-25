@@ -1,0 +1,131 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence149.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence149.ttl a owl:Ontology ;
+    rdfs:label "de_sentence149" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence149" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Between rdfs:label "between" .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:complete_1 a ns1:Complete ;
+    rdfs:label "completed" ;
+    vn.role:Theme ns1:project_1 ;
+    ns1:for ns1:month_1 .
+
+ns1:docuverse earmark:hasContent "The renovation project, which has been completed for months, overlaps this important route between the North and the South of Europe."^^xsd:string .
+
+ns1:overlap_1 a ns1:Overlap ;
+    rdfs:label "overlaps" ;
+    vn.role:Agent ns1:project_1 ;
+    vn.role:Patient ns1:route_1 .
+
+ns1:renovation_1 a ns1:Renovation ;
+    rdfs:label "renovation" ;
+    dul:associatedWith ns1:project_1 ;
+    quant:hasDeterminer quant:the .
+
+dbpedia:Europe a schema:Continent,
+        schema:Place .
+
+ns1:Complete rdfs:label "completed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Europe rdfs:label "Europe" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Europe .
+
+ns1:Important a owl:Class ;
+    rdfs:label "important" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ImportantRoute a owl:Class ;
+    rdfs:label "Important Route" ;
+    dul:hasQuality ns1:Important ;
+    rdfs:subClassOf ns1:Route .
+
+ns1:Month rdfs:label "months" .
+
+ns1:North rdfs:label "North" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Overlap rdfs:label "overlaps" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Project a owl:Class ;
+    rdfs:label "project" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:RenovationProject a owl:Class ;
+    rdfs:label "renovation project" ;
+    dul:associatedWith ns1:Renovation ;
+    rdfs:subClassOf ns1:Project .
+
+ns1:Route a owl:Class ;
+    rdfs:label "route" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> ;
+    owl:equivalentClass dbpedia:Highway .
+
+ns1:South rdfs:label "South" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:month_1 a ns1:Month ;
+    rdfs:label "months" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:route_1 a ns1:ImportantRoute ;
+    rdfs:label "route" ;
+    quant:hasDeterminer quant:this ;
+    ns1:between ns1:North,
+        ns1:South ;
+    ns1:importantRouteOf ns1:Europe .
+
+ns1:Renovation a owl:Class ;
+    rdfs:label "renovation" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:project_1 a ns1:RenovationProject ;
+    rdfs:label "project" .
+

@@ -1,0 +1,265 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence159.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Predicate rdfs:label "for" .
+
+translation_coherence:it_sentence159.ttl a owl:Ontology ;
+    rdfs:label "it_sentence159" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence159" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:By rdfs:label "by" .
+
+ns1:First rdfs:label "first" .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Intransportof rdfs:label "in the transport of" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "Madam President, I should like first of all to thank Mr Koch for his report, which he has in his heart the question of transport safety. The report examines the question of harmonising the examination requirements for safety consultants working in the transport of dangerous goods by road, rail and waterway."^^xsd:string .
+
+ns1:examination_1 a ns1:Examination ;
+    rdfs:label "examination" ;
+    dul:associatedWith ns1:requirement_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:examine_1 a ns1:Examine ;
+    rdfs:label "examines" ;
+    vn.role:Agent ns1:report_1 ;
+    vn.role:Location ns1:question_1 .
+
+ns1:harmonise_1 a ns1:Harmonise ;
+    rdfs:label "harmonising" ;
+    boxer:agent ns1:question_1 ;
+    boxer:patient ns1:requirement_1 ;
+    ns1:for ns1:consultant_1 .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "has" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:Koch ;
+    vn.role:Patient ns1:report_1 ;
+    ns1:in ns1:heart_1 .
+
+ns1:like_1 a ns1:Like ;
+    rdfs:label "like" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:associatedWith ns1:President ;
+    vn.role:Experiencer ns1:person_1 ;
+    vn.role:Theme ns1:question_1 ;
+    ns1:firstOf ns1:thing_1 .
+
+ns1:male_1 rdfs:label "his" .
+
+ns1:safety_2 a ns1:Safety ;
+    rdfs:label "safety" ;
+    dul:associatedWith ns1:consultant_1 .
+
+ns1:thank_1 a ns1:Thank ;
+    rdfs:label "thank" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Predicate ns1:report_1 ;
+    vn.role:Theme ns1:Koch .
+
+ns1:transport_1 a ns1:Transport ;
+    rdfs:label "transport" ;
+    dul:associatedWith ns1:safety_1 .
+
+ns1:transport_2 a ns1:Transport ;
+    rdfs:label "transport" ;
+    quant:hasDeterminer quant:the .
+
+ns1:waterway_1 rdfs:label "waterway" .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "working" ;
+    vn.role:Actor ns1:consultant_1 ;
+    ns1:inTransportOf ns1:goods_1 ;
+    ns1:workBy ns1:road_1 .
+
+ns1:Consultant rdfs:label "consultants" .
+
+ns1:Dangerous a owl:Class ;
+    rdfs:label "dangerous" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:DangerousGoods a owl:Class ;
+    rdfs:label "Dangerous Goods" ;
+    dul:hasQuality ns1:Dangerous ;
+    rdfs:subClassOf ns1:Goods ;
+    owl:equivalentClass dbpedia:Dangerous_goods .
+
+ns1:Examination rdfs:label "examination" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:ExaminationRequirement rdfs:subClassOf ns1:Requirement .
+
+ns1:Examine rdfs:label "examines" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Goods a owl:Class ;
+    rdfs:label "goods" .
+
+ns1:Harmonise rdfs:label "harmonising" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Have rdfs:label "has" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Heart rdfs:label "heart" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Like rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Madam rdfs:label "Madam" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Person rdfs:label "I" .
+
+ns1:President rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith ns1:Madam ;
+    owl:sameAs dbpedia:President .
+
+ns1:Question rdfs:label "question" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Rail rdfs:label "rail" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Report rdfs:label "report" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Requirement rdfs:label "requirements" .
+
+ns1:Road rdfs:label "road" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:SafetyConsultant rdfs:subClassOf ns1:Consultant .
+
+ns1:Thank rdfs:label "thank" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:TransportSafety a owl:Class ;
+    rdfs:label "transport safety" ;
+    dul:associatedWith ns1:Transport ;
+    rdfs:subClassOf ns1:Safety .
+
+ns1:Waterway rdfs:label "waterway" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Work rdfs:label "working" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:goods_1 a ns1:DangerousGoods ;
+    rdfs:label "goods" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:heart_1 a ns1:Heart ;
+    rdfs:label "heart" ;
+    ns1:heartOf ns1:Koch .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:rail_1 a ns1:Rail,
+        ns1:Waterway ;
+    rdfs:label "rail" .
+
+ns1:road_1 a ns1:Road ;
+    rdfs:label "road" ;
+    dul:associatedWith ns1:rail_1 .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> a ns1:Male ;
+    rdfs:label "Mr" ;
+    boxer:possibleType dul:Role .
+
+owl:Thing rdfs:label "all" .
+
+ns1:Male rdfs:label "Koch",
+        "Mr" .
+
+ns1:Safety a owl:Class ;
+    rdfs:label "safety" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:requirement_1 a ns1:ExaminationRequirement ;
+    rdfs:label "requirements" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:safety_1 a ns1:TransportSafety ;
+    rdfs:label "safety" .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "all" .
+
+ns1:Transport a owl:Class ;
+    rdfs:label "transport" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:consultant_1 a ns1:SafetyConsultant ;
+    rdfs:label "consultants" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:question_1 a ns1:Question ;
+    rdfs:label "question" ;
+    quant:hasDeterminer quant:the ;
+    ns1:questionOf ns1:safety_1 .
+
+ns1:report_1 a ns1:Report ;
+    rdfs:label "report" ;
+    ns1:reportOf ns1:Koch .
+
+ns1:Koch a ns1:Male ;
+    rdfs:label "Koch" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> .
+

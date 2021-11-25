@@ -1,0 +1,115 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence342.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence342.ttl a owl:Ontology ;
+    rdfs:label "en_sentence342" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence342" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:affiliation_1 rdfs:label "affiliations" .
+
+ns1:balance_1 a ns1:Balance ;
+    rdfs:label "balance" ;
+    quant:hasDeterminer quant:a,
+        quant:the .
+
+ns1:compete_1 a ns1:Compete ;
+    rdfs:label "competing" ;
+    vn.role:Actor ns1:interest_1 .
+
+ns1:docuverse earmark:hasContent "Abraham_Lincoln 's election was a watershed in the balance of power of competing national and parochial interests and affiliations."^^xsd:string .
+
+ns1:election_1 a ns1:Election,
+        ns1:Watersh ;
+    rdfs:label "election" ;
+    ns1:electionOf ns1:interest_1 ;
+    ns1:inBalanceOf ns1:power_1 ;
+    ns1:watershOf ns1:Abraham_lincoln .
+
+ns1:watersh_1 rdfs:label "watershed" .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+ns1:Abraham_lincoln rdfs:label "Abraham Lincoln" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+
+ns1:Affiliation rdfs:label "affiliations" .
+
+ns1:Balance a owl:Class ;
+    rdfs:label "balance" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Separation_of_powers .
+
+ns1:Compete rdfs:label "competing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Election rdfs:label "election" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Interest rdfs:label "interests" .
+
+ns1:National rdfs:label "national" .
+
+ns1:Parochial rdfs:label "parochial" .
+
+ns1:ParochialInterest rdfs:subClassOf ns1:Interest .
+
+ns1:Power rdfs:label "power" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Watersh rdfs:label "watershed" .
+
+ns1:power_1 a ns1:Power ;
+    rdfs:label "power" .
+
+ns1:interest_1 a ns1:Affiliation,
+        ns1:ParochialInterest ;
+    rdfs:label "interests" ;
+    dul:hasQuality ns1:National,
+        ns1:Parochial ;
+    quant:hasQuantifier quant:multiple .
+

@@ -1,0 +1,221 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence365.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "In" .
+
+translation_coherence:ko_sentence365.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence365" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence365" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:After rdfs:label "after" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Insightof rdfs:label "in the sight of" .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:bank_1 a ns1:Bank ;
+    rdfs:label "bank" ;
+    quant:hasDeterminer quant:the ;
+    ns1:bankOf ns1:Mississippi .
+
+ns1:cloth_1 a ns1:Cloth ;
+    rdfs:label "cloth" ;
+    dul:associatedWith ns1:glove_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:docuverse earmark:hasContent "In the letter of Andrew_Johnson, Tennessee's military ruler, Lincoln leads the way to raise black army. The Lincoln will end the rebellion after training black soldiers in the sight of the cloth gloves and the bank of Mississippi."^^xsd:string .
+
+ns1:end_1 a ns1:End ;
+    rdfs:label "end" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Theme ns1:rebellion_1 ;
+    ns1:after ns1:train_1 .
+
+ns1:lead_1 a ns1:Lead ;
+    rdfs:label "leads" ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Destination ns1:letter_1 ;
+    vn.role:Theme ns1:way_1 .
+
+ns1:raise_1 a ns1:Raise ;
+    rdfs:label "raise" ;
+    vn.role:Agent ns1:way_1 ;
+    vn.role:Theme ns1:army_1 .
+
+ns1:sight_1 a ns1:Sight ;
+    rdfs:label "sight" ;
+    quant:hasDeterminer quant:the .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+dbpedia:Andrew_Johnson a schema:Person .
+
+dbpedia:Mississippi a schema:AdministrativeArea,
+        schema:Place .
+
+dbpedia:Tennessee a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:Andrew_johnson rdfs:label "Andrew Johnson" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Andrew_Johnson .
+
+ns1:Army a owl:Class ;
+    rdfs:label "army" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Bank rdfs:label "bank" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:BlackArmy a owl:Class ;
+    rdfs:label "black army" ;
+    dul:hasQuality ns1:Black ;
+    rdfs:subClassOf ns1:Army .
+
+ns1:BlackSoldier rdfs:subClassOf ns1:Soldier .
+
+ns1:Cloth rdfs:label "cloth" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:ClothGlove rdfs:subClassOf ns1:Glove .
+
+ns1:End rdfs:label "end" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Glove rdfs:label "gloves" .
+
+ns1:Lead rdfs:label "leads" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Letter rdfs:label "letter" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:MilitaryRuler a owl:Class ;
+    rdfs:label "Military Ruler" ;
+    dul:hasQuality ns1:Military ;
+    rdfs:subClassOf ns1:Ruler .
+
+ns1:Mississippi rdfs:label "Mississippi" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Mississippi .
+
+ns1:Raise rdfs:label "raise" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Rebellion rdfs:label "rebellion" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Ruler a owl:Class ;
+    rdfs:label "ruler" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Sight rdfs:label "sight" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Soldier rdfs:label "soldiers" .
+
+ns1:Tennessee rdfs:label "Tennessee" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Tennessee .
+
+ns1:Train rdfs:label "training" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Way rdfs:label "way" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:army_1 a ns1:BlackArmy ;
+    rdfs:label "army" ;
+    dul:hasQuality ns1:Black .
+
+ns1:letter_1 a ns1:Letter ;
+    rdfs:label "letter" ;
+    quant:hasDeterminer quant:the ;
+    ns1:letterOf ns1:Andrew_johnson,
+        ns1:ruler_1 .
+
+ns1:rebellion_1 a ns1:Rebellion ;
+    rdfs:label "rebellion" ;
+    quant:hasDeterminer quant:the .
+
+ns1:ruler_1 a ns1:MilitaryRuler ;
+    rdfs:label "ruler" ;
+    dul:hasQuality ns1:Military ;
+    ns1:militaryRulerOf ns1:Tennessee .
+
+ns1:soldier_1 a ns1:BlackSoldier ;
+    rdfs:label "soldiers" ;
+    dul:hasQuality ns1:Black ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:train_1 a ns1:Train ;
+    rdfs:label "training" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Theme ns1:soldier_1 ;
+    ns1:inSightOf ns1:glove_1 .
+
+ns1:Military a owl:Class ;
+    rdfs:label "military" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:glove_1 a ns1:ClothGlove ;
+    rdfs:label "gloves" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:way_1 a ns1:Way ;
+    rdfs:label "way" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Black a owl:Class ;
+    rdfs:label "Black",
+        "black" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+

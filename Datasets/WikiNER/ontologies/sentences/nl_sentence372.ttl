@@ -1,0 +1,172 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence372.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence372.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence372" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence372" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:conquer_1 a ns1:Conquer ;
+    rdfs:label "conquering" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Patient ns1:land_1 .
+
+ns1:control_1 a ns1:Control ;
+    rdfs:label "control" ;
+    vn.role:Agent ns1:need_1 ;
+    vn.role:Theme ns1:point_1 .
+
+ns1:defeat_1 a ns1:Defeat ;
+    rdfs:label "defeating" ;
+    boxer:agent ns1:importance_1 ;
+    boxer:patient ns1:enemy_1 ;
+    ns1:defeatOf ns1:thing_1 .
+
+ns1:docuverse earmark:hasContent "Lincoln understood the need to control strategic points as the Mississippi_River and the fortress town of Vicksburg, and understood the importance of defeating the enemy, instead of conquering the land."^^xsd:string .
+
+ns1:understand_1 a ns1:Understand ;
+    rdfs:label "understood" ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Proposition ns1:need_1 .
+
+ns1:understand_2 a ns1:Understand ;
+    rdfs:label "understood" ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Proposition ns1:importance_1 .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+dbpedia:Mississippi_River a schema:BodyOfWater,
+        schema:Place,
+        schema:RiverBodyOfWater .
+
+<http://dbpedia.org/resource/Vicksburg,_Mississippi> a schema:City,
+        schema:Place .
+
+ns1:Conquer rdfs:label "conquering" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Control rdfs:label "control" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Defeat rdfs:label "defeating" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Enemy rdfs:label "enemy" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Fortress a owl:Class ;
+    rdfs:label "fortress" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FortressTown a owl:Class ;
+    rdfs:label "fortress town" ;
+    dul:hasQuality ns1:Fortress ;
+    rdfs:subClassOf ns1:Town .
+
+ns1:Importance rdfs:label "importance" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Land rdfs:label "land" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Mississippi_river rdfs:label "Mississippi River" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Mississippi_River .
+
+ns1:Need rdfs:label "need" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Point rdfs:label "points" .
+
+ns1:Strategic rdfs:label "strategic" .
+
+ns1:StrategicPoint rdfs:subClassOf ns1:Point .
+
+ns1:Town a owl:Class ;
+    rdfs:label "town" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Vicksburg rdfs:label "Vicksburg" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs <http://dbpedia.org/resource/Vicksburg,_Mississippi> .
+
+ns1:enemy_1 a ns1:Enemy ;
+    rdfs:label "enemy" ;
+    quant:hasDeterminer quant:the .
+
+ns1:land_1 a ns1:Land ;
+    rdfs:label "land" ;
+    quant:hasDeterminer quant:the .
+
+ns1:point_1 a ns1:StrategicPoint ;
+    rdfs:label "points" ;
+    dul:hasQuality ns1:Strategic ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:as ns1:Mississippi_river,
+        ns1:town_1 .
+
+ns1:town_1 a ns1:FortressTown ;
+    rdfs:label "town" ;
+    quant:hasDeterminer quant:the ;
+    ns1:fortressTownOf ns1:Vicksburg .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+
+ns1:Understand rdfs:label "understood" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:importance_1 a ns1:Importance ;
+    rdfs:label "importance" ;
+    quant:hasDeterminer quant:the .
+
+ns1:need_1 a ns1:Need ;
+    rdfs:label "need" ;
+    quant:hasDeterminer quant:the .
+
+ns1:thing_1 a owl:Thing .
+

@@ -1,0 +1,156 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence126.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Location rdfs:label "in" .
+
+translation_coherence:en_sentence126.ttl a owl:Ontology ;
+    rdfs:label "en_sentence126" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence126" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Outside rdfs:label "outside" .
+
+ns1:Within rdfs:label "within" .
+
+ns1:docuverse earmark:hasContent "Immigration from outside the U.S. resulted in a net increase of 31,180 people, and migration within the country produced a net gain of 73,811 people."^^xsd:string .
+
+ns1:immigration_1 a ns1:Immigration ;
+    rdfs:label "Immigration" ;
+    dul:associatedWith ns1:from_1 .
+
+ns1:produce_1 a ns1:Produce ;
+    rdfs:label "produced" ;
+    vn.role:Agent ns1:migration_1 ;
+    vn.role:Theme ns1:gain_1 .
+
+ns1:result_1 a ns1:Result ;
+    rdfs:label "resulted" ;
+    vn.role:Location ns1:increase_1 ;
+    vn.role:Theme ns1:from_1 .
+
+ns1:Country rdfs:label "country" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:From a owl:Class ;
+    rdfs:label "from" .
+
+ns1:Gain rdfs:label "gain" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:ImmigrationFrom a owl:Class ;
+    rdfs:label "Immigration From" ;
+    dul:associatedWith ns1:Immigration ;
+    rdfs:subClassOf ns1:From .
+
+ns1:Increase a owl:Class ;
+    rdfs:label "increase" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:Migration rdfs:label "migration" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:NetGain rdfs:label "net gain" ;
+    rdfs:subClassOf ns1:Gain .
+
+ns1:NetIncrease a owl:Class ;
+    rdfs:label "net increase" ;
+    dul:hasQuality ns1:Net ;
+    rdfs:subClassOf ns1:Increase .
+
+ns1:Produce rdfs:label "produced" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Result rdfs:label "resulted" ;
+    rdfs:subClassOf dul:Event .
+
+<https://w3id.org/stlab/ke/amiala/en_sentence126.ttl/U.s.> rdfs:label "U.S." ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:country_1 a ns1:Country ;
+    rdfs:label "country" ;
+    quant:hasDeterminer quant:the .
+
+ns1:gain_1 a ns1:NetGain ;
+    rdfs:label "gain" ;
+    dul:hasQuality ns1:Net ;
+    quant:hasDeterminer quant:a ;
+    ns1:netGainOf ns1:people_2 .
+
+ns1:increase_1 a ns1:NetIncrease ;
+    rdfs:label "increase" ;
+    quant:hasDeterminer quant:a ;
+    ns1:netIncreaseOf ns1:people_1 .
+
+ns1:migration_1 a ns1:Migration ;
+    rdfs:label "migration" ;
+    ns1:within ns1:country_1 .
+
+ns1:people_1 a ns1:People ;
+    rdfs:label "people" ;
+    dul:hasDataValue "31180"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:31%2C180,
+        quant:multiple .
+
+ns1:people_2 a ns1:People ;
+    rdfs:label "people" ;
+    dul:hasDataValue "73811"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:73%2C811,
+        quant:multiple .
+
+ns1:Immigration a owl:Class ;
+    rdfs:label "Immigration" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Net a owl:Class ;
+    rdfs:label "net" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:People rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:from_1 a ns1:ImmigrationFrom ;
+    rdfs:label "from" ;
+    ns1:outside <https://w3id.org/stlab/ke/amiala/en_sentence126.ttl/U.s.> .
+

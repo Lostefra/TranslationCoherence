@@ -1,0 +1,212 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence680.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+vn.role:Theme2 rdfs:label "on" .
+
+translation_coherence:zh_sentence680.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence680" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence680" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Onfeelingof rdfs:label "on the feeling of" .
+
+ns1:docuverse earmark:hasContent "It is also a reason for the fact that the area is proposed by McKenna as a cradle of culture and civilization, which have a strong impact on the feeling of super-natural contacts that are based on religious beliefs."^^xsd:string .
+
+ns1:feeling_1 a ns1:Feeling ;
+    rdfs:label "feeling" ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:base_1,
+        ns1:belief_1,
+        ns1:contact_1,
+        ns1:have_1,
+        ns1:impact_1,
+        ns1:reason_1 ;
+    dul:hasQuality ns1:Also .
+
+owl:Thing rdfs:label "It" .
+
+ns1:Also rdfs:label "also" .
+
+ns1:Area rdfs:label "area" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Base rdfs:label "based" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Belief rdfs:label "beliefs" .
+
+ns1:Civilization a owl:Class ;
+    rdfs:label "civilization" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Civilization .
+
+ns1:Contact rdfs:label "contacts" .
+
+ns1:Cradle rdfs:label "cradle" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Culture a owl:Class ;
+    rdfs:label "culture" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Culture .
+
+ns1:Fact a owl:Class ;
+    rdfs:label "fact" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Fact .
+
+ns1:Feeling a owl:Class ;
+    rdfs:label "feeling" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> ;
+    owl:equivalentClass dbpedia:Emotion .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Mckenna rdfs:label "McKenna" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Terence_McKenna .
+
+ns1:Propose rdfs:label "proposed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Reason a owl:Class ;
+    rdfs:label "reason" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> ;
+    owl:equivalentClass dbpedia:Reason .
+
+ns1:Religious rdfs:label "religious" ;
+    owl:sameAs dbpedia:Belief,
+        dbpedia:Religion .
+
+ns1:ReligiousBelief rdfs:subClassOf ns1:Belief .
+
+ns1:Strong a owl:Class ;
+    rdfs:label "strong" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:StrongImpact a owl:Class ;
+    rdfs:label "strong impact" ;
+    dul:hasQuality ns1:Strong ;
+    rdfs:subClassOf ns1:Impact .
+
+ns1:Super-natural rdfs:label "super-natural" ;
+    owl:sameAs dbpedia:Supernatural .
+
+ns1:Super-naturalContact rdfs:subClassOf ns1:Contact .
+
+ns1:area_1 a ns1:Area ;
+    rdfs:label "area" ;
+    quant:hasDeterminer quant:the ;
+    owl:sameAs ns1:impact_1 .
+
+ns1:base_1 a ns1:Base ;
+    rdfs:label "based" ;
+    vn.role:Theme1 ns1:contact_1 ;
+    vn.role:Theme2 ns1:belief_1 .
+
+ns1:civilization_1 a ns1:Civilization ;
+    rdfs:label "civilization" .
+
+ns1:cradle_1 a ns1:Cradle ;
+    rdfs:label "cradle" ;
+    quant:hasDeterminer quant:a ;
+    ns1:cradleOf ns1:culture_1 .
+
+ns1:culture_1 a ns1:Culture ;
+    rdfs:label "culture" .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "have" ;
+    vn.role:Agent ns1:fact_1 ;
+    vn.role:Patient ns1:impact_1 .
+
+ns1:propose_1 a ns1:Propose ;
+    rdfs:label "proposed" ;
+    vn.role:Agent ns1:Mckenna ;
+    vn.role:Theme ns1:area_1 ;
+    ns1:as ns1:civilization_1,
+        ns1:cradle_1 .
+
+ns1:reason_1 a ns1:Reason ;
+    rdfs:label "reason" ;
+    dul:hasQuality owl:Thing ;
+    quant:hasDeterminer quant:a ;
+    ns1:for ns1:fact_1 .
+
+ns1:Impact a owl:Class ;
+    rdfs:label "impact" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> ;
+    owl:equivalentClass dbpedia:Social_influence .
+
+ns1:belief_1 a ns1:ReligiousBelief ;
+    rdfs:label "beliefs" ;
+    dul:hasQuality ns1:Religious ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:fact_1 a ns1:Fact ;
+    rdfs:label "fact" ;
+    boxer:theme ns1:propose_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:contact_1 a ns1:Super-naturalContact ;
+    rdfs:label "contacts" ;
+    dul:hasQuality ns1:Super-natural ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:impact_1 a ns1:Impact,
+        ns1:StrongImpact ;
+    rdfs:label "impact" ;
+    quant:hasDeterminer quant:a ;
+    ns1:onFeelingOf ns1:contact_1 .
+

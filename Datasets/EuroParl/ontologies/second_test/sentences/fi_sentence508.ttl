@@ -1,0 +1,167 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence508.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence508.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence508" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence508" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Because rdfs:label "because" .
+
+ns1:Between rdfs:label "between" .
+
+ns1:In rdfs:label "in" .
+
+ns1:competitiveness_1 a ns1:Competitiveness ;
+    rdfs:label "Competitiveness" ;
+    dul:associatedWith ns1:have_1,
+        ns1:increase_1 .
+
+ns1:difference_1 rdfs:label "differences" .
+
+ns1:docuverse earmark:hasContent "Competitiveness increases, but not everyone has a growth in wealth because there is no growth in employment, and there are still differences between trades."^^xsd:string .
+
+ns1:growth_2 rdfs:label "growth" .
+
+ns1:have_2 a ns1:Have ;
+    rdfs:label "has" ;
+    vn.role:Agent ns1:increase_1 ;
+    vn.role:Patient ns1:growth_1 ;
+    ns1:because ns1:situation_3 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:there_2,
+        ns1:trade_1 ;
+    dul:hasQuality ns1:Still .
+
+ns1:situation_4 a ns1:Situation ;
+    boxing:involves ns1:there_2,
+        ns1:trade_1 ;
+    dul:hasQuality ns1:Still .
+
+ns1:Competitiveness a owl:Class ;
+    rdfs:label "Competitiveness" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Competition_(economics) .
+
+ns1:CompetitivenessIncrease rdfs:subClassOf ns1:Increase .
+
+ns1:Difference rdfs:label "differences" .
+
+ns1:Employment a owl:Class ;
+    rdfs:label "employment" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Employment .
+
+ns1:Increase rdfs:label "increases" .
+
+ns1:Person rdfs:label "everyone" .
+
+ns1:Trade rdfs:label "trades" .
+
+ns1:Wealth a owl:Class ;
+    rdfs:label "wealth" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Wealth .
+
+ns1:have_1 a ns1:Have ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Patient ns1:growth_1 ;
+    ns1:because ns1:situation_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "everyone" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:employment_1,
+        ns1:there_1,
+        ns1:there_2,
+        ns1:trade_1 .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves ns1:employment_1,
+        ns1:there_1,
+        ns1:there_2,
+        ns1:trade_1 .
+
+ns1:wealth_1 a ns1:Wealth ;
+    rdfs:label "wealth" .
+
+ns1:Growth rdfs:label "growth" ;
+    rdfs:subClassOf dul:Process .
+
+ns1:Have rdfs:label "has" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Still rdfs:label "still" .
+
+ns1:There rdfs:label "there" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:growth_1 a ns1:Growth ;
+    rdfs:label "growth" ;
+    quant:hasDeterminer quant:a ;
+    ns1:in ns1:wealth_1 .
+
+ns1:increase_1 a ns1:CompetitivenessIncrease ;
+    rdfs:label "increases" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:there_1 a ns1:Growth,
+        ns1:There ;
+    rdfs:label "there" ;
+    quant:hasQuantifier quant:no ;
+    ns1:in ns1:employment_1 .
+
+ns1:employment_1 a ns1:Employment ;
+    rdfs:label "employment" .
+
+ns1:there_2 a ns1:Difference,
+        ns1:There ;
+    rdfs:label "there" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:between ns1:trade_1 .
+
+ns1:trade_1 a ns1:Trade ;
+    rdfs:label "trades" ;
+    quant:hasQuantifier quant:multiple .
+

@@ -1,0 +1,194 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence574.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence574.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence574" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence574" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:To rdfs:label "to" .
+
+ns1:believe_1 a ns1:Believe ;
+    rdfs:label "believe" ;
+    dul:hasQuality ns1:However ;
+    vn.role:Agent ns1:person_1 .
+
+ns1:docuverse earmark:hasContent "However, I believe that any real convergence of reference to the level of regional development in Europe is a simple idea of the situation, which is often the message of the press and some speeches."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:convergence_1 ;
+    ns1:entails ns1:situation_2 .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves ns1:Speech,
+        ns1:speech_1 ;
+    dul:hasQuality ns1:Often .
+
+ns1:situation_4 rdfs:label "situation" .
+
+dbpedia:Europe a schema:Continent,
+        schema:Place .
+
+ns1:Believe rdfs:label "believe" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Convergence a owl:Class ;
+    rdfs:label "convergence" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Development a owl:Class ;
+    rdfs:label "development" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Europe rdfs:label "Europe" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Europe,
+        ns1:idea_1 .
+
+ns1:However rdfs:label "However" .
+
+ns1:Level rdfs:label "level" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Often rdfs:label "often" .
+
+ns1:Person rdfs:label "I" .
+
+ns1:Press rdfs:label "press" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Real a owl:Class ;
+    rdfs:label "real" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:RealConvergence a owl:Class ;
+    rdfs:label "Real Convergence" ;
+    dul:hasQuality ns1:Real ;
+    rdfs:subClassOf ns1:Convergence .
+
+ns1:Reference rdfs:label "reference" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:RegionalDevelopment a owl:Class ;
+    rdfs:label "Regional Development" ;
+    dul:hasQuality ns1:Regional ;
+    rdfs:subClassOf ns1:Development .
+
+ns1:Simple a owl:Class ;
+    rdfs:label "simple" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SimpleIdea a owl:Class ;
+    rdfs:label "Simple Idea" ;
+    dul:hasQuality ns1:Simple ;
+    rdfs:subClassOf ns1:Idea .
+
+ns1:convergence_1 a ns1:RealConvergence,
+        ns1:SimpleIdea ;
+    rdfs:label "convergence" ;
+    quant:hasQuantifier quant:any ;
+    ns1:realConvergenceOf ns1:message_1,
+        ns1:reference_1 .
+
+ns1:development_1 a ns1:RegionalDevelopment ;
+    rdfs:label "development" ;
+    dul:hasQuality ns1:Regional ;
+    ns1:locatedIn ns1:Europe .
+
+ns1:idea_1 a ns1:Idea ;
+    rdfs:label "idea" ;
+    quant:hasDeterminer quant:a .
+
+ns1:level_1 a ns1:Level ;
+    rdfs:label "level" ;
+    quant:hasDeterminer quant:the ;
+    ns1:levelOf ns1:development_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:press_1 a ns1:Press ;
+    rdfs:label "press" ;
+    quant:hasDeterminer quant:the .
+
+ns1:reference_1 a ns1:Reference ;
+    rdfs:label "reference" ;
+    ns1:to ns1:level_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:message_1 .
+
+ns1:Idea a owl:Class ;
+    rdfs:label "idea" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Idea .
+
+ns1:Message rdfs:label "message" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Regional a owl:Class ;
+    rdfs:label "regional" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Speech rdfs:label "speeches" .
+
+ns1:message_1 a ns1:Message,
+        ns1:Situation ;
+    rdfs:label "message" ;
+    quant:hasDeterminer quant:the ;
+    ns1:messageOf ns1:press_1,
+        ns1:speech_1 .
+
+ns1:speech_1 a ns1:Speech ;
+    rdfs:label "speeches" ;
+    quant:hasQuantifier quant:multiple,
+        quant:some .
+
+ns1:Situation rdfs:label "situation" ;
+    rdfs:subClassOf dul:Situation,
+        ns1:Message .
+

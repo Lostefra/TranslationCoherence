@@ -1,0 +1,132 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence378.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence378.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence378" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence378" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:By rdfs:label "by" .
+
+ns1:Of rdfs:label "of",
+        "their" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "Projects with support of the Unie have often watered their effects by making slow decisions and complicated administrative trials."^^xsd:string .
+
+ns1:support_1 a ns1:Support ;
+    rdfs:label "support" .
+
+ns1:water_1 a ns1:OftenWater ;
+    rdfs:label "watered" ;
+    dul:hasQuality ns1:Often ;
+    vn.role:Agent ns1:project_1 ;
+    vn.role:Destination ns1:effect_1 ;
+    ns1:oftenWaterBy ns1:make_1 .
+
+ns1:Administrative rdfs:label "administrative" .
+
+ns1:AdministrativeTrial rdfs:subClassOf ns1:Trial .
+
+ns1:Complicated rdfs:label "complicated" .
+
+ns1:ComplicatedAdministrativeTrial rdfs:subClassOf ns1:AdministrativeTrial .
+
+ns1:Decision rdfs:label "decisions" .
+
+ns1:Effect rdfs:label "effects" .
+
+ns1:Make rdfs:label "making" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Often rdfs:label "often" .
+
+ns1:OftenWater rdfs:subClassOf ns1:Water .
+
+ns1:Project rdfs:label "Projects" .
+
+ns1:Slow rdfs:label "slow" .
+
+ns1:SlowDecision rdfs:subClassOf ns1:Decision .
+
+ns1:Support rdfs:label "support" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Trial rdfs:label "trials" .
+
+ns1:Unie rdfs:label "Unie" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Water rdfs:label "watered" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:decision_1 a dbpedia:Decision-making,
+        ns1:SlowDecision ;
+    rdfs:label "decisions" ;
+    dul:hasQuality ns1:Slow ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:effect_1 a ns1:Effect ;
+    rdfs:label "effects" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:effectOf ns1:thing_1 .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "making" ;
+    vn.role:Agent ns1:project_1 ;
+    vn.role:Theme ns1:decision_1,
+        ns1:trial_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "their" .
+
+ns1:trial_1 a ns1:ComplicatedAdministrativeTrial ;
+    rdfs:label "trials" ;
+    dul:hasQuality ns1:Administrative,
+        ns1:Complicated ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:project_1 a ns1:Project ;
+    rdfs:label "Projects" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:withSupportOf ns1:Unie .
+

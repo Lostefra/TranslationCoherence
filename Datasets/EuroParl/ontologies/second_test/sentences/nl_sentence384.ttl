@@ -1,0 +1,198 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence384.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:nl_sentence384.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence384" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence384" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:By rdfs:label "by" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "his",
+        "my",
+        "of" .
+
+ns1:President rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister>,
+        ns1:Commissioner,
+        ns1:institution_1 ;
+    owl:sameAs dbpedia:President ;
+    ns1:inStateOf ns1:year_1 .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "Mr. President, Commissioner, as evidence that this Parliament hasn't overcome his role as consultative and subordinative institution, the excellent report by a fellow member of my group, Elisabeth, has not been in the state of 2,000 years."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves ns1:Year,
+        ns1:year_1 .
+
+ns1:state_1 a ns1:State ;
+    rdfs:label "state" ;
+    quant:hasDeterminer quant:the .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> rdfs:label "Mr." ;
+    boxer:possibleType dul:Role .
+
+ns1:Commissioner rdfs:label "Commissioner" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Commissioner ;
+    ns1:as ns1:evidence_1 .
+
+ns1:Consultative rdfs:label "consultative" .
+
+ns1:Elisabeth rdfs:label "Elisabeth" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Evidence rdfs:label "evidence" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Excellent a owl:Class ;
+    rdfs:label "excellent" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ExcellentReport a owl:Class ;
+    rdfs:label "Excellent Report" ;
+    dul:hasQuality ns1:Excellent ;
+    rdfs:subClassOf ns1:Report .
+
+ns1:Fellow a owl:Class ;
+    rdfs:label "fellow" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FellowMember a owl:Class ;
+    rdfs:label "fellow member" ;
+    dul:hasQuality ns1:Fellow ;
+    rdfs:subClassOf ns1:Member .
+
+ns1:Group rdfs:label "group" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Institution a owl:Class ;
+    rdfs:label "institution" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Member a owl:Class ;
+    rdfs:label "member" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Overcome rdfs:label "overcome" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Parliament rdfs:label "Parliament" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Parliament .
+
+ns1:Report a owl:Class ;
+    rdfs:label "report" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Role rdfs:label "role" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:State rdfs:label "state" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Subordinative a owl:Class ;
+    rdfs:label "subordinative" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SubordinativeInstitution a owl:Class ;
+    rdfs:label "subordinative institution" ;
+    dul:hasQuality ns1:Subordinative ;
+    rdfs:subClassOf ns1:Institution .
+
+ns1:evidence_1 a ns1:Evidence ;
+    rdfs:label "evidence" ;
+    boxer:theme ns1:overcome_1 .
+
+ns1:group_1 a ns1:Group ;
+    rdfs:label "group" ;
+    ns1:groupOf ns1:person_1 .
+
+ns1:institution_1 a ns1:SubordinativeInstitution ;
+    rdfs:label "institution" ;
+    dul:associatedWith ns1:report_1 .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "his" .
+
+ns1:member_1 a ns1:FellowMember ;
+    rdfs:label "member" ;
+    dul:associatedWith ns1:Elisabeth ;
+    quant:hasDeterminer quant:a ;
+    ns1:fellowMemberOf ns1:group_1 .
+
+ns1:overcome_1 a ns1:Overcome ;
+    rdfs:label "overcome" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Theme1 ns1:Parliament ;
+    vn.role:Theme2 ns1:role_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "my" .
+
+ns1:report_1 a ns1:ExcellentReport ;
+    rdfs:label "report" ;
+    quant:hasDeterminer quant:the ;
+    ns1:excellentReportBy ns1:member_1 .
+
+ns1:role_1 a ns1:Role ;
+    rdfs:label "role" ;
+    dul:hasQuality ns1:Consultative ;
+    ns1:roleOf ns1:male_1 .
+
+ns1:Year rdfs:label "years" .
+
+ns1:year_1 a ns1:Year ;
+    rdfs:label "years" ;
+    dul:hasDataValue "2000"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:2%2C000,
+        quant:multiple .
+

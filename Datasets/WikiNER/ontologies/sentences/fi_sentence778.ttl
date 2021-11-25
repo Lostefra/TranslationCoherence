@@ -1,0 +1,166 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence778.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme rdfs:label "on" .
+
+translation_coherence:fi_sentence778.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence778" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence778" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Noteq rdfs:label "previous" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:With rdfs:label "with" .
+
+ns1:development_1 rdfs:label "development" .
+
+ns1:docuverse earmark:hasContent "The previous encounter with a variety of cultures, often very different in organization and development than in Europe, focuses on intercultural comparison and a particular cultural relativism."^^xsd:string .
+
+ns1:focus_1 a ns1:Focus ;
+    rdfs:label "focuses" ;
+    vn.role:Experiencer ns1:encounter_1 ;
+    vn.role:Theme ns1:comparison_1,
+        ns1:relativism_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Different,
+        ns1:variety_1 ;
+    dul:hasQuality ns1:Often,
+        ns1:Very ;
+    ns1:in ns1:organization_1 ;
+    ns1:locatedIn ns1:Europe .
+
+dbpedia:Europe a schema:Continent,
+        schema:Place .
+
+ns1:Comparison a owl:Class ;
+    rdfs:label "comparison" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Cultural rdfs:label "cultural" .
+
+ns1:CulturalRelativism a owl:Class ;
+    rdfs:label "cultural relativism" ;
+    rdfs:subClassOf ns1:Relativism ;
+    owl:equivalentClass dbpedia:Cultural_relativism .
+
+ns1:Culture rdfs:label "cultures" .
+
+ns1:Development rdfs:label "development" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Europe rdfs:label "Europe" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Europe .
+
+ns1:Focus rdfs:label "focuses" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Intercultural a owl:Class ;
+    rdfs:label "intercultural" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Cross-cultural_communication .
+
+ns1:InterculturalComparison a owl:Class ;
+    rdfs:label "Intercultural Comparison" ;
+    dul:hasQuality ns1:Intercultural ;
+    rdfs:subClassOf ns1:Comparison .
+
+ns1:Often rdfs:label "often" .
+
+ns1:Organization rdfs:label "organization" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Particular rdfs:label "particular" .
+
+ns1:ParticularCulturalRelativism rdfs:label "Particular Cultural Relativism" ;
+    rdfs:subClassOf ns1:CulturalRelativism .
+
+ns1:Relativism rdfs:label "relativism" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Variety rdfs:label "variety" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Very rdfs:label "very" .
+
+ns1:comparison_1 a ns1:InterculturalComparison ;
+    rdfs:label "comparison" .
+
+ns1:culture_1 a dbpedia:Culture,
+        ns1:Culture ;
+    rdfs:label "cultures" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:encounter_1 a ns1:Encounter ;
+    rdfs:label "previous" ;
+    owl:differentFrom ns1:encounter_2 ;
+    ns1:withVarietyDifferentOf ns1:culture_1 .
+
+ns1:encounter_2 a ns1:Encounter ;
+    rdfs:label "encounter" ;
+    quant:hasDeterminer quant:the .
+
+ns1:organization_1 a ns1:Development,
+        ns1:Organization ;
+    rdfs:label "organization" .
+
+ns1:relativism_1 a ns1:ParticularCulturalRelativism ;
+    rdfs:label "relativism" ;
+    dul:hasQuality ns1:Cultural,
+        ns1:Particular ;
+    quant:hasDeterminer quant:a .
+
+ns1:variety_1 a ns1:Variety ;
+    rdfs:label "variety" ;
+    dul:hasQuality ns1:Different ;
+    quant:hasDeterminer quant:a .
+
+ns1:Different rdfs:label "different" .
+
+ns1:Encounter rdfs:label "encounter",
+        "previous" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+

@@ -1,0 +1,176 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence627.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "to" .
+
+translation_coherence:fi_sentence627.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence627" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence627" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:During rdfs:label "during" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "The efforts made to improve GDP of Ob.ive 1-teen do not always lead to such growth, not to a satisfactory outcome during which economic growth has been in recent years."^^xsd:string .
+
+ns1:growth_2 a ns1:EconomicGrowth ;
+    rdfs:label "growth" ;
+    dul:hasQuality ns1:Economic ;
+    ns1:in ns1:year_1 .
+
+ns1:improve_1 a ns1:Improve ;
+    rdfs:label "improve" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:effort_1 ;
+    vn.role:Patient ns1:Gdp .
+
+ns1:lead_1 a ns1:AlwaysLead ;
+    rdfs:label "lead" ;
+    boxing:hasTruthValue boxing:False ;
+    dul:hasQuality ns1:Always ;
+    vn.role:Agent ns1:effort_1 ;
+    vn.role:Destination ns1:growth_1 ;
+    ns1:to ns1:outcome_1 .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "made" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Theme ns1:effort_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves ns1:Recent,
+        ns1:RecentYear,
+        ns1:Year,
+        ns1:year_1 ;
+    ns1:during ns1:outcome_1 .
+
+ns1:1-teen rdfs:label "1-teen" .
+
+ns1:Always rdfs:label "always" .
+
+ns1:AlwaysLead rdfs:label "Always Lead" ;
+    rdfs:subClassOf ns1:Lead .
+
+ns1:Economic rdfs:label "economic" .
+
+ns1:EconomicGrowth a owl:Class ;
+    rdfs:label "Economic Growth" ;
+    rdfs:subClassOf ns1:Growth ;
+    owl:equivalentClass dbpedia:Gross_domestic_product .
+
+ns1:Effort rdfs:label "efforts" .
+
+ns1:Gdp rdfs:label "GDP" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Gross_domestic_product ;
+    ns1:of ns1:Ob.ive .
+
+ns1:Improve rdfs:label "improve" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Lead rdfs:label "lead" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Make rdfs:label "made" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Ob.ive rdfs:label "Ob.ive" ;
+    boxer:possibleType owl:Thing ;
+    dul:hasQuality ns1:1-teen .
+
+ns1:Outcome a owl:Class ;
+    rdfs:label "outcome" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Satisfactory a owl:Class ;
+    rdfs:label "satisfactory" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SatisfactoryOutcome a owl:Class ;
+    rdfs:label "Satisfactory Outcome" ;
+    dul:hasQuality ns1:Satisfactory ;
+    rdfs:subClassOf ns1:Outcome .
+
+ns1:Such a owl:Class ;
+    rdfs:label "such" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SuchGrowth a owl:Class ;
+    rdfs:label "Such Growth" ;
+    dul:hasQuality ns1:Such ;
+    rdfs:subClassOf ns1:Growth .
+
+ns1:growth_1 a ns1:SuchGrowth ;
+    rdfs:label "growth" ;
+    quant:hasDeterminer quant:such ;
+    quant:hasQuantifier quant:1-teen .
+
+ns1:Growth a owl:Class ;
+    rdfs:label "Growth",
+        "growth" ;
+    rdfs:subClassOf dul:Process .
+
+ns1:Recent rdfs:label "recent" .
+
+ns1:RecentYear rdfs:subClassOf ns1:Year .
+
+ns1:Year rdfs:label "years" .
+
+ns1:outcome_1 a ns1:SatisfactoryOutcome ;
+    rdfs:label "outcome" ;
+    quant:hasDeterminer quant:a .
+
+ns1:year_1 a ns1:RecentYear ;
+    rdfs:label "years" ;
+    dul:hasQuality ns1:Recent ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:effort_1 a ns1:Effort ;
+    rdfs:label "efforts" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+

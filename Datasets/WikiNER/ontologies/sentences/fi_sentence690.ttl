@@ -1,0 +1,157 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence690.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Destination rdfs:label "into" .
+
+translation_coherence:fi_sentence690.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence690" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence690" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:destroy_1 a ns1:Destroy ;
+    rdfs:label "destroyed" ;
+    vn.role:Agent ns1:corsar_1 ;
+    vn.role:Patient ns1:Barbary ;
+    ns1:in "1558-01-01"^^xsd:date .
+
+ns1:docuverse earmark:hasContent "In 1558, Barbary's Corsars seized the city of Ciutadella, destroyed it, sla.tered the inhabitants, and took 3,000 survivors into Istanbul as slaves."^^xsd:string .
+
+ns1:seize_1 a ns1:Seize ;
+    rdfs:label "seized" ;
+    vn.role:Agent ns1:corsar_1 ;
+    vn.role:Theme ns1:city_1 ;
+    ns1:in "1558-01-01"^^xsd:date .
+
+ns1:sla.tered_1 a ns1:Sla.tered ;
+    rdfs:label "sla.tered" ;
+    boxer:agent ns1:corsar_1 ;
+    boxer:patient ns1:inhabitant_1 ;
+    ns1:in "1558-01-01"^^xsd:date .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "took" ;
+    vn.role:Agent ns1:corsar_1 ;
+    vn.role:Destination ns1:Istanbul ;
+    vn.role:Theme ns1:survivor_1 ;
+    ns1:as ns1:slave_1 ;
+    ns1:in "1558-01-01"^^xsd:date .
+
+dbpedia:Carole_King rdfs:subClassOf schema:MusicGroup,
+        schema:Person .
+
+dbpedia:Istanbul a schema:City,
+        schema:Place .
+
+owl:Thing rdfs:label "it" .
+
+ns1:City a owl:Class ;
+    rdfs:label "city" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> ;
+    owl:equivalentClass dbpedia:Carole_King .
+
+ns1:Ciutadella rdfs:label "Ciutadella" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Ciutadella_de_Menorca .
+
+ns1:Corsar rdfs:label "Corsars" .
+
+ns1:Destroy rdfs:label "destroyed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Inhabitant rdfs:label "inhabitants" .
+
+ns1:Istanbul rdfs:label "Istanbul" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Istanbul .
+
+ns1:Seize rdfs:label "seized" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Sla.tered rdfs:label "sla.tered" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Slave rdfs:label "slaves" .
+
+ns1:Survivor rdfs:label "survivors" .
+
+ns1:Take rdfs:label "took" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:city_1 a ns1:City ;
+    rdfs:label "city" ;
+    quant:hasDeterminer quant:the ;
+    ns1:cityOf ns1:Ciutadella .
+
+ns1:inhabitant_1 a ns1:Inhabitant ;
+    rdfs:label "inhabitants" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:slave_1 a dbpedia:Slavery,
+        ns1:Slave ;
+    rdfs:label "slaves" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:survivor_1 a ns1:Survivor ;
+    rdfs:label "survivors" ;
+    dul:hasDataValue "3000"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:3%2C000,
+        quant:multiple .
+
+ns1:Barbary rdfs:label "Barbary" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality owl:Thing ;
+    owl:sameAs dbpedia:Barbary_pirates .
+
+ns1:corsar_1 a ns1:Corsar ;
+    rdfs:label "Corsars" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:corsarOf ns1:Barbary .
+

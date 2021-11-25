@@ -1,0 +1,129 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence96.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Oblique rdfs:label "in" .
+
+translation_coherence:it_sentence96.ttl a owl:Ontology ;
+    rdfs:label "it_sentence96" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence96" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Entails rdfs:label "if" .
+
+ns1:Of rdfs:label "its",
+        "of" .
+
+ns1:docuverse earmark:hasContent "You cannot prepare yourself if you feel a statement in this Parliament and have no idea of its content."^^xsd:string .
+
+ns1:feel_1 a ns1:Feel ;
+    rdfs:label "feel" ;
+    vn.role:Experiencer ns1:person_3 ;
+    vn.role:Oblique ns1:Parliament ;
+    vn.role:Stimulus ns1:statement_1 ;
+    ns1:entails ns1:prepare_1 .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "have" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:person_3 ;
+    vn.role:Patient ns1:idea_1 .
+
+ns1:neuter_1 coref:coref ns1:statement_1 .
+
+owl:Thing rdfs:label "Parliament" .
+
+ns1:Content rdfs:label "content" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Feel rdfs:label "feel" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Idea a owl:Class ;
+    rdfs:label "idea" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Idea .
+
+ns1:Prepare rdfs:label "prepare" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Statement rdfs:label "statement" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:content_1 a ns1:Content ;
+    rdfs:label "content" ;
+    ns1:contentOf ns1:Parliament .
+
+ns1:idea_1 a ns1:Idea ;
+    rdfs:label "idea" ;
+    quant:hasQuantifier quant:no ;
+    ns1:ideaOf ns1:content_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "You" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "yourself" .
+
+ns1:prepare_1 a ns1:Prepare ;
+    rdfs:label "prepare" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:person_2 .
+
+ns1:Parliament a owl:Thing ;
+    rdfs:label "Parliament" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Parliament .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "you" .
+
+ns1:statement_1 a ns1:Statement ;
+    rdfs:label "its",
+        "statement" ;
+    quant:hasDeterminer quant:a .
+
+ns1:Person rdfs:label "You",
+        "you",
+        "yourself" .
+

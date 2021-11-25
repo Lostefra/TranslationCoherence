@@ -1,0 +1,192 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence127.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "in" .
+
+translation_coherence:nl_sentence127.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence127" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence127" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "my",
+        "of",
+        "your" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Onbehalfof rdfs:label "on behalf of" .
+
+ns1:allow_1 a ns1:Allow ;
+    rdfs:label "allow" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:President ;
+    vn.role:Location ns1:person_3,
+        ns1:vote_1 ;
+    vn.role:Theme ns1:verdict_1 ;
+    ns1:onQuestionOf ns1:plan_1 .
+
+ns1:behalf_1 a ns1:Behalf ;
+    rdfs:label "behalf" .
+
+ns1:docuverse earmark:hasContent "Madam President, in the early vote, and I will allow your verdict on this case, on the question of the strategic plan of the commission I reported on behalf of my group. That didn't happen."^^xsd:string .
+
+ns1:happen_1 a ns1:Happen ;
+    rdfs:label "happen" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Theme ns1:thing_1 .
+
+ns1:question_1 a ns1:Question ;
+    rdfs:label "question" ;
+    quant:hasDeterminer quant:the .
+
+ns1:report_1 a ns1:Report ;
+    rdfs:label "reported" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_4 ;
+    vn.role:Theme ns1:commission_1 ;
+    ns1:onBehalfOf ns1:group_1 .
+
+ns1:Allow rdfs:label "allow" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Behalf rdfs:label "behalf" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Case rdfs:label "case" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Commission rdfs:label "commission" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Early a owl:Class ;
+    rdfs:label "early" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:EarlyVote a owl:Class ;
+    rdfs:label "early vote" ;
+    dul:hasQuality ns1:Early ;
+    rdfs:subClassOf ns1:Vote .
+
+ns1:Group rdfs:label "group" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Happen rdfs:label "happen" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Madam rdfs:label "Madam" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Plan a owl:Class ;
+    rdfs:label "plan" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:President rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith ns1:Madam ;
+    owl:sameAs dbpedia:President .
+
+ns1:Question rdfs:label "question" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Report rdfs:label "reported" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Strategic a owl:Class ;
+    rdfs:label "strategic" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:StrategicPlan a owl:Class ;
+    rdfs:label "strategic plan" ;
+    dul:hasQuality ns1:Strategic ;
+    rdfs:subClassOf ns1:Plan .
+
+ns1:Verdict rdfs:label "verdict" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Vote a owl:Class ;
+    rdfs:label "vote" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:case_1 a ns1:Case ;
+    rdfs:label "case" ;
+    quant:hasDeterminer quant:this .
+
+ns1:group_1 a ns1:Group ;
+    rdfs:label "group" ;
+    ns1:groupOf ns1:person_2 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "your" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "my" .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:person_4 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:plan_1 a ns1:StrategicPlan ;
+    rdfs:label "plan" ;
+    quant:hasDeterminer quant:the ;
+    ns1:strategicPlanOf ns1:commission_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "That" .
+
+ns1:verdict_1 a ns1:Verdict ;
+    rdfs:label "verdict" ;
+    ns1:on ns1:case_1 ;
+    ns1:verdictOf ns1:person_1 .
+
+ns1:vote_1 a ns1:EarlyVote ;
+    rdfs:label "vote" ;
+    quant:hasDeterminer quant:the .
+
+owl:Thing rdfs:label "That" .
+
+ns1:commission_1 a ns1:Commission ;
+    rdfs:label "commission" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Person rdfs:label "I" .
+

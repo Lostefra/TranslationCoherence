@@ -1,0 +1,141 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence710.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Attribute rdfs:label "in" .
+
+translation_coherence:ko_sentence710.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence710" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence710" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:From rdfs:label "from" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "The issues of Amazigh_language and staticity were especially increased from the close total voice of the local elections of Kabyle protests and Kabylie in 2001."^^xsd:string .
+
+ns1:increase_1 a ns1:EspeciallyIncrease ;
+    rdfs:label "increased" ;
+    boxer:patient ns1:issue_1 ;
+    dul:hasQuality ns1:Especially ;
+    vn.role:Attribute "2001-01-01"^^xsd:date ;
+    ns1:from ns1:Kabylie,
+        ns1:voice_1 .
+
+ns1:Amazigh_language rdfs:label "Amazigh language" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Berber_languages .
+
+ns1:Close rdfs:label "close" .
+
+ns1:CloseTotalVoice a owl:Class ;
+    rdfs:label "Close Total Voice" ;
+    rdfs:subClassOf ns1:TotalVoice .
+
+ns1:Election rdfs:label "elections" .
+
+ns1:Especially rdfs:label "especially" .
+
+ns1:EspeciallyIncrease rdfs:subClassOf ns1:Increase .
+
+ns1:Increase rdfs:label "increased" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Issue rdfs:label "issues" .
+
+ns1:Kabyle rdfs:label "Kabyle" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Kabyle_people .
+
+ns1:Kabylie rdfs:label "Kabylie" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Kabylie .
+
+ns1:Local rdfs:label "local" .
+
+ns1:LocalElection rdfs:subClassOf ns1:Election .
+
+ns1:Protest rdfs:label "protests" .
+
+ns1:Staticity rdfs:label "staticity" .
+
+ns1:Total a owl:Class ;
+    rdfs:label "total" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:TotalVoice a owl:Class ;
+    rdfs:label "Total Voice" ;
+    dul:hasQuality ns1:Total ;
+    rdfs:subClassOf ns1:Voice .
+
+ns1:Voice a owl:Class ;
+    rdfs:label "voice" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:election_1 a ns1:LocalElection ;
+    rdfs:label "elections" ;
+    dul:hasQuality ns1:Local ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:localElectionOf ns1:protest_1 .
+
+ns1:issue_1 a ns1:Issue ;
+    rdfs:label "issues" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:issueOf ns1:Amazigh_language,
+        ns1:staticity_1 .
+
+ns1:protest_1 a dbpedia:Arab_Spring,
+        ns1:Protest ;
+    rdfs:label "protests" ;
+    dul:associatedWith ns1:Kabyle ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:staticity_1 a ns1:Staticity ;
+    rdfs:label "staticity" .
+
+ns1:voice_1 a ns1:CloseTotalVoice ;
+    rdfs:label "voice" ;
+    dul:hasQuality ns1:Close ;
+    quant:hasDeterminer quant:the ;
+    ns1:closeTotalVoiceOf ns1:election_1 .
+

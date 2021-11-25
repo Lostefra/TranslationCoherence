@@ -1,0 +1,131 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence360.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "through",
+        "to" .
+
+vn.role:Source rdfs:label "on" .
+
+translation_coherence:zh_sentence360.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence360" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence360" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:On rdfs:label "on" .
+
+ns1:commit_1 a ns1:Commit ;
+    rdfs:label "committed" ;
+    vn.role:Destination ns1:thing_1 ;
+    vn.role:Theme ns1:Myanmar .
+
+ns1:docuverse earmark:hasContent "Myanmar is committed to launching a strong attack on Lee and Richmond through a strategic vision on Lincoln."^^xsd:string .
+
+ns1:launch_1 a ns1:Launch ;
+    rdfs:label "launching" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Destination ns1:vision_1 ;
+    vn.role:Source ns1:Lincoln ;
+    vn.role:Theme ns1:Richmond,
+        ns1:attack_1 .
+
+<http://dbpedia.org/resource/Richmond,_Virginia> a schema:Place .
+
+ns1:Commit rdfs:label "committed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Launch rdfs:label "launching" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Lee rdfs:label "Lee" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Myanmar rdfs:label "Myanmar" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Myanmar,
+        ns1:attack_1,
+        ns1:vision_1 .
+
+ns1:Richmond rdfs:label "Richmond" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs <http://dbpedia.org/resource/Richmond,_Virginia> .
+
+ns1:Strategic a owl:Class ;
+    rdfs:label "strategic" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:StrategicVision a owl:Class ;
+    rdfs:label "Strategic Vision" ;
+    dul:hasQuality ns1:Strategic ;
+    rdfs:subClassOf ns1:Vision .
+
+ns1:Strong a owl:Class ;
+    rdfs:label "strong" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:StrongAttack a owl:Class ;
+    rdfs:label "strong attack" ;
+    dul:hasQuality ns1:Strong ;
+    rdfs:subClassOf ns1:Attack .
+
+ns1:Attack a owl:Class ;
+    rdfs:label "attack" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Vision a owl:Class ;
+    rdfs:label "vision" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:attack_1 a ns1:Attack,
+        ns1:StrongAttack ;
+    rdfs:label "attack" ;
+    quant:hasDeterminer quant:a ;
+    ns1:on ns1:Lee .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:vision_1 a ns1:StrategicVision,
+        ns1:Vision ;
+    rdfs:label "vision" ;
+    quant:hasDeterminer quant:a .
+

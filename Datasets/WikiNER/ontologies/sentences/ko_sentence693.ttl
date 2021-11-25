@@ -1,0 +1,111 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence693.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:ko_sentence693.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence693" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence693" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:From rdfs:label "From" .
+
+ns1:dealer_1 a ns1:Dealer ;
+    rdfs:label "dealer" ;
+    dul:associatedWith ns1:shipping_1 .
+
+ns1:docuverse earmark:hasContent "From 1609 to 1616, the UK lost 466 dealer shipping to Bari pirate."^^xsd:string .
+
+ns1:to_1 a ns1:To ;
+    rdfs:label "to" ;
+    boxer:agent "1616-01-01"^^xsd:date ;
+    boxer:theme ns1:lose_1 ;
+    ns1:from "1609-01-01"^^xsd:date .
+
+dbpedia:Bari a schema:Place .
+
+ns1:Bari rdfs:label "Bari" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Bari .
+
+ns1:DealerShipping a owl:Class ;
+    rdfs:label "dealer shipping" ;
+    dul:associatedWith ns1:Dealer ;
+    rdfs:subClassOf ns1:Shipping .
+
+ns1:Lose rdfs:label "lost" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Pirate a owl:Class ;
+    rdfs:label "pirate" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Piracy .
+
+ns1:Shipping a owl:Class ;
+    rdfs:label "shipping" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:To rdfs:label "to" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Uk rdfs:label "UK" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:lose_1 a ns1:Lose ;
+    rdfs:label "lost" ;
+    vn.role:Agent ns1:Uk ;
+    vn.role:Recipient ns1:pirate_1 ;
+    vn.role:Theme ns1:shipping_1 .
+
+ns1:pirate_1 a ns1:Pirate ;
+    rdfs:label "pirate" ;
+    dul:associatedWith ns1:Bari .
+
+ns1:Dealer a owl:Class ;
+    rdfs:label "dealer" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:shipping_1 a ns1:DealerShipping ;
+    rdfs:label "shipping" ;
+    dul:hasDataValue "466"^^xsd:nonNegativeInteger .
+

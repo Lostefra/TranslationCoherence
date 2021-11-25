@@ -1,0 +1,201 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence181.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Theme rdfs:label "with" .
+
+translation_coherence:en_sentence181.ttl a owl:Ontology ;
+    rdfs:label "en_sentence181" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence181" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Because rdfs:label "because" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Into rdfs:label "into" .
+
+ns1:Of rdfs:label "'" .
+
+ns1:To rdfs:label "to" .
+
+ns1:Until rdfs:label "until" .
+
+ns1:With rdfs:label "With",
+        "with" .
+
+ns1:be_1 a ns1:Be ;
+    rdfs:label "is" ;
+    boxer:agent ns1:thing_1 ;
+    boxer:theme ns1:say_1 ;
+    boxing:hasModality boxing:Necessary .
+
+ns1:conclude_1 a ns1:Conclude ;
+    rdfs:label "concluded" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Product ns1:agreement_1 ;
+    ns1:because ns1:situation_1 ;
+    ns1:until "2001-07-01"^^xsd:date ;
+    ns1:with ns1:country_1 ;
+    ns1:withRegardTo ns1:enforcement_1 .
+
+ns1:docuverse earmark:hasContent "With regard to enforcement, proper agreements must also be concluded with the Eastern European countries because they will not enter into treaties which deal with this matter until 1 July 2001, that is to say in eighteen months' time."^^xsd:string .
+
+ns1:regard_1 a ns1:Regard ;
+    rdfs:label "regard" .
+
+ns1:time_1 a ns1:Time ;
+    rdfs:label "time" .
+
+owl:Thing rdfs:label "they" .
+
+ns1:Agreement rdfs:label "agreements" .
+
+ns1:Also rdfs:label "also" .
+
+ns1:Be rdfs:label "Be",
+        "is" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Conclude rdfs:label "concluded" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Country rdfs:label "countries" .
+
+ns1:Deal rdfs:label "deal" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Eastern rdfs:label "Eastern" .
+
+ns1:EasternEuropeanCountry rdfs:subClassOf ns1:EuropeanCountry .
+
+ns1:Enforcement rdfs:label "enforcement" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Enter rdfs:label "enter" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:European rdfs:label "European" .
+
+ns1:EuropeanCountry rdfs:subClassOf ns1:Country .
+
+ns1:Matter rdfs:label "matter" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Month rdfs:label "months" .
+
+ns1:Proper rdfs:label "proper" .
+
+ns1:ProperAgreement rdfs:subClassOf ns1:Agreement .
+
+ns1:Regard rdfs:label "regard" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Say rdfs:label "say" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Time rdfs:label "time" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Treaty rdfs:label "treaties" .
+
+ns1:agreement_1 a ns1:ProperAgreement ;
+    rdfs:label "agreements" ;
+    dul:hasQuality ns1:Proper ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:country_1 a ns1:EasternEuropeanCountry ;
+    rdfs:label "countries" ;
+    dul:hasQuality ns1:Eastern,
+        ns1:European ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:deal_1 a ns1:Deal ;
+    rdfs:label "deal" ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:treaty_1 ;
+    vn.role:Theme ns1:matter_1 .
+
+ns1:enforcement_1 a ns1:Enforcement ;
+    rdfs:label "enforcement" .
+
+ns1:enter_1 a ns1:Enter ;
+    rdfs:label "enter" ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Theme ns1:thing_1 ;
+    ns1:into ns1:treaty_1 .
+
+ns1:matter_1 a ns1:Matter ;
+    rdfs:label "matter" ;
+    quant:hasDeterminer quant:this .
+
+ns1:month_1 a ns1:Month ;
+    rdfs:label "months" ;
+    dul:hasDataValue "18"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:eighteen,
+        quant:multiple .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "say" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Topic "2001-07-01"^^xsd:date ;
+    ns1:inTimeOf ns1:month_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:deal_1,
+        ns1:enter_1,
+        ns1:treaty_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "they" .
+
+ns1:treaty_1 a dbpedia:Treaty,
+        ns1:Treaty ;
+    rdfs:label "treaties" ;
+    quant:hasQuantifier quant:multiple .
+

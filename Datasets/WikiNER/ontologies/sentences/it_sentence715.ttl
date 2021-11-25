@@ -1,0 +1,143 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence715.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Instrument rdfs:label "with" .
+
+translation_coherence:it_sentence715.ttl a owl:Ontology ;
+    rdfs:label "it_sentence715" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence715" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:desert_1 rdfs:label "desert" .
+
+ns1:docuverse earmark:hasContent "South of Atlas Tell is a steppe landscape, ending with the Atlas of Sahara; south, there is the Sahara desert."^^xsd:string .
+
+ns1:end_1 a ns1:End ;
+    rdfs:label "ending" ;
+    vn.role:Instrument ns1:atla_1 ;
+    vn.role:Theme ns1:South .
+
+ns1:landscape_1 rdfs:label "landscape" ;
+    quant:hasDeterminer quant:a .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Desert,
+        ns1:Sahara ;
+    dul:associatedWith ns1:south_1 .
+
+ns1:tell_1 rdfs:label "Tell" .
+
+ns1:there_1 rdfs:label "there" .
+
+dbpedia:Sahara a schema:Place .
+
+ns1:Atla a owl:Class ;
+    rdfs:label "Atlas" ;
+    owl:equivalentClass dbpedia:Atlas_Mountains .
+
+ns1:Atlas rdfs:label "Atlas" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Atlas_Mountains .
+
+ns1:End rdfs:label "ending" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Landscape a owl:Class ;
+    rdfs:label "South",
+        "landscape" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Steppe a owl:Class ;
+    rdfs:label "steppe" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Steppe .
+
+ns1:SteppeLandscape a owl:Class ;
+    rdfs:label "steppe landscape" ;
+    dul:hasQuality ns1:Steppe ;
+    rdfs:subClassOf ns1:Landscape .
+
+ns1:Tell rdfs:label "South",
+        "Tell" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:There rdfs:label "there" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location>,
+        ns1:Desert .
+
+ns1:atla_1 a ns1:Atla ;
+    rdfs:label "Atlas" ;
+    quant:hasDeterminer quant:the ;
+    ns1:atlaOf ns1:Sahara .
+
+ns1:south_1 a ns1:South ;
+    rdfs:label "south" .
+
+ns1:Sahara a ns1:Desert,
+        ns1:There ;
+    rdfs:label "Sahara",
+        "desert" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Sahara .
+
+ns1:South a owl:Class,
+        ns1:SteppeLandscape,
+        ns1:Tell ;
+    rdfs:label "South",
+        "Tell",
+        "landscape",
+        "south" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> ;
+    owl:equivalentClass dbpedia:South_Asia ;
+    ns1:steppeLandscapeOf ns1:Atlas .
+
+ns1:Desert rdfs:label "Sahara",
+        "desert" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location>,
+        dul:Collection .
+

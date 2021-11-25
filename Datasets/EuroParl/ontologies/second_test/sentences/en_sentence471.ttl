@@ -1,0 +1,149 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence471.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence471.ttl a owl:Ontology ;
+    rdfs:label "en_sentence471" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence471" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Within rdfs:label "within" .
+
+ns1:docuverse earmark:hasContent "There should be greater involvement of the private sector which will introduce financial reality as a perspective within the funding equation."^^xsd:string .
+
+ns1:funding_1 a ns1:Funding ;
+    rdfs:label "funding" ;
+    dul:associatedWith ns1:equation_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:introduce_1 a ns1:Introduce ;
+    rdfs:label "introduce" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:sector_1 ;
+    vn.role:Theme ns1:reality_1 ;
+    ns1:within ns1:equation_1 .
+
+ns1:involvement_1 rdfs:label "involvement" .
+
+ns1:there_1 a ns1:GreaterInvolvement,
+        ns1:There ;
+    rdfs:label "There" ;
+    ns1:thereOf ns1:sector_1 .
+
+ns1:Equation a owl:Class ;
+    rdfs:label "equation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Financial a owl:Class ;
+    rdfs:label "financial" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FinancialReality a owl:Class ;
+    rdfs:label "financial reality" ;
+    dul:hasQuality ns1:Financial ;
+    rdfs:subClassOf ns1:Reality .
+
+ns1:FundingEquation a owl:Class ;
+    rdfs:label "Funding Equation" ;
+    dul:associatedWith ns1:Funding ;
+    rdfs:subClassOf ns1:Equation .
+
+ns1:Greater a owl:Class ;
+    rdfs:label "greater" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:GreaterInvolvement a owl:Class ;
+    rdfs:label "Greater Involvement" ;
+    dul:hasQuality ns1:Greater ;
+    rdfs:subClassOf ns1:Involvement .
+
+ns1:Introduce rdfs:label "introduce" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Involvement a owl:Class ;
+    rdfs:label "involvement" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Perspective rdfs:label "perspective" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Private a owl:Class ;
+    rdfs:label "private" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:PrivateSector a owl:Class ;
+    rdfs:label "private sector" ;
+    dul:hasQuality ns1:Private ;
+    rdfs:subClassOf ns1:Sector .
+
+ns1:Reality a owl:Class ;
+    rdfs:label "reality" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Sector a owl:Class ;
+    rdfs:label "sector" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:There rdfs:label "There" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:perspective_1 a ns1:Perspective ;
+    rdfs:label "perspective" ;
+    quant:hasDeterminer quant:a .
+
+ns1:reality_1 a ns1:FinancialReality ;
+    rdfs:label "reality" ;
+    ns1:as ns1:perspective_1 .
+
+ns1:Funding a owl:Class ;
+    rdfs:label "funding" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:equation_1 a ns1:FundingEquation ;
+    rdfs:label "equation" .
+
+ns1:sector_1 a ns1:PrivateSector ;
+    rdfs:label "sector" ;
+    quant:hasDeterminer quant:the .
+

@@ -1,0 +1,123 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence139.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:nl_sentence139.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence139" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence139" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "South Trust Corporation, another large bank in Birmingham, was elected by Wachovia in 2004 for 14.3 billion dollars."^^xsd:string .
+
+ns1:elect_1 a ns1:Elect ;
+    rdfs:label "elected" ;
+    vn.role:Agent ns1:Wachovia ;
+    vn.role:Theme ns1:Trust_corporation ;
+    ns1:for ns1:dollar_1 ;
+    ns1:in "2004-01-01"^^xsd:date .
+
+dbpedia:Birmingham a schema:City,
+        schema:Place .
+
+<http://dbpedia.org/resource/Birmingham,_Alabama> a schema:City,
+        schema:Place .
+
+ns1:Birmingham rdfs:label "Birmingham" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Birmingham,
+        <http://dbpedia.org/resource/Birmingham,_Alabama> .
+
+ns1:Dollar rdfs:label "dollars" .
+
+ns1:Elect rdfs:label "elected" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Large a owl:Class ;
+    rdfs:label "large" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:LargeBank a owl:Class ;
+    rdfs:label "Large Bank" ;
+    dul:hasQuality ns1:Large ;
+    rdfs:subClassOf ns1:Bank .
+
+ns1:South rdfs:label "South" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:SouthTrust .
+
+ns1:Trust_corporation rdfs:label "Trust Corporation" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:South,
+        ns1:bank_1 .
+
+ns1:Wachovia rdfs:label "Wachovia" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Wachovia .
+
+ns1:bank_1 a ns1:Bank ;
+    owl:differentFrom ns1:bank_2 ;
+    ns1:locatedIn ns1:Birmingham .
+
+ns1:bank_2 a ns1:LargeBank ;
+    rdfs:label "bank" ;
+    quant:hasDeterminer quant:another .
+
+ns1:dollar_1 a dbpedia:United_States_dollar,
+        ns1:Dollar ;
+    rdfs:label "dollars" ;
+    dul:hasDataValue "14300000000.0"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:billion,
+        quant:multiple .
+
+ns1:Bank a owl:Class ;
+    rdfs:label "bank" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> ;
+    owl:equivalentClass dbpedia:Bank .
+

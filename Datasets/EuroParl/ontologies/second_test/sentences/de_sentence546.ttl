@@ -1,0 +1,180 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence546.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence546.ttl a owl:Ontology ;
+    rdfs:label "de_sentence546" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence546" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "Now in the form. Regarding the role of the guidelines, Ms Schroedter pointed out that this is the context in which guidelines for a number of European objectives, often very precise, should be presented."^^xsd:string .
+
+ns1:event_1 a dul:Event ;
+    ns1:in ns1:form_1 .
+
+ns1:point_1 a ns1:Point ;
+    rdfs:label "pointed" ;
+    boxer:theme ns1:situation_1 ;
+    dul:hasQuality ns1:Out ;
+    vn.role:Agent ns1:Schroedter .
+
+ns1:regard_1 a ns1:Regard ;
+    rdfs:label "Regarding" ;
+    vn.role:Experiencer ns1:thing_1 ;
+    vn.role:Stimulus ns1:role_1 .
+
+ns1:thing_2 rdfs:label "this" .
+
+ns1:EuropeanObjective rdfs:subClassOf ns1:Objective .
+
+ns1:Form rdfs:label "form" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Out rdfs:label "out" .
+
+ns1:Point rdfs:label "pointed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Regard rdfs:label "Regarding" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Role rdfs:label "role" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Schroedter rdfs:label "Schroedter" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Miss> ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Miss> .
+
+ns1:context_1 a owl:Thing,
+        ns1:Context ;
+    rdfs:label "context" ;
+    quant:hasDeterminer quant:the,
+        quant:this .
+
+ns1:form_1 a ns1:Form ;
+    rdfs:label "form" ;
+    quant:hasDeterminer quant:the .
+
+ns1:guideline_1 a ns1:Guideline ;
+    rdfs:label "guidelines" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:number_1 a ns1:Number ;
+    rdfs:label "number" ;
+    dul:hasQuality ns1:Precise ;
+    quant:hasDeterminer quant:a .
+
+ns1:present_1 a ns1:Present ;
+    rdfs:label "presented" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Theme ns1:guideline_2 ;
+    ns1:in ns1:context_1 .
+
+ns1:role_1 a ns1:Role ;
+    rdfs:label "role" ;
+    quant:hasDeterminer quant:the ;
+    ns1:roleOf ns1:guideline_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:European,
+        ns1:Guideline,
+        ns1:Number,
+        ns1:Objective,
+        ns1:Often,
+        ns1:Precise,
+        ns1:Present,
+        ns1:Very,
+        ns1:guideline_2,
+        ns1:number_1,
+        ns1:objective_1,
+        ns1:present_1 .
+
+ns1:thing_1 a owl:Thing .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Miss> rdfs:label "Ms" ;
+    boxer:possibleType dul:Role .
+
+owl:Thing rdfs:label "this" ;
+    rdfs:subClassOf ns1:Context .
+
+ns1:Context rdfs:label "context" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:European rdfs:label "European" .
+
+ns1:Number rdfs:label "number" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Objective rdfs:label "objectives" .
+
+ns1:Precise rdfs:label "precise" ;
+    dul:hasQuality ns1:Often,
+        ns1:Very .
+
+ns1:Present rdfs:label "presented" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Very rdfs:label "very" ;
+    dul:hasQuality ns1:Often .
+
+ns1:guideline_2 a ns1:Guideline ;
+    rdfs:label "guidelines" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:forNumberOftenVeryPreciseOf ns1:objective_1 .
+
+ns1:objective_1 a ns1:EuropeanObjective ;
+    rdfs:label "objectives" ;
+    dul:hasQuality ns1:European ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Guideline rdfs:label "guidelines" .
+
+ns1:Often rdfs:label "often" .
+

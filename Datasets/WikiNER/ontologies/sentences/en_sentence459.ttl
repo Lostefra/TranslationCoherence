@@ -1,0 +1,132 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence459.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence459.ttl a owl:Ontology ;
+    rdfs:label "en_sentence459" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence459" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:do_1 a ns1:CertainlyDo ;
+    rdfs:label "did" ;
+    boxer:agent ns1:Aristotle ;
+    boxer:patient ns1:area_1,
+        ns1:research_1 ;
+    dul:hasQuality ns1:Certainly .
+
+ns1:docuverse earmark:hasContent "Aristotle certainly did research on the natural history of Lesbos, and the surrounding seas and neighbouring areas."^^xsd:string .
+
+ns1:neighbour_1 a ns1:Neighbour ;
+    rdfs:label "neighbouring" ;
+    boxer:agent ns1:area_1 .
+
+ns1:surround_1 a ns1:Surround ;
+    rdfs:label "surrounding" ;
+    vn.role:Agent ns1:sea_1 .
+
+dbpedia:Aristotle a schema:Person .
+
+dbpedia:Lesbos a schema:Place .
+
+ns1:Area rdfs:label "areas" .
+
+ns1:Aristotle rdfs:label "Aristotle" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Aristotle .
+
+ns1:Certainly rdfs:label "certainly" .
+
+ns1:CertainlyDo rdfs:subClassOf ns1:Do .
+
+ns1:Do rdfs:label "did" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:History a owl:Class ;
+    rdfs:label "history" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Lesbos rdfs:label "Lesbos" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Lesbos .
+
+ns1:Natural a owl:Class ;
+    rdfs:label "natural" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:NaturalHistory a owl:Class ;
+    rdfs:label "Natural History" ;
+    dul:hasQuality ns1:Natural ;
+    rdfs:subClassOf ns1:History ;
+    owl:equivalentClass dbpedia:Natural_History_(Pliny) .
+
+ns1:Neighbour rdfs:label "neighbouring" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Research rdfs:label "research" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Sea rdfs:label "seas" .
+
+ns1:Surround rdfs:label "surrounding" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:history_1 a ns1:NaturalHistory ;
+    rdfs:label "history" ;
+    quant:hasDeterminer quant:the ;
+    ns1:naturalHistoryOf ns1:Lesbos,
+        ns1:sea_1 .
+
+ns1:research_1 a ns1:Research ;
+    rdfs:label "research" ;
+    ns1:on ns1:history_1 .
+
+ns1:area_1 a ns1:Area ;
+    rdfs:label "areas" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:sea_1 a ns1:Sea ;
+    rdfs:label "seas" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+

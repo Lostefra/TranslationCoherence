@@ -1,0 +1,167 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence393.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Proposition rdfs:label "for" .
+
+translation_coherence:fi_sentence393.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence393" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence393" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:In rdfs:label "in" .
+
+ns1:To rdfs:label "to" .
+
+ns1:allow_1 a ns1:Allow ;
+    rdfs:label "allowed" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Theme ns1:situation_1 ;
+    ns1:as ns1:ask_1 .
+
+ns1:docuverse earmark:hasContent "This allowed the president to personally give Grant and Sherman the opportunity to end hostilities (as Sherman asked for a busy visit to Grant in North_Carolina)."^^xsd:string .
+
+ns1:end_1 a ns1:End ;
+    rdfs:label "end" ;
+    vn.role:Agent ns1:opportunity_1 ;
+    vn.role:Theme ns1:hostility_1 .
+
+dbpedia:North_Carolina a schema:AdministrativeArea,
+        schema:Place .
+
+dbpedia:Ulysses_S._Grant a schema:Person .
+
+dbpedia:William_Tecumseh_Sherman a schema:Person .
+
+owl:Thing rdfs:label "This" .
+
+ns1:Allow rdfs:label "allowed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Ask rdfs:label "asked" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Busy a owl:Class ;
+    rdfs:label "busy" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:BusyVisit a owl:Class ;
+    rdfs:label "busy visit" ;
+    dul:hasQuality ns1:Busy ;
+    rdfs:subClassOf ns1:Visit .
+
+ns1:End rdfs:label "end" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Give rdfs:label "give" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Hostility rdfs:label "hostilities" .
+
+ns1:North_carolina rdfs:label "North Carolina" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:North_Carolina .
+
+ns1:Opportunity rdfs:label "opportunity" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Personally rdfs:label "personally" .
+
+ns1:PersonallyGive rdfs:label "Personally Give" ;
+    rdfs:subClassOf ns1:Give .
+
+ns1:President a owl:Class ;
+    rdfs:label "president" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:President_of_the_United_States .
+
+ns1:Visit a owl:Class ;
+    rdfs:label "visit" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:ask_1 a ns1:Ask ;
+    rdfs:label "asked" ;
+    vn.role:Agent ns1:Sherman ;
+    vn.role:Proposition ns1:visit_1 .
+
+ns1:give_1 a ns1:PersonallyGive ;
+    rdfs:label "give" ;
+    dul:hasQuality ns1:Personally ;
+    vn.role:Agent ns1:president_1 ;
+    vn.role:Recipient ns1:Grant,
+        ns1:Sherman ;
+    vn.role:Theme ns1:opportunity_1 .
+
+ns1:hostility_1 a dbpedia:Korean_War,
+        ns1:Hostility ;
+    rdfs:label "hostilities" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:president_1 a ns1:President ;
+    rdfs:label "president" ;
+    quant:hasDeterminer quant:the,
+        quant:this .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:give_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "This" .
+
+ns1:visit_1 a ns1:BusyVisit ;
+    rdfs:label "visit" ;
+    quant:hasDeterminer quant:a ;
+    ns1:locatedIn ns1:North_carolina ;
+    ns1:to ns1:Grant .
+
+ns1:Grant rdfs:label "Grant" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Ulysses_S._Grant .
+
+ns1:Sherman rdfs:label "Sherman" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:William_Tecumseh_Sherman .
+
+ns1:opportunity_1 a ns1:Opportunity ;
+    rdfs:label "opportunity" ;
+    quant:hasDeterminer quant:the .
+

@@ -1,0 +1,167 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence63.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:de_sentence63.ttl a owl:Ontology ;
+    rdfs:label "de_sentence63" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence63" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Because rdfs:label "because" .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:Under rdfs:label "under" .
+
+ns1:With rdfs:label "with" .
+
+ns1:body_1 rdfs:label "body" .
+
+ns1:docuverse earmark:hasContent "This obligation is important because the Commission is a body with an own-initiative monopoly under the Treaties and therefore essentially determines the Parliament's political and legislative activities for the next five years."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Important,
+        ns1:obligation_1 ;
+    ns1:because ns1:determine_1 .
+
+ns1:Activity rdfs:label "activities" .
+
+ns1:Body rdfs:label "Commission",
+        "body" ;
+    rdfs:subClassOf dul:Organism .
+
+ns1:Commission a ns1:Body ;
+    rdfs:label "Commission",
+        "body" ;
+    boxer:possibleType foaf:Organisation ;
+    quant:hasDeterminer quant:a ;
+    owl:sameAs dbpedia:Contract,
+        ns1:monopoly_1 ;
+    ns1:under ns1:Treaties ;
+    ns1:with ns1:monopoly_1 .
+
+ns1:Determine rdfs:label "determines" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Essentially rdfs:label "essentially" .
+
+ns1:EssentiallyDetermine rdfs:subClassOf ns1:Determine .
+
+ns1:Legislative rdfs:label "legislative" ;
+    owl:sameAs dbpedia:Legislature .
+
+ns1:LegislativeActivity rdfs:subClassOf ns1:Activity .
+
+ns1:Next rdfs:label "next" .
+
+ns1:Obligation a owl:Class ;
+    rdfs:label "obligation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Law_of_obligations .
+
+ns1:Own-initiative a owl:Class ;
+    rdfs:label "own-initiative" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Own-initiativeMonopoly a owl:Class ;
+    rdfs:label "Own-initiative Monopoly" ;
+    dul:hasQuality ns1:Own-initiative ;
+    rdfs:subClassOf ns1:Monopoly .
+
+ns1:Parliament rdfs:label "Parliament" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Parliament .
+
+ns1:Political rdfs:label "political" .
+
+ns1:Therefore rdfs:label "therefore" .
+
+ns1:ThereforeEssentiallyDetermine rdfs:subClassOf ns1:EssentiallyDetermine .
+
+ns1:Treaties rdfs:label "Treaties" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Treaty .
+
+ns1:Year rdfs:label "years" .
+
+ns1:activity_1 a ns1:LegislativeActivity ;
+    rdfs:label "activities" ;
+    dul:hasQuality ns1:Legislative,
+        ns1:Political ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:legislativeActivityOf ns1:Parliament .
+
+ns1:determine_1 a ns1:ThereforeEssentiallyDetermine ;
+    rdfs:label "determines" ;
+    dul:hasQuality ns1:Essentially,
+        ns1:Therefore ;
+    vn.role:Agent ns1:Commission ;
+    vn.role:Theme ns1:activity_1 ;
+    ns1:for ns1:year_1 .
+
+ns1:obligation_1 a ns1:Obligation ;
+    rdfs:label "obligation" ;
+    dul:hasQuality ns1:Important ;
+    quant:hasDeterminer quant:this .
+
+ns1:year_1 a ns1:Year ;
+    rdfs:label "years" ;
+    dul:hasDataValue "5"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:Next ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:five,
+        quant:multiple .
+
+ns1:Important rdfs:label "important" .
+
+ns1:Monopoly a owl:Class ;
+    rdfs:label "monopoly" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Monopoly .
+
+ns1:monopoly_1 a ns1:Monopoly,
+        ns1:Own-initiativeMonopoly ;
+    rdfs:label "monopoly" ;
+    quant:hasDeterminer quant:an .
+

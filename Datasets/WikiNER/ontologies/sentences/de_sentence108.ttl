@@ -1,0 +1,131 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence108.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:de_sentence108.ttl a owl:Ontology ;
+    rdfs:label "de_sentence108" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence108" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Near rdfs:label "near" .
+
+ns1:docuverse earmark:hasContent "Areas managed by the National_Park_Service include Horseshoe_Bend_National_Military_Park near Alexander_City; Little_River_Canyon National Pserv near Fort Haas; Russell National Heritage in Bridgeport; Tuskegee_Airmen National Historical Site in Tuskegee; and Tuskegee_Institute National Historical Site near Tuskegee."^^xsd:string .
+
+ns1:include_1 a ns1:Include ;
+    rdfs:label "include" ;
+    vn.role:Agent ns1:Areas ;
+    vn.role:Theme ns1:Horseshoe_bend_national_military_park .
+
+ns1:manage_1 a ns1:Manage ;
+    rdfs:label "managed" ;
+    vn.role:Agent ns1:National_park_service ;
+    vn.role:Theme ns1:Areas .
+
+dbpedia:National_Park_Service a schema:GovernmentOrganization,
+        schema:Organization .
+
+dbpedia:Tuskegee_University a schema:CollegeOrUniversity,
+        schema:EducationalOrganization,
+        schema:Organization .
+
+ns1:Alexander_city rdfs:label "Alexander City" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs <http://dbpedia.org/resource/Alexander_City,_Alabama> .
+
+ns1:Bridgeport rdfs:label "Bridgeport" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs <http://dbpedia.org/resource/Bridgeport,_Alabama> .
+
+ns1:Fort_haas rdfs:label "Fort Haas" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Horseshoe_bend_national_military_park rdfs:label "Horseshoe Bend National Military Park" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Horseshoe_Bend_National_Military_Park ;
+    ns1:near ns1:Alexander_city,
+        ns1:Little_river_canyon_national_pserv,
+        ns1:National_heritage,
+        ns1:Tuskegee_airmen_national_historical_site,
+        ns1:Tuskegee_institute_national_historical_site .
+
+ns1:Include rdfs:label "include" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Little_river_canyon_national_pserv rdfs:label "Little River Canyon National Pserv" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    ns1:near ns1:Fort_haas .
+
+ns1:Manage rdfs:label "managed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:National_heritage rdfs:label "National Heritage" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:Russell ;
+    ns1:locatedIn ns1:Bridgeport .
+
+ns1:National_park_service rdfs:label "National Park Service" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:National_Park_Service .
+
+ns1:Russell rdfs:label "Russell" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs <http://dbpedia.org/resource/Russell_County,_Alabama> .
+
+ns1:Tuskegee_airmen_national_historical_site rdfs:label "Tuskegee Airmen National Historical Site" ;
+    boxer:possibleType foaf:Organisation ;
+    ns1:locatedIn ns1:Tuskegee .
+
+ns1:Tuskegee_institute_national_historical_site rdfs:label "Tuskegee Institute National Historical Site" ;
+    boxer:possibleType foaf:Organisation ;
+    ns1:near ns1:Tuskegee .
+
+ns1:Areas rdfs:label "Areas" ;
+    boxer:possibleType owl:Thing .
+
+ns1:Tuskegee rdfs:label "Tuskegee" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place>,
+        foaf:Organisation ;
+    owl:sameAs dbpedia:Tuskegee_Airmen,
+        dbpedia:Tuskegee_University .
+

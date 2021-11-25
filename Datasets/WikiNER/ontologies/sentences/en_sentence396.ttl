@@ -1,0 +1,154 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence396.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence396.ttl a owl:Ontology ;
+    rdfs:label "en_sentence396" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence396" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:defy_1 a ns1:Defy ;
+    rdfs:label "defied" ;
+    boxer:agent ns1:Gettysburg_address ;
+    boxer:patient ns1:prediction_1 .
+
+ns1:docuverse earmark:hasContent "The Gettysburg_Address defied Lincoln 's own prediction that the world will little note, nor long remember what we say here."^^xsd:string .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+ns1:Defy rdfs:label "defied" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Gettysburg_address rdfs:label "Gettysburg Address" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Gettysburg_Address .
+
+ns1:Here rdfs:label "here" .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+
+ns1:LittleNote rdfs:label "little note" ;
+    rdfs:subClassOf ns1:Note .
+
+ns1:Long rdfs:label "long" .
+
+ns1:LongRemember rdfs:label "long remember" ;
+    rdfs:subClassOf ns1:Remember .
+
+ns1:Note rdfs:label "note" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Own a owl:Class ;
+    rdfs:label "own" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:OwnPrediction a owl:Class ;
+    rdfs:label "Own Prediction" ;
+    dul:hasQuality ns1:Own ;
+    rdfs:subClassOf ns1:Prediction .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Prediction a owl:Class ;
+    rdfs:label "prediction" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Remember rdfs:label "remember" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Say rdfs:label "say" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:World rdfs:label "world" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:note_1 a ns1:LittleNote ;
+    rdfs:label "note" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Little ;
+    vn.role:Agent ns1:world_1 ;
+    vn.role:Topic ns1:thing_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:prediction_1 a ns1:OwnPrediction ;
+    rdfs:label "prediction" ;
+    boxer:theme ns1:situation_1 ;
+    ns1:ownPredictionOf ns1:Lincoln .
+
+ns1:remember_1 a ns1:LongRemember ;
+    rdfs:label "remember" ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:hasTruthValue boxing:False ;
+    dul:hasQuality ns1:Little,
+        ns1:Long ;
+    vn.role:Agent ns1:world_1 ;
+    vn.role:Theme ns1:thing_1 .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "say" ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:hasTruthValue boxing:False ;
+    dul:hasQuality ns1:Here ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Topic ns1:thing_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:note_1,
+        ns1:remember_1,
+        ns1:say_1,
+        ns1:thing_1 .
+
+owl:Thing rdfs:label "what" .
+
+ns1:Little rdfs:label "little" .
+
+ns1:world_1 a ns1:World ;
+    rdfs:label "world" ;
+    quant:hasDeterminer quant:the .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "what" .
+

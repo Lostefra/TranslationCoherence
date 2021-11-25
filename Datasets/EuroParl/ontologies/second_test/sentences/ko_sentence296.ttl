@@ -1,0 +1,174 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence296.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Stimulus rdfs:label "for" .
+
+translation_coherence:ko_sentence296.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence296" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence296" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Quantity rdfs:label "Many" .
+
+ns1:Within rdfs:label "within" .
+
+ns1:docuverse earmark:hasContent "Many people within Wales are looking for a European structure funding program is very clear. A big challenge that we do not face unfortunately."^^xsd:string .
+
+ns1:face_1 a ns1:Face ;
+    rdfs:label "face" ;
+    boxing:hasTruthValue boxing:False ;
+    dul:hasQuality ns1:Unfortunately ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:challenge_1 .
+
+ns1:funding_1 a ns1:Funding ;
+    rdfs:label "funding" ;
+    dul:associatedWith ns1:program_1 .
+
+ns1:look_1 a ns1:Look ;
+    rdfs:label "looking" ;
+    vn.role:Experiencer ns1:people_1 ;
+    vn.role:Stimulus ns1:program_1 .
+
+ns1:structure_1 a ns1:Structure ;
+    rdfs:label "structure" ;
+    dul:associatedWith ns1:program_1 ;
+    quant:hasDeterminer quant:a .
+
+dbpedia:Wales a schema:Country,
+        schema:Place .
+
+ns1:Big a owl:Class ;
+    rdfs:label "big" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:BigChallenge a owl:Class ;
+    rdfs:label "big challenge" ;
+    dul:hasQuality ns1:Big ;
+    rdfs:subClassOf ns1:Challenge .
+
+ns1:Challenge a owl:Class ;
+    rdfs:label "challenge" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Clear rdfs:label "clear" ;
+    dul:hasQuality ns1:Very .
+
+ns1:European a owl:Class ;
+    rdfs:label "European" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:EuropeanStructure a owl:Class ;
+    dul:hasQuality ns1:European ;
+    rdfs:subClassOf ns1:Structure .
+
+ns1:EuropeanStructureFunding a owl:Class ;
+    dul:associatedWith ns1:EuropeanStructure ;
+    rdfs:subClassOf ns1:StructureFunding .
+
+ns1:EuropeanStructureFundingProgram a owl:Class ;
+    rdfs:label "European Structure Funding Program" ;
+    dul:associatedWith ns1:EuropeanStructureFunding ;
+    rdfs:subClassOf ns1:StructureFundingProgram .
+
+ns1:Face rdfs:label "face" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:FundingProgram a owl:Class ;
+    rdfs:label "funding program" ;
+    dul:associatedWith ns1:Funding ;
+    rdfs:subClassOf ns1:Program .
+
+ns1:Look rdfs:label "looking" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:People rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Program a owl:Class ;
+    rdfs:label "program" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:StructureFundingProgram a owl:Class ;
+    rdfs:label "Structure Funding Program" ;
+    dul:associatedWith ns1:StructureFunding ;
+    rdfs:subClassOf ns1:FundingProgram .
+
+ns1:Unfortunately rdfs:label "unfortunately" .
+
+ns1:Very rdfs:label "very" .
+
+ns1:Wales rdfs:label "Wales" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Wales .
+
+ns1:challenge_1 a ns1:BigChallenge ;
+    rdfs:label "challenge" ;
+    dul:hasQuality ns1:Topic ;
+    quant:hasDeterminer quant:a .
+
+ns1:people_1 a ns1:People ;
+    rdfs:label "people" ;
+    quant:hasQuantifier quant:many,
+        quant:multiple ;
+    ns1:within ns1:Wales .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:StructureFunding a owl:Class ;
+    dul:associatedWith ns1:Structure ;
+    rdfs:subClassOf ns1:Funding .
+
+ns1:Funding a owl:Class ;
+    rdfs:label "funding" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Structure a owl:Class ;
+    rdfs:label "structure" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:program_1 a ns1:EuropeanStructureFundingProgram ;
+    rdfs:label "program" ;
+    dul:hasQuality ns1:Clear .
+

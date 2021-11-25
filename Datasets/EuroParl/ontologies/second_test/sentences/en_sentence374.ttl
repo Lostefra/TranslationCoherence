@@ -1,0 +1,153 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence374.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence374.ttl a owl:Ontology ;
+    rdfs:label "en_sentence374" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence374" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "Our",
+        "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "Our Group emphasises the importance of the principle of subsidiarity, the responsibility of Member_States and the role of local players in drafting and implementing programmes."^^xsd:string .
+
+ns1:draft_1 a dbpedia:Treaty_establishing_a_Constitution_for_Europe,
+        ns1:Draft ;
+    rdfs:label "drafting" ;
+    boxer:agent ns1:role_1 ;
+    boxer:patient ns1:programme_1 .
+
+ns1:emphasise_1 a ns1:Emphasise ;
+    rdfs:label "emphasises" ;
+    boxer:agent ns1:Group ;
+    boxer:patient ns1:importance_1 .
+
+ns1:implement_1 a ns1:Implement ;
+    rdfs:label "implementing" ;
+    vn.role:Agent ns1:role_1 ;
+    vn.role:Theme ns1:programme_1 .
+
+ns1:Draft rdfs:label "drafting" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Emphasise rdfs:label "emphasises" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Group rdfs:label "Group" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Political_groups_of_the_European_Parliament ;
+    ns1:of ns1:person_1 .
+
+ns1:Implement rdfs:label "implementing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Importance rdfs:label "importance" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Local rdfs:label "local" .
+
+ns1:LocalPlayer rdfs:subClassOf ns1:Player .
+
+ns1:Member_states a owl:Class ;
+    rdfs:label "Member States" ;
+    owl:equivalentClass dbpedia:Member_state_of_the_European_Union .
+
+ns1:Player rdfs:label "players" .
+
+ns1:Principle rdfs:label "principle" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Programme rdfs:label "programmes" .
+
+ns1:Responsibility rdfs:label "responsibility" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Role rdfs:label "role" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Subsidiarity a owl:Class ;
+    rdfs:label "subsidiarity" ;
+    rdfs:subClassOf dul:Role ;
+    owl:equivalentClass dbpedia:Subsidiarity .
+
+ns1:importance_1 a ns1:Importance ;
+    rdfs:label "importance" ;
+    quant:hasDeterminer quant:the ;
+    ns1:importanceOf ns1:principle_1 .
+
+ns1:member_states_1 a ns1:Member_states ;
+    rdfs:label "Member States" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "Our" .
+
+ns1:player_1 a ns1:LocalPlayer ;
+    rdfs:label "players" ;
+    dul:hasQuality ns1:Local ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:principle_1 a ns1:Principle ;
+    rdfs:label "principle" ;
+    quant:hasDeterminer quant:the ;
+    ns1:principleOf ns1:subsidiarity_1 .
+
+ns1:responsibility_1 a ns1:Responsibility ;
+    rdfs:label "responsibility" ;
+    quant:hasDeterminer quant:the ;
+    ns1:responsibilityOf ns1:member_states_1 .
+
+ns1:subsidiarity_1 a ns1:Subsidiarity ;
+    rdfs:label "subsidiarity" ;
+    dul:associatedWith ns1:responsibility_1,
+        ns1:role_1 .
+
+ns1:programme_1 a ns1:Programme ;
+    rdfs:label "programmes" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:role_1 a ns1:Role ;
+    rdfs:label "role" ;
+    quant:hasDeterminer quant:the ;
+    ns1:roleOf ns1:player_1 .
+

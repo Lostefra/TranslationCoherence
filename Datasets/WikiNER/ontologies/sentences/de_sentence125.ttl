@@ -1,0 +1,155 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence125.ttl/> .
+@prefix ns2: <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:de_sentence125.ttl a owl:Ontology ;
+    rdfs:label "de_sentence125" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence125" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "'",
+        "'s",
+        "of" .
+
+ns1:Since rdfs:label "Since" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:docuverse earmark:hasContent "Since the last census in 2000, the US People's Office in July 2008 estimates the 'Population of Berkshire' to 4.661,900, which represents an increase of 214.545 or 4.8%."^^xsd:string .
+
+ns1:estimate_1 a ns1:Estimate ;
+    rdfs:label "estimates" ;
+    vn.role:Agent ns1:Office ;
+    vn.role:Theme ns2:27_1 ;
+    ns1:since ns1:census_1 .
+
+ns1:represent_1 a ns1:Represent ;
+    rdfs:label "represents" ;
+    vn.role:Agent ns2:27_1 ;
+    vn.role:Theme ns1:increase_1,
+        ns1:percent_1 .
+
+ns1:to_1 a ns1:To ;
+    rdfs:label "to" ;
+    dul:hasDataValue "4.6619"^^xsd:nonNegativeInteger ;
+    ns1:qtyOf ns1:Berkshire .
+
+dbpedia:Berkshire a schema:AdministrativeArea,
+        schema:Place .
+
+<http://dbpedia.org/resource/Berkshire_County,_Massachusetts> a schema:AdministrativeArea,
+        schema:Place .
+
+ns2:27 rdfs:label "'" .
+
+ns1:Berkshire rdfs:label "Berkshire" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Berkshire,
+        <http://dbpedia.org/resource/Berkshire_County,_Massachusetts> .
+
+ns1:Census a owl:Class ;
+    rdfs:label "census" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Census .
+
+ns1:Estimate rdfs:label "estimates" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Increase rdfs:label "increase" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:LastCensus a owl:Class ;
+    rdfs:label "last census" ;
+    dul:hasQuality ns1:Last ;
+    rdfs:subClassOf ns1:Census .
+
+ns1:Office rdfs:label "Office" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Office ;
+    ns1:in "2008-07-01"^^xsd:date ;
+    ns1:of ns1:Us_people .
+
+ns1:Percent rdfs:label "%" .
+
+ns1:Population rdfs:label "Population" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Represent rdfs:label "represents" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:To rdfs:label "to" .
+
+ns1:Us_people rdfs:label "US People" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:census_1 a ns1:LastCensus ;
+    rdfs:label "census" ;
+    dul:hasQuality ns1:Last ;
+    quant:hasDeterminer quant:the ;
+    ns1:in "2000-01-01"^^xsd:date .
+
+ns1:increase_1 a ns1:Increase ;
+    rdfs:label "increase" ;
+    quant:hasDeterminer quant:an ;
+    quant:hasQuantifier quant:4.661%2C900 ;
+    ns1:increaseOf "214.545"^^xsd:nonNegativeInteger .
+
+ns1:percent_1 a ns1:Percent ;
+    rdfs:label "%" ;
+    dul:hasDataValue "4.8"^^xsd:nonNegativeInteger .
+
+ns1:population_1 a ns1:Population ;
+    rdfs:label "Population" ;
+    quant:hasDeterminer quant:the .
+
+ns2:27_1 a ns2:27 ;
+    rdfs:label "'" ;
+    dul:associatedWith ns1:population_1 ;
+    ns2:27Of "4.6619"^^xsd:nonNegativeInteger .
+
+ns1:Last a owl:Class ;
+    rdfs:label "last" ;
+    rdfs:subClassOf dul:Quality .
+

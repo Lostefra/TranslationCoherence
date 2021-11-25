@@ -1,0 +1,149 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence264.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "to" .
+
+translation_coherence:ko_sentence264.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence264" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence264" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "A very large quantity of dangerous goods is transported to both the European_Union, both the road and railway and the sea."^^xsd:string .
+
+ns1:railway_1 rdfs:label "railway" .
+
+ns1:transport_1 a dbpedia:Transport,
+        ns1:Transport ;
+    rdfs:label "transported" ;
+    vn.role:Destination ns1:European_union ;
+    vn.role:Theme ns1:quantity_1 .
+
+ns1:Dangerous a owl:Class ;
+    rdfs:label "dangerous" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:DangerousGoods a owl:Class ;
+    rdfs:label "Dangerous Goods" ;
+    dul:hasQuality ns1:Dangerous ;
+    rdfs:subClassOf ns1:Goods ;
+    owl:equivalentClass dbpedia:Dangerous_goods .
+
+ns1:European_union rdfs:label "European Union" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:both_1,
+        ns1:road_1,
+        ns1:sea_1 ;
+    owl:sameAs dbpedia:European_Union .
+
+ns1:Goods a owl:Class ;
+    rdfs:label "goods" .
+
+ns1:Large a owl:Class ;
+    rdfs:label "large" ;
+    dul:hasQuality ns1:Very ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:LargeQuantity a owl:Class ;
+    rdfs:label "Large Quantity" ;
+    dul:hasQuality ns1:Large ;
+    rdfs:subClassOf ns1:Quantity .
+
+ns1:Quantity a owl:Class ;
+    rdfs:label "quantity" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:Railway a owl:Class ;
+    rdfs:label "railway" ;
+    rdfs:subClassOf dul:Organization ;
+    owl:equivalentClass dbpedia:Rail_transport .
+
+ns1:Road a owl:Class ;
+    rdfs:label "road" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> ;
+    owl:equivalentClass dbpedia:Road .
+
+ns1:Sea a owl:Class ;
+    rdfs:label "sea" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> ;
+    owl:equivalentClass dbpedia:Ship_transport .
+
+ns1:Transport rdfs:label "transported" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Very rdfs:label "very" .
+
+ns1:VeryLargeQuantity a owl:Class ;
+    rdfs:label "Very Large Quantity" ;
+    rdfs:subClassOf ns1:LargeQuantity .
+
+ns1:both_1 a ns1:Both ;
+    rdfs:label "both" .
+
+ns1:goods_1 a ns1:DangerousGoods ;
+    rdfs:label "goods" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:quantity_1 a ns1:VeryLargeQuantity ;
+    rdfs:label "quantity" ;
+    quant:hasDeterminer quant:a ;
+    ns1:veryLargeQuantityOf ns1:goods_1 .
+
+ns1:road_1 a ns1:Railway,
+        ns1:Road ;
+    rdfs:label "road" ;
+    dul:associatedWith ns1:both_2 ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:both .
+
+ns1:sea_1 a ns1:Sea ;
+    rdfs:label "sea" ;
+    dul:associatedWith ns1:both_2 ;
+    quant:hasDeterminer quant:the .
+
+ns1:Both rdfs:label "both" .
+
+ns1:both_2 a ns1:Both ;
+    rdfs:label "both" .
+

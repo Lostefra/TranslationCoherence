@@ -1,0 +1,121 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence666.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "from" .
+
+translation_coherence:de_sentence666.ttl a owl:Ontology ;
+    rdfs:label "de_sentence666" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence666" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "his" .
+
+ns1:docuverse earmark:hasContent "Anyone who can live from a modest background to make life easier for his children."^^xsd:string .
+
+ns1:live_1 a ns1:Live ;
+    rdfs:label "live" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Location ns1:background_1 ;
+    vn.role:Theme ns1:person_1 .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "make" ;
+    boxer:theme ns1:situation_1 ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Agent ns1:background_1 ;
+    ns1:for ns1:child_1 .
+
+ns1:Background a owl:Class ;
+    rdfs:label "background" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Child rdfs:label "children" .
+
+ns1:Live rdfs:label "live" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Make rdfs:label "make" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Modest a owl:Class ;
+    rdfs:label "modest" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ModestBackground a owl:Class ;
+    rdfs:label "Modest Background" ;
+    dul:hasQuality ns1:Modest ;
+    rdfs:subClassOf ns1:Background .
+
+ns1:Person rdfs:label "Anyone" .
+
+ns1:child_1 a ns1:Child ;
+    rdfs:label "children" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:childOf ns1:male_1 .
+
+ns1:life_1 a ns1:Life ;
+    rdfs:label "life" ;
+    dul:hasQuality ns1:Easier .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "his" .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "Anyone" ;
+    dul:hasQuality ns1:Topic .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Possible ;
+    boxing:involves ns1:Easier,
+        ns1:Life,
+        ns1:life_1 .
+
+ns1:Easier rdfs:label "easier" .
+
+ns1:Life rdfs:label "life" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:background_1 a ns1:ModestBackground ;
+    rdfs:label "background" ;
+    quant:hasDeterminer quant:a .
+

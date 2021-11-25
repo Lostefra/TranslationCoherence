@@ -1,0 +1,135 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence632.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Beneficiary rdfs:label "for" .
+
+translation_coherence:fi_sentence632.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence632" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence632" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:If rdfs:label "if" .
+
+ns1:Theme rdfs:label "necessary" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "They can be used to develop customised plans for the regions concerned and, if necessary,.d with financial assistance."^^xsd:string .
+
+ns1:use_1 a ns1:Use ;
+    rdfs:label "used" ;
+    boxer:theme ns1:situation_1 ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Theme ns1:thing_3 .
+
+ns1:Assistance a owl:Class ;
+    rdfs:label "assistance" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Concerned rdfs:label "concerned" .
+
+ns1:Customised rdfs:label "customised" .
+
+ns1:CustomisedPlan rdfs:subClassOf ns1:Plan .
+
+ns1:Develop rdfs:label "develop" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Financial a owl:Class ;
+    rdfs:label "financial" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FinancialAssistance a owl:Class ;
+    rdfs:label "Financial Assistance" ;
+    dul:hasQuality ns1:Financial ;
+    rdfs:subClassOf ns1:Assistance .
+
+ns1:Plan rdfs:label "plans" .
+
+ns1:Region rdfs:label "regions" .
+
+ns1:Use rdfs:label "used" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:develop_1 a ns1:Develop ;
+    rdfs:label "develop" ;
+    vn.role:Agent ns1:thing_3 ;
+    vn.role:Beneficiary ns1:region_1 ;
+    vn.role:Product ns1:plan_1 ;
+    ns1:if ns1:thing_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Possible ;
+    boxing:involves <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#.d>,
+        ns1:assistance_1,
+        ns1:develop_1,
+        ns1:plan_1,
+        ns1:region_1,
+        ns1:thing_3 ;
+    ns1:with ns1:assistance_1 .
+
+ns1:thing_1 a owl:Thing ;
+    boxer:theme ns1:thing_2 .
+
+ns1:thing_2 a owl:Thing .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#.d> rdfs:label ".d" .
+
+ns1:assistance_1 a ns1:FinancialAssistance ;
+    rdfs:label "assistance" .
+
+ns1:plan_1 a ns1:CustomisedPlan ;
+    rdfs:label "plans" ;
+    dul:hasQuality ns1:Customised ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:region_1 a ns1:Region ;
+    rdfs:label "regions" ;
+    dul:hasQuality ns1:Concerned ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+owl:Thing rdfs:label "They" .
+
+ns1:thing_3 a owl:Thing ;
+    rdfs:label "They" ;
+    dul:hasQuality <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#.d> .
+

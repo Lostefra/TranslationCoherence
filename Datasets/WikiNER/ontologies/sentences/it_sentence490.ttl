@@ -1,0 +1,115 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence490.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Location rdfs:label "in" .
+
+vn.role:Recipient rdfs:label "for" .
+
+translation_coherence:it_sentence490.ttl a owl:Ontology ;
+    rdfs:label "it_sentence490" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence490" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Since rdfs:label "Since" .
+
+ns1:award_2 a ns1:Award ;
+    rdfs:label "awarded" ;
+    vn.role:Recipient ns1:total_1 ;
+    vn.role:Theme ns1:award_1 ;
+    ns1:since ns1:award_1 .
+
+ns1:docuverse earmark:hasContent "Since the 82nd award ceremony of the Oscars held in 2010, 1.825 awards were awarded for a total of 2.789 Oscars."^^xsd:string .
+
+ns1:hold_1 a ns1:Hold ;
+    rdfs:label "held" ;
+    vn.role:Location "2010-01-01"^^xsd:date ;
+    vn.role:Value ns1:oscar_1 .
+
+ns1:82nd rdfs:label "82nd" .
+
+ns1:Ceremony rdfs:label "ceremony" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Hold rdfs:label "held" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Total rdfs:label "total" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:ceremony_1 a ns1:Ceremony ;
+    rdfs:label "ceremony" .
+
+ns1:oscar_2 a ns1:Oscar ;
+    rdfs:label "Oscars" ;
+    dul:hasDataValue "2.789"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:total_1 a ns1:Total ;
+    rdfs:label "total" ;
+    quant:hasDeterminer quant:a ;
+    ns1:totalOf ns1:oscar_2 .
+
+ns1:Award rdfs:label "Award",
+        "awarded",
+        "awards" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Oscar a owl:Class ;
+    rdfs:label "Oscars" ;
+    owl:equivalentClass dbpedia:Academy_Awards .
+
+ns1:award_1 a ns1:Award ;
+    rdfs:label "awards" ;
+    dul:associatedWith ns1:ceremony_1 ;
+    dul:hasDataValue "1.825"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:82nd ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:awardOf ns1:oscar_1 .
+
+ns1:oscar_1 a ns1:Oscar ;
+    rdfs:label "Oscars" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+

@@ -1,0 +1,227 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix fred: <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence781.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+fred: rdfs:label ":"^^xsd:string .
+
+translation_coherence:nl_sentence781.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence781" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence781" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Noteq rdfs:label "different" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:That rdfs:label "that" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:disjunct_1 a ns1:Disjunct ;
+    boxing:involves ns1:Cultural,
+        ns1:Form,
+        ns1:form_1 ;
+    ns1:union ns1:disjunct_2 .
+
+ns1:docuverse earmark:hasContent "Tylor in particular put the groundwork for theories of cultural diffusionism, saying there are three ways that different groups can have the same cultural forms or technology: Independence, inheritance of another travelers,"^^xsd:string .
+
+ns1:groundwork_1 rdfs:label "groundwork" .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "saying" ;
+    vn.role:Agent ns1:Tylor ;
+    vn.role:Topic ns1:situation_1 .
+
+ns1:technology_1 rdfs:label "technology" .
+
+ns1:theory_1 a dbpedia:Theory,
+        ns1:Theory ;
+    rdfs:label "theories" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:way_1 rdfs:label "ways" .
+
+ns1:CulturalDiffusionism a owl:Class ;
+    rdfs:label "Cultural Diffusionism" ;
+    dul:hasQuality ns1:Cultural ;
+    rdfs:subClassOf ns1:Diffusionism ;
+    owl:equivalentClass dbpedia:Trans-cultural_diffusion .
+
+ns1:CulturalForm rdfs:subClassOf ns1:Form .
+
+ns1:Diffusionism a owl:Class ;
+    rdfs:label "diffusionism" .
+
+ns1:Groundwork rdfs:label "groundwork" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Independence rdfs:label "Independence" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith ns1:inheritance_1 ;
+    owl:sameAs dbpedia:Independence .
+
+ns1:Inheritance a owl:Class ;
+    rdfs:label "inheritance" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Heredity .
+
+ns1:Particular a owl:Class ;
+    rdfs:label "particular" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ParticularPut a owl:Class ;
+    rdfs:label "Particular Put" ;
+    dul:hasQuality ns1:Particular ;
+    rdfs:subClassOf ns1:Put .
+
+ns1:Put a owl:Class ;
+    rdfs:label "put" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Same rdfs:label "same" .
+
+ns1:SameCulturalForm rdfs:subClassOf ns1:CulturalForm .
+
+ns1:Say rdfs:label "saying" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Theory rdfs:label "theories" .
+
+ns1:There rdfs:label "there" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Tylor rdfs:label "Tylor" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Edward_Burnett_Tylor ;
+    ns1:in ns1:put_1 .
+
+ns1:Way rdfs:label "ways" .
+
+ns1:diffusionism_1 a ns1:CulturalDiffusionism ;
+    rdfs:label "diffusionism" .
+
+ns1:disjunct_2 a ns1:Disjunct ;
+    boxing:involves ns1:Technology,
+        ns1:form_1 .
+
+ns1:group_2 a dbpedia:Social_group,
+        ns1:Group ;
+    rdfs:label "groups" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:inheritance_1 a ns1:Inheritance ;
+    rdfs:label "inheritance" ;
+    ns1:inheritanceOf ns1:traveler_1 .
+
+ns1:put_1 a ns1:Groundwork,
+        ns1:ParticularPut ;
+    rdfs:label "put" ;
+    quant:hasDeterminer quant:the ;
+    ns1:forTheoryOf ns1:diffusionism_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:group_1,
+        ns1:have_1,
+        ns1:there_1 .
+
+ns1:there_1 a ns1:There,
+        ns1:Way ;
+    rdfs:label "there" ;
+    dul:hasDataValue "3"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple,
+        quant:three ;
+    ns1:that ns1:have_1 .
+
+ns1:traveler_1 a ns1:Traveler ;
+    owl:differentFrom ns1:traveler_2 .
+
+ns1:traveler_2 a ns1:Traveler ;
+    rdfs:label "travelers" ;
+    quant:hasDeterminer quant:another ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Form rdfs:label "forms" .
+
+ns1:Group rdfs:label "different",
+        "groups" .
+
+ns1:Technology a owl:Class ;
+    rdfs:label "technology" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Technology .
+
+ns1:Traveler rdfs:label "travelers" .
+
+ns1:group_1 a ns1:Group ;
+    rdfs:label "different" ;
+    owl:differentFrom ns1:group_2 .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "have" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Agent ns1:group_1 ;
+    vn.role:Patient ns1:form_1 .
+
+ns1:Cultural a owl:Class ;
+    rdfs:label "Cultural",
+        "cultural" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:form_1 a ns1:SameCulturalForm,
+        ns1:Technology ;
+    rdfs:label "forms" ;
+    boxing:declaration ns1:Independence ;
+    dul:hasQuality ns1:Cultural,
+        ns1:Same ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+

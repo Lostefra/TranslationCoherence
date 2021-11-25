@@ -1,0 +1,136 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence770.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence770.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence770" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence770" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Europe rdfs:label "Europe" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Europe .
+
+ns1:In rdfs:label "In",
+        "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Quantity rdfs:label "many" .
+
+ns1:consider_1 a ns1:Consider ;
+    rdfs:label "considered" ;
+    dul:hasQuality ns1:Often ;
+    vn.role:Predicate ns1:discipline_1 ;
+    vn.role:Theme ns1:field_1 ;
+    ns1:in ns1:college_1 .
+
+ns1:docuverse earmark:hasContent "In colleges in the United_Kingdom, and many of Europe, these subcutaneous fields are often placed in separate divisions and considered disciplines."^^xsd:string .
+
+ns1:place_1 a ns1:OftenPlace ;
+    rdfs:label "placed" ;
+    dul:hasQuality ns1:Often ;
+    vn.role:Theme ns1:field_1 ;
+    ns1:in ns1:college_1,
+        ns1:division_1 .
+
+dbpedia:Europe a schema:Continent,
+        schema:Place .
+
+dbpedia:United_Kingdom rdfs:subClassOf schema:Country,
+        schema:Place .
+
+ns1:College rdfs:label "colleges" .
+
+ns1:Consider rdfs:label "considered" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Discipline rdfs:label "disciplines" .
+
+ns1:Division rdfs:label "divisions" .
+
+ns1:Field rdfs:label "fields" .
+
+ns1:OftenPlace rdfs:subClassOf ns1:Place .
+
+ns1:Place rdfs:label "placed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Separate rdfs:label "separate" .
+
+ns1:SeparateDivision rdfs:subClassOf ns1:Division .
+
+ns1:Subcutaneous rdfs:label "subcutaneous" .
+
+ns1:SubcutaneousField rdfs:subClassOf ns1:Field .
+
+ns1:UnitedKingdom rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:United_kingdom a owl:Class ;
+    rdfs:label "United Kingdom" ;
+    rdfs:subClassOf ns1:UnitedKingdom ;
+    owl:equivalentClass dbpedia:United_Kingdom .
+
+ns1:discipline_1 a ns1:Discipline ;
+    rdfs:label "disciplines" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:division_1 a ns1:SeparateDivision ;
+    rdfs:label "divisions" ;
+    dul:hasQuality ns1:Separate ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:united_kingdom_1 a ns1:United_kingdom ;
+    rdfs:label "United Kingdom" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Often rdfs:label "often" .
+
+ns1:college_1 a ns1:College ;
+    rdfs:label "colleges" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:united_kingdom_1 .
+
+ns1:field_1 a ns1:SubcutaneousField ;
+    rdfs:label "fields" ;
+    dul:hasQuality ns1:Subcutaneous ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple .
+

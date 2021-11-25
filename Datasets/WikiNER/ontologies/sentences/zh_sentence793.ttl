@@ -1,0 +1,200 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence793.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "from" .
+
+translation_coherence:zh_sentence793.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence793" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence793" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Like rdfs:label "Like" .
+
+ns1:Noteq rdfs:label "other" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Rel rdfs:label "(",
+        "," .
+
+ns1:To rdfs:label "to" .
+
+ns1:believe_1 a ns1:Believe ;
+    rdfs:label "believes" ;
+    vn.role:Agent ns1:Mogan ;
+    vn.role:Theme ns1:situation_1 ;
+    ns1:like ns1:scholar_1 .
+
+ns1:docuverse earmark:hasContent "Like other scholars on his day (e.g., Edward Talle), Mogan believes that human society can be attributed to a range of cultural evolutions, ranging from slavery and the prohibition of civilization."^^xsd:string .
+
+ns1:male_1 rdfs:label "his" .
+
+ns1:Attribute rdfs:label "attributed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Believe rdfs:label "believes" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Civilization a owl:Class ;
+    rdfs:label "civilization" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Civilization .
+
+ns1:Cultural rdfs:label "cultural" .
+
+ns1:CulturalEvolution rdfs:subClassOf ns1:Evolution .
+
+ns1:Day rdfs:label "day" ;
+    rdfs:subClassOf dul:Amount .
+
+<https://w3id.org/stlab/ke/amiala/zh_sentence793.ttl/E.g.> rdfs:label "e.g." .
+
+ns1:Edward_talle rdfs:label "Edward Talle" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Evolution rdfs:label "evolutions" .
+
+ns1:Human a owl:Class ;
+    rdfs:label "human" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:HumanSociety a owl:Class ;
+    rdfs:label "human society" ;
+    dul:hasQuality ns1:Human ;
+    rdfs:subClassOf ns1:Society ;
+    owl:equivalentClass dbpedia:Society .
+
+ns1:Male rdfs:label "Mogan" .
+
+ns1:Prohibition a owl:Class ;
+    rdfs:label "prohibition" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Prohibition_of_drugs .
+
+ns1:Slavery a owl:Class ;
+    rdfs:label "slavery" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Slavery .
+
+ns1:Society a owl:Class ;
+    rdfs:label "society" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:attribute_1 a ns1:Attribute ;
+    rdfs:label "attributed" ;
+    boxer:patient ns1:society_1 ;
+    boxing:hasModality boxing:Possible ;
+    ns1:to ns1:range_1 .
+
+ns1:day_1 a ns1:Day ;
+    rdfs:label "day" ;
+    ns1:dayOf ns1:Mogan .
+
+ns1:e.g._1 a <https://w3id.org/stlab/ke/amiala/zh_sentence793.ttl/E.g.> ;
+    rdfs:label "e.g." ;
+    dul:associatedWith ns1:Edward_talle .
+
+ns1:prohibition_1 a ns1:Prohibition ;
+    rdfs:label "prohibition" ;
+    quant:hasDeterminer quant:the ;
+    ns1:prohibitionOf ns1:civilization_1 .
+
+ns1:range_2 a ns1:Range ;
+    rdfs:label "ranging" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Location ns1:prohibition_1,
+        ns1:slavery_1 ;
+    vn.role:Theme ns1:range_1 .
+
+ns1:scholar_1 a ns1:Scholar ;
+    rdfs:label "other" ;
+    dul:associatedWith ns1:e.g._1 ;
+    owl:differentFrom ns1:scholar_2 ;
+    ns1:on ns1:day_1 .
+
+ns1:scholar_2 a ns1:Scholar ;
+    rdfs:label "scholars" ;
+    quant:hasDeterminer quant:other ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:attribute_1,
+        ns1:civilization_1,
+        ns1:evolution_1,
+        ns1:range_1,
+        ns1:range_2,
+        ns1:slavery_1,
+        ns1:society_1 .
+
+ns1:Mogan a ns1:Male ;
+    rdfs:label "Mogan" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Range rdfs:label "range",
+        "ranging" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic>,
+        dul:Event .
+
+ns1:Scholar rdfs:label "other",
+        "scholars" .
+
+ns1:civilization_1 a ns1:Civilization ;
+    rdfs:label "civilization" .
+
+ns1:evolution_1 a ns1:CulturalEvolution ;
+    rdfs:label "evolutions" ;
+    dul:hasQuality ns1:Cultural ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:slavery_1 a ns1:Slavery ;
+    rdfs:label "slavery" .
+
+ns1:society_1 a ns1:HumanSociety ;
+    rdfs:label "society" .
+
+ns1:range_1 a ns1:Range ;
+    rdfs:label "range" ;
+    quant:hasDeterminer quant:a ;
+    ns1:rangeOf ns1:evolution_1 .
+

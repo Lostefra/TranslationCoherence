@@ -1,0 +1,108 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence637.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "to" .
+
+translation_coherence:nl_sentence637.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence637" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence637" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:country_1 rdfs:label "countries" .
+
+ns1:docuverse earmark:hasContent "Finally, I want to draw attention to the position of the Central and Eastern_European countries."^^xsd:string .
+
+ns1:want_1 a ns1:Want ;
+    rdfs:label "want" ;
+    dul:hasQuality ns1:Finally ;
+    vn.role:Experiencer ns1:person_1 ;
+    vn.role:Theme ns1:draw_1 .
+
+ns1:Attention rdfs:label "attention" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Country rdfs:label "Central",
+        "countries" .
+
+ns1:Draw rdfs:label "draw" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Eastern_european rdfs:label "Eastern European" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith ns1:Central ;
+    owl:sameAs dbpedia:Eastern_Europe .
+
+ns1:Finally rdfs:label "Finally" .
+
+ns1:Person rdfs:label "I" .
+
+ns1:Position rdfs:label "position" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Want rdfs:label "want" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:attention_1 a ns1:Attention ;
+    rdfs:label "attention" .
+
+ns1:draw_1 a ns1:Draw ;
+    rdfs:label "draw" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Destination ns1:position_1 ;
+    vn.role:Theme ns1:attention_1 .
+
+ns1:position_1 a ns1:Position ;
+    rdfs:label "position" ;
+    quant:hasDeterminer quant:the ;
+    ns1:positionOf ns1:Central .
+
+ns1:Central a ns1:Country ;
+    rdfs:label "Central",
+        "countries" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Eastern_european ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+

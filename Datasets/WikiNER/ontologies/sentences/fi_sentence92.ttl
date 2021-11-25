@@ -1,0 +1,124 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence92.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "outside" .
+
+translation_coherence:fi_sentence92.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence92" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence92" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "Birmingham legisln also supports a number of Birmingham legisl.s to ensure the elections of people living outside Birmingham."^^xsd:string .
+
+ns1:ensure_1 a ns1:Ensure ;
+    rdfs:label "ensure" ;
+    vn.role:Cause ns1:legisln_1 ;
+    vn.role:Theme ns1:election_1 .
+
+ns1:live_1 a ns1:Live ;
+    rdfs:label "living" ;
+    vn.role:Location ns1:legisln_1 ;
+    vn.role:Theme ns1:people_1 .
+
+ns1:support_1 a ns1:AlsoSupport ;
+    rdfs:label "supports" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Agent ns1:legisln_1 ;
+    vn.role:Beneficiary ns1:number_1 .
+
+dbpedia:Birmingham a schema:City,
+        schema:Place .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoSupport rdfs:subClassOf ns1:Support .
+
+ns1:Election rdfs:label "elections" .
+
+ns1:Ensure rdfs:label "ensure" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Legisl.s rdfs:label "legisl.s" .
+
+ns1:Legisln rdfs:label "legisln" .
+
+ns1:Live rdfs:label "living" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Number rdfs:label "number" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:People rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Support rdfs:label "supports" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:election_1 a ns1:Election ;
+    rdfs:label "elections" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:electionOf ns1:people_1 .
+
+ns1:legisl.s_1 a ns1:Legisl.s ;
+    rdfs:label "legisl.s" ;
+    dul:associatedWith ns1:Birmingham ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:number_1 a ns1:Number ;
+    rdfs:label "number" ;
+    quant:hasDeterminer quant:a ;
+    ns1:numberOf ns1:legisl.s_1 .
+
+ns1:Birmingham rdfs:label "Birmingham" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Birmingham .
+
+ns1:people_1 a ns1:People ;
+    rdfs:label "people" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:legisln_1 a ns1:Legisln ;
+    rdfs:label "legisln" ;
+    dul:associatedWith ns1:Birmingham .
+

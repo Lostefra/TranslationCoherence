@@ -1,0 +1,108 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence303.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence303.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence303" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence303" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Since rdfs:label "since" .
+
+ns1:admire_1 a ns1:Admire ;
+    rdfs:label "admired" ;
+    vn.role:Experiencer ns1:Whig ;
+    ns1:since ns1:1830s_1 .
+
+ns1:docuverse earmark:hasContent "Lincoln was a Whig, and since the early 1830s, the police and leadership of Henry_Clay admired."^^xsd:string .
+
+ns1:leadership_1 rdfs:label "leadership" .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+dbpedia:Henry_Clay a schema:Person .
+
+dbpedia:Whig_Party_(United_States) a schema:Organization .
+
+ns1:1830s rdfs:label "1830s" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:1830s_1 a ns1:Early1830s ;
+    rdfs:label "1830s" ;
+    dul:associatedWith ns1:police_1 ;
+    dul:hasQuality ns1:Early .
+
+ns1:Admire rdfs:label "admired" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Early rdfs:label "early" .
+
+ns1:Early1830s rdfs:subClassOf ns1:1830s .
+
+ns1:Henry_clay rdfs:label "Henry Clay" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Henry_Clay .
+
+ns1:Leadership rdfs:label "leadership" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+
+ns1:Police rdfs:label "police" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Whig rdfs:label "Whig" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:Lincoln ;
+    owl:sameAs dbpedia:Whig_Party_(United_States) .
+
+ns1:police_1 a ns1:Leadership,
+        ns1:Police ;
+    rdfs:label "police" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:1830s ;
+    ns1:policeOf ns1:Henry_clay .
+

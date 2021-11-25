@@ -1,0 +1,186 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence352.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence352.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence352" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence352" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:Of rdfs:label "its",
+        "my",
+        "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Why rdfs:label "why" .
+
+ns1:contracting_1 a ns1:Contracting ;
+    rdfs:label "contracting" ;
+    dul:associatedWith ns1:party_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:docuverse earmark:hasContent "I have the responsibility to remind my colleagues, Mr. Evan, why we have actually achieved the status of Goal 1. It is because of its own policy of non-recognition of the contracting parties."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "have" ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Patient ns1:responsibility_1 .
+
+ns1:neuter_1 rdfs:label "It",
+        "its" .
+
+ns1:person_1 coref:coref ns1:person_2 .
+
+ns1:remind_1 a ns1:Remind ;
+    rdfs:label "remind" ;
+    vn.role:Agent ns1:responsibility_1 ;
+    vn.role:Recipient ns1:colleague_1 .
+
+ns1:Achieve rdfs:label "achieved" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Actually rdfs:label "actually" .
+
+ns1:ActuallyAchieve rdfs:subClassOf ns1:Achieve .
+
+ns1:Colleague rdfs:label "colleagues" .
+
+ns1:Contracting rdfs:label "contracting" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:ContractingParty rdfs:subClassOf ns1:Party .
+
+ns1:Evan rdfs:label "Evan" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    ns1:why ns1:achieve_1 .
+
+ns1:Goal rdfs:label "Goal" ;
+    boxer:possibleType owl:Thing ;
+    dul:hasQuality "1."^^xsd:nonNegativeInteger .
+
+ns1:Have rdfs:label "Have",
+        "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Non-recognition rdfs:label "non-recognition" .
+
+ns1:Own a owl:Class ;
+    rdfs:label "own" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:OwnPolicy a owl:Class ;
+    rdfs:label "Own Policy" ;
+    dul:hasQuality ns1:Own ;
+    rdfs:subClassOf ns1:Policy .
+
+ns1:Party rdfs:label "parties" .
+
+ns1:Policy a owl:Class ;
+    rdfs:label "policy" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Remind rdfs:label "remind" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Responsibility rdfs:label "responsibility" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:achieve_1 a ns1:ActuallyAchieve ;
+    rdfs:label "achieved" ;
+    dul:hasQuality ns1:Actually ;
+    vn.role:Agent ns1:person_3 ;
+    vn.role:Theme ns1:status_1 ;
+    ns1:actuallyAchieveOf ns1:policy_1 .
+
+ns1:colleague_1 a ns1:Colleague ;
+    rdfs:label "colleagues" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:colleagueOf ns1:person_2 .
+
+ns1:non-recognition_1 a ns1:Non-recognition ;
+    rdfs:label "non-recognition" ;
+    ns1:non-recognitionOf ns1:party_1 .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:policy_1 a ns1:OwnPolicy ;
+    rdfs:label "policy" ;
+    ns1:ownPolicyOf ns1:non-recognition_1,
+        ns1:status_1 .
+
+"1."^^xsd:nonNegativeInteger rdfs:label "1." .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> rdfs:label "Mr." ;
+    boxer:possibleType dul:Role .
+
+owl:Thing rdfs:label "It" ;
+    rdfs:subClassOf ns1:Status .
+
+ns1:Person rdfs:label "I",
+        "we" .
+
+ns1:Status rdfs:label "status" ;
+    rdfs:subClassOf dul:Role .
+
+ns1:party_1 a ns1:ContractingParty ;
+    rdfs:label "parties" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:responsibility_1 a ns1:Responsibility ;
+    rdfs:label "responsibility" ;
+    dul:associatedWith ns1:Evan ;
+    quant:hasDeterminer quant:the .
+
+ns1:status_1 a owl:Thing,
+        ns1:Status ;
+    rdfs:label "status" ;
+    quant:hasDeterminer quant:the ;
+    ns1:statusOf ns1:Goal .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "I",
+        "my" .
+

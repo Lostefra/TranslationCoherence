@@ -1,0 +1,138 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence179.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "In" .
+
+translation_coherence:en_sentence179.ttl a owl:Ontology ;
+    rdfs:label "en_sentence179" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence179" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "its" .
+
+ns1:Over rdfs:label "over" .
+
+ns1:docuverse earmark:hasContent "In 2007, the Alabama_Legislature passed, and the Governor signed, a resolution expressing profound regret over slavery and its lingering impact."^^xsd:string .
+
+ns1:express_1 a ns1:Express ;
+    rdfs:label "expressing" ;
+    vn.role:Agent ns1:resolution_1 ;
+    vn.role:Theme ns1:impact_1,
+        ns1:regret_1 .
+
+ns1:linger_1 a ns1:Linger ;
+    rdfs:label "lingering" ;
+    vn.role:Theme ns1:impact_1 .
+
+ns1:neuter_1 rdfs:label "its" .
+
+ns1:pass_1 a ns1:Pass ;
+    rdfs:label "passed" ;
+    vn.role:Location "2007-01-01"^^xsd:date ;
+    vn.role:Theme ns1:Alabama_legislature .
+
+ns1:sign_1 a ns1:Sign ;
+    rdfs:label "signed" ;
+    vn.role:Agent ns1:Governor ;
+    vn.role:Theme ns1:resolution_1 .
+
+ns1:Express rdfs:label "expressing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Governor rdfs:label "Governor" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Governor .
+
+ns1:Impact rdfs:label "impact" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Linger rdfs:label "lingering" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Pass rdfs:label "passed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Profound a owl:Class ;
+    rdfs:label "profound" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ProfoundRegret a owl:Class ;
+    rdfs:label "profound regret" ;
+    dul:hasQuality ns1:Profound ;
+    rdfs:subClassOf ns1:Regret .
+
+ns1:Regret a owl:Class ;
+    rdfs:label "regret" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Resolution rdfs:label "resolution" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Sign rdfs:label "signed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Slavery a owl:Class ;
+    rdfs:label "slavery" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Slavery .
+
+ns1:regret_1 a ns1:ProfoundRegret ;
+    rdfs:label "regret" ;
+    ns1:over ns1:slavery_1 .
+
+ns1:slavery_1 a ns1:Slavery ;
+    rdfs:label "slavery" .
+
+owl:Thing rdfs:label "Alabama Legislature" .
+
+ns1:Alabama_legislature a owl:Thing ;
+    rdfs:label "Alabama Legislature" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Alabama_Legislature .
+
+ns1:impact_1 a ns1:Impact ;
+    rdfs:label "impact" ;
+    ns1:impactOf ns1:Alabama_legislature .
+
+ns1:resolution_1 a ns1:Resolution ;
+    rdfs:label "resolution" ;
+    quant:hasDeterminer quant:a .
+

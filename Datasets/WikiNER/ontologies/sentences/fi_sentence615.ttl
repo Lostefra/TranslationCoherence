@@ -1,0 +1,196 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence615.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Predicate rdfs:label "as" .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:fi_sentence615.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence615" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence615" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "'s",
+        "his",
+        "of" .
+
+ns1:docuverse earmark:hasContent "Rand strongly opposed the view that reason is unable to know reality as it is in itself, which he has written to Cant, and he regarded his philosophy as the opposite of Kant's fundamental question."^^xsd:string .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "it" ;
+    ns1:in ns1:neuter_2 .
+
+ns1:oppose_1 a ns1:StronglyOppose ;
+    rdfs:label "opposed" ;
+    dul:hasQuality ns1:Strongly ;
+    vn.role:Agent ns1:Rand ;
+    vn.role:Patient ns1:view_1 .
+
+ns1:write_1 a ns1:Write ;
+    rdfs:label "written" ;
+    vn.role:Agent ns1:Rand ;
+    vn.role:Recipient ns1:Cant ;
+    vn.role:Topic ns1:neuter_2 .
+
+dbpedia:Ayn_Rand a schema:Person .
+
+dbpedia:Immanuel_Kant a schema:Person .
+
+ns1:Cant rdfs:label "Cant" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Song_of_Songs .
+
+ns1:Fundamental a owl:Class ;
+    rdfs:label "fundamental" ;
+    owl:equivalentClass dbpedia:Fundamentalism .
+
+ns1:FundamentalQuestion rdfs:label "Fundamental Question" ;
+    dul:associatedWith ns1:Question ;
+    dul:hasModality ns1:Fundamental .
+
+ns1:Kant rdfs:label "Kant" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Immanuel_Kant .
+
+ns1:Know rdfs:label "know" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Oppose rdfs:label "opposed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Opposite rdfs:label "opposite" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Philosophy a owl:Class ;
+    rdfs:label "philosophy" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Philosophy .
+
+ns1:Question a owl:Class ;
+    rdfs:label "question" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Reality a owl:Class ;
+    rdfs:label "reality" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Reality .
+
+ns1:Reason a owl:Class ;
+    rdfs:label "reason" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> ;
+    owl:equivalentClass dbpedia:Reason .
+
+ns1:Regard rdfs:label "regarded" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Strongly rdfs:label "strongly" .
+
+ns1:StronglyOppose rdfs:subClassOf ns1:Oppose .
+
+ns1:Unable rdfs:label "unable" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:View rdfs:label "view" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Write rdfs:label "written" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:know_1 a ns1:Know ;
+    rdfs:label "know" ;
+    vn.role:Agent ns1:reason_1 ;
+    vn.role:Predicate ns1:regard_1 ;
+    vn.role:Theme ns1:reality_1 .
+
+ns1:opposite_1 a ns1:Opposite ;
+    rdfs:label "opposite" ;
+    quant:hasDeterminer quant:the ;
+    ns1:oppositeOf ns1:question_1 .
+
+ns1:philosophy_1 a ns1:Philosophy ;
+    rdfs:label "philosophy" ;
+    ns1:philosophyOf ns1:Rand .
+
+ns1:question_1 a ns1:FundamentalQuestion ;
+    rdfs:label "question" ;
+    ns1:fundamentalQuestionOf ns1:Kant .
+
+ns1:reality_1 a ns1:Reality ;
+    rdfs:label "reality" .
+
+ns1:regard_1 a ns1:Regard ;
+    rdfs:label "regarded" ;
+    vn.role:Agent ns1:Rand ;
+    vn.role:Predicate ns1:opposite_1 ;
+    vn.role:Theme ns1:philosophy_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:reason_1,
+        ns1:unable_1 .
+
+ns1:unable_1 a ns1:Unable ;
+    rdfs:label "unable" ;
+    boxer:agent ns1:reason_1 ;
+    boxer:theme ns1:know_1 .
+
+ns1:view_1 a ns1:View ;
+    rdfs:label "view" ;
+    boxer:theme ns1:situation_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:neuter_2 a owl:Thing ;
+    rdfs:label "itself" .
+
+owl:Thing rdfs:label "it",
+        "itself" .
+
+ns1:reason_1 a ns1:Reason ;
+    rdfs:label "reason" .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Male ;
+    owl:sameAs dbpedia:Ayn_Rand .
+

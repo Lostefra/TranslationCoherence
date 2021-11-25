@@ -1,0 +1,109 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence350.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Recipient rdfs:label "for" .
+
+translation_coherence:it_sentence350.ttl a owl:Ontology ;
+    rdfs:label "it_sentence350" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence350" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "North_Carolina, Tenn and Ark also voted for secession in the next two months."^^xsd:string .
+
+ns1:vote_1 a ns1:AlsoVote ;
+    rdfs:label "voted" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Agent ns1:North_carolina ;
+    vn.role:Recipient ns1:secession_1 ;
+    ns1:in ns1:month_1 .
+
+dbpedia:North_Carolina a schema:AdministrativeArea,
+        schema:Place .
+
+dbpedia:Tennessee a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoVote rdfs:subClassOf ns1:Vote .
+
+ns1:Ark rdfs:label "Ark" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Month rdfs:label "months" .
+
+ns1:Next rdfs:label "next" .
+
+ns1:North_carolina rdfs:label "North Carolina" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Ark,
+        ns1:Tenn ;
+    owl:sameAs dbpedia:North_Carolina .
+
+ns1:Secession a owl:Class ;
+    rdfs:label "secession" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Secession .
+
+ns1:Tenn rdfs:label "Tenn" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Tennessee .
+
+ns1:Vote rdfs:label "voted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:month_1 a ns1:Month ;
+    rdfs:label "months" ;
+    dul:hasDataValue "2"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:Next ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple,
+        quant:two .
+
+ns1:secession_1 a ns1:Secession ;
+    rdfs:label "secession" .
+

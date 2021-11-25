@@ -1,0 +1,148 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence177.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Patient2 rdfs:label "with" .
+
+translation_coherence:it_sentence177.ttl a owl:Ontology ;
+    rdfs:label "it_sentence177" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence177" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Noteq rdfs:label "other" .
+
+ns1:Of rdfs:label "of",
+        "their" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:disjunct_1 a ns1:Disjunct ;
+    boxing:involves ns1:company_1 ;
+    ns1:union ns1:disjunct_2 .
+
+ns1:docuverse earmark:hasContent "These small companies or dispose of their cargo or mix it with other loads, which causes problems."^^xsd:string .
+
+ns1:neuter_1 coref:coref ns1:cargo_1 .
+
+ns1:Cargo a owl:Class ;
+    rdfs:label "cargo" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Cargo .
+
+ns1:Company rdfs:label "companies" .
+
+ns1:Small rdfs:label "small" .
+
+ns1:SmallCompany rdfs:subClassOf ns1:Company .
+
+ns1:cause_1 a ns1:Cause ;
+    rdfs:label "causes" ;
+    vn.role:Theme1 ns1:dispose_1 ;
+    vn.role:Theme2 ns1:problem_1 ;
+    ns1:union ns1:mix_1 .
+
+ns1:company_1 a ns1:SmallCompany ;
+    rdfs:label "companies" ;
+    dul:hasQuality ns1:Small,
+        ns1:Topic ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:disjunct_2 a ns1:Disjunct ;
+    boxing:involves ns1:Cause,
+        ns1:Dispose,
+        ns1:Load,
+        ns1:Mix,
+        ns1:Problem,
+        ns1:cause_1,
+        ns1:dispose_1,
+        ns1:load_1,
+        ns1:mix_1,
+        ns1:problem_1 .
+
+ns1:load_2 a dbpedia:Cargo,
+        ns1:Load ;
+    rdfs:label "loads" ;
+    quant:hasDeterminer quant:other ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "their" .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Cause rdfs:label "causes" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Dispose rdfs:label "dispose" .
+
+ns1:Mix rdfs:label "mix" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Problem rdfs:label "problems" .
+
+ns1:load_1 a ns1:Load ;
+    rdfs:label "other" ;
+    owl:differentFrom ns1:load_2 .
+
+ns1:mix_1 a ns1:Mix ;
+    rdfs:label "mix" ;
+    vn.role:Agent ns1:dispose_1 ;
+    vn.role:Patient1 ns1:cargo_1 ;
+    vn.role:Patient2 ns1:load_1 .
+
+ns1:problem_1 a ns1:Problem ;
+    rdfs:label "problems" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Load rdfs:label "loads",
+        "other" .
+
+ns1:cargo_1 a owl:Thing,
+        ns1:Cargo ;
+    rdfs:label "cargo",
+        "it" ;
+    ns1:cargoOf ns1:thing_1 .
+
+ns1:dispose_1 a ns1:Dispose ;
+    rdfs:label "dispose" ;
+    dul:hasQuality ns1:Topic ;
+    ns1:disposeOf ns1:cargo_1 .
+

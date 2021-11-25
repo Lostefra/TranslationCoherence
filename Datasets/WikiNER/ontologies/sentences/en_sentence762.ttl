@@ -1,0 +1,232 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence762.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:en_sentence762.ttl a owl:Ontology ;
+    rdfs:label "en_sentence762" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence762" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "'s",
+        "his",
+        "their" .
+
+ns1:Once rdfs:label "once" .
+
+ns1:altruism_1 rdfs:label "altruism" .
+
+ns1:be_1 a ns1:Be ;
+    rdfs:label "is" ;
+    boxer:agent ns1:motivation_1 ;
+    boxer:theme ns1:ensure_1 .
+
+ns1:docuverse earmark:hasContent "He explains this is not altruism; his motivation is to ensure, once those espousing Galt 's philosophy are restored to their rightful place in society, they will have enough capital quickly to rebuild the world."^^xsd:string .
+
+ns1:explain_1 a ns1:Explain ;
+    rdfs:label "explains" ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Topic ns1:situation_1 .
+
+ns1:Be rdfs:label "is" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Capital a owl:Class ;
+    rdfs:label "capital" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Enough a owl:Class ;
+    rdfs:label "enough" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:EnoughCapital a owl:Class ;
+    rdfs:label "Enough Capital" ;
+    dul:hasQuality ns1:Enough ;
+    rdfs:subClassOf ns1:Capital .
+
+ns1:Ensure rdfs:label "ensure" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Espouse rdfs:label "espousing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Explain rdfs:label "explains" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Galt rdfs:label "Galt" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Male rdfs:label "He" .
+
+ns1:Motivation a owl:Class ;
+    rdfs:label "motivation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> ;
+    owl:equivalentClass dbpedia:Motivation .
+
+ns1:Philosophy a owl:Class ;
+    rdfs:label "philosophy" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Philosophy .
+
+ns1:Place a owl:Class ;
+    rdfs:label "place" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Quickly rdfs:label "quickly" .
+
+ns1:Rebuild rdfs:label "rebuild" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Restore rdfs:label "restored" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Rightful a owl:Class ;
+    rdfs:label "rightful" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:RightfulPlace a owl:Class ;
+    rdfs:label "rightful place" ;
+    dul:hasQuality ns1:Rightful ;
+    rdfs:subClassOf ns1:Place .
+
+ns1:Society a owl:Class ;
+    rdfs:label "society" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Society .
+
+ns1:World rdfs:label "world" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:ensure_1 a ns1:Ensure ;
+    rdfs:label "ensure" ;
+    vn.role:Cause ns1:motivation_1 ;
+    vn.role:Theme ns1:situation_2 ;
+    ns1:once ns1:situation_3 .
+
+ns1:espouse_1 a ns1:Espouse ;
+    rdfs:label "espousing" ;
+    boxer:agent ns1:thing_2 ;
+    boxer:patient ns1:philosophy_1 .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "have" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Quickly ;
+    vn.role:Agent ns1:thing_3 ;
+    vn.role:Patient ns1:capital_1 .
+
+ns1:philosophy_1 a ns1:Philosophy ;
+    rdfs:label "philosophy" ;
+    ns1:philosophyOf ns1:Galt .
+
+ns1:place_1 a ns1:RightfulPlace ;
+    rdfs:label "place" ;
+    ns1:rightfulPlaceOf ns1:thing_1 .
+
+ns1:rebuild_1 a ns1:Rebuild ;
+    rdfs:label "rebuild" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:thing_3 ;
+    vn.role:Product ns1:world_1 .
+
+ns1:restore_1 a ns1:Restore ;
+    rdfs:label "restored" ;
+    vn.role:Recipient ns1:place_1 ;
+    vn.role:Theme ns1:thing_2 ;
+    ns1:in ns1:society_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves ns1:Altruism,
+        ns1:thing_2 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:capital_1,
+        ns1:have_1,
+        ns1:rebuild_1 .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves ns1:espouse_1,
+        ns1:restore_1,
+        ns1:society_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "their" .
+
+ns1:world_1 a ns1:World ;
+    rdfs:label "world" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Altruism a owl:Class ;
+    rdfs:label "altruism" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Altruism .
+
+ns1:capital_1 a ns1:EnoughCapital ;
+    rdfs:label "capital" .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "He",
+        "his" .
+
+ns1:motivation_1 a ns1:Motivation ;
+    rdfs:label "motivation" ;
+    ns1:motivationOf ns1:male_1 .
+
+ns1:society_1 a ns1:Society ;
+    rdfs:label "society" .
+
+ns1:thing_3 a owl:Thing ;
+    rdfs:label "they" .
+
+owl:Thing rdfs:label "they",
+        "this" .
+
+ns1:thing_2 a owl:Thing,
+        ns1:Altruism ;
+    rdfs:label "this" ;
+    quant:hasDeterminer quant:this .
+

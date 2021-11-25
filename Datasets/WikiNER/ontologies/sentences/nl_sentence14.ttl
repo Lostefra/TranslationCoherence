@@ -1,0 +1,187 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence14.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "to" .
+
+translation_coherence:nl_sentence14.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence14" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence14" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Eq rdfs:label "were" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "their" .
+
+ns1:When rdfs:label "when" .
+
+ns1:commit_1 a ns1:Commit ;
+    rdfs:label "commit" ;
+    vn.role:Agent ns1:end_1 ;
+    vn.role:Destination ns1:method_1 .
+
+ns1:consequent_1 rdfs:label "consequent" .
+
+ns1:docuverse earmark:hasContent "Malatesta warned that the syndicalists in perpetual syndicalism were themselves, when anarchists must always have anarchy as their end and consequent to commit to a certain method."^^xsd:string .
+
+ns1:group_1 coref:coref ns1:syndicalist_1 .
+
+ns1:thing_1 coref:coref ns1:anarchist_1 .
+
+ns1:warn_1 a ns1:Warn ;
+    rdfs:label "warned" ;
+    vn.role:Agent ns1:Malatesta ;
+    vn.role:Topic ns1:situation_1 .
+
+ns1:Always rdfs:label "always" .
+
+ns1:AlwaysHave rdfs:label "Always Have" ;
+    rdfs:subClassOf ns1:Have .
+
+ns1:Anarchist rdfs:label "anarchists" .
+
+ns1:Anarchy a owl:Class ;
+    rdfs:label "anarchy" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Anarchism .
+
+ns1:Certain a owl:Class ;
+    rdfs:label "certain" .
+
+ns1:CertainMethod rdfs:label "certain method" ;
+    dul:associatedWith ns1:Method ;
+    dul:hasModality ns1:Certain .
+
+ns1:Commit rdfs:label "commit" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Consequent rdfs:label "consequent" .
+
+ns1:End rdfs:label "end" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Malatesta rdfs:label "Malatesta" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Errico_Malatesta .
+
+ns1:Perpetual a owl:Class ;
+    rdfs:label "perpetual" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:PerpetualSyndicalism a owl:Class ;
+    rdfs:label "perpetual syndicalism" ;
+    dul:hasQuality ns1:Perpetual ;
+    rdfs:subClassOf ns1:Syndicalism .
+
+ns1:Syndicalism a owl:Class ;
+    rdfs:label "syndicalism" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Syndicalism .
+
+ns1:Syndicalist rdfs:label "syndicalists" ;
+    rdfs:subClassOf ns1:Group .
+
+ns1:Warn rdfs:label "warned" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Group,
+        ns1:anarchist_1,
+        ns1:anarchy_1,
+        ns1:have_1,
+        ns1:syndicalism_1,
+        ns1:syndicalist_1 ;
+    ns1:when ns1:have_1 .
+
+ns1:Method a owl:Class ;
+    rdfs:label "method" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Scientific_method .
+
+ns1:anarchy_1 a ns1:Anarchy ;
+    rdfs:label "anarchy" ;
+    ns1:as ns1:end_1 .
+
+ns1:end_1 a ns1:Consequent,
+        ns1:End ;
+    rdfs:label "end" ;
+    ns1:consequentOf ns1:anarchist_1 .
+
+ns1:have_1 a ns1:AlwaysHave ;
+    rdfs:label "have" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Always ;
+    vn.role:Agent ns1:anarchist_1 ;
+    vn.role:Patient ns1:anarchy_1 .
+
+ns1:method_1 a ns1:CertainMethod,
+        ns1:Method ;
+    rdfs:label "method" ;
+    quant:hasDeterminer quant:a .
+
+ns1:syndicalism_1 a ns1:PerpetualSyndicalism ;
+    rdfs:label "syndicalism" ;
+    owl:sameAs ns1:method_1 .
+
+ns1:syndicalist_1 a dbpedia:Syndicalism,
+        ns1:Group,
+        ns1:Syndicalist ;
+    rdfs:label "syndicalists",
+        "themselves" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:syndicalism_1 .
+
+ns1:Group rdfs:label "themselves" .
+
+ns1:anarchist_1 a dbpedia:Anarchism,
+        owl:Thing,
+        ns1:Anarchist ;
+    rdfs:label "anarchists",
+        "their" ;
+    quant:hasQuantifier quant:multiple .
+

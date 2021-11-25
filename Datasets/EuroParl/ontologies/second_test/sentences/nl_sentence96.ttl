@@ -1,0 +1,131 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence96.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Oblique rdfs:label "in" .
+
+translation_coherence:nl_sentence96.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence96" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence96" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:docuverse earmark:hasContent "You can't prepare if you hear a statement in this house and have no idea of his contents."^^xsd:string .
+
+ns1:prepare_1 a ns1:Prepare ;
+    rdfs:label "prepare" ;
+    boxing:hasModality boxing:Possible ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Product ns1:situation_1 .
+
+ns1:Contents rdfs:label "contents" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic>,
+        dul:Collection .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Hear rdfs:label "hear" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:House rdfs:label "house" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Idea rdfs:label "idea" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Prepare rdfs:label "prepare" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Statement rdfs:label "statement" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:contents_1 a ns1:Contents ;
+    rdfs:label "contents" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:contentsOf ns1:male_1 .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "have" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Patient ns1:idea_1 .
+
+ns1:hear_1 a ns1:Hear ;
+    rdfs:label "hear" ;
+    vn.role:Experiencer ns1:person_2 ;
+    vn.role:Oblique ns1:house_1 ;
+    vn.role:Stimulus ns1:statement_1 .
+
+ns1:house_1 a ns1:House ;
+    rdfs:label "house" ;
+    quant:hasDeterminer quant:this .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "his" .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "You" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Possible ;
+    boxing:involves ns1:have_1,
+        ns1:hear_1,
+        ns1:idea_1,
+        ns1:statement_1 .
+
+ns1:Person rdfs:label "You",
+        "you" .
+
+ns1:idea_1 a ns1:Idea ;
+    rdfs:label "idea" ;
+    quant:hasQuantifier quant:no ;
+    ns1:ideaOf ns1:contents_1 .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "you" .
+
+ns1:statement_1 a ns1:Statement ;
+    rdfs:label "statement" ;
+    quant:hasDeterminer quant:a .
+

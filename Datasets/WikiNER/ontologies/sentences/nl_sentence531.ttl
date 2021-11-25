@@ -1,0 +1,209 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence531.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Ebest> rdfs:label "best" .
+
+vn.role:Agent rdfs:label "by" .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:nl_sentence531.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence531" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence531" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "his" .
+
+ns1:Rarely rdfs:label "rarely" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Union rdfs:label "or" .
+
+ns1:docuverse earmark:hasContent "The best price price is never given to a film noir, fiction or an animated film, and rarely his horror, fantasy, comedy, and westerns recognized by APAS."^^xsd:string .
+
+ns1:film_1 a ns1:Film ;
+    rdfs:label "film" ;
+    dul:associatedWith ns1:noir_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:give_1 a ns1:NeverGive ;
+    rdfs:label "given" ;
+    dul:hasQuality ns1:Never ;
+    vn.role:Recipient ns1:noir_1 .
+
+ns1:price_1 a ns1:Price ;
+    rdfs:label "price" ;
+    dul:associatedWith ns1:price_2 ;
+    quant:hasDeterminer quant:the .
+
+ns1:recognize_1 a ns1:Recognize ;
+    rdfs:label "recognized" ;
+    vn.role:Agent ns1:Apas ;
+    vn.role:Theme ns1:western_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    ns1:entails ns1:situation_2 .
+
+ns1:Animated rdfs:label "animated" .
+
+ns1:AnimatedFilm a owl:Class ;
+    rdfs:label "Animated Film" ;
+    rdfs:subClassOf ns1:Film ;
+    owl:equivalentClass dbpedia:Animation .
+
+ns1:Apas rdfs:label "APAS" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Best a owl:Class ;
+    rdfs:label "best" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:BestPrice a owl:Class ;
+    dul:hasQuality ns1:Best ;
+    rdfs:subClassOf ns1:Price .
+
+ns1:BestPricePrice a owl:Class ;
+    rdfs:label "best price price" ;
+    dul:associatedWith ns1:BestPrice ;
+    rdfs:subClassOf ns1:PricePrice .
+
+ns1:Comedy rdfs:label "comedy" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Fantasy a owl:Class ;
+    rdfs:label "fantasy" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Fantasy_film .
+
+ns1:Fiction a owl:Class ;
+    rdfs:label "fiction" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Noir_fiction .
+
+ns1:FilmNoir a owl:Class ;
+    rdfs:label "film noir" ;
+    dul:associatedWith ns1:Film ;
+    rdfs:subClassOf ns1:Noir ;
+    owl:equivalentClass dbpedia:Film_noir .
+
+ns1:Give rdfs:label "given" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Horror a owl:Class ;
+    rdfs:label "horror" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> ;
+    owl:equivalentClass dbpedia:Horror_fiction .
+
+ns1:Never rdfs:label "never" .
+
+ns1:NeverGive rdfs:subClassOf ns1:Give .
+
+ns1:Noir a owl:Class ;
+    rdfs:label "noir" .
+
+ns1:Recognize rdfs:label "recognized" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Western rdfs:label "westerns" .
+
+ns1:comedy_1 a ns1:Comedy ;
+    rdfs:label "comedy" .
+
+ns1:fiction_1 a ns1:Fiction ;
+    rdfs:label "fiction" ;
+    dul:associatedWith ns1:fantasy_1 .
+
+ns1:horror_1 a ns1:Horror ;
+    rdfs:label "horror" ;
+    dul:associatedWith ns1:fantasy_1 ;
+    ns1:rarelyOf ns1:male_1 .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "his" .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:price_2 .
+
+ns1:film_2 a ns1:AnimatedFilm,
+        ns1:Film ;
+    rdfs:label "film" ;
+    dul:associatedWith ns1:fantasy_1 ;
+    dul:hasQuality ns1:Animated ;
+    quant:hasDeterminer quant:an .
+
+ns1:noir_1 a ns1:FilmNoir ;
+    rdfs:label "noir" ;
+    dul:associatedWith ns1:fiction_1,
+        ns1:film_2,
+        ns1:horror_1 .
+
+ns1:price_2 a ns1:BestPricePrice,
+        ns1:PricePrice ;
+    rdfs:label "price" ;
+    owl:sameAs ns1:film_2 ;
+    ns1:bestAmong ns1:PricePrice .
+
+ns1:western_1 a dbpedia:Western_(genre),
+        ns1:Western ;
+    rdfs:label "westerns" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:PricePrice a owl:Class ;
+    rdfs:label "Price Price" ;
+    dul:associatedWith ns1:Price ;
+    rdfs:subClassOf ns1:Price .
+
+ns1:fantasy_1 a ns1:Fantasy ;
+    rdfs:label "fantasy" ;
+    dul:associatedWith ns1:comedy_1,
+        ns1:western_1 .
+
+ns1:Film a owl:Class ;
+    rdfs:label "film" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity>,
+        dul:InformationEntity .
+
+ns1:Price a owl:Class ;
+    rdfs:label "Price",
+        "price" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+

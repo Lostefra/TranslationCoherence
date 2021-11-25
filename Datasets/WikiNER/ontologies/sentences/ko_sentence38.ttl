@@ -1,0 +1,210 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence38.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "without" .
+
+translation_coherence:ko_sentence38.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence38" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence38" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "In",
+        "in" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Union rdfs:label "or" .
+
+ns1:discount_1 rdfs:label "discount" .
+
+ns1:disjunct_1 a ns1:Disjunct ;
+    boxing:involves ns1:Profit,
+        ns1:profit_1 ;
+    ns1:union ns1:disjunct_2 .
+
+ns1:docuverse earmark:hasContent "In the opinion of William Batchelder each worker in Greene, interactive system will receive just and precise salary for his work; The cost and equity that can be exchanged for equal services without profit or discount."^^xsd:string .
+
+ns1:equity_1 rdfs:label "equity" .
+
+ns1:exchange_1 a ns1:Exchange ;
+    rdfs:label "exchanged" ;
+    boxing:hasModality boxing:Necessary,
+        boxing:Possible ;
+    vn.role:Recipient ns1:profit_1 ;
+    ns1:for ns1:service_1 .
+
+ns1:male_1 rdfs:label "his" .
+
+ns1:opinion_1 a ns1:Opinion ;
+    rdfs:label "opinion" ;
+    quant:hasDeterminer quant:the .
+
+ns1:receive_1 a ns1:Receive ;
+    rdfs:label "receive" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:worker_1 ;
+    vn.role:Theme ns1:salary_1 ;
+    ns1:for ns1:cost_1,
+        ns1:work_1 ;
+    ns1:inOpinionOf ns1:William_batchelder .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:worker_1 ;
+    ns1:entails ns1:situation_2 .
+
+ns1:Cost rdfs:label "cost" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Equal rdfs:label "equal" .
+
+ns1:EqualService rdfs:subClassOf ns1:Service .
+
+ns1:Equity a owl:Class ;
+    rdfs:label "equity" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Stock .
+
+ns1:Exchange rdfs:label "exchanged" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Interactive a owl:Class ;
+    rdfs:label "interactive" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:InteractiveSystem a owl:Class ;
+    rdfs:label "Interactive System" ;
+    dul:hasQuality ns1:Interactive ;
+    rdfs:subClassOf ns1:System .
+
+ns1:Just rdfs:label "just" .
+
+ns1:Male rdfs:label "Greene" .
+
+ns1:Opinion rdfs:label "opinion" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:PreciseSalary a owl:Class ;
+    rdfs:label "Precise Salary" ;
+    dul:hasQuality ns1:Precise ;
+    rdfs:subClassOf ns1:Salary .
+
+ns1:Receive rdfs:label "receive" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Salary a owl:Class ;
+    rdfs:label "salary" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Service rdfs:label "services" .
+
+ns1:System a owl:Class ;
+    rdfs:label "system" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:William_batchelder rdfs:label "William Batchelder" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Work rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Worker rdfs:label "worker" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:cost_1 a ns1:Cost,
+        ns1:Equity ;
+    rdfs:label "cost" ;
+    quant:hasDeterminer quant:the .
+
+ns1:disjunct_2 a ns1:Disjunct ;
+    boxing:involves ns1:Discount,
+        ns1:profit_1 .
+
+ns1:salary_1 a ns1:PreciseSalary ;
+    rdfs:label "salary" ;
+    dul:hasQuality ns1:Precise .
+
+ns1:service_1 a ns1:EqualService ;
+    rdfs:label "services" ;
+    dul:hasQuality ns1:Equal ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Greene .
+
+ns1:system_1 a ns1:InteractiveSystem ;
+    rdfs:label "system" .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "work" ;
+    ns1:workOf ns1:Greene .
+
+ns1:Discount rdfs:label "discount" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Precise a owl:Class ;
+    rdfs:label "precise" ;
+    dul:hasQuality ns1:Just ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Profit a owl:Class ;
+    rdfs:label "profit" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Profit_(accounting) .
+
+ns1:worker_1 a ns1:Worker ;
+    rdfs:label "worker" ;
+    quant:hasQuantifier quant:each ;
+    ns1:in ns1:Greene .
+
+ns1:Greene a ns1:Male ;
+    rdfs:label "Greene" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith ns1:system_1 .
+
+ns1:profit_1 a ns1:Discount,
+        ns1:Profit ;
+    rdfs:label "profit" .
+

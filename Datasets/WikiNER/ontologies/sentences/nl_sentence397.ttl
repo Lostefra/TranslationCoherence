@@ -1,0 +1,113 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence397.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence397.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence397" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence397" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Few rdfs:label "few" .
+
+ns1:From rdfs:label "from" .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "In the last few years, historians have stressed the use of Lincoln from republican values."^^xsd:string .
+
+ns1:stress_1 a ns1:Stress ;
+    rdfs:label "stressed" ;
+    vn.role:Agent ns1:historian_1 ;
+    vn.role:Destination ns1:use_1 ;
+    ns1:in ns1:year_1 .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+ns1:FewYear rdfs:subClassOf ns1:Year .
+
+ns1:Historian rdfs:label "historians" .
+
+ns1:Last rdfs:label "last" .
+
+ns1:LastFewYear rdfs:subClassOf ns1:FewYear .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+
+ns1:Republican rdfs:label "republican" ;
+    owl:sameAs dbpedia:Republicanism .
+
+ns1:RepublicanValue rdfs:subClassOf ns1:Value .
+
+ns1:Stress rdfs:label "stressed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Use rdfs:label "use" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Value rdfs:label "values" .
+
+ns1:Year rdfs:label "years" .
+
+ns1:historian_1 a ns1:Historian ;
+    rdfs:label "historians" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:use_1 a ns1:Use ;
+    rdfs:label "use" ;
+    quant:hasDeterminer quant:the ;
+    ns1:from ns1:value_1 ;
+    ns1:useOf ns1:Lincoln .
+
+ns1:value_1 a ns1:RepublicanValue ;
+    rdfs:label "values" ;
+    dul:hasQuality ns1:Republican ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:year_1 a ns1:LastFewYear ;
+    rdfs:label "years" ;
+    dul:hasQuality ns1:Last ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:few,
+        quant:multiple .
+

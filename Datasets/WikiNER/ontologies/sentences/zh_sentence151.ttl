@@ -1,0 +1,121 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence151.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:zh_sentence151.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence151" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence151" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Few rdfs:label "few" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "Ala. It is also one of the remaining few countries, namely, food and medicine taxes."^^xsd:string .
+
+ns1:medicine_1 a ns1:Medicine ;
+    rdfs:label "medicine" ;
+    dul:associatedWith ns1:food_1 .
+
+ns1:remain_1 a ns1:Remain ;
+    rdfs:label "remaining" ;
+    vn.role:Theme ns1:country_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Ala,
+        ns1:food_1 ;
+    dul:hasQuality ns1:Also .
+
+ns1:tax_1 rdfs:label "taxes" ;
+    quant:hasQuantifier quant:multiple .
+
+owl:Thing rdfs:label "It" .
+
+ns1:Ala a ns1:Topic ;
+    rdfs:label "Ala" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:food_1 ;
+    dul:hasDataValue "1"^^xsd:nonNegativeInteger ;
+    dul:hasQuality owl:Thing ;
+    ns1:topicOf ns1:country_1 .
+
+ns1:Also rdfs:label "also" .
+
+ns1:Country rdfs:label "countries" .
+
+ns1:FewCountry rdfs:subClassOf ns1:Country .
+
+ns1:Food a owl:Class ;
+    rdfs:label "food" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Food .
+
+ns1:Medicine a owl:Class ;
+    rdfs:label "medicine" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> ;
+    owl:equivalentClass dbpedia:Medicine .
+
+ns1:MedicineTax rdfs:subClassOf ns1:Tax .
+
+ns1:Namely rdfs:label "namely" .
+
+ns1:Remain rdfs:label "remaining" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Tax rdfs:label "taxes" .
+
+ns1:Topic rdfs:label "Ala" .
+
+ns1:country_1 a ns1:FewCountry ;
+    rdfs:label "countries" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:few,
+        quant:multiple,
+        quant:one .
+
+ns1:food_1 a ns1:Food,
+        ns1:MedicineTax ;
+    rdfs:label "food" ;
+    dul:hasQuality ns1:Namely .
+

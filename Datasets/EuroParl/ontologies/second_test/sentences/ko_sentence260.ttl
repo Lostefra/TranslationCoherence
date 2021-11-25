@@ -1,0 +1,186 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence260.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Source rdfs:label "for" .
+
+translation_coherence:ko_sentence260.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence260" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence260" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:About rdfs:label "about" .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "of",
+        "our" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:adaptation_1 a ns1:Adaptation ;
+    rdfs:label "adaptation" ;
+    dul:associatedWith ns1:instruction_1 .
+
+ns1:docuverse earmark:hasContent "rapporteur, Mr. Koch, what we express our thanks for this work is already basically all pointed out that the more advanced was not about the sensual for some of CEN, Drawing-up and adaptation instructions."^^xsd:string .
+
+ns1:person_1 coref:coref ns1:person_2 .
+
+ns1:point_1 a ns1:AllPoint ;
+    rdfs:label "pointed" ;
+    boxer:theme ns1:situation_2 ;
+    dul:hasQuality ns1:All,
+        ns1:Out ;
+    vn.role:Agent ns1:rapporteur_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Basically,
+        ns1:work_1 ;
+    dul:hasQuality ns1:Already .
+
+ns1:Adaptation rdfs:label "adaptation" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:AdaptationInstruction rdfs:subClassOf ns1:Instruction .
+
+ns1:Advanced rdfs:label "advanced" .
+
+ns1:All rdfs:label "All",
+        "all" .
+
+ns1:AllPoint rdfs:subClassOf ns1:Point .
+
+ns1:Already rdfs:label "already" .
+
+ns1:Cen rdfs:label "CEN" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Drawing-up rdfs:label "Drawing-up" ;
+    boxer:possibleType owl:Thing .
+
+ns1:Express rdfs:label "express" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Instruction rdfs:label "instructions" .
+
+ns1:Koch rdfs:label "Koch" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister>,
+        ns1:express_1 ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> .
+
+ns1:More rdfs:label "more" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Out rdfs:label "out" .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Point rdfs:label "pointed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Rapporteur rdfs:label "rapporteur" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Sensual rdfs:label "sensual" .
+
+ns1:Thanks rdfs:label "thanks" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Work rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:express_1 a ns1:Express ;
+    rdfs:label "express" ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Source ns1:work_1 ;
+    vn.role:Theme ns1:thanks_1 .
+
+ns1:more_1 a ns1:More ;
+    rdfs:label "more" ;
+    dul:hasQuality ns1:Advanced ;
+    ns1:about ns1:sensual_1 .
+
+ns1:rapporteur_1 a ns1:Rapporteur ;
+    rdfs:label "rapporteur" ;
+    dul:associatedWith ns1:Koch .
+
+ns1:sensual_1 a ns1:Sensual ;
+    rdfs:label "sensual" ;
+    dul:associatedWith ns1:Drawing-up,
+        ns1:instruction_1 ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:all ;
+    ns1:forThingOf ns1:Cen .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves owl:Thing,
+        ns1:more_1,
+        ns1:thing_1 .
+
+ns1:thanks_1 a ns1:Thanks ;
+    rdfs:label "thanks" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:thanksOf ns1:person_2 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "some" .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> rdfs:label "Mr." ;
+    boxer:possibleType dul:Role .
+
+ns1:Basically rdfs:label "basically" .
+
+ns1:instruction_1 a ns1:AdaptationInstruction ;
+    rdfs:label "instructions" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "work" ;
+    dul:hasQuality ns1:Basically ;
+    quant:hasDeterminer quant:this .
+
+owl:Thing rdfs:label "some" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "our",
+        "we" .
+

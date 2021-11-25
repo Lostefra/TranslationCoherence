@@ -1,0 +1,118 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence256.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Ehighest> rdfs:label "highest" .
+
+vn.role:Beneficiary rdfs:label "to" .
+
+translation_coherence:ko_sentence256.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence256" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence256" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Include rdfs:label "including" .
+
+ns1:direct_1 a ns1:CloselyDirect ;
+    rdfs:label "directed" ;
+    dul:hasQuality ns1:Closely ;
+    vn.role:Beneficiary ns1:effort_1 ;
+    vn.role:Theme ns1:Lincoln .
+
+ns1:docuverse earmark:hasContent "Lincoln has been closely directed to the effort of winning the highest general choice, including Ulysses_S._Grant."^^xsd:string .
+
+ns1:win_1 a ns1:Win ;
+    rdfs:label "winning" ;
+    vn.role:Agent ns1:effort_1 ;
+    vn.role:Theme ns1:choice_1 .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+ns1:Choice a owl:Class ;
+    rdfs:label "choice" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Closely rdfs:label "closely" .
+
+ns1:CloselyDirect rdfs:subClassOf ns1:Direct .
+
+ns1:Direct rdfs:label "directed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Effort rdfs:label "effort" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:General a owl:Class ;
+    rdfs:label "general" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Highest rdfs:label "highest" .
+
+ns1:HighestGeneralChoice a owl:Class ;
+    rdfs:label "highest general choice" ;
+    rdfs:subClassOf ns1:GeneralChoice .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence256.ttl/Ulysses_s._grant.> rdfs:label "Ulysses S. Grant." ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Win rdfs:label "winning" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:choice_1 a ns1:GeneralChoice,
+        ns1:HighestGeneralChoice ;
+    rdfs:label "choice" ;
+    dul:hasQuality ns1:Highest ;
+    quant:hasDeterminer quant:the ;
+    ns1:highestAmong ns1:GeneralChoice .
+
+ns1:effort_1 a ns1:Effort ;
+    rdfs:label "effort" ;
+    quant:hasDeterminer quant:the ;
+    ns1:include <https://w3id.org/stlab/ke/amiala/ko_sentence256.ttl/Ulysses_s._grant.> .
+
+ns1:GeneralChoice a owl:Class ;
+    rdfs:label "General Choice" ;
+    dul:hasQuality ns1:General ;
+    rdfs:subClassOf ns1:Choice .
+

@@ -1,0 +1,104 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence620.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "In" .
+
+translation_coherence:zh_sentence620.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence620" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence620" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:With rdfs:label "with" .
+
+ns1:conduct_1 a ns1:Conduct ;
+    rdfs:label "conducted" ;
+    vn.role:Destination ns1:New_york_times ;
+    vn.role:Theme ns1:review_1 ;
+    ns1:with ns1:appreciation_1 .
+
+ns1:docuverse earmark:hasContent "In the New York Times, a positive review was conducted, with great appreciation for Rand."^^xsd:string .
+
+dbpedia:The_New_York_Times a schema:CreativeWork .
+
+ns1:Appreciation a owl:Class ;
+    rdfs:label "appreciation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Conduct rdfs:label "conducted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Great a owl:Class ;
+    rdfs:label "great" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:GreatAppreciation a owl:Class ;
+    rdfs:label "Great Appreciation" ;
+    dul:hasQuality ns1:Great ;
+    rdfs:subClassOf ns1:Appreciation .
+
+ns1:New_york_times rdfs:label "New York Times" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:The_New_York_Times .
+
+ns1:Positive a owl:Class ;
+    rdfs:label "positive" .
+
+ns1:PositiveReview rdfs:label "positive review" ;
+    dul:associatedWith ns1:Review ;
+    dul:hasModality ns1:Positive .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Review a owl:Class ;
+    rdfs:label "review" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:appreciation_1 a ns1:GreatAppreciation ;
+    rdfs:label "appreciation" ;
+    ns1:for ns1:Rand .
+
+ns1:review_1 a ns1:PositiveReview ;
+    rdfs:label "review" ;
+    quant:hasDeterminer quant:a .
+

@@ -1,0 +1,214 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence260.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:fi_sentence260.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence260" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence260" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Entails rdfs:label "if" .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:More rdfs:label "more" .
+
+ns1:Of rdfs:label "'s",
+        "of",
+        "our" .
+
+ns1:adaptation_1 rdfs:label "adaptation" .
+
+ns1:do_1 a ns1:Do ;
+    rdfs:label "done" ;
+    boxer:agent ns1:male_1 ;
+    boxer:patient ns1:work_1 ;
+    boxing:hasModality boxing:Possible .
+
+ns1:docuverse earmark:hasContent "The rapporteur, Koch, to whom we have expressed our appreciation for the work he has done, has already pointed out that practically everything could have been somewhat more sophisticated if it had not been for CEN's operations, which has been very diluting in the formulation and adaptation of the directive."^^xsd:string .
+
+ns1:express_1 a ns1:Express ;
+    rdfs:label "expressed" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Recipient ns1:Koch ;
+    vn.role:Theme ns1:appreciation_1 .
+
+ns1:neuter_1 coref:coref ns1:thing_2 .
+
+ns1:person_1 coref:coref ns1:person_2 .
+
+ns1:point_1 a ns1:AlreadyPoint ;
+    rdfs:label "pointed" ;
+    boxing:hasModality boxing:Possible ;
+    dul:associatedWith ns1:rapporteur_1 ;
+    dul:hasQuality ns1:Already,
+        ns1:Out,
+        ns1:Practically,
+        ns1:That ;
+    vn.role:Agent ns1:Koch ;
+    vn.role:Theme ns1:thing_2 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Possible ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves ns1:Dilute,
+        ns1:Very,
+        ns1:operation_1 ;
+    ns1:entails ns1:situation_2 ;
+    ns1:in ns1:formulation_1 .
+
+ns1:Adaptation rdfs:label "adaptation" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Already rdfs:label "already" .
+
+ns1:AlreadyPoint rdfs:subClassOf ns1:Point .
+
+ns1:Appreciation rdfs:label "appreciation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Cen rdfs:label "CEN" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Directive rdfs:label "directive" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Do rdfs:label "done" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Express rdfs:label "expressed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Formulation rdfs:label "formulation" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Operation rdfs:label "operations" .
+
+ns1:Out rdfs:label "out" .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Point rdfs:label "pointed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Practically rdfs:label "practically" .
+
+ns1:Rapporteur rdfs:label "rapporteur" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:That rdfs:label "that" .
+
+ns1:Work rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:appreciation_1 a ns1:Appreciation ;
+    rdfs:label "appreciation" ;
+    ns1:appreciationOf ns1:person_2 ;
+    ns1:for ns1:work_1 .
+
+ns1:directive_1 a ns1:Directive ;
+    rdfs:label "directive" ;
+    quant:hasDeterminer quant:the .
+
+ns1:formulation_1 a ns1:Adaptation,
+        ns1:Formulation ;
+    rdfs:label "formulation" ;
+    quant:hasDeterminer quant:the ;
+    ns1:formulationOf ns1:directive_1 .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "he" .
+
+ns1:operation_1 a ns1:Operation ;
+    rdfs:label "operations" ;
+    dul:hasQuality ns1:Dilute,
+        ns1:Very ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:hasModality boxing:Possible ;
+    boxing:involves ns1:Somewhat,
+        ns1:Sophisticated,
+        ns1:rapporteur_1 .
+
+ns1:thing_1 a owl:Thing .
+
+owl:Thing rdfs:label "everything",
+        "it" .
+
+ns1:Dilute rdfs:label "diluting" .
+
+ns1:Koch rdfs:label "Koch" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Somewhat rdfs:label "somewhat" .
+
+ns1:Sophisticated rdfs:label "sophisticated" ;
+    dul:hasQuality ns1:Somewhat .
+
+ns1:Very rdfs:label "Very",
+        "very" .
+
+ns1:rapporteur_1 a ns1:Rapporteur ;
+    rdfs:label "rapporteur" ;
+    dul:hasQuality ns1:Sophisticated ;
+    quant:hasDeterminer quant:the ;
+    ns1:more ns1:thing_1 .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "everything",
+        "it" ;
+    ns1:forOperationVeryDiluteOf ns1:Cen .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "work" ;
+    quant:hasDeterminer quant:the .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "our",
+        "we" .
+

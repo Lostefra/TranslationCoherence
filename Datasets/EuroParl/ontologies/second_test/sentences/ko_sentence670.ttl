@@ -1,0 +1,206 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix fred: <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence670.ttl/> .
+@prefix ns2: <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+fred: rdfs:label ":"^^xsd:string .
+
+ns2:5E%5Efarest rdfs:label "farest" .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:ko_sentence670.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence670" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence670" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Within rdfs:label "within" .
+
+ns1:docuverse earmark:hasContent "First, let the statement of the fact: the fruit of the growth is not equal within the Union. The farest regions, still hit hard by catastrophic unemployment rate, and offer one view of this."^^xsd:string .
+
+ns1:hit_1 a ns1:StillHit ;
+    rdfs:label "hit" ;
+    dul:hasQuality ns1:Hard ;
+    vn.role:Agent ns1:rate_1 ;
+    vn.role:Theme ns1:region_1 .
+
+ns1:let_1 a ns1:Let ;
+    rdfs:label "let" ;
+    boxer:agent ns1:First ;
+    boxer:patient ns1:statement_1 ;
+    boxing:declaration ns1:situation_1 .
+
+ns1:offer_1 a ns1:Offer ;
+    rdfs:label "offer" ;
+    vn.role:Agent ns1:region_1 ;
+    vn.role:Theme ns1:view_1 .
+
+ns1:unemployment_1 a ns1:Unemployment ;
+    rdfs:label "unemployment" ;
+    dul:associatedWith ns1:rate_1 .
+
+ns2:5Efarest rdfs:label "farest" .
+
+ns2:5EfarestRegion rdfs:subClassOf ns1:Region .
+
+ns1:Catastrophic a owl:Class ;
+    rdfs:label "catastrophic" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:CatastrophicUnemployment a owl:Class ;
+    dul:hasQuality ns1:Catastrophic ;
+    rdfs:subClassOf ns1:Unemployment .
+
+ns1:CatastrophicUnemploymentRate a owl:Class ;
+    rdfs:label "catastrophic unemployment rate" ;
+    dul:associatedWith ns1:CatastrophicUnemployment ;
+    rdfs:subClassOf ns1:UnemploymentRate .
+
+ns1:Fact rdfs:label "fact" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:First rdfs:label "First" ;
+    boxer:possibleType owl:Thing .
+
+ns1:Fruit rdfs:label "fruit" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Growth rdfs:label "growth" ;
+    rdfs:subClassOf dul:Process .
+
+ns1:Hard rdfs:label "hard" ;
+    dul:hasQuality ns1:Still .
+
+ns1:Hit rdfs:label "hit" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Let rdfs:label "let" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Offer rdfs:label "offer" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Rate a owl:Class ;
+    rdfs:label "rate" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Statement rdfs:label "statement" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Still rdfs:label "still" .
+
+ns1:StillHit rdfs:label "Still Hit" ;
+    rdfs:subClassOf ns1:Hit .
+
+ns1:UnemploymentRate a owl:Class ;
+    rdfs:label "Unemployment Rate" ;
+    dul:associatedWith ns1:Unemployment ;
+    rdfs:subClassOf dul:Description,
+        ns1:Rate ;
+    owl:equivalentClass dbpedia:Unemployment .
+
+ns1:Union rdfs:label "Union" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:View rdfs:label "view" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:fact_1 a ns1:Fact ;
+    rdfs:label "fact" ;
+    quant:hasDeterminer quant:the .
+
+ns1:fruit_1 a ns1:Fruit ;
+    rdfs:label "fruit" ;
+    dul:hasQuality ns1:Equal ;
+    quant:hasDeterminer quant:the ;
+    ns1:fruitOf ns1:growth_1 .
+
+ns1:growth_1 a ns1:Growth ;
+    rdfs:label "growth" ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves ns1:Equal,
+        ns1:fruit_1 ;
+    ns1:within ns1:Union .
+
+ns1:statement_1 a ns1:Statement ;
+    rdfs:label "statement" ;
+    quant:hasDeterminer quant:the ;
+    ns1:statementOf ns1:fact_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "this" .
+
+ns1:view_1 a ns1:View ;
+    rdfs:label "view" ;
+    dul:hasDataValue "1"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:one ;
+    ns1:viewOf ns1:thing_1 .
+
+owl:Thing rdfs:label "this" .
+
+ns1:Equal rdfs:label "equal" .
+
+ns1:rate_1 a ns1:CatastrophicUnemploymentRate ;
+    rdfs:label "rate" .
+
+ns1:region_1 a ns2:5EfarestRegion,
+        ns1:Region ;
+    rdfs:label "regions" ;
+    dul:hasQuality ns2:5Efarest,
+        ns1:Topic ;
+    ns2:5EfarestAmong ns1:Region ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Region rdfs:label "regions" .
+
+ns1:Unemployment a owl:Class ;
+    rdfs:label "unemployment" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Unemployment .
+

@@ -1,0 +1,340 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix fred: <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence607.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fred: rdfs:label ":"^^xsd:string .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Eleast> rdfs:label "least" .
+
+vn.role:Agent rdfs:label "by" .
+
+vn.role:Beneficiary rdfs:label "for" .
+
+translation_coherence:zh_sentence607.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence607" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence607" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Due rdfs:label "due" .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "In",
+        "in" .
+
+ns1:Into rdfs:label "into" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:The rdfs:label "the" .
+
+ns1:approve_1 a ns1:Approve ;
+    rdfs:label "approved" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:Parliament ;
+    vn.role:Theme ns1:report_1 .
+
+ns1:combat_1 a ns1:Combat ;
+    rdfs:label "combat" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:measure_1 ;
+    vn.role:Theme ns1:poverty_1 .
+
+ns1:disrupt_1 a ns1:OftenDisrupt ;
+    rdfs:label "disrupted" ;
+    boxer:patient ns1:purpose_1 ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Often .
+
+ns1:docuverse earmark:hasContent "In the light of this, the report approved by Parliament must emphasize the need for clear measures to combat relative poverty and unemployment: measures to make appropriate use of structural funds for these purposes, which are often disrupted and modernized national policies and telecommunications systems, in particular the integration of least developed countries into the Trans-Europe Railway network due in 2007."^^xsd:string .
+
+ns1:emphasize_1 a ns1:Emphasize ;
+    rdfs:label "emphasize" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:report_1 ;
+    vn.role:Theme ns1:need_1 ;
+    ns1:in ns1:integration_1 ;
+    ns1:inLightOf ns1:thing_1 .
+
+ns1:light_1 a ns1:Light ;
+    rdfs:label "light" ;
+    quant:hasDeterminer quant:the .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "make" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:measure_2 ;
+    vn.role:Beneficiary ns1:purpose_1 ;
+    vn.role:Product ns1:use_1 .
+
+ns1:modernize_1 a ns1:Modernize ;
+    rdfs:label "modernized" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Patient ns1:policy_1 .
+
+ns1:railway_1 a ns1:Railway ;
+    rdfs:label "Railway" ;
+    dul:associatedWith ns1:network_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:system_1 rdfs:label "systems" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:telecommunications_1 a ns1:Telecommunications ;
+    rdfs:label "telecommunications" ;
+    dul:associatedWith ns1:policy_1 ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:unemployment_1 rdfs:label "unemployment" .
+
+owl:Thing rdfs:label "this" .
+
+ns1:Appropriate a owl:Class ;
+    rdfs:label "appropriate" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:AppropriateUse a owl:Class ;
+    rdfs:label "appropriate use" ;
+    dul:hasQuality ns1:Appropriate ;
+    rdfs:subClassOf ns1:Use .
+
+ns1:Approve rdfs:label "approved" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Clear rdfs:label "clear" .
+
+ns1:ClearMeasure rdfs:subClassOf ns1:Measure .
+
+ns1:Combat rdfs:label "combat" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Country rdfs:label "countries" .
+
+ns1:Developed rdfs:label "developed" ;
+    owl:sameAs dbpedia:Least_developed_country .
+
+ns1:Disrupt rdfs:label "disrupted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Emphasize rdfs:label "emphasize" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Fund rdfs:label "funds" .
+
+ns1:Integration rdfs:label "integration" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Least rdfs:label "least" .
+
+ns1:LeastDevelopedCountry rdfs:subClassOf ns1:DevelopedCountry .
+
+ns1:Light rdfs:label "light" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Make rdfs:label "make" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Modernize rdfs:label "modernized" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:National rdfs:label "national" .
+
+ns1:NationalPolicy rdfs:subClassOf ns1:Policy .
+
+ns1:Need rdfs:label "need" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Network a owl:Class ;
+    rdfs:label "network" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#System> .
+
+ns1:Often rdfs:label "often" .
+
+ns1:OftenDisrupt rdfs:subClassOf ns1:Disrupt .
+
+ns1:Parliament rdfs:label "Parliament" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Parliament .
+
+ns1:Particular rdfs:label "particular" .
+
+ns1:ParticularTheIntegration rdfs:label "Particular The Integration" ;
+    rdfs:subClassOf ns1:TheIntegration .
+
+ns1:Policy rdfs:label "policies" .
+
+ns1:Poverty a owl:Class ;
+    rdfs:label "poverty" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Purpose rdfs:label "purposes" .
+
+ns1:RailwayNetwork a owl:Class ;
+    rdfs:label "Railway Network" ;
+    dul:associatedWith ns1:Railway ;
+    rdfs:subClassOf ns1:Network .
+
+ns1:Relative a owl:Class ;
+    rdfs:label "relative" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:RelativePoverty a owl:Class ;
+    rdfs:label "relative poverty" ;
+    dul:hasQuality ns1:Relative ;
+    rdfs:subClassOf ns1:Poverty ;
+    owl:equivalentClass dbpedia:Poverty .
+
+ns1:Report rdfs:label "report" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Structural rdfs:label "structural" ;
+    owl:sameAs dbpedia:Structural_Funds_and_Cohesion_Fund .
+
+ns1:StructuralFund rdfs:subClassOf ns1:Fund .
+
+ns1:System rdfs:label "systems" .
+
+ns1:Telecommunications a owl:Class ;
+    rdfs:label "telecommunications" ;
+    owl:equivalentClass dbpedia:Telecommunication .
+
+ns1:TelecommunicationsSystem rdfs:subClassOf ns1:System .
+
+ns1:TheIntegration rdfs:label "The Integration" ;
+    rdfs:subClassOf ns1:Integration .
+
+ns1:Trans-europe a owl:Class ;
+    rdfs:label "Trans-Europe" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Trans-europeRailway a owl:Class ;
+    dul:hasQuality ns1:Trans-europe ;
+    rdfs:subClassOf ns1:Railway .
+
+ns1:Trans-europeRailwayNetwork a owl:Class ;
+    rdfs:label "Trans-Europe Railway network" ;
+    dul:associatedWith ns1:Trans-europeRailway ;
+    rdfs:subClassOf ns1:RailwayNetwork .
+
+ns1:Unemployment a owl:Class ;
+    rdfs:label "unemployment" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Unemployment .
+
+ns1:Use a owl:Class ;
+    rdfs:label "use" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:country_1 a ns1:DevelopedCountry,
+        ns1:LeastDevelopedCountry ;
+    rdfs:label "countries" ;
+    dul:hasQuality ns1:Developed,
+        ns1:Least ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:leastAmong ns1:DevelopedCountry .
+
+ns1:fund_1 a ns1:StructuralFund ;
+    rdfs:label "funds" ;
+    dul:hasQuality ns1:Structural ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:integration_1 a ns1:ParticularTheIntegration ;
+    rdfs:label "integration" ;
+    dul:hasQuality ns1:Particular ;
+    quant:hasDeterminer quant:the ;
+    ns1:into ns1:network_1 ;
+    ns1:particularTheIntegrationOf ns1:country_1 .
+
+ns1:need_1 a ns1:Need ;
+    rdfs:label "need" ;
+    quant:hasDeterminer quant:the ;
+    ns1:for ns1:measure_1 .
+
+ns1:poverty_1 a ns1:RelativePoverty,
+        ns1:Unemployment ;
+    rdfs:label "poverty" ;
+    boxing:declaration ns1:measure_2,
+        ns1:policy_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "this" .
+
+ns1:use_1 a ns1:AppropriateUse ;
+    rdfs:label "use" ;
+    ns1:appropriateUseOf ns1:fund_1 .
+
+ns1:Measure rdfs:label "measures" .
+
+ns1:measure_1 a ns1:ClearMeasure ;
+    rdfs:label "measures" ;
+    dul:hasQuality ns1:Clear ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:measure_2 a ns1:Measure ;
+    rdfs:label "measures" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:network_1 a ns1:Trans-europeRailwayNetwork ;
+    rdfs:label "network" ;
+    ns1:dueIn "2007-01-01"^^xsd:date .
+
+ns1:purpose_1 a ns1:Purpose ;
+    rdfs:label "purposes" ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:report_1 a ns1:Report ;
+    rdfs:label "report" ;
+    quant:hasDeterminer quant:the,
+        quant:this .
+
+ns1:DevelopedCountry rdfs:subClassOf ns1:Country .
+
+ns1:Railway a owl:Class ;
+    rdfs:label "Railway" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:policy_1 a ns1:NationalPolicy,
+        ns1:TelecommunicationsSystem ;
+    rdfs:label "policies" ;
+    dul:hasQuality ns1:National ;
+    quant:hasQuantifier quant:multiple .
+

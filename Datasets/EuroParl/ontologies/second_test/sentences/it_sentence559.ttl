@@ -1,0 +1,227 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence559.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence559.ttl a owl:Ontology ;
+    rdfs:label "it_sentence559" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence559" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Agent rdfs:label "by" .
+
+ns1:At rdfs:label "at" .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:New rdfs:label "new" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:development_1 a ns1:Development ;
+    rdfs:label "development" ;
+    dul:associatedWith ns1:policy_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:docuverse earmark:hasContent "We do not forget that there is also the new rural development policy co-financed by the EAGGF Guarantee Section, aimed at promoting the reform of European agriculture and supporting the multifunctional aspect of agriculture."^^xsd:string .
+
+ns1:forget_1 a ns1:Forget ;
+    rdfs:label "forget" ;
+    boxer:agent ns1:person_1 ;
+    boxer:theme ns1:situation_1 ;
+    boxing:hasTruthValue boxing:False .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:agriculture_1,
+        ns1:agriculture_2,
+        ns1:aim_1,
+        ns1:co-finance_1,
+        ns1:promote_1,
+        ns1:support_1 ;
+    dul:hasQuality ns1:Also .
+
+ns1:there_1 rdfs:label "there" .
+
+ns1:Aim rdfs:label "aimed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Also rdfs:label "also" .
+
+ns1:Aspect a owl:Class ;
+    rdfs:label "aspect" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Co-finance rdfs:label "co-financed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:DevelopmentPolicy a owl:Class ;
+    rdfs:label "Development Policy" ;
+    dul:associatedWith ns1:Development ;
+    rdfs:subClassOf ns1:Policy .
+
+ns1:EuropeanAgriculture a owl:Class ;
+    rdfs:label "European agriculture" ;
+    dul:hasQuality ns1:European ;
+    rdfs:subClassOf ns1:Agriculture .
+
+ns1:Forget rdfs:label "forget" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Multifunctional a owl:Class ;
+    rdfs:label "multifunctional" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:MultifunctionalAspect a owl:Class ;
+    rdfs:label "Multifunctional Aspect" ;
+    dul:hasQuality ns1:Multifunctional ;
+    rdfs:subClassOf ns1:Aspect .
+
+ns1:NewRuralDevelopment a owl:Class ;
+    rdfs:subClassOf ns1:RuralDevelopment .
+
+ns1:Person rdfs:label "We" .
+
+ns1:Policy a owl:Class ;
+    rdfs:label "policy" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Promote rdfs:label "promoting" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Reform rdfs:label "reform" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Rural a owl:Class ;
+    rdfs:label "rural" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:RuralDevelopmentPolicy a owl:Class ;
+    rdfs:label "rural development policy" ;
+    dul:associatedWith ns1:RuralDevelopment ;
+    rdfs:subClassOf ns1:DevelopmentPolicy .
+
+ns1:Support rdfs:label "supporting" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:There rdfs:label "there" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location>,
+        ns1:NewRuralDevelopmentPolicy .
+
+ns1:aspect_1 a ns1:MultifunctionalAspect ;
+    rdfs:label "aspect" ;
+    quant:hasDeterminer quant:the ;
+    ns1:multifunctionalAspectOf ns1:agriculture_2 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "We" .
+
+ns1:reform_1 a ns1:Reform ;
+    rdfs:label "reform" ;
+    quant:hasDeterminer quant:the ;
+    ns1:reformOf ns1:agriculture_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:agriculture_1,
+        ns1:agriculture_2,
+        ns1:aim_1,
+        ns1:co-finance_1,
+        ns1:policy_1,
+        ns1:promote_1,
+        ns1:support_1 .
+
+ns1:Agriculture a owl:Class ;
+    rdfs:label "agriculture" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Eaggf_guarantee_section rdfs:label "EAGGF Guarantee Section" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:European a owl:Class ;
+    rdfs:label "European" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:NewRuralDevelopmentPolicy a owl:Class ;
+    rdfs:label "New Rural Development Policy" ;
+    dul:associatedWith ns1:NewRuralDevelopment ;
+    rdfs:subClassOf ns1:RuralDevelopmentPolicy .
+
+ns1:RuralDevelopment a owl:Class ;
+    dul:hasQuality ns1:Rural ;
+    rdfs:subClassOf ns1:Development .
+
+ns1:aim_1 a ns1:Aim ;
+    rdfs:label "aimed" ;
+    vn.role:Theme ns1:Eaggf_guarantee_section ;
+    ns1:at ns1:thing_1,
+        ns1:thing_2 .
+
+ns1:co-finance_1 a ns1:Co-finance ;
+    rdfs:label "co-financed" ;
+    boxer:agent ns1:Eaggf_guarantee_section ;
+    boxer:patient ns1:policy_1 .
+
+ns1:promote_1 a ns1:Promote ;
+    rdfs:label "promoting" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Theme ns1:reform_1 .
+
+ns1:support_1 a ns1:Support ;
+    rdfs:label "supporting" ;
+    vn.role:Agent ns1:thing_2 ;
+    vn.role:Beneficiary ns1:aspect_1 .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:thing_2 a owl:Thing .
+
+ns1:Development a owl:Class ;
+    rdfs:label "development" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:agriculture_1 a ns1:EuropeanAgriculture ;
+    rdfs:label "agriculture" ;
+    dul:hasQuality ns1:European .
+
+ns1:agriculture_2 a ns1:Agriculture ;
+    rdfs:label "agriculture" .
+
+ns1:policy_1 a ns1:NewRuralDevelopmentPolicy,
+        ns1:There ;
+    rdfs:label "policy" .
+

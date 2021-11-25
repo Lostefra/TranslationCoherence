@@ -1,0 +1,171 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence544.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:it_sentence544.ttl a owl:Ontology ;
+    rdfs:label "it_sentence544" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence544" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "Ashlag proposed that this picture is the purpose of creation, and all that happens is to raise humanity to the level of altruism, love for one another."^^xsd:string .
+
+ns1:picture_1 rdfs:label "picture" .
+
+ns1:propose_1 a ns1:Propose ;
+    rdfs:label "proposed" ;
+    vn.role:Agent ns1:Ashlag ;
+    vn.role:Topic ns1:situation_1 .
+
+ns1:purpose_1 a ns1:Picture,
+        ns1:Purpose ;
+    rdfs:label "purpose" ;
+    quant:hasDeterminer quant:the,
+        quant:this ;
+    ns1:purposeOf ns1:creation_1 .
+
+owl:Thing rdfs:label "all" .
+
+ns1:Altruism a owl:Class ;
+    rdfs:label "altruism" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Altruism .
+
+ns1:Another rdfs:label "another" .
+
+ns1:Ashlag rdfs:label "Ashlag" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Ashlag_(Hasidic_dynasty) .
+
+ns1:Be rdfs:label "is" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Happen rdfs:label "happens" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Humanity rdfs:label "humanity" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Level rdfs:label "level" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Love rdfs:label "love" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Picture rdfs:label "picture" ;
+    rdfs:subClassOf dul:InformationEntity,
+        ns1:Purpose .
+
+ns1:Propose rdfs:label "proposed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Raise rdfs:label "raise" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:another_1 a ns1:Another ;
+    rdfs:label "another" ;
+    dul:hasDataValue "1"^^xsd:nonNegativeInteger .
+
+ns1:be_1 a ns1:Be ;
+    rdfs:label "is" ;
+    boxer:agent ns1:thing_1 ;
+    boxer:theme ns1:raise_1 .
+
+ns1:happen_1 a ns1:Happen ;
+    rdfs:label "happens" ;
+    vn.role:Theme ns1:thing_1 .
+
+ns1:level_1 a ns1:Level ;
+    rdfs:label "level" ;
+    dul:associatedWith ns1:love_1 ;
+    quant:hasDeterminer quant:the ;
+    ns1:levelOf ns1:altruism_1 .
+
+ns1:love_1 a ns1:Love ;
+    rdfs:label "love" ;
+    ns1:for ns1:another_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Creation,
+        ns1:altruism_1,
+        ns1:be_1,
+        ns1:creation_1,
+        ns1:happen_1,
+        ns1:humanity_1,
+        ns1:raise_1,
+        ns1:thing_1 .
+
+ns1:Creation rdfs:label "creation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Purpose rdfs:label "purpose" ;
+    rdfs:subClassOf dul:Goal .
+
+ns1:altruism_1 a ns1:Altruism ;
+    rdfs:label "altruism" .
+
+ns1:creation_1 a ns1:Creation ;
+    rdfs:label "creation" .
+
+ns1:humanity_1 a ns1:Humanity ;
+    rdfs:label "humanity" ;
+    quant:hasDeterminer quant:that ;
+    quant:hasQuantifier quant:all ;
+    ns1:to ns1:level_1 .
+
+ns1:raise_1 a ns1:Raise ;
+    rdfs:label "raise" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Theme ns1:humanity_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "all" .
+

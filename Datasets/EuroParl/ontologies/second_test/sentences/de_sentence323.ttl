@@ -1,0 +1,131 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence323.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence323.ttl a owl:Ontology ;
+    rdfs:label "de_sentence323" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence323" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "her" .
+
+ns1:Theme rdfs:label "possible" .
+
+ns1:Where rdfs:label "where" .
+
+ns1:docuverse earmark:hasContent "In her report, Ms Ffairre also highlighted an area where coordination is missing as soon as possible, but urgently needed."^^xsd:string .
+
+ns1:highlight_1 a ns1:AlsoHighlight ;
+    rdfs:label "highlighted" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Agent ns1:Ffairre ;
+    vn.role:Patient ns1:area_1 ;
+    ns1:in ns1:report_1 .
+
+ns1:need_1 a ns1:UrgentlyNeed ;
+    rdfs:label "needed" ;
+    dul:hasQuality ns1:Urgently ;
+    vn.role:Patient ns1:area_1 .
+
+ns1:thing_1 a owl:Thing ;
+    boxer:theme ns1:thing_2 .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Miss> rdfs:label "Ms" ;
+    boxer:possibleType dul:Role ;
+    owl:sameAs dbpedia:Metre_per_second .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoHighlight rdfs:subClassOf ns1:Highlight .
+
+ns1:Area rdfs:label "area" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:As rdfs:label "as" .
+
+ns1:Coordination rdfs:label "coordination" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Ffairre rdfs:label "Ffairre" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Miss> .
+
+ns1:Highlight rdfs:label "highlighted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Miss rdfs:label "missing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Need rdfs:label "needed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Report rdfs:label "report" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Urgently rdfs:label "urgently" .
+
+ns1:UrgentlyNeed rdfs:subClassOf ns1:Need .
+
+ns1:coordination_1 a ns1:Coordination ;
+    rdfs:label "coordination" .
+
+ns1:female_1 a ns1:Female ;
+    rdfs:label "her" .
+
+ns1:miss_1 a ns1:Miss ;
+    rdfs:label "missing" ;
+    boxing:hasModality boxing:Possible ;
+    dul:hasQuality ns1:As ;
+    vn.role:Experiencer ns1:coordination_1 ;
+    ns1:as ns1:thing_2 .
+
+ns1:report_1 a ns1:Report ;
+    rdfs:label "report" ;
+    ns1:reportOf ns1:female_1 .
+
+ns1:area_1 a ns1:Area ;
+    rdfs:label "area" ;
+    quant:hasDeterminer quant:an ;
+    ns1:where ns1:miss_1 .
+
+ns1:thing_2 a owl:Thing .
+

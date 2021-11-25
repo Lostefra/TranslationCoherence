@@ -1,0 +1,168 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence187.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "in" .
+
+translation_coherence:en_sentence187.ttl a owl:Ontology ;
+    rdfs:label "en_sentence187" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence187" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Onorganisationof rdfs:label "on the organisation of" .
+
+ns1:advise_1 a ns1:Advise ;
+    rdfs:label "advise" ;
+    vn.role:Agent ns1:standard_1 ;
+    vn.role:Patient ns1:people_1 ;
+    ns1:in ns1:manner_1 .
+
+ns1:docuverse earmark:hasContent "The relevant standards which have been laid down in another Directive, 95/35/EC, seem sufficiently adequate to advise people in a responsible manner on the organisation of the transport of dangerous goods."^^xsd:string .
+
+ns1:lay_1 a ns1:Lay ;
+    rdfs:label "laid" ;
+    dul:hasQuality ns1:Down ;
+    vn.role:Destination ns1:95%2F35%2Fec ;
+    vn.role:Theme ns1:standard_1 .
+
+ns1:organisation_1 a ns1:Organisation ;
+    rdfs:label "organisation" ;
+    quant:hasDeterminer quant:the .
+
+ns1:seem_1 a ns1:Seem ;
+    rdfs:label "seem" ;
+    vn.role:Theme ns1:standard_1 .
+
+ns1:95%2F35%2Fec a ns1:Directive ;
+    rdfs:label "95/35/EC" ;
+    boxer:possibleType owl:Thing ;
+    dul:hasQuality ns1:Directive .
+
+ns1:Adequate rdfs:label "adequate" ;
+    dul:hasQuality ns1:Sufficiently .
+
+ns1:Advise rdfs:label "advise" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Dangerous a owl:Class ;
+    rdfs:label "dangerous" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:DangerousGoods a owl:Class ;
+    rdfs:label "dangerous goods" ;
+    dul:hasQuality ns1:Dangerous ;
+    rdfs:subClassOf ns1:Goods ;
+    owl:equivalentClass dbpedia:Dangerous_goods .
+
+ns1:Down rdfs:label "down" .
+
+ns1:Goods a owl:Class ;
+    rdfs:label "goods" .
+
+ns1:Lay rdfs:label "laid" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Manner a owl:Class ;
+    rdfs:label "manner" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Organisation rdfs:label "organisation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:People rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Relevant rdfs:label "relevant" .
+
+ns1:RelevantStandard rdfs:subClassOf ns1:Standard .
+
+ns1:Responsible a owl:Class ;
+    rdfs:label "responsible" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ResponsibleManner a owl:Class ;
+    rdfs:label "responsible manner" ;
+    dul:hasQuality ns1:Responsible ;
+    rdfs:subClassOf ns1:Manner .
+
+ns1:Seem rdfs:label "seem" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Standard rdfs:label "standards" .
+
+ns1:Sufficiently rdfs:label "sufficiently" .
+
+ns1:Transport rdfs:label "transport" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:goods_1 a ns1:DangerousGoods ;
+    rdfs:label "goods" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:manner_1 a ns1:ResponsibleManner ;
+    rdfs:label "manner" ;
+    quant:hasDeterminer quant:a ;
+    ns1:onOrganisationOf ns1:transport_1 .
+
+ns1:people_1 a ns1:People ;
+    rdfs:label "people" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:transport_1 a ns1:Transport ;
+    rdfs:label "transport" ;
+    quant:hasDeterminer quant:the ;
+    ns1:transportOf ns1:goods_1 .
+
+ns1:Directive rdfs:label "95/35/EC",
+        "Directive" .
+
+ns1:standard_1 a ns1:RelevantStandard ;
+    rdfs:label "standards" ;
+    dul:hasQuality ns1:Adequate,
+        ns1:Relevant ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+

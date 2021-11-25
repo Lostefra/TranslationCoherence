@@ -1,0 +1,119 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence111.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Elargest> rdfs:label "largest" .
+
+translation_coherence:it_sentence111.ttl a owl:Ontology ;
+    rdfs:label "it_sentence111" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence111" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Wetumpka a owl:Thing,
+        ns1:Crater,
+        ns1:Site ;
+    rdfs:label "Wetumpka",
+        "crater" ;
+    boxer:possibleType foaf:Person ;
+    quant:hasDeterminer quant:the,
+        quant:this ;
+    owl:sameAs <http://dbpedia.org/resource/Wetumpka,_Alabama> ;
+    ns1:siteOf ns1:disaster_1 .
+
+ns1:crater_1 rdfs:label "crater" .
+
+ns1:docuverse earmark:hasContent "This is the crater Wetumpka, which is the site of the largest natural disaster of Alabama."^^xsd:string .
+
+ns1:site_1 rdfs:label "site" .
+
+ns1:thing_1 rdfs:label "This" .
+
+dbpedia:Alabama a schema:AdministrativeArea,
+        schema:Place .
+
+owl:Thing rdfs:label "This" ;
+    rdfs:subClassOf ns1:Crater .
+
+ns1:Alabama rdfs:label "Alabama" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Alabama .
+
+ns1:Disaster a owl:Class ;
+    rdfs:label "disaster" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Largest rdfs:label "largest" .
+
+ns1:LargestNaturalDisaster a owl:Class ;
+    rdfs:label "Largest Natural Disaster" ;
+    rdfs:subClassOf ns1:NaturalDisaster .
+
+ns1:Natural a owl:Class ;
+    rdfs:label "natural" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:disaster_1 a ns1:LargestNaturalDisaster,
+        ns1:NaturalDisaster ;
+    rdfs:label "disaster" ;
+    dul:hasQuality ns1:Largest ;
+    quant:hasDeterminer quant:the ;
+    ns1:largestAmong ns1:NaturalDisaster ;
+    ns1:largestNaturalDisasterOf ns1:Alabama .
+
+ns1:Crater a owl:Class ;
+    rdfs:label "Wetumpka",
+        "crater" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location>,
+        ns1:Site ;
+    owl:equivalentClass dbpedia:Impact_crater .
+
+ns1:Site rdfs:label "site" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:NaturalDisaster a owl:Class ;
+    rdfs:label "natural disaster" ;
+    dul:hasQuality ns1:Natural ;
+    rdfs:subClassOf ns1:Disaster ;
+    owl:equivalentClass dbpedia:Natural_disaster .
+

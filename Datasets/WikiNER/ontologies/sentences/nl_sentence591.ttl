@@ -1,0 +1,181 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence591.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%2C> rdfs:label "," .
+
+vn.role:Predicate rdfs:label "as" .
+
+translation_coherence:nl_sentence591.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence591" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence591" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:describe_1 a ns1:Describe ;
+    rdfs:label "described" ;
+    dul:associatedWith ns1:demonstration_1 ;
+    vn.role:Agent ns1:Rand ;
+    vn.role:Predicate ns1:corollary_1 ;
+    vn.role:Theme ns1:theme_1 ;
+    ns1:as ns1:role_1 .
+
+ns1:docuverse earmark:hasContent "Rand described the theme of the novel as the role of the spirit in man's existence, and as corollary, the demonstration of a new moral philosophy, the moral of self-interest."^^xsd:string .
+
+ns1:existence_1 a ns1:Existence ;
+    rdfs:label "existence" .
+
+dbpedia:Ayn_Rand a schema:Person .
+
+ns1:Corollary rdfs:label "corollary" .
+
+ns1:Demonstration rdfs:label "demonstration" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Describe rdfs:label "described" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Existence a owl:Class ;
+    rdfs:label "existence" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Existence .
+
+ns1:Man rdfs:label "man" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:MoralPhilosophy a owl:Class ;
+    rdfs:label "moral philosophy" ;
+    dul:hasQuality ns1:Moral ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic>,
+        ns1:Philosophy ;
+    owl:equivalentClass dbpedia:Ethics .
+
+ns1:New rdfs:label "new" .
+
+ns1:NewMoralPhilosophy a owl:Class ;
+    rdfs:label "new moral philosophy" ;
+    rdfs:subClassOf ns1:MoralPhilosophy .
+
+ns1:Novel rdfs:label "novel" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Philosophy a owl:Class ;
+    rdfs:label "philosophy" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Ayn_Rand .
+
+ns1:Role rdfs:label "role" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Self-interest a owl:Class ;
+    rdfs:label "self-interest" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Individualism .
+
+ns1:Spirit a owl:Class ;
+    rdfs:label "spirit" ;
+    rdfs:subClassOf dul:Personification ;
+    owl:equivalentClass dbpedia:Spirit .
+
+ns1:Theme rdfs:label "theme" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:corollary_1 a ns1:Corollary ;
+    rdfs:label "corollary" .
+
+ns1:demonstration_1 a ns1:Demonstration ;
+    rdfs:label "demonstration" ;
+    quant:hasDeterminer quant:the ;
+    ns1:demonstrationOf ns1:philosophy_1 .
+
+ns1:man_1 a ns1:Man ;
+    rdfs:label "man" .
+
+ns1:moral_1 a ns1:Moral ;
+    rdfs:label "moral" ;
+    ns1:moralOf ns1:self-interest_1 .
+
+ns1:novel_1 a ns1:Novel ;
+    rdfs:label "novel" ;
+    quant:hasDeterminer quant:the .
+
+ns1:philosophy_1 a ns1:NewMoralPhilosophy ;
+    rdfs:label "philosophy" ;
+    dul:associatedWith ns1:moral_1 ;
+    dul:hasQuality ns1:Moral,
+        ns1:New ;
+    quant:hasDeterminer quant:a .
+
+ns1:role_1 a ns1:Role ;
+    rdfs:label "role" ;
+    quant:hasDeterminer quant:the ;
+    ns1:inExistenceOf ns1:man_1 ;
+    ns1:roleOf ns1:spirit_1 .
+
+ns1:self-interest_1 a ns1:Self-interest ;
+    rdfs:label "self-interest" ;
+    quant:hasDeterminer quant:the .
+
+ns1:spirit_1 a ns1:Spirit ;
+    rdfs:label "spirit" ;
+    quant:hasDeterminer quant:the .
+
+ns1:theme_1 a ns1:Theme ;
+    rdfs:label "theme" ;
+    quant:hasDeterminer quant:the ;
+    ns1:themeOf ns1:novel_1 .
+
+ns1:Moral a owl:Class ;
+    rdfs:label "Moral",
+        "moral" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic>,
+        dul:Quality .
+

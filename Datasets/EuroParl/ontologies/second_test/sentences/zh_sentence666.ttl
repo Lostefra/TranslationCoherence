@@ -1,0 +1,116 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence666.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence666.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence666" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence666" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:From rdfs:label "from" .
+
+ns1:More rdfs:label "more" .
+
+ns1:Of rdfs:label "their" .
+
+ns1:docuverse earmark:hasContent "Persons from a small background can live and make their children more vulnerable."^^xsd:string .
+
+ns1:live_1 a ns1:Live ;
+    rdfs:label "live" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Theme ns1:person_1 .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "make" ;
+    boxer:theme ns1:situation_1 ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Agent ns1:person_1 .
+
+ns1:Background a owl:Class ;
+    rdfs:label "background" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Child rdfs:label "children" .
+
+ns1:Live rdfs:label "live" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Make rdfs:label "make" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Person rdfs:label "Persons" .
+
+ns1:Small a owl:Class ;
+    rdfs:label "small" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SmallBackground a owl:Class ;
+    rdfs:label "small background" ;
+    dul:hasQuality ns1:Small ;
+    rdfs:subClassOf ns1:Background .
+
+ns1:background_1 a ns1:SmallBackground ;
+    rdfs:label "background" ;
+    quant:hasDeterminer quant:a .
+
+ns1:child_1 a ns1:Child ;
+    rdfs:label "children" ;
+    dul:hasQuality ns1:Vulnerable ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:childOf ns1:thing_1 ;
+    ns1:more ns1:thing_2 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Possible ;
+    boxing:involves ns1:Vulnerable,
+        ns1:child_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "their" .
+
+ns1:thing_2 a owl:Thing .
+
+ns1:Vulnerable rdfs:label "vulnerable" .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "Persons" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:from ns1:background_1 .
+

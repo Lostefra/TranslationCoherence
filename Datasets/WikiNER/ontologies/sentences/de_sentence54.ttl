@@ -1,0 +1,146 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence54.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence54.ttl a owl:Ontology ;
+    rdfs:label "de_sentence54" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence54" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In",
+        "in" .
+
+ns1:Of rdfs:label "'",
+        "'s" .
+
+ns1:argue_1 a ns1:Argue ;
+    rdfs:label "argued" ;
+    vn.role:Actor ns1:woman_1 ;
+    vn.role:Theme ns1:situation_1 ;
+    ns1:inVillageOf ns1:New_york .
+
+ns1:docuverse earmark:hasContent "In New_York, 's Sainte village, Bosnia-Herzegovina', women and socialists argued that women (and also men) will be implemented in this and now themselves."^^xsd:string .
+
+ns1:now_1 rdfs:label "now" .
+
+ns1:socialist_1 a dbpedia:Socialism ;
+    rdfs:label "socialists" .
+
+ns1:village_1 a ns1:Village ;
+    rdfs:label "village" ;
+    dul:associatedWith ns1:Sainte .
+
+dbpedia:Bosnia_and_Herzegovina a schema:Country,
+        schema:Place .
+
+dbpedia:New_York_(magazine) a schema:CreativeWork .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoMan rdfs:subClassOf ns1:Man .
+
+ns1:Argue rdfs:label "argued" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Bosnia-herzegovina rdfs:label "Bosnia-Herzegovina" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Bosnia_and_Herzegovina .
+
+ns1:Implement rdfs:label "implemented" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Man rdfs:label "men" .
+
+ns1:New_york rdfs:label "New York" ;
+    boxer:possibleType time:Interval ;
+    owl:sameAs dbpedia:New_York_(magazine) .
+
+ns1:Now rdfs:label "now" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Sainte rdfs:label "Sainte" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Socialist rdfs:label "socialists" .
+
+ns1:Themselves rdfs:label "themselves" .
+
+ns1:This rdfs:label "this" .
+
+ns1:Village rdfs:label "village" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:implement_1 a ns1:Implement ;
+    rdfs:label "implemented" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Theme ns1:man_1,
+        ns1:woman_2 ;
+    ns1:in ns1:this_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:implement_1,
+        ns1:man_1,
+        ns1:this_1,
+        ns1:woman_2 .
+
+ns1:woman_1 a ns1:Socialist,
+        ns1:Woman ;
+    rdfs:label "women" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:socialistOf ns1:Bosnia-herzegovina .
+
+ns1:Woman a owl:Class ;
+    rdfs:label "women" ;
+    owl:equivalentClass <http://dbpedia.org/resource/Women's_rights> .
+
+ns1:man_1 a ns1:AlsoMan ;
+    rdfs:label "men" ;
+    dul:hasQuality ns1:Also ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:this_1 a ns1:Now,
+        ns1:This ;
+    rdfs:label "this" ;
+    dul:hasQuality ns1:Themselves .
+
+ns1:woman_2 a ns1:Woman ;
+    rdfs:label "women" ;
+    quant:hasQuantifier quant:multiple .
+

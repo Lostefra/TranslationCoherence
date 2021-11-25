@@ -1,0 +1,126 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence425.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence425.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence425" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence425" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Between rdfs:label "between" .
+
+ns1:For rdfs:label "For" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "For us in the Parliament, I would like to remind the code of the signed committee and the action between the Parliament."^^xsd:string .
+
+ns1:like_1 a ns1:Like ;
+    rdfs:label "like" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Experiencer ns1:person_2 ;
+    vn.role:Theme ns1:situation_1 ;
+    ns1:for ns1:person_1 .
+
+ns1:Action rdfs:label "action" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Code rdfs:label "code" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Committee a owl:Class ;
+    rdfs:label "committee" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Like rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Remind rdfs:label "remind" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Signed a owl:Class ;
+    rdfs:label "signed" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SignedCommittee a owl:Class ;
+    rdfs:label "Signed Committee" ;
+    dul:hasQuality ns1:Signed ;
+    rdfs:subClassOf ns1:Committee .
+
+ns1:action_1 a ns1:Action ;
+    rdfs:label "action" ;
+    quant:hasDeterminer quant:the ;
+    ns1:between ns1:Parliament .
+
+ns1:code_1 a ns1:Code ;
+    rdfs:label "code" ;
+    quant:hasDeterminer quant:the ;
+    ns1:codeOf ns1:action_1,
+        ns1:committee_1 .
+
+ns1:committee_1 a ns1:SignedCommittee ;
+    rdfs:label "committee" ;
+    quant:hasDeterminer quant:the .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "us" ;
+    ns1:in ns1:Parliament .
+
+ns1:remind_1 a ns1:Remind ;
+    rdfs:label "remind" ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Recipient ns1:code_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:remind_1 .
+
+ns1:Parliament rdfs:label "Parliament" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Parliament .
+
+ns1:Person rdfs:label "I",
+        "us" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "I" .
+

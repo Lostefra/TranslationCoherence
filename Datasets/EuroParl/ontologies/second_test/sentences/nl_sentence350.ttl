@@ -1,0 +1,208 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence350.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:nl_sentence350.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence350" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence350" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Be rdfs:label "'s" .
+
+ns1:Between rdfs:label "between" .
+
+ns1:Of rdfs:label "of",
+        "our" .
+
+ns1:communication_1 a ns1:Communication ;
+    rdfs:label "communication" ;
+    dul:associatedWith ns1:network_1 .
+
+ns1:docuverse earmark:hasContent "Also, to preserve our goals, to overcome the dispatches between regions and to find sources of work, it's crucial to give our full support to new technology, to repair communication networks and repair."^^xsd:string .
+
+ns1:find_1 a ns1:Find ;
+    rdfs:label "find" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Theme ns1:source_1 .
+
+ns1:give_1 a ns1:Give ;
+    rdfs:label "give" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Agent ns1:neuter_1 ;
+    vn.role:Recipient ns1:technology_1 ;
+    vn.role:Theme ns1:support_1 ;
+    ns1:be ns1:crucial_1 .
+
+ns1:overcome_1 a ns1:Overcome ;
+    rdfs:label "overcome" ;
+    vn.role:Theme1 ns1:thing_1 ;
+    vn.role:Theme2 ns1:dispatch_1 ;
+    ns1:between ns1:region_1 .
+
+ns1:person_2 coref:coref ns1:person_1 .
+
+ns1:preserve_1 a ns1:Preserve ;
+    rdfs:label "preserve" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Theme ns1:goal_1 .
+
+ns1:repair_1 a ns1:Repair ;
+    rdfs:label "repair" ;
+    boxer:agent ns1:neuter_1 ;
+    boxer:patient ns1:network_1,
+        ns1:repair_2 ;
+    dul:hasQuality ns1:Also ;
+    ns1:be ns1:crucial_1 .
+
+ns1:Communication rdfs:label "communication" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:CommunicationNetwork rdfs:subClassOf ns1:Network .
+
+ns1:Crucial rdfs:label "crucial" .
+
+ns1:Dispatch rdfs:label "dispatches" .
+
+ns1:Find rdfs:label "find" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Full a owl:Class ;
+    rdfs:label "full" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FullSupport a owl:Class ;
+    rdfs:label "full support" ;
+    dul:hasQuality ns1:Full ;
+    rdfs:subClassOf ns1:Support .
+
+ns1:Give rdfs:label "give" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Goal rdfs:label "goals" .
+
+ns1:Network rdfs:label "networks" .
+
+ns1:New a owl:Class ;
+    rdfs:label "new" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:NewTechnology a owl:Class ;
+    rdfs:label "new technology" ;
+    dul:hasQuality ns1:New ;
+    rdfs:subClassOf ns1:Technology .
+
+ns1:Overcome rdfs:label "overcome" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Preserve rdfs:label "preserve" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Region rdfs:label "regions" .
+
+ns1:Source rdfs:label "sources" .
+
+ns1:Support a owl:Class ;
+    rdfs:label "support" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Technology a owl:Class ;
+    rdfs:label "technology" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Work rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:dispatch_1 a ns1:Dispatch ;
+    rdfs:label "dispatches" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:goal_1 a ns1:Goal ;
+    rdfs:label "goals" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:goalOf ns1:person_1 .
+
+ns1:region_1 a ns1:Region ;
+    rdfs:label "regions" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:repair_2 a ns1:Repair ;
+    rdfs:label "repair" .
+
+ns1:source_1 a ns1:Source ;
+    rdfs:label "sources" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:sourceOf ns1:work_1 .
+
+ns1:support_1 a ns1:FullSupport ;
+    rdfs:label "support" ;
+    ns1:fullSupportOf ns1:person_1 .
+
+ns1:technology_1 a ns1:NewTechnology ;
+    rdfs:label "technology" .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "work" .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Also rdfs:label "Also" .
+
+ns1:Repair rdfs:label "Repair",
+        "repair" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:crucial_1 a ns1:Crucial ;
+    rdfs:label "crucial" .
+
+ns1:network_1 a ns1:CommunicationNetwork ;
+    rdfs:label "networks" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "it" .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "our" .
+
+ns1:thing_1 a owl:Thing .
+

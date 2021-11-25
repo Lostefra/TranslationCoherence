@@ -1,0 +1,130 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence274.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence274.ttl a owl:Ontology ;
+    rdfs:label "en_sentence274" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence274" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:consist_1 a ns1:Consist ;
+    rdfs:label "consisted" ;
+    boxer:agent ns1:education_1 ;
+    ns1:consistOf ns1:month_1 .
+
+ns1:docuverse earmark:hasContent "Lincoln 's formal education consisted of about 18 months of schooling; but he was an avid reader and largely self-educated."^^xsd:string .
+
+ns1:reader_1 rdfs:label "reader" ;
+    quant:hasDeterminer quant:an .
+
+ns1:About rdfs:label "about" .
+
+ns1:Avid a owl:Class ;
+    rdfs:label "avid" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:AvidReader a owl:Class ;
+    rdfs:label "avid reader" ;
+    dul:hasQuality ns1:Avid ;
+    rdfs:subClassOf ns1:Reader .
+
+ns1:Consist rdfs:label "consisted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Education a owl:Class ;
+    rdfs:label "education" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Education .
+
+ns1:Formal a owl:Class ;
+    rdfs:label "formal" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FormalEducation a owl:Class ;
+    rdfs:label "Formal Education" ;
+    dul:hasQuality ns1:Formal ;
+    rdfs:subClassOf ns1:Education ;
+    owl:equivalentClass dbpedia:Education .
+
+ns1:Largely rdfs:label "largely" .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Month rdfs:label "months" .
+
+ns1:Reader a owl:Class ;
+    rdfs:label "Lincoln",
+        "reader" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Schooling a owl:Class ;
+    rdfs:label "schooling" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Education .
+
+ns1:Self-educated rdfs:label "self-educated" ;
+    dul:hasQuality ns1:Largely ;
+    owl:sameAs dbpedia:Autodidacticism .
+
+ns1:education_1 a ns1:FormalEducation ;
+    rdfs:label "education" ;
+    ns1:formalEducationOf ns1:Lincoln .
+
+ns1:month_1 a ns1:Month ;
+    rdfs:label "months" ;
+    dul:hasQuality ns1:About ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:at "0001-01-18"^^xsd:date ;
+    ns1:monthOf ns1:Lincoln,
+        ns1:schooling_1 .
+
+ns1:schooling_1 a ns1:Schooling ;
+    rdfs:label "schooling" .
+
+ns1:Lincoln a ns1:AvidReader ;
+    rdfs:label "Lincoln",
+        "reader" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Male,
+        ns1:Self-educated .
+

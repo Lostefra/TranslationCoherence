@@ -1,0 +1,255 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence552.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:ko_sentence552.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence552" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence552" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Agree rdfs:label "agreed" .
+
+ns1:Article rdfs:label "Article" ;
+    boxer:possibleType owl:Thing ;
+    dul:hasDataValue "10"^^xsd:nonNegativeInteger ;
+    ns1:qtyOf ns1:Structure_fund_regulations .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:be_1 a ns1:Be ;
+    rdfs:label "is" ;
+    boxer:agent ns1:goal_1 ;
+    boxer:theme ns1:situation_1 .
+
+ns1:community_1 a ns1:Community ;
+    rdfs:label "community" ;
+    dul:associatedWith ns1:policy_1 .
+
+ns1:docuverse earmark:hasContent "The committee maintains the actual text of Article 10 of the Structure Fund Regulations, and the goal of this guideline is to provide a member country that provides a wide range of indicator guidelines for relevant and agreed community policies. I really quoted the text itself in the quote table."^^xsd:string .
+
+ns1:indicator_1 a ns1:Indicator ;
+    rdfs:label "indicator" ;
+    dul:associatedWith ns1:guideline_2 .
+
+ns1:maintain_1 a ns1:Maintain ;
+    rdfs:label "maintains" ;
+    vn.role:Agent ns1:committee_1 ;
+    vn.role:Theme ns1:text_1 .
+
+ns1:member_1 a ns1:Member ;
+    rdfs:label "member" ;
+    dul:associatedWith ns1:country_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:quote_1 a ns1:ReallyQuote ;
+    rdfs:label "quoted" ;
+    dul:hasQuality ns1:Really ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Topic ns1:text_1 ;
+    ns1:in ns1:table_1 .
+
+ns1:quote_2 a ns1:Quote ;
+    rdfs:label "quote" ;
+    dul:associatedWith ns1:table_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:Actual a owl:Class ;
+    rdfs:label "actual" .
+
+ns1:ActualText rdfs:label "Actual Text" ;
+    dul:associatedWith ns1:Text ;
+    dul:hasModality ns1:Actual .
+
+ns1:AgreeCommunityPolicy rdfs:subClassOf ns1:CommunityPolicy .
+
+ns1:Be rdfs:label "is" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Committee rdfs:label "committee" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Community rdfs:label "community" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:CommunityPolicy rdfs:subClassOf ns1:Policy .
+
+ns1:Country a owl:Class ;
+    rdfs:label "country" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Goal rdfs:label "goal" ;
+    rdfs:subClassOf dul:Goal .
+
+ns1:Indicator rdfs:label "indicator" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:IndicatorGuideline rdfs:subClassOf ns1:Guideline .
+
+ns1:Maintain rdfs:label "maintains" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:MemberCountry a owl:Class ;
+    rdfs:label "Member Country" ;
+    dul:associatedWith ns1:Member ;
+    rdfs:subClassOf ns1:Country .
+
+ns1:Person rdfs:label "I" .
+
+ns1:Policy rdfs:label "policies" .
+
+ns1:QuoteTable rdfs:label "quote table" ;
+    rdfs:subClassOf ns1:Table .
+
+ns1:Really rdfs:label "really" .
+
+ns1:ReallyQuote rdfs:subClassOf ns1:Quote .
+
+ns1:Relevant rdfs:label "relevant" .
+
+ns1:Structure_fund_regulations rdfs:label "Structure Fund Regulations" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Table rdfs:label "table" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Text a owl:Class ;
+    rdfs:label "text" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Wide a owl:Class ;
+    rdfs:label "wide" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:WideRange a owl:Class ;
+    rdfs:label "Wide Range" ;
+    dul:hasQuality ns1:Wide ;
+    rdfs:subClassOf ns1:Range .
+
+ns1:committee_1 a ns1:Committee ;
+    rdfs:label "committee",
+        "itself"^^xsd:string ;
+    quant:hasDeterminer quant:the .
+
+ns1:guideline_1 a ns1:Guideline ;
+    rdfs:label "guideline" ;
+    quant:hasDeterminer quant:this ;
+    owl:sameAs ns1:range_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:provide_1 a ns1:Provide ;
+    rdfs:label "provide" ;
+    vn.role:Agent ns1:goal_1 ;
+    vn.role:Theme ns1:country_1 .
+
+ns1:provide_2 a ns1:Provide ;
+    rdfs:label "provides" ;
+    vn.role:Agent ns1:country_1 ;
+    vn.role:Theme ns1:range_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:country_1,
+        ns1:guideline_2,
+        ns1:policy_1,
+        ns1:provide_1,
+        ns1:provide_2,
+        ns1:range_1 .
+
+ns1:Guideline rdfs:label "guideline",
+        "guidelines" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Member a owl:Class ;
+    rdfs:label "member" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Provide rdfs:label "provide",
+        "provides" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Quote rdfs:label "quote",
+        "quoted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Range a owl:Class ;
+    rdfs:label "range" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:goal_1 a ns1:Goal ;
+    rdfs:label "goal" ;
+    quant:hasDeterminer quant:the ;
+    ns1:goalOf ns1:guideline_1 .
+
+ns1:table_1 a ns1:QuoteTable ;
+    rdfs:label "table" .
+
+ns1:text_1 a ns1:ActualText ;
+    rdfs:label "text" ;
+    dul:hasQuality owl:Thing ;
+    quant:hasDeterminer quant:the ;
+    ns1:actualTextOf "10"^^xsd:nonNegativeInteger .
+
+ns1:guideline_2 a ns1:IndicatorGuideline ;
+    rdfs:label "guidelines" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:for ns1:policy_1 .
+
+ns1:policy_1 a dbpedia:Policy,
+        ns1:AgreeCommunityPolicy ;
+    rdfs:label "policies" ;
+    dul:hasQuality ns1:Relevant ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:range_1 a ns1:Range,
+        ns1:WideRange ;
+    rdfs:label "range" ;
+    quant:hasDeterminer quant:a ;
+    ns1:wideRangeOf ns1:guideline_2 .
+
+ns1:country_1 a ns1:MemberCountry ;
+    rdfs:label "country" .
+

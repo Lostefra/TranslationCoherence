@@ -1,0 +1,213 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence740.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Ehighest> rdfs:label "highest" .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Elargest> rdfs:label "largest" .
+
+translation_coherence:zh_sentence740.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence740" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence740" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Algeria rdfs:label "Algeria" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Algeria .
+
+ns1:Highest rdfs:label "highest" .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:With rdfs:label "with" .
+
+ns1:accordance_1 a ns1:Accordance ;
+    rdfs:label "accordance" .
+
+ns1:docuverse earmark:hasContent "In accordance with UNDP, Algeria has the largest housing unit, with the highest housing costs, and public officials have said that there is a direct shortage of 1.5 million housing units."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "has" ;
+    vn.role:Patient ns1:unit_1 ;
+    ns1:inAccordanceWith ns1:Undp ;
+    ns1:with ns1:cost_1 .
+
+ns1:housing_1 a ns1:Housing ;
+    rdfs:label "housing" ;
+    dul:associatedWith ns1:unit_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:housing_2 a ns1:Housing ;
+    rdfs:label "housing" ;
+    dul:associatedWith ns1:cost_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:housing_3 a ns1:Housing ;
+    rdfs:label "housing" ;
+    dul:associatedWith ns1:unit_2 ;
+    quant:hasQuantifier quant:million .
+
+ns1:official_1 a ns1:PublicOfficial ;
+    rdfs:label "officials" ;
+    dul:hasQuality ns1:Public ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "said" ;
+    vn.role:Topic ns1:situation_5 .
+
+ns1:shortage_1 rdfs:label "shortage" ;
+    quant:hasDeterminer quant:a .
+
+ns1:situation_1 a ns1:Situation ;
+    ns1:entails ns1:situation_2 .
+
+ns1:situation_3 a ns1:Situation ;
+    ns1:entails ns1:situation_4 .
+
+dbpedia:Algeria a schema:Country,
+        schema:Place .
+
+ns1:Accordance rdfs:label "accordance" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Cost rdfs:label "costs" .
+
+ns1:DirectShortage a owl:Class ;
+    rdfs:label "Direct Shortage" ;
+    dul:hasQuality ns1:Direct ;
+    rdfs:subClassOf ns1:Shortage .
+
+ns1:Have rdfs:label "Have",
+        "has" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:HighestHousingCost rdfs:subClassOf ns1:HousingCost .
+
+ns1:Largest a owl:Class ;
+    rdfs:label "largest" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:LargestHousing a owl:Class ;
+    dul:hasQuality ns1:Largest ;
+    rdfs:subClassOf ns1:Housing .
+
+ns1:LargestHousingUnit a owl:Class ;
+    rdfs:label "Largest Housing Unit" ;
+    dul:associatedWith ns1:LargestHousing ;
+    rdfs:subClassOf ns1:HousingUnit .
+
+ns1:Official rdfs:label "officials" .
+
+ns1:Public rdfs:label "public" ;
+    owl:sameAs dbpedia:Public_sector .
+
+ns1:PublicOfficial rdfs:subClassOf ns1:Official .
+
+ns1:Say rdfs:label "said" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Shortage a owl:Class ;
+    rdfs:label "shortage" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:There rdfs:label "there" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Undp rdfs:label "UNDP" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:United_Nations_Development_Programme .
+
+ns1:Unit a owl:Class ;
+    rdfs:label "unit",
+        "units" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:unit_1 .
+
+ns1:situation_4 a ns1:Situation ;
+    boxing:involves ns1:cost_1 .
+
+ns1:situation_5 a ns1:Situation ;
+    boxing:involves ns1:there_1,
+        ns1:unit_2 .
+
+ns1:there_1 a ns1:DirectShortage,
+        ns1:There ;
+    rdfs:label "there" ;
+    dul:hasQuality ns1:Direct ;
+    ns1:thereOf ns1:unit_2 .
+
+ns1:Direct a owl:Class ;
+    rdfs:label "direct" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:HousingCost rdfs:subClassOf ns1:Cost .
+
+ns1:cost_1 a ns1:HighestHousingCost,
+        ns1:HousingCost ;
+    rdfs:label "costs" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:highestAmong ns1:HousingCost .
+
+ns1:unit_1 a ns1:HousingUnit,
+        ns1:LargestHousingUnit ;
+    rdfs:label "unit" ;
+    ns1:largestAmong ns1:HousingUnit .
+
+ns1:unit_2 a ns1:HousingUnit ;
+    rdfs:label "units" ;
+    dul:hasDataValue "1500000.0"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:HousingUnit a owl:Class ;
+    rdfs:label "Housing Unit" ;
+    dul:associatedWith ns1:Housing ;
+    rdfs:subClassOf ns1:Unit .
+
+ns1:Housing a owl:Class ;
+    rdfs:label "housing" ;
+    rdfs:subClassOf dul:PhysicalObject .
+

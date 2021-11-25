@@ -1,0 +1,262 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence457.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Ebest> rdfs:label "best" .
+
+translation_coherence:fi_sentence457.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence457" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence457" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Be rdfs:label "is" .
+
+ns1:Because rdfs:label "because" .
+
+ns1:Consulting a ns1:BestWay,
+        ns1:Way ;
+    rdfs:label "Consulting" ;
+    boxer:possibleType owl:Thing ;
+    quant:hasDeterminer quant:the ;
+    owl:sameAs ns1:coordination_1 ;
+    ns1:bestAmong ns1:Way .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Theme rdfs:label "necessary" .
+
+ns1:docuverse earmark:hasContent "Consulting is the best way to ensure the correct coordination and participation of all local and regional actors in decision-making. Second, it is necessary to make administrative procedures simpler and more transparent, because they are too often unne.arily long and complex to prevent the availability of funds."^^xsd:string .
+
+ns1:ensure_1 a ns1:Ensure ;
+    rdfs:label "ensure" ;
+    vn.role:Theme ns1:coordination_1 .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "make" ;
+    dul:associatedWith ns1:Second ;
+    vn.role:Agent ns1:neuter_1 ;
+    vn.role:Theme ns1:transparent_1 ;
+    ns1:be ns1:thing_1,
+        ns1:thing_2 ;
+    ns1:because ns1:prevent_1 .
+
+ns1:participation_1 rdfs:label "participation" .
+
+ns1:procedure_1 a ns1:AdministrativeProcedure ;
+    rdfs:label "procedures" ;
+    dul:hasQuality ns1:Administrative,
+        ns1:Simpler ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:actor_1 ;
+    ns1:entails ns1:situation_2 .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves ns1:Complex,
+        ns1:Long,
+        ns1:Unne.arily,
+        ns1:thing_5 ;
+    dul:hasQuality ns1:Often,
+        ns1:Too .
+
+ns1:situation_4 a ns1:Situation ;
+    boxing:involves ns1:Complex,
+        ns1:Long,
+        ns1:Unne.arily,
+        ns1:thing_5 ;
+    dul:hasQuality ns1:Often,
+        ns1:Too .
+
+ns1:way_1 rdfs:label "way" .
+
+ns1:Actor rdfs:label "actors" .
+
+ns1:Administrative rdfs:label "administrative" ;
+    owl:sameAs dbpedia:Public_administration .
+
+ns1:AdministrativeProcedure rdfs:subClassOf ns1:Procedure .
+
+ns1:Availability rdfs:label "availability" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Best a owl:Class ;
+    rdfs:label "best" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:BestWay a owl:Class ;
+    rdfs:label "Best Way" ;
+    dul:hasQuality ns1:Best ;
+    rdfs:subClassOf ns1:Way .
+
+ns1:Correct a owl:Class ;
+    rdfs:label "correct" .
+
+ns1:CorrectCoordination rdfs:label "correct coordination" ;
+    dul:associatedWith ns1:Coordination ;
+    dul:hasModality ns1:Correct .
+
+ns1:Decision-making a owl:Class ;
+    rdfs:label "decision-making" ;
+    owl:equivalentClass dbpedia:Decision-making .
+
+ns1:Ensure rdfs:label "ensure" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Fund rdfs:label "funds" .
+
+ns1:Local rdfs:label "local" .
+
+ns1:Make rdfs:label "make" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:More a owl:Class ;
+    rdfs:label "more" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:MoreTransparent a owl:Class ;
+    rdfs:label "More Transparent" ;
+    dul:hasQuality ns1:More ;
+    rdfs:subClassOf ns1:Transparent .
+
+ns1:Participation rdfs:label "participation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Prevent rdfs:label "prevent" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Procedure rdfs:label "procedures" .
+
+ns1:Regional rdfs:label "regional" .
+
+ns1:RegionalActor rdfs:subClassOf ns1:Actor .
+
+ns1:Second rdfs:label "Second" ;
+    boxer:possibleType owl:Thing .
+
+ns1:Simpler rdfs:label "simpler" .
+
+ns1:Transparent a owl:Class ;
+    rdfs:label "transparent" .
+
+ns1:availability_1 a ns1:Availability ;
+    rdfs:label "availability" ;
+    quant:hasDeterminer quant:the ;
+    ns1:availabilityOf ns1:fund_1 .
+
+ns1:fund_1 a ns1:Fund ;
+    rdfs:label "funds" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "it" .
+
+ns1:prevent_1 a ns1:Prevent ;
+    rdfs:label "prevent" ;
+    vn.role:Agent ns1:thing_5 ;
+    vn.role:Theme ns1:availability_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:actor_1,
+        ns1:decision-making_1 .
+
+ns1:thing_1 a owl:Thing ;
+    boxer:theme ns1:thing_4 .
+
+ns1:thing_2 a owl:Thing ;
+    boxer:theme ns1:thing_3 .
+
+ns1:thing_3 a owl:Thing .
+
+ns1:thing_4 a owl:Thing .
+
+ns1:transparent_1 a ns1:MoreTransparent ;
+    rdfs:label "transparent" .
+
+ns1:Coordination a owl:Class ;
+    rdfs:label "coordination" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Often rdfs:label "often" .
+
+ns1:Too rdfs:label "too" .
+
+ns1:coordination_1 a ns1:Coordination,
+        ns1:CorrectCoordination,
+        ns1:Participation ;
+    rdfs:label "coordination" ;
+    quant:hasDeterminer quant:the ;
+    ns1:correctCoordinationOf ns1:actor_1 .
+
+ns1:decision-making_1 a ns1:Decision-making ;
+    rdfs:label "decision-making" .
+
+ns1:Complex rdfs:label "complex" ;
+    dul:hasQuality ns1:Unne.arily .
+
+ns1:Long rdfs:label "long" ;
+    dul:hasQuality ns1:Unne.arily .
+
+ns1:Way a owl:Class ;
+    rdfs:label "way" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:actor_1 a ns1:RegionalActor ;
+    rdfs:label "actors" ;
+    dul:hasQuality ns1:Local,
+        ns1:Regional ;
+    quant:hasQuantifier quant:all,
+        quant:multiple ;
+    ns1:in ns1:decision-making_1 .
+
+ns1:thing_5 a owl:Thing ;
+    rdfs:label "they" ;
+    dul:hasQuality ns1:Complex,
+        ns1:Long .
+
+ns1:Unne.arily rdfs:label "unne.arily" .
+
+owl:Thing rdfs:label "it",
+        "they" .
+

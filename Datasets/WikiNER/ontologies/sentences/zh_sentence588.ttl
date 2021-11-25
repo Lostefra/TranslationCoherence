@@ -1,0 +1,127 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence588.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence588.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence588" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence588" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "her" .
+
+ns1:begin_1 a ns1:Begin ;
+    rdfs:label "began" ;
+    dul:hasQuality ns1:Later ;
+    vn.role:Agent ns1:female_1 ;
+    vn.role:Theme ns1:allow_1 .
+
+ns1:docuverse earmark:hasContent "Later, she began to allow them to read her new and innovative draft Atlas Shruft, which was prepared."^^xsd:string .
+
+ns1:draft_1 rdfs:label "draft" .
+
+owl:Thing rdfs:label "them" .
+
+ns1:Allow rdfs:label "allow" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Begin rdfs:label "began" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Draft a owl:Class ;
+    rdfs:label "Atlas Shruft",
+        "draft" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Female rdfs:label "she" .
+
+ns1:InnovativeDraft a owl:Class ;
+    rdfs:label "Innovative Draft" ;
+    dul:hasQuality ns1:Innovative ;
+    rdfs:subClassOf ns1:Draft .
+
+ns1:Later rdfs:label "Later" .
+
+ns1:New rdfs:label "new" .
+
+ns1:Prepare rdfs:label "prepared" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Read rdfs:label "read" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:allow_1 a ns1:Allow ;
+    rdfs:label "allow" ;
+    vn.role:Agent ns1:female_1 ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:prepare_1 a ns1:Prepare ;
+    rdfs:label "prepared" ;
+    vn.role:Theme ns1:Atlas_shruft_atlas_shruft .
+
+ns1:read_1 a ns1:Read ;
+    rdfs:label "read" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Theme ns1:Atlas_shruft_atlas_shruft .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:prepare_1,
+        ns1:read_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "them" .
+
+ns1:Atlas_shruft_atlas_shruft a ns1:InnovativeDraft ;
+    rdfs:label "Atlas Shruft",
+        "draft" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality ns1:Innovative,
+        ns1:New ;
+    ns1:of ns1:female_1 .
+
+ns1:Innovative a owl:Class ;
+    rdfs:label "innovative" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Historical_linguistics .
+
+ns1:female_1 a ns1:Female ;
+    rdfs:label "her",
+        "she" ;
+    coref:coref ns1:female_1 .
+

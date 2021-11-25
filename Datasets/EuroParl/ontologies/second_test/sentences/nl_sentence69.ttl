@@ -1,0 +1,220 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence69.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:nl_sentence69.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence69" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence69" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Entails rdfs:label "if" .
+
+ns1:docuverse earmark:hasContent "Given the commission is represented by Vice President the Palacio, I think it would help if the commission could let us know how ready to present this program as agreed. Alternatively, parliament isn't ready to investigate this program, as some suggest."^^xsd:string .
+
+ns1:give_1 a ns1:Give ;
+    rdfs:label "Given" ;
+    vn.role:Agent ns1:commission_1 ;
+    vn.role:Theme ns1:think_1 .
+
+ns1:represent_1 a ns1:Represent ;
+    rdfs:label "represented" ;
+    vn.role:Agent ns1:Palacio ;
+    vn.role:Theme ns1:commission_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:ready_2,
+        ns1:situation_2 ;
+    dul:hasQuality ns1:Alternatively .
+
+ns1:Agree rdfs:label "agreed" .
+
+ns1:Alternatively rdfs:label "Alternatively" .
+
+ns1:Commission rdfs:label "commission" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Give rdfs:label "Given" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Help rdfs:label "help" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:How rdfs:label "how" .
+
+ns1:HowReady rdfs:label "how ready" ;
+    rdfs:subClassOf ns1:Ready .
+
+ns1:Know rdfs:label "know" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Let rdfs:label "let" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Parliament rdfs:label "parliament" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Present rdfs:label "present" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Program rdfs:label "program" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Represent rdfs:label "represented" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Suggest rdfs:label "suggest" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Think rdfs:label "think" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Vice_president rdfs:label "Vice President" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Vice_president .
+
+ns1:help_1 a ns1:Help ;
+    rdfs:label "help" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:Palacio .
+
+ns1:know_1 a ns1:Know ;
+    rdfs:label "know" ;
+    vn.role:Agent ns1:person_2 .
+
+ns1:let_1 a ns1:Let ;
+    rdfs:label "let" ;
+    boxer:agent ns1:commission_1 ;
+    boxer:theme ns1:situation_3 ;
+    boxing:hasModality boxing:Necessary,
+        boxing:Possible ;
+    ns1:entails ns1:situation_3 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:ready_1 a ns1:HowReady ;
+    rdfs:label "ready" ;
+    dul:hasQuality ns1:How ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Product ns1:present_1 .
+
+ns1:ready_2 a ns1:Ready ;
+    rdfs:label "ready" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:parliament_1 ;
+    vn.role:Product ns1:investigate_1 ;
+    ns1:as ns1:suggest_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Investigate,
+        ns1:investigate_1 .
+
+ns1:suggest_1 a ns1:Suggest ;
+    rdfs:label "suggest" ;
+    vn.role:Agent ns1:thing_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "some" .
+
+ns1:think_1 a ns1:Think ;
+    rdfs:label "think" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:situation_3 .
+
+ns1:Investigate rdfs:label "investigate" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Palacio rdfs:label "Palacio" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Vice_president ;
+    dul:hasQuality owl:Thing .
+
+ns1:Person rdfs:label "I",
+        "us" .
+
+ns1:Ready rdfs:label "Ready",
+        "ready" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:agree_1 a ns1:Agree ;
+    rdfs:label "agreed" .
+
+ns1:investigate_1 a ns1:Investigate ;
+    rdfs:label "investigate" ;
+    vn.role:Agent ns1:parliament_1 ;
+    vn.role:Location ns1:program_1 .
+
+ns1:parliament_1 a ns1:Parliament ;
+    rdfs:label "parliament" .
+
+ns1:present_1 a ns1:Present ;
+    rdfs:label "present" ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Theme ns1:program_1 ;
+    ns1:as ns1:agree_1 .
+
+ns1:program_1 a ns1:Program ;
+    rdfs:label "program" ;
+    quant:hasDeterminer quant:this .
+
+owl:Thing rdfs:label "it",
+        "some" .
+
+ns1:commission_1 a ns1:Commission ;
+    rdfs:label "commission" ;
+    quant:hasDeterminer quant:the .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "us" .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary,
+        boxing:Possible ;
+    boxing:involves ns1:agree_1,
+        ns1:help_1,
+        ns1:know_1,
+        ns1:let_1,
+        ns1:present_1,
+        ns1:ready_1 .
+

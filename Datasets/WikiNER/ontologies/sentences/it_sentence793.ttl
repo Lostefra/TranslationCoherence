@@ -1,0 +1,211 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence793.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "from" .
+
+translation_coherence:it_sentence793.ttl a owl:Ontology ;
+    rdfs:label "it_sentence793" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence793" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Into rdfs:label "into" .
+
+ns1:Like rdfs:label "Like",
+        "like" .
+
+ns1:Noteq rdfs:label "other" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Onscaleof rdfs:label "on a scale of" .
+
+ns1:To rdfs:label "to" .
+
+ns1:argue_1 a ns1:Argue ;
+    rdfs:label "argued" ;
+    vn.role:Actor ns1:Morgan ;
+    vn.role:Theme ns1:situation_1 ;
+    ns1:like ns1:scholar_1 .
+
+ns1:docuverse earmark:hasContent "Like other scholars of his time (like Edward_Tylor), Morgan argued that human societies could be classified into categories of cultural evolution on a scale of progression going from wild, barbarism, to civilization."^^xsd:string .
+
+ns1:male_1 rdfs:label "his" .
+
+ns1:Argue rdfs:label "argued" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Barbarism a owl:Class ;
+    rdfs:label "barbarism" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Barbarian .
+
+ns1:Category rdfs:label "categories" .
+
+ns1:Civilization a owl:Class ;
+    rdfs:label "civilization" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Civilization .
+
+ns1:Classify rdfs:label "classified" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Cultural a owl:Class ;
+    rdfs:label "cultural" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:CulturalEvolution a owl:Class ;
+    rdfs:label "Cultural Evolution" ;
+    dul:hasQuality ns1:Cultural ;
+    rdfs:subClassOf ns1:Evolution ;
+    owl:equivalentClass dbpedia:Cultural_evolutionism .
+
+ns1:Edward_tylor rdfs:label "Edward Tylor" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Edward_Burnett_Tylor .
+
+ns1:Evolution a owl:Class ;
+    rdfs:label "evolution" ;
+    rdfs:subClassOf dul:Process .
+
+ns1:Go rdfs:label "going" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Human rdfs:label "human" ;
+    owl:sameAs dbpedia:Human .
+
+ns1:HumanSociety rdfs:subClassOf ns1:Society .
+
+ns1:Male rdfs:label "Morgan" .
+
+ns1:Progression rdfs:label "progression" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Scale rdfs:label "scale" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:Society rdfs:label "societies" .
+
+ns1:Time a owl:Class ;
+    rdfs:label "time" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Time .
+
+ns1:Wild rdfs:label "wild" .
+
+ns1:classify_1 a ns1:Classify ;
+    rdfs:label "classified" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Theme ns1:society_1 ;
+    ns1:into ns1:category_1 .
+
+ns1:go_1 a ns1:Go ;
+    rdfs:label "going" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Location ns1:barbarism_1 ;
+    vn.role:Theme ns1:category_1 ;
+    ns1:to ns1:civilization_1 .
+
+ns1:scale_1 a ns1:Scale ;
+    rdfs:label "scale" ;
+    quant:hasDeterminer quant:a .
+
+ns1:scholar_1 a ns1:Scholar ;
+    rdfs:label "other" ;
+    owl:differentFrom ns1:scholar_2 ;
+    ns1:scholarOf ns1:time_1 .
+
+ns1:scholar_2 a dbpedia:Scholasticism,
+        ns1:Scholar ;
+    rdfs:label "scholars" ;
+    quant:hasDeterminer quant:other ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:barbarism_1,
+        ns1:category_1,
+        ns1:civilization_1,
+        ns1:classify_1,
+        ns1:evolution_1,
+        ns1:go_1,
+        ns1:progression_1,
+        ns1:scale_1,
+        ns1:society_1 .
+
+ns1:time_1 a ns1:Time ;
+    rdfs:label "time" ;
+    ns1:like ns1:Edward_tylor ;
+    ns1:timeOf ns1:Morgan .
+
+ns1:Morgan a ns1:Male ;
+    rdfs:label "Morgan" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Scholar rdfs:label "other",
+        "scholars" .
+
+ns1:barbarism_1 a ns1:Barbarism ;
+    rdfs:label "barbarism" ;
+    dul:hasQuality ns1:Wild .
+
+ns1:civilization_1 a ns1:Civilization ;
+    rdfs:label "civilization" .
+
+ns1:evolution_1 a ns1:CulturalEvolution ;
+    rdfs:label "evolution" .
+
+ns1:progression_1 a ns1:Progression ;
+    rdfs:label "progression" .
+
+ns1:society_1 a dbpedia:Society,
+        ns1:HumanSociety ;
+    rdfs:label "societies" ;
+    dul:hasQuality ns1:Human ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:category_1 a ns1:Category ;
+    rdfs:label "categories" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:categoryOf ns1:evolution_1 ;
+    ns1:onScaleOf ns1:progression_1 .
+

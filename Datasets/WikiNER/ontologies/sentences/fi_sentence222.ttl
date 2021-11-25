@@ -1,0 +1,172 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence222.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "at" .
+
+translation_coherence:fi_sentence222.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence222" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence222" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Because rdfs:label "because" .
+
+ns1:Eq rdfs:label "was" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:Paris a ns1:Coward ;
+    rdfs:label "Paris",
+        "coward" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Hector ;
+    quant:hasDeterminer quant:a ;
+    owl:sameAs dbpedia:Paris,
+        dbpedia:Paris_(mythology) .
+
+ns1:Rel rdfs:label "," .
+
+ns1:brother_1 rdfs:label "brother" .
+
+ns1:coward_1 rdfs:label "coward" .
+
+ns1:deny_1 a ns1:Deny ;
+    rdfs:label "deny" ;
+    vn.role:Agent ns1:version_1 ;
+    vn.role:Theme ns1:murderer_1 ;
+    ns1:because ns1:remain_1 .
+
+ns1:docuverse earmark:hasContent "Both versions deny the murderer of all kinds of bravery, because Paris was a coward, not the man his brother Hector was, and Achilles remained weak at the battlefield."^^xsd:string .
+
+ns1:man_1 rdfs:label "man" .
+
+ns1:situation_1 a ns1:Situation ;
+    ns1:entails ns1:situation_2 .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves ns1:Hector,
+        ns1:Man .
+
+dbpedia:Paris a schema:Place .
+
+ns1:Achilles rdfs:label "Achilles" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Weak ;
+    owl:sameAs dbpedia:Achilles .
+
+ns1:Battlefield rdfs:label "battlefield" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Bravery a owl:Class ;
+    rdfs:label "bravery" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Courage .
+
+ns1:Brother rdfs:label "Hector",
+        "brother" ;
+    rdfs:subClassOf dul:Person,
+        ns1:Man .
+
+ns1:Coward rdfs:label "Paris",
+        "coward" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Deny rdfs:label "deny" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Kind rdfs:label "kinds" .
+
+ns1:Murderer rdfs:label "murderer" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Remain rdfs:label "remained" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Version rdfs:label "versions" .
+
+ns1:Weak rdfs:label "weak" .
+
+ns1:battlefield_1 a ns1:Battlefield ;
+    rdfs:label "battlefield" ;
+    quant:hasDeterminer quant:the .
+
+ns1:bravery_1 a ns1:Bravery ;
+    rdfs:label "bravery" .
+
+ns1:kind_1 a ns1:Kind ;
+    rdfs:label "kinds" ;
+    quant:hasQuantifier quant:all,
+        quant:multiple ;
+    ns1:kindOf ns1:bravery_1 .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "his" .
+
+ns1:murderer_1 a ns1:Murderer ;
+    rdfs:label "murderer" ;
+    quant:hasDeterminer quant:the ;
+    ns1:murdererOf ns1:kind_1 .
+
+ns1:remain_1 a ns1:Remain ;
+    rdfs:label "remained" ;
+    vn.role:Location ns1:battlefield_1 ;
+    vn.role:Theme ns1:Achilles .
+
+ns1:situation_2 a ns1:Situation .
+
+ns1:version_1 a ns1:Version ;
+    rdfs:label "versions" ;
+    quant:hasQuantifier quant:both,
+        quant:multiple .
+
+ns1:Hector a ns1:Brother,
+        ns1:Man ;
+    rdfs:label "Hector",
+        "brother" ;
+    boxer:possibleType foaf:Person ;
+    quant:hasDeterminer quant:the ;
+    owl:sameAs dbpedia:Hector ;
+    ns1:of ns1:male_1 .
+
+ns1:Man rdfs:label "man" ;
+    rdfs:subClassOf dul:Person .
+

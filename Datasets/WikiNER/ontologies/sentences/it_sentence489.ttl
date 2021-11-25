@@ -1,0 +1,183 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence489.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Predicate rdfs:label "for" .
+
+translation_coherence:it_sentence489.ttl a owl:Ontology ;
+    rdfs:label "it_sentence489" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence489" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:During rdfs:label "during" .
+
+ns1:For rdfs:label "For",
+        "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:do_1 a ns1:Do ;
+    rdfs:label "done" ;
+    boxer:patient ns1:work_1 ;
+    ns1:in ns1:category_1 .
+
+ns1:docuverse earmark:hasContent "Honored professionals have been rewarded for all the work done in a certain category for the qualification period; For example, Emil_Jannings received the award for two films he starred in during that period."^^xsd:string .
+
+ns1:qualification_1 a ns1:Qualification ;
+    rdfs:label "qualification" ;
+    dul:associatedWith ns1:period_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:receive_1 a ns1:Receive ;
+    rdfs:label "received" ;
+    vn.role:Agent ns1:emil_jannings_1 ;
+    vn.role:Theme ns1:award_1 ;
+    ns1:for ns1:example_1 .
+
+ns1:reward_1 a ns1:Reward ;
+    rdfs:label "rewarded" ;
+    vn.role:Predicate ns1:work_1 ;
+    vn.role:Theme ns1:professional_1 .
+
+ns1:star_1 a ns1:Star ;
+    rdfs:label "starred" ;
+    vn.role:Agent ns1:male_1 ;
+    ns1:during ns1:period_1 ;
+    ns1:in ns1:film_1 .
+
+ns1:Award rdfs:label "award" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Category a owl:Class ;
+    rdfs:label "category" ;
+    rdfs:subClassOf dul:Organism .
+
+ns1:Certain a owl:Class ;
+    rdfs:label "certain" .
+
+ns1:CertainCategory rdfs:label "Certain Category" ;
+    dul:associatedWith ns1:Category ;
+    dul:hasModality ns1:Certain .
+
+ns1:Do rdfs:label "done" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Emil_jannings a owl:Class ;
+    rdfs:label "Emil Jannings" ;
+    owl:equivalentClass dbpedia:Emil_Jannings .
+
+ns1:Example rdfs:label "example" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Film rdfs:label "films" .
+
+ns1:Honored rdfs:label "Honored" .
+
+ns1:HonoredProfessional rdfs:subClassOf ns1:Professional .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Period a owl:Class ;
+    rdfs:label "period" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Professional rdfs:label "professionals" .
+
+ns1:QualificationPeriod a owl:Class ;
+    rdfs:label "qualification period" ;
+    dul:associatedWith ns1:Qualification ;
+    rdfs:subClassOf ns1:Period .
+
+ns1:Receive rdfs:label "received" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Reward rdfs:label "rewarded" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Star rdfs:label "starred" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Work rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:award_1 a ns1:Award ;
+    rdfs:label "award" ;
+    quant:hasDeterminer quant:the ;
+    ns1:for ns1:film_1 .
+
+ns1:category_1 a ns1:CertainCategory ;
+    rdfs:label "category" ;
+    quant:hasDeterminer quant:a ;
+    ns1:for ns1:period_1 .
+
+ns1:emil_jannings_1 a ns1:Emil_jannings ;
+    rdfs:label "Emil Jannings" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:example_1 a ns1:Example ;
+    rdfs:label "example" .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "he" .
+
+ns1:professional_1 a ns1:HonoredProfessional ;
+    rdfs:label "professionals" ;
+    dul:hasQuality ns1:Honored ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Qualification a owl:Class ;
+    rdfs:label "qualification" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:film_1 a ns1:Film ;
+    rdfs:label "films" ;
+    dul:hasDataValue "2"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple,
+        quant:two .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "work" ;
+    quant:hasDeterminer quant:the .
+
+ns1:period_1 a ns1:QualificationPeriod ;
+    rdfs:label "period" .
+

@@ -1,0 +1,165 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence450.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "so" .
+
+vn.role:Theme rdfs:label "on" .
+
+translation_coherence:it_sentence450.ttl a owl:Ontology ;
+    rdfs:label "it_sentence450" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence450" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:So rdfs:label "so" .
+
+ns1:believe_1 a ns1:Believe ;
+    rdfs:label "believed" ;
+    vn.role:Agent ns1:Plato ;
+    vn.role:Theme ns1:follow_1 .
+
+ns1:docuverse earmark:hasContent "Plato believed that deduction would simply follow the premises, so he focused on maintaining solid premises so that the conclusion would logically follow."^^xsd:string .
+
+dbpedia:Plato a schema:Person .
+
+ns1:Believe rdfs:label "believed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Conclusion a owl:Class ;
+    rdfs:label "conclusion" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Logical_consequence .
+
+ns1:Deduction a owl:Class ;
+    rdfs:label "deduction" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Deductive_reasoning .
+
+ns1:Focus rdfs:label "focused" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Maintain rdfs:label "maintaining" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Plato rdfs:label "Plato" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Plato .
+
+ns1:Simply rdfs:label "simply" .
+
+ns1:SimplyFollow rdfs:label "simply follow" ;
+    rdfs:subClassOf ns1:Follow .
+
+ns1:Solid rdfs:label "solid" ;
+    owl:sameAs dbpedia:Solid_modeling .
+
+ns1:SolidPremise rdfs:subClassOf ns1:Premise .
+
+ns1:conclusion_1 a ns1:Conclusion ;
+    rdfs:label "conclusion" ;
+    quant:hasDeterminer quant:the .
+
+ns1:deduction_1 a ns1:Deduction ;
+    rdfs:label "deduction" ;
+    quant:hasDeterminer quant:that .
+
+ns1:focus_1 a ns1:Focus ;
+    rdfs:label "focused" ;
+    vn.role:Experiencer ns1:male_1 ;
+    vn.role:Theme ns1:thing_1 .
+
+ns1:follow_1 a ns1:SimplyFollow ;
+    rdfs:label "follow" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Simply ;
+    vn.role:Agent ns1:deduction_1 ;
+    vn.role:Location ns1:situation_1 ;
+    vn.role:Theme ns1:premise_1 .
+
+ns1:maintain_1 a ns1:Maintain ;
+    rdfs:label "maintaining" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Theme ns1:premise_2 ;
+    ns1:so ns1:follow_2 .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "he" .
+
+ns1:premise_1 a ns1:Premise ;
+    rdfs:label "premises" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:Follow,
+        ns1:Logically,
+        ns1:LogicallyFollow,
+        ns1:focus_1,
+        ns1:follow_2,
+        ns1:maintain_1,
+        ns1:premise_2 .
+
+ns1:Logically rdfs:label "logically" ;
+    owl:sameAs dbpedia:Logic .
+
+ns1:LogicallyFollow rdfs:label "logically follow" ;
+    rdfs:subClassOf ns1:Follow .
+
+ns1:Premise rdfs:label "premises" .
+
+ns1:follow_2 a ns1:LogicallyFollow ;
+    rdfs:label "follow" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Logically ;
+    vn.role:Theme ns1:conclusion_1 .
+
+ns1:premise_2 a ns1:SolidPremise ;
+    rdfs:label "premises" ;
+    dul:hasQuality ns1:Solid ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:Follow rdfs:label "follow" ;
+    rdfs:subClassOf dul:Event .
+

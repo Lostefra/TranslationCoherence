@@ -1,0 +1,168 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence396.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence396.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence396" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence396" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:That rdfs:label "that" .
+
+ns1:docuverse earmark:hasContent "Gtibourg spoke of the expectations of contempt for Lincoln, that the world would be very few to note that, even in the long term, we have said here."^^xsd:string .
+
+ns1:few_1 rdfs:label "few" .
+
+ns1:speak_1 a ns1:Speak ;
+    rdfs:label "spoke" ;
+    vn.role:Agent ns1:Gtibourg ;
+    ns1:speakOf ns1:expectation_1 .
+
+owl:Thing rdfs:label "that" .
+
+ns1:Contempt rdfs:label "contempt" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Even rdfs:label "even" .
+
+ns1:Expectation rdfs:label "expectations" .
+
+ns1:Gtibourg rdfs:label "Gtibourg" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Long a owl:Class ;
+    rdfs:label "long" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:LongTerm a owl:Class ;
+    rdfs:label "long term" ;
+    dul:hasQuality ns1:Long ;
+    rdfs:subClassOf ns1:Term .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Speak rdfs:label "spoke" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Term a owl:Class ;
+    rdfs:label "term" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:VeryFew rdfs:label "very few" ;
+    rdfs:subClassOf ns1:Few .
+
+ns1:World rdfs:label "world" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:contempt_1 a ns1:Contempt ;
+    rdfs:label "contempt" ;
+    ns1:for ns1:Lincoln ;
+    ns1:that ns1:situation_1 .
+
+ns1:expectation_1 a ns1:Expectation ;
+    rdfs:label "expectations" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:expectationOf ns1:contempt_1 .
+
+ns1:note_1 a ns1:Note ;
+    rdfs:label "note" ;
+    vn.role:Agent ns1:world_1 ;
+    vn.role:Topic ns1:thing_1 ;
+    ns1:evenIn ns1:term_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "said" ;
+    dul:hasQuality ns1:Here ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Topic ns1:world_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:Even,
+        ns1:Few,
+        ns1:Here,
+        ns1:Note,
+        ns1:Say,
+        ns1:Very,
+        ns1:note_1,
+        ns1:say_1,
+        ns1:world_1 .
+
+ns1:term_1 a ns1:LongTerm ;
+    rdfs:label "term" ;
+    quant:hasDeterminer quant:that,
+        quant:the ;
+    quant:hasQuantifier quant:few .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "that" .
+
+ns1:Few rdfs:label "few" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Here rdfs:label "here" .
+
+ns1:Note rdfs:label "note" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Say rdfs:label "said" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Very rdfs:label "very" .
+
+ns1:world_1 a ns1:VeryFew,
+        ns1:World ;
+    rdfs:label "world" ;
+    dul:hasQuality ns1:Very ;
+    quant:hasDeterminer quant:the .
+

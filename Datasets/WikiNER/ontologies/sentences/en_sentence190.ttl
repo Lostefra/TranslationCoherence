@@ -1,0 +1,160 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence190.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence190.ttl a owl:Ontology ;
+    rdfs:label "en_sentence190" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence190" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Inversionof rdfs:label "In another version of" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:anoint_1 a ns1:Anoint ;
+    rdfs:label "anointed" ;
+    vn.role:Agent ns1:Thetis ;
+    vn.role:Destination ns1:boy_1 ;
+    ns1:in ns1:ambrosia_1 ;
+    ns1:inVersionOf ns1:story_1 .
+
+ns1:burn_1 a ns1:Burn ;
+    rdfs:label "burn" ;
+    dul:hasQuality ns1:Away ;
+    vn.role:Agent ns1:Thetis ;
+    vn.role:Theme ns1:part_1 .
+
+ns1:docuverse earmark:hasContent "In another version of this story, Thetis anointed the boy in ambrosia and put him on top of a fire to burn away the mortal parts of his body."^^xsd:string .
+
+ns1:put_1 a ns1:Put ;
+    rdfs:label "put" ;
+    vn.role:Agent ns1:Thetis ;
+    vn.role:Destination ns1:top_1 ;
+    vn.role:Theme ns1:male_1 .
+
+ns1:Ambrosia a owl:Class ;
+    rdfs:label "ambrosia" ;
+    rdfs:subClassOf dul:Organism ;
+    owl:equivalentClass dbpedia:Ambrosia .
+
+ns1:Anoint rdfs:label "anointed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Away rdfs:label "away" .
+
+ns1:Body rdfs:label "body" ;
+    rdfs:subClassOf dul:Organism .
+
+ns1:Boy rdfs:label "boy" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Burn rdfs:label "burn" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Fire rdfs:label "fire" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Male rdfs:label "him" .
+
+ns1:Mortal rdfs:label "mortal" .
+
+ns1:MortalPart rdfs:subClassOf ns1:Part .
+
+ns1:Part rdfs:label "parts" .
+
+ns1:Put rdfs:label "put" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Story rdfs:label "story" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Top rdfs:label "top" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:ambrosia_1 a ns1:Ambrosia ;
+    rdfs:label "ambrosia" .
+
+ns1:body_1 a ns1:Body ;
+    rdfs:label "body" ;
+    ns1:bodyOf ns1:male_1 .
+
+ns1:boy_1 a ns1:Boy ;
+    rdfs:label "boy" ;
+    quant:hasDeterminer quant:the .
+
+ns1:fire_1 a ns1:Fire ;
+    rdfs:label "fire" ;
+    quant:hasDeterminer quant:a .
+
+ns1:part_1 a ns1:MortalPart ;
+    rdfs:label "parts" ;
+    dul:hasQuality ns1:Mortal ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:mortalPartOf ns1:body_1 .
+
+ns1:story_1 a ns1:Story ;
+    rdfs:label "story" ;
+    quant:hasDeterminer quant:this .
+
+ns1:top_1 a ns1:Top ;
+    rdfs:label "top" ;
+    ns1:topOf ns1:fire_1 .
+
+ns1:version_1 a ns1:Version ;
+    owl:differentFrom ns1:version_2 .
+
+ns1:version_2 a ns1:Version ;
+    rdfs:label "version" ;
+    quant:hasDeterminer quant:another ;
+    owl:differentFrom ns1:version_1 .
+
+ns1:Version rdfs:label "version" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "him",
+        "his" .
+
+ns1:Thetis rdfs:label "Thetis" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Thetis .
+

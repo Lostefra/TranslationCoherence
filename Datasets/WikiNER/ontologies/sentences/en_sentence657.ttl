@@ -1,0 +1,165 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence657.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Predicate rdfs:label "for" .
+
+translation_coherence:en_sentence657.ttl a owl:Ontology ;
+    rdfs:label "en_sentence657" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence657" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "her",
+        "of" .
+
+ns1:consider_1 a ns1:Consider ;
+    rdfs:label "consider" ;
+    vn.role:Agent ns1:thing_2 ;
+    vn.role:Predicate ns1:thing_1 ;
+    vn.role:Theme ns1:lack_1 .
+
+ns1:criticize_1 a ns1:Criticize ;
+    rdfs:label "criticized" ;
+    vn.role:Agent ns1:philosopher_1 ;
+    vn.role:Predicate ns1:thing_1 ;
+    vn.role:Theme ns1:Rand .
+
+ns1:docuverse earmark:hasContent "Some academic philosophers have criticized Rand for what they consider her lack of rigor and limited understanding of philosophical subject matter."^^xsd:string .
+
+ns1:understanding_1 rdfs:label "understanding" .
+
+dbpedia:Ayn_Rand a schema:Person .
+
+ns1:Academic rdfs:label "academic" ;
+    owl:sameAs dbpedia:Academia .
+
+ns1:AcademicPhilosopher rdfs:subClassOf ns1:Philosopher .
+
+ns1:Consider rdfs:label "consider" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Criticize rdfs:label "criticized" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Lack rdfs:label "lack" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Limited a owl:Class ;
+    rdfs:label "limited" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:LimitedUnderstanding a owl:Class ;
+    rdfs:label "limited understanding" ;
+    dul:hasQuality ns1:Limited ;
+    rdfs:subClassOf ns1:Understanding .
+
+ns1:Matter a owl:Class ;
+    rdfs:label "matter" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Matter_(philosophy) .
+
+ns1:Philosopher rdfs:label "philosophers" .
+
+ns1:Philosophical rdfs:label "philosophical" ;
+    owl:sameAs dbpedia:Philosophy .
+
+ns1:PhilosophicalSubjectMatter a owl:Class ;
+    rdfs:label "philosophical subject matter" ;
+    rdfs:subClassOf ns1:SubjectMatter .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Ayn_Rand .
+
+ns1:Rigor a owl:Class ;
+    rdfs:label "rigor" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Rigour .
+
+ns1:SubjectMatter a owl:Class ;
+    rdfs:label "Subject Matter" ;
+    dul:hasQuality ns1:Subject ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic>,
+        ns1:Matter .
+
+ns1:Understanding a owl:Class ;
+    rdfs:label "understanding" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> ;
+    owl:equivalentClass dbpedia:Understanding .
+
+ns1:female_1 a ns1:Female ;
+    rdfs:label "her" .
+
+ns1:lack_1 a ns1:Lack ;
+    rdfs:label "lack" ;
+    ns1:lackOf ns1:female_1,
+        ns1:matter_1,
+        ns1:rigor_1 .
+
+ns1:matter_1 a ns1:PhilosophicalSubjectMatter ;
+    rdfs:label "matter" ;
+    dul:hasQuality ns1:Philosophical,
+        ns1:Subject .
+
+ns1:philosopher_1 a dbpedia:Philosopher,
+        ns1:AcademicPhilosopher ;
+    rdfs:label "philosophers" ;
+    dul:hasQuality ns1:Academic ;
+    quant:hasQuantifier quant:multiple,
+        quant:some .
+
+ns1:rigor_1 a ns1:LimitedUnderstanding,
+        ns1:Rigor ;
+    rdfs:label "rigor" .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "they" .
+
+owl:Thing rdfs:label "they",
+        "what" .
+
+ns1:Subject a owl:Class ;
+    rdfs:label "subject" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Subject_(philosophy) .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "what" .
+

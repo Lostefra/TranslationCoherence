@@ -1,0 +1,115 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence272.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence272.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence272" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence272" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In",
+        "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "In 1830, there were fears of the outbreak of matrimonials and settlement of public land in Meton."^^xsd:string .
+
+ns1:fear_1 rdfs:label "fears" .
+
+ns1:settlement_1 rdfs:label "settlement" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:land_1,
+        ns1:matrimonial_1,
+        ns1:there_1 ;
+    ns1:in "1830-01-01"^^xsd:date ;
+    ns1:locatedIn ns1:Meton .
+
+ns1:Fear rdfs:label "fears" .
+
+ns1:Land a owl:Class ;
+    rdfs:label "land" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Matrimonial rdfs:label "matrimonials" .
+
+ns1:Meton rdfs:label "Meton" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Meton_of_Athens .
+
+ns1:Outbreak rdfs:label "outbreak" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:PublicLand a owl:Class ;
+    rdfs:label "public land" ;
+    dul:hasQuality ns1:Public ;
+    rdfs:subClassOf ns1:Land .
+
+ns1:Settlement rdfs:label "settlement" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:There rdfs:label "there" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:outbreak_1 a ns1:Outbreak ;
+    rdfs:label "outbreak" ;
+    quant:hasDeterminer quant:the ;
+    ns1:outbreakOf ns1:matrimonial_1 .
+
+ns1:there_1 a ns1:Fear,
+        ns1:Settlement,
+        ns1:There ;
+    rdfs:label "there" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:thereOf ns1:land_1,
+        ns1:outbreak_1 .
+
+ns1:Public a owl:Class ;
+    rdfs:label "public" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:land_1 a ns1:PublicLand ;
+    rdfs:label "land" ;
+    dul:hasQuality ns1:Public .
+
+ns1:matrimonial_1 a ns1:Matrimonial ;
+    rdfs:label "matrimonials" ;
+    quant:hasQuantifier quant:multiple .
+

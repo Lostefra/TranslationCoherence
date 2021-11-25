@@ -1,0 +1,119 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence751.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:nl_sentence751.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence751" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence751" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "Islam is the preliminary belief, followed by over 99% of the people of the country."^^xsd:string .
+
+ns1:follow_1 a ns1:Follow ;
+    rdfs:label "followed" ;
+    vn.role:Agent ns1:percent_1 ;
+    vn.role:Theme ns1:Islam .
+
+ns1:Country a owl:Class ;
+    rdfs:label "country" ;
+    rdfs:subClassOf dul:Organization ;
+    owl:equivalentClass dbpedia:Nation_state .
+
+ns1:Follow rdfs:label "followed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Islam a ns1:PreliminaryBelief ;
+    rdfs:label "Islam" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Preliminary ;
+    owl:sameAs dbpedia:Islam,
+        ns1:belief_1 .
+
+ns1:Over rdfs:label "over" .
+
+ns1:People a owl:Class ;
+    rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:People .
+
+ns1:Percent rdfs:label "%" .
+
+ns1:PreliminaryBelief a owl:Class ;
+    rdfs:label "preliminary belief" ;
+    dul:hasQuality ns1:Preliminary ;
+    rdfs:subClassOf ns1:Belief .
+
+ns1:belief_1 a ns1:Belief ;
+    rdfs:label "belief" ;
+    quant:hasDeterminer quant:the .
+
+ns1:country_1 a ns1:Country ;
+    rdfs:label "country" ;
+    quant:hasDeterminer quant:the .
+
+ns1:people_1 a ns1:People ;
+    rdfs:label "people" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:peopleOf ns1:country_1 .
+
+ns1:percent_1 a ns1:Percent ;
+    rdfs:label "%" ;
+    dul:hasDataValue "99"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:Over ;
+    ns1:percentOf ns1:people_1 .
+
+ns1:Belief a owl:Class ;
+    rdfs:label "belief" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Belief .
+
+ns1:Preliminary a owl:Class ;
+    rdfs:label "preliminary" ;
+    rdfs:subClassOf dul:Quality .
+

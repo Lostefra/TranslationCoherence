@@ -1,0 +1,135 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence618.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence618.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence618" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence618" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Agent rdfs:label "by" .
+
+ns1:Of rdfs:label "her",
+        "of" .
+
+ns1:To rdfs:label "to" .
+
+ns1:ashame_1 a ns1:Ashame ;
+    rdfs:label "ashamed" ;
+    boxer:agent ns1:producer_1 ;
+    boxer:patient ns1:Rand ;
+    ns1:ashameOf ns1:change_1 .
+
+ns1:consider_1 a ns1:EvenConsider ;
+    rdfs:label "considered" ;
+    dul:hasQuality ns1:Even ;
+    vn.role:Agent ns1:Rand ;
+    vn.role:Theme ns1:review_1 .
+
+ns1:docuverse earmark:hasContent "Reviews of the Broadway production were mixed, and Rand even considered the positive reviews to be ashamed of important changes to her script by the producer."^^xsd:string .
+
+ns1:female_1 rdfs:label "her" .
+
+ns1:Ashame rdfs:label "ashamed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Broadway rdfs:label "Broadway" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Broadway_theatre .
+
+ns1:Change rdfs:label "changes" .
+
+ns1:Consider rdfs:label "considered" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Even rdfs:label "even" .
+
+ns1:EvenConsider rdfs:subClassOf ns1:Consider .
+
+ns1:Female rdfs:label "Rand" .
+
+ns1:Important rdfs:label "important" .
+
+ns1:ImportantChange rdfs:subClassOf ns1:Change .
+
+ns1:Mixed rdfs:label "mixed" .
+
+ns1:Positive rdfs:label "positive" .
+
+ns1:Producer rdfs:label "producer" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Production rdfs:label "production" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Review rdfs:label "Reviews" .
+
+ns1:Script rdfs:label "script" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:change_1 a ns1:ImportantChange ;
+    rdfs:label "changes" ;
+    dul:hasQuality ns1:Important ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:to ns1:script_1 .
+
+ns1:producer_1 a ns1:Producer ;
+    rdfs:label "producer" ;
+    quant:hasDeterminer quant:the .
+
+ns1:production_1 a ns1:Production ;
+    rdfs:label "production" ;
+    dul:associatedWith ns1:Broadway .
+
+ns1:review_1 a ns1:Review ;
+    rdfs:label "Reviews" ;
+    dul:hasQuality ns1:Mixed,
+        ns1:Positive ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:reviewOf ns1:production_1 .
+
+ns1:script_1 a ns1:Script ;
+    rdfs:label "script" ;
+    ns1:scriptOf ns1:Rand .
+
+ns1:Rand a ns1:Female ;
+    rdfs:label "Rand" ;
+    boxer:possibleType foaf:Person .
+

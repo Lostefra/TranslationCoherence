@@ -1,0 +1,158 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence417.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Theme1 rdfs:label "by" .
+
+translation_coherence:ko_sentence417.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence417" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence417" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Ill.__177 a dbpedia:Illinois_Route_177 ;
+    rdfs:label "Ill.  177" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Into rdfs:label "into" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "(",
+        "," .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "The Oak Ridge graveyard in the spring field is surmounted into several bronze statues of Lincoln, Ill.__177 feet (54 m) tall, by 1874, with several bronze statues of Lincoln."^^xsd:string .
+
+ns1:spring_1 a ns1:Spring ;
+    rdfs:label "spring" ;
+    dul:associatedWith ns1:field_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:surmount_1 a ns1:Surmount ;
+    rdfs:label "surmounted" ;
+    vn.role:Theme1 "1874-01-01"^^xsd:date ;
+    vn.role:Theme2 ns1:graveyard_1 ;
+    ns1:into ns1:statue_1 ;
+    ns1:with ns1:statue_2 .
+
+ns1:BronzeStatue rdfs:subClassOf ns1:Statue .
+
+ns1:Field a owl:Class ;
+    rdfs:label "field" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Foot rdfs:label "feet" .
+
+ns1:Graveyard rdfs:label "graveyard" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Ill.__177Foot rdfs:subClassOf ns1:Foot .
+
+ns1:M rdfs:label "m" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:Oak_ridge rdfs:label "Oak Ridge" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:SpringField a owl:Class ;
+    rdfs:label "spring field" ;
+    dul:associatedWith ns1:Spring ;
+    rdfs:subClassOf ns1:Field .
+
+ns1:Statue rdfs:label "statues" .
+
+ns1:Surmount rdfs:label "surmounted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Tall rdfs:label "tall" .
+
+ns1:foot_1 a ns1:Ill.__177Foot ;
+    rdfs:label "feet" ;
+    dul:associatedWith ns1:m_1 ;
+    dul:hasQuality ns1:Tall ;
+    quant:hasQuantifier quant:ill.__177,
+        quant:multiple .
+
+ns1:graveyard_1 a ns1:Graveyard ;
+    rdfs:label "graveyard" ;
+    dul:associatedWith ns1:Oak_ridge ;
+    ns1:in ns1:field_1 .
+
+ns1:m_1 a ns1:M ;
+    rdfs:label "m" ;
+    dul:hasDataValue "54"^^xsd:nonNegativeInteger .
+
+ns1:statue_1 a ns1:SeveralBronzeStatue ;
+    rdfs:label "statues" ;
+    dul:hasQuality ns1:Bronze,
+        ns1:Several ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:severalBronzeStatueOf ns1:Lincoln .
+
+ns1:statue_2 a ns1:SeveralBronzeStatue ;
+    rdfs:label "statues" ;
+    dul:hasQuality ns1:Bronze,
+        ns1:Several ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:severalBronzeStatueOf ns1:Lincoln .
+
+ns1:Bronze rdfs:label "Bronze",
+        "bronze" .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:foot_1 .
+
+ns1:Several rdfs:label "Several",
+        "several" .
+
+ns1:SeveralBronzeStatue rdfs:subClassOf ns1:BronzeStatue .
+
+ns1:Spring a owl:Class ;
+    rdfs:label "spring" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:field_1 a ns1:SpringField ;
+    rdfs:label "field" .
+

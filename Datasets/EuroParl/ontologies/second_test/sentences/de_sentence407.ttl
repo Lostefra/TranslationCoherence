@@ -1,0 +1,188 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence407.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:de_sentence407.ttl a owl:Ontology ;
+    rdfs:label "de_sentence407" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence407" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:At rdfs:label "at" ;
+    owl:sameAs dbpedia:Head_of_state .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Inlinewith rdfs:label "in line with" .
+
+ns1:Of rdfs:label "its",
+        "their" .
+
+ns1:continue_1 a ns1:Continue ;
+    rdfs:label "continue" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:process_1 ;
+    ns1:inLineWith ns1:guideline_1 .
+
+ns1:docuverse earmark:hasContent "This process will continue in line with the guidelines for financial expenditure set by EU Heads_of_State and Government last year at their Berlin summit, supported by Parliament at its last May meeting."^^xsd:string .
+
+ns1:line_1 a ns1:Line ;
+    rdfs:label "line" .
+
+ns1:neuter_1 coref:coref ns1:process_1 .
+
+ns1:set_1 a ns1:Set ;
+    rdfs:label "set" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:associatedWith ns1:year_1 ;
+    dul:hasQuality ns1:Last ;
+    vn.role:Agent ns1:Eu_heads_of_state,
+        ns1:Government ;
+    vn.role:Destination ns1:year_1 ;
+    vn.role:Theme ns1:guideline_1 ;
+    ns1:at ns1:summit_1 .
+
+ns1:support_1 a ns1:Support ;
+    rdfs:label "supported" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:Parliament ;
+    vn.role:Beneficiary ns1:summit_1 ;
+    ns1:at ns1:meeting_1 .
+
+dbpedia:Berlin a schema:City,
+        schema:Place .
+
+ns1:Berlin rdfs:label "Berlin" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Berlin .
+
+ns1:Continue rdfs:label "continue" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Expenditure a owl:Class ;
+    rdfs:label "expenditure" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Financial a owl:Class ;
+    rdfs:label "financial" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FinancialExpenditure a owl:Class ;
+    rdfs:label "financial expenditure" ;
+    dul:hasQuality ns1:Financial ;
+    rdfs:subClassOf ns1:Expenditure .
+
+ns1:Government rdfs:label "Government" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Government .
+
+ns1:Guideline rdfs:label "guidelines" .
+
+ns1:Line rdfs:label "line" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Meeting rdfs:label "meeting" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Parliament rdfs:label "Parliament" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Parliament .
+
+ns1:Process rdfs:label "process" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Set rdfs:label "set" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Summit rdfs:label "summit" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Support rdfs:label "supported" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Year rdfs:label "year" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:expenditure_1 a ns1:FinancialExpenditure ;
+    rdfs:label "expenditure" .
+
+ns1:meeting_1 a ns1:Meeting ;
+    rdfs:label "meeting" ;
+    dul:hasQuality ns1:Last ;
+    ns1:at "0001-05-01"^^xsd:date ;
+    ns1:meetingOf ns1:Eu_heads_of_state .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "their" .
+
+ns1:Eu_heads_of_state a owl:Thing ;
+    rdfs:label "EU Heads of State" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Last rdfs:label "Last",
+        "last" .
+
+ns1:guideline_1 a ns1:Guideline ;
+    rdfs:label "guidelines" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:for ns1:expenditure_1 .
+
+ns1:process_1 a ns1:Process ;
+    rdfs:label "its",
+        "process" ;
+    quant:hasDeterminer quant:this .
+
+ns1:summit_1 a ns1:Summit ;
+    rdfs:label "summit" ;
+    dul:associatedWith ns1:Berlin ;
+    ns1:summitOf ns1:thing_1,
+        ns1:thing_2 .
+
+ns1:year_1 a ns1:Year ;
+    rdfs:label "year" .
+
+owl:Thing rdfs:label "EU Heads of State" .
+

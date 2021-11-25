@@ -1,0 +1,186 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence548.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence548.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence548" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence548" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:assemble_1 a ns1:Assemble ;
+    rdfs:label "assembled" ;
+    vn.role:Agent ns1:Bowl ;
+    vn.role:Theme ns1:field_1 .
+
+ns1:cost_1 a ns1:Cost ;
+    rdfs:label "cost" ;
+    dul:associatedWith ns1:relationship_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:docuverse earmark:hasContent "Bowl assembled oil field, film, archiving and experimental data to test the cost effective relationship of human cooperation in ancient population."^^xsd:string .
+
+ns1:oil_1 a ns1:Oil ;
+    rdfs:label "oil" ;
+    dul:associatedWith ns1:field_1 .
+
+ns1:test_1 a ns1:Test ;
+    rdfs:label "test" ;
+    vn.role:Agent ns1:datum_1 ;
+    vn.role:Location ns1:relationship_1 .
+
+ns1:Ancient a owl:Class ;
+    rdfs:label "ancient" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:AncientPopulation a owl:Class ;
+    rdfs:label "Ancient Population" ;
+    dul:hasQuality ns1:Ancient ;
+    rdfs:subClassOf ns1:Population .
+
+ns1:Archive rdfs:label "archiving" .
+
+ns1:Assemble rdfs:label "assembled" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Bowl rdfs:label "Bowl" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Bowls .
+
+ns1:Cooperation a owl:Class ;
+    rdfs:label "cooperation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Cost rdfs:label "cost" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:CostEffectiveRelationship a owl:Class ;
+    rdfs:label "Cost Effective Relationship" ;
+    rdfs:subClassOf ns1:EffectiveRelationship .
+
+ns1:Datum rdfs:label "data" .
+
+ns1:Effective a owl:Class ;
+    rdfs:label "effective" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:EffectiveRelationship a owl:Class ;
+    rdfs:label "effective relationship" ;
+    dul:hasQuality ns1:Effective ;
+    rdfs:subClassOf ns1:Relationship .
+
+ns1:Experimental rdfs:label "experimental" ;
+    owl:sameAs dbpedia:Experiment .
+
+ns1:ExperimentalDatum rdfs:subClassOf ns1:Datum .
+
+ns1:Field a owl:Class ;
+    rdfs:label "field" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Film rdfs:label "film" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity>,
+        dul:InformationEntity .
+
+ns1:Human a owl:Class ;
+    rdfs:label "human" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:HumanCooperation a owl:Class ;
+    rdfs:label "Human Cooperation" ;
+    dul:hasQuality ns1:Human ;
+    rdfs:subClassOf ns1:Cooperation .
+
+ns1:OilField a owl:Class ;
+    rdfs:label "Oil Field" ;
+    dul:associatedWith ns1:Oil ;
+    rdfs:subClassOf ns1:Field ;
+    owl:equivalentClass dbpedia:Oil_field .
+
+ns1:Population a owl:Class ;
+    rdfs:label "population" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Relationship a owl:Class ;
+    rdfs:label "relationship" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Test a owl:Class ;
+    rdfs:label "test" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Statistical_hypothesis_testing .
+
+ns1:archive_1 a ns1:Archive ;
+    rdfs:label "archiving" .
+
+ns1:cooperation_1 a ns1:HumanCooperation ;
+    rdfs:label "cooperation" ;
+    ns1:in ns1:population_1 .
+
+ns1:film_1 a ns1:Film ;
+    rdfs:label "film" ;
+    dul:associatedWith ns1:archive_1,
+        ns1:datum_1 .
+
+ns1:population_1 a ns1:AncientPopulation ;
+    rdfs:label "population" .
+
+ns1:Oil a owl:Class ;
+    rdfs:label "oil" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:datum_1 a ns1:ExperimentalDatum ;
+    rdfs:label "data" ;
+    dul:hasQuality ns1:Experimental ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:field_1 a ns1:OilField ;
+    rdfs:label "field" ;
+    dul:associatedWith ns1:film_1 .
+
+ns1:relationship_1 a ns1:CostEffectiveRelationship ;
+    rdfs:label "relationship" ;
+    ns1:costEffectiveRelationshipOf ns1:cooperation_1 .
+

@@ -1,0 +1,226 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence345.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+vn.role:Recipient rdfs:label "in" .
+
+vn.role:Source rdfs:label "of" .
+
+translation_coherence:en_sentence345.ttl a owl:Ontology ;
+    rdfs:label "en_sentence345" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence345" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:That rdfs:label "that" .
+
+ns1:be_1 a ns1:ThoughBe ;
+    rdfs:label "is" ;
+    boxer:agent ns1:truth_1 ;
+    boxer:theme ns1:situation_1 ;
+    dul:hasQuality ns1:Though .
+
+ns1:docuverse earmark:hasContent "The truth of the matter though is that we believe - and this is also shown in the way the conclusions have been drafted - that the Commission must take account of what is adopted by this Parliament, particularly in the face of an interim revision of these directives."^^xsd:string .
+
+ns1:face_1 a ns1:Face ;
+    rdfs:label "face" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Account rdfs:label "account" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Adopt rdfs:label "adopted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoShow rdfs:subClassOf ns1:Show .
+
+ns1:Be rdfs:label "is" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Believe a owl:Class ;
+    rdfs:label "believe" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Belief .
+
+ns1:Commission rdfs:label "Commission" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Conclusion rdfs:label "conclusions" .
+
+ns1:Directive rdfs:label "directives" .
+
+ns1:Draft rdfs:label "drafted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Face rdfs:label "face" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Interim a owl:Class ;
+    rdfs:label "interim" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:InterimRevision a owl:Class ;
+    rdfs:label "Interim Revision" ;
+    dul:hasQuality ns1:Interim ;
+    rdfs:subClassOf ns1:Revision .
+
+ns1:Matter rdfs:label "matter" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Parliament rdfs:label "Parliament" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Parliament .
+
+ns1:Particularly rdfs:label "particularly" .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Revision a owl:Class ;
+    rdfs:label "revision" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Show rdfs:label "shown" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Take rdfs:label "take" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Though rdfs:label "though" .
+
+ns1:ThoughBe rdfs:subClassOf ns1:Be .
+
+ns1:Truth rdfs:label "truth" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Way rdfs:label "way" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:adopt_1 a ns1:Adopt ;
+    rdfs:label "adopted" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Particularly ;
+    vn.role:Agent ns1:Parliament ;
+    vn.role:Theme ns1:thing_2 ;
+    ns1:inFaceOf ns1:revision_1 .
+
+ns1:believe_1 a ns1:Believe ;
+    rdfs:label "believe" ;
+    vn.role:Agent ns1:person_1 .
+
+ns1:conclusion_1 a ns1:Conclusion ;
+    rdfs:label "conclusions" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:directive_1 a ns1:Directive ;
+    rdfs:label "directives" ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:draft_1 a ns1:Draft ;
+    rdfs:label "drafted" ;
+    boxer:patient ns1:conclusion_1 ;
+    dul:associatedWith ns1:way_1 .
+
+ns1:matter_1 a ns1:Matter ;
+    rdfs:label "matter" ;
+    quant:hasDeterminer quant:the .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:show_1 a ns1:AlsoShow ;
+    rdfs:label "shown" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Patient ns1:thing_1 ;
+    vn.role:Recipient ns1:way_1 .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "take" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:Commission ;
+    vn.role:Source ns1:thing_2 ;
+    vn.role:Theme ns1:account_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "this" .
+
+ns1:truth_1 a ns1:Truth ;
+    rdfs:label "truth" ;
+    quant:hasDeterminer quant:the ;
+    ns1:truthOf ns1:matter_1 .
+
+owl:Thing rdfs:label "this",
+        "what" .
+
+ns1:account_1 a ns1:Account ;
+    rdfs:label "account" .
+
+ns1:revision_1 a ns1:InterimRevision ;
+    rdfs:label "revision" ;
+    quant:hasDeterminer quant:an ;
+    ns1:interimRevisionOf ns1:directive_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:account_1,
+        ns1:adopt_1,
+        ns1:believe_1,
+        ns1:draft_1,
+        ns1:revision_1,
+        ns1:show_1,
+        ns1:take_1,
+        ns1:thing_2 .
+
+ns1:way_1 a ns1:Way ;
+    rdfs:label "way" ;
+    quant:hasDeterminer quant:the,
+        quant:this ;
+    ns1:that ns1:situation_1 .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "what" .
+

@@ -1,0 +1,124 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence25.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "to" .
+
+translation_coherence:de_sentence25.ttl a owl:Ontology ;
+    rdfs:label "de_sentence25" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence25" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Alexander_nikitin a ns1:Case ;
+    rdfs:label "Alexander Nikitin" ;
+    boxer:possibleType owl:Thing ;
+    quant:hasDeterminer quant:the ;
+    owl:sameAs dbpedia:Alexander_Nikitin .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:Where rdfs:label "where" .
+
+ns1:case_2 rdfs:label "case" .
+
+ns1:docuverse earmark:hasContent "I would like to draw attention to a case where this Parliament has consistently shown an interest. Alexander_Nikitin is the case."^^xsd:string .
+
+ns1:like_1 a ns1:Like ;
+    rdfs:label "like" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Experiencer ns1:person_1 ;
+    vn.role:Theme ns1:draw_1 .
+
+ns1:Attention rdfs:label "attention" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Consistently rdfs:label "consistently" .
+
+ns1:ConsistentlyShow rdfs:subClassOf ns1:Show .
+
+ns1:Draw rdfs:label "draw" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Interest rdfs:label "interest" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Like rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Parliament rdfs:label "Parliament" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Parliament .
+
+ns1:Person rdfs:label "I" .
+
+ns1:Show rdfs:label "shown" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:attention_1 a ns1:Attention ;
+    rdfs:label "attention" .
+
+ns1:case_1 a ns1:Case ;
+    rdfs:label "case" ;
+    quant:hasDeterminer quant:a ;
+    ns1:where ns1:show_1 .
+
+ns1:draw_1 a ns1:Draw ;
+    rdfs:label "draw" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Destination ns1:case_1 ;
+    vn.role:Theme ns1:attention_1 .
+
+ns1:interest_1 a ns1:Interest ;
+    rdfs:label "interest" ;
+    quant:hasDeterminer quant:an .
+
+ns1:show_1 a ns1:ConsistentlyShow ;
+    rdfs:label "shown" ;
+    dul:hasQuality ns1:Consistently ;
+    vn.role:Agent ns1:Parliament ;
+    vn.role:Theme ns1:interest_1 .
+
+ns1:Case rdfs:label "case" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+

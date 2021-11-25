@@ -1,0 +1,194 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence440.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Predicate rdfs:label "of" .
+
+translation_coherence:en_sentence440.ttl a owl:Ontology ;
+    rdfs:label "en_sentence440" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence440" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Though rdfs:label "though" .
+
+ns1:accuse_1 a ns1:Accuse ;
+    rdfs:label "accuse" ;
+    dul:hasQuality ns1:Even ;
+    vn.role:Agent ns1:nowaday_1,
+        ns1:opinion_1 ;
+    vn.role:Predicate ns1:thing_1,
+        ns1:thing_2 ;
+    vn.role:Theme ns1:person_1 ;
+    ns1:though ns1:go_1 .
+
+ns1:docuverse earmark:hasContent "Public opinion and the press nowadays accuse us of being unavailable to give a response, even though we are going to be funding a large proportion of the national operations."^^xsd:string .
+
+ns1:press_1 a ns1:Press ;
+    rdfs:label "press" ;
+    dul:associatedWith ns1:nowaday_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:unavailable_1 a ns1:Unavailable ;
+    rdfs:label "unavailable" ;
+    boxer:agent ns1:thing_1,
+        ns1:thing_2 ;
+    boxer:theme ns1:give_1 .
+
+ns1:Accuse rdfs:label "accuse" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Be rdfs:label "be" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Even rdfs:label "even" .
+
+ns1:Fund rdfs:label "funding" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Give rdfs:label "give" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Go rdfs:label "going" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Large a owl:Class ;
+    rdfs:label "large" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:LargeProportion a owl:Class ;
+    rdfs:label "Large Proportion" ;
+    dul:hasQuality ns1:Large ;
+    rdfs:subClassOf ns1:Proportion .
+
+ns1:National rdfs:label "national" .
+
+ns1:NationalOperation rdfs:subClassOf ns1:Operation .
+
+ns1:Nowaday rdfs:label "nowadays" .
+
+ns1:Operation rdfs:label "operations" .
+
+ns1:Opinion a owl:Class ;
+    rdfs:label "opinion" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Press rdfs:label "press" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:PressNowaday rdfs:subClassOf ns1:Nowaday .
+
+ns1:Proportion a owl:Class ;
+    rdfs:label "proportion" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:PublicOpinion a owl:Class ;
+    rdfs:label "Public Opinion" ;
+    dul:hasQuality ns1:Public ;
+    rdfs:subClassOf ns1:Opinion .
+
+ns1:Response rdfs:label "response" ;
+    rdfs:subClassOf dul:Process .
+
+ns1:Unavailable rdfs:label "unavailable" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:be_1 a ns1:Be ;
+    rdfs:label "be" ;
+    boxer:agent ns1:person_2 ;
+    boxer:theme ns1:fund_1 .
+
+ns1:fund_1 a ns1:Fund ;
+    rdfs:label "funding" ;
+    boxer:agent ns1:person_2 ;
+    boxer:patient ns1:proportion_1 .
+
+ns1:give_1 a ns1:Give ;
+    rdfs:label "give" ;
+    vn.role:Agent ns1:thing_1,
+        ns1:thing_2 ;
+    vn.role:Theme ns1:response_1 .
+
+ns1:go_1 a ns1:Go ;
+    rdfs:label "going" ;
+    boxer:theme ns1:be_1 ;
+    vn.role:Theme ns1:person_2 .
+
+ns1:operation_1 a ns1:NationalOperation ;
+    rdfs:label "operations" ;
+    dul:hasQuality ns1:National ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:opinion_1 a ns1:PublicOpinion ;
+    rdfs:label "opinion" ;
+    dul:hasQuality ns1:Public .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "us" .
+
+ns1:proportion_1 a ns1:LargeProportion ;
+    rdfs:label "proportion" ;
+    quant:hasDeterminer quant:a ;
+    ns1:largeProportionOf ns1:operation_1 .
+
+ns1:response_1 a ns1:Response ;
+    rdfs:label "response" ;
+    quant:hasDeterminer quant:a .
+
+ns1:Person rdfs:label "us",
+        "we" .
+
+ns1:Public a owl:Class ;
+    rdfs:label "Public" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:nowaday_1 a ns1:PressNowaday ;
+    rdfs:label "nowadays" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:thing_2 a owl:Thing .
+

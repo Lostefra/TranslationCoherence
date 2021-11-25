@@ -1,0 +1,213 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence505.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:de_sentence505.ttl a owl:Ontology ;
+    rdfs:label "de_sentence505" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence505" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:After rdfs:label "After" .
+
+ns1:Agent rdfs:label "by" .
+
+ns1:At rdfs:label "at" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:ad_1 a ns1:Ad ;
+    rdfs:label "ad" ;
+    dul:associatedWith ns1:lobbying_1 .
+
+ns1:attract_1 a ns1:Attract ;
+    rdfs:label "attracted" ;
+    boxer:agent ns1:end_1,
+        "2004-03-01"^^xsd:date ;
+    boxer:patient ns1:award_1 ;
+    ns1:after ns1:year_1 .
+
+ns1:campaign_1 rdfs:label "campaigns" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:disjunct_1 a ns1:Disjunct ;
+    boxing:involves "0001-04-01"^^xsd:date ;
+    ns1:union ns1:disjunct_2 .
+
+ns1:disrupt_1 a ns1:Disrupt ;
+    rdfs:label "disrupt" ;
+    boxer:agent ns1:award_1 ;
+    boxer:patient ns1:lobbying_1 .
+
+ns1:docuverse earmark:hasContent "After more than six years that were held at the end of March or early April, the awards were attracted by the end of February or early March 2004 to disrupt and shorten intensive lobbying and ad campaigns related to the Oscar_season in the film industry."^^xsd:string .
+
+ns1:early_1 a ns1:Early ;
+    rdfs:label "early" ;
+    ns1:at "0001-03-01"^^xsd:date,
+        "0001-04-01"^^xsd:date .
+
+ns1:early_2 a ns1:Early ;
+    rdfs:label "early" ;
+    ns1:at "2004-03-01"^^xsd:date .
+
+ns1:film_1 a ns1:Film ;
+    rdfs:label "film" ;
+    dul:associatedWith ns1:industry_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:hold_1 a ns1:Hold ;
+    rdfs:label "held" ;
+    vn.role:Theme ns1:year_1 ;
+    ns1:at ns1:end_1 .
+
+ns1:relate_1 a ns1:Relate ;
+    rdfs:label "related" ;
+    vn.role:Recipient ns1:Oscar_season ;
+    vn.role:Topic ns1:lobbying_1 .
+
+ns1:shorten_1 a ns1:Shorten ;
+    rdfs:label "shorten" ;
+    vn.role:Agent ns1:award_1 ;
+    vn.role:Patient ns1:lobbying_1 .
+
+ns1:Ad rdfs:label "ad" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:AdCampaign rdfs:subClassOf ns1:Campaign .
+
+ns1:Attract rdfs:label "attracted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Award rdfs:label "awards" .
+
+ns1:Campaign rdfs:label "campaigns" .
+
+ns1:Disrupt rdfs:label "disrupt" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:End rdfs:label "end" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:FilmIndustry a owl:Class ;
+    rdfs:label "film industry" ;
+    dul:associatedWith ns1:Film ;
+    rdfs:subClassOf ns1:Industry ;
+    owl:equivalentClass dbpedia:Film_industry .
+
+ns1:Hold rdfs:label "held" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Industry a owl:Class ;
+    rdfs:label "industry" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Intensive a owl:Class ;
+    rdfs:label "intensive" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:IntensiveLobbying a owl:Class ;
+    rdfs:label "Intensive Lobbying" ;
+    dul:hasQuality ns1:Intensive ;
+    rdfs:subClassOf ns1:Lobbying .
+
+ns1:Lobbying a owl:Class ;
+    rdfs:label "lobbying" .
+
+ns1:More rdfs:label "more" .
+
+ns1:Oscar_season rdfs:label "Oscar season" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Oscar_season ;
+    ns1:in ns1:industry_1 .
+
+ns1:Relate rdfs:label "related" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Shorten rdfs:label "shorten" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Than rdfs:label "than" .
+
+ns1:Year rdfs:label "years" .
+
+ns1:disjunct_2 a ns1:Disjunct ;
+    boxing:involves ns1:Early,
+        "0001-04-01"^^xsd:date .
+
+ns1:Film a owl:Class ;
+    rdfs:label "film" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity>,
+        dul:InformationEntity .
+
+ns1:end_1 a ns1:End ;
+    rdfs:label "end" ;
+    quant:hasDeterminer quant:the ;
+    ns1:endOf "0001-02-01"^^xsd:date,
+        "0001-04-01"^^xsd:date .
+
+ns1:industry_1 a ns1:FilmIndustry ;
+    rdfs:label "industry" .
+
+ns1:year_1 a ns1:Year ;
+    rdfs:label "years" ;
+    dul:hasDataValue "6"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:More,
+        ns1:Than ;
+    quant:hasQuantifier quant:multiple,
+        quant:six .
+
+ns1:Early rdfs:label "early" .
+
+ns1:award_1 a ns1:Award ;
+    rdfs:label "awards" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:lobbying_1 a ns1:AdCampaign,
+        ns1:IntensiveLobbying ;
+    rdfs:label "lobbying" .
+

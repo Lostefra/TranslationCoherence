@@ -1,0 +1,111 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence470.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence470.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence470" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence470" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:By rdfs:label "by" .
+
+ns1:docuverse earmark:hasContent "Finally, we need to change the balance and the method by which funds are made public."^^xsd:string .
+
+ns1:need_1 a ns1:Need ;
+    rdfs:label "need" ;
+    dul:hasQuality ns1:Finally ;
+    vn.role:Experiencer ns1:person_1 ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:Balance rdfs:label "balance" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Change rdfs:label "change" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Finally rdfs:label "Finally" .
+
+ns1:Fund rdfs:label "funds" .
+
+ns1:Make rdfs:label "made" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Method rdfs:label "method" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Need rdfs:label "need" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Public rdfs:label "public" .
+
+ns1:balance_1 a ns1:Balance ;
+    rdfs:label "balance" ;
+    quant:hasDeterminer quant:the .
+
+ns1:change_1 a ns1:Change ;
+    rdfs:label "change" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:balance_1,
+        ns1:method_1 .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "made" ;
+    vn.role:Agent ns1:fund_1 ;
+    ns1:makeBy ns1:method_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:change_1,
+        ns1:fund_1,
+        ns1:make_1 .
+
+ns1:fund_1 a ns1:Fund ;
+    rdfs:label "funds" ;
+    dul:hasQuality ns1:Public ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:method_1 a ns1:Method ;
+    rdfs:label "method" ;
+    quant:hasDeterminer quant:the .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+

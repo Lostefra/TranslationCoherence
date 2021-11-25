@@ -1,0 +1,236 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence14.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme rdfs:label "from" .
+
+translation_coherence:it_sentence14.ttl a owl:Ontology ;
+    rdfs:label "it_sentence14" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence14" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Therefore rdfs:label "therefore" .
+
+ns1:While rdfs:label "while" .
+
+ns1:docuverse earmark:hasContent "Malatesta warned that the objectives of trade unionists were to perpetuate trade unionism itself, while anarchists must always have anarchy as an end and therefore refrain from engaging in any particular method to achieve it."^^xsd:string .
+
+ns1:trade_1 a ns1:Trade ;
+    rdfs:label "trade" ;
+    dul:associatedWith ns1:unionist_1 .
+
+ns1:trade_2 a ns1:Trade ;
+    rdfs:label "trade" ;
+    dul:associatedWith ns1:unionism_1 .
+
+ns1:warn_1 a ns1:Warn ;
+    rdfs:label "warned" ;
+    vn.role:Agent ns1:Malatesta ;
+    vn.role:Topic ns1:be_1 ;
+    ns1:while ns1:situation_1 .
+
+ns1:Achieve rdfs:label "achieve" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:AlwaysHave rdfs:label "Always Have" ;
+    rdfs:subClassOf ns1:Have .
+
+ns1:Anarchist rdfs:label "anarchists" .
+
+ns1:Anarchy a owl:Class ;
+    rdfs:label "anarchy" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Anarchism .
+
+ns1:Be rdfs:label "were" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:End rdfs:label "end" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Engage rdfs:label "engaging" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Malatesta rdfs:label "Malatesta" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Errico_Malatesta .
+
+ns1:Objective rdfs:label "objectives" .
+
+ns1:Particular a owl:Class ;
+    rdfs:label "particular" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ParticularMethod a owl:Class ;
+    rdfs:label "Particular Method" ;
+    dul:hasQuality ns1:Particular ;
+    rdfs:subClassOf ns1:Method .
+
+ns1:Perpetuate rdfs:label "perpetuate" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Refrain rdfs:label "refrain" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:ThereforeRefrain rdfs:label "therefore refrain" ;
+    rdfs:subClassOf ns1:Refrain .
+
+ns1:TradeUnionism a owl:Class ;
+    rdfs:label "trade unionism" ;
+    rdfs:subClassOf ns1:Unionism ;
+    owl:equivalentClass dbpedia:Trade_union .
+
+ns1:TradeUnionist rdfs:subClassOf ns1:Unionist .
+
+ns1:Unionism rdfs:label "unionism" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Unionist rdfs:label "unionists" .
+
+ns1:Warn rdfs:label "warned" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:achieve_1 a ns1:Achieve ;
+    rdfs:label "achieve" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:method_1 ;
+    vn.role:Theme ns1:neuter_1 .
+
+ns1:be_1 a ns1:Be ;
+    rdfs:label "were" ;
+    boxer:agent ns1:objective_1 ;
+    boxer:theme ns1:perpetuate_1 .
+
+ns1:engage_1 a ns1:Engage ;
+    rdfs:label "engaging" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Patient ns1:thing_1 ;
+    ns1:in ns1:method_1 .
+
+ns1:have_1 a ns1:AlwaysHave ;
+    rdfs:label "have" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Always ;
+    vn.role:Agent ns1:anarchist_1 ;
+    vn.role:Patient ns1:anarchy_1 .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "it" .
+
+ns1:perpetuate_1 a ns1:Perpetuate ;
+    rdfs:label "perpetuate" ;
+    boxer:agent ns1:objective_1 ;
+    boxer:patient ns1:unionism_1 ;
+    ns1:therefore ns1:refrain_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:achieve_1,
+        ns1:anarchist_1,
+        ns1:anarchy_1,
+        ns1:end_1,
+        ns1:engage_1,
+        ns1:have_1,
+        ns1:method_1,
+        ns1:refrain_1 .
+
+ns1:Always rdfs:label "always" .
+
+ns1:Method a owl:Class ;
+    rdfs:label "method" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Trade rdfs:label "trade" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:anarchy_1 a ns1:Anarchy ;
+    rdfs:label "anarchy" ;
+    ns1:as ns1:end_1 .
+
+ns1:end_1 a ns1:End ;
+    rdfs:label "end" ;
+    quant:hasDeterminer quant:an .
+
+ns1:objective_1 a ns1:Objective ;
+    rdfs:label "objectives" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:objectiveOf ns1:unionist_1 .
+
+ns1:refrain_1 a ns1:ThereforeRefrain ;
+    rdfs:label "refrain" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Always ;
+    vn.role:Agent ns1:anarchist_1 ;
+    vn.role:Theme ns1:thing_1 .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:unionism_1 a ns1:TradeUnionism ;
+    rdfs:label "itself"^^xsd:string,
+        "unionism" ;
+    dul:hasQuality owl:Thing .
+
+ns1:unionist_1 a dbpedia:Trade_union,
+        ns1:TradeUnionist ;
+    rdfs:label "unionists" ;
+    quant:hasQuantifier quant:multiple ;
+    owl:sameAs ns1:method_1 .
+
+owl:Thing rdfs:label "it" .
+
+ns1:anarchist_1 a dbpedia:Anarchism,
+        ns1:Anarchist ;
+    rdfs:label "anarchists" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:method_1 a ns1:Method,
+        ns1:ParticularMethod ;
+    rdfs:label "method" ;
+    quant:hasQuantifier quant:any .
+

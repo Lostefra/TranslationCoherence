@@ -1,0 +1,182 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence680.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:nl_sentence680.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence680" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence680" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Because rdfs:label "because" .
+
+ns1:Eq rdfs:label "'s" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Through rdfs:label "through" .
+
+ns1:Why rdfs:label "why" .
+
+ns1:docuverse earmark:hasContent "This is another reason why the region was introduced by McKenna as the crib of culture and civilization, because the visions through these mushrooms are giving a powerful impulses to art, and that's the sensitivity of relief."^^xsd:string .
+
+ns1:reason_2 rdfs:label "reason" .
+
+ns1:sensitivity_1 a ns1:Sensitivity ;
+    rdfs:label "sensitivity" ;
+    quant:hasDeterminer quant:that,
+        quant:the ;
+    ns1:sensitivityOf ns1:relief_1 .
+
+ns1:thing_1 a owl:Thing,
+        ns1:Reason ;
+    rdfs:label "This" ;
+    quant:hasDeterminer quant:another,
+        quant:this ;
+    ns1:why ns1:introduce_1 .
+
+owl:Thing rdfs:label "This" ;
+    rdfs:subClassOf ns1:Sensitivity .
+
+ns1:Art rdfs:label "art" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Civilization a owl:Class ;
+    rdfs:label "civilization" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Civilization .
+
+ns1:Crib rdfs:label "crib" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Culture a owl:Class ;
+    rdfs:label "culture" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Culture .
+
+ns1:Give rdfs:label "giving" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Impulse rdfs:label "impulses" .
+
+ns1:Introduce rdfs:label "introduced" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Mckenna rdfs:label "McKenna" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Mushroom rdfs:label "mushrooms" .
+
+ns1:Powerful rdfs:label "powerful" .
+
+ns1:PowerfulImpulse rdfs:subClassOf ns1:Impulse .
+
+ns1:Reason rdfs:label "reason" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event>,
+        ns1:Sensitivity .
+
+ns1:Region rdfs:label "region" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Relief rdfs:label "relief" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Vision rdfs:label "visions" .
+
+ns1:art_1 a ns1:Art ;
+    rdfs:label "art" .
+
+ns1:civilization_1 a ns1:Civilization ;
+    rdfs:label "civilization" .
+
+ns1:crib_1 a ns1:Crib ;
+    rdfs:label "crib" ;
+    quant:hasDeterminer quant:the ;
+    ns1:cribOf ns1:culture_1 .
+
+ns1:culture_1 a ns1:Culture ;
+    rdfs:label "culture" .
+
+ns1:give_1 a ns1:Give ;
+    rdfs:label "giving" ;
+    vn.role:Agent ns1:vision_1 ;
+    vn.role:Recipient ns1:art_1 ;
+    vn.role:Theme ns1:impulse_1 .
+
+ns1:impulse_1 a ns1:PowerfulImpulse ;
+    rdfs:label "impulses" ;
+    dul:hasQuality ns1:Powerful ;
+    quant:hasDeterminer quant:a ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:introduce_1 a ns1:Introduce ;
+    rdfs:label "introduced" ;
+    vn.role:Agent ns1:Mckenna ;
+    vn.role:Theme ns1:region_1 ;
+    ns1:as ns1:civilization_1,
+        ns1:crib_1 ;
+    ns1:because ns1:give_1 .
+
+ns1:mushroom_1 a ns1:Mushroom ;
+    rdfs:label "mushrooms" ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:region_1 a ns1:Region ;
+    rdfs:label "region" ;
+    quant:hasDeterminer quant:the .
+
+ns1:relief_1 a ns1:Relief ;
+    rdfs:label "relief" .
+
+ns1:vision_1 a ns1:Vision ;
+    rdfs:label "visions" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:through ns1:mushroom_1 .
+
+ns1:Sensitivity rdfs:label "sensitivity" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+

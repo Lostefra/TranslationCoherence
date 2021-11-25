@@ -1,0 +1,117 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "in" .
+
+translation_coherence:ko_sentence604.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence604" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence604" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence604.ttl/Rel> rdfs:label "," .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence604.ttl/docuverse> earmark:hasContent "Heavy smokers, Rand suspended lung cancer surgery in 1974."^^xsd:string .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence604.ttl/lung_1> a <https://w3id.org/stlab/ke/amiala/ko_sentence604.ttl/Lung> ;
+    rdfs:label "lung" ;
+    dul:associatedWith <https://w3id.org/stlab/ke/amiala/ko_sentence604.ttl/cancer_1>,
+        <https://w3id.org/stlab/ke/amiala/ko_sentence604.ttl/surgery_1> .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence604.ttl/suspend_1> a <https://w3id.org/stlab/ke/amiala/ko_sentence604.ttl/Suspend> ;
+    rdfs:label "suspended" ;
+    vn.role:Agent <https://w3id.org/stlab/ke/amiala/ko_sentence604.ttl/smoker_1> ;
+    vn.role:Destination "1974-01-01"^^xsd:date ;
+    vn.role:Theme <https://w3id.org/stlab/ke/amiala/ko_sentence604.ttl/surgery_1> .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence604.ttl/CancerSurgery> a owl:Class ;
+    rdfs:label "cancer surgery" ;
+    dul:associatedWith <https://w3id.org/stlab/ke/amiala/ko_sentence604.ttl/Cancer> ;
+    rdfs:subClassOf <https://w3id.org/stlab/ke/amiala/ko_sentence604.ttl/Surgery> .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence604.ttl/Heavy> rdfs:label "Heavy" ;
+    boxer:possibleType owl:Thing .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence604.ttl/LungCancerSurgery> a owl:Class ;
+    rdfs:label "lung cancer surgery" ;
+    dul:associatedWith <https://w3id.org/stlab/ke/amiala/ko_sentence604.ttl/LungCancer> ;
+    rdfs:subClassOf <https://w3id.org/stlab/ke/amiala/ko_sentence604.ttl/CancerSurgery> ;
+    owl:equivalentClass dbpedia:Lung_cancer_surgery .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence604.ttl/Rand> rdfs:label "Rand" ;
+    boxer:possibleType foaf:Person .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence604.ttl/Smoker> rdfs:label "smokers" .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence604.ttl/Surgery> a owl:Class ;
+    rdfs:label "surgery" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence604.ttl/Suspend> rdfs:label "suspended" ;
+    rdfs:subClassOf dul:Event .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence604.ttl/cancer_1> a <https://w3id.org/stlab/ke/amiala/ko_sentence604.ttl/LungCancer> ;
+    rdfs:label "cancer" ;
+    dul:associatedWith <https://w3id.org/stlab/ke/amiala/ko_sentence604.ttl/surgery_1> .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence604.ttl/smoker_1> a dbpedia:Tobacco_smoking,
+        <https://w3id.org/stlab/ke/amiala/ko_sentence604.ttl/Smoker> ;
+    rdfs:label "smokers" ;
+    dul:associatedWith <https://w3id.org/stlab/ke/amiala/ko_sentence604.ttl/Heavy>,
+        <https://w3id.org/stlab/ke/amiala/ko_sentence604.ttl/Rand> ;
+    quant:hasQuantifier quant:multiple .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence604.ttl/Cancer> a owl:Class ;
+    rdfs:label "cancer" ;
+    rdfs:subClassOf dul:Situation .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence604.ttl/Lung> a owl:Class ;
+    rdfs:label "lung" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence604.ttl/LungCancer> a owl:Class ;
+    rdfs:label "Lung Cancer" ;
+    dul:associatedWith <https://w3id.org/stlab/ke/amiala/ko_sentence604.ttl/Lung> ;
+    rdfs:subClassOf dul:Situation,
+        <https://w3id.org/stlab/ke/amiala/ko_sentence604.ttl/Cancer> ;
+    owl:equivalentClass dbpedia:Lung_cancer .
+
+<https://w3id.org/stlab/ke/amiala/ko_sentence604.ttl/surgery_1> a <https://w3id.org/stlab/ke/amiala/ko_sentence604.ttl/LungCancerSurgery> ;
+    rdfs:label "surgery" .
+

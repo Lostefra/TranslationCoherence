@@ -1,0 +1,136 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence109.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Elongest> rdfs:label "longest" .
+
+translation_coherence:zh_sentence109.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence109" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence109" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "A clear natural illusion in Albama is natural rocks, with the longest natural bridge in the south of Loss, in Winston."^^xsd:string .
+
+ns1:rock_1 rdfs:label "rocks" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Natural,
+        ns1:NaturalRock,
+        ns1:Rock,
+        ns1:illusion_1 ;
+    ns1:with ns1:bridge_1 .
+
+ns1:south_1 a ns1:South ;
+    rdfs:label "south" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Albama rdfs:label "Albama" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Bridge rdfs:label "bridge" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Clear rdfs:label "clear" .
+
+ns1:ClearNaturalIllusion a owl:Class ;
+    rdfs:label "Clear Natural Illusion" ;
+    rdfs:subClassOf ns1:NaturalIllusion .
+
+ns1:Illusion a owl:Class ;
+    rdfs:label "illusion" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Longest rdfs:label "longest" .
+
+ns1:LongestNaturalBridge rdfs:label "longest natural bridge" ;
+    rdfs:subClassOf ns1:NaturalBridge .
+
+ns1:Loss rdfs:label "Loss" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    ns1:locatedIn ns1:Winston .
+
+ns1:NaturalIllusion a owl:Class ;
+    rdfs:label "Natural Illusion" ;
+    dul:hasQuality ns1:Natural ;
+    rdfs:subClassOf ns1:Illusion .
+
+ns1:South rdfs:label "south" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Winston rdfs:label "Winston" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:bridge_1 a ns1:LongestNaturalBridge,
+        ns1:NaturalBridge ;
+    rdfs:label "bridge" ;
+    dul:hasQuality ns1:Longest,
+        ns1:Natural ;
+    quant:hasDeterminer quant:the ;
+    ns1:inSouthOf ns1:Loss ;
+    ns1:longestAmong ns1:NaturalBridge .
+
+ns1:illusion_1 a ns1:ClearNaturalIllusion,
+        ns1:NaturalRock ;
+    rdfs:label "illusion" ;
+    dul:hasQuality ns1:Clear ;
+    quant:hasDeterminer quant:a ;
+    ns1:locatedIn ns1:Albama .
+
+ns1:NaturalRock rdfs:subClassOf ns1:Rock .
+
+ns1:Rock rdfs:label "rocks" .
+
+ns1:Natural a owl:Class ;
+    rdfs:label "Natural",
+        "natural" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:NaturalBridge a owl:Class ;
+    rdfs:label "Natural Bridge" ;
+    rdfs:subClassOf ns1:Bridge ;
+    owl:equivalentClass dbpedia:Natural_arch .
+

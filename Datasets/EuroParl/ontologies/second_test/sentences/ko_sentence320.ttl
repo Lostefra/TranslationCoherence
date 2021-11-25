@@ -1,0 +1,113 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence320.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Oblique rdfs:label "In" .
+
+translation_coherence:ko_sentence320.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence320" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence320" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Economic rdfs:label "economic" ;
+    owl:sameAs dbpedia:Economy .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "In the past, this Parliament sees social economic as an important potential supplier of employment."^^xsd:string .
+
+ns1:see_1 a ns1:See ;
+    rdfs:label "sees" ;
+    vn.role:Experiencer ns1:Parliament ;
+    vn.role:Oblique ns1:past_1 .
+
+ns1:Employment a owl:Class ;
+    rdfs:label "employment" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Employment .
+
+ns1:Important rdfs:label "important" .
+
+ns1:ImportantPotentialSupplier a owl:Class ;
+    rdfs:label "important potential supplier" ;
+    rdfs:subClassOf ns1:PotentialSupplier .
+
+ns1:Parliament rdfs:label "Parliament" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality ns1:Social ;
+    owl:sameAs dbpedia:Parliament ;
+    ns1:economicAs ns1:supplier_1 .
+
+ns1:Past rdfs:label "past" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Potential a owl:Class ;
+    rdfs:label "potential" .
+
+ns1:PotentialSupplier a owl:Class ;
+    rdfs:label "potential supplier" ;
+    dul:associatedWith ns1:Supplier ;
+    dul:hasModality ns1:Potential .
+
+ns1:See rdfs:label "sees" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Social rdfs:label "social" ;
+    owl:sameAs dbpedia:Society .
+
+ns1:Supplier a owl:Class ;
+    rdfs:label "supplier" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:employment_1 a ns1:Employment ;
+    rdfs:label "employment" .
+
+ns1:past_1 a ns1:Past ;
+    rdfs:label "past" ;
+    quant:hasDeterminer quant:the .
+
+ns1:supplier_1 a ns1:ImportantPotentialSupplier ;
+    rdfs:label "supplier" ;
+    dul:hasQuality ns1:Important ;
+    quant:hasDeterminer quant:an ;
+    ns1:importantPotentialSupplierOf ns1:employment_1 .
+

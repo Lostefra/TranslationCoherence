@@ -1,0 +1,220 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence650.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence650.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence650" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence650" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Because rdfs:label "because" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "my",
+        "of",
+        "our" .
+
+ns1:President a ns1:Topic ;
+    rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister>,
+        ns1:commissioner_1 ;
+    owl:sameAs dbpedia:President .
+
+ns1:Rel rdfs:label "," .
+
+ns1:That rdfs:label "that" .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "Mr. President, commissioner, my thanks to the reporter for treating this important report, because developments in social and economic situation will decide what the citizens of Europe will assess that we have been successful in our work."^^xsd:string .
+
+ns1:person_2 coref:coref ns1:person_3 .
+
+ns1:treat_1 a ns1:Treat ;
+    rdfs:label "treating" ;
+    vn.role:Agent ns1:reporter_1 ;
+    vn.role:Recipient ns1:report_1 ;
+    ns1:because ns1:situation_1 .
+
+dbpedia:Europe a schema:Continent,
+        schema:Place .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> a ns1:Topic ;
+    rdfs:label "Mr." ;
+    boxer:possibleType dul:Role .
+
+ns1:Assess rdfs:label "assess" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Citizen rdfs:label "citizens" .
+
+ns1:Commissioner rdfs:label "commissioner" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Decide rdfs:label "decide" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Development rdfs:label "developments" .
+
+ns1:Economic a owl:Class ;
+    rdfs:label "economic" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:EconomicSituation a owl:Class ;
+    rdfs:label "Economic Situation" ;
+    dul:hasQuality ns1:Economic ;
+    rdfs:subClassOf ns1:Situation .
+
+ns1:Europe rdfs:label "Europe" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Europe .
+
+ns1:Important rdfs:label "important" .
+
+ns1:ImportantReport rdfs:label "Important Report" ;
+    rdfs:subClassOf ns1:Report .
+
+ns1:Report rdfs:label "Report",
+        "report" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Reporter rdfs:label "reporter" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Social rdfs:label "social" .
+
+ns1:Thanks rdfs:label "thanks" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Treat rdfs:label "treating" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Work rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:assess_1 a ns1:Assess ;
+    rdfs:label "assess" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:citizen_1 ;
+    vn.role:Theme ns1:thing_1 .
+
+ns1:citizen_1 a ns1:Citizen ;
+    rdfs:label "citizens" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:citizenOf ns1:Europe .
+
+ns1:commissioner_1 a ns1:Commissioner ;
+    rdfs:label "commissioner" ;
+    dul:associatedWith ns1:thanks_1 .
+
+ns1:decide_1 a ns1:Decide ;
+    rdfs:label "decide" ;
+    boxer:agent ns1:development_1 ;
+    boxer:patient ns1:thing_1 ;
+    boxing:hasModality boxing:Necessary .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "my" .
+
+ns1:report_1 a ns1:ImportantReport ;
+    rdfs:label "report" ;
+    dul:hasQuality ns1:Important ;
+    quant:hasDeterminer quant:this .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:assess_1,
+        ns1:decide_1,
+        ns1:development_1,
+        ns1:situation_3,
+        ns1:thing_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Successful,
+        ns1:person_3 ;
+    ns1:in ns1:work_1 .
+
+ns1:thanks_1 a ns1:Thanks ;
+    rdfs:label "thanks" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:thanksOf ns1:person_1 ;
+    ns1:to ns1:reporter_1 .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "work" ;
+    ns1:workOf ns1:person_3 .
+
+owl:Thing rdfs:label "what" .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Successful rdfs:label "successful" .
+
+ns1:Topic rdfs:label "Mr.",
+        "President" .
+
+ns1:development_1 a ns1:Development ;
+    rdfs:label "developments" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:situation_3 .
+
+ns1:reporter_1 a ns1:Reporter ;
+    rdfs:label "reporter" ;
+    quant:hasDeterminer quant:the ;
+    ns1:that ns1:situation_2 .
+
+ns1:situation_3 a ns1:EconomicSituation ;
+    rdfs:label "situation" ;
+    dul:hasQuality ns1:Social .
+
+ns1:Situation a owl:Class ;
+    rdfs:label "situation" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "our",
+        "we" ;
+    dul:hasQuality ns1:Successful .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "what" .
+

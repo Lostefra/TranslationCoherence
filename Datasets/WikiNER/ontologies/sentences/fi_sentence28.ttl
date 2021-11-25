@@ -1,0 +1,201 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence28.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Estrongest> rdfs:label "strongest" .
+
+translation_coherence:fi_sentence28.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence28" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence28" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Strongest rdfs:label "strongest" .
+
+ns1:To rdfs:label "to" .
+
+ns1:achieve_1 a ns1:Achieve ;
+    rdfs:label "achieved" ;
+    vn.role:Theme ns1:success_1 .
+
+ns1:anarchist_1 a ns1:Anarchist ;
+    rdfs:label "anarchist" ;
+    dul:associatedWith ns1:tradition_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:docuverse earmark:hasContent "The Italian_anarchists were central to the antifascist organization Ard. del Popolo, the strongest anarchist traditions, and achieved some success in activism, such as the relocation of black s lits in the Bird of the Parma in August 1922."^^xsd:string .
+
+ns1:lit_1 a ns1:Lit ;
+    rdfs:label "lits" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:locatedIn ns1:Bird .
+
+ns1:s_1 a ns1:S ;
+    rdfs:label "s" ;
+    boxer:agent ns1:relocation_1 ;
+    ns1:in "1922-08-01"^^xsd:date .
+
+ns1:situation_1 a ns1:Situation ;
+    ns1:entails ns1:situation_2 .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves ns1:Central,
+        ns1:italian_anarchists_1 ;
+    ns1:to ns1:Popolo,
+        ns1:tradition_1 .
+
+dbpedia:Parma a schema:Place .
+
+ns1:Achieve rdfs:label "achieved" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Activism rdfs:label "activism" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Anarchist a owl:Class ;
+    rdfs:label "anarchist" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Anarchism .
+
+ns1:Antifascist a owl:Class ;
+    rdfs:label "antifascist" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Anti-fascism .
+
+ns1:Ard._del a ns1:AntifascistOrganization ;
+    rdfs:label "Ard. del",
+        "organization" ;
+    boxer:possibleType owl:Thing .
+
+ns1:Bird rdfs:label "Bird" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Bird ;
+    ns1:of ns1:Parma .
+
+ns1:Black rdfs:label "black" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Italian_anarchists a owl:Class ;
+    rdfs:label "Italian anarchists" ;
+    owl:equivalentClass dbpedia:Anarchism_in_Italy .
+
+ns1:Lit rdfs:label "lits" .
+
+ns1:Parma rdfs:label "Parma" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Parma .
+
+ns1:Popolo a ns1:AntifascistOrganization ;
+    rdfs:label "Popolo",
+        "organization" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Ard._del .
+
+ns1:Relocation rdfs:label "relocation" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:S rdfs:label "s" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:StrongestAnarchistTradition rdfs:subClassOf ns1:AnarchistTradition .
+
+ns1:Success rdfs:label "success" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Tradition rdfs:label "traditions" .
+
+ns1:activism_1 a ns1:Activism ;
+    rdfs:label "activism" .
+
+ns1:black_1 a ns1:Black ;
+    rdfs:label "black" .
+
+ns1:italian_anarchists_1 a ns1:Italian_anarchists ;
+    rdfs:label "Italian anarchists" ;
+    dul:hasQuality ns1:Central ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    owl:sameAs ns1:organization_1 .
+
+ns1:organization_1 a ns1:Organization ;
+    rdfs:label "organization" ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:tradition_1 .
+
+ns1:success_1 a ns1:Success ;
+    rdfs:label "success" ;
+    quant:hasQuantifier quant:some ;
+    ns1:as ns1:relocation_1 ;
+    ns1:in ns1:activism_1 .
+
+ns1:AntifascistOrganization a owl:Class ;
+    rdfs:label "Antifascist Organization" ;
+    dul:hasQuality ns1:Antifascist ;
+    rdfs:subClassOf ns1:Organization .
+
+ns1:Central rdfs:label "central" .
+
+ns1:Organization a owl:Class ;
+    rdfs:label "Ard. del",
+        "Popolo",
+        "organization" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:relocation_1 a ns1:Relocation ;
+    rdfs:label "relocation" ;
+    quant:hasDeterminer quant:such,
+        quant:the ;
+    ns1:relocationOf ns1:black_1 .
+
+ns1:AnarchistTradition rdfs:subClassOf ns1:Tradition .
+
+ns1:tradition_1 a ns1:AnarchistTradition,
+        ns1:StrongestAnarchistTradition ;
+    rdfs:label "traditions" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:strongestAmong ns1:AnarchistTradition .
+

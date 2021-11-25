@@ -1,0 +1,131 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence694.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence694.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence694" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence694" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "4thly, Hedkvist Petersen is now stressed and promotes opportunities policy equivalent to women and young people."^^xsd:string .
+
+ns1:policy_1 a ns1:Policy ;
+    rdfs:label "policy" ;
+    dul:associatedWith ns1:equivalent_1 .
+
+ns1:promote_1 a ns1:Promote ;
+    rdfs:label "promotes" ;
+    boxer:recipient ns1:opportunity_1 ;
+    dul:hasQuality ns1:4thly ;
+    vn.role:Agent ns1:Hedkvist_petersen ;
+    vn.role:Theme ns1:equivalent_1 ;
+    ns1:to ns1:people_1,
+        ns1:woman_1 .
+
+ns1:stress_1 a ns1:NowStress ;
+    rdfs:label "stressed" ;
+    dul:hasQuality ns1:4thly,
+        ns1:Now ;
+    vn.role:Destination ns1:Hedkvist_petersen .
+
+ns1:Equivalent a owl:Class ;
+    rdfs:label "equivalent" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Now rdfs:label "now" .
+
+ns1:NowStress rdfs:subClassOf ns1:Stress .
+
+ns1:Opportunity rdfs:label "opportunities" .
+
+ns1:People a owl:Class ;
+    rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:PolicyEquivalent a owl:Class ;
+    rdfs:label "policy equivalent" ;
+    dul:associatedWith ns1:Policy ;
+    rdfs:subClassOf ns1:Equivalent .
+
+ns1:Promote rdfs:label "promotes" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Stress rdfs:label "stressed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Woman a owl:Class ;
+    rdfs:label "women" ;
+    owl:equivalentClass dbpedia:Woman .
+
+ns1:Young a owl:Class ;
+    rdfs:label "young" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:YoungPeople a owl:Class ;
+    rdfs:label "Young People" ;
+    dul:hasQuality ns1:Young ;
+    rdfs:subClassOf ns1:People .
+
+ns1:opportunity_1 a ns1:Opportunity ;
+    rdfs:label "opportunities" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:people_1 a ns1:YoungPeople ;
+    rdfs:label "people" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:woman_1 a ns1:Woman ;
+    rdfs:label "women" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:4thly rdfs:label "4thly" .
+
+ns1:Hedkvist_petersen rdfs:label "Hedkvist Petersen" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Policy a owl:Class ;
+    rdfs:label "policy" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:equivalent_1 a ns1:PolicyEquivalent ;
+    rdfs:label "equivalent" .
+

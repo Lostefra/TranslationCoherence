@@ -1,0 +1,159 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence469.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence469.ttl a owl:Ontology ;
+    rdfs:label "de_sentence469" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence469" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:During rdfs:label "during" .
+
+ns1:In rdfs:label "in" .
+
+ns1:docuverse earmark:hasContent "Ultimately, there is irrevocable evidence, Lord says that during the time when Strabo and Plutarch propose, the treatments were in circulation in Scepsis."^^xsd:string .
+
+ns1:evidence_1 rdfs:label "evidence" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Circulation,
+        ns1:circulation_1 ;
+    ns1:during ns1:Strabo .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:situation_3,
+        ns1:there_1 ;
+    dul:hasQuality ns1:Ultimately .
+
+ns1:time_1 a ns1:Time ;
+    rdfs:label "time" ;
+    dul:associatedWith ns1:Strabo ;
+    quant:hasDeterminer quant:the .
+
+ns1:treatment_1 a ns1:Treatment ;
+    rdfs:label "treatments" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:circulation_1 .
+
+ns1:when_1 rdfs:label "when" .
+
+dbpedia:Plutarch a schema:Person .
+
+ns1:Evidence a owl:Class ;
+    rdfs:label "evidence" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Irrevocable a owl:Class ;
+    rdfs:label "irrevocable" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:IrrevocableEvidence a owl:Class ;
+    rdfs:label "Irrevocable Evidence" ;
+    dul:hasQuality ns1:Irrevocable ;
+    rdfs:subClassOf ns1:Evidence .
+
+ns1:Lord rdfs:label "Lord" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Lord .
+
+ns1:Plutarch rdfs:label "Plutarch" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Plutarch .
+
+ns1:Propose rdfs:label "propose" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Say rdfs:label "says" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Scepsis rdfs:label "Scepsis" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Skepsis .
+
+ns1:There rdfs:label "there" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Time rdfs:label "Strabo",
+        "time" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:TimeWhen rdfs:label "time when" ;
+    rdfs:subClassOf ns1:When .
+
+ns1:Treatment rdfs:label "treatments" .
+
+ns1:Ultimately rdfs:label "Ultimately" .
+
+ns1:When rdfs:label "Strabo",
+        "when" .
+
+ns1:propose_1 a ns1:Propose ;
+    rdfs:label "propose" ;
+    vn.role:Agent ns1:Plutarch ;
+    vn.role:Theme ns1:Strabo .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves ns1:say_1 .
+
+ns1:there_1 a ns1:IrrevocableEvidence,
+        ns1:There ;
+    rdfs:label "there" ;
+    boxer:theme ns1:say_1 .
+
+ns1:Circulation rdfs:label "circulation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:circulation_1 a ns1:Circulation ;
+    rdfs:label "circulation" ;
+    ns1:locatedIn ns1:Scepsis .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "says" ;
+    vn.role:Agent ns1:Lord ;
+    vn.role:Topic ns1:propose_1 .
+
+ns1:Strabo a ns1:TimeWhen ;
+    rdfs:label "Strabo",
+        "time",
+        "when" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Strabo .
+

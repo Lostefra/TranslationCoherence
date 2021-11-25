@@ -1,0 +1,151 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence23.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence23.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence23" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence23" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "are" .
+
+ns1:Factor rdfs:label "factors" .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "Important factors for this are the suppression of the state, the organization of the labour movement and the impact of the October_Revolution."^^xsd:string .
+
+ns1:factor_1 a dbpedia:Factors_of_production ;
+    rdfs:label "factors" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:labour_1 a ns1:Labour ;
+    rdfs:label "labour" ;
+    dul:associatedWith ns1:movement_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:suppression_1 a ns1:ImportantFactor,
+        ns1:Suppression ;
+    rdfs:label "suppression" ;
+    dul:hasQuality ns1:Important ;
+    quant:hasDeterminer quant:the,
+        quant:this ;
+    ns1:for ns1:thing_1 ;
+    ns1:suppressionOf ns1:state_1 .
+
+dbpedia:October_Revolution rdfs:subClassOf schema:Event .
+
+owl:Thing rdfs:label "this" .
+
+ns1:Impact a owl:Class ;
+    rdfs:label "impact" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> ;
+    owl:equivalentClass dbpedia:Social_influence .
+
+ns1:Important rdfs:label "Important" .
+
+ns1:ImportantFactor rdfs:subClassOf ns1:Suppression .
+
+ns1:LabourMovement a owl:Class ;
+    rdfs:label "Labour Movement" ;
+    dul:associatedWith ns1:Labour ;
+    rdfs:subClassOf ns1:Movement ;
+    owl:equivalentClass dbpedia:Labour_movement .
+
+ns1:Movement a owl:Class ;
+    rdfs:label "movement" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:OctoberRevolution rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:October_revolution a owl:Class ;
+    rdfs:label "October Revolution" ;
+    rdfs:subClassOf ns1:OctoberRevolution ;
+    owl:equivalentClass dbpedia:October_Revolution .
+
+ns1:Organization a owl:Class ;
+    rdfs:label "organization" ;
+    rdfs:subClassOf dul:Organization ;
+    owl:equivalentClass dbpedia:Organization .
+
+ns1:State a owl:Class ;
+    rdfs:label "state" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> ;
+    owl:equivalentClass dbpedia:State_(polity) .
+
+ns1:impact_1 a ns1:Impact ;
+    rdfs:label "impact" ;
+    quant:hasDeterminer quant:the ;
+    ns1:impactOf ns1:october_revolution_1 .
+
+ns1:october_revolution_1 a ns1:October_revolution ;
+    rdfs:label "October Revolution" ;
+    quant:hasDeterminer quant:the .
+
+ns1:organization_1 a ns1:Organization ;
+    rdfs:label "organization" ;
+    quant:hasDeterminer quant:the ;
+    ns1:organizationOf ns1:movement_1 .
+
+ns1:state_1 a ns1:State ;
+    rdfs:label "state" ;
+    dul:associatedWith ns1:impact_1,
+        ns1:organization_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "this" .
+
+ns1:Labour a owl:Class ;
+    rdfs:label "labour" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Suppression a owl:Class ;
+    rdfs:label "suppression" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Censorship .
+
+ns1:movement_1 a ns1:LabourMovement ;
+    rdfs:label "movement" .
+

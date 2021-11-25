@@ -1,0 +1,191 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence406.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence406.ttl a owl:Ontology ;
+    rdfs:label "de_sentence406" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence406" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Especially rdfs:label "especially" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Through rdfs:label "through" .
+
+ns1:development_1 a ns1:Development ;
+    rdfs:label "development" ;
+    quant:hasDeterminer quant:the .
+
+ns1:docuverse earmark:hasContent "Structural_Funds have played a key role in the development of both urban and rural areas in peripheral countries, especially through the modernisation of roads, water treatment and related transport networks."^^xsd:string .
+
+ns1:play_1 a ns1:Play ;
+    rdfs:label "played" ;
+    vn.role:Agent ns1:structural_funds_1 ;
+    vn.role:Theme ns1:role_1 ;
+    ns1:especiallyThrough ns1:modernisation_1 ;
+    ns1:inDevelopmentOf ns1:area_1 .
+
+ns1:relate_1 a ns1:Relate ;
+    rdfs:label "related" ;
+    vn.role:Theme ns1:network_1 .
+
+ns1:transport_1 a ns1:Transport ;
+    rdfs:label "transport" ;
+    dul:associatedWith ns1:network_1 .
+
+ns1:water_1 a ns1:Water ;
+    rdfs:label "water" ;
+    dul:associatedWith ns1:treatment_1 .
+
+ns1:Area rdfs:label "areas" .
+
+ns1:Country rdfs:label "countries" .
+
+ns1:Development a owl:Class ;
+    rdfs:label "development" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Economic_development .
+
+ns1:Key a owl:Class ;
+    rdfs:label "key" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:KeyRole a owl:Class ;
+    rdfs:label "key role" ;
+    dul:hasQuality ns1:Key ;
+    rdfs:subClassOf ns1:Role .
+
+ns1:Modernisation rdfs:label "modernisation" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Network rdfs:label "networks" .
+
+ns1:Peripheral rdfs:label "peripheral" .
+
+ns1:PeripheralCountry rdfs:subClassOf ns1:Country .
+
+ns1:Play rdfs:label "played" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Relate rdfs:label "related" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Road rdfs:label "roads" .
+
+ns1:Role a owl:Class ;
+    rdfs:label "role" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Rural rdfs:label "rural" ;
+    owl:sameAs dbpedia:Rural_area .
+
+ns1:RuralArea rdfs:subClassOf ns1:Area .
+
+ns1:Structural_funds a owl:Class ;
+    rdfs:label "Structural Funds" ;
+    owl:equivalentClass dbpedia:Structural_Funds_and_Cohesion_Fund .
+
+ns1:Transport a owl:Class ;
+    rdfs:label "transport" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Transport .
+
+ns1:TransportNetwork rdfs:subClassOf ns1:Network .
+
+ns1:Treatment a owl:Class ;
+    rdfs:label "treatment" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Urban rdfs:label "urban" .
+
+ns1:WaterTreatment a owl:Class ;
+    rdfs:label "Water Treatment" ;
+    dul:associatedWith ns1:Water ;
+    rdfs:subClassOf ns1:Treatment ;
+    owl:equivalentClass dbpedia:Sewage_treatment .
+
+ns1:area_1 a ns1:RuralArea ;
+    rdfs:label "areas" ;
+    dul:hasQuality ns1:Rural,
+        ns1:Urban ;
+    quant:hasQuantifier quant:both,
+        quant:multiple ;
+    ns1:in ns1:country_1 .
+
+ns1:country_1 a ns1:PeripheralCountry ;
+    rdfs:label "countries" ;
+    dul:hasQuality ns1:Peripheral ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:modernisation_1 a ns1:Modernisation ;
+    rdfs:label "modernisation" ;
+    quant:hasDeterminer quant:the ;
+    ns1:modernisationOf ns1:road_1 .
+
+ns1:road_1 a ns1:Road ;
+    rdfs:label "roads" ;
+    dul:associatedWith ns1:network_1,
+        ns1:treatment_1 ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:role_1 a ns1:KeyRole ;
+    rdfs:label "role" ;
+    quant:hasDeterminer quant:a .
+
+ns1:structural_funds_1 a ns1:Structural_funds ;
+    rdfs:label "Structural Funds" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Water a owl:Class ;
+    rdfs:label "water" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:treatment_1 a ns1:WaterTreatment ;
+    rdfs:label "treatment" .
+
+ns1:network_1 a ns1:TransportNetwork ;
+    rdfs:label "networks" ;
+    quant:hasQuantifier quant:multiple .
+

@@ -1,0 +1,139 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence556.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:it_sentence556.ttl a owl:Ontology ;
+    rdfs:label "it_sentence556" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence556" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "In",
+        "in" .
+
+ns1:docuverse earmark:hasContent "In fact, I had the opportunity to say how much to all the ministers responsible for urban policy in a meeting in Tampere."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "had" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Patient ns1:opportunity_1 ;
+    ns1:in ns1:fact_1 .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "say" ;
+    dul:hasQuality ns1:How ;
+    vn.role:Agent ns1:opportunity_1 ;
+    vn.role:Recipient ns1:minister_1 ;
+    ns1:in ns1:meeting_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Responsible,
+        ns1:minister_1 ;
+    ns1:for ns1:policy_1 .
+
+ns1:Fact rdfs:label "fact" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Have rdfs:label "had" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:How rdfs:label "how" .
+
+ns1:Meeting rdfs:label "meeting" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Minister rdfs:label "ministers" .
+
+ns1:Opportunity rdfs:label "opportunity" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Person rdfs:label "I" .
+
+ns1:Policy a owl:Class ;
+    rdfs:label "policy" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Say rdfs:label "say" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Tampere rdfs:label "Tampere" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Tampere .
+
+ns1:UrbanPolicy a owl:Class ;
+    rdfs:label "Urban Policy" ;
+    dul:hasQuality ns1:Urban ;
+    rdfs:subClassOf ns1:Policy .
+
+ns1:fact_1 a ns1:Fact ;
+    rdfs:label "fact" .
+
+ns1:meeting_1 a ns1:Meeting ;
+    rdfs:label "meeting" ;
+    quant:hasDeterminer quant:a ;
+    ns1:locatedIn ns1:Tampere .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:policy_1 a ns1:UrbanPolicy ;
+    rdfs:label "policy" ;
+    dul:hasQuality ns1:Urban .
+
+ns1:Responsible rdfs:label "responsible" .
+
+ns1:Urban a owl:Class ;
+    rdfs:label "urban" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:minister_1 a ns1:Minister ;
+    rdfs:label "ministers" ;
+    dul:hasQuality ns1:Responsible ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:much,
+        quant:multiple .
+
+ns1:opportunity_1 a ns1:Opportunity ;
+    rdfs:label "opportunity" ;
+    quant:hasDeterminer quant:the .
+

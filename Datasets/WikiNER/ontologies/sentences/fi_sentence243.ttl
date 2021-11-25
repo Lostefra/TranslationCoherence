@@ -1,0 +1,160 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence243.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "in" .
+
+translation_coherence:fi_sentence243.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence243" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence243" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:From rdfs:label "from" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Safe rdfs:label "safe" .
+
+ns1:claim_1 a ns1:Claim ;
+    rdfs:label "claim" ;
+    vn.role:Agent ns1:source_1 ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:court_1 a ns1:Court ;
+    rdfs:label "court" ;
+    quant:hasDeterminer quant:the .
+
+ns1:docuverse earmark:hasContent "Some post-Homeric sources claim that in order to keep Achilles safe from war, Thetis hides a young man in the court of Lycomedes, Skyros."^^xsd:string .
+
+ns1:Achilles rdfs:label "Achilles" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Achilles ;
+    ns1:safeFrom ns1:war_1 .
+
+ns1:Claim rdfs:label "claim" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Court rdfs:label "court" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Hide rdfs:label "hides" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Keep rdfs:label "keep" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Lycomedes rdfs:label "Lycomedes" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:Skyros ;
+    owl:sameAs dbpedia:Lycomedes .
+
+ns1:Man a owl:Class ;
+    rdfs:label "man" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Order rdfs:label "order" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Post-homeric rdfs:label "post-Homeric" .
+
+ns1:Post-homericSource rdfs:subClassOf ns1:Source .
+
+ns1:Skyros rdfs:label "Skyros" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Skyros .
+
+ns1:Source rdfs:label "sources" .
+
+ns1:Thetis rdfs:label "Thetis" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Thetis .
+
+ns1:War rdfs:label "war" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Young a owl:Class ;
+    rdfs:label "young" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:YoungMan a owl:Class ;
+    rdfs:label "Young Man" ;
+    dul:hasQuality ns1:Young ;
+    rdfs:subClassOf ns1:Man .
+
+ns1:hide_1 a ns1:Hide ;
+    rdfs:label "hides" ;
+    vn.role:Agent ns1:Thetis ;
+    vn.role:Location ns1:order_1 ;
+    vn.role:Patient ns1:man_1 ;
+    ns1:inCourtOf ns1:Lycomedes .
+
+ns1:keep_1 a ns1:Keep ;
+    rdfs:label "keep" ;
+    boxer:theme ns1:situation_1 ;
+    vn.role:Agent ns1:order_1 .
+
+ns1:source_1 a ns1:Post-homericSource ;
+    rdfs:label "sources" ;
+    dul:hasQuality ns1:Post-homeric ;
+    quant:hasQuantifier quant:multiple,
+        quant:some .
+
+ns1:man_1 a ns1:YoungMan ;
+    rdfs:label "man" ;
+    quant:hasDeterminer quant:a .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Achilles,
+        ns1:hide_1,
+        ns1:keep_1,
+        ns1:man_1,
+        ns1:order_1,
+        ns1:war_1 .
+
+ns1:war_1 a ns1:War ;
+    rdfs:label "war" .
+
+ns1:order_1 a ns1:Order ;
+    rdfs:label "order" .
+

@@ -1,0 +1,127 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence272.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "in" .
+
+translation_coherence:fi_sentence272.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence272" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence272" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In",
+        "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "In 1830, fear of milk disease, the family settled in an international country in Macon_County."^^xsd:string .
+
+ns1:milk_1 a ns1:Milk ;
+    rdfs:label "milk" ;
+    dul:associatedWith ns1:disease_1 .
+
+ns1:settle_1 a ns1:Settle ;
+    rdfs:label "settled" ;
+    dul:associatedWith ns1:fear_1 ;
+    vn.role:Location ns1:country_1 ;
+    vn.role:Theme ns1:family_1 ;
+    ns1:in "1830-01-01"^^xsd:date .
+
+ns1:Country a owl:Class ;
+    rdfs:label "country" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Disease a owl:Class ;
+    rdfs:label "disease" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Family a owl:Class ;
+    rdfs:label "family" ;
+    rdfs:subClassOf dul:Organization ;
+    owl:equivalentClass dbpedia:Family .
+
+ns1:Fear rdfs:label "fear" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:InternationalCountry a owl:Class ;
+    rdfs:label "International Country" ;
+    dul:hasQuality ns1:International ;
+    rdfs:subClassOf ns1:Country .
+
+ns1:Macon_county rdfs:label "Macon County" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs <http://dbpedia.org/resource/Macon_County,_North_Carolina> .
+
+ns1:MilkDisease a owl:Class ;
+    rdfs:label "milk disease" ;
+    dul:associatedWith ns1:Milk ;
+    rdfs:subClassOf ns1:Disease .
+
+ns1:Settle rdfs:label "settled" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:country_1 a ns1:InternationalCountry ;
+    rdfs:label "country" ;
+    dul:hasQuality ns1:International ;
+    quant:hasDeterminer quant:an ;
+    ns1:locatedIn ns1:Macon_county .
+
+ns1:family_1 a ns1:Family ;
+    rdfs:label "family" ;
+    quant:hasDeterminer quant:the .
+
+ns1:fear_1 a ns1:Fear ;
+    rdfs:label "fear" ;
+    ns1:fearOf ns1:disease_1 .
+
+ns1:International a owl:Class ;
+    rdfs:label "international" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Milk a owl:Class ;
+    rdfs:label "milk" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Milk .
+
+ns1:disease_1 a ns1:MilkDisease ;
+    rdfs:label "disease" .
+

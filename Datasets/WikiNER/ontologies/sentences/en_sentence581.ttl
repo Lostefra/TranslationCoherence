@@ -1,0 +1,142 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence581.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence581.ttl a owl:Ontology ;
+    rdfs:label "en_sentence581" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence581" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Between rdfs:label "between" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "Her",
+        "her",
+        "of" .
+
+ns1:describe_1 a ns1:Describe ;
+    rdfs:label "described" ;
+    vn.role:Agent ns1:testimony_1 ;
+    vn.role:Theme ns1:disparity_1 ;
+    ns1:in ns1:song_of_russia_1 .
+
+ns1:docuverse earmark:hasContent "Her testimony described the disparity between her personal experiences in the Soviet_Union and the portrayal of it in the 1944 film Song_of_Russia."^^xsd:string .
+
+ns1:film_1 a ns1:Film ;
+    rdfs:label "film" ;
+    dul:associatedWith ns1:song_of_russia_1 ;
+    quant:hasDeterminer quant:the .
+
+dbpedia:Soviet_Union a schema:Country,
+        schema:Place .
+
+ns1:Describe rdfs:label "described" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Disparity rdfs:label "disparity" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Experience rdfs:label "experiences" .
+
+ns1:FilmSong_of_russia a owl:Class ;
+    rdfs:label "Film Song of russia" ;
+    dul:associatedWith ns1:Film ;
+    rdfs:subClassOf ns1:Song_of_russia .
+
+ns1:Personal rdfs:label "personal" .
+
+ns1:PersonalExperience rdfs:subClassOf ns1:Experience .
+
+ns1:Portrayal rdfs:label "portrayal" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Song_of_russia a owl:Class ;
+    rdfs:label "Song of Russia" ;
+    owl:equivalentClass dbpedia:Song_of_Russia .
+
+ns1:Soviet_union rdfs:label "Soviet Union" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Soviet_Union .
+
+ns1:Testimony rdfs:label "testimony" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:disparity_1 a ns1:Disparity ;
+    rdfs:label "disparity" ;
+    quant:hasDeterminer quant:the ;
+    ns1:between ns1:experience_1,
+        ns1:portrayal_1 .
+
+ns1:experience_1 a ns1:PersonalExperience ;
+    rdfs:label "experiences" ;
+    dul:hasQuality ns1:Personal ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:Soviet_union ;
+    ns1:personalExperienceOf ns1:female_1 .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "it" .
+
+ns1:portrayal_1 a ns1:Portrayal ;
+    rdfs:label "portrayal" ;
+    quant:hasDeterminer quant:the ;
+    ns1:portrayalOf ns1:neuter_1 .
+
+ns1:testimony_1 a ns1:Testimony ;
+    rdfs:label "testimony" ;
+    ns1:testimonyOf ns1:female_1 .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Film a owl:Class ;
+    rdfs:label "film" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity>,
+        dul:InformationEntity .
+
+ns1:song_of_russia_1 a ns1:FilmSong_of_russia ;
+    rdfs:label "Song of Russia" ;
+    ns1:at "1944-01-01"^^xsd:date .
+
+ns1:female_1 a ns1:Female ;
+    rdfs:label "Her",
+        "her" ;
+    coref:coref ns1:female_1 .
+

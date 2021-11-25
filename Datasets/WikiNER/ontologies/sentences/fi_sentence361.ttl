@@ -1,0 +1,131 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence361.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Source rdfs:label "although" .
+
+translation_coherence:fi_sentence361.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence361" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence361" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "his" .
+
+ns1:When rdfs:label "When" .
+
+ns1:defeat_1 a ns1:Defeat ;
+    rdfs:label "defeated" ;
+    boxer:patient ns1:Burnside ;
+    ns1:in "0001-12-01"^^xsd:date ;
+    ns1:locatedIn ns1:Fredericksburg ;
+    ns1:when ns1:take_1 .
+
+ns1:docuverse earmark:hasContent "When Burnside was defeated in Fredericksburg in December, Joseph_Hooker took command, although his history was loose and criticized the en commanders."^^xsd:string .
+
+ns1:male_1 coref:coref ns1:Burnside .
+
+dbpedia:Battle_of_Fredericksburg a schema:Event .
+
+ns1:Command rdfs:label "command" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Commander rdfs:label "commanders" .
+
+ns1:Criticize rdfs:label "criticized" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Defeat rdfs:label "defeated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:En rdfs:label "en" .
+
+ns1:EnCommander rdfs:subClassOf ns1:Commander .
+
+ns1:Fredericksburg rdfs:label "Fredericksburg" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Battle_of_Fredericksburg .
+
+ns1:History rdfs:label "history" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Joseph_hooker rdfs:label "Joseph Hooker" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Joseph_Hooker .
+
+ns1:Loose rdfs:label "loose" .
+
+ns1:Male rdfs:label "Burnside" .
+
+ns1:Take rdfs:label "took" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:command_1 a ns1:Command ;
+    rdfs:label "command" .
+
+ns1:commander_1 a ns1:EnCommander ;
+    rdfs:label "commanders" ;
+    dul:hasQuality ns1:En ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:criticize_1 a ns1:Criticize ;
+    rdfs:label "criticized" ;
+    vn.role:Agent ns1:history_1 ;
+    vn.role:Theme ns1:commander_1 .
+
+ns1:history_1 a ns1:History ;
+    rdfs:label "history" ;
+    dul:hasQuality ns1:Loose ;
+    ns1:historyOf ns1:Burnside .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "took" ;
+    vn.role:Agent ns1:Joseph_hooker ;
+    vn.role:Source ns1:criticize_1 ;
+    vn.role:Theme ns1:command_1 .
+
+ns1:Burnside a ns1:Male ;
+    rdfs:label "Burnside",
+        "his" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Ambrose_Burnside .
+

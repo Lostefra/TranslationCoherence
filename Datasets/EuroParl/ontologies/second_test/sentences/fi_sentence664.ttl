@@ -1,0 +1,198 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence664.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "in" .
+
+translation_coherence:fi_sentence664.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence664" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence664" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:About rdfs:label "about" .
+
+ns1:Just rdfs:label "just" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:Whether rdfs:label "whether" .
+
+ns1:business_3 a ns1:Business ;
+    rdfs:label "business" ;
+    dul:associatedWith ns1:employee_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:disjunct_1 a ns1:Disjunct ;
+    boxing:involves ns1:Business,
+        ns1:Owner,
+        ns1:employee_1 ;
+    ns1:union ns1:disjunct_2 .
+
+ns1:docuverse earmark:hasContent "Entrepreneurship is not just about owning a business, but creating a business. I mean the attitude a person wants to live in, whether he is an employee, a business owner or an official."^^xsd:string .
+
+ns1:mean_1 a ns1:Mean ;
+    rdfs:label "mean" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:attitude_1 ;
+    ns1:whether ns1:situation_1 .
+
+ns1:official_1 rdfs:label "official" .
+
+ns1:owner_1 rdfs:label "owner" .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves ns1:business_1,
+        ns1:business_2,
+        ns1:create_1,
+        ns1:entrepreneurship_1,
+        ns1:own_1 .
+
+ns1:want_1 a ns1:Want ;
+    rdfs:label "wants" ;
+    vn.role:Experiencer ns1:person_2 ;
+    vn.role:Theme ns1:live_1 .
+
+ns1:Attitude rdfs:label "attitude" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:BusinessOwner rdfs:label "business owner" ;
+    rdfs:subClassOf ns1:Owner .
+
+ns1:Create rdfs:label "creating" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Entrepreneurship a owl:Class ;
+    rdfs:label "Entrepreneurship" ;
+    owl:equivalentClass dbpedia:Entrepreneurship .
+
+ns1:Live rdfs:label "live" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Mean rdfs:label "mean" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Own rdfs:label "owning" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Want rdfs:label "wants" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:create_1 a ns1:Create ;
+    rdfs:label "creating" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Product ns1:business_2 .
+
+ns1:disjunct_2 a ns1:Disjunct ;
+    boxing:involves ns1:Official,
+        ns1:employee_1 .
+
+ns1:entrepreneurship_1 a ns1:Entrepreneurship ;
+    rdfs:label "Entrepreneurship" ;
+    ns1:justAbout ns1:thing_1,
+        ns1:thing_2 .
+
+ns1:live_1 a ns1:Live ;
+    rdfs:label "live" ;
+    vn.role:Location ns1:attitude_1 ;
+    vn.role:Theme ns1:person_2 .
+
+ns1:own_1 a ns1:Own ;
+    rdfs:label "owning" ;
+    vn.role:Theme1 ns1:thing_2 ;
+    vn.role:Theme2 ns1:business_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Business,
+        ns1:Employee,
+        ns1:Official,
+        ns1:Owner,
+        ns1:employee_1 .
+
+ns1:Employee a owl:Class ;
+    rdfs:label "employee" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Employment .
+
+ns1:Person rdfs:label "I",
+        "person" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:attitude_1 a ns1:Attitude ;
+    rdfs:label "attitude" ;
+    quant:hasDeterminer quant:the .
+
+ns1:business_1 a ns1:Business ;
+    rdfs:label "business" ;
+    quant:hasDeterminer quant:a .
+
+ns1:business_2 a ns1:Business ;
+    rdfs:label "business" ;
+    quant:hasDeterminer quant:a .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "person" ;
+    quant:hasDeterminer quant:a .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:thing_2 a owl:Thing .
+
+ns1:Official rdfs:label "official" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Owner rdfs:label "owner" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:employee_1 a ns1:BusinessOwner,
+        ns1:Employee,
+        ns1:Official ;
+    rdfs:label "employee" ;
+    dul:hasQuality ns1:Male ;
+    quant:hasDeterminer quant:an .
+
+ns1:Business rdfs:label "business" ;
+    rdfs:subClassOf dul:Organization .
+

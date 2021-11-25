@@ -1,0 +1,166 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence211.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Stimulus rdfs:label "for" .
+
+translation_coherence:it_sentence211.ttl a owl:Ontology ;
+    rdfs:label "it_sentence211" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence211" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:Quantity rdfs:label "many" .
+
+ns1:conclude_1 a ns1:Conclude ;
+    rdfs:label "concluded" ;
+    vn.role:Agent ns1:Achilles ;
+    vn.role:Product ns1:refusal_1 .
+
+ns1:death_1 a ns1:Death ;
+    rdfs:label "death" ;
+    quant:hasDeterminer quant:the .
+
+ns1:docuverse earmark:hasContent "Infuriated for the death of Patroclus, Achilles concluded his refusal to fight and took the field killing many men in his anger, but always looking for Hector."^^xsd:string .
+
+ns1:fight_1 a ns1:Fight ;
+    rdfs:label "fight" ;
+    vn.role:Actor ns1:refusal_1 .
+
+ns1:infuriate_1 a ns1:Infuriate ;
+    rdfs:label "Infuriated" ;
+    vn.role:Experiencer ns1:thing_1 ;
+    ns1:forDeathOf ns1:Patroclus .
+
+ns1:kill_1 a ns1:Kill ;
+    rdfs:label "killing" ;
+    vn.role:Agent ns1:Achilles ;
+    vn.role:Patient ns1:man_1 .
+
+ns1:look_1 a ns1:AlwaysLook ;
+    rdfs:label "looking" ;
+    dul:hasQuality ns1:Always ;
+    vn.role:Experiencer ns1:Achilles ;
+    vn.role:Stimulus ns1:Hector .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "took" ;
+    vn.role:Agent ns1:Achilles ;
+    vn.role:Theme ns1:field_1 .
+
+ns1:Always rdfs:label "always" .
+
+ns1:AlwaysLook rdfs:subClassOf ns1:Look .
+
+ns1:Anger rdfs:label "anger" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Conclude rdfs:label "concluded" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Death rdfs:label "death" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Field rdfs:label "field" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Fight rdfs:label "fight" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Hector rdfs:label "Hector" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Infuriate rdfs:label "Infuriated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Kill rdfs:label "killing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Look rdfs:label "looking" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Male rdfs:label "Achilles" .
+
+ns1:Man rdfs:label "men" .
+
+ns1:Patroclus rdfs:label "Patroclus" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Patroclus .
+
+ns1:Refusal rdfs:label "refusal" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Take rdfs:label "took" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:anger_1 a ns1:Anger ;
+    rdfs:label "anger" ;
+    ns1:angerOf ns1:Achilles .
+
+ns1:field_1 a ns1:Field ;
+    rdfs:label "field" ;
+    quant:hasDeterminer quant:the .
+
+ns1:male_1 rdfs:label "his" ;
+    coref:coref ns1:male_1 .
+
+ns1:man_1 a ns1:Man ;
+    rdfs:label "men" ;
+    quant:hasQuantifier quant:many,
+        quant:multiple ;
+    ns1:in ns1:anger_1 .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:refusal_1 a ns1:Refusal ;
+    rdfs:label "refusal" ;
+    ns1:refusalOf ns1:Achilles .
+
+ns1:Achilles a ns1:Male ;
+    rdfs:label "Achilles" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Achilles .
+

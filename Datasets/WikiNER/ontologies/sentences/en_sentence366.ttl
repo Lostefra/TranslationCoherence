@@ -1,0 +1,129 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence366.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:en_sentence366.ttl a owl:Ontology ;
+    rdfs:label "en_sentence366" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence366" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:After rdfs:label "after" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "Responding to criticism of Grant after the 1862 battle of Shiloh, Lincoln reportedly had said, I ca n't spare this man."^^xsd:string .
+
+ns1:respond_1 a ns1:Respond ;
+    rdfs:label "Responding" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Recipient ns1:criticism_1 ;
+    ns1:after ns1:battle_1 .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "said" ;
+    dul:hasQuality ns1:Reportedly ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Topic ns1:spare_1 .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+dbpedia:Battle_of_Shiloh a schema:Event .
+
+ns1:Battle rdfs:label "battle" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Criticism rdfs:label "criticism" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Grant rdfs:label "Grant" ;
+    boxer:possibleType owl:Thing .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+
+ns1:Man rdfs:label "man" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Person rdfs:label "I" .
+
+ns1:Reportedly rdfs:label "reportedly" .
+
+ns1:Respond rdfs:label "Responding" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Say rdfs:label "said" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Shiloh rdfs:label "Shiloh" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Battle_of_Shiloh .
+
+ns1:Spare rdfs:label "spare" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:battle_1 a ns1:Battle ;
+    rdfs:label "battle" ;
+    quant:hasDeterminer quant:the ;
+    ns1:at "1862-01-01"^^xsd:date ;
+    ns1:battleOf ns1:Shiloh .
+
+ns1:criticism_1 a ns1:Criticism ;
+    rdfs:label "criticism" ;
+    ns1:criticismOf ns1:Grant .
+
+ns1:man_1 a ns1:Man ;
+    rdfs:label "man" ;
+    quant:hasDeterminer quant:this .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:spare_1 a ns1:Spare ;
+    rdfs:label "spare" ;
+    boxing:hasModality boxing:Possible ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Recipient ns1:man_1 .
+
+ns1:thing_1 a owl:Thing .
+

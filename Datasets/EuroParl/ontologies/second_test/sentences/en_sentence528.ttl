@@ -1,0 +1,127 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence528.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "into" .
+
+translation_coherence:en_sentence528.ttl a owl:Ontology ;
+    rdfs:label "en_sentence528" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence528" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "We must therefore take these memorandums into consideration and produce an extremely thorough piece of work."^^xsd:string .
+
+ns1:produce_1 a ns1:Produce ;
+    rdfs:label "produce" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Therefore ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:piece_1 .
+
+ns1:take_1 a ns1:ThereforeTake ;
+    rdfs:label "take" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Therefore ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Destination ns1:consideration_1 ;
+    vn.role:Theme ns1:memorandum_1 .
+
+ns1:Consideration rdfs:label "consideration" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Extremely rdfs:label "extremely" .
+
+ns1:ExtremelyThoroughPiece a owl:Class ;
+    rdfs:label "Extremely Thorough Piece" ;
+    rdfs:subClassOf ns1:ThoroughPiece .
+
+ns1:Memorandum rdfs:label "memorandums" .
+
+ns1:Person rdfs:label "We" .
+
+ns1:Piece a owl:Class ;
+    rdfs:label "piece" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Produce rdfs:label "produce" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Take rdfs:label "take" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:ThereforeTake rdfs:label "Therefore Take" ;
+    rdfs:subClassOf ns1:Take .
+
+ns1:Thorough a owl:Class ;
+    rdfs:label "thorough" ;
+    dul:hasQuality ns1:Extremely ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ThoroughPiece a owl:Class ;
+    rdfs:label "Thorough Piece" ;
+    dul:hasQuality ns1:Thorough ;
+    rdfs:subClassOf ns1:Piece .
+
+ns1:Work rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:consideration_1 a ns1:Consideration ;
+    rdfs:label "consideration" .
+
+ns1:memorandum_1 a ns1:Memorandum ;
+    rdfs:label "memorandums" ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:piece_1 a ns1:ExtremelyThoroughPiece ;
+    rdfs:label "piece" ;
+    quant:hasDeterminer quant:an ;
+    ns1:extremelyThoroughPieceOf ns1:work_1 .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "work" .
+
+ns1:Therefore rdfs:label "therefore" .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "We" .
+

@@ -1,0 +1,128 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence694.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence694.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence694" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence694" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "Fourthly, Mrs. Hdkvist Petersen has just emphasized the policy of equal opportunities for women and young people."^^xsd:string .
+
+ns1:emphasize_1 a ns1:JustEmphasize ;
+    rdfs:label "emphasized" ;
+    dul:hasQuality ns1:Fourthly,
+        ns1:Just ;
+    vn.role:Agent ns1:Petersen ;
+    vn.role:Theme ns1:policy_1 .
+
+ns1:Emphasize rdfs:label "emphasized" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Equal rdfs:label "equal" .
+
+ns1:EqualOpportunity rdfs:subClassOf ns1:Opportunity .
+
+ns1:Fourthly rdfs:label "Fourthly" .
+
+ns1:Hdkvist rdfs:label "Hdkvist" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis> ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis> .
+
+ns1:Just rdfs:label "just" .
+
+ns1:JustEmphasize rdfs:subClassOf ns1:Emphasize .
+
+ns1:Opportunity rdfs:label "opportunities" .
+
+ns1:People a owl:Class ;
+    rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Petersen rdfs:label "Petersen" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis>,
+        ns1:Hdkvist ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis> .
+
+ns1:Policy rdfs:label "policy" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Woman a owl:Class ;
+    rdfs:label "women" ;
+    owl:equivalentClass dbpedia:Woman .
+
+ns1:Young a owl:Class ;
+    rdfs:label "young" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:YoungPeople a owl:Class ;
+    rdfs:label "young people" ;
+    dul:hasQuality ns1:Young ;
+    rdfs:subClassOf ns1:People .
+
+ns1:opportunity_1 a ns1:EqualOpportunity ;
+    rdfs:label "opportunities" ;
+    dul:hasQuality ns1:Equal ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:for ns1:people_1,
+        ns1:woman_1 .
+
+ns1:people_1 a ns1:YoungPeople ;
+    rdfs:label "people" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:policy_1 a ns1:Policy ;
+    rdfs:label "policy" ;
+    quant:hasDeterminer quant:the ;
+    ns1:policyOf ns1:opportunity_1 .
+
+ns1:woman_1 a ns1:Woman ;
+    rdfs:label "women" ;
+    quant:hasQuantifier quant:multiple .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis> rdfs:label "Mrs." ;
+    boxer:possibleType dul:Role .
+

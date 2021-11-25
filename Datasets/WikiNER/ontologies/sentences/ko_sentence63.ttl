@@ -1,0 +1,161 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence63.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme1 rdfs:label "by" .
+
+translation_coherence:ko_sentence63.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence63" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence63" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:docuverse earmark:hasContent "In the opinion of Luther's notetaker Mathesius, Luther suggests that the boy thinks the soulless mass of the flesh owned by the devil and he suffocated."^^xsd:string .
+
+ns1:notetaker_1 rdfs:label "notetaker" .
+
+ns1:opinion_1 a ns1:Opinion ;
+    rdfs:label "opinion" ;
+    quant:hasDeterminer quant:the .
+
+ns1:suggest_1 a ns1:Suggest ;
+    rdfs:label "suggests" ;
+    vn.role:Agent ns1:Luther ;
+    vn.role:Topic ns1:think_1 ;
+    ns1:inOpinionOf ns1:Mathesius .
+
+ns1:Boy rdfs:label "boy" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Devil a owl:Class ;
+    rdfs:label "devil" ;
+    rdfs:subClassOf dul:Personification ;
+    owl:equivalentClass dbpedia:Devil .
+
+ns1:Flesh rdfs:label "flesh" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Mass a owl:Class ;
+    rdfs:label "mass" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic>,
+        dul:Amount .
+
+ns1:Mathesius a ns1:Notetaker ;
+    rdfs:label "Mathesius",
+        "notetaker" ;
+    boxer:possibleType time:Interval ;
+    ns1:of ns1:Luther .
+
+ns1:Notetaker rdfs:label "Mathesius",
+        "notetaker" .
+
+ns1:Opinion rdfs:label "opinion" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Own rdfs:label "owned" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Soulless a owl:Class ;
+    rdfs:label "soulless" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SoullessMass a owl:Class ;
+    rdfs:label "soulless mass" ;
+    dul:hasQuality ns1:Soulless ;
+    rdfs:subClassOf ns1:Mass .
+
+ns1:Suffocate rdfs:label "suffocated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Suggest rdfs:label "suggests" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Think rdfs:label "thinks" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:boy_1 a ns1:Boy ;
+    rdfs:label "boy" ;
+    quant:hasDeterminer quant:the .
+
+ns1:devil_1 a ns1:Devil ;
+    rdfs:label "devil" ;
+    quant:hasDeterminer quant:the .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "he" .
+
+ns1:mass_1 a ns1:SoullessMass ;
+    rdfs:label "mass" ;
+    quant:hasDeterminer quant:the ;
+    ns1:soullessMassOf ns1:flesh_1 .
+
+ns1:own_1 a ns1:Own ;
+    rdfs:label "owned" ;
+    vn.role:Theme1 ns1:devil_1,
+        ns1:male_1 ;
+    vn.role:Theme2 ns1:flesh_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:own_1,
+        ns1:suffocate_1 .
+
+ns1:suffocate_1 a ns1:Suffocate ;
+    rdfs:label "suffocated" ;
+    vn.role:Theme ns1:mass_1 .
+
+ns1:think_1 a ns1:Think ;
+    rdfs:label "thinks" ;
+    vn.role:Agent ns1:boy_1 ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:Luther rdfs:label "Luther" ;
+    boxer:possibleType time:Interval ;
+    owl:sameAs dbpedia:Martin_Luther .
+
+ns1:flesh_1 a ns1:Flesh ;
+    rdfs:label "flesh" ;
+    quant:hasDeterminer quant:the .
+

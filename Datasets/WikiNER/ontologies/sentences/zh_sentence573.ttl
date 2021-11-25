@@ -1,0 +1,155 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence573.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Cause rdfs:label "by" .
+
+translation_coherence:zh_sentence573.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence573" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence573" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "was" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rand a ns1:MostCourageousMan ;
+    rdfs:label "Rand" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Most ;
+    ns1:mostCourageousManOf ns1:United_states_of_america .
+
+ns1:Since rdfs:label "since" .
+
+ns1:docuverse earmark:hasContent "He was particularly heartened by the fact that M recruited Rand was the most courageous man of the United_States_of_America, since he said that men were not women."^^xsd:string .
+
+ns1:hearten_1 a ns1:ParticularlyHearten ;
+    rdfs:label "heartened" ;
+    dul:hasQuality ns1:Particularly ;
+    vn.role:Cause ns1:fact_1 ;
+    vn.role:Experiencer ns1:male_1 .
+
+ns1:man_1 rdfs:label "man" ;
+    quant:hasDeterminer quant:the .
+
+ns1:woman_1 rdfs:label "women" .
+
+dbpedia:United_States a schema:Country,
+        schema:Place .
+
+ns1:Courageous a owl:Class ;
+    rdfs:label "courageous" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:CourageousMan a owl:Class ;
+    rdfs:label "Courageous Man" ;
+    dul:hasQuality ns1:Courageous ;
+    rdfs:subClassOf ns1:Man .
+
+ns1:Fact rdfs:label "fact" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Hearten rdfs:label "heartened" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:M rdfs:label "M" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Male rdfs:label "He" .
+
+ns1:Most rdfs:label "most" .
+
+ns1:MostCourageousMan a owl:Class ;
+    rdfs:label "most courageous man" ;
+    rdfs:subClassOf ns1:CourageousMan .
+
+ns1:Particularly rdfs:label "particularly" .
+
+ns1:ParticularlyHearten rdfs:subClassOf ns1:Hearten .
+
+ns1:Recruit rdfs:label "recruited" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Say rdfs:label "said" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:United_states_of_america rdfs:label "United States of America" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:United_States .
+
+ns1:fact_1 a ns1:Fact ;
+    rdfs:label "fact" ;
+    boxer:theme ns1:recruit_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:man_2 a ns1:Man,
+        ns1:Woman ;
+    rdfs:label "men" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:recruit_1 a ns1:Recruit ;
+    rdfs:label "recruited" ;
+    boxer:theme ns1:situation_1 ;
+    vn.role:Agent ns1:M .
+
+ns1:Man a owl:Class ;
+    rdfs:label "man",
+        "men" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Woman a owl:Class ;
+    rdfs:label "women" ;
+    owl:equivalentClass dbpedia:Human_trafficking .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "He" .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "said" ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Topic ns1:situation_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves ns1:Woman,
+        ns1:man_2,
+        ns1:say_1 ;
+    ns1:since ns1:say_1 .
+

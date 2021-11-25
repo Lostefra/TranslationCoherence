@@ -1,0 +1,164 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence595.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:zh_sentence595.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence595" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence595" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:After rdfs:label "after" .
+
+ns1:As rdfs:label "as" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Quantity rdfs:label "many" .
+
+ns1:annotate_1 a ns1:Annotate ;
+    rdfs:label "Annotated" ;
+    vn.role:Theme ns1:order_1 .
+
+ns1:book_1 a ns1:Book ;
+    rdfs:label "book" ;
+    dul:associatedWith ns1:shop_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:docuverse earmark:hasContent "However, after many negative reviews were received by the book shop, Rand was severely depressioned as a result of the increased use of the Annotated Order."^^xsd:string .
+
+ns1:increase_1 a ns1:Increase ;
+    rdfs:label "increased" ;
+    vn.role:Patient ns1:use_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:depression_1,
+        ns1:order_1,
+        ns1:receive_1,
+        ns1:result_1,
+        ns1:shop_1,
+        ns1:use_1 ;
+    dul:hasQuality ns1:However .
+
+ns1:Annotate rdfs:label "Annotated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:BookShop a owl:Class ;
+    rdfs:label "Book Shop" ;
+    dul:associatedWith ns1:Book ;
+    rdfs:subClassOf ns1:Shop .
+
+ns1:Depression rdfs:label "depressioned" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:However rdfs:label "However" .
+
+ns1:Increase rdfs:label "increased" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Negative rdfs:label "negative" .
+
+ns1:NegativeReview rdfs:subClassOf ns1:Review .
+
+ns1:Order rdfs:label "Order" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Receive rdfs:label "received" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Result rdfs:label "result" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Review rdfs:label "reviews" .
+
+ns1:Severely rdfs:label "severely" .
+
+ns1:SeverelyDepression rdfs:subClassOf ns1:Depression .
+
+ns1:Shop a owl:Class ;
+    rdfs:label "shop" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Use rdfs:label "use" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:receive_1 a ns1:Receive ;
+    rdfs:label "received" ;
+    vn.role:Agent ns1:shop_1 ;
+    vn.role:Theme ns1:review_1 ;
+    ns1:after ns1:depression_1 .
+
+ns1:review_1 a ns1:NegativeReview ;
+    rdfs:label "reviews" ;
+    dul:hasQuality ns1:Negative ;
+    quant:hasQuantifier quant:many,
+        quant:multiple .
+
+ns1:Book a owl:Class ;
+    rdfs:label "book" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:depression_1 a ns1:SeverelyDepression ;
+    rdfs:label "depressioned" ;
+    boxer:patient ns1:Rand ;
+    dul:hasQuality ns1:Severely ;
+    ns1:as ns1:result_1 .
+
+ns1:result_1 a ns1:Result ;
+    rdfs:label "result" ;
+    quant:hasDeterminer quant:a ;
+    ns1:resultOf ns1:use_1 .
+
+ns1:order_1 a ns1:Order ;
+    rdfs:label "Order" ;
+    quant:hasDeterminer quant:the .
+
+ns1:shop_1 a ns1:BookShop ;
+    rdfs:label "shop" .
+
+ns1:use_1 a ns1:Use ;
+    rdfs:label "use" ;
+    quant:hasDeterminer quant:the ;
+    ns1:useOf ns1:order_1 .
+

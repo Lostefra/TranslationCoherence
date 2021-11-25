@@ -1,0 +1,174 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix fred: <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence769.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+fred: rdfs:label ":"^^xsd:string .
+
+vn.role:Oblique rdfs:label "into" .
+
+translation_coherence:fi_sentence769.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence769" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence769" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:anthropology_5 rdfs:label "anthropology" .
+
+ns1:call_1 a ns1:AlsoCall ;
+    rdfs:label "called" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Predicate ns1:anthropology_3 ;
+    vn.role:Theme ns1:anthropology_2 .
+
+ns1:divide_1 a ns1:Divide ;
+    rdfs:label "divided" ;
+    vn.role:Oblique ns1:sub-region_1 ;
+    vn.role:Patient ns1:anthropology_1 ;
+    ns1:in ns1:united_states_1 .
+
+ns1:docuverse earmark:hasContent "In the United_States, contemporary anthropology is divided into four sub-regions: cultural anthropology (also called social anthropology), archaeology, linguistic anthropology and biological/physical anthropology."^^xsd:string .
+
+dbpedia:United_States rdfs:subClassOf schema:Country,
+        schema:Place .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoCall rdfs:subClassOf ns1:Call .
+
+ns1:Archaeology a owl:Class ;
+    rdfs:label "archaeology" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> ;
+    owl:equivalentClass dbpedia:Archaeology .
+
+ns1:Biological%2Fphysical rdfs:label "biological/physical" ;
+    owl:sameAs dbpedia:Biological_anthropology .
+
+ns1:Biological%2FphysicalAnthropology rdfs:subClassOf ns1:Anthropology .
+
+ns1:Call rdfs:label "called" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Contemporary a owl:Class ;
+    rdfs:label "contemporary" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ContemporaryAnthropology a owl:Class ;
+    rdfs:label "contemporary anthropology" ;
+    dul:hasQuality ns1:Contemporary ;
+    rdfs:subClassOf ns1:Anthropology .
+
+ns1:Cultural rdfs:label "cultural" .
+
+ns1:CulturalAnthropology a owl:Class ;
+    rdfs:label "Cultural Anthropology" ;
+    rdfs:subClassOf ns1:Anthropology ;
+    owl:equivalentClass dbpedia:Cultural_anthropology .
+
+ns1:Divide rdfs:label "divided" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Linguistic rdfs:label "linguistic" .
+
+ns1:LinguisticAnthropology a owl:Class ;
+    rdfs:label "Linguistic Anthropology" ;
+    rdfs:subClassOf ns1:Anthropology ;
+    owl:equivalentClass dbpedia:Linguistic_anthropology .
+
+ns1:Social rdfs:label "social" .
+
+ns1:SocialAnthropology a owl:Class ;
+    rdfs:label "Social Anthropology" ;
+    rdfs:subClassOf ns1:Anthropology ;
+    owl:equivalentClass dbpedia:Social_anthropology .
+
+ns1:Sub-region rdfs:label "sub-regions" .
+
+ns1:UnitedStates rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:United_states a owl:Class ;
+    rdfs:label "United States" ;
+    rdfs:subClassOf ns1:UnitedStates ;
+    owl:equivalentClass dbpedia:United_States .
+
+ns1:anthropology_1 a ns1:ContemporaryAnthropology ;
+    rdfs:label "anthropology" .
+
+ns1:anthropology_3 a ns1:SocialAnthropology ;
+    rdfs:label "anthropology" ;
+    dul:hasQuality ns1:Social .
+
+ns1:anthropology_4 a ns1:Biological%2FphysicalAnthropology,
+        ns1:LinguisticAnthropology ;
+    rdfs:label "anthropology" ;
+    dul:hasQuality ns1:Biological%2Fphysical,
+        ns1:Linguistic .
+
+ns1:archaeology_1 a ns1:Archaeology ;
+    rdfs:label "archaeology" ;
+    dul:associatedWith ns1:anthropology_4 .
+
+ns1:sub-region_1 a ns1:Sub-region ;
+    rdfs:label "sub-regions" ;
+    boxing:declaration ns1:anthropology_2 ;
+    dul:hasDataValue "4"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:four,
+        quant:multiple .
+
+ns1:united_states_1 a ns1:United_states ;
+    rdfs:label "United States" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:anthropology_2 a ns1:CulturalAnthropology ;
+    rdfs:label "anthropology" ;
+    dul:associatedWith ns1:archaeology_1 ;
+    dul:hasQuality ns1:Cultural .
+
+ns1:Anthropology a owl:Class ;
+    rdfs:label "Anthropology",
+        "anthropology" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+

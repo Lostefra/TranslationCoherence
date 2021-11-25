@@ -1,0 +1,111 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence334.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence334.ttl a owl:Ontology ;
+    rdfs:label "en_sentence334" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence334" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Eq rdfs:label "was" .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:believe_1 a ns1:Believe ;
+    rdfs:label "believes" ;
+    vn.role:Agent ns1:Historian_doris_kearns_goodwin ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:docuverse earmark:hasContent "Historian Doris_Kearns_Goodwin believes the real reason was Lincoln 's skill as a politician."^^xsd:string .
+
+ns1:reason_1 rdfs:label "reason" ;
+    quant:hasDeterminer quant:the .
+
+ns1:skill_1 a ns1:RealReason,
+        ns1:Skill ;
+    rdfs:label "skill" ;
+    ns1:as ns1:politician_1 ;
+    ns1:skillOf ns1:Lincoln .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+ns1:Believe rdfs:label "believes" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Historian_doris_kearns_goodwin rdfs:label "Historian Doris Kearns Goodwin" ;
+    boxer:possibleType owl:Thing .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+
+ns1:Real a owl:Class ;
+    rdfs:label "real" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:RealReason a owl:Class ;
+    rdfs:label "real reason" ;
+    dul:hasQuality ns1:Real ;
+    rdfs:subClassOf ns1:Reason,
+        ns1:Skill .
+
+ns1:Reason a owl:Class ;
+    rdfs:label "reason" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> ;
+    owl:equivalentClass dbpedia:Reason .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Politician,
+        ns1:politician_1 .
+
+ns1:Politician a owl:Class ;
+    rdfs:label "politician" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Politics .
+
+ns1:Skill rdfs:label "skill" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:politician_1 a ns1:Politician ;
+    rdfs:label "politician" ;
+    quant:hasDeterminer quant:a .
+

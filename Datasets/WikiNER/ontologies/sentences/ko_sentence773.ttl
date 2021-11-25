@@ -1,0 +1,187 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix fred: <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence773.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+fred: rdfs:label ":"^^xsd:string .
+
+translation_coherence:ko_sentence773.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence773" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence773" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:About rdfs:label "about" .
+
+ns1:As rdfs:label "as" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:disjunct_1 a ns1:Disjunct ;
+    boxing:involves ns1:Process,
+        ns1:space_1 ;
+    ns1:union ns1:disjunct_2 .
+
+ns1:docuverse earmark:hasContent "The history of humanity, such as Marvin_Harris, represents two main frameworks: That is, there are risks in humanity. Interested in space and long-term human processes or interests about humans."^^xsd:string .
+
+ns1:interest_1 a ns1:Interest ;
+    rdfs:label "Interested" ;
+    vn.role:Experiencer ns1:thing_1 ;
+    ns1:in ns1:space_1 .
+
+ns1:interest_2 rdfs:label "interests" .
+
+ns1:process_1 rdfs:label "processes" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:represent_1 a ns1:Represent ;
+    rdfs:label "represents" ;
+    boxing:declaration ns1:be_1 ;
+    vn.role:Agent ns1:history_1 ;
+    vn.role:Theme ns1:framework_1 .
+
+ns1:risk_1 rdfs:label "risks" .
+
+ns1:there_1 a ns1:Risk,
+        ns1:There ;
+    rdfs:label "there" ;
+    quant:hasDeterminer quant:that ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:humanity_2 .
+
+ns1:thing_2 coref:coref ns1:history_1 .
+
+ns1:Be rdfs:label "is" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Framework rdfs:label "frameworks" .
+
+ns1:History rdfs:label "history" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:HumanProcess rdfs:subClassOf ns1:Process .
+
+ns1:Long-term rdfs:label "long-term" .
+
+ns1:Long-termHumanProcess rdfs:subClassOf ns1:HumanProcess .
+
+ns1:Main rdfs:label "main" .
+
+ns1:MainFramework rdfs:subClassOf ns1:Framework .
+
+ns1:Marvin_harris rdfs:label "Marvin Harris" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Marvin_Harris .
+
+ns1:Represent rdfs:label "represents" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Risk rdfs:label "risks" .
+
+ns1:Space rdfs:label "space" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:There rdfs:label "there" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:be_1 a ns1:Be ;
+    rdfs:label "is" ;
+    boxer:agent ns1:history_1 .
+
+ns1:disjunct_2 a ns1:Disjunct ;
+    boxing:involves ns1:Interest,
+        ns1:space_1 .
+
+ns1:framework_1 a ns1:MainFramework ;
+    rdfs:label "frameworks" ;
+    dul:hasDataValue "2"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:Main ;
+    quant:hasQuantifier quant:multiple,
+        quant:two .
+
+ns1:human_1 a ns1:Human ;
+    rdfs:label "humans" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:humanity_1 a ns1:Humanity ;
+    rdfs:label "humanity" ;
+    ns1:as ns1:Marvin_harris .
+
+ns1:humanity_2 a ns1:Humanity ;
+    rdfs:label "humanity" .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:Human rdfs:label "human",
+        "humans" ;
+    rdfs:subClassOf dul:Organism .
+
+ns1:Humanity rdfs:label "humanity" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Process rdfs:label "processes" .
+
+owl:Thing rdfs:label "That" .
+
+ns1:Interest rdfs:label "Interested",
+        "interests" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:history_1 a owl:Thing,
+        ns1:History ;
+    rdfs:label "That",
+        "history" ;
+    quant:hasDeterminer quant:the ;
+    ns1:historyOf ns1:humanity_1 .
+
+ns1:space_1 a ns1:Interest,
+        ns1:Long-termHumanProcess,
+        ns1:Space ;
+    rdfs:label "space" ;
+    dul:hasQuality ns1:Human,
+        ns1:Long-term ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:about ns1:human_1 .
+

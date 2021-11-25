@@ -1,0 +1,163 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence497.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence497.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence497" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence497" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Entails rdfs:label "if" .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:On rdfs:label "on" .
+
+ns1:docuverse earmark:hasContent "I would like to ask if the Commission can enlighten us for reasons why the European_Parliament has long followed the Commission's report on the outermost regions."^^xsd:string .
+
+ns1:like_1 a ns1:Like ;
+    rdfs:label "like" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Experiencer ns1:person_1 ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:outermost_1 a ns1:Outermost ;
+    rdfs:label "outermost" ;
+    dul:associatedWith ns1:region_1 ;
+    quant:hasDeterminer quant:the .
+
+dbpedia:European_Parliament rdfs:subClassOf schema:Organization .
+
+ns1:Ask rdfs:label "ask" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Enlighten rdfs:label "enlighten" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:European_parliament a owl:Class ;
+    rdfs:label "European Parliament" ;
+    owl:equivalentClass dbpedia:European_Parliament .
+
+ns1:Follow rdfs:label "followed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Like rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Long rdfs:label "long" .
+
+ns1:LongFollow rdfs:subClassOf ns1:Follow .
+
+ns1:Outermost a owl:Class ;
+    rdfs:label "outermost" ;
+    owl:equivalentClass dbpedia:Special_member_state_territories_and_the_European_Union .
+
+ns1:OutermostRegion rdfs:subClassOf ns1:Region .
+
+ns1:Region rdfs:label "regions" .
+
+ns1:Report rdfs:label "report" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:enlighten_1 a ns1:Enlighten ;
+    rdfs:label "enlighten" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Cause ns1:Commission ;
+    vn.role:Experiencer ns1:person_2 ;
+    ns1:entails ns1:ask_1 ;
+    ns1:for ns1:reason_1 .
+
+ns1:european_parliament_1 a ns1:European_parliament ;
+    rdfs:label "European Parliament" ;
+    quant:hasDeterminer quant:the .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "us" .
+
+ns1:report_1 a ns1:Report ;
+    rdfs:label "report" ;
+    ns1:on ns1:region_1 ;
+    ns1:reportOf ns1:Commission .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:ask_1,
+        ns1:enlighten_1,
+        ns1:follow_1,
+        ns1:reason_1,
+        ns1:reason_2 .
+
+ns1:Commission rdfs:label "Commission" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Person rdfs:label "I",
+        "us" .
+
+ns1:Reason rdfs:label "reasons",
+        "why" .
+
+ns1:ask_1 a ns1:Ask ;
+    rdfs:label "ask" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Topic ns1:follow_1 .
+
+ns1:follow_1 a ns1:LongFollow ;
+    rdfs:label "followed" ;
+    dul:hasQuality ns1:Long ;
+    vn.role:Agent ns1:european_parliament_1 ;
+    vn.role:Location ns1:reason_2 ;
+    vn.role:Theme ns1:report_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:reason_1 a ns1:Reason ;
+    rdfs:label "reasons" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:reason_2 a ns1:Reason ;
+    rdfs:label "why" .
+
+ns1:region_1 a ns1:OutermostRegion ;
+    rdfs:label "regions" ;
+    quant:hasQuantifier quant:multiple .
+

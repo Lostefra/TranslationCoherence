@@ -1,0 +1,150 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence511.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:it_sentence511.ttl a owl:Ontology ;
+    rdfs:label "it_sentence511" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence511" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:With rdfs:label "with" .
+
+ns1:award_1 a ns1:Award ;
+    rdfs:label "awarded" ;
+    vn.role:Agent ns1:academy_awards_1 ;
+    vn.role:Theme ns1:film_1 .
+
+ns1:docuverse earmark:hasContent "The 78th Academy_Awards that awarded the independent Crash film, low-budget, generated an audience of 38.64 million people with a family rating of 22.91%."^^xsd:string .
+
+ns1:family_1 a ns1:Family ;
+    rdfs:label "family" ;
+    dul:associatedWith ns1:rating_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:generate_1 a ns1:Generate ;
+    rdfs:label "generated" ;
+    dul:hasQuality ns1:Low-budget ;
+    vn.role:Theme1 ns1:academy_awards_1 ;
+    vn.role:Theme2 ns1:audience_1 ;
+    ns1:with ns1:rating_1 .
+
+ns1:78th rdfs:label "78th" .
+
+ns1:78thAcademy_awards rdfs:label "78th Academy awards" ;
+    rdfs:subClassOf ns1:Academy_awards .
+
+ns1:Academy_awards a owl:Class ;
+    rdfs:label "Academy Awards" ;
+    owl:equivalentClass dbpedia:Academy_Awards .
+
+ns1:Audience rdfs:label "audience" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Award rdfs:label "awarded" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Crash rdfs:label "Crash" ;
+    boxer:possibleType owl:Thing ;
+    dul:hasQuality ns1:Independent .
+
+ns1:FamilyRating a owl:Class ;
+    rdfs:label "Family Rating" ;
+    dul:associatedWith ns1:Family ;
+    rdfs:subClassOf ns1:Rating .
+
+ns1:Film rdfs:label "film" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity>,
+        dul:InformationEntity .
+
+ns1:Generate rdfs:label "generated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Low-budget rdfs:label "low-budget" .
+
+ns1:People rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Percent rdfs:label "%" .
+
+ns1:Rating a owl:Class ;
+    rdfs:label "rating" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:audience_1 a ns1:Audience ;
+    rdfs:label "audience" ;
+    quant:hasDeterminer quant:an ;
+    ns1:audienceOf ns1:people_1 .
+
+ns1:film_1 a ns1:Film ;
+    rdfs:label "film" ;
+    dul:associatedWith ns1:Crash ;
+    dul:hasQuality ns1:Independent .
+
+ns1:people_1 a ns1:People ;
+    rdfs:label "people" ;
+    dul:hasDataValue "38640000.0"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:million,
+        quant:multiple .
+
+ns1:percent_1 a ns1:Percent ;
+    rdfs:label "%" ;
+    dul:hasDataValue "22.91"^^xsd:nonNegativeInteger .
+
+ns1:Family a owl:Class ;
+    rdfs:label "family" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Independent rdfs:label "independent" ;
+    owl:sameAs dbpedia:Independent_film .
+
+ns1:academy_awards_1 a ns1:78thAcademy_awards ;
+    rdfs:label "Academy Awards" ;
+    dul:hasQuality ns1:78th ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:rating_1 a ns1:FamilyRating ;
+    rdfs:label "rating" ;
+    ns1:familyRatingOf ns1:percent_1 .
+

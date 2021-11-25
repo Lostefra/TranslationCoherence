@@ -1,0 +1,200 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence548.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence548.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence548" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence548" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Noteq rdfs:label "other" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:With rdfs:label "with" .
+
+ns1:associate_1 a ns1:Associate ;
+    rdfs:label "associated" ;
+    vn.role:Patient1 ns1:guideline_1,
+        ns1:question_1 ;
+    ns1:with ns1:documentation_1 .
+
+ns1:disjunct_1 a ns1:Disjunct ;
+    boxing:involves ns1:Guide,
+        ns1:guide_1 ;
+    ns1:union ns1:disjunct_2 .
+
+ns1:docuverse earmark:hasContent "The committee has these attention, but these guidelines or these questions are associated with other documentation, such as guides on the reform of the structure fund or methodology work documentation."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "has" ;
+    vn.role:Agent ns1:committee_1 ;
+    vn.role:Patient ns1:attention_1 .
+
+ns1:methodology_1 a ns1:Methodology ;
+    rdfs:label "methodology" ;
+    dul:associatedWith ns1:documentation_3,
+        ns1:work_1 .
+
+ns1:reform_1 a ns1:Reform ;
+    rdfs:label "reform" ;
+    quant:hasDeterminer quant:the .
+
+ns1:structure_1 a ns1:Structure ;
+    rdfs:label "structure" ;
+    dul:associatedWith ns1:fund_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:Associate rdfs:label "associated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Attention rdfs:label "attention" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Committee rdfs:label "committee" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Fund a owl:Class ;
+    rdfs:label "fund" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:Guideline rdfs:label "guidelines" .
+
+ns1:Have rdfs:label "has" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:MethodologyWork a owl:Class ;
+    rdfs:label "Methodology Work" ;
+    dul:associatedWith ns1:Methodology ;
+    rdfs:subClassOf ns1:Work .
+
+ns1:MethodologyWorkDocumentation rdfs:label "Methodology Work Documentation" ;
+    rdfs:subClassOf ns1:WorkDocumentation .
+
+ns1:Question rdfs:label "questions" .
+
+ns1:Reform rdfs:label "reform" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:StructureFund a owl:Class ;
+    rdfs:label "structure fund" ;
+    dul:associatedWith ns1:Structure ;
+    rdfs:subClassOf ns1:Fund .
+
+ns1:WorkDocumentation rdfs:label "Work Documentation" ;
+    rdfs:subClassOf ns1:Documentation .
+
+ns1:attention_1 a ns1:Attention ;
+    rdfs:label "attention" ;
+    quant:hasDeterminer quant:these .
+
+ns1:committee_1 a ns1:Committee ;
+    rdfs:label "committee" ;
+    quant:hasDeterminer quant:the .
+
+ns1:disjunct_2 a ns1:Disjunct ;
+    boxing:involves ns1:Documentation,
+        ns1:Methodology,
+        ns1:Work,
+        ns1:documentation_3 .
+
+ns1:documentation_1 a ns1:Documentation ;
+    rdfs:label "other" ;
+    owl:differentFrom ns1:documentation_2 ;
+    ns1:as ns1:documentation_3,
+        ns1:guide_1 .
+
+ns1:documentation_2 a ns1:Documentation ;
+    rdfs:label "documentation" ;
+    quant:hasDeterminer quant:other .
+
+ns1:guideline_1 a ns1:Guideline ;
+    rdfs:label "guidelines" ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:question_1 a ns1:Question ;
+    rdfs:label "questions" ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:work_1 a ns1:MethodologyWork ;
+    rdfs:label "work" ;
+    dul:associatedWith ns1:documentation_3 .
+
+ns1:Guide rdfs:label "guides" .
+
+ns1:Structure a owl:Class ;
+    rdfs:label "structure" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Work a owl:Class ;
+    rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Employment .
+
+ns1:fund_1 a ns1:StructureFund ;
+    rdfs:label "fund" .
+
+ns1:guide_1 a ns1:Guide ;
+    rdfs:label "guides" ;
+    quant:hasDeterminer quant:such ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:onReformOf ns1:fund_1 .
+
+ns1:Methodology a owl:Class ;
+    rdfs:label "methodology" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Methodology .
+
+ns1:Documentation rdfs:label "Documentation",
+        "documentation",
+        "other" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:documentation_3 a ns1:MethodologyWorkDocumentation ;
+    rdfs:label "documentation" .
+

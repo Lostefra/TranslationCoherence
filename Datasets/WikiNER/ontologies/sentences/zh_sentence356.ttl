@@ -1,0 +1,155 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence356.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence356.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence356" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence356" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:By rdfs:label "by" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:accuse_1 a ns1:Accuse ;
+    rdfs:label "accused" ;
+    vn.role:Agent ns1:Mcclellan ;
+    vn.role:Theme ns1:number_1 .
+
+ns1:defence_1 a ns1:Defence ;
+    rdfs:label "defence" ;
+    quant:hasDeterminer quant:the ;
+    ns1:byNumberOf ns1:force_1 .
+
+ns1:docuverse earmark:hasContent "Lincoln insisted on the defence of the capital by a number of wheat forces, which McClellan accused the ultimate failure of the Korean movement."^^xsd:string .
+
+ns1:insist_1 a ns1:Insist ;
+    rdfs:label "insisted" ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Topic ns1:failure_1 ;
+    ns1:onDefenceOf ns1:capital_1 .
+
+ns1:wheat_1 a ns1:Wheat ;
+    rdfs:label "wheat" ;
+    dul:associatedWith ns1:force_1 .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+ns1:Accuse rdfs:label "accused" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Capital rdfs:label "capital" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Defence rdfs:label "defence" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Failure a owl:Class ;
+    rdfs:label "failure" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Force rdfs:label "forces" .
+
+ns1:Insist rdfs:label "insisted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:KoreanMovement a owl:Class ;
+    rdfs:label "Korean Movement" ;
+    dul:hasQuality ns1:Korean ;
+    rdfs:subClassOf ns1:Movement .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+
+ns1:Mcclellan rdfs:label "McClellan" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Movement a owl:Class ;
+    rdfs:label "movement" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Number rdfs:label "number" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Ultimate a owl:Class ;
+    rdfs:label "ultimate" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:UltimateFailure a owl:Class ;
+    rdfs:label "ultimate failure" ;
+    dul:hasQuality ns1:Ultimate ;
+    rdfs:subClassOf ns1:Failure .
+
+ns1:Wheat a owl:Class ;
+    rdfs:label "wheat" ;
+    rdfs:subClassOf dul:Organism ;
+    owl:equivalentClass dbpedia:Wheat .
+
+ns1:WheatForce rdfs:subClassOf ns1:Force .
+
+ns1:capital_1 a ns1:Capital ;
+    rdfs:label "capital" ;
+    quant:hasDeterminer quant:the .
+
+ns1:failure_1 a ns1:UltimateFailure ;
+    rdfs:label "failure" ;
+    quant:hasDeterminer quant:the ;
+    ns1:ultimateFailureOf ns1:movement_1 .
+
+ns1:movement_1 a ns1:KoreanMovement ;
+    rdfs:label "movement" ;
+    dul:hasQuality ns1:Korean ;
+    quant:hasDeterminer quant:the .
+
+ns1:number_1 a ns1:Number ;
+    rdfs:label "number" ;
+    quant:hasDeterminer quant:a .
+
+ns1:Korean a owl:Class ;
+    rdfs:label "Korean" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:force_1 a ns1:WheatForce ;
+    rdfs:label "forces" ;
+    quant:hasQuantifier quant:multiple .
+

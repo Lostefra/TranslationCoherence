@@ -1,0 +1,149 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence654.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence654.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence654" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence654" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:To rdfs:label "to" .
+
+ns1:comment_1 a ns1:Comment ;
+    rdfs:label "commented" ;
+    boxer:patient ns1:article_1 ;
+    vn.role:Agent ns1:talk_1 ;
+    ns1:on ns1:event_1,
+        ns1:plot_1 .
+
+ns1:conservation_1 a ns1:Conservation ;
+    rdfs:label "Conservation" ;
+    dul:associatedWith ns1:talk_1 .
+
+ns1:docuverse earmark:hasContent "Conservation talks recommend a novel to audiences such as Glenn_Beck, Neal_Boortz and Rush_Limbaugh, and commented articles on fictional plots and real events."^^xsd:string .
+
+ns1:recommend_1 a ns1:Recommend ;
+    rdfs:label "recommend" ;
+    vn.role:Agent ns1:talk_1 ;
+    vn.role:Theme ns1:novel_1 .
+
+dbpedia:Rush_Limbaugh a schema:Person .
+
+ns1:Article rdfs:label "articles" .
+
+ns1:Audience rdfs:label "audiences" .
+
+ns1:Comment rdfs:label "commented" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Conservation rdfs:label "Conservation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:ConservationTalk rdfs:subClassOf ns1:Talk .
+
+ns1:Fictional rdfs:label "fictional" ;
+    owl:sameAs dbpedia:Fiction .
+
+ns1:FictionalPlot rdfs:subClassOf ns1:Plot .
+
+ns1:Glenn_beck rdfs:label "Glenn Beck" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Neal_boortz,
+        ns1:Rush_limbaugh ;
+    owl:sameAs dbpedia:Glenn_Beck .
+
+ns1:Neal_boortz rdfs:label "Neal Boortz" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Neal_Boortz .
+
+ns1:Novel rdfs:label "novel" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Plot rdfs:label "plots" .
+
+ns1:Real rdfs:label "real" .
+
+ns1:RealEvent rdfs:subClassOf dul:Event .
+
+ns1:Recommend rdfs:label "recommend" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Rush_limbaugh rdfs:label "Rush Limbaugh" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Rush_Limbaugh .
+
+ns1:Talk rdfs:label "talks" .
+
+ns1:article_1 a ns1:Article ;
+    rdfs:label "articles" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:audience_1 a ns1:Audience ;
+    rdfs:label "audiences" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:as ns1:Glenn_beck .
+
+ns1:event_1 a ns1:RealEvent ;
+    rdfs:label "events" ;
+    dul:hasQuality ns1:Real ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:novel_1 a ns1:Novel ;
+    rdfs:label "novel" ;
+    quant:hasDeterminer quant:a ;
+    ns1:to ns1:audience_1 .
+
+ns1:plot_1 a ns1:FictionalPlot ;
+    rdfs:label "plots" ;
+    dul:hasQuality ns1:Fictional ;
+    quant:hasQuantifier quant:multiple .
+
+dul:Event rdfs:label "events" .
+
+ns1:talk_1 a ns1:ConservationTalk ;
+    rdfs:label "talks" ;
+    quant:hasQuantifier quant:multiple .
+

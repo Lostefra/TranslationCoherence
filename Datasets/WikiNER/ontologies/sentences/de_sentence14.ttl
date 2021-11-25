@@ -1,0 +1,208 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence14.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme rdfs:label "from" .
+
+translation_coherence:de_sentence14.ttl a owl:Ontology ;
+    rdfs:label "de_sentence14" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence14" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Of rdfs:label "their" .
+
+ns1:Therefore rdfs:label "therefore" .
+
+ns1:While rdfs:label "while" .
+
+ns1:docuverse earmark:hasContent "Malatesta warned that the Syndicalists wanted to follow the Syndicalism themselves, while those responsible always have an overarching role as their finality and therefore have to refrain from any specific method."^^xsd:string .
+
+ns1:person_1 coref:coref ns1:syndicalist_1 .
+
+ns1:syndicalism_1 a ns1:Syndicalism ;
+    rdfs:label "Syndicalism" ;
+    dul:associatedWith ns1:syndicalist_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:warn_1 a ns1:Warn ;
+    rdfs:label "warned" ;
+    vn.role:Agent ns1:Malatesta ;
+    vn.role:Topic ns1:want_1 .
+
+ns1:Always rdfs:label "always" .
+
+ns1:AlwaysHave rdfs:label "always have" ;
+    rdfs:subClassOf ns1:Have .
+
+ns1:Finality rdfs:label "finality" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Follow rdfs:label "follow" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Malatesta rdfs:label "Malatesta" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Errico_Malatesta .
+
+ns1:Method a owl:Class ;
+    rdfs:label "method" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Overarching a owl:Class ;
+    rdfs:label "overarching" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:OverarchingRole a owl:Class ;
+    rdfs:label "overarching role" ;
+    dul:hasQuality ns1:Overarching ;
+    rdfs:subClassOf ns1:Role .
+
+ns1:Person rdfs:label "themselves" .
+
+ns1:Refrain rdfs:label "refrain" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Responsible rdfs:label "responsible" .
+
+ns1:Role a owl:Class ;
+    rdfs:label "role" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Specific a owl:Class ;
+    rdfs:label "specific" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SpecificMethod a owl:Class ;
+    rdfs:label "Specific Method" ;
+    dul:hasQuality ns1:Specific ;
+    rdfs:subClassOf ns1:Method .
+
+ns1:Syndicalism a owl:Class ;
+    rdfs:label "Syndicalism" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Syndicalism .
+
+ns1:SyndicalismPerson rdfs:subClassOf ns1:Person .
+
+ns1:Syndicalist a owl:Class ;
+    rdfs:label "Syndicalists" ;
+    owl:equivalentClass dbpedia:Syndicalism .
+
+ns1:ThereforeHave rdfs:label "therefore have" ;
+    rdfs:subClassOf ns1:Have .
+
+ns1:Want rdfs:label "wanted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Warn rdfs:label "warned" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:finality_1 a ns1:Finality ;
+    rdfs:label "finality" ;
+    ns1:finalityOf ns1:thing_1 .
+
+ns1:follow_1 a ns1:Follow ;
+    rdfs:label "follow" ;
+    vn.role:Agent ns1:syndicalist_1 ;
+    vn.role:Theme ns1:syndicalist_1 ;
+    ns1:therefore ns1:have_2 .
+
+ns1:have_1 a ns1:AlwaysHave ;
+    rdfs:label "have" ;
+    dul:hasQuality ns1:Always ;
+    vn.role:Agent ns1:thing_2 ;
+    vn.role:Patient ns1:role_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:have_1,
+        ns1:have_2,
+        ns1:method_1,
+        ns1:refrain_1,
+        ns1:role_1,
+        ns1:thing_2 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "their" .
+
+ns1:want_1 a ns1:Want ;
+    rdfs:label "wanted" ;
+    vn.role:Experiencer ns1:syndicalist_1 ;
+    vn.role:Theme ns1:follow_1 ;
+    ns1:while ns1:situation_1 .
+
+owl:Thing rdfs:label "those" .
+
+ns1:Have rdfs:label "Have",
+        "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:have_2 a ns1:ThereforeHave ;
+    rdfs:label "have" ;
+    boxer:theme ns1:refrain_1 ;
+    vn.role:Agent ns1:thing_2 .
+
+ns1:method_1 a ns1:SpecificMethod ;
+    rdfs:label "method" ;
+    quant:hasQuantifier quant:any .
+
+ns1:refrain_1 a ns1:Refrain ;
+    rdfs:label "refrain" ;
+    vn.role:Agent ns1:thing_2 ;
+    vn.role:Theme ns1:method_1 .
+
+ns1:role_1 a ns1:OverarchingRole ;
+    rdfs:label "role" ;
+    quant:hasDeterminer quant:an,
+        quant:those ;
+    ns1:as ns1:finality_1 .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "those" ;
+    dul:hasQuality ns1:Responsible .
+
+ns1:syndicalist_1 a ns1:SyndicalismPerson,
+        ns1:Syndicalist ;
+    rdfs:label "Syndicalists",
+        "themselves" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+

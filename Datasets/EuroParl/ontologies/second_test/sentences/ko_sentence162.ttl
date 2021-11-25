@@ -1,0 +1,116 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence162.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:ko_sentence162.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence162" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence162" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Noteq rdfs:label "other" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Where rdfs:label "where" .
+
+ns1:docuverse earmark:hasContent "rapporteur pointed to the house where the substance of other revisions of the Congress receives 6 of the 10 revisions of the Congress."^^xsd:string .
+
+ns1:point_1 a ns1:Point ;
+    rdfs:label "pointed" ;
+    vn.role:Agent ns1:rapporteur_1 ;
+    vn.role:Recipient ns1:house_1 .
+
+dbpedia:United_States_Congress a schema:Organization .
+
+ns1:Congress rdfs:label "Congress" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:United_States_Congress .
+
+ns1:House rdfs:label "house" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Point rdfs:label "pointed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Rapporteur rdfs:label "rapporteur" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Receive rdfs:label "receives" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Substance rdfs:label "substance" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:house_1 a ns1:House ;
+    rdfs:label "house" ;
+    quant:hasDeterminer quant:the ;
+    ns1:where ns1:receive_1 .
+
+ns1:rapporteur_1 a ns1:Rapporteur ;
+    rdfs:label "rapporteur" .
+
+ns1:receive_1 a ns1:Receive ;
+    rdfs:label "receives" ;
+    vn.role:Agent ns1:substance_1 ;
+    vn.role:Theme ns1:revision_1 .
+
+ns1:revision_2 a ns1:Revision ;
+    rdfs:label "revisions" ;
+    quant:hasDeterminer quant:other ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:substance_1 a ns1:Substance ;
+    rdfs:label "substance" ;
+    quant:hasDeterminer quant:the ;
+    ns1:substanceOf ns1:revision_1 .
+
+ns1:Revision rdfs:label "other",
+        "revisions" .
+
+ns1:revision_1 a ns1:Revision ;
+    rdfs:label "other" ;
+    dul:hasDataValue "6"^^xsd:nonNegativeInteger ;
+    owl:differentFrom ns1:revision_2 ;
+    ns1:revisionOf ns1:Congress .
+

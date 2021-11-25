@@ -1,0 +1,104 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence328.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence328.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence328" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence328" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:By rdfs:label "by" .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "his" .
+
+ns1:docuverse earmark:hasContent "In this Convention, Lincoln received his first endorsement by the Chair."^^xsd:string .
+
+ns1:male_1 rdfs:label "his" .
+
+ns1:receive_1 a ns1:Receive ;
+    rdfs:label "received" ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Theme ns1:endorsement_1 ;
+    ns1:in ns1:convention_1 .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+ns1:Chair rdfs:label "Chair" ;
+    boxer:possibleType owl:Thing .
+
+ns1:Convention a owl:Class ;
+    rdfs:label "Convention" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Political_convention .
+
+ns1:Endorsement a owl:Class ;
+    rdfs:label "endorsement" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:First a owl:Class ;
+    rdfs:label "first" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FirstEndorsement a owl:Class ;
+    rdfs:label "first endorsement" ;
+    dul:hasQuality ns1:First ;
+    rdfs:subClassOf ns1:Endorsement .
+
+ns1:Male rdfs:label "Lincoln" .
+
+ns1:Receive rdfs:label "received" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:convention_1 a ns1:Convention ;
+    rdfs:label "Convention" ;
+    quant:hasDeterminer quant:this .
+
+ns1:endorsement_1 a ns1:FirstEndorsement ;
+    rdfs:label "endorsement" ;
+    ns1:firstEndorsementBy ns1:Chair ;
+    ns1:firstEndorsementOf ns1:Lincoln .
+
+ns1:Lincoln a ns1:Male ;
+    rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+

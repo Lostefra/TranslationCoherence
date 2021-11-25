@@ -1,0 +1,131 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence444.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence444.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence444" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence444" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "For",
+        "for" .
+
+ns1:French rdfs:label "French" ;
+    owl:sameAs dbpedia:French_language .
+
+ns1:be_1 a ns1:Be ;
+    rdfs:label "is" ;
+    boxer:agent ns1:scenario_1 ;
+    boxer:theme ns1:confirm_1 ;
+    ns1:for ns1:example_1,
+        ns1:expert_1 .
+
+ns1:design_1 a ns1:Design ;
+    rdfs:label "design" ;
+    dul:associatedWith ns1:expert_1 .
+
+ns1:docuverse earmark:hasContent "For French design experts, for example, the most likely scenario is to confirm regional differences."^^xsd:string .
+
+dbpedia:French_language a schema:Language .
+
+ns1:Be rdfs:label "is" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Confirm rdfs:label "confirm" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Design rdfs:label "design" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:DesignExpert rdfs:subClassOf ns1:Expert .
+
+ns1:Difference rdfs:label "differences" .
+
+ns1:Example rdfs:label "example" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Expert rdfs:label "experts" .
+
+ns1:FrenchDesignExpert rdfs:subClassOf ns1:DesignExpert .
+
+ns1:Likely a owl:Class ;
+    rdfs:label "likely" .
+
+ns1:LikelyScenario a owl:Class ;
+    rdfs:label "Likely Scenario" ;
+    dul:associatedWith ns1:Scenario ;
+    dul:hasModality ns1:Likely .
+
+ns1:Most rdfs:label "most" .
+
+ns1:MostLikelyScenario a owl:Class ;
+    rdfs:label "Most Likely Scenario" ;
+    rdfs:subClassOf ns1:LikelyScenario .
+
+ns1:Regional rdfs:label "regional" .
+
+ns1:RegionalDifference rdfs:subClassOf ns1:Difference .
+
+ns1:Scenario a owl:Class ;
+    rdfs:label "scenario" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:confirm_1 a ns1:Confirm ;
+    rdfs:label "confirm" ;
+    vn.role:Agent ns1:scenario_1 ;
+    vn.role:Theme ns1:difference_1 .
+
+ns1:difference_1 a ns1:RegionalDifference ;
+    rdfs:label "differences" ;
+    dul:hasQuality ns1:Regional ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:example_1 a ns1:Example ;
+    rdfs:label "example" .
+
+ns1:expert_1 a ns1:FrenchDesignExpert ;
+    rdfs:label "experts" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:scenario_1 a ns1:MostLikelyScenario ;
+    rdfs:label "scenario" ;
+    dul:hasQuality ns1:Most ;
+    quant:hasDeterminer quant:the .
+

@@ -1,0 +1,258 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence477.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence477.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence477" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence477" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Between rdfs:label "between" .
+
+ns1:Despite rdfs:label "Despite" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of",
+        "their" .
+
+ns1:To rdfs:label "to" .
+
+ns1:Without rdfs:label "without" .
+
+ns1:cohesion_1 a ns1:Cohesion ;
+    rdfs:label "cohesion" ;
+    dul:associatedWith ns1:situation_2,
+        ns1:structure_1 .
+
+ns1:create_1 a ns1:Create ;
+    rdfs:label "creating" ;
+    vn.role:Agent ns1:structure_1 ;
+    vn.role:Product ns1:condition_1 ;
+    ns1:without ns1:doubt_1 .
+
+ns1:docuverse earmark:hasContent "The structure and cohesion policy of the EU is an essential tool for creating the right conditions to tackle and reduce the level of economic and social complaints between the region, without doubt. Despite the steps taken so far, these levels are still very high, and they are unprecedented in relation to their business."^^xsd:string .
+
+ns1:policy_1 rdfs:label "policy" .
+
+ns1:reduce_1 a ns1:Reduce ;
+    rdfs:label "reduce" ;
+    vn.role:Agent ns1:structure_1 ;
+    vn.role:Patient ns1:level_1 .
+
+ns1:relation_1 a ns1:Relation ;
+    rdfs:label "relation" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:High,
+        ns1:Very,
+        ns1:level_1 ;
+    dul:hasQuality ns1:Still ;
+    ns1:despite ns1:step_1 .
+
+ns1:tackle_1 a ns1:Tackle ;
+    rdfs:label "tackle" ;
+    vn.role:Agent ns1:structure_1 ;
+    vn.role:Theme ns1:level_1 .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "taken" ;
+    dul:hasQuality ns1:Far,
+        ns1:So ;
+    vn.role:Theme ns1:step_1 .
+
+ns1:thing_1 coref:coref ns1:thing_2 .
+
+owl:Thing rdfs:label "they" .
+
+ns1:Business rdfs:label "business" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:CohesionPolicy a owl:Class ;
+    rdfs:label "Cohesion Policy" ;
+    dul:associatedWith ns1:Cohesion ;
+    rdfs:subClassOf ns1:Policy .
+
+ns1:Complaint rdfs:label "complaints" .
+
+ns1:Condition rdfs:label "conditions" .
+
+ns1:Create rdfs:label "creating" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Doubt rdfs:label "doubt" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Economic rdfs:label "economic" ;
+    owl:sameAs dbpedia:Economy .
+
+ns1:Essential a owl:Class ;
+    rdfs:label "essential" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:EssentialTool a owl:Class ;
+    rdfs:label "Essential Tool" ;
+    dul:hasQuality ns1:Essential ;
+    rdfs:subClassOf ns1:Tool .
+
+ns1:Eu rdfs:label "EU" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:European_Union,
+        ns1:tool_1 .
+
+ns1:Far rdfs:label "far" .
+
+ns1:Level rdfs:label "level" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Policy a owl:Class ;
+    rdfs:label "policy" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Policy .
+
+ns1:Reduce a owl:Class ;
+    rdfs:label "reduce" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Reductionism .
+
+ns1:Region rdfs:label "region" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Relation rdfs:label "relation" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Right rdfs:label "right" ;
+    owl:sameAs dbpedia:Rights .
+
+ns1:RightCondition rdfs:subClassOf ns1:Condition .
+
+ns1:So rdfs:label "So",
+        "so" .
+
+ns1:Social rdfs:label "social" ;
+    owl:sameAs dbpedia:Social_science .
+
+ns1:SocialComplaint rdfs:subClassOf ns1:Complaint .
+
+ns1:Step rdfs:label "steps" .
+
+ns1:Still rdfs:label "still" .
+
+ns1:Structure rdfs:label "structure" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Tackle rdfs:label "tackle" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Take rdfs:label "taken" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:business_1 a ns1:Business ;
+    rdfs:label "business" ;
+    ns1:businessOf ns1:thing_2 .
+
+ns1:complaint_1 a ns1:SocialComplaint ;
+    rdfs:label "complaints" ;
+    dul:hasQuality ns1:Economic,
+        ns1:Social ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:between ns1:region_1 .
+
+ns1:condition_1 a ns1:RightCondition ;
+    rdfs:label "conditions" ;
+    dul:hasQuality ns1:Right ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:doubt_1 a ns1:Doubt ;
+    rdfs:label "doubt" .
+
+ns1:region_1 a ns1:Region ;
+    rdfs:label "region" ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Unprecedented,
+        ns1:thing_2 ;
+    ns1:inRelationTo ns1:business_1 .
+
+ns1:tool_1 a ns1:Tool ;
+    rdfs:label "tool" ;
+    quant:hasDeterminer quant:an .
+
+ns1:Cohesion a owl:Class ;
+    rdfs:label "cohesion" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:High rdfs:label "high" ;
+    dul:hasQuality ns1:Very .
+
+ns1:Tool a owl:Class ;
+    rdfs:label "tool" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Tool .
+
+ns1:Unprecedented rdfs:label "unprecedented" .
+
+ns1:Very rdfs:label "very" .
+
+ns1:step_1 a ns1:Step ;
+    rdfs:label "steps" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:level_1 a ns1:Level ;
+    rdfs:label "level" ;
+    dul:hasQuality ns1:High ;
+    quant:hasDeterminer quant:the ;
+    ns1:levelOf ns1:complaint_1 .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "their",
+        "they" ;
+    dul:hasQuality ns1:Unprecedented .
+
+ns1:structure_1 a ns1:CohesionPolicy,
+        ns1:EssentialTool,
+        ns1:Structure ;
+    rdfs:label "structure" ;
+    quant:hasDeterminer quant:the ;
+    ns1:structureOf ns1:Eu .
+

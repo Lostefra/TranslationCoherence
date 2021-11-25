@@ -1,0 +1,122 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence583.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Topic rdfs:label "about" .
+
+translation_coherence:ko_sentence583.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence583" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence583" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:After rdfs:label "after" .
+
+ns1:As rdfs:label "as" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "When asked about the effect of the investigation after hearing, the land explained the process as a fumigation."^^xsd:string .
+
+ns1:explain_1 a ns1:Explain ;
+    rdfs:label "explained" ;
+    vn.role:Agent ns1:land_1 ;
+    vn.role:Topic ns1:process_1 ;
+    ns1:as ns1:fumigation_1 ;
+    ns1:when ns1:ask_1 .
+
+owl:Thing rdfs:label "When" .
+
+ns1:Ask rdfs:label "asked" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Effect rdfs:label "effect" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Explain rdfs:label "explained" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Fumigation rdfs:label "fumigation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Hearing rdfs:label "hearing" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Investigation rdfs:label "investigation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Land rdfs:label "land" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Process rdfs:label "process" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:ask_1 a ns1:Ask ;
+    rdfs:label "asked" ;
+    vn.role:Recipient ns1:thing_1 ;
+    vn.role:Topic ns1:effect_1 .
+
+ns1:effect_1 a ns1:Effect ;
+    rdfs:label "effect" ;
+    quant:hasDeterminer quant:the ;
+    ns1:effectOf ns1:investigation_1 .
+
+ns1:fumigation_1 a ns1:Fumigation ;
+    rdfs:label "fumigation" ;
+    quant:hasDeterminer quant:a .
+
+ns1:hearing_1 a ns1:Hearing ;
+    rdfs:label "hearing" .
+
+ns1:investigation_1 a ns1:Investigation ;
+    rdfs:label "investigation" ;
+    quant:hasDeterminer quant:the ;
+    ns1:after ns1:hearing_1 .
+
+ns1:land_1 a ns1:Land ;
+    rdfs:label "land" ;
+    quant:hasDeterminer quant:the .
+
+ns1:process_1 a ns1:Process ;
+    rdfs:label "process" ;
+    quant:hasDeterminer quant:the .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "When" .
+

@@ -1,0 +1,154 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence427.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Location rdfs:label "In" .
+
+translation_coherence:it_sentence427.ttl a owl:Ontology ;
+    rdfs:label "it_sentence427" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence427" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "In accordance with the common practice of the Whig_party, Lincoln would often use the Declaration_of_Independence as a philosophical and moral expression of these two philosophies."^^xsd:string .
+
+ns1:use_1 a ns1:OftenUse ;
+    rdfs:label "use" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Often ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Location ns1:accordance_1 ;
+    vn.role:Value ns1:declaration_of_independence_1 ;
+    ns1:as ns1:expression_1 .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+ns1:Accordance rdfs:label "accordance" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Common a owl:Class ;
+    rdfs:label "common" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:CommonPractice a owl:Class ;
+    rdfs:label "common practice" ;
+    dul:hasQuality ns1:Common ;
+    rdfs:subClassOf ns1:Practice .
+
+ns1:DeclarationOfIndependence rdfs:subClassOf dul:InformationEntity .
+
+ns1:Declaration_of_independence a owl:Class ;
+    rdfs:label "Declaration of Independence" ;
+    rdfs:subClassOf ns1:DeclarationOfIndependence ;
+    owl:equivalentClass dbpedia:United_States_Declaration_of_Independence .
+
+ns1:Expression a owl:Class ;
+    rdfs:label "expression" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+
+ns1:MoralExpression a owl:Class ;
+    rdfs:label "Moral Expression" ;
+    dul:hasQuality ns1:Moral ;
+    rdfs:subClassOf ns1:Expression .
+
+ns1:Often rdfs:label "often" .
+
+ns1:OftenUse rdfs:label "Often Use" ;
+    rdfs:subClassOf ns1:Use .
+
+ns1:Philosophical rdfs:label "philosophical" ;
+    owl:sameAs dbpedia:Philosophy .
+
+ns1:Philosophy rdfs:label "philosophies" .
+
+ns1:Practice a owl:Class ;
+    rdfs:label "practice" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Use rdfs:label "use" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Whig_party rdfs:label "Whig party" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Whigs_(British_political_party) .
+
+ns1:accordance_1 a ns1:Accordance ;
+    rdfs:label "accordance" ;
+    ns1:with ns1:practice_1 .
+
+ns1:declaration_of_independence_1 a ns1:Declaration_of_independence ;
+    rdfs:label "Declaration of Independence" ;
+    quant:hasDeterminer quant:the .
+
+ns1:expression_1 a ns1:MoralExpression ;
+    rdfs:label "expression" ;
+    dul:hasQuality ns1:Moral,
+        ns1:Philosophical ;
+    quant:hasDeterminer quant:a ;
+    ns1:moralExpressionOf ns1:philosophy_1 .
+
+ns1:philosophy_1 a ns1:Philosophy ;
+    rdfs:label "philosophies" ;
+    dul:hasDataValue "2"^^xsd:nonNegativeInteger ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple,
+        quant:two .
+
+ns1:practice_1 a ns1:CommonPractice ;
+    rdfs:label "practice" ;
+    quant:hasDeterminer quant:the ;
+    ns1:commonPracticeOf ns1:Whig_party .
+
+ns1:Moral a owl:Class ;
+    rdfs:label "moral" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Morality .
+

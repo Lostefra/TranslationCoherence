@@ -1,0 +1,215 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence358.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence358.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence358" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence358" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Future rdfs:label "future" .
+
+ns1:In rdfs:label "In",
+        "in" .
+
+ns1:Of rdfs:label "of",
+        "our" .
+
+ns1:docuverse earmark:hasContent "The skills and potential of our region in the technical sector must be identified. In view of media coverage, Europe is rapidly losing the United_States of the future technological growth industry."^^xsd:string .
+
+ns1:growth_1 a ns1:Growth ;
+    rdfs:label "growth" ;
+    dul:associatedWith ns1:industry_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:identify_1 a ns1:Identify ;
+    rdfs:label "identified" ;
+    boxer:patient ns1:skill_1 ;
+    boxing:hasModality boxing:Necessary .
+
+ns1:lose_1 a ns1:RapidlyLose ;
+    rdfs:label "losing" ;
+    dul:hasQuality ns1:Rapidly ;
+    vn.role:Agent ns1:Europe ;
+    vn.role:Theme ns1:united_states_1 ;
+    ns1:inViewOf ns1:coverage_1 .
+
+ns1:media_1 a ns1:Media ;
+    rdfs:label "media" ;
+    dul:associatedWith ns1:coverage_1 ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:potential_1 rdfs:label "potential" .
+
+ns1:view_1 a ns1:View ;
+    rdfs:label "view" .
+
+dbpedia:Europe a schema:Continent,
+        schema:Place .
+
+dbpedia:United_States rdfs:subClassOf schema:Country,
+        schema:Place .
+
+ns1:Coverage a owl:Class ;
+    rdfs:label "coverage" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Europe rdfs:label "Europe" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Europe .
+
+ns1:FutureTechnologicalGrowth a owl:Class ;
+    rdfs:subClassOf ns1:TechnologicalGrowth .
+
+ns1:FutureTechnologicalGrowthIndustry a owl:Class ;
+    rdfs:label "Future Technological Growth Industry" ;
+    dul:associatedWith ns1:FutureTechnologicalGrowth ;
+    rdfs:subClassOf ns1:TechnologicalGrowthIndustry .
+
+ns1:GrowthIndustry a owl:Class ;
+    rdfs:label "growth industry" ;
+    dul:associatedWith ns1:Growth ;
+    rdfs:subClassOf dul:Organization,
+        ns1:Industry .
+
+ns1:Identify rdfs:label "identified" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Industry a owl:Class ;
+    rdfs:label "industry" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Lose rdfs:label "losing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:MediaCoverage a owl:Class ;
+    rdfs:label "Media Coverage" ;
+    dul:associatedWith ns1:Media ;
+    rdfs:subClassOf ns1:Coverage .
+
+ns1:Potential rdfs:label "potential" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Rapidly rdfs:label "rapidly" .
+
+ns1:RapidlyLose rdfs:subClassOf ns1:Lose .
+
+ns1:Region rdfs:label "region" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Sector a owl:Class ;
+    rdfs:label "sector" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Skill rdfs:label "skills" .
+
+ns1:Technical a owl:Class ;
+    rdfs:label "technical" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Technology .
+
+ns1:TechnicalSector a owl:Class ;
+    rdfs:label "Technical Sector" ;
+    dul:hasQuality ns1:Technical ;
+    rdfs:subClassOf ns1:Sector .
+
+ns1:Technological a owl:Class ;
+    rdfs:label "technological" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:History_of_technology .
+
+ns1:TechnologicalGrowthIndustry a owl:Class ;
+    rdfs:label "technological growth industry" ;
+    dul:associatedWith ns1:TechnologicalGrowth ;
+    rdfs:subClassOf ns1:GrowthIndustry .
+
+ns1:UnitedStates rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:United_states a owl:Class ;
+    rdfs:label "United States" ;
+    rdfs:subClassOf ns1:UnitedStates ;
+    owl:equivalentClass dbpedia:United_States .
+
+ns1:View rdfs:label "view" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "our" .
+
+ns1:region_1 a ns1:Region ;
+    rdfs:label "region" ;
+    ns1:in ns1:sector_1 ;
+    ns1:regionOf ns1:person_1 .
+
+ns1:sector_1 a ns1:TechnicalSector ;
+    rdfs:label "sector" ;
+    quant:hasDeterminer quant:the .
+
+ns1:skill_1 a ns1:Potential,
+        ns1:Skill ;
+    rdfs:label "skills" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:skillOf ns1:region_1 .
+
+ns1:united_states_1 a ns1:United_states ;
+    rdfs:label "United States" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:united_statesOf ns1:industry_1 .
+
+ns1:Media a owl:Class ;
+    rdfs:label "media" ;
+    owl:equivalentClass dbpedia:Mass_media .
+
+ns1:TechnologicalGrowth a owl:Class ;
+    dul:hasQuality ns1:Technological ;
+    rdfs:subClassOf ns1:Growth .
+
+ns1:coverage_1 a ns1:MediaCoverage ;
+    rdfs:label "coverage" .
+
+ns1:industry_1 a ns1:FutureTechnologicalGrowthIndustry ;
+    rdfs:label "industry" .
+
+ns1:Growth a owl:Class ;
+    rdfs:label "growth" ;
+    rdfs:subClassOf dul:Process .
+

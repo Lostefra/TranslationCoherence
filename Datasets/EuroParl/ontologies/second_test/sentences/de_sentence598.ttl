@@ -1,0 +1,143 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence598.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence598.ttl a owl:Ontology ;
+    rdfs:label "de_sentence598" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence598" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Through rdfs:label "through" .
+
+ns1:When rdfs:label "when" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "Some Member_States have failed to comply with the principle of subsidiarity and national regional funds have been reduced when regional aid has been increased through the Union."^^xsd:string .
+
+ns1:fail_1 a ns1:Fail ;
+    rdfs:label "failed" ;
+    vn.role:Agent ns1:member_states_1 ;
+    vn.role:Theme ns1:comply_1 .
+
+ns1:principle_1 a ns1:Principle ;
+    rdfs:label "principle" ;
+    quant:hasDeterminer quant:the .
+
+ns1:reduce_1 a ns1:Reduce ;
+    rdfs:label "reduced" ;
+    vn.role:Patient ns1:fund_1 ;
+    ns1:when ns1:increase_1 .
+
+ns1:Aid rdfs:label "aid" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Comply rdfs:label "comply" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Fail rdfs:label "failed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Fund rdfs:label "funds" .
+
+ns1:Increase rdfs:label "increased" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Member_states a owl:Class ;
+    rdfs:label "Member States" ;
+    owl:equivalentClass dbpedia:Member_state_of_the_European_Union .
+
+ns1:National rdfs:label "national" ;
+    owl:sameAs dbpedia:Nationalism .
+
+ns1:NationalRegionalFund rdfs:subClassOf ns1:RegionalFund .
+
+ns1:Principle rdfs:label "principle" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Reduce rdfs:label "reduced" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:RegionalAid rdfs:label "Regional Aid" ;
+    rdfs:subClassOf ns1:Aid .
+
+ns1:RegionalFund rdfs:subClassOf ns1:Fund .
+
+ns1:Subsidiarity a owl:Class ;
+    rdfs:label "subsidiarity" ;
+    rdfs:subClassOf dul:Role ;
+    owl:equivalentClass dbpedia:Subsidiarity .
+
+ns1:Union rdfs:label "Union" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:aid_1 a ns1:RegionalAid ;
+    rdfs:label "aid" ;
+    dul:hasQuality ns1:Regional .
+
+ns1:comply_1 a ns1:Comply ;
+    rdfs:label "comply" ;
+    boxer:agent ns1:member_states_1 ;
+    ns1:withPrincipleOf ns1:subsidiarity_1 .
+
+ns1:fund_1 a ns1:NationalRegionalFund ;
+    rdfs:label "funds" ;
+    dul:hasQuality ns1:National,
+        ns1:Regional ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:increase_1 a ns1:Increase ;
+    rdfs:label "increased" ;
+    vn.role:Patient ns1:aid_1 ;
+    ns1:through ns1:Union .
+
+ns1:subsidiarity_1 a ns1:Subsidiarity ;
+    rdfs:label "subsidiarity" .
+
+ns1:Regional rdfs:label "Regional",
+        "regional" .
+
+ns1:member_states_1 a ns1:Member_states ;
+    rdfs:label "Member States" ;
+    quant:hasQuantifier quant:multiple,
+        quant:some .
+

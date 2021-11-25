@@ -1,0 +1,253 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence360.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "in" .
+
+translation_coherence:en_sentence360.ttl a owl:Ontology ;
+    rdfs:label "en_sentence360" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence360" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:About rdfs:label "about" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Inlightof rdfs:label "in the light of" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Through rdfs:label "through" .
+
+ns1:docuverse earmark:hasContent "They should not be about creating additional layers of bureaucracy and red tape. They should not be about shifting priorities and policies halfway through project development, resulting in inevitable delays and underspends, particularly in the light of the new budgetary requirement."^^xsd:string .
+
+ns1:light_1 a ns1:Light ;
+    rdfs:label "light" ;
+    quant:hasDeterminer quant:the .
+
+ns1:policy_1 rdfs:label "policies" .
+
+ns1:project_1 a ns1:Project ;
+    rdfs:label "project" ;
+    dul:associatedWith ns1:development_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves ns1:delay_1,
+        ns1:development_1,
+        ns1:halfway_1,
+        ns1:priority_1,
+        ns1:result_1,
+        ns1:shift_1,
+        ns1:underspend_1 ;
+    dul:hasQuality ns1:Particularly ;
+    ns1:inLightOf ns1:requirement_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves ns1:bureaucracy_1,
+        ns1:create_1,
+        ns1:create_2,
+        ns1:layer_1,
+        ns1:tape_1 .
+
+ns1:thing_5 coref:coref ns1:thing_4 .
+
+ns1:Additional rdfs:label "additional" .
+
+ns1:AdditionalLayer rdfs:subClassOf ns1:Layer .
+
+ns1:Budgetary a owl:Class ;
+    rdfs:label "budgetary" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:BudgetaryRequirement a owl:Class ;
+    rdfs:label "budgetary requirement" ;
+    dul:hasQuality ns1:Budgetary ;
+    rdfs:subClassOf ns1:Requirement .
+
+ns1:Bureaucracy a owl:Class ;
+    rdfs:label "bureaucracy" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Bureaucracy .
+
+ns1:Delay rdfs:label "delays" .
+
+ns1:Development a owl:Class ;
+    rdfs:label "development" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Halfway rdfs:label "halfway" .
+
+ns1:Inevitable rdfs:label "inevitable" .
+
+ns1:InevitableDelay rdfs:subClassOf ns1:Delay .
+
+ns1:Layer rdfs:label "layers" .
+
+ns1:Light rdfs:label "light" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:New rdfs:label "new" .
+
+ns1:NewBudgetaryRequirement a owl:Class ;
+    rdfs:label "New Budgetary Requirement" ;
+    rdfs:subClassOf ns1:BudgetaryRequirement .
+
+ns1:Particularly rdfs:label "particularly" .
+
+ns1:Policy rdfs:label "policies" .
+
+ns1:Priority rdfs:label "priorities" .
+
+ns1:ProjectDevelopment a owl:Class ;
+    rdfs:label "project development" ;
+    dul:associatedWith ns1:Project ;
+    rdfs:subClassOf ns1:Development .
+
+ns1:RedTape a owl:Class ;
+    rdfs:label "Red Tape" ;
+    dul:hasQuality ns1:Red ;
+    rdfs:subClassOf ns1:Tape ;
+    owl:equivalentClass dbpedia:Red_tape .
+
+ns1:Requirement a owl:Class ;
+    rdfs:label "requirement" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Result rdfs:label "resulting" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Shift rdfs:label "shifting" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Tape a owl:Class ;
+    rdfs:label "tape" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Underspend rdfs:label "underspends" .
+
+ns1:create_1 a ns1:Create ;
+    vn.role:Agent ns1:thing_2 ;
+    vn.role:Product ns1:tape_1 .
+
+ns1:create_2 a ns1:Create ;
+    rdfs:label "creating" ;
+    vn.role:Agent ns1:thing_2 ;
+    vn.role:Product ns1:layer_1 .
+
+ns1:requirement_1 a ns1:NewBudgetaryRequirement ;
+    rdfs:label "requirement" ;
+    dul:hasQuality ns1:New ;
+    quant:hasDeterminer quant:the .
+
+ns1:result_1 a ns1:Result ;
+    rdfs:label "resulting" ;
+    vn.role:Location ns1:delay_1,
+        ns1:underspend_1 ;
+    vn.role:Theme ns1:thing_3 .
+
+ns1:shift_1 a ns1:Shift ;
+    rdfs:label "shifting" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Source ns1:halfway_1 ;
+    vn.role:Theme ns1:priority_1 ;
+    ns1:through ns1:development_1 .
+
+ns1:thing_4 a owl:Thing ;
+    rdfs:label "They" ;
+    ns1:about ns1:thing_1,
+        ns1:thing_2,
+        ns1:thing_3 .
+
+ns1:Create rdfs:label "creating" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Project a owl:Class ;
+    rdfs:label "project" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Red a owl:Class ;
+    rdfs:label "red" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:bureaucracy_1 a ns1:Bureaucracy ;
+    rdfs:label "bureaucracy" .
+
+ns1:delay_1 a ns1:InevitableDelay ;
+    rdfs:label "delays" ;
+    dul:hasQuality ns1:Inevitable ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:halfway_1 a ns1:Halfway ;
+    rdfs:label "halfway" .
+
+ns1:layer_1 a ns1:AdditionalLayer ;
+    rdfs:label "layers" ;
+    dul:hasQuality ns1:Additional ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:additionalLayerOf ns1:bureaucracy_1 .
+
+ns1:priority_1 a ns1:Policy,
+        ns1:Priority ;
+    rdfs:label "priorities" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:tape_1 a ns1:RedTape ;
+    rdfs:label "tape" ;
+    dul:hasQuality ns1:Red .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:thing_3 a owl:Thing .
+
+ns1:underspend_1 a ns1:Underspend ;
+    rdfs:label "underspends" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:development_1 a ns1:ProjectDevelopment ;
+    rdfs:label "development" .
+
+ns1:thing_2 a owl:Thing .
+
+owl:Thing rdfs:label "They" .
+

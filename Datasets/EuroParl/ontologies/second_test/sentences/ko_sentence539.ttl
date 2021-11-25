@@ -1,0 +1,189 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence539.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme rdfs:label "on" .
+
+translation_coherence:ko_sentence539.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence539" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence539" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Inopinionof rdfs:label "in the opinion of" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:consider_1 a ns1:Consider ;
+    rdfs:label "considered" ;
+    vn.role:Theme ns1:reason_1 ;
+    ns1:inOpinionOf ns1:scope_1 .
+
+ns1:depend_1 a ns1:Depend ;
+    rdfs:label "depending" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Theme ns1:situation_3 .
+
+ns1:docuverse earmark:hasContent "This guideline is the reason to present on the subject. This guideline is considered in the opinion of each scope of each goal and may vary depending on the specific situation of the member country and region."^^xsd:string .
+
+ns1:guideline_1 rdfs:label "guideline" .
+
+ns1:member_1 a ns1:Member ;
+    rdfs:label "member" ;
+    dul:associatedWith ns1:country_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:opinion_1 a ns1:Opinion ;
+    rdfs:label "opinion" ;
+    quant:hasDeterminer quant:the .
+
+ns1:present_1 a ns1:Present ;
+    rdfs:label "present" ;
+    vn.role:Agent ns1:reason_1 ;
+    ns1:on ns1:subject_1 .
+
+ns1:region_1 rdfs:label "region" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:scope_1 ;
+    ns1:entails ns1:situation_2 .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:vary_1 a ns1:Vary ;
+    rdfs:label "vary" ;
+    boxing:hasModality boxing:Possible .
+
+ns1:Consider rdfs:label "considered" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Country a owl:Class ;
+    rdfs:label "country" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Depend rdfs:label "depending" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Goal rdfs:label "goal" ;
+    rdfs:subClassOf dul:Goal .
+
+ns1:Guideline rdfs:label "guideline" ;
+    rdfs:subClassOf dul:Description,
+        ns1:Reason .
+
+ns1:MemberCountry a owl:Class ;
+    rdfs:label "member country" ;
+    dul:associatedWith ns1:Member ;
+    rdfs:subClassOf ns1:Country .
+
+ns1:Opinion rdfs:label "opinion" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Present rdfs:label "present" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Region rdfs:label "region" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Scope rdfs:label "scope" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Specific a owl:Class ;
+    rdfs:label "specific" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SpecificSituation a owl:Class ;
+    rdfs:label "specific situation" ;
+    dul:hasQuality ns1:Specific ;
+    rdfs:subClassOf ns1:Situation .
+
+ns1:Subject rdfs:label "subject" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Vary rdfs:label "vary" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:goal_1 a ns1:Goal ;
+    rdfs:label "goal" ;
+    quant:hasQuantifier quant:each .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:scope_1 .
+
+ns1:situation_3 a ns1:SpecificSituation ;
+    rdfs:label "situation" ;
+    quant:hasDeterminer quant:the ;
+    ns1:specificSituationOf ns1:country_1 .
+
+ns1:subject_1 a ns1:Subject ;
+    rdfs:label "subject" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Member a owl:Class ;
+    rdfs:label "member" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Reason rdfs:label "reason" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:country_1 a ns1:MemberCountry,
+        ns1:Region ;
+    rdfs:label "country" .
+
+ns1:reason_1 a ns1:Guideline,
+        ns1:Reason ;
+    rdfs:label "reason" ;
+    quant:hasDeterminer quant:the,
+        quant:this .
+
+ns1:Situation a owl:Class ;
+    rdfs:label "situation" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:scope_1 a ns1:Scope ;
+    rdfs:label "scope" ;
+    quant:hasQuantifier quant:each ;
+    ns1:scopeOf ns1:goal_1 .
+

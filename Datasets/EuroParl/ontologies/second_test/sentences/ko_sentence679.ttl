@@ -1,0 +1,130 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence679.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence679.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence679" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence679" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:On rdfs:label "on" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "I also have some opinions on ratings made with this sixth regular report, first, Mr Berend."^^xsd:string .
+
+ns1:have_1 a ns1:AlsoHave ;
+    rdfs:label "have" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Patient ns1:opinion_1 .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "made" ;
+    dul:hasQuality ns1:First ;
+    vn.role:Theme ns1:opinion_1 ;
+    ns1:with ns1:report_1 .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoHave rdfs:label "also have" ;
+    rdfs:subClassOf ns1:Have .
+
+ns1:Berend rdfs:label "Berend" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> .
+
+ns1:First rdfs:label "first" .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Make rdfs:label "made" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Opinion rdfs:label "opinions" .
+
+ns1:Person rdfs:label "I" .
+
+ns1:Rating rdfs:label "ratings" .
+
+ns1:Regular a owl:Class ;
+    rdfs:label "regular" .
+
+ns1:RegularReport a owl:Class ;
+    rdfs:label "regular report" ;
+    dul:associatedWith ns1:Report ;
+    dul:hasModality ns1:Regular .
+
+ns1:Report a owl:Class ;
+    rdfs:label "report" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Sixth rdfs:label "sixth" .
+
+ns1:SixthRegularReport a owl:Class ;
+    rdfs:label "sixth regular report" ;
+    rdfs:subClassOf ns1:RegularReport .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:rating_1 a ns1:Rating ;
+    rdfs:label "ratings" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:report_1 a ns1:SixthRegularReport ;
+    rdfs:label "report" ;
+    dul:hasQuality ns1:Sixth ;
+    quant:hasDeterminer quant:this .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> rdfs:label "Mr" ;
+    boxer:possibleType dul:Role .
+
+ns1:opinion_1 a ns1:Opinion ;
+    rdfs:label "opinions" ;
+    dul:associatedWith ns1:Berend ;
+    quant:hasQuantifier quant:multiple,
+        quant:some ;
+    ns1:on ns1:rating_1 .
+

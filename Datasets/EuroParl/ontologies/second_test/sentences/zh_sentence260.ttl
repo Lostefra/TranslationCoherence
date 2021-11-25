@@ -1,0 +1,153 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence260.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Predicate rdfs:label "for" .
+
+translation_coherence:zh_sentence260.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence260" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence260" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:do_1 a ns1:Do ;
+    rdfs:label "done" ;
+    boxer:agent ns1:Kus ;
+    boxer:patient ns1:work_1 ;
+    ns1:in ns1:regard_1 .
+
+ns1:docuverse earmark:hasContent "Mr. Kus thanked him for the work he had done in that regard, and he had pointed out that it was not disappointing in drafting and revising the directive."^^xsd:string .
+
+ns1:neuter_1 coref:coref ns1:work_1 .
+
+ns1:point_1 a ns1:Point ;
+    rdfs:label "pointed" ;
+    boxer:theme ns1:situation_1 ;
+    dul:hasQuality ns1:Out ;
+    vn.role:Agent ns1:Kus .
+
+ns1:thank_1 a ns1:Thank ;
+    rdfs:label "thanked" ;
+    vn.role:Agent ns1:Kus ;
+    vn.role:Predicate ns1:work_1 ;
+    vn.role:Theme ns1:Kus .
+
+ns1:Directive rdfs:label "directive" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Do rdfs:label "done" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Male rdfs:label "him" .
+
+ns1:Out rdfs:label "out" .
+
+ns1:Point rdfs:label "pointed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Regard rdfs:label "regard" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Thank rdfs:label "thanked" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Work rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:draft_1 a ns1:Draft ;
+    rdfs:label "drafting" ;
+    boxer:agent ns1:thing_1 ;
+    boxer:patient ns1:directive_1 .
+
+ns1:regard_1 a ns1:Regard ;
+    rdfs:label "regard" ;
+    quant:hasDeterminer quant:that .
+
+ns1:revise_1 a ns1:Revise ;
+    rdfs:label "revising" ;
+    boxer:agent ns1:thing_2 ;
+    boxer:patient ns1:directive_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves ns1:Disappointing,
+        ns1:Draft,
+        ns1:Revise,
+        ns1:draft_1,
+        ns1:revise_1,
+        ns1:work_1 ;
+    ns1:in ns1:thing_1,
+        ns1:thing_2 .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> rdfs:label "Mr." ;
+    boxer:possibleType dul:Role .
+
+ns1:Disappointing rdfs:label "disappointing" .
+
+ns1:Draft rdfs:label "drafting" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Revise rdfs:label "revising" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:directive_1 a ns1:Directive ;
+    rdfs:label "directive" ;
+    quant:hasDeterminer quant:the .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:thing_2 a owl:Thing .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Kus rdfs:label "Kus" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    dul:hasQuality ns1:Male ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> .
+
+ns1:work_1 a owl:Thing,
+        ns1:Work ;
+    rdfs:label "it",
+        "work" ;
+    dul:hasQuality ns1:Disappointing ;
+    quant:hasDeterminer quant:the .
+

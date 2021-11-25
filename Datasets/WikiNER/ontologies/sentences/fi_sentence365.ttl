@@ -1,0 +1,187 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence365.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:fi_sentence365.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence365" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence365" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Armed rdfs:label "armed" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "Andrew_Johnson, Governor of the Tennessee Army, encouraged him to lead the way to end black troops. Fifty thousand armed nakyre sights and murdered black soldiers to the banks of Mississippi."^^xsd:string .
+
+ns1:encourage_1 a ns1:Encourage ;
+    rdfs:label "encouraged" ;
+    vn.role:Agent ns1:Andrew_johnson ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:male_1 coref:coref ns1:Andrew_johnson .
+
+ns1:murder_1 a ns1:Murder ;
+    rdfs:label "murdered" ;
+    vn.role:Patient ns1:soldier_1 .
+
+ns1:nakyre_1 a ns1:Nakyre ;
+    rdfs:label "nakyre" ;
+    dul:associatedWith ns1:sight_1 ;
+    quant:hasQuantifier quant:thousand .
+
+dbpedia:Andrew_Johnson a schema:Person .
+
+dbpedia:Mississippi a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:ArmedNakyreSight rdfs:subClassOf ns1:NakyreSight .
+
+ns1:Bank rdfs:label "banks" .
+
+ns1:BlackSoldier rdfs:subClassOf ns1:Soldier .
+
+ns1:BlackTroops a owl:Class ;
+    rdfs:label "Black Troops" ;
+    dul:hasQuality ns1:Black ;
+    rdfs:subClassOf ns1:Troops .
+
+ns1:Encourage rdfs:label "encouraged" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:End rdfs:label "end" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Governor rdfs:label "Governor" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Governor,
+        dbpedia:Governor_of_Texas ;
+    ns1:of ns1:Tennessee_army .
+
+ns1:Lead rdfs:label "lead" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Male rdfs:label "him" .
+
+ns1:Mississippi rdfs:label "Mississippi" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Mississippi .
+
+ns1:Murder rdfs:label "murdered" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Nakyre rdfs:label "nakyre" .
+
+ns1:NakyreSight rdfs:subClassOf ns1:Sight .
+
+ns1:Sight rdfs:label "sights" .
+
+ns1:Soldier rdfs:label "soldiers" .
+
+ns1:Tennessee_army rdfs:label "Tennessee Army" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Troops a owl:Class ;
+    rdfs:label "troops" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Way rdfs:label "way" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:bank_1 a ns1:Bank ;
+    rdfs:label "banks" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:bankOf ns1:Mississippi .
+
+ns1:end_1 a ns1:End ;
+    rdfs:label "end" ;
+    vn.role:Agent ns1:way_1 ;
+    vn.role:Theme ns1:troops_1 .
+
+ns1:lead_1 a ns1:Lead ;
+    rdfs:label "lead" ;
+    vn.role:Agent ns1:Andrew_johnson ;
+    vn.role:Theme ns1:way_1 .
+
+ns1:sight_1 a ns1:ArmedNakyreSight ;
+    rdfs:label "sights" ;
+    dul:hasDataValue "50000"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:Topic ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:end_1,
+        ns1:lead_1,
+        ns1:troops_1 .
+
+ns1:soldier_1 a ns1:BlackSoldier ;
+    rdfs:label "soldiers" ;
+    dul:hasQuality ns1:Black,
+        ns1:Topic ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:to ns1:bank_1 .
+
+ns1:troops_1 a ns1:BlackTroops ;
+    rdfs:label "troops" ;
+    dul:hasQuality ns1:Black ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:way_1 a ns1:Way ;
+    rdfs:label "way" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Andrew_johnson a ns1:Male ;
+    rdfs:label "Andrew Johnson",
+        "him" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Governor ;
+    owl:sameAs dbpedia:Andrew_Johnson .
+
+ns1:Black a owl:Class ;
+    rdfs:label "Black",
+        "black" ;
+    rdfs:subClassOf dul:Quality .
+

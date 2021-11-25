@@ -1,0 +1,130 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence323.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence323.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence323" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence323" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "her" .
+
+ns1:Theme rdfs:label "necessary" .
+
+ns1:To rdfs:label "to" .
+
+ns1:Where rdfs:label "where" .
+
+ns1:attract_1 a ns1:AlsoAttract ;
+    rdfs:label "attracted" ;
+    boxer:agent ns1:Flautre ;
+    boxer:patient ns1:attention_1 ;
+    dul:hasQuality ns1:Also ;
+    ns1:in ns1:report_1 ;
+    ns1:to ns1:area_1 .
+
+ns1:desperately_1 a ns1:Desperately ;
+    rdfs:label "desperately" ;
+    boxer:theme ns1:area_1 .
+
+ns1:docuverse earmark:hasContent "In her report, Mrs. Flautre also attracted attention to an area where coordinates don't match, but desperately necessary."^^xsd:string .
+
+ns1:female_1 rdfs:label "her" .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoAttract rdfs:subClassOf ns1:Attract .
+
+ns1:Area rdfs:label "area" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Attention rdfs:label "attention" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Attract rdfs:label "attracted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Coordinate rdfs:label "coordinates" .
+
+ns1:Desperately rdfs:label "desperately" .
+
+ns1:Match rdfs:label "match" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Report rdfs:label "report" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:attention_1 a ns1:Attention ;
+    rdfs:label "attention" .
+
+ns1:coordinate_1 a ns1:Coordinate ;
+    rdfs:label "coordinates" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:match_1 a ns1:Match ;
+    rdfs:label "match" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Patient1 ns1:coordinate_1 .
+
+ns1:report_1 a ns1:Report ;
+    rdfs:label "report" ;
+    ns1:reportOf ns1:Flautre .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis> a ns1:Female ;
+    rdfs:label "Mrs." ;
+    boxer:possibleType dul:Role .
+
+ns1:Female rdfs:label "Flautre",
+        "Mrs." .
+
+ns1:Flautre a ns1:Female ;
+    rdfs:label "Flautre" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis> ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis> ;
+    owl:sameAs dbpedia:Hélène_Flautre .
+
+ns1:area_1 a ns1:Area ;
+    rdfs:label "area" ;
+    quant:hasDeterminer quant:an ;
+    ns1:where ns1:match_1 .
+

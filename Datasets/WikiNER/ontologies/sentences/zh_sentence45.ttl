@@ -1,0 +1,139 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence45.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:zh_sentence45.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence45" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence45" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:disjunct_1 a ns1:Disjunct ;
+    boxing:involves ns1:Removalism,
+        ns1:individualism_1 ;
+    ns1:union ns1:disjunct_2 .
+
+ns1:docuverse earmark:hasContent "The most extremist individualism, so-called  removalism  or  Semitism  are one of the first and most prominent nationalist Max_Stirner."^^xsd:string .
+
+ns1:nationalist_1 rdfs:label "nationalist" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:one .
+
+ns1:removalism_1 rdfs:label "removalism" .
+
+ns1:semitism_1 rdfs:label "Semitism" .
+
+ns1:Extremist a owl:Class ;
+    rdfs:label "extremist" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Extremism .
+
+ns1:ExtremistIndividualism a owl:Class ;
+    rdfs:label "extremist individualism" ;
+    dul:hasQuality ns1:Extremist ;
+    rdfs:subClassOf ns1:Individualism .
+
+ns1:First rdfs:label "first" .
+
+ns1:Individualism a owl:Class ;
+    rdfs:label "individualism" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Individualism .
+
+ns1:Max_stirner a ns1:MostProminentNationalist ;
+    rdfs:label "Max Stirner",
+        "nationalist" ;
+    boxer:possibleType owl:Thing ;
+    dul:hasQuality ns1:First,
+        ns1:Most ;
+    owl:sameAs dbpedia:Max_Stirner .
+
+ns1:MostExtremistIndividualism a owl:Class ;
+    rdfs:label "Most Extremist Individualism" ;
+    rdfs:subClassOf ns1:ExtremistIndividualism .
+
+ns1:MostProminentNationalist a owl:Class ;
+    rdfs:label "Most Prominent Nationalist" ;
+    rdfs:subClassOf ns1:ProminentNationalist .
+
+ns1:Nationalist a owl:Class ;
+    rdfs:label "Max Stirner",
+        "nationalist" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Nationalism .
+
+ns1:Prominent a owl:Class ;
+    rdfs:label "prominent" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ProminentNationalist a owl:Class ;
+    rdfs:label "Prominent Nationalist" ;
+    dul:hasQuality ns1:Prominent ;
+    rdfs:subClassOf ns1:Nationalist .
+
+ns1:So-called rdfs:label "so-called" .
+
+ns1:So-calledRemovalism rdfs:subClassOf ns1:Removalism .
+
+ns1:disjunct_2 a ns1:Disjunct ;
+    boxing:involves ns1:Semitism,
+        ns1:individualism_1 .
+
+ns1:Most rdfs:label "most" .
+
+ns1:Removalism rdfs:label "removalism" .
+
+ns1:Semitism rdfs:label "Semitism" .
+
+ns1:individualism_1 a ns1:MostExtremistIndividualism,
+        ns1:Semitism,
+        ns1:So-calledRemovalism ;
+    rdfs:label "individualism" ;
+    dul:hasDataValue "1"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:Most,
+        ns1:So-called ;
+    quant:hasDeterminer quant:the ;
+    ns1:mostExtremistIndividualismOf ns1:Max_stirner .
+

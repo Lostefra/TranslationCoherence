@@ -1,0 +1,150 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence513.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence513.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence513" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence513" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Since rdfs:label "since" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:disjunct_1 a ns1:Disjunct ;
+    boxing:involves ns1:Reliable,
+        ns1:policy_1 ;
+    ns1:union ns1:disjunct_2 .
+
+ns1:docuverse earmark:hasContent "Cohe. policy must be further strengthened, since Europe, which is completely unaware of the standard of living in the region, cannot be reliable or profitable."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:Further,
+        ns1:Strengthened,
+        ns1:policy_1 ;
+    ns1:since ns1:Europe .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Unaware,
+        ns1:policy_1 ;
+    dul:hasQuality ns1:Completely ;
+    ns1:situationOf ns1:standard_1 .
+
+dbpedia:Europe a schema:Continent,
+        schema:Place .
+
+ns1:Cannot rdfs:label "cannot" .
+
+<https://w3id.org/stlab/ke/amiala/fi_sentence513.ttl/Cohe.> rdfs:label "Cohe." ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality ns1:Further,
+        ns1:Profitable,
+        ns1:Reliable,
+        ns1:Strengthened,
+        ns1:Unaware .
+
+ns1:Completely rdfs:label "completely" .
+
+ns1:Europe rdfs:label "Europe" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Europe .
+
+ns1:Living rdfs:label "living" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Policy rdfs:label "policy" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Region rdfs:label "region" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Standard a owl:Class ;
+    rdfs:label "standard" ;
+    rdfs:subClassOf dul:Amount ;
+    owl:equivalentClass dbpedia:Standard_of_living .
+
+ns1:cannot_1 a ns1:Cannot ;
+    rdfs:label "cannot" .
+
+ns1:disjunct_2 a ns1:Disjunct ;
+    boxing:involves ns1:Profitable,
+        ns1:policy_1 .
+
+ns1:living_1 a ns1:Living ;
+    rdfs:label "living" ;
+    dul:associatedWith ns1:cannot_1 ;
+    ns1:in ns1:region_1 .
+
+ns1:region_1 a ns1:Region ;
+    rdfs:label "region" ;
+    quant:hasDeterminer quant:the .
+
+ns1:standard_1 a ns1:Standard ;
+    rdfs:label "standard" ;
+    quant:hasDeterminer quant:the ;
+    ns1:standardOf ns1:living_1 .
+
+ns1:Further rdfs:label "further" .
+
+ns1:Profitable rdfs:label "profitable" ;
+    owl:sameAs dbpedia:Profit_(economics) .
+
+ns1:Reliable rdfs:label "reliable" .
+
+ns1:Strengthened rdfs:label "strengthened" .
+
+ns1:Unaware rdfs:label "unaware" .
+
+ns1:policy_1 a ns1:Policy ;
+    rdfs:label "policy" ;
+    dul:associatedWith <https://w3id.org/stlab/ke/amiala/fi_sentence513.ttl/Cohe.> ;
+    dul:hasQuality ns1:Further,
+        ns1:Profitable,
+        ns1:Reliable,
+        ns1:Strengthened,
+        ns1:Unaware .
+

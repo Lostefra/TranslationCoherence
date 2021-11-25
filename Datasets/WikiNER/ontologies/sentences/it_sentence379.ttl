@@ -1,0 +1,128 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence379.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence379.ttl a owl:Ontology ;
+    rdfs:label "it_sentence379" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence379" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "For",
+        "for" .
+
+ns1:Noteq rdfs:label "previous" .
+
+ns1:Of rdfs:label "his" .
+
+ns1:continue_1 a ns1:Continue ;
+    rdfs:label "continued" ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Theme ns1:plan_1 ;
+    ns1:for ns1:time_1 .
+
+ns1:create_1 a ns1:Create ;
+    rdfs:label "create" ;
+    vn.role:Agent ns1:plan_1,
+        ns1:plan_2 ;
+    vn.role:Product ns1:colony_1 .
+
+ns1:docuverse earmark:hasContent "For some time, Lincoln continued his previous plans to create colonies for newly liberated slaves."^^xsd:string .
+
+ns1:liberate_1 a ns1:Liberate ;
+    rdfs:label "liberated" ;
+    vn.role:Theme ns1:slave_1 .
+
+ns1:male_1 coref:coref ns1:Lincoln .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+ns1:Colony rdfs:label "colonies" .
+
+ns1:Continue rdfs:label "continued" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Create rdfs:label "create" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Liberate rdfs:label "liberated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Male rdfs:label "Lincoln" .
+
+ns1:Newly rdfs:label "newly" .
+
+ns1:Slave rdfs:label "slaves" .
+
+ns1:Time rdfs:label "time" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:colony_1 a ns1:Colony ;
+    rdfs:label "colonies" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:for ns1:slave_1 .
+
+ns1:time_1 a ns1:Time ;
+    rdfs:label "time" ;
+    quant:hasQuantifier quant:some .
+
+ns1:Plan rdfs:label "plans",
+        "previous" .
+
+ns1:plan_1 a ns1:Plan ;
+    rdfs:label "previous" ;
+    owl:differentFrom ns1:plan_2 ;
+    ns1:planOf ns1:Lincoln .
+
+ns1:plan_2 a ns1:Plan ;
+    rdfs:label "plans" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:slave_1 a dbpedia:Slavery,
+        ns1:Slave ;
+    rdfs:label "slaves" ;
+    dul:hasQuality ns1:Newly ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Lincoln a ns1:Male ;
+    rdfs:label "Lincoln",
+        "his" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+

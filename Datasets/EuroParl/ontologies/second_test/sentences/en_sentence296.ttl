@@ -1,0 +1,157 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence296.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Stimulus rdfs:label "to" .
+
+translation_coherence:en_sentence296.ttl a owl:Ontology ;
+    rdfs:label "en_sentence296" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence296" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Quantity rdfs:label "many" .
+
+ns1:Within rdfs:label "within" .
+
+ns1:docuverse earmark:hasContent "It is quite clear that many people within Wales are looking to the European_Structural_Funds programme to alleviate some of the great difficulties that we undoubtedly face."^^xsd:string .
+
+ns1:programme_1 a ns1:Programme ;
+    rdfs:label "programme" ;
+    boxer:agent ns1:neuter_1 ;
+    boxer:theme ns1:situation_2 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:look_1,
+        ns1:people_1 ;
+    dul:hasQuality ns1:Clear .
+
+dbpedia:Wales a schema:Country,
+        schema:Place .
+
+ns1:Alleviate rdfs:label "alleviate" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Clear rdfs:label "clear" ;
+    dul:hasQuality ns1:Quite .
+
+ns1:Difficulty rdfs:label "difficulties" .
+
+ns1:European_structural_funds rdfs:label "European Structural Funds" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Structural_Funds_and_Cohesion_Fund .
+
+ns1:Face rdfs:label "face" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Great rdfs:label "great" .
+
+ns1:GreatDifficulty rdfs:subClassOf ns1:Difficulty .
+
+ns1:Look rdfs:label "looking" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:People rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Programme rdfs:label "programme" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Quite rdfs:label "quite" .
+
+ns1:Undoubtedly rdfs:label "undoubtedly" .
+
+ns1:UndoubtedlyFace rdfs:label "Undoubtedly Face" ;
+    rdfs:subClassOf ns1:Face .
+
+ns1:Wales rdfs:label "Wales" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Wales .
+
+ns1:alleviate_1 a ns1:Alleviate ;
+    rdfs:label "alleviate" ;
+    vn.role:Cause ns1:neuter_1 ;
+    vn.role:Source ns1:thing_1 .
+
+ns1:face_1 a ns1:UndoubtedlyFace ;
+    rdfs:label "face" ;
+    dul:hasQuality ns1:Undoubtedly ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:difficulty_1 .
+
+ns1:look_1 a ns1:Look ;
+    rdfs:label "looking" ;
+    vn.role:Experiencer ns1:people_1 ;
+    vn.role:Stimulus ns1:European_structural_funds .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:alleviate_1,
+        ns1:face_1,
+        ns1:thing_1 .
+
+ns1:difficulty_1 a ns1:GreatDifficulty ;
+    rdfs:label "difficulties" ;
+    dul:hasQuality ns1:Great ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple,
+        quant:some .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "It" .
+
+ns1:people_1 a ns1:People ;
+    rdfs:label "people" ;
+    quant:hasQuantifier quant:many,
+        quant:multiple ;
+    ns1:within ns1:Wales .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "some" ;
+    ns1:thingOf ns1:difficulty_1 .
+
+owl:Thing rdfs:label "It",
+        "some" .
+

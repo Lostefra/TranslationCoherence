@@ -1,0 +1,165 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence470.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence470.ttl a owl:Ontology ;
+    rdfs:label "it_sentence470" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence470" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Ancient rdfs:label "ancient" .
+
+ns1:Similar rdfs:label "similar" .
+
+ns1:To rdfs:label "to" .
+
+ns1:and_1 a ns1:And ;
+    rdfs:label "And" ;
+    boxer:agent ns1:catalogue_1 .
+
+ns1:docuverse earmark:hasContent "And fourth, ancient library catalogues that predate the Andronicus intervention list a corpus aristotelian very similar to what we currently possess."^^xsd:string .
+
+ns1:intervention_1 a ns1:Intervention ;
+    rdfs:label "intervention" ;
+    dul:associatedWith ns1:list_1 .
+
+ns1:library_1 a ns1:Library ;
+    rdfs:label "library" ;
+    dul:associatedWith ns1:catalogue_1 .
+
+ns1:possess_1 a ns1:CurrentlyPossess ;
+    rdfs:label "possess" ;
+    dul:hasQuality ns1:Currently ;
+    vn.role:Theme1 ns1:person_1 ;
+    vn.role:Theme2 ns1:thing_1 .
+
+ns1:predate_1 a ns1:Predate ;
+    rdfs:label "predate" ;
+    boxer:agent ns1:catalogue_1 ;
+    boxer:recipient ns1:list_1 ;
+    boxer:theme ns1:aristotelian_1 .
+
+dbpedia:Aristotle rdfs:subClassOf schema:Person .
+
+owl:Thing rdfs:label "what" .
+
+ns1:AncientLibraryCatalogue rdfs:subClassOf ns1:LibraryCatalogue .
+
+ns1:And rdfs:label "And" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Andronicus rdfs:label "Andronicus",
+        "list" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Aristotelian a owl:Class ;
+    rdfs:label "aristotelian" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Aristotle .
+
+ns1:Catalogue rdfs:label "catalogues" .
+
+ns1:Corpus a owl:Class ;
+    rdfs:label "corpus" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:CorpusAristotelian a owl:Class ;
+    rdfs:label "corpus aristotelian" ;
+    dul:hasQuality ns1:Corpus ;
+    rdfs:subClassOf ns1:Aristotelian .
+
+ns1:Currently rdfs:label "currently" .
+
+ns1:CurrentlyPossess rdfs:label "Currently Possess" ;
+    rdfs:subClassOf ns1:Possess .
+
+ns1:Fourth rdfs:label "fourth" .
+
+ns1:InterventionList a owl:Class ;
+    rdfs:label "Intervention List" ;
+    dul:associatedWith ns1:Intervention ;
+    rdfs:subClassOf ns1:List .
+
+ns1:Library rdfs:label "library" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:LibraryCatalogue rdfs:subClassOf ns1:Catalogue .
+
+ns1:List a owl:Class ;
+    rdfs:label "Andronicus",
+        "list" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> ;
+    owl:equivalentClass dbpedia:List_A_cricket .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Possess rdfs:label "possess" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Predate rdfs:label "predate" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Very rdfs:label "very" .
+
+ns1:aristotelian_1 a ns1:CorpusAristotelian ;
+    rdfs:label "aristotelian" ;
+    dul:hasQuality ns1:Very ;
+    quant:hasDeterminer quant:a ;
+    ns1:similarTo ns1:thing_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:Intervention a owl:Class ;
+    rdfs:label "intervention" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:list_1 a ns1:InterventionList ;
+    rdfs:label "list" ;
+    dul:associatedWith ns1:Andronicus .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "what" .
+
+ns1:catalogue_1 a ns1:AncientLibraryCatalogue ;
+    rdfs:label "catalogues" ;
+    dul:hasQuality ns1:Fourth ;
+    quant:hasQuantifier quant:multiple .
+

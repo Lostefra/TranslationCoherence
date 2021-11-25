@@ -1,0 +1,180 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence217.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "was" .
+
+translation_coherence:fi_sentence217.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence217" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence217" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:My rdfs:label "my" .
+
+ns1:Of rdfs:label "my",
+        "your" .
+
+ns1:docuverse earmark:hasContent "Achilles told Hector that it was hopeless to wait for him to declare that my anger, my anger, would force me to hack your lihaesh and eat you raw."^^xsd:string .
+
+ns1:tell_1 a ns1:Tell ;
+    rdfs:label "told" ;
+    vn.role:Agent ns1:Achilles ;
+    vn.role:Recipient ns1:Hector ;
+    vn.role:Topic ns1:wait_1 .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Declare rdfs:label "declare" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Eat rdfs:label "eat" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Force rdfs:label "force" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Hector rdfs:label "Hector" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Hopeless rdfs:label "hopeless" .
+
+ns1:Lihaesh rdfs:label "lihaesh" .
+
+ns1:Male rdfs:label "him" .
+
+ns1:Tell rdfs:label "told" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Wait rdfs:label "wait" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:anger_1 a ns1:Anger ;
+    rdfs:label "anger" ;
+    ns1:angerOf ns1:person_1 ;
+    ns1:my ns1:anger_2 .
+
+ns1:declare_1 a ns1:Declare ;
+    rdfs:label "declare" ;
+    vn.role:Agent ns1:neuter_1 ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:eat_1 a ns1:Eat ;
+    rdfs:label "eat" ;
+    boxer:theme ns1:situation_1 ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:anger_2 .
+
+ns1:force_1 a ns1:Force ;
+    rdfs:label "force" ;
+    boxer:theme ns1:hack_1 ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:anger_1 .
+
+ns1:hopeless_1 a ns1:Hopeless ;
+    rdfs:label "hopeless" .
+
+ns1:lihaesh_1 a ns1:Lihaesh ;
+    rdfs:label "lihaesh" ;
+    ns1:lihaeshOf ns1:person_2 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "my" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "your" .
+
+ns1:person_3 a ns1:Person .
+
+ns1:person_4 a ns1:Person ;
+    rdfs:label "me" .
+
+ns1:person_5 a ns1:Person ;
+    rdfs:label "you" ;
+    dul:hasQuality ns1:Raw .
+
+ns1:wait_1 a ns1:Wait ;
+    rdfs:label "wait" ;
+    boxer:theme ns1:declare_1 ;
+    vn.role:Location ns1:hopeless_1 ;
+    vn.role:Theme ns1:neuter_1 ;
+    ns1:for ns1:Achilles .
+
+ns1:Achilles rdfs:label "Achilles" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Male ;
+    owl:sameAs dbpedia:Achilles .
+
+ns1:Anger rdfs:label "anger" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Hack rdfs:label "hack" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Raw rdfs:label "raw" .
+
+ns1:hack_1 a ns1:Hack ;
+    rdfs:label "hack" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_4 ;
+    vn.role:Patient ns1:lihaesh_1 .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "it" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:Hack,
+        ns1:Raw,
+        ns1:anger_2,
+        ns1:eat_1,
+        ns1:force_1,
+        ns1:hack_1,
+        ns1:person_5 .
+
+ns1:anger_2 a ns1:Anger ;
+    rdfs:label "anger",
+        "my" ;
+    ns1:angerOf ns1:person_3 .
+
+ns1:Person rdfs:label "me",
+        "you" .
+

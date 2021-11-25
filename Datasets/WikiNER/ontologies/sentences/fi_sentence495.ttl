@@ -1,0 +1,117 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence495.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:fi_sentence495.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence495" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence495" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "The Academy_Awards, which have not been protected by this principle, have been sold in public auctions and private offers with six-digit sums."^^xsd:string .
+
+ns1:protect_1 a ns1:Protect ;
+    rdfs:label "protected" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:principle_1 ;
+    vn.role:Theme ns1:Academy_awards .
+
+ns1:sell_1 a ns1:Sell ;
+    rdfs:label "sold" ;
+    vn.role:Theme ns1:Academy_awards ;
+    ns1:in ns1:auction_1,
+        ns1:offer_1 .
+
+ns1:Auction rdfs:label "auctions" .
+
+ns1:Offer rdfs:label "offers" .
+
+ns1:Principle rdfs:label "principle" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Private rdfs:label "private" .
+
+ns1:PrivateOffer rdfs:subClassOf ns1:Offer .
+
+ns1:Protect rdfs:label "protected" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Public rdfs:label "public" .
+
+ns1:PublicAuction rdfs:subClassOf ns1:Auction .
+
+ns1:Sell rdfs:label "sold" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Six-digit rdfs:label "six-digit" .
+
+ns1:Six-digitSum rdfs:subClassOf ns1:Sum .
+
+ns1:Sum rdfs:label "sums" .
+
+ns1:auction_1 a ns1:PublicAuction ;
+    rdfs:label "auctions" ;
+    dul:hasQuality ns1:Public ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:offer_1 a ns1:PrivateOffer ;
+    rdfs:label "offers" ;
+    dul:hasQuality ns1:Private ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:with ns1:sum_1 .
+
+ns1:principle_1 a ns1:Principle ;
+    rdfs:label "principle" ;
+    quant:hasDeterminer quant:this .
+
+ns1:sum_1 a ns1:Six-digitSum ;
+    rdfs:label "sums" ;
+    dul:hasQuality ns1:Six-digit ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Academy_awards rdfs:label "Academy Awards" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Academy_Awards .
+

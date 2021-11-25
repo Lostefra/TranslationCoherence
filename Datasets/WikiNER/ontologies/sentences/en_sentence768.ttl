@@ -1,0 +1,181 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence768.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence768.ttl a owl:Ontology ;
+    rdfs:label "en_sentence768" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence768" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "The uneasy realization that Galt is the end of his endeavors, the man of virtue, the perfect man   and that his means do not fit this end (and that he is destroying this, his ideal, for the sake of those who are evil). "^^xsd:string .
+
+ns1:end_1 rdfs:label "end" .
+
+ns1:male_1 rdfs:label "his" .
+
+ns1:realization_1 a ns1:UneasyRealization ;
+    rdfs:label "realization" ;
+    boxer:theme ns1:situation_1 ;
+    dul:hasQuality ns1:Topic,
+        ns1:Uneasy ;
+    quant:hasDeterminer quant:the .
+
+ns1:sake_1 a ns1:Sake ;
+    rdfs:label "sake" ;
+    quant:hasDeterminer quant:the .
+
+owl:Thing rdfs:label "this" .
+
+ns1:Destroy rdfs:label "destroying" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Endeavor rdfs:label "endeavors" .
+
+ns1:Evil rdfs:label "evil" ;
+    owl:sameAs dbpedia:Evil .
+
+ns1:Fit rdfs:label "fit" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Ideal a owl:Class ;
+    rdfs:label "ideal" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Idealism .
+
+ns1:Male rdfs:label "Galt" ;
+    rdfs:subClassOf ns1:End .
+
+ns1:Man rdfs:label "man" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Means rdfs:label "means" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Perfect rdfs:label "perfect" .
+
+ns1:Realization a owl:Class ;
+    rdfs:label "realization" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Sake rdfs:label "sake" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:UneasyRealization a owl:Class ;
+    rdfs:label "uneasy realization" ;
+    dul:hasQuality ns1:Uneasy ;
+    rdfs:subClassOf ns1:Realization .
+
+ns1:destroy_1 a ns1:Destroy ;
+    rdfs:label "destroying" ;
+    vn.role:Agent ns1:Galt ;
+    vn.role:Patient ns1:thing_1 .
+
+ns1:endeavor_1 a ns1:Endeavor ;
+    rdfs:label "endeavors" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:endeavorOf ns1:Galt .
+
+ns1:fit_1 a ns1:Fit ;
+    rdfs:label "fit" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:means_1 ;
+    vn.role:Patient ns1:Galt .
+
+ns1:ideal_1 a ns1:Ideal ;
+    rdfs:label "ideal" ;
+    quant:hasDeterminer quant:this ;
+    ns1:forSakeOf ns1:thing_1 ;
+    ns1:idealOf ns1:Galt .
+
+ns1:man_1 a ns1:Man ;
+    rdfs:label "man" ;
+    dul:hasQuality ns1:Perfect ;
+    quant:hasDeterminer quant:the ;
+    ns1:manOf ns1:virtue_1 .
+
+ns1:means_1 a ns1:Means ;
+    rdfs:label "means" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:meansOf ns1:Galt .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Virtue,
+        ns1:destroy_1,
+        ns1:fit_1,
+        ns1:virtue_1 .
+
+ns1:End rdfs:label "End",
+        "end" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Uneasy a owl:Class ;
+    rdfs:label "uneasy" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Virtue a owl:Class ;
+    rdfs:label "virtue" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Virtue .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "this" ;
+    dul:associatedWith ns1:ideal_1 ;
+    dul:hasQuality ns1:Evil .
+
+ns1:virtue_1 a ns1:Virtue ;
+    rdfs:label "virtue" .
+
+ns1:Galt a ns1:End,
+        ns1:Male ;
+    rdfs:label "Galt" ;
+    boxer:possibleType foaf:Person ;
+    quant:hasDeterminer quant:the ;
+    ns1:endOf ns1:endeavor_1,
+        ns1:man_1 .
+

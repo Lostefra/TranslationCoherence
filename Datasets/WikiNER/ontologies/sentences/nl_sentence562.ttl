@@ -1,0 +1,141 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence562.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence562.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence562" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence562" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "'s",
+        "her",
+        "of" ;
+    owl:sameAs dbpedia:Friedrich_Nietzsche .
+
+ns1:docuverse earmark:hasContent "Rand scholars have interpreted her notes for this book as evidence of her early admiration of Friedrich Nietzsche's ideas."^^xsd:string .
+
+ns1:interpret_1 a dbpedia:Semantics,
+        ns1:Interpret ;
+    rdfs:label "interpreted" ;
+    vn.role:Agent ns1:scholar_1 ;
+    vn.role:Theme ns1:note_1 ;
+    ns1:for ns1:book_1 .
+
+dbpedia:Ayn_Rand a schema:Person .
+
+ns1:Admiration a owl:Class ;
+    rdfs:label "admiration" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Book rdfs:label "book" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Early a owl:Class ;
+    rdfs:label "early" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:EarlyAdmiration a owl:Class ;
+    rdfs:label "early admiration" ;
+    dul:hasQuality ns1:Early ;
+    rdfs:subClassOf ns1:Admiration .
+
+ns1:Evidence a owl:Class ;
+    rdfs:label "evidence" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Evidence .
+
+ns1:Friedrich_nietzsche rdfs:label "Friedrich Nietzsche" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Friedrich_Nietzsche .
+
+ns1:Idea rdfs:label "ideas" .
+
+ns1:Interpret rdfs:label "interpreted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Note rdfs:label "notes" .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Ayn_Rand .
+
+ns1:Scholar rdfs:label "scholars" .
+
+ns1:admiration_1 a ns1:EarlyAdmiration ;
+    rdfs:label "admiration" ;
+    ns1:earlyAdmirationOf ns1:female_1,
+        ns1:idea_1 .
+
+ns1:book_1 a ns1:Book ;
+    rdfs:label "book" ;
+    quant:hasDeterminer quant:this ;
+    ns1:as ns1:evidence_1 .
+
+ns1:evidence_1 a ns1:Evidence ;
+    rdfs:label "evidence" ;
+    ns1:evidenceOf ns1:admiration_1 .
+
+ns1:idea_1 a dbpedia:Idea,
+        ns1:Idea ;
+    rdfs:label "ideas" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:ideaOf ns1:Friedrich_nietzsche .
+
+ns1:note_1 a ns1:Note ;
+    rdfs:label "notes" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:noteOf ns1:female_1 .
+
+ns1:scholar_1 a dbpedia:Scholasticism,
+        ns1:Scholar ;
+    rdfs:label "scholars" ;
+    dul:associatedWith ns1:Rand ;
+    quant:hasQuantifier quant:multiple .
+
+dbpedia:Friedrich_Nietzsche a schema:Person .
+
+ns1:female_1 a ns1:Female ;
+    rdfs:label "her" ;
+    coref:coref ns1:female_1 .
+

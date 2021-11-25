@@ -1,0 +1,204 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence108.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Source rdfs:label "in" .
+
+translation_coherence:zh_sentence108.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence108" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence108" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "my",
+        "of" .
+
+ns1:To rdfs:label "to" .
+
+ns1:deletion_1 a ns1:Deletion ;
+    rdfs:label "deletion" .
+
+ns1:docuverse earmark:hasContent "I am not aware of the correctness of this information, but I would like to express my gratitude to the PPE-DE team for deletion of the item in any case, as a result of the numerous parliamentary processing of this issue."^^xsd:string .
+
+ns1:like_1 a ns1:Like ;
+    rdfs:label "like" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Experiencer ns1:person_3 ;
+    vn.role:Theme ns1:express_1 ;
+    ns1:as ns1:result_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves ns1:Aware,
+        ns1:person_2 ;
+    ns1:situationOf ns1:correctness_1 .
+
+ns1:Case rdfs:label "case" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Correctness rdfs:label "correctness" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Deletion rdfs:label "deletion" ;
+    rdfs:subClassOf dul:Process .
+
+ns1:Express rdfs:label "express" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Gratitude rdfs:label "gratitude" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Information a owl:Class ;
+    rdfs:label "information" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> ;
+    owl:equivalentClass dbpedia:Information .
+
+ns1:Issue rdfs:label "issue" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Item rdfs:label "item" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Like rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Numerous rdfs:label "numerous" .
+
+ns1:NumerousParliamentaryProcessing a owl:Class ;
+    rdfs:label "Numerous Parliamentary Processing" ;
+    rdfs:subClassOf ns1:ParliamentaryProcessing .
+
+ns1:Parliamentary a owl:Class ;
+    rdfs:label "parliamentary" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ParliamentaryProcessing a owl:Class ;
+    rdfs:label "Parliamentary Processing" ;
+    dul:hasQuality ns1:Parliamentary ;
+    rdfs:subClassOf ns1:Processing .
+
+ns1:Ppe-deTeam a owl:Class ;
+    rdfs:label "PPE-DE team" ;
+    dul:hasQuality ns1:Ppe-de ;
+    rdfs:subClassOf ns1:Team .
+
+ns1:Processing a owl:Class ;
+    rdfs:label "processing" ;
+    rdfs:subClassOf dul:Process ;
+    owl:equivalentClass dbpedia:Mind .
+
+ns1:Result rdfs:label "result" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Team a owl:Class ;
+    rdfs:label "team" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:case_1 a ns1:Case ;
+    rdfs:label "case" ;
+    quant:hasQuantifier quant:any .
+
+ns1:correctness_1 a ns1:Correctness ;
+    rdfs:label "correctness" ;
+    quant:hasDeterminer quant:the ;
+    ns1:correctnessOf ns1:information_1 .
+
+ns1:express_1 a ns1:Express ;
+    rdfs:label "express" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_3 ;
+    vn.role:Source ns1:case_1 ;
+    vn.role:Theme ns1:gratitude_1 .
+
+ns1:gratitude_1 a ns1:Gratitude ;
+    rdfs:label "gratitude" ;
+    ns1:gratitudeOf ns1:person_1 ;
+    ns1:to ns1:team_1 .
+
+ns1:information_1 a ns1:Information ;
+    rdfs:label "information" ;
+    quant:hasDeterminer quant:this .
+
+ns1:issue_1 a ns1:Issue ;
+    rdfs:label "issue" ;
+    quant:hasDeterminer quant:this .
+
+ns1:item_1 a ns1:Item ;
+    rdfs:label "item" ;
+    quant:hasDeterminer quant:the .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "my" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "I" ;
+    dul:hasQuality ns1:Aware .
+
+ns1:processing_1 a ns1:NumerousParliamentaryProcessing ;
+    rdfs:label "processing" ;
+    dul:hasQuality ns1:Numerous ;
+    quant:hasDeterminer quant:the ;
+    ns1:numerousParliamentaryProcessingOf ns1:issue_1 .
+
+ns1:result_1 a ns1:Result ;
+    rdfs:label "result" ;
+    quant:hasDeterminer quant:a ;
+    ns1:resultOf ns1:processing_1 .
+
+ns1:team_1 a ns1:Ppe-deTeam ;
+    rdfs:label "team" ;
+    dul:hasQuality ns1:Ppe-de ;
+    quant:hasDeterminer quant:the ;
+    ns1:forDeletionOf ns1:item_1 .
+
+ns1:Aware rdfs:label "aware" .
+
+ns1:Ppe-de a owl:Class ;
+    rdfs:label "PPE-DE" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:Person rdfs:label "I" .
+

@@ -1,0 +1,156 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence687.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence687.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence687" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence687" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Quantity rdfs:label "many" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Second a ns1:Topic ;
+    rdfs:label "Second" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith ns1:partnership_1 .
+
+ns1:docuverse earmark:hasContent "Second, the partnership, the topic that many of you emphasize, the role of local and regional authorities, the private sector, industry, associations and local communities."^^xsd:string .
+
+ns1:emphasize_1 a ns1:Emphasize ;
+    rdfs:label "emphasize" ;
+    vn.role:Theme ns1:topic_2 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "you" .
+
+ns1:Association rdfs:label "associations" .
+
+ns1:Authority rdfs:label "authorities" .
+
+ns1:Community rdfs:label "communities" .
+
+ns1:Emphasize rdfs:label "emphasize" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Industry rdfs:label "industry" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:LocalCommunity rdfs:subClassOf ns1:Community .
+
+ns1:Partnership a owl:Class ;
+    rdfs:label "partnership" ;
+    rdfs:subClassOf dul:Organization ;
+    owl:equivalentClass dbpedia:Partnership .
+
+ns1:Person rdfs:label "you" .
+
+ns1:Private a owl:Class ;
+    rdfs:label "private" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:PrivateSector a owl:Class ;
+    rdfs:label "private sector" ;
+    dul:hasQuality ns1:Private ;
+    rdfs:subClassOf ns1:Sector ;
+    owl:equivalentClass dbpedia:Private_sector .
+
+ns1:Regional rdfs:label "regional" .
+
+ns1:RegionalAuthority rdfs:subClassOf ns1:Authority .
+
+ns1:Role rdfs:label "role" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Sector a owl:Class ;
+    rdfs:label "sector" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:association_1 a ns1:Association ;
+    rdfs:label "associations" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:authority_1 a ns1:RegionalAuthority ;
+    rdfs:label "authorities" ;
+    dul:hasQuality ns1:Local,
+        ns1:Regional ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:community_1 a dbpedia:Community,
+        ns1:LocalCommunity ;
+    rdfs:label "communities" ;
+    dul:hasQuality ns1:Local ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:industry_1 a ns1:Industry ;
+    rdfs:label "industry" ;
+    dul:associatedWith ns1:association_1,
+        ns1:community_1 .
+
+ns1:partnership_1 a ns1:Partnership ;
+    rdfs:label "partnership" ;
+    dul:associatedWith ns1:topic_2 ;
+    quant:hasDeterminer quant:the .
+
+ns1:role_1 a ns1:Role ;
+    rdfs:label "role" ;
+    dul:associatedWith ns1:sector_1 ;
+    quant:hasDeterminer quant:the ;
+    ns1:roleOf ns1:authority_1 .
+
+ns1:sector_1 a ns1:PrivateSector ;
+    rdfs:label "sector" ;
+    dul:associatedWith ns1:industry_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:Local rdfs:label "Local",
+        "local" .
+
+ns1:Topic rdfs:label "Second",
+        "topic" .
+
+ns1:topic_2 a ns1:Topic ;
+    rdfs:label "topic" ;
+    dul:associatedWith ns1:role_1 ;
+    quant:hasDeterminer quant:the .
+

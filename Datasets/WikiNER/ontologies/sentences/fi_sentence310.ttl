@@ -1,0 +1,145 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence310.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence310.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence310" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence310" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "As" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Who rdfs:label "who" .
+
+ns1:docuverse earmark:hasContent "As a river boatman, Lincoln had originally preferred the interests of the river boats, but eventually represented who hired him."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "had" ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Patient ns1:interest_1 ;
+    ns1:as ns1:boatman_1 .
+
+ns1:prefer_1 a ns1:OriginallyPrefer ;
+    rdfs:label "preferred" ;
+    dul:hasQuality ns1:Originally ;
+    vn.role:Theme ns1:Lincoln .
+
+ns1:represent_1 a ns1:EventuallyRepresent ;
+    rdfs:label "represented" ;
+    dul:hasQuality ns1:Eventually ;
+    vn.role:Theme ns1:interest_1 ;
+    ns1:who ns1:hire_1 .
+
+ns1:river_1 a ns1:River ;
+    rdfs:label "river" ;
+    dul:associatedWith ns1:boatman_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:river_2 a ns1:River ;
+    rdfs:label "him"^^xsd:string,
+        "river" ;
+    dul:associatedWith ns1:boat_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:Boat rdfs:label "boats" .
+
+ns1:Boatman a owl:Class ;
+    rdfs:label "boatman" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Eventually rdfs:label "eventually" .
+
+ns1:EventuallyRepresent rdfs:subClassOf ns1:Represent .
+
+ns1:Have rdfs:label "had" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Hire rdfs:label "hired" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Interest rdfs:label "interests" .
+
+ns1:Originally rdfs:label "originally" .
+
+ns1:OriginallyPrefer rdfs:subClassOf ns1:Prefer .
+
+ns1:Prefer rdfs:label "preferred" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Represent rdfs:label "represented" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:RiverBoat rdfs:subClassOf ns1:Boat .
+
+ns1:RiverBoatman a owl:Class ;
+    rdfs:label "river boatman" ;
+    dul:associatedWith ns1:River ;
+    rdfs:subClassOf ns1:Boatman .
+
+ns1:hire_1 a ns1:Hire ;
+    rdfs:label "hired" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Theme ns1:Lincoln .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:boat_1 a ns1:RiverBoat ;
+    rdfs:label "boats" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:boatman_1 a ns1:RiverBoatman ;
+    rdfs:label "boatman" .
+
+ns1:interest_1 a ns1:Interest ;
+    rdfs:label "interests" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:interestOf ns1:boat_1 .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Male .
+
+ns1:River a owl:Class ;
+    rdfs:label "river" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+

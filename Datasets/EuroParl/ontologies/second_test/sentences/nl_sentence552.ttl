@@ -1,0 +1,212 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence552.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Theme rdfs:label "with" .
+
+translation_coherence:nl_sentence552.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence552" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence552" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Article rdfs:label "Article" ;
+    boxer:possibleType owl:Thing ;
+    dul:hasDataValue "10"^^xsd:nonNegativeInteger ;
+    ns1:qtyOf ns1:regulation_1 .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Structural rdfs:label "Structural" .
+
+ns1:To rdfs:label "to" .
+
+ns1:With rdfs:label "with" .
+
+ns1:be_1 a ns1:Be ;
+    rdfs:label "is" ;
+    boxer:agent ns1:guideline_1 ;
+    boxer:theme ns1:provide_1 .
+
+ns1:determine_1 a ns1:Determine ;
+    rdfs:label "determines" ;
+    vn.role:Agent ns1:regulation_1 ;
+    vn.role:Theme ns1:purpose_1 .
+
+ns1:direct_1 a ns1:Direct ;
+    rdfs:label "directed" ;
+    vn.role:Agent ns1:regulation_1 .
+
+ns1:docuverse earmark:hasContent "The committee held to the true text of Article 10 of the Structural Funds regulation, which determines the purpose of these guidelines is to provide Member States with Communists, with widowed indication and directed. I quote the text myself, in quotes."^^xsd:string .
+
+ns1:fund_1 a ns1:Fund ;
+    rdfs:label "Funds" ;
+    dul:associatedWith ns1:regulation_1 ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:hold_1 a ns1:Hold ;
+    rdfs:label "held" ;
+    vn.role:Agent ns1:committee_1 ;
+    ns1:to ns1:text_1 .
+
+ns1:person_1 coref:coref ns1:person_2 .
+
+ns1:quote_1 a ns1:Quote ;
+    rdfs:label "quote" ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Topic ns1:text_1 ;
+    ns1:in ns1:quote_2 .
+
+boxing:True rdfs:label "true" .
+
+ns1:Be rdfs:label "is" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Committee rdfs:label "committee" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Communists rdfs:label "Communists" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Determine rdfs:label "determines" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Direct rdfs:label "directed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Fund rdfs:label "Funds" .
+
+ns1:FundRegulation rdfs:subClassOf ns1:Regulation .
+
+ns1:Guideline rdfs:label "guidelines" .
+
+ns1:Hold rdfs:label "held" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Indication a owl:Class ;
+    rdfs:label "indication" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Member_states rdfs:label "Member States" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Provide rdfs:label "provide" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Purpose rdfs:label "purpose" ;
+    rdfs:subClassOf dul:Goal .
+
+ns1:Regulation rdfs:label "regulation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:StructuralFundRegulation rdfs:subClassOf ns1:FundRegulation .
+
+ns1:Text a owl:Class ;
+    rdfs:label "text" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:True a owl:Class .
+
+ns1:TrueText rdfs:label "true text" ;
+    dul:associatedWith ns1:Text ;
+    dul:hasModality ns1:True .
+
+ns1:Widowed a owl:Class ;
+    rdfs:label "widowed" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:WidowedIndication a owl:Class ;
+    rdfs:label "widowed indication" ;
+    dul:hasQuality ns1:Widowed ;
+    rdfs:subClassOf ns1:Indication .
+
+ns1:committee_1 a ns1:Committee ;
+    rdfs:label "committee" ;
+    quant:hasDeterminer quant:the .
+
+ns1:indication_1 a ns1:WidowedIndication ;
+    rdfs:label "indication" .
+
+ns1:provide_1 a ns1:Provide ;
+    rdfs:label "provide" ;
+    vn.role:Agent ns1:guideline_1 ;
+    vn.role:Recipient ns1:Member_states ;
+    vn.role:Theme ns1:indication_1 ;
+    ns1:with ns1:Communists .
+
+ns1:purpose_1 a ns1:Purpose ;
+    rdfs:label "purpose" ;
+    quant:hasDeterminer quant:the ;
+    ns1:purposeOf ns1:guideline_1 .
+
+ns1:quote_2 a ns1:Quote ;
+    rdfs:label "quotes" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Person rdfs:label "I",
+        "myself" .
+
+ns1:Quote rdfs:label "quote",
+        "quotes" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "I",
+        "myself" .
+
+ns1:text_1 a ns1:Person,
+        ns1:TrueText ;
+    rdfs:label "text" ;
+    dul:hasQuality boxing:True ;
+    quant:hasDeterminer quant:the ;
+    ns1:trueTextOf "10"^^xsd:nonNegativeInteger .
+
+ns1:guideline_1 a ns1:Guideline ;
+    rdfs:label "guidelines" ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:regulation_1 a ns1:StructuralFundRegulation ;
+    rdfs:label "regulation" .
+

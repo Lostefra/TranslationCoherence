@@ -1,0 +1,210 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence778.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "on" .
+
+translation_coherence:ko_sentence778.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence778" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence778" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:From rdfs:label "from" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Quantity rdfs:label "many" .
+
+ns1:To rdfs:label "to" .
+
+ns1:culture_1 a dbpedia:Culture ;
+    rdfs:label "cultures" ;
+    quant:hasQuantifier quant:many,
+        quant:multiple .
+
+ns1:docuverse earmark:hasContent "There are many unique cultures and encounters in all, and it is often very different from the organization and language of European people. We are leading to continuous emphasis on cross-cultural comparison and cultural religion."^^xsd:string .
+
+ns1:encounter_1 rdfs:label "encounters" .
+
+ns1:language_1 rdfs:label "language" .
+
+ns1:lead_1 a ns1:Lead ;
+    rdfs:label "leading" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Destination ns1:comparison_1 ;
+    ns1:to ns1:emphasis_1 .
+
+ns1:religion_1 rdfs:label "religion" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:there_1 ;
+    ns1:in ns1:thing_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:people_1,
+        ns1:situation_3 ;
+    dul:hasQuality ns1:Often .
+
+ns1:Comparison a owl:Class ;
+    rdfs:label "comparison" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Continuous a owl:Class ;
+    rdfs:label "continuous" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ContinuousEmphasis a owl:Class ;
+    rdfs:label "Continuous Emphasis" ;
+    dul:hasQuality ns1:Continuous ;
+    rdfs:subClassOf ns1:Emphasis .
+
+ns1:Cross-cultural a owl:Class ;
+    rdfs:label "cross-cultural" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Cross-culturalComparison a owl:Class ;
+    rdfs:label "cross-cultural comparison" ;
+    dul:hasQuality ns1:Cross-cultural ;
+    rdfs:subClassOf ns1:Comparison ;
+    owl:equivalentClass dbpedia:Cross-cultural_studies .
+
+ns1:Cultural rdfs:label "cultural" .
+
+ns1:CulturalReligion rdfs:label "cultural religion" ;
+    rdfs:subClassOf ns1:Religion .
+
+ns1:Culture rdfs:label "cultures" .
+
+ns1:Emphasis a owl:Class ;
+    rdfs:label "emphasis" ;
+    rdfs:subClassOf dul:Role .
+
+ns1:Encounter rdfs:label "encounters" .
+
+ns1:EuropeanPeople a owl:Class ;
+    rdfs:label "European People" ;
+    dul:hasQuality ns1:European ;
+    rdfs:subClassOf ns1:People .
+
+ns1:Language rdfs:label "language" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Lead rdfs:label "leading" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Often rdfs:label "often" .
+
+ns1:Organization rdfs:label "organization" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:People a owl:Class ;
+    rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Person rdfs:label "We" .
+
+ns1:Religion a owl:Class ;
+    rdfs:label "religion" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Religion .
+
+ns1:There rdfs:label "There" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Unique rdfs:label "unique" .
+
+ns1:UniqueCulture rdfs:subClassOf ns1:Culture .
+
+ns1:Very rdfs:label "very" .
+
+ns1:comparison_1 a ns1:Cross-culturalComparison,
+        ns1:CulturalReligion ;
+    rdfs:label "comparison" ;
+    dul:hasQuality ns1:Cultural .
+
+ns1:emphasis_1 a ns1:ContinuousEmphasis ;
+    rdfs:label "emphasis" .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "it" ;
+    dul:hasQuality ns1:Different .
+
+ns1:organization_1 a ns1:Language,
+        ns1:Organization ;
+    rdfs:label "organization" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:all ;
+    ns1:organizationOf ns1:people_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "We" .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves ns1:Different,
+        ns1:neuter_1 ;
+    dul:hasQuality ns1:Very ;
+    ns1:from ns1:organization_1 .
+
+ns1:there_1 a ns1:Encounter,
+        ns1:There,
+        ns1:UniqueCulture ;
+    rdfs:label "There" ;
+    dul:hasQuality ns1:Unique ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "all" .
+
+owl:Thing rdfs:label "all",
+        "it" .
+
+ns1:Different rdfs:label "different" .
+
+ns1:European a owl:Class ;
+    rdfs:label "European" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:people_1 a ns1:EuropeanPeople ;
+    rdfs:label "people" ;
+    dul:hasQuality ns1:European ;
+    quant:hasQuantifier quant:multiple .
+

@@ -1,0 +1,144 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence585.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence585.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence585" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence585" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:About rdfs:label "about" .
+
+ns1:As rdfs:label "as" .
+
+ns1:From rdfs:label "from" .
+
+ns1:Noteq rdfs:label "other" .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "Rand 's Screenplay was used as a minimum change, but it was unclear about editing, behavior and other elements from scratch."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Unclear,
+        ns1:neuter_1 ;
+    ns1:about ns1:edit_1 .
+
+ns1:use_1 a ns1:Use ;
+    rdfs:label "used" ;
+    vn.role:Theme ns1:screenplay_1 ;
+    ns1:as ns1:change_1 .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Behavior rdfs:label "behavior" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Edit rdfs:label "editing" .
+
+ns1:Minimum a owl:Class ;
+    rdfs:label "minimum" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:MinimumChange a owl:Class ;
+    rdfs:label "Minimum Change" ;
+    dul:hasQuality ns1:Minimum ;
+    rdfs:subClassOf ns1:Change .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Scratch rdfs:label "scratch" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Screenplay a owl:Class ;
+    rdfs:label "Screenplay" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Screenplay .
+
+ns1:Use rdfs:label "used" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:behavior_1 a ns1:Behavior ;
+    rdfs:label "behavior" .
+
+ns1:edit_1 a ns1:Edit ;
+    rdfs:label "editing" ;
+    dul:associatedWith ns1:behavior_1,
+        ns1:element_1 .
+
+ns1:element_1 a ns1:Element ;
+    rdfs:label "other" ;
+    owl:differentFrom ns1:element_2 ;
+    ns1:from ns1:scratch_1 .
+
+ns1:element_2 a ns1:Element ;
+    rdfs:label "elements" ;
+    quant:hasDeterminer quant:other ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "it" ;
+    dul:hasQuality ns1:Unclear .
+
+ns1:scratch_1 a ns1:Scratch ;
+    rdfs:label "scratch" .
+
+ns1:screenplay_1 a ns1:Screenplay ;
+    rdfs:label "Screenplay" ;
+    owl:sameAs ns1:change_1 ;
+    ns1:screenplayOf ns1:Rand .
+
+ns1:Change a owl:Class ;
+    rdfs:label "change" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Element rdfs:label "elements",
+        "other" .
+
+ns1:Unclear rdfs:label "unclear" .
+
+ns1:change_1 a ns1:Change,
+        ns1:MinimumChange ;
+    rdfs:label "change" ;
+    quant:hasDeterminer quant:a .
+

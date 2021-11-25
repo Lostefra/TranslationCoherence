@@ -1,0 +1,125 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence444.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence444.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence444" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence444" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:For rdfs:label "For" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "For example, the most competent scenario is the entrenchment of local obstacles in each country today."^^xsd:string .
+
+ns1:entrenchment_1 a ns1:Entrenchment,
+        ns1:MostCompetentScenario ;
+    rdfs:label "entrenchment" ;
+    dul:hasQuality ns1:Most ;
+    quant:hasDeterminer quant:the ;
+    ns1:entrenchmentOf ns1:obstacle_1 .
+
+ns1:scenario_1 rdfs:label "scenario" ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:country_1,
+        ns1:obstacle_1 ;
+    dul:associatedWith ns1:today_1 ;
+    ns1:for ns1:example_1 .
+
+ns1:Competent a owl:Class ;
+    rdfs:label "competent" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:CompetentScenario a owl:Class ;
+    dul:hasQuality ns1:Competent ;
+    rdfs:subClassOf ns1:Scenario .
+
+ns1:Country rdfs:label "country" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Example rdfs:label "example" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Local rdfs:label "local" .
+
+ns1:LocalObstacle rdfs:subClassOf ns1:Obstacle .
+
+ns1:Most rdfs:label "most" .
+
+ns1:MostCompetentScenario a owl:Class ;
+    rdfs:label "Most Competent Scenario" ;
+    rdfs:subClassOf ns1:CompetentScenario,
+        ns1:Entrenchment .
+
+ns1:Obstacle rdfs:label "obstacles" .
+
+ns1:Scenario a owl:Class ;
+    rdfs:label "scenario" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Today rdfs:label "today" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:example_1 a ns1:Example ;
+    rdfs:label "example" .
+
+ns1:today_1 a ns1:Today ;
+    rdfs:label "today" .
+
+ns1:Entrenchment rdfs:label "entrenchment" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:country_1 a ns1:Country ;
+    rdfs:label "country" ;
+    quant:hasQuantifier quant:each .
+
+ns1:obstacle_1 a ns1:LocalObstacle ;
+    rdfs:label "obstacles" ;
+    dul:hasQuality ns1:Local ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:country_1 .
+

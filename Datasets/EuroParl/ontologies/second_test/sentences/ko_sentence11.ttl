@@ -1,0 +1,220 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence11.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence11.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence11" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence11" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Noteq rdfs:label "other" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:That rdfs:label "that" .
+
+ns1:docuverse earmark:hasContent "It would be suitable for you, President Mardam, President_of_Sri_Lanka to write letters on the other violence death of Sri Lanka and to do everything that she can pursue peaceful reconstruction in a very difficult situation?"^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:thing_1 ;
+    ns1:entails ns1:situation_2 .
+
+ns1:situation_4 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:do_1,
+        ns1:letter_1,
+        ns1:situation_3,
+        ns1:thing_1,
+        ns1:write_1 ;
+    dul:hasQuality ns1:Suitable .
+
+ns1:violence_1 a ns1:Violence ;
+    rdfs:label "violence" ;
+    dul:associatedWith ns1:death_2 ;
+    quant:hasDeterminer quant:other,
+        quant:the .
+
+dbpedia:Sri_Lanka a schema:Country,
+        schema:Place .
+
+owl:Thing rdfs:label "everything" .
+
+ns1:DifficultSituation a owl:Class ;
+    rdfs:label "difficult situation" ;
+    dul:hasQuality ns1:Difficult ;
+    rdfs:subClassOf ns1:Situation .
+
+ns1:Do rdfs:label "do" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Female rdfs:label "she" .
+
+ns1:Letter rdfs:label "letters" .
+
+ns1:Peaceful a owl:Class ;
+    rdfs:label "peaceful" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:PeacefulReconstruction a owl:Class ;
+    rdfs:label "Peaceful Reconstruction" ;
+    dul:hasQuality ns1:Peaceful ;
+    rdfs:subClassOf ns1:Reconstruction .
+
+ns1:Person rdfs:label "you" .
+
+ns1:President_of_sri_lanka rdfs:label "President of Sri Lanka" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:President_of_Sri_Lanka .
+
+ns1:Pursue rdfs:label "pursue" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Reconstruction a owl:Class ;
+    rdfs:label "reconstruction" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Sri_lanka rdfs:label "Sri Lanka" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Sri_Lanka .
+
+ns1:Suitable rdfs:label "suitable" .
+
+ns1:Very rdfs:label "very" .
+
+ns1:VeryDifficultSituation a owl:Class ;
+    rdfs:label "Very Difficult Situation" ;
+    rdfs:subClassOf ns1:DifficultSituation .
+
+ns1:ViolenceDeath a owl:Class ;
+    rdfs:label "violence death" ;
+    dul:associatedWith ns1:Violence ;
+    rdfs:subClassOf ns1:Death .
+
+ns1:Write rdfs:label "write" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:death_1 a ns1:Death ;
+    rdfs:label "other" ;
+    owl:differentFrom ns1:death_2 ;
+    ns1:deathOf ns1:Sri_lanka .
+
+ns1:do_1 a ns1:Do ;
+    rdfs:label "do" ;
+    boxer:patient ns1:thing_1 .
+
+ns1:letter_1 a ns1:Letter ;
+    rdfs:label "letters" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:on ns1:death_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "you" ;
+    dul:associatedWith ns1:Mardam .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:pursue_1,
+        ns1:thing_1 .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves ns1:pursue_1,
+        ns1:reconstruction_1,
+        ns1:situation_5 .
+
+ns1:write_1 a ns1:Write ;
+    rdfs:label "write" ;
+    vn.role:Agent ns1:person_1 .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#President> rdfs:label "President" ;
+    boxer:possibleType dul:Role ;
+    owl:sameAs dbpedia:President .
+
+ns1:Death a owl:Class ;
+    rdfs:label "death",
+        "other" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Difficult a owl:Class ;
+    rdfs:label "difficult" ;
+    dul:hasQuality ns1:Very ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Mardam rdfs:label "Mardam" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#President>,
+        ns1:President_of_sri_lanka ;
+    dul:hasQuality ns1:Female ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#President> .
+
+ns1:Violence a owl:Class ;
+    rdfs:label "violence" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:death_2 a ns1:ViolenceDeath ;
+    rdfs:label "death" .
+
+ns1:reconstruction_1 a ns1:PeacefulReconstruction ;
+    rdfs:label "reconstruction" ;
+    ns1:in ns1:situation_5 .
+
+ns1:situation_5 a ns1:VeryDifficultSituation ;
+    rdfs:label "situation" ;
+    dul:hasQuality ns1:Difficult ;
+    quant:hasDeterminer quant:a .
+
+ns1:pursue_1 a ns1:Pursue ;
+    rdfs:label "pursue" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Agent ns1:Mardam ;
+    vn.role:Theme ns1:reconstruction_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "everything" ;
+    ns1:that ns1:pursue_1 .
+
+ns1:Situation a owl:Class ;
+    rdfs:label "situation" ;
+    rdfs:subClassOf dul:Situation .
+

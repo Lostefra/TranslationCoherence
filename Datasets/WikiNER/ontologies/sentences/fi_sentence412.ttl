@@ -1,0 +1,110 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence412.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence412.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence412" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence412" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:At rdfs:label "at" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:die_1 a ns1:Die ;
+    rdfs:label "died" ;
+    dul:hasQuality ns1:Afterwards,
+        ns1:Shortly ;
+    vn.role:Theme <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s_1> .
+
+ns1:docuverse earmark:hasContent "Finally, hen at Va. Barn's house and shot and died shortly afterwards."^^xsd:string .
+
+ns1:finally_1 a ns1:Finally ;
+    rdfs:label "Finally" ;
+    dul:associatedWith ns1:hen_1 ;
+    dul:hasQuality ns1:Topic .
+
+ns1:shot_1 a ns1:Shot ;
+    rdfs:label "shot" ;
+    boxer:agent <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s_1> ;
+    dul:hasQuality ns1:Afterwards,
+        ns1:Shortly .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s> rdfs:label "'s" .
+
+ns1:Barn rdfs:label "Barn" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Topic ;
+    owl:sameAs dbpedia:Barn .
+
+ns1:Die rdfs:label "died" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Finally rdfs:label "Finally" .
+
+ns1:Hen rdfs:label "hen" ;
+    rdfs:subClassOf dul:Organism .
+
+ns1:House rdfs:label "house" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Shot rdfs:label "shot" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Va rdfs:label "Va" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:hen_1 a ns1:Hen ;
+    rdfs:label "hen" ;
+    ns1:at ns1:Va .
+
+ns1:house_1 a ns1:House ;
+    rdfs:label "house" .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s_1> a <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s> ;
+    rdfs:label "'s" ;
+    dul:associatedWith ns1:Barn,
+        ns1:house_1 ;
+    dul:hasQuality ns1:Topic .
+
+ns1:Afterwards rdfs:label "afterwards" .
+
+ns1:Shortly rdfs:label "shortly" .
+

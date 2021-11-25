@@ -1,0 +1,157 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence398.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence398.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence398" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence398" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:That rdfs:label "that" .
+
+ns1:When rdfs:label "when" .
+
+ns1:agree_1 a ns1:AllAgree ;
+    rdfs:label "agree" ;
+    dul:hasQuality ns1:All ;
+    vn.role:Actor ns1:person_1 ;
+    vn.role:Theme ns1:ask_1 .
+
+ns1:citizen_1 rdfs:label "citizens" .
+
+ns1:docuverse earmark:hasContent "We all agree that we should ask that the Parliament should play an equally influential role when assessing instructions, as we are citizens."^^xsd:string .
+
+ns1:person_3 coref:coref ns1:person_1 .
+
+ns1:Agree rdfs:label "agree" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:All rdfs:label "all" .
+
+ns1:AllAgree rdfs:label "All Agree" ;
+    rdfs:subClassOf ns1:Agree .
+
+ns1:Ask rdfs:label "ask" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Assess rdfs:label "assessing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Equally rdfs:label "equally" .
+
+ns1:EquallyInfluentialRole a owl:Class ;
+    rdfs:label "Equally Influential Role" ;
+    rdfs:subClassOf ns1:InfluentialRole .
+
+ns1:Influential a owl:Class ;
+    rdfs:label "influential" ;
+    dul:hasQuality ns1:Equally ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:InfluentialRole a owl:Class ;
+    rdfs:label "Influential Role" ;
+    dul:hasQuality ns1:Influential ;
+    rdfs:subClassOf ns1:Role .
+
+ns1:Instruction rdfs:label "instructions" .
+
+ns1:Play rdfs:label "play" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Role a owl:Class ;
+    rdfs:label "role" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:ask_1 a ns1:Ask ;
+    rdfs:label "ask" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_2 ;
+    ns1:that ns1:situation_1 .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:play_1 a ns1:Play ;
+    rdfs:label "play" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:Parliament ;
+    vn.role:Theme ns1:role_1 ;
+    ns1:as ns1:situation_1 ;
+    ns1:when ns1:assess_1 .
+
+ns1:Citizen rdfs:label "citizens" .
+
+ns1:Parliament rdfs:label "Parliament" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Parliament .
+
+ns1:Person rdfs:label "We",
+        "we" .
+
+ns1:assess_1 a ns1:Assess ;
+    rdfs:label "assessing" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:Parliament ;
+    vn.role:Theme ns1:instruction_1 .
+
+ns1:instruction_1 a ns1:Instruction ;
+    rdfs:label "instructions" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:person_1 a ns1:Citizen,
+        ns1:Person ;
+    rdfs:label "We",
+        "we" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:role_1 a ns1:EquallyInfluentialRole ;
+    rdfs:label "role" ;
+    quant:hasDeterminer quant:an .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:Citizen,
+        ns1:assess_1,
+        ns1:instruction_1,
+        ns1:play_1,
+        ns1:role_1 .
+

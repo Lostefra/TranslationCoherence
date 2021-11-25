@@ -1,0 +1,107 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence367.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "in" .
+
+translation_coherence:fi_sentence367.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence367" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence367" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "his" .
+
+ns1:docuverse earmark:hasContent "Grant used his bloody overland campaign in 1864."^^xsd:string .
+
+ns1:male_1 coref:coref ns1:Grant .
+
+ns1:overland_1 a ns1:Overland ;
+    rdfs:label "overland" ;
+    dul:associatedWith ns1:campaign_1 .
+
+ns1:use_1 a ns1:Use ;
+    rdfs:label "used" ;
+    vn.role:Agent ns1:Grant ;
+    vn.role:Location "1864-01-01"^^xsd:date ;
+    vn.role:Value ns1:campaign_1 .
+
+dbpedia:Ulysses_S._Grant a schema:Person .
+
+ns1:Bloody a owl:Class ;
+    rdfs:label "bloody" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:BloodyOverland a owl:Class ;
+    dul:hasQuality ns1:Bloody ;
+    rdfs:subClassOf ns1:Overland .
+
+ns1:BloodyOverlandCampaign a owl:Class ;
+    rdfs:label "bloody overland campaign" ;
+    dul:associatedWith ns1:BloodyOverland ;
+    rdfs:subClassOf ns1:OverlandCampaign .
+
+ns1:Campaign a owl:Class ;
+    rdfs:label "campaign" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Male rdfs:label "Grant" .
+
+ns1:OverlandCampaign a owl:Class ;
+    rdfs:label "overland campaign" ;
+    dul:associatedWith ns1:Overland ;
+    rdfs:subClassOf ns1:Campaign ;
+    owl:equivalentClass dbpedia:Overland_Campaign .
+
+ns1:Use rdfs:label "used" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:campaign_1 a ns1:BloodyOverlandCampaign ;
+    rdfs:label "campaign" ;
+    ns1:bloodyOverlandCampaignOf ns1:Grant .
+
+ns1:Grant a ns1:Male ;
+    rdfs:label "Grant",
+        "his" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Ulysses_S._Grant .
+
+ns1:Overland a owl:Class ;
+    rdfs:label "overland" .
+

@@ -1,0 +1,169 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence113.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Instrument rdfs:label "in" .
+
+translation_coherence:de_sentence113.ttl a owl:Ontology ;
+    rdfs:label "de_sentence113" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence113" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Especially rdfs:label "especially" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:To rdfs:label "to" .
+
+ns1:While rdfs:label "while" .
+
+ns1:appalachian_mountains_1 a ns1:Appalachian_mountains ;
+    rdfs:label "Appalachian mountains" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:north-east_1 .
+
+ns1:docuverse earmark:hasContent "Temperatures are heated in the southern part of the state close to the Gulf_of_Mexico, while the northern parts of the state, especially in the Appalachian_mountains in the north-east, will be more milder."^^xsd:string .
+
+ns1:heat_1 a ns1:Heat ;
+    rdfs:label "heated" ;
+    vn.role:Instrument ns1:part_1 ;
+    vn.role:Patient ns1:temperature_1 ;
+    ns1:while ns1:situation_1 .
+
+ns1:milder_1 rdfs:label "milder" .
+
+ns1:state_1 a ns1:State ;
+    rdfs:label "state" ;
+    dul:associatedWith ns1:close_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:AppalachianMountains rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Appalachian_mountains a owl:Class ;
+    rdfs:label "Appalachian mountains" ;
+    rdfs:subClassOf ns1:AppalachianMountains ;
+    owl:equivalentClass dbpedia:Appalachian_Mountains .
+
+ns1:Close a owl:Class ;
+    rdfs:label "close" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:Gulf_of_mexico rdfs:label "Gulf of Mexico" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Gulf_of_Mexico .
+
+ns1:Heat rdfs:label "heated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:North-east a owl:Class ;
+    rdfs:label "north-east" ;
+    owl:equivalentClass dbpedia:Northeastern_United_States .
+
+ns1:Northern rdfs:label "northern" ;
+    owl:sameAs dbpedia:Northern_United_States .
+
+ns1:Southern a owl:Class ;
+    rdfs:label "southern" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Southern_United_States .
+
+ns1:SouthernPart a owl:Class ;
+    rdfs:label "southern part" ;
+    dul:hasQuality ns1:Southern ;
+    rdfs:subClassOf ns1:Part .
+
+ns1:StateClose a owl:Class ;
+    rdfs:label "State Close" ;
+    dul:associatedWith ns1:State ;
+    rdfs:subClassOf ns1:Close .
+
+ns1:Temperature rdfs:label "Temperatures" .
+
+ns1:north-east_1 a ns1:North-east ;
+    rdfs:label "north-east" ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:Milder,
+        ns1:More,
+        ns1:MoreMilder,
+        ns1:part_1 .
+
+ns1:temperature_1 a ns1:Temperature ;
+    rdfs:label "Temperatures" ;
+    quant:hasQuantifier quant:multiple ;
+    owl:sameAs ns1:part_1 .
+
+ns1:Milder a owl:Class ;
+    rdfs:label "milder" .
+
+ns1:More a owl:Class ;
+    rdfs:label "more" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:MoreMilder a owl:Class ;
+    rdfs:label "more milder" ;
+    dul:hasQuality ns1:More ;
+    rdfs:subClassOf ns1:Milder .
+
+ns1:Part a owl:Class ;
+    rdfs:label "part" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:State a owl:Class ;
+    rdfs:label "state" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:close_1 a ns1:StateClose ;
+    rdfs:label "close" ;
+    ns1:to ns1:Gulf_of_mexico .
+
+ns1:part_1 a ns1:MoreMilder,
+        ns1:Part,
+        ns1:SouthernPart ;
+    rdfs:label "part" ;
+    dul:hasQuality ns1:Northern ;
+    quant:hasDeterminer quant:the ;
+    ns1:southernPartOf ns1:close_1 .
+

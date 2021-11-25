@@ -1,0 +1,102 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence327.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence327" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence327" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+<https://w3id.org/stlab/ke/amiala/fi_sentence327.ttl/candidate_1> rdfs:label "candidate" ;
+    quant:hasDeterminer quant:a .
+
+<https://w3id.org/stlab/ke/amiala/fi_sentence327.ttl/docuverse> earmark:hasContent "Lincoln said he was a Republican presidential candidate."^^xsd:string .
+
+<https://w3id.org/stlab/ke/amiala/fi_sentence327.ttl/say_1> a <https://w3id.org/stlab/ke/amiala/fi_sentence327.ttl/Say> ;
+    rdfs:label "said" ;
+    vn.role:Agent <https://w3id.org/stlab/ke/amiala/fi_sentence327.ttl/Lincoln> ;
+    vn.role:Topic <https://w3id.org/stlab/ke/amiala/fi_sentence327.ttl/situation_1> .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+dbpedia:Republican_Party_(United_States) a schema:Organization .
+
+<https://w3id.org/stlab/ke/amiala/fi_sentence327.ttl/Male> rdfs:label "he" .
+
+<https://w3id.org/stlab/ke/amiala/fi_sentence327.ttl/PresidentialCandidate> a owl:Class ;
+    rdfs:label "Presidential Candidate" ;
+    dul:hasQuality <https://w3id.org/stlab/ke/amiala/fi_sentence327.ttl/Presidential> ;
+    rdfs:subClassOf <https://w3id.org/stlab/ke/amiala/fi_sentence327.ttl/Candidate> ;
+    owl:equivalentClass dbpedia:President_of_the_United_States .
+
+<https://w3id.org/stlab/ke/amiala/fi_sentence327.ttl/Say> rdfs:label "said" ;
+    rdfs:subClassOf dul:Event .
+
+<https://w3id.org/stlab/ke/amiala/fi_sentence327.ttl/situation_1> a <https://w3id.org/stlab/ke/amiala/fi_sentence327.ttl/Situation> ;
+    boxing:involves <https://w3id.org/stlab/ke/amiala/fi_sentence327.ttl/Candidate>,
+        <https://w3id.org/stlab/ke/amiala/fi_sentence327.ttl/Lincoln>,
+        <https://w3id.org/stlab/ke/amiala/fi_sentence327.ttl/Presidential>,
+        <https://w3id.org/stlab/ke/amiala/fi_sentence327.ttl/Republican>,
+        <https://w3id.org/stlab/ke/amiala/fi_sentence327.ttl/RepublicanPresidentialCandidate> .
+
+<https://w3id.org/stlab/ke/amiala/fi_sentence327.ttl/Candidate> a owl:Class ;
+    rdfs:label "Lincoln",
+        "candidate" ;
+    rdfs:subClassOf dul:Person .
+
+<https://w3id.org/stlab/ke/amiala/fi_sentence327.ttl/Lincoln> a <https://w3id.org/stlab/ke/amiala/fi_sentence327.ttl/RepublicanPresidentialCandidate> ;
+    rdfs:label "Lincoln",
+        "candidate" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality <https://w3id.org/stlab/ke/amiala/fi_sentence327.ttl/Male>,
+        <https://w3id.org/stlab/ke/amiala/fi_sentence327.ttl/Presidential>,
+        <https://w3id.org/stlab/ke/amiala/fi_sentence327.ttl/Republican> ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+
+<https://w3id.org/stlab/ke/amiala/fi_sentence327.ttl/Republican> rdfs:label "Republican" ;
+    owl:sameAs dbpedia:Republican_Party_(United_States) .
+
+<https://w3id.org/stlab/ke/amiala/fi_sentence327.ttl/RepublicanPresidentialCandidate> a owl:Class ;
+    rdfs:label "Republican presidential candidate" ;
+    rdfs:subClassOf <https://w3id.org/stlab/ke/amiala/fi_sentence327.ttl/PresidentialCandidate> .
+
+<https://w3id.org/stlab/ke/amiala/fi_sentence327.ttl/Presidential> a owl:Class ;
+    rdfs:label "presidential" ;
+    rdfs:subClassOf dul:Quality .
+

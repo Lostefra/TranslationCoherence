@@ -1,0 +1,138 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%> .
+@prefix ns2: <https://w3id.org/stlab/ke/amiala/de_sentence453.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ns1:5E%5Ebest rdfs:label "best" .
+
+vn.role:Beneficiary rdfs:label "For" .
+
+translation_coherence:de_sentence453.ttl a owl:Ontology ;
+    rdfs:label "de_sentence453" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence453" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns2:As rdfs:label "as" .
+
+ns2:Include rdfs:label "including" .
+
+ns2:Of rdfs:label "of" .
+
+ns2:docuverse earmark:hasContent "For this purpose, Europe as a whole and each Member State must make the best use of all available resources and capacities, including the Structural_Funds."^^xsd:string .
+
+ns2:make_1 a ns2:Make ;
+    rdfs:label "make" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns2:Europe ;
+    vn.role:Beneficiary ns2:purpose_1 ;
+    vn.role:Product ns2:use_1 .
+
+dbpedia:Europe a schema:Continent,
+        schema:Place .
+
+ns1:5Ebest rdfs:label "best" .
+
+ns1:5EbestUse rdfs:subClassOf ns2:Use .
+
+ns2:Available rdfs:label "available" .
+
+ns2:AvailableResource rdfs:subClassOf ns2:Resource .
+
+ns2:Capacity rdfs:label "capacities" .
+
+ns2:Europe rdfs:label "Europe" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Europe ;
+    ns2:as ns2:Member_state,
+        ns2:whole_1 .
+
+ns2:Make rdfs:label "make" ;
+    rdfs:subClassOf dul:Event .
+
+ns2:Member_state rdfs:label "Member State" ;
+    boxer:possibleType foaf:Organisation .
+
+ns2:Purpose rdfs:label "purpose" ;
+    rdfs:subClassOf dul:Goal .
+
+ns2:Resource rdfs:label "resources" .
+
+ns2:Structural_funds a owl:Class ;
+    rdfs:label "Structural Funds" ;
+    owl:equivalentClass dbpedia:Structural_Funds_and_Cohesion_Fund .
+
+ns2:Whole rdfs:label "whole" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#System> .
+
+ns2:capacity_1 a ns2:Capacity ;
+    rdfs:label "capacities" ;
+    quant:hasQuantifier quant:multiple ;
+    ns2:include ns2:structural_funds_1 .
+
+ns2:purpose_1 a ns2:Purpose ;
+    rdfs:label "purpose" ;
+    quant:hasDeterminer quant:this .
+
+ns2:resource_1 a ns2:AvailableResource ;
+    rdfs:label "resources" ;
+    dul:hasQuality ns2:Available ;
+    quant:hasQuantifier quant:all,
+        quant:multiple .
+
+ns2:structural_funds_1 a ns2:Structural_funds ;
+    rdfs:label "Structural Funds" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns2:use_1 a ns1:5EbestUse,
+        ns2:Use ;
+    rdfs:label "use" ;
+    dul:hasQuality ns1:5Ebest ;
+    ns1:5EbestAmong ns2:Use ;
+    ns1:5EbestUseOf ns2:capacity_1,
+        ns2:resource_1 ;
+    quant:hasDeterminer quant:the .
+
+ns2:whole_1 a ns2:Whole ;
+    rdfs:label "whole" .
+
+ns2:Use rdfs:label "use" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+

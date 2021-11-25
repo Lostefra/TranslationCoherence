@@ -1,0 +1,148 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence197.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence197.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence197" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence197" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Inlotof rdfs:label "in a lot of" .
+
+ns1:Where rdfs:label "where" .
+
+ns1:docuverse earmark:hasContent "Basically, I think in a lot of cases where the transport is concerned that we should work for increased flexibility and land-specific rules."^^xsd:string .
+
+ns1:lot_1 a ns1:Lot ;
+    rdfs:label "lot" ;
+    quant:hasDeterminer quant:a .
+
+ns1:rule_1 a dbpedia:Law,
+        ns1:Land-specificRule ;
+    rdfs:label "rules" ;
+    dul:hasQuality ns1:Land-specific ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:think_1 a ns1:Think ;
+    rdfs:label "think" ;
+    dul:hasQuality ns1:Basically ;
+    vn.role:Agent ns1:person_1 ;
+    ns1:inLotOf ns1:case_1 .
+
+ns1:Basically rdfs:label "Basically" .
+
+ns1:Case rdfs:label "cases" .
+
+ns1:Concern rdfs:label "concerned" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Flexibility rdfs:label "flexibility" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Increase rdfs:label "increased" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Land-specific rdfs:label "land-specific" .
+
+ns1:Land-specificRule rdfs:subClassOf ns1:Rule .
+
+ns1:Lot rdfs:label "lot" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:Rule rdfs:label "rules" .
+
+ns1:Think rdfs:label "think" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Transport rdfs:label "transport" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Work a owl:Class ;
+    rdfs:label "work" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Employment .
+
+ns1:case_1 a dbpedia:Precedent,
+        ns1:Case ;
+    rdfs:label "cases" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:where ns1:concern_1 .
+
+ns1:concern_1 a ns1:Concern ;
+    rdfs:label "concerned" ;
+    boxer:theme ns1:situation_1 ;
+    vn.role:Cause ns1:transport_1 .
+
+ns1:increase_1 a ns1:Increase ;
+    rdfs:label "increased" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Patient ns1:flexibility_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:flexibility_1,
+        ns1:increase_1,
+        ns1:work_1 .
+
+ns1:transport_1 a ns1:Transport ;
+    rdfs:label "transport" ;
+    quant:hasDeterminer quant:the .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "work" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Actor ns1:person_2 ;
+    ns1:for ns1:flexibility_1 .
+
+ns1:Person rdfs:label "I",
+        "we" .
+
+ns1:flexibility_1 a ns1:Flexibility ;
+    rdfs:label "flexibility" .
+

@@ -1,0 +1,137 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence642.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence642.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence642" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence642" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Amount rdfs:label "amounts" .
+
+ns1:Between rdfs:label "between" .
+
+ns1:For rdfs:label "For" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Than rdfs:label "than" .
+
+ns1:docuverse earmark:hasContent "For example, the complaint between the area was increased than the reduction, but the sum of certain amounts between the member country was made."^^xsd:string .
+
+ns1:increase_1 a ns1:Increase ;
+    rdfs:label "increased" ;
+    vn.role:Patient ns1:complaint_1 ;
+    ns1:for ns1:example_1 ;
+    ns1:than ns1:reduction_1 .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "made" ;
+    vn.role:Theme ns1:sum_1 .
+
+ns1:member_1 a ns1:Member ;
+    rdfs:label "member" ;
+    dul:associatedWith ns1:country_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:Area rdfs:label "area" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Certain rdfs:label "certain" .
+
+ns1:Complaint rdfs:label "complaint" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Country a owl:Class ;
+    rdfs:label "country" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Example rdfs:label "example" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Increase rdfs:label "increased" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Make rdfs:label "made" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:MemberCountry a owl:Class ;
+    rdfs:label "Member Country" ;
+    dul:associatedWith ns1:Member ;
+    rdfs:subClassOf ns1:Country .
+
+ns1:Reduction rdfs:label "reduction" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Sum rdfs:label "sum" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:area_1 a ns1:Area ;
+    rdfs:label "area" ;
+    quant:hasDeterminer quant:the .
+
+ns1:certain_1 a ns1:Certain ;
+    rdfs:label "certain" ;
+    ns1:between ns1:country_1 .
+
+ns1:complaint_1 a ns1:Complaint ;
+    rdfs:label "complaint" ;
+    quant:hasDeterminer quant:the ;
+    ns1:between ns1:area_1 .
+
+ns1:example_1 a ns1:Example ;
+    rdfs:label "example" .
+
+ns1:reduction_1 a ns1:Reduction ;
+    rdfs:label "reduction" ;
+    quant:hasDeterminer quant:the .
+
+ns1:sum_1 a ns1:Sum ;
+    rdfs:label "sum" ;
+    quant:hasDeterminer quant:the ;
+    ns1:sumOf ns1:certain_1 .
+
+ns1:Member a owl:Class ;
+    rdfs:label "member" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:country_1 a ns1:MemberCountry ;
+    rdfs:label "country" .
+

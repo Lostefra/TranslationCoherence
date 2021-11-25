@@ -1,0 +1,175 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence404.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Patient2 rdfs:label "to" .
+
+translation_coherence:en_sentence404.ttl a owl:Ontology ;
+    rdfs:label "en_sentence404" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence404" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Between rdfs:label "between" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "Member States are urged to attach greater importance to integrated strategies for revitalising relations between towns and rural areas. This latter point is of particular importance."^^xsd:string .
+
+ns1:latter_1 a ns1:Latter ;
+    rdfs:label "latter" ;
+    dul:associatedWith ns1:point_1 ;
+    quant:hasDeterminer quant:this .
+
+ns1:urge_1 a ns1:Urge ;
+    rdfs:label "urged" ;
+    boxer:theme ns1:situation_1 ;
+    vn.role:Patient ns1:Member_states .
+
+ns1:Area rdfs:label "areas" .
+
+ns1:Attach rdfs:label "attach" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Greater a owl:Class ;
+    rdfs:label "greater" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:GreaterImportance a owl:Class ;
+    rdfs:label "Greater Importance" ;
+    dul:hasQuality ns1:Greater ;
+    rdfs:subClassOf ns1:Importance .
+
+ns1:Integrated rdfs:label "integrated" ;
+    owl:sameAs dbpedia:Integrated_Strategies .
+
+ns1:IntegratedStrategy rdfs:subClassOf ns1:Strategy .
+
+ns1:LatterPoint a owl:Class ;
+    rdfs:label "latter point" ;
+    dul:associatedWith ns1:Latter ;
+    rdfs:subClassOf ns1:Point .
+
+ns1:Particular rdfs:label "particular" .
+
+ns1:ParticularImportance rdfs:label "Particular Importance" ;
+    rdfs:subClassOf ns1:Importance .
+
+ns1:Point a owl:Class ;
+    rdfs:label "point" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Relation rdfs:label "relations" .
+
+ns1:Revitalise rdfs:label "revitalising" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Rural rdfs:label "rural" .
+
+ns1:RuralArea rdfs:subClassOf ns1:Area .
+
+ns1:Strategy rdfs:label "strategies" .
+
+ns1:Town rdfs:label "towns" .
+
+ns1:Urge rdfs:label "urged" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:attach_1 a ns1:Attach ;
+    rdfs:label "attach" ;
+    vn.role:Agent ns1:Member_states ;
+    vn.role:Patient1 ns1:importance_1 ;
+    vn.role:Patient2 ns1:strategy_1 .
+
+ns1:importance_2 a ns1:ParticularImportance ;
+    rdfs:label "importance" ;
+    dul:hasQuality ns1:Particular .
+
+ns1:point_1 a ns1:LatterPoint ;
+    rdfs:label "point" ;
+    ns1:latterPointOf ns1:importance_2 .
+
+ns1:revitalise_1 a ns1:Revitalise ;
+    rdfs:label "revitalising" ;
+    boxer:agent ns1:strategy_1 ;
+    boxer:patient ns1:relation_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:area_1,
+        ns1:attach_1,
+        ns1:importance_1,
+        ns1:relation_1,
+        ns1:revitalise_1,
+        ns1:strategy_1,
+        ns1:town_1 .
+
+ns1:Importance a owl:Class ;
+    rdfs:label "importance" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Latter a owl:Class ;
+    rdfs:label "latter" ;
+    rdfs:subClassOf dul:Role .
+
+ns1:Member_states rdfs:label "Member States" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:area_1 a ns1:RuralArea ;
+    rdfs:label "areas" ;
+    dul:hasQuality ns1:Rural ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:importance_1 a ns1:GreaterImportance ;
+    rdfs:label "importance" .
+
+ns1:relation_1 a ns1:Relation ;
+    rdfs:label "relations" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:between ns1:area_1,
+        ns1:town_1 .
+
+ns1:town_1 a ns1:Town ;
+    rdfs:label "towns" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:strategy_1 a ns1:IntegratedStrategy ;
+    rdfs:label "strategies" ;
+    dul:hasQuality ns1:Integrated ;
+    quant:hasQuantifier quant:multiple .
+

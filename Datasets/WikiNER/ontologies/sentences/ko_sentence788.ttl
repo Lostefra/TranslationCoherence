@@ -1,0 +1,146 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence788.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence788.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence788" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence788" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "He performed the initial scene work of the Andaman_Islands in the old style of historical reconstruction."^^xsd:string .
+
+ns1:perform_1 a ns1:Perform ;
+    rdfs:label "performed" ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Theme ns1:work_1 ;
+    ns1:in ns1:style_1 .
+
+ns1:scene_1 a ns1:Scene ;
+    rdfs:label "scene" ;
+    dul:associatedWith ns1:work_1 ;
+    quant:hasDeterminer quant:the .
+
+dbpedia:Andaman_Islands rdfs:subClassOf schema:Place .
+
+ns1:Andaman_islands a owl:Class ;
+    rdfs:label "Andaman Islands" ;
+    owl:equivalentClass dbpedia:Andaman_Islands .
+
+ns1:Historical a owl:Class ;
+    rdfs:label "historical" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:HistoricalReconstruction a owl:Class ;
+    rdfs:label "Historical Reconstruction" ;
+    dul:hasQuality ns1:Historical ;
+    rdfs:subClassOf ns1:Reconstruction .
+
+ns1:Initial a owl:Class ;
+    rdfs:label "initial" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:InitialScene a owl:Class ;
+    dul:hasQuality ns1:Initial ;
+    rdfs:subClassOf ns1:Scene .
+
+ns1:InitialSceneWork a owl:Class ;
+    rdfs:label "Initial Scene Work" ;
+    dul:associatedWith ns1:InitialScene ;
+    rdfs:subClassOf ns1:SceneWork .
+
+ns1:Male rdfs:label "He" .
+
+ns1:Old a owl:Class ;
+    rdfs:label "old" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:OldStyle a owl:Class ;
+    rdfs:label "old style" ;
+    dul:hasQuality ns1:Old ;
+    rdfs:subClassOf ns1:Style .
+
+ns1:Perform rdfs:label "performed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Reconstruction a owl:Class ;
+    rdfs:label "reconstruction" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:SceneWork a owl:Class ;
+    rdfs:label "scene work" ;
+    dul:associatedWith ns1:Scene ;
+    rdfs:subClassOf ns1:Work .
+
+ns1:Style a owl:Class ;
+    rdfs:label "style" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Work a owl:Class ;
+    rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:andaman_islands_1 a ns1:Andaman_islands ;
+    rdfs:label "Andaman Islands" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "He" .
+
+ns1:reconstruction_1 a ns1:HistoricalReconstruction ;
+    rdfs:label "reconstruction" .
+
+ns1:style_1 a ns1:OldStyle ;
+    rdfs:label "style" ;
+    quant:hasDeterminer quant:the ;
+    ns1:oldStyleOf ns1:reconstruction_1 .
+
+ns1:work_1 a ns1:InitialSceneWork ;
+    rdfs:label "work" ;
+    ns1:initialSceneWorkOf ns1:andaman_islands_1 .
+
+ns1:Scene a owl:Class ;
+    rdfs:label "scene" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+

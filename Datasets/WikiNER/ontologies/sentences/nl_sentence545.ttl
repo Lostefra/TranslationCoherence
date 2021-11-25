@@ -1,0 +1,97 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence545.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme rdfs:label "on" .
+
+translation_coherence:nl_sentence545.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence545" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence545" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "his" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "Ashlag focused on society and his relationship with divinity."^^xsd:string .
+
+ns1:focus_1 a ns1:Focus ;
+    rdfs:label "focused" ;
+    vn.role:Experiencer ns1:Ashlag ;
+    vn.role:Theme ns1:relationship_1,
+        ns1:society_1 .
+
+ns1:male_1 coref:coref ns1:Ashlag .
+
+ns1:Divinity a owl:Class ;
+    rdfs:label "divinity" ;
+    rdfs:subClassOf dul:Personification ;
+    owl:equivalentClass dbpedia:Divinity .
+
+ns1:Focus rdfs:label "focused" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Male rdfs:label "Ashlag" .
+
+ns1:Relationship rdfs:label "relationship" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Society a owl:Class ;
+    rdfs:label "society" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Society .
+
+ns1:divinity_1 a ns1:Divinity ;
+    rdfs:label "divinity" .
+
+ns1:relationship_1 a ns1:Relationship ;
+    rdfs:label "relationship" ;
+    ns1:relationshipOf ns1:Ashlag ;
+    ns1:with ns1:divinity_1 .
+
+ns1:society_1 a ns1:Society ;
+    rdfs:label "society" .
+
+ns1:Ashlag a ns1:Male ;
+    rdfs:label "Ashlag",
+        "his" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Yehuda_Ashlag .
+

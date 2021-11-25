@@ -1,0 +1,212 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence429.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "because" .
+
+translation_coherence:fi_sentence429.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence429" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence429" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:On rdfs:label "on" .
+
+ns1:Over rdfs:label "over" .
+
+ns1:With rdfs:label "with" .
+
+ns1:come_1 a ns1:Come ;
+    rdfs:label "come" ;
+    dul:hasQuality ns1:Namely,
+        ns1:Quite ;
+    vn.role:Location ns1:situation_1 ;
+    vn.role:Theme ns1:Parliament ;
+    ns1:on ns1:theseojen_1 .
+
+ns1:docuverse earmark:hasContent "I share the repentance he has made, namely, that Parliament has come quite late on theseojen, because now the negotiation process with the States is so far over that I do not see this report immediately, which I think is a shame."^^xsd:string .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "made" ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Theme ns1:repentance_1 .
+
+ns1:negotiation_1 a ns1:Negotiation ;
+    rdfs:label "negotiation" ;
+    dul:associatedWith ns1:process_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:shame_1 rdfs:label "shame" .
+
+ns1:share_1 a ns1:Share ;
+    rdfs:label "share" ;
+    boxer:agent ns1:person_1 ;
+    boxer:patient ns1:repentance_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:see_1,
+        ns1:think_1 ;
+    dul:hasQuality ns1:Far,
+        ns1:Now,
+        ns1:So .
+
+owl:Thing rdfs:label "that" .
+
+ns1:Come rdfs:label "come" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Make rdfs:label "made" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Namely rdfs:label "namely" .
+
+ns1:NegotiationProcess a owl:Class ;
+    rdfs:label "Negotiation Process" ;
+    dul:associatedWith ns1:Negotiation ;
+    rdfs:subClassOf ns1:Process .
+
+ns1:Parliament rdfs:label "Parliament" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Parliament .
+
+ns1:Process a owl:Class ;
+    rdfs:label "process" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Quite rdfs:label "quite" .
+
+ns1:Repentance a owl:Class ;
+    rdfs:label "repentance" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> ;
+    owl:equivalentClass dbpedia:Repentance .
+
+ns1:Report rdfs:label "report" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Share rdfs:label "share" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:States rdfs:label "States" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Theseojen rdfs:label "theseojen" .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "he" .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:process_1 a ns1:NegotiationProcess ;
+    rdfs:label "process" ;
+    ns1:over ns1:thing_1 ;
+    ns1:with ns1:States .
+
+ns1:report_1 a ns1:Report ;
+    rdfs:label "report" ;
+    quant:hasDeterminer quant:that,
+        quant:this .
+
+ns1:theseojen_1 a ns1:Theseojen ;
+    rdfs:label "theseojen" .
+
+ns1:Far rdfs:label "far" .
+
+ns1:Immediately rdfs:label "immediately" .
+
+ns1:Negotiation a owl:Class ;
+    rdfs:label "negotiation" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Now rdfs:label "now" .
+
+ns1:See rdfs:label "see" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Shame rdfs:label "shame" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:So rdfs:label "so" .
+
+ns1:Think rdfs:label "think" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:repentance_1 a ns1:Repentance ;
+    rdfs:label "repentance" ;
+    quant:hasDeterminer quant:the .
+
+ns1:see_1 a ns1:See ;
+    rdfs:label "see" ;
+    boxing:hasTruthValue boxing:False ;
+    dul:associatedWith ns1:thing_1 ;
+    dul:hasQuality ns1:Immediately ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Theme ns1:report_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Far,
+        ns1:Immediately,
+        ns1:Now,
+        ns1:See,
+        ns1:Shame,
+        ns1:So,
+        ns1:Think,
+        ns1:see_1,
+        ns1:think_1 .
+
+ns1:thing_1 a owl:Thing,
+        ns1:Shame ;
+    rdfs:label "that" ;
+    quant:hasDeterminer quant:a .
+
+ns1:think_1 a ns1:Think ;
+    rdfs:label "think" ;
+    vn.role:Agent ns1:person_3 ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:Person rdfs:label "I" .
+

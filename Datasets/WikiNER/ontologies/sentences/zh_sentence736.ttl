@@ -1,0 +1,106 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence736.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence736.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence736" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence736" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "its",
+        "of" .
+
+ns1:docuverse earmark:hasContent "Algeria has always taken note of its soil fertility."^^xsd:string .
+
+ns1:neuter_1 coref:coref ns1:Algeria .
+
+ns1:soil_1 a ns1:Soil ;
+    rdfs:label "soil" ;
+    dul:associatedWith ns1:fertility_1 .
+
+ns1:take_1 a ns1:AlwaysTake ;
+    rdfs:label "taken" ;
+    dul:hasQuality ns1:Always ;
+    vn.role:Agent ns1:Algeria ;
+    vn.role:Theme ns1:note_1 .
+
+dbpedia:Algeria a schema:Country,
+        schema:Place .
+
+owl:Thing rdfs:label "Algeria" .
+
+ns1:Always rdfs:label "always" .
+
+ns1:AlwaysTake rdfs:subClassOf ns1:Take .
+
+ns1:Fertility a owl:Class ;
+    rdfs:label "fertility" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Note rdfs:label "note" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:SoilFertility a owl:Class ;
+    rdfs:label "Soil Fertility" ;
+    dul:associatedWith ns1:Soil ;
+    rdfs:subClassOf ns1:Fertility ;
+    owl:equivalentClass dbpedia:Soil_fertility .
+
+ns1:Take rdfs:label "taken" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:note_1 a ns1:Note ;
+    rdfs:label "note" ;
+    ns1:noteOf ns1:fertility_1 .
+
+ns1:Soil a owl:Class ;
+    rdfs:label "soil" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:fertility_1 a ns1:SoilFertility ;
+    rdfs:label "fertility" ;
+    ns1:soilFertilityOf ns1:Algeria .
+
+ns1:Algeria a owl:Thing ;
+    rdfs:label "Algeria",
+        "its" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Algeria .
+

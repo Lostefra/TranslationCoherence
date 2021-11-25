@@ -1,0 +1,182 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix fred: <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence591.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fred: rdfs:label ":"^^xsd:string .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%2C> rdfs:label "," .
+
+vn.role:Predicate rdfs:label "as" .
+
+translation_coherence:zh_sentence591.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence591" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence591" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:describe_1 a ns1:AlsoDescribe ;
+    rdfs:label "described" ;
+    dul:associatedWith ns1:role_1 ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Agent ns1:dialogue_1 ;
+    vn.role:Predicate ns1:corollary_1 ;
+    vn.role:Theme ns1:theme_1 .
+
+ns1:docuverse earmark:hasContent "The dialogue also described the theme of the new concept, the role of the Centre for Human Survival   and, as a corollary, the new philosophy of ethics: the morality of the legitimate self-interest."^^xsd:string .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoDescribe rdfs:subClassOf ns1:Describe .
+
+ns1:Centre rdfs:label "Centre" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Concept a owl:Class ;
+    rdfs:label "concept" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Concept .
+
+ns1:Corollary rdfs:label "corollary" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Describe rdfs:label "described" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Dialogue a owl:Class ;
+    rdfs:label "dialogue" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Dialogue .
+
+ns1:Ethic rdfs:label "ethics" .
+
+ns1:Human_survival rdfs:label "Human Survival" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Legitimate a owl:Class ;
+    rdfs:label "legitimate" .
+
+ns1:LegitimateSelf-interest rdfs:label "Legitimate Self-interest" ;
+    dul:associatedWith ns1:Self-interest ;
+    dul:hasModality ns1:Legitimate .
+
+ns1:Morality a owl:Class ;
+    rdfs:label "morality" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Morality .
+
+ns1:NewConcept a owl:Class ;
+    rdfs:label "new concept" ;
+    dul:hasQuality ns1:New ;
+    rdfs:subClassOf ns1:Concept .
+
+ns1:NewPhilosophy rdfs:label "New Philosophy" ;
+    rdfs:subClassOf ns1:Philosophy .
+
+ns1:Philosophy a owl:Class ;
+    rdfs:label "philosophy" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Meta-ethics .
+
+ns1:Role rdfs:label "role" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Self-interest a owl:Class ;
+    rdfs:label "self-interest" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Individualism .
+
+ns1:Theme rdfs:label "theme" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:concept_1 a ns1:NewConcept ;
+    rdfs:label "concept" ;
+    quant:hasDeterminer quant:the .
+
+ns1:corollary_1 a ns1:Corollary ;
+    rdfs:label "corollary" ;
+    dul:associatedWith ns1:philosophy_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:dialogue_1 a ns1:Dialogue ;
+    rdfs:label "dialogue" ;
+    quant:hasDeterminer quant:the .
+
+ns1:ethic_1 a ns1:Ethic ;
+    rdfs:label "ethics" ;
+    boxing:declaration ns1:morality_1 ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:morality_1 a ns1:Morality ;
+    rdfs:label "morality" ;
+    quant:hasDeterminer quant:the ;
+    ns1:moralityOf ns1:self-interest_1 .
+
+ns1:philosophy_1 a ns1:NewPhilosophy ;
+    rdfs:label "philosophy" ;
+    dul:hasQuality ns1:New ;
+    quant:hasDeterminer quant:the ;
+    ns1:newPhilosophyOf ns1:ethic_1 .
+
+ns1:role_1 a ns1:Role ;
+    rdfs:label "role" ;
+    quant:hasDeterminer quant:the ;
+    ns1:for ns1:Human_survival ;
+    ns1:roleOf ns1:Centre .
+
+ns1:self-interest_1 a ns1:LegitimateSelf-interest ;
+    rdfs:label "self-interest" ;
+    quant:hasDeterminer quant:the .
+
+ns1:theme_1 a ns1:Theme ;
+    rdfs:label "theme" ;
+    quant:hasDeterminer quant:the ;
+    ns1:themeOf ns1:concept_1 .
+
+ns1:New a owl:Class ;
+    rdfs:label "New",
+        "new" ;
+    rdfs:subClassOf dul:Quality .
+

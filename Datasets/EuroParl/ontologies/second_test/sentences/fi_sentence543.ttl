@@ -1,0 +1,106 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence543.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence543.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence543" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence543" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Until rdfs:label "until" .
+
+ns1:docuverse earmark:hasContent "However, the Parliament was unable to review these ennen until the text was finalized in July 1999."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:situation_2,
+        ns1:unable_1 ;
+    dul:hasQuality ns1:However .
+
+ns1:Ennen a owl:Class ;
+    rdfs:label "ennen" ;
+    owl:equivalentClass dbpedia:Leonhard_Ennen .
+
+ns1:Finalize rdfs:label "finalized" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:However rdfs:label "However" .
+
+ns1:Review rdfs:label "review" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Text rdfs:label "text" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Unable rdfs:label "unable" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:ennen_1 a ns1:Ennen ;
+    rdfs:label "ennen" ;
+    quant:hasDeterminer quant:these .
+
+ns1:finalize_1 a ns1:Finalize ;
+    rdfs:label "finalized" ;
+    boxer:patient ns1:text_1 ;
+    ns1:in "1999-07-01"^^xsd:date .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:review_1 .
+
+ns1:text_1 a ns1:Text ;
+    rdfs:label "text" ;
+    quant:hasDeterminer quant:the .
+
+ns1:unable_1 a ns1:Unable ;
+    rdfs:label "unable" ;
+    boxer:agent ns1:Parliament ;
+    boxer:theme ns1:review_1 .
+
+ns1:Parliament rdfs:label "Parliament" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Parliament .
+
+ns1:review_1 a ns1:Review ;
+    rdfs:label "review" ;
+    vn.role:Agent ns1:Parliament ;
+    vn.role:Theme ns1:ennen_1 ;
+    ns1:until ns1:finalize_1 .
+

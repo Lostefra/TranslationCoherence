@@ -1,0 +1,179 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence163.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence163.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence163" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence163" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:From rdfs:label "from" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Noteq rdfs:label "other" .
+
+ns1:Of rdfs:label "My",
+        "of",
+        "our" .
+
+ns1:Theme rdfs:label "possible" .
+
+ns1:docuverse earmark:hasContent "My group therefore expects to be determined of the law that can still provide other tools in our fights to support general locations and to transport from the EU as possible."^^xsd:string .
+
+ns1:expect_1 a ns1:ThereforeExpect ;
+    rdfs:label "expects" ;
+    dul:hasQuality ns1:Therefore ;
+    vn.role:Agent ns1:group_1 ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:thing_1 a owl:Thing ;
+    boxer:theme ns1:Eu .
+
+ns1:Determine rdfs:label "determined" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Expect rdfs:label "expects" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Fight rdfs:label "fights" .
+
+ns1:General rdfs:label "general" .
+
+ns1:GeneralLocation rdfs:subClassOf ns1:Location .
+
+ns1:Group rdfs:label "group" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Law rdfs:label "law" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Location rdfs:label "locations" .
+
+ns1:Provide rdfs:label "provide" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Still rdfs:label "still" .
+
+ns1:StillProvide rdfs:label "Still Provide" ;
+    rdfs:subClassOf ns1:Provide .
+
+ns1:Support rdfs:label "support" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Therefore rdfs:label "therefore" .
+
+ns1:ThereforeExpect rdfs:subClassOf ns1:Expect .
+
+ns1:Transport rdfs:label "transport" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:determine_1 a ns1:Determine ;
+    rdfs:label "determined" ;
+    vn.role:Theme ns1:group_1 ;
+    ns1:determineOf ns1:law_1 .
+
+ns1:fight_1 a ns1:Fight ;
+    rdfs:label "fights" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:fightOf ns1:person_2 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "My" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "our" .
+
+ns1:provide_1 a ns1:StillProvide ;
+    rdfs:label "provide" ;
+    boxing:hasModality boxing:Possible ;
+    dul:hasQuality ns1:Still ;
+    vn.role:Agent ns1:law_1 ;
+    vn.role:Theme ns1:tool_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:determine_1,
+        ns1:location_1,
+        ns1:provide_1,
+        ns1:support_1,
+        ns1:tool_1,
+        ns1:transport_1 .
+
+ns1:support_1 a ns1:Support ;
+    rdfs:label "support" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Agent ns1:law_1 ;
+    vn.role:Beneficiary ns1:location_1 .
+
+ns1:tool_2 a ns1:Tool ;
+    rdfs:label "tools" ;
+    quant:hasDeterminer quant:other ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:transport_1 a ns1:Transport ;
+    rdfs:label "transport" ;
+    vn.role:Cause ns1:group_1 ;
+    ns1:from ns1:Eu .
+
+ns1:Eu rdfs:label "EU" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:European_Union .
+
+ns1:Tool rdfs:label "other",
+        "tools" .
+
+ns1:location_1 a ns1:GeneralLocation ;
+    rdfs:label "locations" ;
+    dul:hasQuality ns1:General ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:tool_1 a ns1:Tool ;
+    rdfs:label "other" ;
+    owl:differentFrom ns1:tool_2 ;
+    ns1:in ns1:fight_1 .
+
+ns1:group_1 a ns1:Group ;
+    rdfs:label "group" ;
+    ns1:groupOf ns1:person_1 .
+
+ns1:law_1 a ns1:Law ;
+    rdfs:label "law" ;
+    quant:hasDeterminer quant:the .
+

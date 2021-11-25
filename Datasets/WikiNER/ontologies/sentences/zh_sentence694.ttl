@@ -1,0 +1,105 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence694.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence694.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence694" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence694" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In" .
+
+ns1:capture_1 a ns1:Capture ;
+    rdfs:label "capture" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:Barbary_pirates ;
+    vn.role:Theme ns1:vessel_1 ;
+    ns1:in ns1:century_1 .
+
+ns1:docuverse earmark:hasContent "In the nineteenth century, Barbary_pirates will capture vessels and enslave crews."^^xsd:string .
+
+ns1:enslave_1 a ns1:Enslave ;
+    rdfs:label "enslave" ;
+    boxer:agent ns1:Barbary_pirates ;
+    boxer:patient ns1:crew_1 ;
+    boxing:hasModality boxing:Necessary ;
+    ns1:in ns1:century_1 .
+
+ns1:Capture rdfs:label "capture" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Century a owl:Class ;
+    rdfs:label "century" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Crew rdfs:label "crews" .
+
+ns1:Enslave a owl:Class ;
+    rdfs:label "enslave" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Slavery .
+
+ns1:Nineteenth a owl:Class ;
+    rdfs:label "nineteenth" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:NineteenthCentury a owl:Class ;
+    rdfs:label "nineteenth century" ;
+    dul:hasQuality ns1:Nineteenth ;
+    rdfs:subClassOf ns1:Century .
+
+ns1:Vessel rdfs:label "vessels" .
+
+ns1:crew_1 a ns1:Crew ;
+    rdfs:label "crews" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:vessel_1 a ns1:Vessel ;
+    rdfs:label "vessels" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Barbary_pirates rdfs:label "Barbary pirates" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Barbary_pirates .
+
+ns1:century_1 a ns1:NineteenthCentury ;
+    rdfs:label "century" ;
+    quant:hasDeterminer quant:the .
+

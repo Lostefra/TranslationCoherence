@@ -1,0 +1,154 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence418.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "for" .
+
+translation_coherence:de_sentence418.ttl a owl:Ontology ;
+    rdfs:label "de_sentence418" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence418" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In",
+        "in" .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:avoid_1 a ns1:Avoid ;
+    rdfs:label "avoid" ;
+    vn.role:Agent ns1:order_1 ;
+    vn.role:Theme ns1:attempt_1 .
+
+ns1:deprive_1 a ns1:Deprive ;
+    rdfs:label "deprive" ;
+    vn.role:Agent ns1:attempt_1 ;
+    vn.role:Source ns1:body_1 .
+
+ns1:docuverse earmark:hasContent "In order to avoid repeated attempts to deprive Lincoln 's body and keep him for ransom, Robert_Todd_Lincoln had it in several feet thickened in 1901."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "had" ;
+    vn.role:Agent ns1:Robert_todd_lincoln ;
+    vn.role:Patient ns1:neuter_1 ;
+    ns1:in ns1:foot_1,
+        ns1:order_1 .
+
+ns1:keep_1 a ns1:Keep ;
+    rdfs:label "keep" ;
+    vn.role:Agent ns1:attempt_1 ;
+    vn.role:Location ns1:ransom_1 ;
+    vn.role:Theme ns1:Robert_todd_lincoln .
+
+ns1:thicken_1 a ns1:Thicken ;
+    rdfs:label "thickened" ;
+    vn.role:Patient ns1:foot_1 ;
+    ns1:in "1901-01-01"^^xsd:date .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Attempt rdfs:label "attempts" .
+
+ns1:Avoid rdfs:label "avoid" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Body rdfs:label "body" ;
+    rdfs:subClassOf dul:Organism .
+
+ns1:Deprive rdfs:label "deprive" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Foot rdfs:label "feet" .
+
+ns1:Have rdfs:label "had" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Keep rdfs:label "keep" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Male rdfs:label "him" .
+
+ns1:Order rdfs:label "order" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Ransom rdfs:label "ransom" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Repeated rdfs:label "repeated" .
+
+ns1:RepeatedAttempt rdfs:subClassOf ns1:Attempt .
+
+ns1:Several rdfs:label "several" .
+
+ns1:SeveralFoot rdfs:subClassOf ns1:Foot .
+
+ns1:Thicken rdfs:label "thickened" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:body_1 a ns1:Body ;
+    rdfs:label "body" ;
+    ns1:bodyOf ns1:Lincoln .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "it" .
+
+ns1:ransom_1 a ns1:Ransom ;
+    rdfs:label "ransom" .
+
+ns1:Robert_todd_lincoln rdfs:label "Robert Todd Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Male ;
+    owl:sameAs dbpedia:Robert_Todd_Lincoln .
+
+ns1:foot_1 a ns1:SeveralFoot ;
+    rdfs:label "feet" ;
+    dul:hasQuality ns1:Several ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:order_1 a ns1:Order ;
+    rdfs:label "order" .
+
+ns1:attempt_1 a ns1:RepeatedAttempt ;
+    rdfs:label "attempts" ;
+    dul:hasQuality ns1:Repeated ;
+    quant:hasQuantifier quant:multiple .
+

@@ -1,0 +1,164 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence206.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:fi_sentence206.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence206" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence206" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "We understand that it is important that two institutions  Parliament and the Commission  cooperate and collaborate and that cooperation with the regional policy erityisestitee is excellent."^^xsd:string .
+
+ns1:institution_1 a dbpedia:Institution ;
+    rdfs:label "institutions" .
+
+ns1:policy_1 a ns1:Policy ;
+    rdfs:label "policy" ;
+    dul:associatedWith ns1:erityisestitee_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:collaborate_1,
+        ns1:cooperate_1 ;
+    dul:hasQuality ns1:Important .
+
+ns1:understand_1 a ns1:Understand ;
+    rdfs:label "understand" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Proposition ns1:situation_1 .
+
+ns1:Collaborate a owl:Class ;
+    rdfs:label "collaborate" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Collaboration .
+
+ns1:Cooperate a owl:Class ;
+    rdfs:label "cooperate" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Cooperation .
+
+ns1:Cooperation a owl:Class ;
+    rdfs:label "cooperation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Cooperation .
+
+ns1:Erityisestitee a owl:Class ;
+    rdfs:label "erityisestitee" .
+
+ns1:Important rdfs:label "important" .
+
+ns1:Institution a owl:Class ;
+    rdfs:label "Parliament",
+        "institutions" ;
+    owl:equivalentClass dbpedia:Institution .
+
+ns1:Person rdfs:label "We" .
+
+ns1:PolicyErityisestitee a owl:Class ;
+    rdfs:label "Policy Erityisestitee" ;
+    dul:associatedWith ns1:Policy ;
+    rdfs:subClassOf ns1:Erityisestitee .
+
+ns1:Regional a owl:Class ;
+    rdfs:label "regional" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:RegionalPolicy a owl:Class ;
+    dul:hasQuality ns1:Regional ;
+    rdfs:subClassOf ns1:Policy .
+
+ns1:RegionalPolicyErityisestitee a owl:Class ;
+    rdfs:label "regional policy erityisestitee" ;
+    dul:associatedWith ns1:RegionalPolicy ;
+    rdfs:subClassOf ns1:PolicyErityisestitee .
+
+ns1:Understand rdfs:label "understand" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:cooperation_1 a ns1:Cooperation ;
+    rdfs:label "cooperation" ;
+    dul:hasQuality ns1:Excellent ;
+    ns1:with ns1:erityisestitee_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "We" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Excellent,
+        ns1:collaborate_1,
+        ns1:cooperate_1,
+        ns1:cooperation_1 .
+
+ns1:Commission rdfs:label "Commission" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Excellent rdfs:label "excellent" .
+
+ns1:Parliament a ns1:Institution ;
+    rdfs:label "Parliament",
+        "institutions" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasDataValue "2"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple,
+        quant:two ;
+    owl:sameAs dbpedia:Italian_Parliament,
+        dbpedia:Parliament .
+
+ns1:collaborate_1 a ns1:Collaborate ;
+    rdfs:label "collaborate" ;
+    vn.role:Actor ns1:Commission,
+        ns1:Parliament .
+
+ns1:cooperate_1 a ns1:Cooperate ;
+    rdfs:label "cooperate" ;
+    vn.role:Actor ns1:Commission,
+        ns1:Parliament .
+
+ns1:erityisestitee_1 a ns1:RegionalPolicyErityisestitee ;
+    rdfs:label "erityisestitee" .
+
+ns1:Policy a owl:Class ;
+    rdfs:label "policy" ;
+    rdfs:subClassOf dul:Description .
+

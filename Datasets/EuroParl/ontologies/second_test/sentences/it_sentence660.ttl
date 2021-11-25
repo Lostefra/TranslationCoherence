@@ -1,0 +1,176 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence660.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Emost> rdfs:label "Most" .
+
+vn.role:Location rdfs:label "in" .
+
+translation_coherence:it_sentence660.ttl a owl:Ontology ;
+    rdfs:label "it_sentence660" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence660" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Entails rdfs:label "if" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Noteq rdfs:label "other" .
+
+ns1:Where rdfs:label "where" .
+
+ns1:docuverse earmark:hasContent "Most people, however, would like to live in the area where they were generated and grown, if they were given the opportunity, in other words, to work there."^^xsd:string .
+
+ns1:give_1 a ns1:Give ;
+    rdfs:label "given" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Recipient ns1:thing_2 ;
+    vn.role:Theme ns1:opportunity_1 ;
+    ns1:entails ns1:like_1 .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "work" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:There ;
+    vn.role:Actor ns1:people_1 .
+
+ns1:Area rdfs:label "area" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Generate rdfs:label "generated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Give rdfs:label "given" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Grow rdfs:label "grown" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:However rdfs:label "however" .
+
+ns1:Like rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Live rdfs:label "live" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:MostPeople a owl:Class ;
+    rdfs:label "Most people" ;
+    dul:hasQuality ns1:Most ;
+    rdfs:subClassOf ns1:People .
+
+ns1:Opportunity rdfs:label "opportunity" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:There rdfs:label "there" .
+
+ns1:Work rdfs:label "work" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:area_1 a ns1:Area ;
+    rdfs:label "area" ;
+    quant:hasDeterminer quant:the ;
+    ns1:where ns1:situation_1 .
+
+ns1:generate_1 a ns1:Generate ;
+    rdfs:label "generated" ;
+    vn.role:Theme2 ns1:thing_1 .
+
+ns1:grow_1 a ns1:Grow ;
+    rdfs:label "grown" ;
+    vn.role:Patient ns1:thing_1 .
+
+ns1:like_1 a ns1:Like ;
+    rdfs:label "like" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:However ;
+    vn.role:Experiencer ns1:people_1 ;
+    vn.role:Theme ns1:live_1 ;
+    ns1:in ns1:word_1 .
+
+ns1:live_1 a ns1:Live ;
+    rdfs:label "live" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Location ns1:area_1 ;
+    vn.role:Theme ns1:people_1 .
+
+ns1:opportunity_1 a ns1:Opportunity ;
+    rdfs:label "opportunity" ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:generate_1,
+        ns1:grow_1 .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "they" .
+
+ns1:word_1 a ns1:Word ;
+    rdfs:label "other" ;
+    owl:differentFrom ns1:word_2 .
+
+ns1:word_2 a ns1:Word ;
+    rdfs:label "words" ;
+    quant:hasDeterminer quant:other ;
+    quant:hasQuantifier quant:multiple .
+
+owl:Thing rdfs:label "they" .
+
+ns1:Most a owl:Class ;
+    rdfs:label "Most" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Word rdfs:label "other",
+        "words" .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "they" .
+
+ns1:People a owl:Class ;
+    rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:people_1 a ns1:MostPeople,
+        ns1:People ;
+    rdfs:label "people" ;
+    dul:hasQuality ns1:Most ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:mostAmong ns1:People .
+

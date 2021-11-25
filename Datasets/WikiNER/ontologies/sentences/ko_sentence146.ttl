@@ -1,0 +1,113 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence146.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Material rdfs:label "from" .
+
+translation_coherence:ko_sentence146.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence146" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence146" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:derive_1 a ns1:Derive ;
+    rdfs:label "derived" ;
+    vn.role:Material ns1:aerospace_1,
+        ns1:technology_1 ;
+    vn.role:Product ns1:impact_1 .
+
+ns1:docuverse earmark:hasContent "Huntsville's main economic impact is derived from aerospace and military technologies."^^xsd:string .
+
+<http://dbpedia.org/resource/Huntsville,_Alabama> a schema:City,
+        schema:Place .
+
+ns1:Aerospace a owl:Class ;
+    rdfs:label "aerospace" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> ;
+    owl:equivalentClass dbpedia:Aerospace .
+
+ns1:Derive rdfs:label "derived" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Economic a owl:Class ;
+    rdfs:label "economic" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Economy .
+
+ns1:EconomicImpact a owl:Class ;
+    rdfs:label "economic impact" ;
+    dul:hasQuality ns1:Economic ;
+    rdfs:subClassOf ns1:Impact .
+
+ns1:Huntsville rdfs:label "Huntsville" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs <http://dbpedia.org/resource/Huntsville,_Alabama> .
+
+ns1:Impact a owl:Class ;
+    rdfs:label "impact" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Main rdfs:label "main" .
+
+ns1:MainEconomicImpact a owl:Class ;
+    rdfs:label "Main Economic Impact" ;
+    rdfs:subClassOf ns1:EconomicImpact .
+
+ns1:Military rdfs:label "military" ;
+    owl:sameAs dbpedia:Military .
+
+ns1:MilitaryTechnology rdfs:subClassOf ns1:Technology .
+
+ns1:Technology rdfs:label "technologies" .
+
+ns1:aerospace_1 a ns1:Aerospace ;
+    rdfs:label "aerospace" .
+
+ns1:impact_1 a ns1:MainEconomicImpact ;
+    rdfs:label "impact" ;
+    dul:hasQuality ns1:Main ;
+    ns1:mainEconomicImpactOf ns1:Huntsville .
+
+ns1:technology_1 a ns1:MilitaryTechnology ;
+    rdfs:label "technologies" ;
+    dul:hasQuality ns1:Military ;
+    quant:hasQuantifier quant:multiple .
+

@@ -1,0 +1,199 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence216.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme rdfs:label "about" .
+
+translation_coherence:ko_sentence216.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence216" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence216" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:From rdfs:label "from" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of",
+        "our" .
+
+ns1:air_1 a ns1:Air ;
+    rdfs:label "air" ;
+    dul:associatedWith ns1:transport_2 .
+
+ns1:debate_1 a ns1:Debate ;
+    rdfs:label "debate" ;
+    boxer:patient ns1:week_1 ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Here ;
+    vn.role:Actor ns1:person_2 ;
+    vn.role:Theme ns1:safety_1 .
+
+ns1:docuverse earmark:hasContent "This week we will debate here about the safety of the sea transport from the light of the Erica disaster and in the process of the year we have to discuss our goals in terms of the safety of air transport."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "have" ;
+    boxer:theme ns1:discuss_1 ;
+    boxing:hasModality boxing:Necessary ;
+    dul:associatedWith ns1:transport_1 ;
+    vn.role:Agent ns1:person_3 ;
+    ns1:inProcessOf ns1:year_1 .
+
+ns1:process_1 a ns1:Process ;
+    rdfs:label "process" ;
+    quant:hasDeterminer quant:the .
+
+ns1:sea_1 a ns1:Sea ;
+    rdfs:label "sea" ;
+    dul:associatedWith ns1:transport_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:term_1 a ns1:Term ;
+    rdfs:label "terms" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Air rdfs:label "air" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:AirTransport rdfs:label "air transport" ;
+    rdfs:subClassOf ns1:Transport .
+
+ns1:Debate rdfs:label "debate" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Disaster rdfs:label "disaster" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Discuss rdfs:label "discuss" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Erica rdfs:label "Erica" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Goal rdfs:label "goals" .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Here rdfs:label "here" .
+
+ns1:Light rdfs:label "light" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Process rdfs:label "process" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Safety rdfs:label "safety" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:SeaTransport a owl:Class ;
+    rdfs:label "Sea Transport" ;
+    dul:associatedWith ns1:Sea ;
+    rdfs:subClassOf ns1:Transport .
+
+ns1:Term rdfs:label "terms" .
+
+ns1:Week rdfs:label "week" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Year rdfs:label "year" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:disaster_1 a ns1:Disaster ;
+    rdfs:label "disaster" ;
+    dul:associatedWith ns1:Erica .
+
+ns1:discuss_1 a ns1:Discuss ;
+    rdfs:label "discuss" ;
+    boxer:agent ns1:person_3 ;
+    boxer:patient ns1:goal_1 ;
+    boxing:hasModality boxing:Necessary ;
+    ns1:inTermOf ns1:safety_1 .
+
+ns1:goal_1 a ns1:Goal ;
+    rdfs:label "goals" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:goalOf ns1:person_1 .
+
+ns1:light_1 a ns1:Light ;
+    rdfs:label "light" ;
+    quant:hasDeterminer quant:the ;
+    ns1:lightOf ns1:disaster_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "our" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:week_1 a ns1:Week ;
+    rdfs:label "week" ;
+    dul:hasQuality ns1:Topic ;
+    quant:hasDeterminer quant:this .
+
+ns1:year_1 a ns1:Year ;
+    rdfs:label "year" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Sea a owl:Class ;
+    rdfs:label "sea" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Transport a owl:Class ;
+    rdfs:label "transport" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:safety_1 a ns1:Safety ;
+    rdfs:label "safety" ;
+    quant:hasDeterminer quant:the ;
+    ns1:safetyOf ns1:transport_1,
+        ns1:transport_2 .
+
+ns1:transport_2 a ns1:AirTransport ;
+    rdfs:label "transport" .
+
+ns1:Person rdfs:label "we" .
+
+ns1:transport_1 a ns1:SeaTransport ;
+    rdfs:label "transport" ;
+    ns1:from ns1:light_1 .
+

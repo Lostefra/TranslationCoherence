@@ -1,0 +1,257 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence411.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence411.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence411" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence411" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Assist rdfs:label "assist" .
+
+ns1:Early rdfs:label "early" .
+
+ns1:Of rdfs:label "of",
+        "our" .
+
+ns1:adult_1 a ns1:Adult ;
+    rdfs:label "adult" ;
+    dul:associatedWith ns1:literacy_1,
+        ns1:standard_1 .
+
+ns1:certificate_1 a ns1:Certificate ;
+    rdfs:label "certificate" ;
+    dul:associatedWith ns1:programme_1 .
+
+ns1:develop_1 a dbpedia:Economic_development,
+        ns1:Develop ;
+    rdfs:label "developed" ;
+    vn.role:Agent ns1:Social_fund ;
+    vn.role:Product ns1:plan_1 .
+
+ns1:docuverse earmark:hasContent "The Social Fund has certainly improved our three-tier institutions to fund our post-retirement certificate programme and has developed a comprehensive plan to help young people and long-term unemployed, assist early school probationers and promote the improvement of adult literacy standards."^^xsd:string .
+
+ns1:fund_1 a ns1:Fund ;
+    rdfs:label "fund" ;
+    boxer:agent ns1:Social_fund ;
+    boxer:patient ns1:programme_1 .
+
+ns1:help_1 a ns1:Help ;
+    rdfs:label "help" ;
+    vn.role:Agent ns1:plan_1 ;
+    vn.role:Beneficiary ns1:people_1 .
+
+ns1:improve_1 a ns1:CertainlyImprove ;
+    rdfs:label "improved" ;
+    dul:hasQuality ns1:Certainly ;
+    vn.role:Agent ns1:Social_fund ;
+    vn.role:Patient ns1:institution_1 .
+
+ns1:person_2 coref:coref ns1:person_1 .
+
+ns1:probationer_1 rdfs:label "probationers" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:promote_1 a ns1:Promote ;
+    rdfs:label "promote" ;
+    vn.role:Agent ns1:plan_1 ;
+    vn.role:Theme ns1:improvement_1 .
+
+ns1:school_1 a ns1:School ;
+    rdfs:label "school" ;
+    dul:associatedWith ns1:people_1 .
+
+ns1:AdultLiteracy a owl:Class ;
+    rdfs:label "adult literacy" ;
+    dul:associatedWith ns1:Adult ;
+    rdfs:subClassOf ns1:Literacy ;
+    owl:equivalentClass dbpedia:Literacy .
+
+ns1:AdultLiteracyStandard rdfs:subClassOf ns1:LiteracyStandard .
+
+ns1:AssistEarlySchoolProbationer rdfs:subClassOf ns1:EarlySchoolProbationer .
+
+ns1:Certainly rdfs:label "certainly" .
+
+ns1:CertainlyImprove rdfs:subClassOf ns1:Improve .
+
+ns1:CertificateProgramme a owl:Class ;
+    rdfs:label "certificate programme" ;
+    dul:associatedWith ns1:Certificate ;
+    rdfs:subClassOf ns1:Programme .
+
+ns1:Comprehensive a owl:Class ;
+    rdfs:label "comprehensive" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ComprehensivePlan a owl:Class ;
+    rdfs:label "Comprehensive Plan" ;
+    dul:hasQuality ns1:Comprehensive ;
+    rdfs:subClassOf ns1:Plan .
+
+ns1:Develop rdfs:label "developed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:EarlySchoolProbationer rdfs:subClassOf ns1:SchoolProbationer .
+
+ns1:Fund rdfs:label "Fund",
+        "fund" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Help rdfs:label "help" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Improve rdfs:label "improved" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Improvement rdfs:label "improvement" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Institution rdfs:label "institutions" .
+
+ns1:Literacy a owl:Class ;
+    rdfs:label "literacy" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:LiteracyStandard rdfs:subClassOf ns1:Standard .
+
+ns1:Long-term rdfs:label "long-term" .
+
+ns1:People a owl:Class ;
+    rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Plan a owl:Class ;
+    rdfs:label "plan" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Post-retirement a owl:Class ;
+    rdfs:label "post-retirement" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Post-retirementCertificate a owl:Class ;
+    dul:hasQuality ns1:Post-retirement ;
+    rdfs:subClassOf ns1:Certificate .
+
+ns1:Post-retirementCertificateProgramme a owl:Class ;
+    rdfs:label "Post-retirement Certificate Programme" ;
+    dul:associatedWith ns1:Post-retirementCertificate ;
+    rdfs:subClassOf ns1:CertificateProgramme .
+
+ns1:Probationer rdfs:label "probationers" .
+
+ns1:Programme a owl:Class ;
+    rdfs:label "programme" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Promote rdfs:label "promote" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:School rdfs:label "school" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:SchoolProbationer rdfs:subClassOf ns1:Probationer .
+
+ns1:Standard rdfs:label "standards" .
+
+ns1:Three-tier rdfs:label "three-tier" .
+
+ns1:Three-tierInstitution rdfs:subClassOf ns1:Institution .
+
+ns1:Unemployed rdfs:label "unemployed" ;
+    owl:sameAs dbpedia:Unemployment .
+
+ns1:Young a owl:Class ;
+    rdfs:label "young" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:YoungPeople a owl:Class ;
+    rdfs:label "Young People" ;
+    dul:hasQuality ns1:Young ;
+    rdfs:subClassOf ns1:People .
+
+ns1:improvement_1 a ns1:Improvement ;
+    rdfs:label "improvement" ;
+    quant:hasDeterminer quant:the ;
+    ns1:improvementOf ns1:standard_1 .
+
+ns1:institution_1 a ns1:Three-tierInstitution ;
+    rdfs:label "institutions" ;
+    dul:hasQuality ns1:Three-tier ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:three-tierInstitutionOf ns1:person_1 .
+
+ns1:literacy_1 a ns1:AdultLiteracy ;
+    rdfs:label "literacy" ;
+    dul:associatedWith ns1:standard_1 .
+
+ns1:Adult a owl:Class ;
+    rdfs:label "adult" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:people_1 a ns1:AssistEarlySchoolProbationer,
+        ns1:YoungPeople ;
+    rdfs:label "people" ;
+    dul:hasQuality ns1:Long-term,
+        ns1:Unemployed ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:programme_1 a ns1:Post-retirementCertificateProgramme ;
+    rdfs:label "programme" ;
+    ns1:post-retirementCertificateProgrammeOf ns1:person_1 .
+
+ns1:Certificate a owl:Class ;
+    rdfs:label "certificate" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Social_fund rdfs:label "Social Fund" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "our" .
+
+ns1:plan_1 a ns1:ComprehensivePlan ;
+    rdfs:label "plan" ;
+    quant:hasDeterminer quant:a .
+
+ns1:standard_1 a ns1:AdultLiteracyStandard ;
+    rdfs:label "standards" ;
+    quant:hasQuantifier quant:multiple .
+

@@ -1,0 +1,182 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence517.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "to" .
+
+vn.role:Source rdfs:label "," .
+
+translation_coherence:de_sentence517.ttl a owl:Ontology ;
+    rdfs:label "de_sentence517" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence517" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Before rdfs:label "before" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "So let me return to the role and structure of the guidelines before I mention the most important comments and criticisms you, Mrs Schroedter and the various members of this house."^^xsd:string .
+
+ns1:let_1 a ns1:SoLet ;
+    rdfs:label "let" ;
+    boxer:agent ns1:thing_1 ;
+    boxer:theme ns1:return_1 ;
+    dul:hasQuality ns1:So .
+
+ns1:person_2 coref:coref ns1:person_1 .
+
+ns1:structure_1 rdfs:label "structure" .
+
+ns1:Comment rdfs:label "comments" .
+
+ns1:Criticism rdfs:label "criticisms" .
+
+ns1:Guideline rdfs:label "guidelines" .
+
+ns1:House rdfs:label "house" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Important rdfs:label "important" .
+
+ns1:ImportantComment rdfs:subClassOf ns1:Comment .
+
+ns1:Let rdfs:label "let" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Member rdfs:label "members" .
+
+ns1:Mention rdfs:label "mention" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Most rdfs:label "most" .
+
+ns1:MostImportantComment rdfs:subClassOf ns1:ImportantComment .
+
+ns1:Return rdfs:label "return" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Role rdfs:label "role" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Schroedter rdfs:label "Schroedter" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis> ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis> .
+
+ns1:So rdfs:label "So" .
+
+ns1:SoLet rdfs:label "So let" ;
+    rdfs:subClassOf ns1:Let .
+
+ns1:Structure rdfs:label "structure" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Various rdfs:label "various" .
+
+ns1:VariousMember rdfs:subClassOf ns1:Member .
+
+ns1:comment_1 a ns1:MostImportantComment ;
+    rdfs:label "comments" ;
+    dul:hasQuality ns1:Important,
+        ns1:Most ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:guideline_1 a ns1:Guideline ;
+    rdfs:label "guidelines" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:house_1 a ns1:House ;
+    rdfs:label "house" ;
+    quant:hasDeterminer quant:this .
+
+ns1:member_1 a ns1:VariousMember ;
+    rdfs:label "members" ;
+    dul:hasQuality ns1:Various ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:variousMemberOf ns1:house_1 .
+
+ns1:mention_1 a ns1:Mention ;
+    rdfs:label "mention" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Topic ns1:comment_1,
+        ns1:criticism_1 .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "you" .
+
+ns1:return_1 a ns1:Return ;
+    rdfs:label "return" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Destination ns1:role_1 ;
+    vn.role:Source ns1:Schroedter,
+        ns1:member_1 ;
+    vn.role:Theme ns1:person_3 ;
+    ns1:before ns1:situation_1 .
+
+ns1:role_1 a ns1:Role,
+        ns1:Structure ;
+    rdfs:label "role" ;
+    quant:hasDeterminer quant:the ;
+    ns1:roleOf ns1:guideline_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:criticism_1,
+        ns1:mention_1 .
+
+ns1:thing_1 a owl:Thing .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis> rdfs:label "Mrs" ;
+    boxer:possibleType dul:Role .
+
+ns1:Person rdfs:label "I",
+        "me",
+        "you" .
+
+ns1:criticism_1 a ns1:Criticism ;
+    rdfs:label "criticisms" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I",
+        "me" .
+

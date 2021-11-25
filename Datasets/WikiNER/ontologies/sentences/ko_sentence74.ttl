@@ -1,0 +1,169 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence74.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Oblique rdfs:label "into" .
+
+translation_coherence:ko_sentence74.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence74" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence74" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:After rdfs:label "After" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "After World War, Alabama has grown into the economy of agriculture and diversified understanding of heavy manufacturing, mineral extraction, education and technology."^^xsd:string .
+
+ns1:grow_1 a ns1:Grow ;
+    rdfs:label "grown" ;
+    vn.role:Oblique ns1:economy_1 ;
+    vn.role:Patient ns1:Alabama ;
+    ns1:after ns1:World_war .
+
+ns1:mineral_1 a ns1:Mineral ;
+    rdfs:label "mineral" ;
+    dul:associatedWith ns1:extraction_1 .
+
+dbpedia:Alabama a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:Agriculture a owl:Class ;
+    rdfs:label "agriculture" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Agriculture .
+
+ns1:Alabama rdfs:label "Alabama" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Alabama .
+
+ns1:Diversified a owl:Class ;
+    rdfs:label "diversified" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:DiversifiedUnderstanding a owl:Class ;
+    rdfs:label "Diversified Understanding" ;
+    dul:hasQuality ns1:Diversified ;
+    rdfs:subClassOf ns1:Understanding .
+
+ns1:Economy a owl:Class ;
+    rdfs:label "economy" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#System> ;
+    owl:equivalentClass dbpedia:Economy .
+
+ns1:Education a owl:Class ;
+    rdfs:label "education" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Education .
+
+ns1:Extraction a owl:Class ;
+    rdfs:label "extraction" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Grow rdfs:label "grown" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Heavy a owl:Class ;
+    rdfs:label "heavy" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:HeavyManufacturing a owl:Class ;
+    rdfs:label "Heavy Manufacturing" ;
+    dul:hasQuality ns1:Heavy ;
+    rdfs:subClassOf ns1:Manufacturing ;
+    owl:equivalentClass dbpedia:Heavy_industry .
+
+ns1:Manufacturing a owl:Class ;
+    rdfs:label "manufacturing" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:MineralExtraction a owl:Class ;
+    rdfs:label "Mineral Extraction" ;
+    dul:associatedWith ns1:Mineral ;
+    rdfs:subClassOf ns1:Extraction ;
+    owl:equivalentClass dbpedia:Natural_resource .
+
+ns1:Technology a owl:Class ;
+    rdfs:label "technology" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Technology .
+
+ns1:Understanding a owl:Class ;
+    rdfs:label "understanding" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:World_war rdfs:label "World War" ;
+    boxer:possibleType owl:Thing .
+
+ns1:agriculture_1 a ns1:Agriculture ;
+    rdfs:label "agriculture" .
+
+ns1:economy_1 a ns1:Economy ;
+    rdfs:label "economy" ;
+    quant:hasDeterminer quant:the ;
+    ns1:economyOf ns1:agriculture_1,
+        ns1:understanding_1 .
+
+ns1:education_1 a ns1:Education ;
+    rdfs:label "education" .
+
+ns1:manufacturing_1 a ns1:HeavyManufacturing ;
+    rdfs:label "manufacturing" ;
+    dul:associatedWith ns1:extraction_1 .
+
+ns1:technology_1 a ns1:Technology ;
+    rdfs:label "technology" .
+
+ns1:understanding_1 a ns1:DiversifiedUnderstanding ;
+    rdfs:label "understanding" ;
+    ns1:diversifiedUnderstandingOf ns1:manufacturing_1 .
+
+ns1:Mineral a owl:Class ;
+    rdfs:label "mineral" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Mineral .
+
+ns1:extraction_1 a ns1:MineralExtraction ;
+    rdfs:label "extraction" ;
+    dul:associatedWith ns1:education_1,
+        ns1:technology_1 .
+

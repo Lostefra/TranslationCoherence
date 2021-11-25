@@ -1,0 +1,140 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence130.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Proposition rdfs:label "for" .
+
+translation_coherence:nl_sentence130.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence130" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence130" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:ask_1 a ns1:AlsoAsk ;
+    rdfs:label "asked" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Proposition ns1:floor_1 .
+
+ns1:comment_1 a ns1:Comment ;
+    rdfs:label "comment" ;
+    vn.role:Agent ns1:floor_1 ;
+    ns1:on ns1:motion_1 .
+
+ns1:docuverse earmark:hasContent "Madam President, I don't want to reopen the debate, but I also asked for the floor to comment on Mr Baron Crespo's motion."^^xsd:string .
+
+ns1:want_1 a ns1:Want ;
+    rdfs:label "want" ;
+    boxing:hasTruthValue boxing:False ;
+    dul:associatedWith ns1:President ;
+    vn.role:Experiencer ns1:person_1 ;
+    vn.role:Theme ns1:reopen_1 .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoAsk rdfs:subClassOf ns1:Ask .
+
+ns1:Ask rdfs:label "asked" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Comment rdfs:label "comment" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Crespo rdfs:label "Crespo" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister_baron> ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister_baron> .
+
+ns1:Debate rdfs:label "debate" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Floor rdfs:label "floor" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Madam rdfs:label "Madam" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Motion rdfs:label "motion" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:President rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith ns1:Madam ;
+    owl:sameAs dbpedia:President .
+
+ns1:Reopen rdfs:label "reopen" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Want rdfs:label "want" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:debate_1 a ns1:Debate ;
+    rdfs:label "debate" ;
+    quant:hasDeterminer quant:the .
+
+ns1:motion_1 a ns1:Motion ;
+    rdfs:label "motion" ;
+    ns1:motionOf ns1:Crespo .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:reopen_1 a ns1:Reopen ;
+    rdfs:label "reopen" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Patient ns1:debate_1 .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister_baron> rdfs:label "Mr Baron" ;
+    boxer:possibleType dul:Role .
+
+ns1:Person rdfs:label "I" .
+
+ns1:floor_1 a ns1:Floor ;
+    rdfs:label "floor" ;
+    quant:hasDeterminer quant:the .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+

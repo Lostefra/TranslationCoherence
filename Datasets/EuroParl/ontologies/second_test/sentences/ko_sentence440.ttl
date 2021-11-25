@@ -1,0 +1,168 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence440.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence440.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence440" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence440" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Entails rdfs:label "if" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "Public opinions and reports are nowadays we cannot provide responses even if we have funded funds to fund funds to fund a large percentage of national operations."^^xsd:string .
+
+ns1:fund_1 a ns1:Fund ;
+    rdfs:label "funded" ;
+    boxer:agent ns1:person_2 ;
+    boxer:theme ns1:situation_1 ;
+    ns1:entails ns1:provide_1 .
+
+ns1:opinion_1 a ns1:PublicOpinion ;
+    rdfs:label "opinions" ;
+    dul:hasQuality ns1:Nowadays,
+        ns1:Public ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:report_1 a ns1:Report ;
+    rdfs:label "reports" ;
+    dul:hasQuality ns1:Nowadays ;
+    quant:hasQuantifier quant:multiple ;
+    owl:sameAs ns1:percentage_1 .
+
+ns1:Even rdfs:label "even" .
+
+ns1:Large a owl:Class ;
+    rdfs:label "large" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:LargePercentage a owl:Class ;
+    rdfs:label "Large Percentage" ;
+    dul:hasQuality ns1:Large ;
+    rdfs:subClassOf ns1:Percentage .
+
+ns1:National rdfs:label "national" .
+
+ns1:NationalOperation rdfs:subClassOf ns1:Operation .
+
+ns1:Operation rdfs:label "operations" .
+
+ns1:Opinion rdfs:label "opinions" .
+
+ns1:Provide rdfs:label "provide" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Public rdfs:label "Public" .
+
+ns1:PublicOpinion rdfs:subClassOf ns1:Opinion .
+
+ns1:Report rdfs:label "reports" .
+
+ns1:Response rdfs:label "responses" .
+
+ns1:fund_3 a ns1:Fund ;
+    rdfs:label "fund" ;
+    boxer:agent ns1:fund_2 ;
+    boxer:patient ns1:fund_4 .
+
+ns1:fund_5 a ns1:Fund ;
+    rdfs:label "fund" ;
+    boxer:agent ns1:fund_2 ;
+    boxer:patient ns1:percentage_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:provide_1 a ns1:Provide ;
+    rdfs:label "provide" ;
+    dul:hasQuality ns1:Even ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:response_1 .
+
+ns1:response_1 a ns1:Response ;
+    rdfs:label "responses" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:fund_2,
+        ns1:fund_3,
+        ns1:fund_4,
+        ns1:fund_5,
+        ns1:operation_1,
+        ns1:percentage_1 .
+
+ns1:Nowadays rdfs:label "nowadays" .
+
+ns1:Percentage a owl:Class ;
+    rdfs:label "percentage" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Person rdfs:label "we" .
+
+ns1:fund_4 a ns1:Fund ;
+    rdfs:label "funds" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:operation_1 a ns1:NationalOperation ;
+    rdfs:label "operations" ;
+    dul:hasQuality ns1:National ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:fund_2 a ns1:Fund ;
+    rdfs:label "funds" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:percentage_1 a ns1:LargePercentage,
+        ns1:Percentage ;
+    rdfs:label "percentage" ;
+    quant:hasDeterminer quant:a ;
+    ns1:largePercentageOf ns1:operation_1 .
+
+ns1:Fund rdfs:label "Fund",
+        "fund",
+        "funded",
+        "funds" ;
+    rdfs:subClassOf dul:Amount,
+        dul:Event .
+

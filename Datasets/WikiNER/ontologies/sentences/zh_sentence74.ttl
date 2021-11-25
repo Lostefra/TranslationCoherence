@@ -1,0 +1,171 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence74.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence74.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence74" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence74" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:After rdfs:label "After" .
+
+ns1:From rdfs:label "from" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "After the Second_World_War, the economic growth of Albama has been due to the transition from agriculture to a diversified interest in the manufacture, mining, education and technology."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Due,
+        ns1:agriculture_1,
+        ns1:growth_1,
+        ns1:interest_1 ;
+    ns1:after ns1:Second_world_war ;
+    ns1:to ns1:transition_1 .
+
+ns1:Agriculture a owl:Class ;
+    rdfs:label "agriculture" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Agriculture .
+
+ns1:Albama rdfs:label "Albama" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Diversified a owl:Class ;
+    rdfs:label "diversified" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:DiversifiedInterest a owl:Class ;
+    rdfs:label "Diversified Interest" ;
+    dul:hasQuality ns1:Diversified ;
+    rdfs:subClassOf ns1:Interest .
+
+ns1:Economic a owl:Class ;
+    rdfs:label "economic" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:EconomicGrowth a owl:Class ;
+    rdfs:label "Economic Growth" ;
+    dul:hasQuality ns1:Economic ;
+    rdfs:subClassOf ns1:Growth ;
+    owl:equivalentClass dbpedia:Economic_growth .
+
+ns1:Education a owl:Class ;
+    rdfs:label "education" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Education .
+
+ns1:Growth a owl:Class ;
+    rdfs:label "growth" ;
+    rdfs:subClassOf dul:Process .
+
+ns1:Interest a owl:Class ;
+    rdfs:label "interest" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Interest .
+
+ns1:Manufacture a owl:Class ;
+    rdfs:label "manufacture" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#System> ;
+    owl:equivalentClass dbpedia:Manufacturing .
+
+ns1:Mining a owl:Class ;
+    rdfs:label "mining" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#System> ;
+    owl:equivalentClass dbpedia:Mining .
+
+ns1:Second_world_war rdfs:label "Second World War" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:World_War_II .
+
+ns1:Technology a owl:Class ;
+    rdfs:label "technology" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Technology .
+
+ns1:Transition a owl:Class ;
+    rdfs:label "transition" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Transition_economy .
+
+ns1:education_1 a ns1:Education ;
+    rdfs:label "education" .
+
+ns1:growth_1 a ns1:EconomicGrowth ;
+    rdfs:label "growth" ;
+    dul:hasQuality ns1:Due ;
+    quant:hasDeterminer quant:the ;
+    ns1:economicGrowthOf ns1:Albama .
+
+ns1:manufacture_1 a ns1:Manufacture ;
+    rdfs:label "manufacture" ;
+    quant:hasDeterminer quant:the .
+
+ns1:mining_1 a ns1:Mining ;
+    rdfs:label "mining" ;
+    dul:associatedWith ns1:education_1,
+        ns1:technology_1 .
+
+ns1:technology_1 a ns1:Technology ;
+    rdfs:label "technology" .
+
+ns1:transition_1 a ns1:Transition ;
+    rdfs:label "transition" ;
+    dul:associatedWith ns1:mining_1 ;
+    quant:hasDeterminer quant:the ;
+    ns1:from ns1:agriculture_1 ;
+    ns1:to ns1:interest_1 .
+
+ns1:Due rdfs:label "due" .
+
+ns1:agriculture_1 a ns1:Agriculture ;
+    rdfs:label "agriculture" .
+
+ns1:interest_1 a ns1:DiversifiedInterest ;
+    rdfs:label "interest" ;
+    quant:hasDeterminer quant:a ;
+    ns1:in ns1:manufacture_1 .
+

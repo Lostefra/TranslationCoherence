@@ -1,0 +1,161 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence208.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence208.ttl a owl:Ontology ;
+    rdfs:label "de_sentence208" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence208" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:About rdfs:label "about" .
+
+ns1:From rdfs:label "from" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:Quantity rdfs:label "many" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "After receiving the news about the death of Patroclus from Antilochus, the son of Nestor, Achilles, who have fled the death of his father, and many games in his honor."^^xsd:string .
+
+ns1:event_1 a dul:Event ;
+    ns1:after ns1:receive_1 .
+
+ns1:flee_1 a ns1:Flee ;
+    rdfs:label "fled" ;
+    boxer:patient ns1:death_1 ;
+    vn.role:Theme ns1:Nestor .
+
+ns1:male_1 rdfs:label "his" .
+
+owl:Thing rdfs:label "After" .
+
+ns1:Antilochus rdfs:label "Antilochus" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Antilochus .
+
+ns1:Death rdfs:label "death" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Father rdfs:label "father" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Flee rdfs:label "fled" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Game rdfs:label "games" .
+
+ns1:Honor rdfs:label "honor" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Male rdfs:label "Achilles" .
+
+ns1:News rdfs:label "news" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Patroclus a owl:Class ;
+    rdfs:label "Patroclus" ;
+    rdfs:subClassOf dul:Personification ;
+    owl:equivalentClass dbpedia:Patroclus .
+
+ns1:Receive rdfs:label "receiving" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Son rdfs:label "son" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:father_1 a ns1:Father ;
+    rdfs:label "father" ;
+    ns1:fatherOf ns1:Achilles .
+
+ns1:game_1 a ns1:Game ;
+    rdfs:label "games" ;
+    quant:hasQuantifier quant:many,
+        quant:multiple ;
+    ns1:in ns1:honor_1 .
+
+ns1:honor_1 a ns1:Honor ;
+    rdfs:label "honor" ;
+    ns1:honorOf ns1:Achilles .
+
+ns1:news_1 a ns1:News ;
+    rdfs:label "news" ;
+    quant:hasDeterminer quant:the ;
+    ns1:about ns1:death_1 .
+
+ns1:patroclus_1 a ns1:Patroclus ;
+    rdfs:label "Patroclus" .
+
+ns1:receive_1 a ns1:Receive ;
+    rdfs:label "receiving" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Theme ns1:news_1 .
+
+ns1:son_1 a ns1:Son ;
+    rdfs:label "son" ;
+    quant:hasDeterminer quant:the ;
+    ns1:sonOf ns1:Nestor .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "After" .
+
+ns1:Nestor rdfs:label "Nestor" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Achilles ;
+    owl:sameAs dbpedia:Nestor_(mythology) .
+
+ns1:death_1 a ns1:Death ;
+    rdfs:label "death" ;
+    dul:associatedWith ns1:game_1,
+        ns1:son_1 ;
+    quant:hasDeterminer quant:the ;
+    ns1:deathOf ns1:father_1,
+        ns1:patroclus_1 ;
+    ns1:from ns1:Antilochus .
+
+ns1:Achilles a ns1:Male ;
+    rdfs:label "Achilles" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Achilles .
+

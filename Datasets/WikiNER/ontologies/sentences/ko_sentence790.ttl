@@ -1,0 +1,232 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence790.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:ko_sentence790.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence790" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence790" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:About rdfs:label "about" .
+
+ns1:In rdfs:label "In",
+        "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:analyze_1 a ns1:Analyze ;
+    rdfs:label "analyzing" ;
+    vn.role:Agent ns1:mode_1 ;
+    vn.role:Theme ns1:awareness_1 .
+
+ns1:center_1 a ns1:Center ;
+    rdfs:label "centered" ;
+    boxer:patient ns1:Uk ;
+    ns1:in ns1:culture_1 .
+
+ns1:contribute_1 a ns1:Contribute ;
+    rdfs:label "contributed" ;
+    vn.role:Agent ns1:Uk ;
+    vn.role:Recipient ns1:erosion_1 .
+
+ns1:docuverse earmark:hasContent "In the UK, humanity has been a great intellectual impact. It contributed to the erosion of Christians, and is centered in modern culture, replacing the diconic mode of syncing and analyzing awareness about the survival of primitive life in modern life."^^xsd:string .
+
+ns1:impact_1 rdfs:label "impact" ;
+    quant:hasDeterminer quant:a .
+
+ns1:replace_1 a ns1:Replace ;
+    rdfs:label "replacing" ;
+    vn.role:Agent ns1:Uk ;
+    vn.role:Theme ns1:mode_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Great,
+        ns1:GreatIntellectualImpact,
+        ns1:Impact,
+        ns1:Intellectual,
+        ns1:humanity_1 ;
+    ns1:in ns1:Uk .
+
+ns1:synce_1 a ns1:Synce ;
+    rdfs:label "syncing" ;
+    boxer:agent ns1:mode_1 ;
+    boxer:patient ns1:awareness_1 .
+
+ns1:Analyze rdfs:label "analyzing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Awareness a owl:Class ;
+    rdfs:label "awareness" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> ;
+    owl:equivalentClass dbpedia:Environmentalism .
+
+ns1:Center rdfs:label "centered" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Christians rdfs:label "Christians" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Christian .
+
+ns1:Contribute rdfs:label "contributed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Culture a owl:Class ;
+    rdfs:label "culture" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Culture .
+
+ns1:Diconic rdfs:label "diconic" .
+
+ns1:DiconicMode rdfs:label "Diconic Mode" ;
+    rdfs:subClassOf ns1:Mode .
+
+ns1:Erosion a owl:Class ;
+    rdfs:label "erosion" ;
+    rdfs:subClassOf dul:Process ;
+    owl:equivalentClass dbpedia:Erosion .
+
+ns1:Humanity a owl:Class ;
+    rdfs:label "humanity" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Human .
+
+ns1:IntellectualImpact a owl:Class ;
+    rdfs:label "Intellectual Impact" ;
+    dul:hasQuality ns1:Intellectual ;
+    rdfs:subClassOf ns1:Impact .
+
+ns1:Mode rdfs:label "Mode",
+        "mode" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:ModernCulture a owl:Class ;
+    rdfs:label "Modern Culture" ;
+    dul:hasQuality ns1:Modern ;
+    rdfs:subClassOf ns1:Culture .
+
+ns1:ModernLife a owl:Class ;
+    rdfs:label "modern life" ;
+    rdfs:subClassOf ns1:Life ;
+    owl:equivalentClass dbpedia:Modernity .
+
+ns1:Primitive a owl:Class ;
+    rdfs:label "primitive" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:PrimitiveLife a owl:Class ;
+    rdfs:label "primitive life" ;
+    dul:hasQuality ns1:Primitive ;
+    rdfs:subClassOf ns1:Life .
+
+ns1:Replace rdfs:label "replacing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Survival rdfs:label "survival" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Synce rdfs:label "syncing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:culture_1 a ns1:ModernCulture ;
+    rdfs:label "culture" .
+
+ns1:erosion_1 a ns1:Erosion ;
+    rdfs:label "erosion" ;
+    quant:hasDeterminer quant:the ;
+    ns1:erosionOf ns1:Christians .
+
+ns1:humanity_1 a ns1:GreatIntellectualImpact,
+        ns1:Humanity ;
+    rdfs:label "humanity" ;
+    dul:hasQuality ns1:Great .
+
+ns1:life_1 a ns1:PrimitiveLife ;
+    rdfs:label "life" ;
+    ns1:in ns1:life_2 .
+
+ns1:life_2 a ns1:ModernLife ;
+    rdfs:label "life" ;
+    dul:hasQuality ns1:Modern .
+
+ns1:survival_1 a ns1:Survival ;
+    rdfs:label "survival" ;
+    quant:hasDeterminer quant:the ;
+    ns1:survivalOf ns1:life_1 .
+
+owl:Thing rdfs:label "It" .
+
+ns1:Great rdfs:label "great" .
+
+ns1:GreatIntellectualImpact a owl:Class ;
+    rdfs:label "Great Intellectual Impact" ;
+    rdfs:subClassOf ns1:IntellectualImpact .
+
+ns1:Impact a owl:Class ;
+    rdfs:label "impact" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Intellectual a owl:Class ;
+    rdfs:label "intellectual" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Intelligence .
+
+ns1:Life a owl:Class ;
+    rdfs:label "life" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Modern a owl:Class ;
+    rdfs:label "modern" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:awareness_1 a ns1:Awareness ;
+    rdfs:label "awareness" ;
+    ns1:about ns1:survival_1 .
+
+ns1:mode_1 a ns1:DiconicMode ;
+    rdfs:label "mode" ;
+    dul:hasQuality ns1:Diconic ;
+    quant:hasDeterminer quant:the .
+
+ns1:Uk rdfs:label "UK" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality owl:Thing .
+

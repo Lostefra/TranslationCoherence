@@ -1,0 +1,163 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence659.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+vn.role:Patient2 rdfs:label "with" .
+
+translation_coherence:zh_sentence659.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence659" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence659" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "its" .
+
+ns1:civilism_1 rdfs:label "civilism" .
+
+ns1:docuverse earmark:hasContent "Sciabarra wrote that the left side was denied by its anti-Semitism, imperialist politics, but that right was confused with heroism and civilism."^^xsd:string .
+
+ns1:imperialist_1 a ns1:Imperialist ;
+    rdfs:label "imperialist" ;
+    dul:associatedWith ns1:anti-semitism_1 .
+
+ns1:politics_1 rdfs:label "politics" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:write_1 a ns1:Write ;
+    rdfs:label "wrote" ;
+    vn.role:Agent ns1:Sciabarra ;
+    vn.role:Topic ns1:situation_1 .
+
+ns1:Anti-semitism a owl:Class ;
+    rdfs:label "anti-Semitism" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> ;
+    owl:equivalentClass dbpedia:Antisemitism .
+
+ns1:Civilism a owl:Class ;
+    rdfs:label "civilism" ;
+    owl:equivalentClass dbpedia:Secularism .
+
+ns1:Confuse rdfs:label "confused" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Deny rdfs:label "denied" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Heroism a owl:Class ;
+    rdfs:label "heroism" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Hero .
+
+ns1:ImperialistPolitics a owl:Class ;
+    rdfs:label "imperialist politics" ;
+    dul:associatedWith ns1:Imperialist ;
+    rdfs:subClassOf ns1:Politics .
+
+ns1:Left a owl:Class ;
+    rdfs:label "left" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Left-wing_politics .
+
+ns1:LeftSide a owl:Class ;
+    rdfs:label "Left Side" ;
+    dul:hasQuality ns1:Left ;
+    rdfs:subClassOf ns1:Side .
+
+ns1:Politics a owl:Class ;
+    rdfs:label "politics" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Politics .
+
+ns1:Right a owl:Class ;
+    rdfs:label "right" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Right-wing_politics .
+
+ns1:Sciabarra rdfs:label "Sciabarra" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Side a owl:Class ;
+    rdfs:label "side" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Write rdfs:label "wrote" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:confuse_1 a ns1:Confuse ;
+    rdfs:label "confused" ;
+    vn.role:Patient1 ns1:right_1 ;
+    vn.role:Patient2 ns1:heroism_1 .
+
+ns1:deny_1 a ns1:Deny ;
+    rdfs:label "denied" ;
+    vn.role:Agent ns1:anti-semitism_1 ;
+    vn.role:Theme ns1:side_1 .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "its" .
+
+ns1:right_1 a ns1:Right ;
+    rdfs:label "right" ;
+    quant:hasDeterminer quant:that .
+
+ns1:side_1 a ns1:LeftSide ;
+    rdfs:label "side" ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:confuse_1,
+        ns1:deny_1,
+        ns1:heroism_1 .
+
+ns1:Imperialist a owl:Class ;
+    rdfs:label "imperialist" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Imperialism .
+
+ns1:anti-semitism_1 a ns1:Anti-semitism,
+        ns1:ImperialistPolitics ;
+    rdfs:label "anti-Semitism" ;
+    ns1:imperialistPoliticsOf ns1:neuter_1 .
+
+ns1:heroism_1 a ns1:Civilism,
+        ns1:Heroism ;
+    rdfs:label "heroism" .
+

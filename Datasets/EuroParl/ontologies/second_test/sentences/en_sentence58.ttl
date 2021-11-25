@@ -1,0 +1,146 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence58.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence58.ttl a owl:Ontology ;
+    rdfs:label "en_sentence58" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence58" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "As" .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "As people have said, the situation there is extremely volatile. There is, in fact, a risk of a military coup in the future."^^xsd:string .
+
+ns1:risk_1 rdfs:label "risk" .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "said" ;
+    vn.role:Agent ns1:people_1 ;
+    vn.role:Topic ns1:situation_3 ;
+    ns1:as ns1:situation_2 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:coup_1,
+        ns1:there_2 ;
+    ns1:in ns1:fact_1 .
+
+ns1:there_1 rdfs:label "there" .
+
+ns1:Coup a owl:Class ;
+    rdfs:label "coup" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Extremely rdfs:label "extremely" .
+
+ns1:Fact rdfs:label "fact" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Future rdfs:label "future" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:MilitaryCoup a owl:Class ;
+    rdfs:label "Military Coup" ;
+    dul:hasQuality ns1:Military ;
+    rdfs:subClassOf ns1:Coup .
+
+ns1:People rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Risk rdfs:label "risk" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Say rdfs:label "said" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Volatile rdfs:label "volatile" ;
+    dul:hasQuality ns1:Extremely .
+
+ns1:event_1 a dul:Event .
+
+ns1:fact_1 a ns1:Fact ;
+    rdfs:label "fact" .
+
+ns1:future_1 a ns1:Future ;
+    rdfs:label "future" ;
+    quant:hasDeterminer quant:the .
+
+ns1:people_1 a ns1:People ;
+    rdfs:label "people" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:event_1 .
+
+ns1:situation_3 a ns1:Situation,
+        ns1:There ;
+    rdfs:label "situation" ;
+    dul:hasQuality ns1:Volatile ;
+    quant:hasDeterminer quant:the .
+
+ns1:there_2 a ns1:Risk,
+        ns1:There ;
+    rdfs:label "There" ;
+    quant:hasDeterminer quant:a ;
+    ns1:thereOf ns1:coup_1 .
+
+ns1:Military a owl:Class ;
+    rdfs:label "military" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:There rdfs:label "There",
+        "there" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location>,
+        ns1:Situation .
+
+ns1:coup_1 a ns1:MilitaryCoup ;
+    rdfs:label "coup" ;
+    dul:hasQuality ns1:Military ;
+    quant:hasDeterminer quant:a ;
+    ns1:in ns1:future_1 .
+
+ns1:Situation rdfs:label "situation" ;
+    rdfs:subClassOf dul:Situation .
+

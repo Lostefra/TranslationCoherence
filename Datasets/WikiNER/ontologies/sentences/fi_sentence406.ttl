@@ -1,0 +1,172 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence406.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Topic rdfs:label "about" .
+
+translation_coherence:fi_sentence406.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence406" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence406" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "Our",
+        "his",
+        "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:To rdfs:label "to" .
+
+ns1:Without rdfs:label "Without" .
+
+ns1:docuverse earmark:hasContent "Without his headvaraers, Ward_Hill_Lamon, to whom he told about his famous dream of his own assassination, Lincoln left the play Our American Cous on April 14, 1865."^^xsd:string .
+
+ns1:event_1 a dul:Event ;
+    ns1:without ns1:headvaraer_1 .
+
+ns1:leave_1 a ns1:Leave ;
+    rdfs:label "left" ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Location ns1:assassination_1 ;
+    vn.role:Theme ns1:play_1 .
+
+ns1:tell_1 a ns1:Tell ;
+    rdfs:label "told" ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Recipient ns1:cous_1 ;
+    vn.role:Topic ns1:dream_1 ;
+    ns1:to ns1:headvaraer_1 .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+ns1:AmericanCous a owl:Class ;
+    rdfs:label "American Cous" ;
+    dul:hasQuality ns1:American ;
+    rdfs:subClassOf ns1:Cous .
+
+ns1:Assassination a owl:Class ;
+    rdfs:label "assassination" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> ;
+    owl:equivalentClass dbpedia:Assassination .
+
+ns1:Cous a owl:Class ;
+    rdfs:label "Cous" .
+
+ns1:Dream a owl:Class ;
+    rdfs:label "dream" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Famous a owl:Class ;
+    rdfs:label "famous" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FamousDream a owl:Class ;
+    rdfs:label "famous dream" ;
+    dul:hasQuality ns1:Famous ;
+    rdfs:subClassOf ns1:Dream .
+
+ns1:Headvaraer rdfs:label "headvaraers" .
+
+ns1:Leave rdfs:label "left" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Own a owl:Class ;
+    rdfs:label "own" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:OwnAssassination a owl:Class ;
+    rdfs:label "Own Assassination" ;
+    dul:hasQuality ns1:Own ;
+    rdfs:subClassOf ns1:Assassination .
+
+ns1:Play rdfs:label "play" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Tell rdfs:label "told" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Ward_hill_lamon rdfs:label "Ward Hill Lamon" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Ward_Hill_Lamon .
+
+ns1:cous_1 a ns1:AmericanCous ;
+    rdfs:label "Cous" ;
+    dul:hasQuality ns1:American ;
+    ns1:americanCousOf ns1:person_1 ;
+    ns1:on "1865-04-14"^^xsd:date .
+
+ns1:dream_1 a ns1:FamousDream ;
+    rdfs:label "dream" ;
+    ns1:famousDreamOf ns1:assassination_1,
+        ns1:male_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "Our" .
+
+ns1:play_1 a ns1:Play ;
+    rdfs:label "play" ;
+    quant:hasDeterminer quant:the .
+
+ns1:American a owl:Class ;
+    rdfs:label "American" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:assassination_1 a ns1:OwnAssassination ;
+    rdfs:label "assassination" ;
+    ns1:ownAssassinationOf ns1:male_1 .
+
+ns1:headvaraer_1 a ns1:Headvaraer ;
+    rdfs:label "headvaraers" ;
+    dul:associatedWith ns1:Ward_hill_lamon ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:headvaraerOf ns1:male_1 .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "he",
+        "his" .
+

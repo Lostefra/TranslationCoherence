@@ -1,0 +1,132 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence50.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Cause rdfs:label "by" .
+
+translation_coherence:zh_sentence50.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence50" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence50" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:At rdfs:label "at" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "It was inspired by the early feminist at the end of the nineteenth century, such as Lui Patsons, Ema Kimman, Tamil de Clinir and Dora_Marsden."^^xsd:string .
+
+ns1:inspire_1 a ns1:Inspire ;
+    rdfs:label "inspired" ;
+    vn.role:Cause ns1:feminist_1 ;
+    vn.role:Experiencer ns1:neuter_1 .
+
+ns1:Century a owl:Class ;
+    rdfs:label "century" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Dora_marsden rdfs:label "Dora Marsden" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Dora_Marsden .
+
+ns1:Early a owl:Class ;
+    rdfs:label "early" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:EarlyFeminist a owl:Class ;
+    rdfs:label "early feminist" ;
+    dul:hasQuality ns1:Early ;
+    rdfs:subClassOf ns1:Feminist .
+
+ns1:Ema_kimman rdfs:label "Ema Kimman" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Dora_marsden,
+        ns1:Tamil_de_clinir .
+
+ns1:End rdfs:label "end" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Feminist a owl:Class ;
+    rdfs:label "feminist" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Feminism .
+
+ns1:Inspire rdfs:label "inspired" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Lui_patsons rdfs:label "Lui Patsons" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Ema_kimman .
+
+ns1:Nineteenth a owl:Class ;
+    rdfs:label "nineteenth" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:NineteenthCentury a owl:Class ;
+    rdfs:label "Nineteenth Century" ;
+    dul:hasQuality ns1:Nineteenth ;
+    rdfs:subClassOf ns1:Century .
+
+ns1:Tamil_de_clinir rdfs:label "Tamil de Clinir" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:century_1 a ns1:NineteenthCentury ;
+    rdfs:label "century" ;
+    quant:hasDeterminer quant:the .
+
+ns1:end_1 a ns1:End ;
+    rdfs:label "end" ;
+    quant:hasDeterminer quant:the ;
+    ns1:endOf ns1:century_1 .
+
+ns1:feminist_1 a ns1:EarlyFeminist ;
+    rdfs:label "feminist" ;
+    quant:hasDeterminer quant:the ;
+    ns1:as ns1:Lui_patsons ;
+    ns1:at ns1:end_1 .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "It" .
+
+owl:Thing rdfs:label "It" .
+

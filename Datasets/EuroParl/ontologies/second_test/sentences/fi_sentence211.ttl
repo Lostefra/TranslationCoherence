@@ -1,0 +1,216 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence211.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme2 rdfs:label "to" .
+
+translation_coherence:fi_sentence211.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence211" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence211" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "of",
+        "their" .
+
+ns1:Which rdfs:label "which" .
+
+ns1:do_1 a ns1:Do ;
+    rdfs:label "do" ;
+    boxer:agent ns1:there_1 ;
+    boxer:patient ns1:thing_2 .
+
+ns1:docuverse earmark:hasContent "In this context, I would like to refer to the problems of tunnels that Messers Rack and Swoboda have referred to, which is undoubtedly a very sensitive issue, and there is a lot of work to do to improve their safety."^^xsd:string .
+
+ns1:improve_1 a ns1:Improve ;
+    rdfs:label "improve" ;
+    vn.role:Agent ns1:there_1 ;
+    vn.role:Patient ns1:safety_1 .
+
+ns1:like_1 a ns1:Like ;
+    rdfs:label "like" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Experiencer ns1:person_1 ;
+    vn.role:Theme ns1:situation_2 ;
+    ns1:in ns1:context_1 .
+
+ns1:lot_1 rdfs:label "lot" .
+
+ns1:refer_2 a ns1:Refer ;
+    rdfs:label "referred" ;
+    boxer:theme ns1:messer_1 ;
+    vn.role:Theme1 ns1:Swoboda ;
+    ns1:in ns1:context_1 ;
+    ns1:which ns1:situation_1 .
+
+ns1:thing_1 coref:coref ns1:messer_1 .
+
+ns1:Context rdfs:label "context" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Do rdfs:label "do" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Improve rdfs:label "improve" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Like rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Lot rdfs:label "lot" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:Messer a owl:Class ;
+    rdfs:label "Messers" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Partie_de_cartes .
+
+ns1:Person rdfs:label "I" .
+
+ns1:Problem rdfs:label "problems" .
+
+ns1:Rack rdfs:label "Rack" ;
+    boxer:possibleType owl:Thing .
+
+ns1:Safety rdfs:label "safety" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:SensitiveIssue a owl:Class ;
+    rdfs:label "Sensitive Issue" ;
+    dul:hasQuality ns1:Sensitive ;
+    rdfs:subClassOf ns1:Issue .
+
+ns1:There rdfs:label "there" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Tunnel rdfs:label "tunnels" .
+
+ns1:Undoubtedly rdfs:label "undoubtedly" .
+
+ns1:Work rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:issue_1 a ns1:VerySensitiveIssue ;
+    rdfs:label "issue" ;
+    dul:hasQuality ns1:Sensitive ;
+    quant:hasDeterminer quant:a .
+
+ns1:problem_1 a ns1:Problem ;
+    rdfs:label "problems" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:problemOf ns1:tunnel_1 .
+
+ns1:refer_1 a ns1:Refer ;
+    rdfs:label "refer" ;
+    vn.role:Theme1 ns1:person_1 ;
+    vn.role:Theme2 ns1:problem_1 .
+
+ns1:safety_1 a ns1:Safety ;
+    rdfs:label "safety" ;
+    ns1:safetyOf ns1:messer_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Issue,
+        ns1:Sensitive,
+        ns1:Very,
+        ns1:VerySensitiveIssue,
+        ns1:issue_1 ;
+    dul:hasQuality ns1:Undoubtedly .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:messer_1,
+        ns1:refer_1,
+        ns1:tunnel_1 .
+
+ns1:thing_2 a owl:Thing .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "work" .
+
+ns1:Issue a owl:Class ;
+    rdfs:label "issue" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Refer rdfs:label "refer",
+        "referred" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Swoboda rdfs:label "Swoboda" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Very rdfs:label "very" .
+
+ns1:VerySensitiveIssue a owl:Class ;
+    rdfs:label "very sensitive issue" ;
+    rdfs:subClassOf ns1:SensitiveIssue .
+
+ns1:context_1 a ns1:Context ;
+    rdfs:label "context" ;
+    quant:hasDeterminer quant:this .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:there_1 a ns1:Lot,
+        ns1:There ;
+    rdfs:label "there" ;
+    quant:hasDeterminer quant:a ;
+    ns1:thereOf ns1:work_1 .
+
+ns1:Sensitive a owl:Class ;
+    rdfs:label "sensitive" ;
+    dul:hasQuality ns1:Very ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:tunnel_1 a ns1:Tunnel ;
+    rdfs:label "tunnels" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:messer_1 a owl:Thing,
+        ns1:Messer ;
+    rdfs:label "Messers",
+        "their" ;
+    boxer:agent ns1:Swoboda,
+        ns1:tunnel_1 ;
+    boxer:patient ns1:Rack .
+

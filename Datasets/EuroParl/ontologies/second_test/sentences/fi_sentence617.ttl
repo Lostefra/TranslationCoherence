@@ -1,0 +1,144 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence617.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence617.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence617" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence617" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "The fact that economic development alone does not help combat unemployment means that at least  3 of GDP is needed to create additional jobs."^^xsd:string .
+
+ns1:mean_1 a ns1:Mean ;
+    rdfs:label "means" ;
+    vn.role:Agent ns1:fact_1 ;
+    vn.role:Theme ns1:need_1 .
+
+ns1:Additional rdfs:label "additional" .
+
+ns1:AdditionalJob rdfs:subClassOf ns1:Job .
+
+ns1:Alone rdfs:label "alone" .
+
+ns1:Combat rdfs:label "combat" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Create rdfs:label "create" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Development a owl:Class ;
+    rdfs:label "development" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Economic a owl:Class ;
+    rdfs:label "economic" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:EconomicDevelopment a owl:Class ;
+    rdfs:label "Economic Development" ;
+    dul:hasQuality ns1:Economic ;
+    rdfs:subClassOf ns1:Development ;
+    owl:equivalentClass dbpedia:Economic_development .
+
+ns1:Fact rdfs:label "fact" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Gdp rdfs:label "GDP" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Gross_domestic_product .
+
+ns1:Help rdfs:label "help" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Job rdfs:label "jobs" .
+
+ns1:Mean rdfs:label "means" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Need rdfs:label "needed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Unemployment a owl:Class ;
+    rdfs:label "unemployment" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Unemployment .
+
+ns1:combat_1 a ns1:Combat ;
+    rdfs:label "combat" ;
+    vn.role:Agent ns1:development_1 ;
+    vn.role:Theme ns1:unemployment_1 .
+
+ns1:create_1 a ns1:Create ;
+    rdfs:label "create" ;
+    vn.role:Agent "0001-01-03"^^xsd:date ;
+    vn.role:Product ns1:job_1 .
+
+ns1:fact_1 a ns1:Fact ;
+    rdfs:label "fact" ;
+    boxer:theme ns1:help_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:help_1 a ns1:Help ;
+    rdfs:label "help" ;
+    boxer:theme ns1:combat_1 ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:development_1 .
+
+ns1:job_1 a dbpedia:Employment,
+        ns1:AdditionalJob ;
+    rdfs:label "jobs" ;
+    dul:hasQuality ns1:Additional ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:need_1 a ns1:Need ;
+    rdfs:label "needed" ;
+    boxer:theme ns1:create_1 ;
+    vn.role:Patient "0001-01-03"^^xsd:date ;
+    ns1:dateOf ns1:Gdp .
+
+ns1:unemployment_1 a ns1:Unemployment ;
+    rdfs:label "unemployment" .
+
+ns1:development_1 a ns1:EconomicDevelopment ;
+    rdfs:label "development" ;
+    dul:hasQuality ns1:Alone .
+

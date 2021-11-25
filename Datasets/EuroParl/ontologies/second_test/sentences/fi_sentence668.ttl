@@ -1,0 +1,205 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence668.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence668.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence668" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence668" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Not rdfs:label "not" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Where rdfs:label "where" .
+
+ns1:demonstration_1 rdfs:label "demonstration" .
+
+ns1:docuverse earmark:hasContent "Finally, I say that in this case we should learn America, where hard work is still in fashion, and success is a demonstration of ability and not of envy, as it is often in Europe."^^xsd:string .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "say" ;
+    dul:hasQuality ns1:Finally ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Topic ns1:learn_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:envy_1,
+        ns1:fashion_1,
+        ns1:success_1,
+        ns1:work_1 ;
+    dul:hasQuality ns1:Still .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:America,
+        ns1:Europe,
+        ns1:ability_1,
+        ns1:case_1,
+        ns1:envy_1,
+        ns1:fashion_1,
+        ns1:learn_1,
+        ns1:situation_3,
+        ns1:situation_4,
+        ns1:success_1,
+        ns1:work_1 ;
+    dul:hasQuality ns1:Often .
+
+dbpedia:Americas a schema:Continent,
+        schema:Place .
+
+dbpedia:Europe a schema:Continent,
+        schema:Place .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Ability rdfs:label "ability" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Case rdfs:label "case" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Demonstration rdfs:label "demonstration" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Envy a owl:Class ;
+    rdfs:label "envy" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> ;
+    owl:equivalentClass dbpedia:Envy .
+
+ns1:Fashion rdfs:label "fashion" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Finally rdfs:label "Finally" .
+
+ns1:Hard a owl:Class ;
+    rdfs:label "hard" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:HardWork a owl:Class ;
+    rdfs:label "Hard Work" ;
+    dul:hasQuality ns1:Hard ;
+    rdfs:subClassOf ns1:Work .
+
+ns1:Learn rdfs:label "learn" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Say rdfs:label "say" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Still rdfs:label "still" .
+
+ns1:Success rdfs:label "success" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Work a owl:Class ;
+    rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:America rdfs:label "America" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:hasQuality owl:Thing ;
+    owl:sameAs dbpedia:Americas ;
+    ns1:locatedIn ns1:Europe ;
+    ns1:where ns1:situation_3 .
+
+ns1:Europe rdfs:label "Europe" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Europe .
+
+ns1:Often rdfs:label "often" .
+
+ns1:Person rdfs:label "I",
+        "we" .
+
+ns1:case_1 a ns1:Case ;
+    rdfs:label "case" ;
+    quant:hasDeterminer quant:this .
+
+ns1:learn_1 a ns1:Learn ;
+    rdfs:label "learn" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Theme ns1:America ;
+    ns1:as ns1:situation_4 ;
+    ns1:in ns1:case_1 .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:ability_1,
+        ns1:envy_1,
+        ns1:fashion_1,
+        ns1:success_1,
+        ns1:work_1 .
+
+ns1:situation_4 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:Often .
+
+ns1:ability_1 a ns1:Ability ;
+    rdfs:label "ability" .
+
+ns1:work_1 a ns1:HardWork ;
+    rdfs:label "work" ;
+    ns1:in ns1:fashion_1,
+        ns1:success_1 ;
+    ns1:notOf ns1:envy_1 .
+
+ns1:envy_1 a ns1:Envy ;
+    rdfs:label "envy" .
+
+ns1:fashion_1 a ns1:Fashion ;
+    rdfs:label "fashion" .
+
+ns1:success_1 a ns1:Demonstration,
+        ns1:Success ;
+    rdfs:label "success" ;
+    quant:hasDeterminer quant:a ;
+    ns1:successOf ns1:ability_1 .
+

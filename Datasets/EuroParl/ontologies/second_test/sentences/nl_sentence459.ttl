@@ -1,0 +1,217 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence459.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence459.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence459" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence459" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Among rdfs:label "among" .
+
+ns1:By rdfs:label "by" .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:care_1 rdfs:label "care" .
+
+ns1:conclude_1 a ns1:Conclude ;
+    rdfs:label "conclude" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Product ns1:President ;
+    ns1:concludeBy ns1:say_1 .
+
+ns1:docuverse earmark:hasContent "I will conclude, Mr. President, by saying that failing the commissioner's communications are targeting territorial pacts, and mostly, methods of fighting unemployment among women and young people are serious care."^^xsd:string .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> rdfs:label "Mr." ;
+    boxer:possibleType dul:Role .
+
+ns1:Commissioner a owl:Class ;
+    rdfs:label "commissioner" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Communication rdfs:label "communications" .
+
+ns1:Conclude rdfs:label "conclude" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Fail rdfs:label "failing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Fight rdfs:label "fighting" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Method rdfs:label "methods" .
+
+ns1:Mostly rdfs:label "mostly" .
+
+ns1:Pact rdfs:label "pacts" .
+
+ns1:People a owl:Class ;
+    rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Person rdfs:label "I" .
+
+ns1:President rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    owl:sameAs dbpedia:President .
+
+ns1:Say rdfs:label "saying" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Target rdfs:label "targeting" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Territorial rdfs:label "territorial" .
+
+ns1:TerritorialPact rdfs:subClassOf ns1:Pact .
+
+ns1:The a owl:Class ;
+    rdfs:label "the" .
+
+ns1:TheCommissioner a owl:Class ;
+    rdfs:label "the commissioner" ;
+    dul:associatedWith ns1:The ;
+    rdfs:subClassOf ns1:Commissioner .
+
+ns1:Unemployment a owl:Class ;
+    rdfs:label "unemployment" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Unemployment .
+
+ns1:Woman rdfs:label "women" .
+
+ns1:Young a owl:Class ;
+    rdfs:label "young" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:YoungPeople a owl:Class ;
+    rdfs:label "Young People" ;
+    dul:hasQuality ns1:Young ;
+    rdfs:subClassOf ns1:People .
+
+ns1:fail_1 a ns1:Fail ;
+    rdfs:label "failing" ;
+    vn.role:Agent ns1:commissioner_1 .
+
+ns1:fight_1 a ns1:Fight ;
+    rdfs:label "fighting" ;
+    vn.role:Actor1 ns1:method_1 ;
+    vn.role:Actor2 ns1:unemployment_1 ;
+    ns1:among ns1:people_1,
+        ns1:woman_1 .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "saying" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Topic ns1:situation_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:Care,
+        ns1:Serious,
+        ns1:SeriousCare,
+        ns1:commissioner_1,
+        ns1:communication_1,
+        ns1:fail_1,
+        ns1:fight_1,
+        ns1:method_1,
+        ns1:pact_1,
+        ns1:people_1,
+        ns1:target_1,
+        ns1:unemployment_1,
+        ns1:woman_1 .
+
+ns1:target_1 a ns1:Target ;
+    rdfs:label "targeting" ;
+    vn.role:Agent ns1:communication_1 ;
+    vn.role:Theme ns1:pact_1 .
+
+ns1:Care a owl:Class ;
+    rdfs:label "care" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Serious a owl:Class ;
+    rdfs:label "serious" ;
+    dul:hasQuality ns1:Mostly ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SeriousCare a owl:Class ;
+    rdfs:label "serious care" ;
+    dul:hasQuality ns1:Serious ;
+    rdfs:subClassOf ns1:Care .
+
+ns1:communication_1 a ns1:Communication ;
+    rdfs:label "communications" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:communicationOf ns1:commissioner_1 .
+
+ns1:method_1 a ns1:Method,
+        ns1:SeriousCare ;
+    rdfs:label "methods" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:pact_1 a ns1:TerritorialPact ;
+    rdfs:label "pacts" ;
+    dul:hasQuality ns1:Territorial ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:people_1 a ns1:YoungPeople ;
+    rdfs:label "people" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:unemployment_1 a ns1:Unemployment ;
+    rdfs:label "unemployment" .
+
+ns1:woman_1 a ns1:Woman ;
+    rdfs:label "women" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:commissioner_1 a ns1:TheCommissioner ;
+    rdfs:label "commissioner" ;
+    quant:hasDeterminer quant:the .
+

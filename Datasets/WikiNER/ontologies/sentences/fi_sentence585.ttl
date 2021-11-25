@@ -1,0 +1,209 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence585.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%2C> rdfs:label "," .
+
+translation_coherence:fi_sentence585.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence585" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence585" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Although rdfs:label "Although" .
+
+ns1:Noteq rdfs:label "other" .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:docuverse earmark:hasContent "Although he used Rand's script withoksiimal changes, he didn't like the movie from beginning to end, making it easier to edit, play and other elements."^^xsd:string .
+
+ns1:script_1 a ns1:Script ;
+    rdfs:label "script" ;
+    dul:associatedWith ns1:change_1,
+        ns1:withoksiimal_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:edit_1,
+        ns1:element_1,
+        ns1:play_1,
+        ns1:thing_1 ;
+    dul:hasQuality ns1:Easier .
+
+ns1:use_1 a ns1:Use ;
+    rdfs:label "used" ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Theme ns1:change_1 ;
+    ns1:although ns1:situation_2 .
+
+ns1:Begin rdfs:label "beginning" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Change rdfs:label "changes" .
+
+ns1:Like rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Make rdfs:label "making" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Movie a owl:Class ;
+    rdfs:label "movie" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity>,
+        dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Film .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType time:Interval .
+
+ns1:ScriptWithoksiimal a owl:Class ;
+    rdfs:label "script withoksiimal" ;
+    dul:associatedWith ns1:Script ;
+    rdfs:subClassOf ns1:Withoksiimal .
+
+ns1:ScriptWithoksiimalChange rdfs:subClassOf ns1:WithoksiimalChange .
+
+ns1:Use rdfs:label "used" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Withoksiimal a owl:Class ;
+    rdfs:label "withoksiimal" .
+
+ns1:WithoksiimalChange rdfs:subClassOf ns1:Change .
+
+ns1:begin_1 a ns1:Begin ;
+    rdfs:label "beginning" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:movie_1 ;
+    vn.role:Theme ns1:end_1 .
+
+ns1:element_2 a ns1:Element ;
+    rdfs:label "elements" ;
+    quant:hasDeterminer quant:other ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:like_1 a ns1:Like ;
+    rdfs:label "like" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Experiencer ns1:male_1 ;
+    vn.role:Theme ns1:movie_1 .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "making" ;
+    boxer:theme ns1:situation_2 ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:movie_1 .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "it" .
+
+ns1:withoksiimal_1 a ns1:ScriptWithoksiimal ;
+    rdfs:label "withoksiimal" ;
+    dul:associatedWith ns1:change_1 .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Easier rdfs:label "easier" .
+
+ns1:Edit rdfs:label "edit" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:End rdfs:label "end" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Play rdfs:label "play" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Script a owl:Class ;
+    rdfs:label "script" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Screenplay .
+
+ns1:edit_1 a ns1:Edit ;
+    rdfs:label "edit" ;
+    boxer:agent ns1:thing_1 ;
+    boxer:patient ns1:neuter_1 ;
+    dul:associatedWith ns1:element_1,
+        ns1:play_1 .
+
+ns1:end_1 a ns1:End ;
+    rdfs:label "end" ;
+    vn.role:Theme ns1:movie_1 .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "he" .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Easier,
+        ns1:Edit,
+        ns1:Element,
+        ns1:End,
+        ns1:Play,
+        ns1:begin_1,
+        ns1:edit_1,
+        ns1:element_1,
+        ns1:end_1,
+        ns1:like_1,
+        ns1:make_1,
+        ns1:play_1,
+        ns1:thing_1 .
+
+ns1:Element rdfs:label "elements",
+        "other" .
+
+ns1:change_1 a ns1:ScriptWithoksiimalChange ;
+    rdfs:label "changes" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:scriptWithoksiimalChangeOf ns1:Rand .
+
+ns1:element_1 a ns1:Element ;
+    rdfs:label "other" ;
+    owl:differentFrom ns1:element_2 .
+
+ns1:play_1 a ns1:Play ;
+    rdfs:label "play" .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:movie_1 a ns1:Movie ;
+    rdfs:label "movie" ;
+    quant:hasDeterminer quant:the .
+

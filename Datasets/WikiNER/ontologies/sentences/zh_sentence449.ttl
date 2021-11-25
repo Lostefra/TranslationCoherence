@@ -1,0 +1,192 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence449.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme rdfs:label "on" .
+
+translation_coherence:zh_sentence449.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence449" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence449" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Although rdfs:label "although" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:Though rdfs:label "though" .
+
+ns1:docuverse earmark:hasContent "Even though Plato had a logical difficulty; although he had a concept of a reasonable system of abduction, he was not able to actually build one, but rely on his candidness."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "had" ;
+    vn.role:Agent ns1:Plato ;
+    vn.role:Patient ns1:difficulty_1 ;
+    ns1:though ns1:situation_1 .
+
+dbpedia:Plato a schema:Person .
+
+ns1:Abduction a owl:Class ;
+    rdfs:label "abduction" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Abductive_reasoning .
+
+ns1:ActuallyBuild rdfs:label "Actually Build" ;
+    rdfs:subClassOf ns1:Build .
+
+ns1:Candidness rdfs:label "candidness" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Concept a owl:Class ;
+    rdfs:label "concept" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Concept .
+
+ns1:Difficulty a owl:Class ;
+    rdfs:label "difficulty" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Logical a owl:Class ;
+    rdfs:label "logical" ;
+    owl:equivalentClass dbpedia:Logic .
+
+ns1:LogicalDifficulty rdfs:label "Logical Difficulty" ;
+    dul:associatedWith ns1:Difficulty ;
+    dul:hasModality ns1:Logical .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Plato rdfs:label "Plato" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Plato .
+
+ns1:Reasonable a owl:Class ;
+    rdfs:label "reasonable" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Reason .
+
+ns1:ReasonableSystem a owl:Class ;
+    rdfs:label "reasonable system" ;
+    dul:hasQuality ns1:Reasonable ;
+    rdfs:subClassOf ns1:System .
+
+ns1:System a owl:Class ;
+    rdfs:label "system" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:System .
+
+ns1:able_1 a ns1:Able ;
+    rdfs:label "able" ;
+    boxer:agent ns1:male_1 ;
+    boxer:theme ns1:situation_1 ;
+    boxing:hasTruthValue boxing:False .
+
+ns1:build_1 a ns1:ActuallyBuild ;
+    rdfs:label "build" ;
+    dul:hasQuality ns1:Actually ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Product "1"^^xsd:nonNegativeInteger .
+
+ns1:candidness_1 a ns1:Candidness ;
+    rdfs:label "candidness" ;
+    quant:hasQuantifier quant:one ;
+    ns1:candidnessOf ns1:male_1 .
+
+ns1:difficulty_1 a ns1:LogicalDifficulty ;
+    rdfs:label "difficulty" ;
+    quant:hasDeterminer quant:a .
+
+ns1:have_2 a ns1:Have ;
+    rdfs:label "had" ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Patient ns1:concept_1 ;
+    ns1:although ns1:situation_1 .
+
+ns1:rely_1 a ns1:Rely ;
+    rdfs:label "rely" ;
+    dul:hasQuality ns1:Actually ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Theme ns1:candidness_1 .
+
+ns1:Able rdfs:label "able" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Build rdfs:label "build" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Have rdfs:label "had" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Rely rdfs:label "rely" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:abduction_1 a ns1:Abduction ;
+    rdfs:label "abduction" .
+
+ns1:concept_1 a ns1:Concept ;
+    rdfs:label "concept" ;
+    quant:hasDeterminer quant:a ;
+    ns1:conceptOf ns1:system_1 .
+
+ns1:system_1 a ns1:ReasonableSystem ;
+    rdfs:label "system" ;
+    quant:hasDeterminer quant:a ;
+    ns1:reasonableSystemOf ns1:abduction_1 .
+
+ns1:Actually rdfs:label "actually" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Able,
+        ns1:Actually,
+        ns1:Build,
+        ns1:Rely,
+        ns1:abduction_1,
+        ns1:able_1,
+        ns1:build_1,
+        ns1:concept_1,
+        ns1:have_2,
+        ns1:rely_1,
+        ns1:system_1,
+        "1"^^xsd:nonNegativeInteger .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "he",
+        "his" .
+

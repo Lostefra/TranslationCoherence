@@ -1,0 +1,167 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence651.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence651.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence651" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence651" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Although rdfs:label "Although" .
+
+ns1:As rdfs:label "as" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "Although the Republic_of_Korea is a non-traditional gesture of associates, the reference to Rand as influential political figures is often conservative or free members of the United_States Party."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Conservative,
+        ns1:figure_1 ;
+    dul:hasQuality ns1:Often .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Conservative,
+        ns1:associate_1,
+        ns1:figure_1,
+        ns1:member_1,
+        ns1:republic_of_korea_1 ;
+    ns1:although ns1:situation_3 ;
+    ns1:as ns1:figure_1,
+        ns1:member_1 .
+
+dbpedia:South_Korea rdfs:subClassOf schema:Country,
+        schema:Place .
+
+ns1:Associate rdfs:label "associates" .
+
+ns1:Figure rdfs:label "figures" .
+
+ns1:Free rdfs:label "free" .
+
+ns1:FreeMember rdfs:subClassOf ns1:Member .
+
+ns1:Influential rdfs:label "influential" .
+
+ns1:InfluentialPoliticalFigure rdfs:subClassOf ns1:PoliticalFigure .
+
+ns1:Member rdfs:label "members" .
+
+ns1:Non-traditional a owl:Class ;
+    rdfs:label "non-traditional" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Non-traditionalGesture a owl:Class ;
+    rdfs:label "non-traditional gesture" ;
+    dul:hasQuality ns1:Non-traditional ;
+    rdfs:subClassOf ns1:Gesture .
+
+ns1:Often rdfs:label "often" .
+
+ns1:Political rdfs:label "political" .
+
+ns1:PoliticalFigure rdfs:subClassOf ns1:Figure .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Reference rdfs:label "reference" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:RepublicOfKorea rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Republic_of_korea a owl:Class ;
+    rdfs:label "Republic of Korea" ;
+    rdfs:subClassOf ns1:RepublicOfKorea ;
+    owl:equivalentClass dbpedia:South_Korea .
+
+ns1:United_states_party rdfs:label "United States Party" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:event_1 a dul:Event .
+
+ns1:gesture_1 a ns1:Gesture ;
+    rdfs:label "gesture" ;
+    quant:hasDeterminer quant:a .
+
+ns1:reference_1 a ns1:Reference ;
+    rdfs:label "reference" ;
+    quant:hasDeterminer quant:the ;
+    ns1:to ns1:Rand .
+
+ns1:republic_of_korea_1 a ns1:Non-traditionalGesture,
+        ns1:Republic_of_korea ;
+    rdfs:label "Republic of Korea" ;
+    quant:hasDeterminer quant:the ;
+    owl:sameAs ns1:gesture_1 ;
+    ns1:republic_of_koreaOf ns1:associate_1 .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves ns1:event_1 .
+
+ns1:Gesture a owl:Class ;
+    rdfs:label "gesture" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:associate_1 a ns1:Associate ;
+    rdfs:label "associates" ;
+    dul:associatedWith ns1:reference_1 ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:member_1 a ns1:FreeMember ;
+    rdfs:label "members" ;
+    dul:hasQuality ns1:Free ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:freeMemberOf ns1:United_states_party .
+
+ns1:Conservative rdfs:label "conservative" ;
+    owl:sameAs dbpedia:Conservatism .
+
+ns1:figure_1 a ns1:InfluentialPoliticalFigure ;
+    rdfs:label "figures" ;
+    dul:hasQuality ns1:Conservative,
+        ns1:Influential,
+        ns1:Political ;
+    quant:hasQuantifier quant:multiple .
+

@@ -1,0 +1,122 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence639.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme2 rdfs:label "to" .
+
+translation_coherence:zh_sentence639.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence639" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence639" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Noteq rdfs:label "Other" .
+
+ns1:Of rdfs:label "her" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "Other authors and artists, such as St Steve_Ditko, Terry_Goodkind and Nil Peart, also referred to her impact."^^xsd:string .
+
+ns1:refer_1 a ns1:AlsoRefer ;
+    rdfs:label "referred" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Theme1 ns1:artist_1,
+        ns1:author_1 ;
+    vn.role:Theme2 ns1:impact_1 .
+
+dbpedia:Steve_Ditko a schema:Person .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoRefer rdfs:subClassOf ns1:Refer .
+
+ns1:Artist rdfs:label "artists" .
+
+ns1:Impact rdfs:label "impact" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Nil_peart rdfs:label "Nil Peart" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Refer rdfs:label "referred" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Steve_ditko rdfs:label "Steve Ditko" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Saint>,
+        ns1:Nil_peart,
+        ns1:Terry_goodkind ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Saint> ;
+    owl:sameAs dbpedia:Steve_Ditko .
+
+ns1:Terry_goodkind rdfs:label "Terry Goodkind" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Terry_Goodkind .
+
+ns1:artist_1 a dbpedia:Comic_book,
+        ns1:Artist ;
+    rdfs:label "artists" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:as ns1:Steve_ditko .
+
+ns1:author_1 a ns1:Author ;
+    rdfs:label "Other" ;
+    owl:differentFrom ns1:author_2 .
+
+ns1:author_2 a ns1:Author ;
+    rdfs:label "authors" ;
+    quant:hasDeterminer quant:other ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:female_1 a ns1:Female ;
+    rdfs:label "her" .
+
+ns1:impact_1 a ns1:Impact ;
+    rdfs:label "impact" ;
+    ns1:impactOf ns1:female_1 .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Saint> rdfs:label "St" ;
+    boxer:possibleType dul:Role .
+
+ns1:Author rdfs:label "Other",
+        "authors" .
+

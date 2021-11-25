@@ -1,0 +1,146 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence497.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence497.ttl a owl:Ontology ;
+    rdfs:label "it_sentence497" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence497" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "Michael_Todd's niece case trying to sell Todd's Oscar figurine shows that there are many who disagree with this idea."^^xsd:string .
+
+ns1:many_1 rdfs:label "many" .
+
+ns1:niece_1 a ns1:Niece ;
+    rdfs:label "niece" ;
+    dul:associatedWith ns1:case_1 .
+
+ns1:show_1 a ns1:Show ;
+    rdfs:label "shows" ;
+    vn.role:Agent ns1:case_1 ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:try_1 a ns1:Try ;
+    rdfs:label "trying" ;
+    vn.role:Agent ns1:case_1 ;
+    vn.role:Predicate ns1:sell_1 .
+
+ns1:Case a owl:Class ;
+    rdfs:label "case" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Disagree rdfs:label "disagree" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Figurine rdfs:label "figurine" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Idea rdfs:label "idea" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Many rdfs:label "many" .
+
+ns1:Michael_todd rdfs:label "Michael Todd" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Mike_Todd .
+
+ns1:NieceCase a owl:Class ;
+    rdfs:label "niece case" ;
+    dul:associatedWith ns1:Niece ;
+    rdfs:subClassOf ns1:Case .
+
+ns1:Oscar rdfs:label "Oscar" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Sell rdfs:label "sell" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Show rdfs:label "shows" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:There rdfs:label "there" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Todd rdfs:label "Todd" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Try rdfs:label "trying" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:disagree_1 a ns1:Disagree ;
+    rdfs:label "disagree" ;
+    vn.role:Actor ns1:there_1 ;
+    ns1:with ns1:idea_1 .
+
+ns1:figurine_1 a ns1:Figurine ;
+    rdfs:label "figurine" ;
+    dul:associatedWith ns1:Oscar ;
+    ns1:figurineOf ns1:Todd .
+
+ns1:idea_1 a ns1:Idea ;
+    rdfs:label "idea" ;
+    quant:hasDeterminer quant:this ;
+    quant:hasQuantifier quant:many .
+
+ns1:sell_1 a ns1:Sell ;
+    rdfs:label "sell" ;
+    vn.role:Agent ns1:case_1 ;
+    vn.role:Theme ns1:figurine_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:disagree_1,
+        ns1:there_1 .
+
+ns1:Niece a owl:Class ;
+    rdfs:label "niece" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:there_1 a ns1:Many,
+        ns1:There ;
+    rdfs:label "there" .
+
+ns1:case_1 a ns1:NieceCase ;
+    rdfs:label "case" ;
+    ns1:nieceCaseOf ns1:Michael_todd .
+

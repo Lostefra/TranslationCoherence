@@ -1,0 +1,221 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence646.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Attribute rdfs:label "In" .
+
+translation_coherence:ko_sentence646.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence646" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence646" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:By rdfs:label "by" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Union rdfs:label "or" .
+
+ns1:development_1 rdfs:label "development" .
+
+ns1:disjunct_1 a ns1:Disjunct ;
+    boxing:involves ns1:region_1 ;
+    ns1:union ns1:disjunct_2 .
+
+ns1:docuverse earmark:hasContent "In order to reduce unemployment, it will increase the competitiveness of the area by proper measures such as research and development, improvement of infrastructure and increasing the level of education, which will not be suitable to improve the competitiveness of one or region."^^xsd:string .
+
+ns1:increase_1 a ns1:Increase ;
+    rdfs:label "increase" ;
+    boxer:patient ns1:competitiveness_1 ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Attribute ns1:order_1 ;
+    vn.role:Patient ns1:neuter_1 ;
+    ns1:increaseBy ns1:measure_1 .
+
+ns1:reduce_1 a ns1:Reduce ;
+    rdfs:label "reduce" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:order_1 ;
+    vn.role:Patient ns1:unemployment_1 .
+
+ns1:suitable_1 a ns1:Suitable ;
+    rdfs:label "suitable" ;
+    boxer:agent ns1:measure_1 ;
+    boxer:theme ns1:improve_1 ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:hasTruthValue boxing:False .
+
+ns1:Area rdfs:label "area" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Competitiveness rdfs:label "competitiveness" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Development a owl:Class ;
+    rdfs:label "development" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Research_and_development .
+
+ns1:Education a owl:Class ;
+    rdfs:label "education" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Education .
+
+ns1:Improve rdfs:label "Improve",
+        "improve" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Improvement rdfs:label "improvement" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Infrastructure a owl:Class ;
+    rdfs:label "infrastructure" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Infrastructure .
+
+ns1:Level rdfs:label "level" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Measure rdfs:label "measures" .
+
+ns1:Order rdfs:label "order" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Proper rdfs:label "proper" .
+
+ns1:ProperMeasure rdfs:subClassOf ns1:Measure .
+
+ns1:Reduce rdfs:label "reduce" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Research rdfs:label "research" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Suitable rdfs:label "suitable" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Unemployment a owl:Class ;
+    rdfs:label "unemployment" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Unemployment .
+
+ns1:area_1 a ns1:Area ;
+    rdfs:label "area" ;
+    quant:hasDeterminer quant:the .
+
+ns1:disjunct_2 a ns1:Disjunct ;
+    boxing:involves ns1:Region,
+        ns1:region_1 .
+
+ns1:education_1 a ns1:Education ;
+    rdfs:label "education" .
+
+ns1:improve_1 a ns1:Improve ;
+    rdfs:label "improve" ;
+    vn.role:Agent ns1:measure_1 ;
+    vn.role:Patient ns1:competitiveness_1 .
+
+ns1:improvement_1 a ns1:Improvement ;
+    rdfs:label "improvement" ;
+    ns1:improvementOf ns1:infrastructure_1 .
+
+ns1:increase_2 a ns1:Increase ;
+    rdfs:label "increasing" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Patient ns1:level_1 .
+
+ns1:infrastructure_1 a ns1:Infrastructure ;
+    rdfs:label "infrastructure" .
+
+ns1:level_1 a ns1:Level ;
+    rdfs:label "level" ;
+    quant:hasDeterminer quant:the ;
+    ns1:levelOf ns1:education_1 .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "it" .
+
+ns1:research_1 a ns1:Development,
+        ns1:Research ;
+    rdfs:label "research" ;
+    dul:associatedWith ns1:improvement_1,
+        ns1:increase_2 ;
+    quant:hasDeterminer quant:such .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:unemployment_1 a ns1:Unemployment ;
+    rdfs:label "unemployment" .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Increase rdfs:label "increase",
+        "increasing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Region rdfs:label "region" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:competitiveness_1 a ns1:Competitiveness ;
+    rdfs:label "competitiveness" ;
+    quant:hasDeterminer quant:the ;
+    ns1:competitivenessOf ns1:area_1,
+        ns1:region_1 .
+
+ns1:order_1 a ns1:Order ;
+    rdfs:label "order" .
+
+ns1:measure_1 a ns1:ProperMeasure ;
+    rdfs:label "measures" ;
+    dul:hasQuality ns1:Proper ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:as ns1:research_1 .
+
+ns1:region_1 a ns1:Region ;
+    rdfs:label "region" ;
+    dul:hasDataValue "1"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:one .
+

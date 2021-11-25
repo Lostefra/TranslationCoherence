@@ -1,0 +1,165 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence109.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Elongest> rdfs:label "longest" .
+
+translation_coherence:nl_sentence109.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence109" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence109" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Longest rdfs:label "longest" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Rock a ns1:RemarkableNaturalWonder ;
+    rdfs:label "Rock" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith ns1:Natural_bridge,
+        ns1:east_1 ;
+    dul:hasQuality ns1:Remarkable ;
+    ns1:locatedIn ns1:Alabama .
+
+ns1:bridge_1 a ns1:Bridge ;
+    rdfs:label "bridge" ;
+    dul:associatedWith ns1:east_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:docuverse earmark:hasContent "A remarkable natural wonder in Alabama is Natural_Bridge Rock, the longest natural bridge east of the Rockies, south of Haleyville, in Winston_County."^^xsd:string .
+
+ns1:south_1 rdfs:label "south" .
+
+ns1:wonder_1 rdfs:label "wonder" ;
+    quant:hasDeterminer quant:a .
+
+dbpedia:Alabama a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:Alabama rdfs:label "Alabama" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Alabama .
+
+ns1:BridgeEast a owl:Class ;
+    rdfs:label "bridge east" ;
+    dul:associatedWith ns1:Bridge ;
+    rdfs:subClassOf ns1:East .
+
+ns1:East a owl:Class ;
+    rdfs:label "east" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Eastern_United_States .
+
+ns1:Haleyville rdfs:label "Haleyville" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs <http://dbpedia.org/resource/Haleyville,_Alabama> .
+
+ns1:LongestNaturalBridge a owl:Class .
+
+ns1:LongestNaturalBridgeEast a owl:Class ;
+    rdfs:label "longest natural bridge east" ;
+    dul:associatedWith ns1:LongestNaturalBridge ;
+    rdfs:subClassOf ns1:NaturalBridgeEast .
+
+ns1:Natural a owl:Class ;
+    rdfs:label "Natural",
+        "natural" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:NaturalBridge a owl:Class .
+
+ns1:NaturalWonder a owl:Class ;
+    rdfs:label "natural wonder" ;
+    dul:hasQuality ns1:Natural ;
+    rdfs:subClassOf ns1:Wonder .
+
+ns1:Natural_bridge rdfs:label "Natural Bridge" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs <http://dbpedia.org/resource/Natural_Bridge,_Alabama> .
+
+ns1:Remarkable rdfs:label "remarkable" .
+
+ns1:RemarkableNaturalWonder a owl:Class ;
+    rdfs:label "remarkable natural wonder" ;
+    rdfs:subClassOf ns1:NaturalWonder .
+
+ns1:Rockies a ns1:South ;
+    rdfs:label "Rockies",
+        "south" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Rocky_Mountains ;
+    ns1:locatedIn ns1:Winston_county ;
+    ns1:southOf ns1:Haleyville .
+
+ns1:South a owl:Class ;
+    rdfs:label "Rockies",
+        "south" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> ;
+    owl:equivalentClass dbpedia:Southern_United_States .
+
+ns1:Winston_county rdfs:label "Winston County" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs <http://dbpedia.org/resource/Winston_County,_Alabama> .
+
+ns1:Wonder a owl:Class ;
+    rdfs:label "wonder" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Bridge a owl:Class ;
+    rdfs:label "bridge" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:east_1 a ns1:LongestNaturalBridgeEast,
+        ns1:NaturalBridgeEast ;
+    rdfs:label "east" ;
+    ns1:longestAmong ns1:NaturalBridgeEast ;
+    ns1:longestNaturalBridgeEastOf ns1:Rockies .
+
+ns1:NaturalBridgeEast a owl:Class ;
+    rdfs:label "natural bridge east" ;
+    dul:associatedWith ns1:NaturalBridge ;
+    rdfs:subClassOf ns1:BridgeEast .
+

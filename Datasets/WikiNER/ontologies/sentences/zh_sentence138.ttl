@@ -1,0 +1,108 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence138.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence138.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence138" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence138" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In",
+        "in" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:With rdfs:label "with" .
+
+ns1:base_1 a ns1:AlsoBase ;
+    rdfs:label "based" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Theme1 ns1:merger_1 ;
+    ns1:locatedIn ns1:Bamsha .
+
+ns1:complete_1 a ns1:Complete ;
+    rdfs:label "completed" ;
+    vn.role:Theme ns1:merger_1 .
+
+ns1:docuverse earmark:hasContent "In November 2006, regional financial completed the merger with Am South, which was also based in Bamsha."^^xsd:string .
+
+ns1:event_1 a dul:Event ;
+    dul:associatedWith ns1:merger_1 ;
+    ns1:in "2006-11-01"^^xsd:date .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoBase rdfs:subClassOf ns1:Base .
+
+ns1:Am_south rdfs:label "Am South" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Bamsha rdfs:label "Bamsha" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Base rdfs:label "based" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Complete rdfs:label "completed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Financial rdfs:label "financial" .
+
+ns1:Merger a owl:Class ;
+    rdfs:label "merger" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Regional rdfs:label "regional" .
+
+ns1:The a owl:Class ;
+    rdfs:label "the" .
+
+ns1:TheMerger a owl:Class ;
+    rdfs:label "The Merger" ;
+    dul:associatedWith ns1:The ;
+    rdfs:subClassOf ns1:Merger .
+
+ns1:merger_1 a ns1:TheMerger ;
+    rdfs:label "merger" ;
+    dul:hasQuality ns1:Financial,
+        ns1:Regional ;
+    quant:hasDeterminer quant:the ;
+    ns1:with ns1:Am_south .
+

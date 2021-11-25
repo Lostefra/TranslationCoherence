@@ -1,0 +1,107 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence114.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence114.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence114" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence114" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:National_liberation_party rdfs:label "National Liberation Party" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:National_Liberation_Party_(Costa_Rica) .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:Which rdfs:label "which" .
+
+ns1:With rdfs:label "with" .
+
+ns1:discuss_1 a ns1:Discuss ;
+    rdfs:label "discussed" ;
+    boxer:agent ns1:person_1 ;
+    boxer:patient ns1:issue_1 ;
+    ns1:withExceptionOf ns1:Party .
+
+ns1:docuverse earmark:hasContent "We discussed this issue, which we are consistent, with the exception of the People's Party and the National_Liberation_Party."^^xsd:string .
+
+ns1:exception_1 a ns1:Exception ;
+    rdfs:label "exception" ;
+    quant:hasDeterminer quant:the .
+
+ns1:person_2 coref:coref ns1:person_1 .
+
+ns1:Discuss rdfs:label "discussed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Exception rdfs:label "exception" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Issue rdfs:label "issue" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Party rdfs:label "Party" ;
+    boxer:possibleType foaf:Organisation ;
+    ns1:of ns1:People .
+
+ns1:People rdfs:label "People" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs <http://dbpedia.org/resource/People's_Party_(Seychelles)> .
+
+ns1:Person rdfs:label "We",
+        "we" .
+
+ns1:issue_1 a ns1:Issue ;
+    rdfs:label "issue" ;
+    quant:hasDeterminer quant:this ;
+    ns1:which ns1:situation_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Consistent,
+        ns1:person_1 .
+
+ns1:Consistent rdfs:label "consistent" .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "We",
+        "we" ;
+    dul:hasQuality ns1:Consistent .
+

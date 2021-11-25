@@ -1,0 +1,166 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence505.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence505.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence505" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence505" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Between rdfs:label "between" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:cohe_1 rdfs:label "Cohe" .
+
+ns1:docuverse earmark:hasContent "The chairman of the Committee_on_Employment_and_Social_Affairs voted unanimously to support the intervention of the rakenneuctural and Cohe. Funds, which seek to improve employment opportunities and equality between men and women."^^xsd:string .
+
+ns1:employment_1 a ns1:Employment ;
+    rdfs:label "employment" ;
+    dul:associatedWith ns1:opportunity_1 .
+
+ns1:seek_1 a ns1:Seek ;
+    rdfs:label "seek" ;
+    boxer:theme ns1:situation_1 ;
+    vn.role:Agent ns1:fund_1 .
+
+ns1:vote_1 a ns1:Vote ;
+    rdfs:label "voted" ;
+    dul:hasQuality ns1:Unanimously ;
+    vn.role:Agent ns1:chairman_1 ;
+    vn.role:Theme ns1:support_1 .
+
+ns1:woman_1 rdfs:label "women" .
+
+ns1:Chairman rdfs:label "chairman" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Cohe rdfs:label "Cohe" .
+
+ns1:Committee_on_employment_and_social_affairs rdfs:label "Committee on Employment and Social Affairs" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:European_Parliament_Committee_on_Employment_and_Social_Affairs .
+
+ns1:Employment rdfs:label "employment" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:EmploymentOpportunity rdfs:subClassOf ns1:Opportunity .
+
+ns1:Equality rdfs:label "equality" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Fund rdfs:label "Funds" .
+
+ns1:Improve rdfs:label "improve" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Intervention rdfs:label "intervention" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Man rdfs:label "men" .
+
+ns1:Opportunity rdfs:label "opportunities" .
+
+ns1:Rakenneuctural rdfs:label "rakenneuctural" .
+
+ns1:Seek rdfs:label "seek" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Support rdfs:label "support" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Unanimously rdfs:label "unanimously" .
+
+ns1:Vote rdfs:label "voted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Woman rdfs:label "women" .
+
+ns1:improve_1 a ns1:Improve ;
+    rdfs:label "improve" ;
+    vn.role:Agent ns1:fund_1 ;
+    vn.role:Patient ns1:equality_1,
+        ns1:opportunity_1 .
+
+ns1:intervention_1 a ns1:Intervention ;
+    rdfs:label "intervention" ;
+    quant:hasDeterminer quant:the ;
+    ns1:interventionOf ns1:rakenneuctural_1 .
+
+ns1:rakenneuctural_1 a ns1:Cohe,
+        ns1:Rakenneuctural ;
+    rdfs:label "rakenneuctural" ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:equality_1,
+        ns1:improve_1,
+        ns1:man_1,
+        ns1:opportunity_1 .
+
+ns1:support_1 a ns1:Support ;
+    rdfs:label "support" ;
+    vn.role:Agent ns1:chairman_1 ;
+    vn.role:Beneficiary ns1:intervention_1 .
+
+ns1:chairman_1 a ns1:Chairman ;
+    rdfs:label "chairman" ;
+    quant:hasDeterminer quant:the ;
+    ns1:chairmanOf ns1:Committee_on_employment_and_social_affairs .
+
+ns1:equality_1 a ns1:Equality ;
+    rdfs:label "equality" ;
+    ns1:between ns1:man_1 .
+
+ns1:fund_1 a ns1:Fund ;
+    rdfs:label "Funds" ;
+    dul:hasQuality ns1:Topic ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:man_1 a ns1:Man,
+        ns1:Woman ;
+    rdfs:label "men" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:opportunity_1 a ns1:EmploymentOpportunity ;
+    rdfs:label "opportunities" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:between ns1:man_1 .
+

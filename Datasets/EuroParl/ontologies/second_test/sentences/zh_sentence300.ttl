@@ -1,0 +1,101 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence300.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence300.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence300" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence300" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "It is sad that there is recognition of the very difficulties that we face."^^xsd:string .
+
+ns1:recognition_1 rdfs:label "recognition" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:situation_2,
+        ns1:there_1 ;
+    dul:hasQuality ns1:Sad .
+
+ns1:Difficulty rdfs:label "difficulties" .
+
+ns1:Face a owl:Class ;
+    rdfs:label "face" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Face .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Recognition rdfs:label "recognition" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Sad rdfs:label "sad" .
+
+ns1:There rdfs:label "there" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Very rdfs:label "very" .
+
+ns1:VeryDifficulty rdfs:subClassOf ns1:Difficulty .
+
+ns1:face_1 a ns1:Face ;
+    rdfs:label "face" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:difficulty_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:face_1,
+        ns1:there_1 .
+
+ns1:difficulty_1 a ns1:VeryDifficulty ;
+    rdfs:label "difficulties" ;
+    dul:hasQuality ns1:Very ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:there_1 a ns1:Recognition,
+        ns1:There ;
+    rdfs:label "there" ;
+    ns1:thereOf ns1:difficulty_1 .
+

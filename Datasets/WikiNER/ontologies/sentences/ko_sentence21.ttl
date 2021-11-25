@@ -1,0 +1,153 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence21.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence21.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence21" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence21" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:belong_1 a ns1:NeverBelong ;
+    rdfs:label "belong" ;
+    boxer:agent ns1:thing_1 ;
+    boxer:theme ns1:anarchist_1 ;
+    dul:hasQuality ns1:Never .
+
+ns1:docuverse earmark:hasContent "This was in the evil of any association of Goldman, his registered member in the Republic party, and never belong to anarchist organization."^^xsd:string .
+
+ns1:evil_1 a ns1:Evil ;
+    rdfs:label "evil" ;
+    quant:hasDeterminer quant:the,
+        quant:this .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:association_1 ;
+    ns1:entails ns1:situation_2 .
+
+owl:Thing rdfs:label "This" .
+
+ns1:Anarchist a owl:Class ;
+    rdfs:label "anarchist" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Anarchism .
+
+ns1:Association a owl:Class ;
+    rdfs:label "association" ;
+    rdfs:subClassOf dul:Organization ;
+    owl:equivalentClass dbpedia:Voluntary_association .
+
+ns1:Belong rdfs:label "belong" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Evil rdfs:label "evil" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Goldman rdfs:label "Goldman" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:member_1 ;
+    owl:sameAs dbpedia:Emma_Goldman .
+
+ns1:Member a owl:Class ;
+    rdfs:label "member" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Never rdfs:label "never" .
+
+ns1:NeverBelong rdfs:label "never belong" ;
+    rdfs:subClassOf ns1:Belong .
+
+ns1:Organization a owl:Class ;
+    rdfs:label "organization" ;
+    rdfs:subClassOf dul:Organization ;
+    owl:equivalentClass dbpedia:Organization .
+
+ns1:Party rdfs:label "party" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Registered a owl:Class ;
+    rdfs:label "registered" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:RegisteredMember a owl:Class ;
+    rdfs:label "registered member" ;
+    dul:hasQuality ns1:Registered ;
+    rdfs:subClassOf ns1:Member .
+
+ns1:Republic rdfs:label "Republic" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:anarchist_1 a ns1:Anarchist ;
+    rdfs:label "anarchist" ;
+    boxer:patient ns1:organization_1 .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "his" .
+
+ns1:member_1 a ns1:RegisteredMember ;
+    rdfs:label "member" ;
+    ns1:in ns1:party_1 ;
+    ns1:registeredMemberOf ns1:male_1 .
+
+ns1:organization_1 a ns1:Organization ;
+    rdfs:label "organization" .
+
+ns1:party_1 a ns1:Party ;
+    rdfs:label "party" ;
+    dul:associatedWith ns1:Republic .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:association_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "This" ;
+    ns1:inEvilOf ns1:association_1 .
+
+ns1:association_1 a ns1:Association ;
+    rdfs:label "association" ;
+    quant:hasQuantifier quant:any ;
+    ns1:associationOf ns1:Goldman .
+

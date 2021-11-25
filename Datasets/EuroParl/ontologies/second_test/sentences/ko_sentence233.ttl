@@ -1,0 +1,192 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence233.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:ko_sentence233.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence233" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence233" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of",
+        "their" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Under rdfs:label "under" .
+
+ns1:determine_1 a ns1:Determine ;
+    rdfs:label "determines" ;
+    vn.role:Agent ns1:committee_1 ;
+    vn.role:Theme ns1:impose_1 .
+
+ns1:docuverse earmark:hasContent "The committee determines that the member country may impose their specific rules. So, it is supported by a committee of experts on the transportation of dangerous goods under the regulatory procedure."^^xsd:string .
+
+ns1:member_1 a ns1:Member ;
+    rdfs:label "member" ;
+    dul:associatedWith ns1:country_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:support_1 a ns1:Support ;
+    rdfs:label "supported" ;
+    dul:hasQuality ns1:So ;
+    vn.role:Agent ns1:committee_2 ;
+    vn.role:Beneficiary ns1:neuter_1 .
+
+ns1:transportation_1 a ns1:Transportation ;
+    rdfs:label "transportation" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Country a owl:Class ;
+    rdfs:label "country" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Dangerous a owl:Class ;
+    rdfs:label "dangerous" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:DangerousGoods a owl:Class ;
+    rdfs:label "dangerous goods" ;
+    dul:hasQuality ns1:Dangerous ;
+    rdfs:subClassOf ns1:Goods ;
+    owl:equivalentClass dbpedia:Dangerous_goods .
+
+ns1:Determine rdfs:label "determines" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Expert rdfs:label "experts" .
+
+ns1:Goods a owl:Class ;
+    rdfs:label "goods" .
+
+ns1:Impose rdfs:label "impose" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:MemberCountry a owl:Class ;
+    rdfs:label "member country" ;
+    dul:associatedWith ns1:Member ;
+    rdfs:subClassOf ns1:Country .
+
+ns1:Procedure a owl:Class ;
+    rdfs:label "procedure" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Procedural_law .
+
+ns1:Regulatory a owl:Class ;
+    rdfs:label "regulatory" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Regulation .
+
+ns1:RegulatoryProcedure a owl:Class ;
+    rdfs:label "Regulatory Procedure" ;
+    dul:hasQuality ns1:Regulatory ;
+    rdfs:subClassOf ns1:Procedure .
+
+ns1:Rule rdfs:label "rules" .
+
+ns1:So rdfs:label "So" .
+
+ns1:Specific rdfs:label "specific" .
+
+ns1:SpecificRule rdfs:subClassOf ns1:Rule .
+
+ns1:Support rdfs:label "supported" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Transportation a owl:Class ;
+    rdfs:label "transportation" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Transport .
+
+ns1:committee_1 a ns1:Committee ;
+    rdfs:label "committee" ;
+    quant:hasDeterminer quant:the .
+
+ns1:committee_2 a ns1:Committee ;
+    rdfs:label "committee" ;
+    quant:hasDeterminer quant:a ;
+    ns1:committeeOf ns1:expert_1 .
+
+ns1:expert_1 a ns1:Expert ;
+    rdfs:label "experts" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:onTransportationOf ns1:goods_1 ;
+    ns1:under ns1:procedure_1 .
+
+ns1:goods_1 a ns1:DangerousGoods ;
+    rdfs:label "goods" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:impose_1 a ns1:Impose ;
+    rdfs:label "impose" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Agent ns1:country_1 ;
+    vn.role:Theme ns1:rule_1 .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "it" .
+
+ns1:procedure_1 a ns1:RegulatoryProcedure ;
+    rdfs:label "procedure" ;
+    quant:hasDeterminer quant:the .
+
+ns1:rule_1 a dbpedia:Regulation,
+        ns1:SpecificRule ;
+    rdfs:label "rules" ;
+    dul:hasQuality ns1:Specific ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:specificRuleOf ns1:thing_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "their" .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Committee rdfs:label "committee" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Member a owl:Class ;
+    rdfs:label "member" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:country_1 a ns1:MemberCountry ;
+    rdfs:label "country" .
+

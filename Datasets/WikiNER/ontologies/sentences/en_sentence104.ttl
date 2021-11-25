@@ -1,0 +1,111 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence104.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence104.ttl a owl:Ontology ;
+    rdfs:label "en_sentence104" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence104" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:At rdfs:label "at" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:coastline_1 a ns1:Coastline ;
+    rdfs:label "coastline" ;
+    boxer:agent ns1:Alabama ;
+    ns1:at ns1:Gulf_of_mexico ;
+    ns1:in ns1:edge_1 .
+
+ns1:docuverse earmark:hasContent "Alabama has coastline at the Gulf_of_Mexico, in the extreme southern edge of the state."^^xsd:string .
+
+ns1:Alabama rdfs:label "Alabama" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Alabama .
+
+ns1:Coastline rdfs:label "coastline" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Edge a owl:Class ;
+    rdfs:label "edge" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Extreme rdfs:label "extreme" .
+
+ns1:ExtremeSouthernEdge a owl:Class ;
+    rdfs:label "Extreme Southern Edge" ;
+    rdfs:subClassOf ns1:SouthernEdge .
+
+ns1:Gulf_of_mexico rdfs:label "Gulf of Mexico" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Gulf_of_Mexico .
+
+ns1:Southern a owl:Class ;
+    rdfs:label "southern" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Southern_United_States .
+
+ns1:SouthernEdge a owl:Class ;
+    rdfs:label "Southern Edge" ;
+    dul:hasQuality ns1:Southern ;
+    rdfs:subClassOf ns1:Edge .
+
+ns1:State a owl:Class ;
+    rdfs:label "state" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> ;
+    owl:equivalentClass dbpedia:Alabama .
+
+ns1:edge_1 a ns1:ExtremeSouthernEdge ;
+    rdfs:label "edge" ;
+    dul:hasQuality ns1:Extreme ;
+    quant:hasDeterminer quant:the ;
+    ns1:extremeSouthernEdgeOf ns1:state_1 .
+
+ns1:state_1 a ns1:State ;
+    rdfs:label "state" ;
+    quant:hasDeterminer quant:the .
+
+dbpedia:Alabama a schema:AdministrativeArea,
+        schema:Place ;
+    rdfs:subClassOf schema:AdministrativeArea,
+        schema:Place .
+

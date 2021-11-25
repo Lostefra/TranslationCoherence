@@ -1,0 +1,150 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence528.ttl/> .
+@prefix ns2: <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ns2:5E%5Ebest rdfs:label "best" .
+
+translation_coherence:nl_sentence528.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence528" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence528" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "It's obsessed that some of the Academy_Award winners, especially the best photos, not the test of time have been given nor defeated worthy efforts."^^xsd:string .
+
+ns1:obsess_1 a ns1:Obsess ;
+    rdfs:label "obsessed" ;
+    boxer:theme ns1:situation_1 ;
+    vn.role:Experiencer ns1:neuter_1 .
+
+ns2:5Ebest rdfs:label "best" .
+
+ns2:5EbestPhoto rdfs:subClassOf ns1:Photo .
+
+ns1:Academy_award rdfs:label "Academy Award" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Academy_Awards .
+
+ns1:Defeat rdfs:label "defeated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Effort rdfs:label "efforts" .
+
+ns1:Especially rdfs:label "especially" .
+
+ns1:Give rdfs:label "given" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Obsess rdfs:label "obsessed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Test rdfs:label "test" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Time rdfs:label "time" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Winner rdfs:label "winners" .
+
+ns1:Worthy rdfs:label "worthy" .
+
+ns1:WorthyEffort rdfs:subClassOf ns1:Effort .
+
+ns1:defeat_1 a ns1:Defeat ;
+    rdfs:label "defeated" ;
+    boxer:recipient ns1:thing_1 ;
+    boxer:theme ns1:effort_1 ;
+    boxing:hasTruthValue boxing:False .
+
+ns1:give_1 a ns1:Give ;
+    rdfs:label "given" ;
+    vn.role:Theme ns1:thing_1 .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "It" .
+
+ns1:photo_1 a ns2:5EbestPhoto,
+        ns1:Photo ;
+    rdfs:label "photos" ;
+    dul:associatedWith ns1:test_1 ;
+    dul:hasQuality ns2:5Ebest,
+        ns1:Especially ;
+    ns2:5EbestAmong ns1:Photo ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:defeat_1,
+        ns1:effort_1,
+        ns1:give_1,
+        ns1:thing_1 .
+
+ns1:test_1 a ns1:Test ;
+    rdfs:label "test" ;
+    quant:hasDeterminer quant:the ;
+    ns1:testOf ns1:time_1 .
+
+ns1:time_1 a ns1:Time ;
+    rdfs:label "time" .
+
+ns1:winner_1 a ns1:Winner ;
+    rdfs:label "winners" ;
+    dul:associatedWith ns1:Academy_award,
+        ns1:photo_1 ;
+    quant:hasQuantifier quant:multiple .
+
+owl:Thing rdfs:label "It",
+        "some" .
+
+ns1:effort_1 a ns1:WorthyEffort ;
+    rdfs:label "efforts" ;
+    dul:hasQuality ns1:Worthy ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Photo rdfs:label "photos" .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "some" ;
+    ns1:thingOf ns1:winner_1 .
+

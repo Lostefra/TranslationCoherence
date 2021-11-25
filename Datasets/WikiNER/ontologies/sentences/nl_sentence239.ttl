@@ -1,0 +1,192 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence239.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Patient2 rdfs:label "to" .
+
+translation_coherence:nl_sentence239.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence239" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence239" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:About rdfs:label "about" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of",
+        "whose" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "The heroic cult of Achilles on Leuce Island was widespread about antiques, not just the very paths of the Pontic Sea, but also in maritime cities whose economic interests were tied to the wealthy sea."^^xsd:string .
+
+ns1:maritime_1 a ns1:Maritime ;
+    rdfs:label "maritime" ;
+    dul:associatedWith ns1:city_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Widespread,
+        ns1:cult_1 ;
+    dul:hasQuality ns1:Also .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Widespread,
+        ns1:cult_1 ;
+    ns1:about ns1:antique_1 ;
+    ns1:inEconomicInterestOf ns1:city_1 .
+
+ns1:tie_1 a ns1:Tie ;
+    vn.role:Patient1 ns1:interest_1 ;
+    vn.role:Patient2 ns1:sea_1 .
+
+ns1:tie_2 a ns1:Tie ;
+    rdfs:label "tied" ;
+    vn.role:Patient1 ns1:interest_1 ;
+    vn.role:Patient2 ns1:sea_1 .
+
+ns1:Achilles rdfs:label "Achilles" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Achilles .
+
+ns1:Also rdfs:label "also" .
+
+ns1:Antique rdfs:label "antiques" .
+
+ns1:City rdfs:label "cities" .
+
+ns1:Cult a owl:Class ;
+    rdfs:label "cult" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Economic rdfs:label "economic" .
+
+ns1:EconomicInterest rdfs:subClassOf ns1:Interest .
+
+ns1:Heroic a owl:Class ;
+    rdfs:label "heroic" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:HeroicCult a owl:Class ;
+    rdfs:label "Heroic Cult" ;
+    dul:hasQuality ns1:Heroic ;
+    rdfs:subClassOf ns1:Cult ;
+    owl:equivalentClass dbpedia:Greek_hero_cult .
+
+ns1:Interest rdfs:label "interests" .
+
+ns1:Just rdfs:label "just" .
+
+ns1:Leuce_island rdfs:label "Leuce Island" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Maritime a owl:Class ;
+    rdfs:label "maritime" ;
+    owl:equivalentClass dbpedia:Sea .
+
+ns1:MaritimeCity rdfs:subClassOf ns1:City .
+
+ns1:Path rdfs:label "paths" .
+
+ns1:Pontic_sea rdfs:label "Pontic Sea" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Very rdfs:label "very" .
+
+ns1:VeryPath rdfs:subClassOf ns1:Path .
+
+ns1:WealthySea a owl:Class ;
+    rdfs:label "wealthy sea" ;
+    dul:hasQuality ns1:Wealthy ;
+    rdfs:subClassOf ns1:Sea .
+
+ns1:antique_1 a ns1:Antique ;
+    rdfs:label "antiques" ;
+    dul:associatedWith ns1:path_1 ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:path_1 a ns1:VeryPath ;
+    rdfs:label "paths" ;
+    dul:hasQuality ns1:Just,
+        ns1:Very ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:veryPathOf ns1:Pontic_sea .
+
+ns1:Sea a owl:Class ;
+    rdfs:label "Sea",
+        "sea" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> ;
+    owl:equivalentClass dbpedia:Sea .
+
+ns1:Tie rdfs:label "tied" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Wealthy a owl:Class ;
+    rdfs:label "wealthy" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:city_1 a dbpedia:Polis,
+        ns1:MaritimeCity ;
+    rdfs:label "cities" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:cult_1 a ns1:HeroicCult ;
+    rdfs:label "cult" ;
+    dul:hasQuality ns1:Widespread ;
+    quant:hasDeterminer quant:the ;
+    ns1:heroicCultOf ns1:Achilles ;
+    ns1:on ns1:Leuce_island .
+
+ns1:interest_1 a ns1:EconomicInterest ;
+    rdfs:label "interests" ;
+    dul:hasQuality ns1:Economic ;
+    quant:hasQuantifier quant:multiple ;
+    owl:sameAs ns1:sea_1 .
+
+ns1:Widespread rdfs:label "widespread" .
+
+ns1:sea_1 a ns1:Sea,
+        ns1:WealthySea ;
+    rdfs:label "sea" ;
+    dul:hasQuality ns1:Wealthy ;
+    quant:hasDeterminer quant:the .
+

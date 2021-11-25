@@ -1,0 +1,233 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix fred: <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence293.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+fred: rdfs:label ":"^^xsd:string .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#-> rdfs:label "-" .
+
+translation_coherence:de_sentence293.ttl a owl:Ontology ;
+    rdfs:label "de_sentence293" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence293" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:By rdfs:label "by" .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "'s",
+        "its",
+        "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Rel rdfs:label "(",
+        "," .
+
+ns1:With rdfs:label "with" .
+
+ns1:communication_1 a ns1:Communication ;
+    rdfs:label "communication" ;
+    ns1:on ns1:fund_1 .
+
+ns1:coordination_1 a ns1:Coordination,
+        ns1:NextPoint ;
+    rdfs:label "coordination" ;
+    ns1:coordinationOf ns1:Committee ;
+    ns1:with ns1:cohesion_fund_1 .
+
+ns1:docuverse earmark:hasContent "The next point is the report (A5-0108/1999) by Mrs Schroedter on behalf of the Committee on Regional Policy, Transport and Tourism, on the Commission's communication on the Structural Funds and its coordination with the Cohesion_Fund: Guidelines for 2000-2006 programmes [COM(1999)344 - C5-0122/1999 - 1999/2127(COS)]."^^xsd:string .
+
+ns1:neuter_1 rdfs:label "its" .
+
+ns1:point_1 rdfs:label "point" ;
+    quant:hasDeterminer quant:the .
+
+ns1:report_1 a ns1:Report ;
+    rdfs:label "report" ;
+    dul:associatedWith ns1:A5-0108%2F1999 ;
+    quant:hasDeterminer quant:the ;
+    ns1:onBehalfOf ns1:Committee ;
+    ns1:onCommunicationOf ns1:Commission ;
+    ns1:reportBy ns1:Schroedter .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:declaration <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5B_1> ;
+    boxing:involves ns1:Behalf,
+        ns1:behalf_1 .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5B> rdfs:label "[" ;
+    rdfs:subClassOf dul:Event .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5B_1> a <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5B> ;
+    rdfs:label "[" ;
+    boxer:agent ns1:guideline_1 ;
+    boxer:recipient ns1:Com ;
+    boxer:theme ns1:c5-0122%2F1999_1 .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5D> rdfs:label "]" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith ns1:Cos ;
+    dul:hasQuality ns1:1999%2F2127 .
+
+ns1:1999%2F2127 rdfs:label "1999/2127" .
+
+ns1:2000-2006 rdfs:label "2000-2006" .
+
+ns1:2000-2006Programme rdfs:subClassOf ns1:Programme .
+
+ns1:A5-0108%2F1999 rdfs:label "A5-0108/1999" ;
+    boxer:possibleType owl:Thing .
+
+ns1:C5-0122%2F1999 rdfs:label "C5-0122/1999" .
+
+ns1:Cohesion_fund a owl:Class ;
+    rdfs:label "Cohesion Fund" ;
+    owl:equivalentClass dbpedia:Structural_Funds_and_Cohesion_Fund .
+
+ns1:Com rdfs:label "COM" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith "1999-01-01"^^xsd:date .
+
+ns1:Commission rdfs:label "Commission" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Communication rdfs:label "communication" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Cos rdfs:label "COS" ;
+    boxer:possibleType owl:Thing .
+
+ns1:Fund rdfs:label "Funds" .
+
+ns1:Guideline rdfs:label "Guidelines" .
+
+ns1:Next a owl:Class ;
+    rdfs:label "next" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:NextPoint a owl:Class ;
+    rdfs:label "next point" ;
+    dul:hasQuality ns1:Next ;
+    rdfs:subClassOf ns1:Coordination,
+        ns1:Point,
+        ns1:Report .
+
+ns1:Point a owl:Class ;
+    rdfs:label "point" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Programme rdfs:label "programmes" .
+
+ns1:Regional_policy rdfs:label "Regional Policy" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Schroedter rdfs:label "Schroedter" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis> ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis> .
+
+ns1:Structural rdfs:label "Structural" ;
+    owl:sameAs dbpedia:Structural_Funds_and_Cohesion_Fund .
+
+ns1:StructuralFund rdfs:subClassOf ns1:Fund .
+
+ns1:Tourism rdfs:label "Tourism" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Tourism .
+
+ns1:Transport rdfs:label "Transport" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Transport .
+
+ns1:behalf_1 a ns1:Behalf ;
+    rdfs:label "behalf" .
+
+ns1:c5-0122%2F1999_1 a ns1:C5-0122%2F1999 ;
+    rdfs:label "C5-0122/1999" ;
+    dul:hasDataValue "344"^^xsd:nonNegativeInteger ;
+    <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#-> <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5D> .
+
+ns1:cohesion_fund_1 a ns1:Cohesion_fund ;
+    rdfs:label "Cohesion Fund" ;
+    quant:hasDeterminer quant:the .
+
+ns1:fund_1 a ns1:StructuralFund ;
+    rdfs:label "Funds" ;
+    dul:hasQuality ns1:Structural ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:guideline_1 a ns1:Guideline ;
+    rdfs:label "Guidelines" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:for ns1:programme_1 .
+
+ns1:programme_1 a ns1:2000-2006Programme ;
+    rdfs:label "programmes" ;
+    dul:hasQuality ns1:2000-2006 ;
+    quant:hasQuantifier quant:multiple .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis> rdfs:label "Mrs" ;
+    boxer:possibleType dul:Role .
+
+ns1:Behalf rdfs:label "behalf" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Committee a owl:Thing ;
+    rdfs:label "Committee" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:Tourism,
+        ns1:Transport ;
+    ns1:on ns1:Regional_policy .
+
+ns1:Coordination rdfs:label "coordination" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Report rdfs:label "report" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+owl:Thing rdfs:label "Committee" .
+

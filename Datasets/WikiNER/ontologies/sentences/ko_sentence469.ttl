@@ -1,0 +1,154 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence469.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence469.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence469" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence469" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:At rdfs:label "at" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Within rdfs:label "within" .
+
+ns1:debate_2 rdfs:label "debate" .
+
+ns1:docuverse earmark:hasContent "The second, there is a debate, the Lord says, that the treaty was circulated at the time of the proposal that Strabo and Plutarch were confined within the cello of Scepsis."^^xsd:string .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "says" ;
+    vn.role:Agent ns1:Lord ;
+    vn.role:Topic ns1:circulate_1 .
+
+ns1:second_1 a ns1:Second ;
+    rdfs:label "second" .
+
+ns1:there_1 a ns1:Debate,
+        ns1:There ;
+    rdfs:label "there" ;
+    quant:hasDeterminer quant:a,
+        quant:the .
+
+dbpedia:Plutarch a schema:Person .
+
+ns1:Cello a owl:Class ;
+    rdfs:label "cello" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Cello .
+
+ns1:Circulate rdfs:label "circulated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Confine rdfs:label "confined" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Debate rdfs:label "debate" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Lord rdfs:label "Lord" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Lord .
+
+ns1:Plutarch rdfs:label "Plutarch" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Plutarch .
+
+ns1:Proposal rdfs:label "proposal" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Say rdfs:label "says" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Scepsis rdfs:label "Scepsis" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Skepsis .
+
+ns1:Second rdfs:label "second" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:Strabo rdfs:label "Strabo" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Strabo .
+
+ns1:There rdfs:label "there" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Time rdfs:label "time" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Treaty rdfs:label "treaty" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic>,
+        dul:InformationEntity .
+
+ns1:cello_1 a ns1:Cello ;
+    rdfs:label "cello" ;
+    quant:hasDeterminer quant:the ;
+    ns1:celloOf ns1:Scepsis .
+
+ns1:circulate_1 a ns1:Circulate ;
+    rdfs:label "circulated" ;
+    boxer:patient ns1:treaty_1 ;
+    ns1:at ns1:time_1 .
+
+ns1:confine_1 a ns1:Confine ;
+    rdfs:label "confined" ;
+    vn.role:Theme ns1:Plutarch,
+        ns1:Strabo ;
+    ns1:within ns1:cello_1 .
+
+ns1:proposal_1 a ns1:Proposal ;
+    rdfs:label "proposal" ;
+    boxer:theme ns1:situation_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:confine_1 .
+
+ns1:time_1 a ns1:Time ;
+    rdfs:label "time" ;
+    quant:hasDeterminer quant:the ;
+    ns1:timeOf ns1:proposal_1 .
+
+ns1:treaty_1 a ns1:Treaty ;
+    rdfs:label "treaty" ;
+    quant:hasDeterminer quant:the .
+

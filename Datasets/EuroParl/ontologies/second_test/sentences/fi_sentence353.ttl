@@ -1,0 +1,192 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence353.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "to" .
+
+translation_coherence:fi_sentence353.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence353" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence353" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "was" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:When rdfs:label "when" .
+
+ns1:docuverse earmark:hasContent "I also remember that when his party leader, Hague, was Wales Secretary of State, he broke all the provisions of the Addition Book, which led to the letter of Commissioner Wulf-Mathies on regulatory requirements."^^xsd:string .
+
+ns1:leader_1 rdfs:label "leader" .
+
+ns1:party_1 a ns1:Party ;
+    rdfs:label "party" ;
+    dul:associatedWith ns1:Secretary .
+
+ns1:remember_1 a ns1:AlsoRemember ;
+    rdfs:label "remember" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:situation_1 .
+
+dbpedia:The_Hague a schema:City,
+        schema:Place .
+
+dbpedia:Wales a schema:Country,
+        schema:Place .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Commissioner> rdfs:label "Commissioner" ;
+    boxer:possibleType dul:Role ;
+    owl:sameAs dbpedia:Commissioner .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoRemember rdfs:label "Also Remember" ;
+    rdfs:subClassOf ns1:Remember .
+
+ns1:Break rdfs:label "broke" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Hague rdfs:label "Hague" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:The_Hague .
+
+ns1:Lead rdfs:label "led" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Leader a owl:Class ;
+    rdfs:label "leader" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Letter rdfs:label "letter" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:PartyLeader a owl:Class ;
+    rdfs:label "Party Leader" ;
+    dul:associatedWith ns1:Party ;
+    rdfs:subClassOf ns1:Leader .
+
+ns1:Person rdfs:label "I" .
+
+ns1:Provision rdfs:label "provisions" .
+
+ns1:Regulatory rdfs:label "regulatory" .
+
+ns1:RegulatoryRequirement rdfs:subClassOf ns1:Requirement .
+
+ns1:Remember rdfs:label "remember" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Requirement rdfs:label "requirements" .
+
+ns1:Secretary a ns1:PartyLeader ;
+    rdfs:label "Secretary" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith ns1:Hague,
+        ns1:Wales ;
+    owl:sameAs dbpedia:Secretary_of_State ;
+    ns1:of ns1:State ;
+    ns1:partyLeaderOf ns1:male_1 .
+
+ns1:State rdfs:label "State" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Wales rdfs:label "Wales" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Wales .
+
+ns1:Wulf-mathy rdfs:label "Wulf-Mathies" .
+
+ns1:break_1 a ns1:Break ;
+    rdfs:label "broke" ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Patient ns1:provision_1 .
+
+ns1:lead_1 a ns1:Lead ;
+    rdfs:label "led" ;
+    vn.role:Agent ns1:Addition_book ;
+    vn.role:Destination ns1:letter_1 .
+
+ns1:letter_1 a ns1:Letter ;
+    rdfs:label "letter" ;
+    quant:hasDeterminer quant:the ;
+    ns1:letterOf ns1:wulf-mathy_1 ;
+    ns1:on ns1:requirement_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:provision_1 a ns1:Provision ;
+    rdfs:label "provisions" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:provisionOf ns1:Addition_book .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:break_1,
+        ns1:lead_1,
+        ns1:requirement_1,
+        ns1:wulf-mathy_1 .
+
+ns1:Addition_book rdfs:label "Addition Book" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Party a owl:Class ;
+    rdfs:label "party" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "his" .
+
+ns1:requirement_1 a ns1:RegulatoryRequirement ;
+    rdfs:label "requirements" ;
+    dul:hasQuality ns1:Regulatory ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:wulf-mathy_1 a ns1:Wulf-mathy ;
+    rdfs:label "Wulf-Mathies" ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Commissioner> ;
+    quant:hasQuantifier quant:multiple .
+

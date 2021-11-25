@@ -1,0 +1,170 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence55.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Oblique rdfs:label "with" .
+
+translation_coherence:en_sentence55.ttl a owl:Ontology ;
+    rdfs:label "en_sentence55" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence55" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Among rdfs:label "among" .
+
+ns1:anarchist_1 rdfs:label "anarchist" ;
+    quant:hasDeterminer quant:the .
+
+ns1:docuverse earmark:hasContent "They encouraged playing with sexual roles and sexuality, and the openly bisexual radical Edna_St._Vincent_Millay and the lesbian anarchist Margaret_Anderson were prominent among them."^^xsd:string .
+
+ns1:encourage_1 a ns1:Encourage ;
+    rdfs:label "encouraged" ;
+    vn.role:Cause ns1:thing_1 ;
+    vn.role:Experiencer ns1:play_1 ;
+    vn.role:Oblique ns1:role_1,
+        ns1:sexuality_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Prominent,
+        ns1:edna_st._vincent_millay_1 ;
+    ns1:among ns1:thing_2 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Margaret_anderson,
+        ns1:Prominent ;
+    ns1:among ns1:thing_2 .
+
+ns1:Anarchist a owl:Class ;
+    rdfs:label "Margaret Anderson",
+        "anarchist" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Anarchism .
+
+ns1:Bisexual rdfs:label "bisexual" ;
+    dul:hasQuality ns1:Openly ;
+    owl:sameAs dbpedia:Bisexuality .
+
+ns1:BisexualRadicalEdna_st._vincent_millay a owl:Class ;
+    rdfs:label "bisexual radical Edna St. Vincent Millay" ;
+    rdfs:subClassOf ns1:RadicalEdna_st._vincent_millay .
+
+ns1:Edna_st._vincent_millay a owl:Class ;
+    rdfs:label "Edna St. Vincent Millay" ;
+    owl:equivalentClass dbpedia:Edna_St._Vincent_Millay .
+
+ns1:Encourage rdfs:label "encouraged" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Lesbian a owl:Class ;
+    rdfs:label "lesbian" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Lesbian .
+
+ns1:LesbianAnarchist a owl:Class ;
+    rdfs:label "Lesbian Anarchist" ;
+    dul:hasQuality ns1:Lesbian ;
+    rdfs:subClassOf ns1:Anarchist .
+
+ns1:Margaret_anderson a ns1:LesbianAnarchist ;
+    rdfs:label "Margaret Anderson",
+        "anarchist" ;
+    boxer:possibleType owl:Thing ;
+    dul:hasQuality ns1:Prominent ;
+    owl:sameAs dbpedia:Margaret_C._Anderson .
+
+ns1:OpenlyBisexualRadicalEdna_st._vincent_millay a owl:Class ;
+    rdfs:label "Openly Bisexual Radical Edna st. vincent millay" ;
+    rdfs:subClassOf ns1:BisexualRadicalEdna_st._vincent_millay .
+
+ns1:Play rdfs:label "playing" .
+
+ns1:Radical a owl:Class ;
+    rdfs:label "radical" ;
+    dul:hasQuality ns1:Openly ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Political_radicalism .
+
+ns1:RadicalEdna_st._vincent_millay a owl:Class ;
+    rdfs:label "Radical Edna st. vincent millay" ;
+    dul:hasQuality ns1:Radical ;
+    rdfs:subClassOf ns1:Edna_st._vincent_millay .
+
+ns1:Role rdfs:label "roles" .
+
+ns1:Sexual rdfs:label "sexual" .
+
+ns1:SexualRole rdfs:subClassOf ns1:Role .
+
+ns1:Sexuality a owl:Class ;
+    rdfs:label "sexuality" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Sexual_orientation .
+
+ns1:edna_st._vincent_millay_1 a ns1:OpenlyBisexualRadicalEdna_st._vincent_millay ;
+    rdfs:label "Edna St. Vincent Millay" ;
+    dul:hasQuality ns1:Bisexual,
+        ns1:Prominent ;
+    quant:hasDeterminer quant:the .
+
+ns1:play_1 a ns1:Play ;
+    rdfs:label "playing" .
+
+ns1:role_1 a ns1:SexualRole ;
+    rdfs:label "roles" ;
+    dul:hasQuality ns1:Sexual ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:sexuality_1 a ns1:Sexuality ;
+    rdfs:label "sexuality" .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "They" .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "them" .
+
+owl:Thing rdfs:label "They",
+        "them" .
+
+ns1:Openly rdfs:label "openly" ;
+    owl:sameAs dbpedia:Coming_out .
+
+ns1:Prominent rdfs:label "prominent" ;
+    dul:hasQuality ns1:Openly .
+

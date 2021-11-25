@@ -1,0 +1,159 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence459.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence459.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence459" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence459" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Among rdfs:label "among" .
+
+ns1:From rdfs:label "from" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Oninterventionof rdfs:label "on the intervention of" .
+
+ns1:The rdfs:label "the" .
+
+ns1:combat_1 a ns1:Combat ;
+    rdfs:label "combating" ;
+    vn.role:Actor ns1:unemployment_1 .
+
+ns1:docuverse earmark:hasContent "Communication from the Commission on the intervention of regional agreements, in particular the methods of combating unemployment among women and young people."^^xsd:string .
+
+ns1:event_1 a dul:Event ;
+    boxer:agent ns1:thing_1 ;
+    boxer:patient ns1:Communication ;
+    ns1:from ns1:Commission,
+        ns1:people_1 .
+
+ns1:intervention_1 a ns1:Intervention ;
+    rdfs:label "intervention" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Agreement rdfs:label "agreements" .
+
+ns1:Combat rdfs:label "combating" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Commission rdfs:label "Commission" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Contract ;
+    ns1:in ns1:method_1 ;
+    ns1:onInterventionOf ns1:agreement_1 .
+
+ns1:Communication rdfs:label "Communication" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Communication .
+
+ns1:Intervention rdfs:label "intervention" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Method rdfs:label "methods" .
+
+ns1:Particular rdfs:label "particular" .
+
+ns1:ParticularTheMethod rdfs:subClassOf ns1:TheMethod .
+
+ns1:People a owl:Class ;
+    rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Regional rdfs:label "regional" ;
+    owl:sameAs dbpedia:Regional_planning .
+
+ns1:RegionalAgreement rdfs:subClassOf ns1:Agreement .
+
+ns1:TheMethod rdfs:subClassOf ns1:Method .
+
+ns1:Unemployment a owl:Class ;
+    rdfs:label "unemployment" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Unemployment .
+
+ns1:Woman a owl:Class ;
+    rdfs:label "women" ;
+    owl:equivalentClass dbpedia:Woman .
+
+ns1:Young a owl:Class ;
+    rdfs:label "young" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Youth .
+
+ns1:YoungPeople a owl:Class ;
+    rdfs:label "young people" ;
+    dul:hasQuality ns1:Young ;
+    rdfs:subClassOf ns1:People ;
+    owl:equivalentClass dbpedia:Youth .
+
+ns1:agreement_1 a dbpedia:Contract,
+        ns1:RegionalAgreement ;
+    rdfs:label "agreements" ;
+    dul:hasQuality ns1:Regional ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:method_1 a dbpedia:Methodology,
+        ns1:ParticularTheMethod ;
+    rdfs:label "methods" ;
+    dul:hasQuality ns1:Particular ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:particularTheMethodOf ns1:unemployment_1 .
+
+ns1:people_1 a ns1:YoungPeople ;
+    rdfs:label "people" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:woman_1 a ns1:Woman ;
+    rdfs:label "women" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:unemployment_1 a ns1:Unemployment ;
+    rdfs:label "unemployment" ;
+    ns1:among ns1:woman_1 .
+

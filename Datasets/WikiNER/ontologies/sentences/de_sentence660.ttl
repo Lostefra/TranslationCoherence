@@ -1,0 +1,169 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence660.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Proposition rdfs:label "to" .
+
+translation_coherence:de_sentence660.ttl a owl:Ontology ;
+    rdfs:label "de_sentence660" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence660" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:dedicate_1 a ns1:Dedicate ;
+    rdfs:label "dedicated" ;
+    vn.role:Proposition ns1:study_1 ;
+    vn.role:Theme ns1:magazine_1 .
+
+ns1:docuverse earmark:hasContent "Sciabarra opens the Journal_of_Ayn_Rand_Studies, a nonpartisan peer review magazine dedicated to the study of Rand's philosophical and literary work."^^xsd:string .
+
+ns1:open_1 a ns1:Open ;
+    rdfs:label "opens" ;
+    vn.role:Agent ns1:Sciabarra ;
+    vn.role:Theme ns1:Journal_of_ayn_rand_studies .
+
+ns1:peer_1 a ns1:Peer ;
+    rdfs:label "peer" ;
+    dul:associatedWith ns1:magazine_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:review_1 a ns1:Review ;
+    rdfs:label "review" ;
+    dul:associatedWith ns1:magazine_1 .
+
+ns1:Dedicate rdfs:label "dedicated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Journal_of_ayn_rand_studies rdfs:label "Journal of Ayn Rand Studies" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:magazine_1 ;
+    owl:sameAs dbpedia:The_Journal_of_Ayn_Rand_Studies .
+
+ns1:LiteraryWork a owl:Class ;
+    rdfs:label "literary work" ;
+    dul:hasQuality ns1:Literary ;
+    rdfs:subClassOf ns1:Work .
+
+ns1:Magazine a owl:Class ;
+    rdfs:label "magazine" ;
+    rdfs:subClassOf dul:InformationEntity,
+        dul:PhysicalObject .
+
+ns1:Nonpartisan a owl:Class ;
+    rdfs:label "nonpartisan" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:NonpartisanPeer a owl:Class ;
+    dul:hasQuality ns1:Nonpartisan ;
+    rdfs:subClassOf ns1:Peer .
+
+ns1:NonpartisanPeerReview a owl:Class ;
+    dul:associatedWith ns1:NonpartisanPeer ;
+    rdfs:subClassOf ns1:PeerReview .
+
+ns1:NonpartisanPeerReviewMagazine a owl:Class ;
+    rdfs:label "Nonpartisan Peer Review Magazine" ;
+    dul:associatedWith ns1:NonpartisanPeerReview ;
+    rdfs:subClassOf ns1:PeerReviewMagazine .
+
+ns1:Open rdfs:label "opens" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:PeerReviewMagazine a owl:Class ;
+    rdfs:label "peer review magazine" ;
+    dul:associatedWith ns1:PeerReview ;
+    rdfs:subClassOf ns1:ReviewMagazine .
+
+ns1:Philosophical rdfs:label "philosophical" ;
+    owl:sameAs dbpedia:Philosophy .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:ReviewMagazine a owl:Class ;
+    rdfs:label "review magazine" ;
+    dul:associatedWith ns1:Review ;
+    rdfs:subClassOf ns1:Magazine .
+
+ns1:Sciabarra rdfs:label "Sciabarra" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Study rdfs:label "study" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Work a owl:Class ;
+    rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:study_1 a ns1:Study ;
+    rdfs:label "study" ;
+    quant:hasDeterminer quant:the ;
+    ns1:studyOf ns1:work_1 .
+
+ns1:work_1 a ns1:LiteraryWork ;
+    rdfs:label "work" ;
+    dul:hasQuality ns1:Literary,
+        ns1:Philosophical ;
+    ns1:literaryWorkOf ns1:Rand .
+
+ns1:Literary a owl:Class ;
+    rdfs:label "literary" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:PeerReview a owl:Class ;
+    dul:associatedWith ns1:Peer ;
+    rdfs:subClassOf ns1:Review .
+
+ns1:Peer a owl:Class ;
+    rdfs:label "peer" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Review a owl:Class ;
+    rdfs:label "review" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> ;
+    owl:equivalentClass dbpedia:Peer_review .
+
+ns1:magazine_1 a ns1:NonpartisanPeerReviewMagazine ;
+    rdfs:label "magazine" .
+

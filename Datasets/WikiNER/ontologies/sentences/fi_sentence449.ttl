@@ -1,0 +1,175 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence449.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme rdfs:label "on" .
+
+translation_coherence:fi_sentence449.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence449" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence449" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Though rdfs:label "though" .
+
+ns1:With rdfs:label "with" .
+
+ns1:build_1 a ns1:NeverBuild ;
+    rdfs:label "build" ;
+    boxing:hasModality boxing:Possible ;
+    dul:hasQuality ns1:Never ;
+    vn.role:Agent ns1:Plato ;
+    vn.role:Product ns1:neuter_1 .
+
+ns1:docuverse earmark:hasContent "Even Plato had difficulties with logic, though he had a reasonable understanding of the drainage system, he could never build it and rely on dialectics."^^xsd:string .
+
+ns1:drainage_1 a ns1:Drainage ;
+    rdfs:label "drainage" ;
+    dul:associatedWith ns1:system_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "had" ;
+    vn.role:Agent ns1:Plato ;
+    vn.role:Patient ns1:difficulty_1 ;
+    ns1:though ns1:have_2 .
+
+ns1:rely_1 a ns1:Rely ;
+    rdfs:label "rely" ;
+    boxing:hasModality boxing:Possible ;
+    dul:hasQuality ns1:Never ;
+    vn.role:Agent ns1:Plato ;
+    vn.role:Theme ns1:dialectic_1 .
+
+dbpedia:Plato a schema:Person .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Build rdfs:label "build" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Dialectic rdfs:label "dialectics" .
+
+ns1:Difficulty rdfs:label "difficulties" .
+
+ns1:DrainageSystem a owl:Class ;
+    rdfs:label "Drainage System" ;
+    dul:associatedWith ns1:Drainage ;
+    rdfs:subClassOf ns1:System .
+
+ns1:Even rdfs:label "Even" .
+
+ns1:Logic a owl:Class ;
+    rdfs:label "logic" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> ;
+    owl:equivalentClass dbpedia:Logic .
+
+ns1:Male rdfs:label "he" .
+
+ns1:NeverBuild rdfs:label "never build" ;
+    rdfs:subClassOf ns1:Build .
+
+ns1:Reasonable a owl:Class ;
+    rdfs:label "reasonable" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Reason .
+
+ns1:ReasonableUnderstanding a owl:Class ;
+    rdfs:label "reasonable understanding" ;
+    dul:hasQuality ns1:Reasonable ;
+    rdfs:subClassOf ns1:Understanding .
+
+ns1:Rely rdfs:label "rely" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:System a owl:Class ;
+    rdfs:label "system" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Understanding a owl:Class ;
+    rdfs:label "understanding" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> ;
+    owl:equivalentClass dbpedia:Understanding .
+
+ns1:dialectic_1 a dbpedia:Dialectic,
+        ns1:Dialectic ;
+    rdfs:label "dialectics" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:difficulty_1 a ns1:Difficulty ;
+    rdfs:label "difficulties" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:with ns1:logic_1 .
+
+ns1:have_2 a ns1:Have ;
+    rdfs:label "had" ;
+    vn.role:Agent ns1:Plato ;
+    vn.role:Patient ns1:understanding_1 .
+
+ns1:logic_1 a ns1:Logic ;
+    rdfs:label "logic" .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "it" .
+
+ns1:understanding_1 a ns1:ReasonableUnderstanding ;
+    rdfs:label "understanding" ;
+    quant:hasDeterminer quant:a ;
+    ns1:reasonableUnderstandingOf ns1:system_1 .
+
+ns1:Drainage a owl:Class ;
+    rdfs:label "drainage" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Have rdfs:label "had" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Never rdfs:label "never" .
+
+ns1:system_1 a ns1:DrainageSystem ;
+    rdfs:label "system" .
+
+ns1:Plato rdfs:label "Plato" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Even,
+        ns1:Male ;
+    owl:sameAs dbpedia:Plato .
+

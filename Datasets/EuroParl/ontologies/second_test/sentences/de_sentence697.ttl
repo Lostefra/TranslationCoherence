@@ -1,0 +1,145 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence697.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence697.ttl a owl:Ontology ;
+    rdfs:label "de_sentence697" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence697" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:evaluation_1 a ns1:Evaluation ;
+    quant:hasDeterminer quant:the ;
+    ns1:forExchangeOf ns1:practice_1 ;
+    ns1:inManagementOf ns1:fund_1 .
+
+ns1:exchange_1 a ns1:Exchange ;
+    quant:hasDeterminer quant:the .
+
+ns1:inform_1 a ns1:Inform ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Recipient ns1:european_parliament_1 ;
+    ns1:in ns1:context_1 .
+
+ns1:management_1 a ns1:Management ;
+    quant:hasDeterminer quant:the .
+
+ns1:organise_1 a ns1:Organise ;
+    boxer:agent ns1:intention_1 ;
+    boxer:patient ns1:seminar_1 ;
+    ns1:onEvaluationOf ns1:procedure_1 ;
+    ns1:organiseBy "2000-01-01"^^xsd:date .
+
+ns1:year_1 a ns1:Year ;
+    quant:hasDeterminer quant:the ;
+    ns1:at "2000-01-01"^^xsd:date .
+
+dbpedia:European_Parliament rdfs:subClassOf schema:Organization .
+
+ns1:BestPractice rdfs:subClassOf ns1:Practice .
+
+ns1:Context rdfs:subClassOf dul:Description .
+
+ns1:European_parliament owl:equivalentClass dbpedia:European_Parliament .
+
+ns1:Evaluation rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Basel_problem .
+
+ns1:Exchange rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Inform rdfs:subClassOf dul:Event .
+
+ns1:Intention rdfs:subClassOf dul:Goal .
+
+ns1:Management rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Organise rdfs:subClassOf dul:Event .
+
+ns1:RegionalAuthority rdfs:subClassOf ns1:Authority .
+
+ns1:Seminar rdfs:subClassOf dul:Collection .
+
+ns1:StructuralFund rdfs:subClassOf ns1:Fund .
+
+ns1:Subject rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Year rdfs:subClassOf dul:TimeInterval .
+
+ns1:authority_1 a ns1:RegionalAuthority ;
+    dul:hasQuality ns1:National,
+        ns1:Regional ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:context_1 a ns1:Context ;
+    quant:hasDeterminer quant:this .
+
+ns1:european_parliament_1 a ns1:European_parliament ;
+    quant:hasDeterminer quant:the ;
+    ns1:about ns1:intention_1 .
+
+ns1:fund_1 a ns1:StructuralFund ;
+    dul:hasQuality ns1:Structural ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:person_1 a ns1:Person .
+
+ns1:person_2 a ns1:Person .
+
+ns1:practice_1 a ns1:BestPractice,
+        ns1:Practice ;
+    dul:hasQuality ns1:Best ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:bestAmong ns1:Practice .
+
+ns1:procedure_1 a ns1:Procedure ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:seminar_1 a ns1:Seminar ;
+    quant:hasDeterminer quant:a ;
+    ns1:on ns1:subject_1 ;
+    ns1:with ns1:authority_1 .
+
+ns1:subject_1 a ns1:Subject ;
+    quant:hasDeterminer quant:this .
+
+ns1:intention_1 a ns1:Intention ;
+    ns1:intentionOf ns1:person_1 .
+

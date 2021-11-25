@@ -1,0 +1,125 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence645.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence645.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence645" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence645" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:About rdfs:label "about" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "'s",
+        "his" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "Ayn_Rand's passion, an independent film about his life, was made in 1999, starring Helen_Mirren Rand and Peter_Fonda."^^xsd:string .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "made" ;
+    vn.role:Theme ns1:passion_1 ;
+    ns1:in "1999-01-01"^^xsd:date .
+
+ns1:star_1 a ns1:Star ;
+    rdfs:label "starring" ;
+    vn.role:Agent ns1:Helen_mirren_rand,
+        ns1:Peter_fonda ;
+    vn.role:Theme "1999-01-01"^^xsd:date .
+
+dbpedia:Ayn_Rand a schema:Person .
+
+ns1:Ayn_rand rdfs:label "Ayn Rand" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Ayn_Rand .
+
+ns1:Film a owl:Class ;
+    rdfs:label "film" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity>,
+        dul:InformationEntity .
+
+ns1:Helen_mirren_rand rdfs:label "Helen Mirren Rand" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Independent a owl:Class ;
+    rdfs:label "independent" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:IndependentFilm a owl:Class ;
+    rdfs:label "independent film" ;
+    dul:hasQuality ns1:Independent ;
+    rdfs:subClassOf ns1:Film ;
+    owl:equivalentClass dbpedia:Independent_film .
+
+ns1:Life rdfs:label "life" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Make rdfs:label "made" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Passion rdfs:label "passion" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Peter_fonda rdfs:label "Peter Fonda" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Peter_Fonda .
+
+ns1:Star rdfs:label "starring" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:film_1 a ns1:IndependentFilm ;
+    rdfs:label "film" ;
+    quant:hasDeterminer quant:an ;
+    ns1:about ns1:life_1 .
+
+ns1:life_1 a ns1:Life ;
+    rdfs:label "life" ;
+    ns1:lifeOf ns1:male_1 .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "his" .
+
+ns1:passion_1 a ns1:Passion ;
+    rdfs:label "passion" ;
+    dul:associatedWith ns1:film_1 ;
+    ns1:passionOf ns1:Ayn_rand .
+

@@ -1,0 +1,184 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence426.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence426.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence426" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence426" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:During rdfs:label "during" .
+
+ns1:Especially rdfs:label "especially" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:When rdfs:label "When" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "When Lincoln maturalized, and especially during his term as president, the idea of a divine in some way interaction with human matters will increase his public expressions."^^xsd:string .
+
+ns1:male_1 rdfs:label "his" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:divine_1,
+        ns1:increase_1,
+        ns1:interaction_1,
+        ns1:matter_1,
+        ns1:maturalize_1,
+        ns1:president_1 ;
+    ns1:when ns1:situation_2 .
+
+ns1:way_1 a ns1:Way ;
+    rdfs:label "way" ;
+    dul:associatedWith ns1:interaction_1 ;
+    quant:hasQuantifier quant:some .
+
+ns1:Divine a owl:Class ;
+    rdfs:label "divine" ;
+    rdfs:subClassOf dul:Personification ;
+    owl:equivalentClass dbpedia:Divinity .
+
+ns1:Expression rdfs:label "expressions" .
+
+ns1:Human rdfs:label "human" ;
+    owl:sameAs dbpedia:Human .
+
+ns1:HumanMatter rdfs:subClassOf ns1:Matter .
+
+ns1:Idea a owl:Class ;
+    rdfs:label "idea" ;
+    rdfs:subClassOf dul:InformationEntity ;
+    owl:equivalentClass dbpedia:Idea .
+
+ns1:Increase rdfs:label "increase" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Interaction a owl:Class ;
+    rdfs:label "interaction" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Male rdfs:label "Lincoln" .
+
+ns1:Matter rdfs:label "matters" .
+
+ns1:Maturalize rdfs:label "maturalized" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:President rdfs:label "president" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Public rdfs:label "public" .
+
+ns1:PublicExpression rdfs:subClassOf ns1:Expression .
+
+ns1:Term a owl:Class ;
+    rdfs:label "term" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Time .
+
+ns1:WayInteraction a owl:Class ;
+    rdfs:label "Way Interaction" ;
+    dul:associatedWith ns1:Way ;
+    rdfs:subClassOf ns1:Interaction .
+
+ns1:event_1 a dul:Event .
+
+ns1:expression_1 a ns1:PublicExpression ;
+    rdfs:label "expressions" ;
+    dul:hasQuality ns1:Public ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:publicExpressionOf ns1:Lincoln .
+
+ns1:idea_1 a ns1:Idea ;
+    rdfs:label "idea" ;
+    quant:hasDeterminer quant:the ;
+    ns1:ideaOf ns1:divine_1 .
+
+ns1:increase_1 a ns1:Increase ;
+    rdfs:label "increase" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:idea_1 ;
+    vn.role:Patient ns1:expression_1 ;
+    ns1:especiallyDuring ns1:term_1 .
+
+ns1:maturalize_1 a ns1:Maturalize ;
+    rdfs:label "maturalized" ;
+    boxer:agent ns1:Lincoln .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:event_1 .
+
+ns1:term_1 a ns1:Term ;
+    rdfs:label "term" ;
+    ns1:as ns1:president_1 ;
+    ns1:termOf ns1:Lincoln .
+
+ns1:Way a owl:Class ;
+    rdfs:label "way" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:divine_1 a ns1:Divine ;
+    rdfs:label "divine" ;
+    quant:hasDeterminer quant:a ;
+    ns1:in ns1:interaction_1 .
+
+ns1:matter_1 a ns1:HumanMatter ;
+    rdfs:label "matters" ;
+    dul:hasQuality ns1:Human ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:president_1 a ns1:President ;
+    rdfs:label "president" .
+
+ns1:Lincoln a ns1:Male ;
+    rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person .
+
+ns1:interaction_1 a ns1:WayInteraction ;
+    rdfs:label "interaction" ;
+    ns1:with ns1:matter_1 .
+

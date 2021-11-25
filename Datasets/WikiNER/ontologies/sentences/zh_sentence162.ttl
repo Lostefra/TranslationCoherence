@@ -1,0 +1,166 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence162.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme rdfs:label "on" ;
+    owl:sameAs dbpedia:Constitution .
+
+vn.role:Theme2 rdfs:label "on" .
+
+translation_coherence:zh_sentence162.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence162" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence162" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:base_1 a ns1:Base ;
+    rdfs:label "based" ;
+    vn.role:Theme1 ns1:campaign_1 ;
+    vn.role:Theme2 ns1:fact_1 .
+
+ns1:docuverse earmark:hasContent "The campaign is based on the fact that the Sabbama Constitution has been highly focused on the rights of Mongrid people, and in practice has no local hand."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "has" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:campaign_1 ;
+    vn.role:Patient ns1:hand_1 ;
+    ns1:in ns1:practice_1 .
+
+ns1:Base rdfs:label "based" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Campaign rdfs:label "campaign" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Fact a owl:Class ;
+    rdfs:label "fact" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Fact .
+
+ns1:Focus rdfs:label "focused" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Have rdfs:label "has" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Highly rdfs:label "highly" .
+
+ns1:HighlyFocus rdfs:subClassOf ns1:Focus .
+
+ns1:LocalHand a owl:Class ;
+    rdfs:label "local hand" ;
+    dul:hasQuality ns1:Local ;
+    rdfs:subClassOf ns1:Hand .
+
+ns1:MongridPeople a owl:Class ;
+    rdfs:label "Mongrid People" ;
+    dul:hasQuality ns1:Mongrid ;
+    rdfs:subClassOf ns1:People .
+
+ns1:People a owl:Class ;
+    rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection ;
+    owl:equivalentClass dbpedia:Person .
+
+ns1:Practice a owl:Class ;
+    rdfs:label "practice" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Practice_of_law .
+
+ns1:Rights a owl:Class ;
+    rdfs:label "rights" ;
+    owl:equivalentClass dbpedia:Rights .
+
+ns1:Sabbama_constitution rdfs:label "Sabbama Constitution" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:fact_1 a ns1:Fact ;
+    rdfs:label "fact" ;
+    boxer:theme ns1:focus_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:focus_1 a ns1:HighlyFocus ;
+    rdfs:label "focused" ;
+    boxer:patient ns1:Sabbama_constitution ;
+    dul:hasQuality ns1:Highly ;
+    vn.role:Theme ns1:rights_1 .
+
+ns1:people_1 a ns1:MongridPeople ;
+    rdfs:label "people" ;
+    dul:hasQuality ns1:Mongrid ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:practice_1 a ns1:Practice ;
+    rdfs:label "practice" .
+
+ns1:rights_1 a ns1:Rights ;
+    rdfs:label "rights" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:rightsOf ns1:people_1 .
+
+ns1:Hand a owl:Class ;
+    rdfs:label "hand" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Local a owl:Class ;
+    rdfs:label "local" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Localism_(politics) .
+
+ns1:Mongrid a owl:Class ;
+    rdfs:label "Mongrid" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:campaign_1 a ns1:Campaign ;
+    rdfs:label "campaign" ;
+    quant:hasDeterminer quant:the ;
+    owl:sameAs ns1:hand_1 .
+
+ns1:hand_1 a ns1:Hand,
+        ns1:LocalHand ;
+    rdfs:label "hand" ;
+    dul:hasQuality ns1:Local ;
+    quant:hasQuantifier quant:no .
+

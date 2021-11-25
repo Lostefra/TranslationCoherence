@@ -1,0 +1,176 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence647.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence647.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence647" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence647" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Through rdfs:label "through" .
+
+ns1:docuverse earmark:hasContent "Nick_Gillespie, in the editor of Reason, stated that Rand is a ethic of torture and that she is likely to be a versa, operating through mass culture in Rand as a cold and inhuman jungle."^^xsd:string .
+
+ns1:editor_1 a ns1:Editor ;
+    rdfs:label "editor" ;
+    quant:hasDeterminer quant:the .
+
+ns1:ethic_1 rdfs:label "ethic" .
+
+ns1:state_1 a ns1:State ;
+    rdfs:label "stated" ;
+    vn.role:Agent ns1:Nick_gillespie ;
+    vn.role:Topic ns1:situation_1 ;
+    ns1:inEditorOf ns1:Reason .
+
+ns1:versa_1 rdfs:label "versa" .
+
+dbpedia:Ayn_Rand a schema:Person .
+
+ns1:Cold rdfs:label "cold" .
+
+ns1:Culture a owl:Class ;
+    rdfs:label "culture" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Editor rdfs:label "editor" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Ethic rdfs:label "Rand",
+        "ethic" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Female rdfs:label "she" .
+
+ns1:Inhuman a owl:Class ;
+    rdfs:label "inhuman" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:InhumanJungle a owl:Class ;
+    rdfs:label "Inhuman Jungle" ;
+    dul:hasQuality ns1:Inhuman ;
+    rdfs:subClassOf ns1:Jungle .
+
+ns1:Jungle a owl:Class ;
+    rdfs:label "jungle" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Likely rdfs:label "likely" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Mass a owl:Class ;
+    rdfs:label "mass" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:MassCulture a owl:Class ;
+    rdfs:label "mass culture" ;
+    dul:hasQuality ns1:Mass ;
+    rdfs:subClassOf ns1:Culture ;
+    owl:equivalentClass dbpedia:Popular_culture .
+
+ns1:Operate rdfs:label "operating" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Reason rdfs:label "Reason" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Reason .
+
+ns1:State rdfs:label "stated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Torture a owl:Class ;
+    rdfs:label "torture" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Torture .
+
+ns1:Versa rdfs:label "Nick Gillespie",
+        "versa" .
+
+ns1:culture_1 a ns1:MassCulture ;
+    rdfs:label "culture" .
+
+ns1:jungle_1 a ns1:InhumanJungle ;
+    rdfs:label "jungle" ;
+    dul:hasQuality ns1:Cold ;
+    quant:hasDeterminer quant:a .
+
+ns1:likely_1 a ns1:Likely ;
+    rdfs:label "likely" ;
+    boxer:agent ns1:Nick_gillespie ;
+    boxer:theme ns1:operate_1 .
+
+ns1:operate_1 a ns1:Operate ;
+    rdfs:label "operating" ;
+    vn.role:Patient ns1:Nick_gillespie ;
+    ns1:as ns1:jungle_1 ;
+    ns1:locatedIn ns1:Rand ;
+    ns1:through ns1:culture_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Rand,
+        ns1:likely_1,
+        ns1:torture_1 .
+
+ns1:Rand a ns1:Ethic ;
+    rdfs:label "Rand",
+        "ethic" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place>,
+        foaf:Organisation ;
+    quant:hasDeterminer quant:a ;
+    owl:sameAs dbpedia:Ayn_Rand ;
+    ns1:ethicOf ns1:torture_1 .
+
+ns1:torture_1 a ns1:Torture ;
+    rdfs:label "torture" .
+
+ns1:Nick_gillespie a ns1:Versa ;
+    rdfs:label "Nick Gillespie",
+        "versa" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Female ;
+    quant:hasDeterminer quant:a ;
+    owl:sameAs dbpedia:Nick_Gillespie .
+

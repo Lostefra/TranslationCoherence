@@ -1,0 +1,153 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence245.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "among" .
+
+translation_coherence:ko_sentence245.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence245" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence245" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:From rdfs:label "from" .
+
+ns1:Of rdfs:label "'s",
+        "their" .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "Odysseus sells women's clothes and jewelry and moves to Skyros from the paradise to place shields and spices among their products."^^xsd:string .
+
+ns1:jewelry_1 rdfs:label "jewelry" .
+
+ns1:place_1 a ns1:Place ;
+    rdfs:label "place" ;
+    vn.role:Agent ns1:move_1 ;
+    vn.role:Destination ns1:product_1 ;
+    vn.role:Theme ns1:shield_1,
+        ns1:spice_1 .
+
+ns1:sell_1 a ns1:Sell ;
+    rdfs:label "sells" ;
+    vn.role:Agent ns1:Odysseus ;
+    vn.role:Theme ns1:clothes_1,
+        ns1:move_1 .
+
+ns1:Clothes rdfs:label "clothes" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Jewelry a owl:Class ;
+    rdfs:label "jewelry" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Jewellery .
+
+ns1:Move rdfs:label "moves" .
+
+ns1:Odysseus rdfs:label "Odysseus" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Odysseus .
+
+ns1:Paradise rdfs:label "paradise" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Place rdfs:label "place" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Product rdfs:label "products" .
+
+ns1:Sell rdfs:label "sells" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Shield rdfs:label "shields" .
+
+ns1:Skyro a owl:Class ;
+    rdfs:label "Skyros" ;
+    owl:equivalentClass dbpedia:Skyros .
+
+ns1:Spice rdfs:label "spices" .
+
+ns1:Woman a owl:Class ;
+    rdfs:label "women" ;
+    owl:equivalentClass dbpedia:Woman .
+
+ns1:clothes_1 a ns1:Clothes,
+        ns1:Jewelry ;
+    rdfs:label "clothes" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:jewelryOf ns1:woman_1 .
+
+ns1:paradise_1 a ns1:Paradise ;
+    rdfs:label "paradise" ;
+    quant:hasDeterminer quant:the .
+
+ns1:product_1 a dbpedia:Cosmetics,
+        ns1:Product ;
+    rdfs:label "products" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:productOf ns1:thing_1,
+        ns1:thing_2 .
+
+ns1:shield_1 a ns1:Shield ;
+    rdfs:label "shields" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:skyro_1 a ns1:Skyro ;
+    rdfs:label "Skyros" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:spice_1 a ns1:Spice ;
+    rdfs:label "spices" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "their" .
+
+ns1:woman_1 a ns1:Woman ;
+    rdfs:label "women" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:move_1 a ns1:Move ;
+    rdfs:label "moves" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:from ns1:paradise_1 ;
+    ns1:to ns1:skyro_1 .
+

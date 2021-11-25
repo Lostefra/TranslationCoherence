@@ -105,8 +105,8 @@ def glove_synonyms(g1, g2):
 
 
 if __name__ == "__main__":
-    g1 = build_graph("EuroParl/Paragraph1/turtle/cn/en_cn_en_sentence2.ttl")
-    g2 = build_graph("EuroParl/Paragraph1/turtle/it/en_it_en_sentence2.ttl")
+    g1 = build_graph("Datasets/Paragraph1_EuroParl/turtle/cn/en_cn_en_sentence2.ttl")
+    g2 = build_graph("Datasets/Paragraph1_EuroParl/turtle/it/en_it_en_sentence2.ttl")
     lemmas = extracts_lemmas(g1, g2)
 
     # INVESTIGATE SYNONYMY AND SIMILARITIES BETWEEN WORDS

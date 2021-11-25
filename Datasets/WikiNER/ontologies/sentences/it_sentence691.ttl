@@ -1,0 +1,124 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence691.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence691.ttl a owl:Ontology ;
+    rdfs:label "it_sentence691" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence691" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Quantity rdfs:label "many" .
+
+ns1:attack_1 a ns1:OftenAttack ;
+    rdfs:label "attacked" ;
+    dul:hasQuality ns1:Often ;
+    vn.role:Agent ns1:pirate_1 ;
+    vn.role:Theme ns1:Balearic_islands .
+
+ns1:docuverse earmark:hasContent "Barbarian pirates often attacked the Balearic_Islands, and in response many coastal towers and fortified churches were erected."^^xsd:string .
+
+ns1:erect_1 a ns1:Erect ;
+    rdfs:label "erected" ;
+    vn.role:Product ns1:church_1,
+        ns1:tower_1 ;
+    ns1:in ns1:response_1 .
+
+ns1:fortify_1 a ns1:Fortify ;
+    rdfs:label "fortified" ;
+    boxer:patient ns1:church_1 .
+
+dbpedia:Balearic_Islands a schema:Place .
+
+ns1:Attack rdfs:label "attacked" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Balearic_islands rdfs:label "Balearic Islands" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Balearic_Islands .
+
+ns1:Barbarian rdfs:label "Barbarian" ;
+    owl:sameAs dbpedia:Barbarian,
+        dbpedia:Migration_Period .
+
+ns1:BarbarianPirate rdfs:subClassOf ns1:Pirate .
+
+ns1:Church rdfs:label "churches" .
+
+ns1:Coastal rdfs:label "coastal" .
+
+ns1:CoastalTower rdfs:subClassOf ns1:Tower .
+
+ns1:Erect rdfs:label "erected" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Fortify rdfs:label "fortified" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Often rdfs:label "often" .
+
+ns1:OftenAttack rdfs:subClassOf ns1:Attack .
+
+ns1:Pirate rdfs:label "pirates" .
+
+ns1:Response rdfs:label "response" ;
+    rdfs:subClassOf dul:Process .
+
+ns1:Tower rdfs:label "towers" .
+
+ns1:pirate_1 a ns1:BarbarianPirate ;
+    rdfs:label "pirates" ;
+    dul:hasQuality ns1:Barbarian ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:response_1 a ns1:Response ;
+    rdfs:label "response" .
+
+ns1:tower_1 a ns1:CoastalTower ;
+    rdfs:label "towers" ;
+    dul:hasQuality ns1:Coastal ;
+    quant:hasQuantifier quant:many,
+        quant:multiple .
+
+ns1:church_1 a ns1:Church ;
+    rdfs:label "churches" ;
+    quant:hasQuantifier quant:multiple .
+

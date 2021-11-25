@@ -1,0 +1,169 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence413.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence413.ttl a owl:Ontology ;
+    rdfs:label "en_sentence413" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence413" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Along rdfs:label "along" .
+
+ns1:Nevertheless rdfs:label "Nevertheless" .
+
+ns1:Of rdfs:label "her" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:cannot_1 a ns1:Cannot ;
+    rdfs:label "cannot" ;
+    boxer:agent ns1:person_1 ;
+    dul:hasQuality ns1:Say ;
+    ns1:nevertheless ns1:like_1 .
+
+ns1:docuverse earmark:hasContent "Whether or not this will encourage her to continue along the same path, I cannot say. Nevertheless, I would like to commend her on her work."^^xsd:string .
+
+ns1:encourage_2 a ns1:Encourage ;
+    rdfs:label "encourage" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:whether_1 ;
+    vn.role:Theme ns1:encourage_1 ;
+    ns1:union ns1:encourage_1 .
+
+owl:Thing rdfs:label "this" .
+
+ns1:Cannot rdfs:label "cannot" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Commend rdfs:label "commend" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Continue rdfs:label "continue" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Like rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Path a owl:Class ;
+    rdfs:label "path" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Same a owl:Class ;
+    rdfs:label "same" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SamePath a owl:Class ;
+    rdfs:label "same path" ;
+    dul:hasQuality ns1:Same ;
+    rdfs:subClassOf ns1:Path .
+
+ns1:Say rdfs:label "say" .
+
+ns1:Whether rdfs:label "Whether" .
+
+ns1:Work rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:commend_1 a ns1:Commend ;
+    rdfs:label "commend" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Theme ns1:her_2 ;
+    ns1:on ns1:work_1 .
+
+ns1:continue_1 a ns1:Continue ;
+    rdfs:label "continue" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:her_1 ;
+    ns1:along ns1:path_1 .
+
+ns1:female_1 a ns1:Female ;
+    rdfs:label "her" .
+
+ns1:her_2 a ns1:Her ;
+    rdfs:label "her" .
+
+ns1:like_1 a ns1:Like ;
+    rdfs:label "like" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Experiencer ns1:person_2 ;
+    vn.role:Theme ns1:commend_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "this" .
+
+ns1:whether_1 a ns1:Whether ;
+    rdfs:label "Whether" .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "work" ;
+    ns1:workOf ns1:female_1 .
+
+ns1:Encourage rdfs:label "encourage" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Her rdfs:label "her" .
+
+ns1:Person rdfs:label "I" .
+
+ns1:encourage_1 a ns1:Encourage ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:her_1,
+        ns1:thing_1 ;
+    vn.role:Theme ns1:continue_1 ;
+    ns1:along ns1:path_1 .
+
+ns1:her_1 a ns1:Her ;
+    rdfs:label "her" .
+
+ns1:path_1 a ns1:SamePath ;
+    rdfs:label "path" ;
+    quant:hasDeterminer quant:the,
+        quant:this .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "I" .
+

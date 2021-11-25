@@ -1,0 +1,120 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence748.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:de_sentence748.ttl a owl:Ontology ;
+    rdfs:label "de_sentence748" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence748" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "Country languages are spoken by 15% of the Algerian population, especially in Kabylia, in the Aures and in the Sahara."^^xsd:string .
+
+ns1:especially_1 rdfs:label "especially" .
+
+ns1:speak_1 a ns1:Speak ;
+    rdfs:label "spoken" ;
+    boxer:patient ns1:language_1 ;
+    vn.role:Agent ns1:percent_1 .
+
+dbpedia:Sahara a schema:Place .
+
+ns1:Algerian rdfs:label "Algerian" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Demographics_of_Algeria .
+
+ns1:Aure a owl:Class ;
+    rdfs:label "Aures" ;
+    owl:equivalentClass <http://dbpedia.org/resource/Aures,_Algeria> .
+
+ns1:Country rdfs:label "Country" ;
+    boxer:possibleType owl:Thing .
+
+ns1:Especially rdfs:label "especially" .
+
+ns1:Kabylia rdfs:label "Kabylia" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Kabylie .
+
+ns1:Language rdfs:label "languages" .
+
+ns1:Percent rdfs:label "%" .
+
+ns1:Population rdfs:label "population" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Sahara rdfs:label "Sahara" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Sahara .
+
+ns1:Speak rdfs:label "spoken" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:aure_1 a ns1:Aure ;
+    rdfs:label "Aures" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:language_1 a dbpedia:Language,
+        ns1:Language ;
+    rdfs:label "languages" ;
+    dul:associatedWith ns1:Country ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:percent_1 a ns1:Especially,
+        ns1:Percent ;
+    rdfs:label "%" ;
+    dul:hasDataValue "15"^^xsd:nonNegativeInteger ;
+    ns1:in ns1:aure_1 ;
+    ns1:locatedIn ns1:Kabylia,
+        ns1:Sahara ;
+    ns1:percentOf ns1:population_1 .
+
+ns1:population_1 a ns1:Population ;
+    rdfs:label "population" ;
+    dul:associatedWith ns1:Algerian .
+

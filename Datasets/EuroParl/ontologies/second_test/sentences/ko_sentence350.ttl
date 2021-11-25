@@ -1,0 +1,220 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence350.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:ko_sentence350.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence350" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence350" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Be rdfs:label "is" .
+
+ns1:Between rdfs:label "between" .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "of",
+        "our" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:achieve_1 a ns1:Achieve ;
+    rdfs:label "achieve" ;
+    vn.role:Agent ns1:addition_1 ;
+    vn.role:Theme ns1:goal_1 .
+
+ns1:communication_1 a ns1:Communication ;
+    rdfs:label "communication" ;
+    dul:associatedWith ns1:network_1 .
+
+ns1:docuverse earmark:hasContent "In addition, to achieve our goals, to overcome disputes between regions and pursue the source of employment, it is important to provide our complete support to new technologies, transport and communication networks and renewable energy."^^xsd:string .
+
+ns1:overcome_1 a ns1:Overcome ;
+    rdfs:label "overcome" ;
+    vn.role:Theme1 ns1:addition_1 ;
+    vn.role:Theme2 ns1:dispute_1 .
+
+ns1:person_1 coref:coref ns1:person_2 .
+
+ns1:provide_1 a ns1:Provide ;
+    rdfs:label "provide" ;
+    vn.role:Agent ns1:neuter_1 ;
+    vn.role:Recipient ns1:technology_1 ;
+    vn.role:Theme ns1:support_1 ;
+    ns1:be ns1:important_1 ;
+    ns1:in ns1:addition_1 .
+
+ns1:pursue_1 a ns1:Pursue ;
+    rdfs:label "pursue" ;
+    vn.role:Agent ns1:addition_1 ;
+    vn.role:Theme ns1:source_1 .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Achieve rdfs:label "achieve" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Addition rdfs:label "addition" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Communication rdfs:label "communication" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:CommunicationNetwork rdfs:subClassOf ns1:Network .
+
+ns1:Complete a owl:Class ;
+    rdfs:label "complete" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:CompleteSupport a owl:Class ;
+    rdfs:label "Complete Support" ;
+    dul:hasQuality ns1:Complete ;
+    rdfs:subClassOf ns1:Support .
+
+ns1:Dispute rdfs:label "disputes" .
+
+ns1:Employment rdfs:label "employment" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Energy a owl:Class ;
+    rdfs:label "energy" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Goal rdfs:label "goals" .
+
+ns1:Important rdfs:label "important" .
+
+ns1:Network rdfs:label "networks" .
+
+ns1:New rdfs:label "new" .
+
+ns1:NewTechnology rdfs:subClassOf ns1:Technology .
+
+ns1:Overcome rdfs:label "overcome" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Provide rdfs:label "provide" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Pursue rdfs:label "pursue" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Region rdfs:label "regions" .
+
+ns1:Renewable a owl:Class ;
+    rdfs:label "renewable" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:RenewableEnergy a owl:Class ;
+    rdfs:label "Renewable Energy" ;
+    dul:hasQuality ns1:Renewable ;
+    rdfs:subClassOf ns1:Energy ;
+    owl:equivalentClass dbpedia:Renewable_energy .
+
+ns1:Source rdfs:label "source" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Support a owl:Class ;
+    rdfs:label "support" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Technology rdfs:label "technologies" .
+
+ns1:Transport rdfs:label "transport" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:dispute_1 a ns1:Dispute ;
+    rdfs:label "disputes" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:between ns1:region_1 .
+
+ns1:employment_1 a ns1:Employment ;
+    rdfs:label "employment" .
+
+ns1:energy_1 a ns1:RenewableEnergy ;
+    rdfs:label "energy" .
+
+ns1:goal_1 a ns1:Goal ;
+    rdfs:label "goals" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:goalOf ns1:person_2 .
+
+ns1:important_1 a ns1:Important ;
+    rdfs:label "important" .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "it" .
+
+ns1:region_1 a ns1:Region ;
+    rdfs:label "regions" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:source_1 a ns1:Source ;
+    rdfs:label "source" ;
+    quant:hasDeterminer quant:the ;
+    ns1:sourceOf ns1:employment_1 .
+
+ns1:support_1 a ns1:CompleteSupport ;
+    rdfs:label "support" ;
+    ns1:completeSupportOf ns1:person_2 .
+
+ns1:technology_1 a ns1:NewTechnology ;
+    rdfs:label "technologies" ;
+    dul:associatedWith ns1:energy_1,
+        ns1:network_1,
+        ns1:transport_1 ;
+    dul:hasQuality ns1:New ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:transport_1 a ns1:Transport ;
+    rdfs:label "transport" .
+
+ns1:network_1 a ns1:CommunicationNetwork ;
+    rdfs:label "networks" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "our" .
+
+ns1:addition_1 a ns1:Addition ;
+    rdfs:label "addition" .
+

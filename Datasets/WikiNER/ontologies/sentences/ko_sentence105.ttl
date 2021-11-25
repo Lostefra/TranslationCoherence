@@ -1,0 +1,145 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence105.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:ko_sentence105.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence105" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence105" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:From rdfs:label "from" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "(" .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "Alabama has a wide range of 1,800 feet (550m) from mobile bays to the Catalan mountains in the northeast."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "has" ;
+    vn.role:Agent ns1:Alabama ;
+    vn.role:Patient ns1:range_1 .
+
+dbpedia:Alabama a schema:AdministrativeArea,
+        schema:Place .
+
+dbpedia:Catalan_language a schema:Language .
+
+ns1:550m rdfs:label "550m" .
+
+ns1:550m_1 a ns1:550m ;
+    rdfs:label "550m" .
+
+ns1:Alabama rdfs:label "Alabama" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Alabama .
+
+ns1:Bay rdfs:label "bays" .
+
+ns1:Catalan rdfs:label "Catalan" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Catalan_language .
+
+ns1:Foot rdfs:label "feet" .
+
+ns1:Have rdfs:label "has" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Mobile rdfs:label "mobile" .
+
+ns1:MobileBay rdfs:subClassOf ns1:Bay .
+
+ns1:Mountain rdfs:label "mountains" .
+
+ns1:Northeast a owl:Class ;
+    rdfs:label "northeast" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Northeastern_United_States .
+
+ns1:Range a owl:Class ;
+    rdfs:label "range" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Wide a owl:Class ;
+    rdfs:label "wide" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:WideRange a owl:Class ;
+    rdfs:label "wide range" ;
+    dul:hasQuality ns1:Wide ;
+    rdfs:subClassOf ns1:Range .
+
+ns1:bay_1 a ns1:MobileBay ;
+    rdfs:label "bays" ;
+    dul:hasQuality ns1:Mobile ;
+    quant:hasQuantifier quant:550m,
+        quant:multiple ;
+    ns1:to ns1:mountain_1 .
+
+ns1:foot_1 a ns1:Foot ;
+    rdfs:label "feet" ;
+    dul:associatedWith ns1:550m_1 ;
+    dul:hasDataValue "1800"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:1%2C800,
+        quant:multiple .
+
+ns1:mountain_1 a dbpedia:Rocky_Mountains,
+        ns1:Mountain ;
+    rdfs:label "mountains" ;
+    dul:associatedWith ns1:Catalan ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:northeast_1 .
+
+ns1:northeast_1 a ns1:Northeast ;
+    rdfs:label "northeast" ;
+    quant:hasDeterminer quant:the .
+
+ns1:range_1 a ns1:WideRange ;
+    rdfs:label "range" ;
+    quant:hasDeterminer quant:a ;
+    ns1:from ns1:bay_1 ;
+    ns1:wideRangeOf ns1:foot_1 .
+

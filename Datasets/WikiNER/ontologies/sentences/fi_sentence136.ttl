@@ -1,0 +1,104 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence136.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Elargest> rdfs:label "largest" .
+
+translation_coherence:fi_sentence136.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence136" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence136" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:Uab a ns1:LargestEmployer ;
+    rdfs:label "UAB" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasDataValue "20000"^^xsd:nonNegativeInteger ;
+    owl:sameAs dbpedia:University_of_Alabama_at_Birmingham ;
+    ns1:largestAmong ns1:Employer .
+
+ns1:docuverse earmark:hasContent "UAB is Ala's largest employer and approximately 20,000 employees."^^xsd:string .
+
+ns1:employee_1 rdfs:label "employees" .
+
+ns1:employer_1 a ns1:Employee,
+        ns1:Employer ;
+    rdfs:label "employer" ;
+    dul:hasDataValue "20000"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:Approximately,
+        ns1:Largest ;
+    quant:hasQuantifier quant:20%2C000,
+        quant:multiple ;
+    ns1:employeeOf ns1:Ala .
+
+dbpedia:American_Library_Association a schema:Organization .
+
+dbpedia:University_of_Alabama_at_Birmingham a schema:CollegeOrUniversity,
+        schema:EducationalOrganization,
+        schema:Organization .
+
+ns1:Ala rdfs:label "Ala" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:American_Library_Association .
+
+ns1:Approximately rdfs:label "approximately" .
+
+ns1:LargestEmployer a owl:Class ;
+    rdfs:label "Largest Employer" ;
+    dul:hasQuality ns1:Largest ;
+    rdfs:subClassOf ns1:Employee,
+        ns1:Employer .
+
+ns1:Employee rdfs:label "employees" ;
+    rdfs:subClassOf ns1:Employer .
+
+ns1:Largest a owl:Class ;
+    rdfs:label "largest" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Employer a owl:Class ;
+    rdfs:label "employer" ;
+    rdfs:subClassOf dul:Person .
+

@@ -1,0 +1,276 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence286.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "as" .
+
+translation_coherence:de_sentence286.ttl a owl:Ontology ;
+    rdfs:label "de_sentence286" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence286" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:After rdfs:label "after" .
+
+ns1:Because rdfs:label "because" .
+
+ns1:Despite rdfs:label "despite" .
+
+ns1:Entails rdfs:label "if" .
+
+ns1:Of rdfs:label "'s",
+        "of",
+        "their" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Theme rdfs:label "possible" .
+
+ns1:With rdfs:label "with" .
+
+ns1:activity_1 a ns1:Activity ;
+    rdfs:label "activities" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:comment_1 a ns1:Comment ;
+    rdfs:label "comments" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:as ns1:like_1 ;
+    ns1:commentOf ns1:Swoboda ;
+    ns1:onActivityOf ns1:Cen .
+
+ns1:deadline_1 a ns1:NewDeadline ;
+    rdfs:label "deadline" ;
+    quant:hasDeterminer quant:the ;
+    ns1:despite ns1:find_1 .
+
+ns1:docuverse earmark:hasContent "As regards Mr Swoboda's comments on the activities of the CEN, I would like to say that we urge them to speed up their work as far as possible, because it would be surprising if, despite the new deadline, we find ourselves after a year and with the same difficulties because their work has not been completed."^^xsd:string .
+
+ns1:regards_1 rdfs:label "regards" .
+
+ns1:thing_5 a owl:Thing ;
+    boxer:theme ns1:thing_4 .
+
+ns1:Activity rdfs:label "activities" .
+
+ns1:As rdfs:label "As",
+        "as" .
+
+ns1:Cen rdfs:label "CEN" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Comment rdfs:label "comments" .
+
+ns1:Deadline a owl:Class ;
+    rdfs:label "deadline" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:Difficulty rdfs:label "difficulties" .
+
+ns1:Find rdfs:label "find" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Like rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:New a owl:Class ;
+    rdfs:label "new" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:NewDeadline a owl:Class ;
+    rdfs:label "New Deadline" ;
+    dul:hasQuality ns1:New ;
+    rdfs:subClassOf ns1:Deadline .
+
+ns1:Same rdfs:label "same" .
+
+ns1:SameDifficulty rdfs:subClassOf ns1:Difficulty .
+
+ns1:Say rdfs:label "say" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Speed rdfs:label "speed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Swoboda a ns1:Regards ;
+    rdfs:label "Swoboda",
+        "regards" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Up rdfs:label "up" .
+
+ns1:Urge rdfs:label "urge" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Work rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Year rdfs:label "year" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:complete_1 a ns1:Complete ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:person_3 ;
+    vn.role:Theme ns1:person_4,
+        ns1:work_1 ;
+    ns1:with ns1:difficulty_1 .
+
+ns1:difficulty_1 a ns1:SameDifficulty ;
+    rdfs:label "difficulties" ;
+    dul:hasQuality ns1:Same ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:like_1 a ns1:Like ;
+    rdfs:label "like" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Experiencer ns1:person_1 ;
+    vn.role:Theme ns1:say_1 ;
+    ns1:because ns1:situation_1 .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "it" ;
+    dul:hasQuality ns1:Surprising .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "say" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Topic ns1:urge_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:Complete,
+        ns1:Surprising,
+        ns1:complete_1,
+        ns1:complete_2,
+        ns1:find_1,
+        ns1:neuter_1,
+        ns1:year_1 .
+
+ns1:speed_1 a ns1:Speed ;
+    rdfs:label "speed" ;
+    boxing:hasModality boxing:Possible ;
+    dul:hasQuality ns1:As,
+        ns1:Up ;
+    vn.role:Agent ns1:thing_6 ;
+    vn.role:Location ns1:thing_4 ;
+    vn.role:Theme ns1:work_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "their" .
+
+ns1:thing_2 a owl:Thing .
+
+ns1:thing_3 a owl:Thing ;
+    rdfs:label "their" .
+
+ns1:thing_6 a owl:Thing ;
+    rdfs:label "them" .
+
+ns1:urge_1 a ns1:Urge ;
+    rdfs:label "urge" ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Proposition ns1:speed_1 .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> a ns1:Regards ;
+    rdfs:label "Mr",
+        "regards" ;
+    boxer:possibleType dul:Role .
+
+ns1:Regards rdfs:label "Mr",
+        "Swoboda",
+        "regards" .
+
+ns1:Surprising rdfs:label "surprising" .
+
+ns1:find_1 a ns1:Find ;
+    rdfs:label "find" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_3 ;
+    vn.role:Theme ns1:person_4 ;
+    ns1:after ns1:year_1 ;
+    ns1:because ns1:complete_2 ;
+    ns1:entails ns1:complete_2 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:person_4 a ns1:Person ;
+    rdfs:label "ourselves" .
+
+ns1:thing_4 a owl:Thing .
+
+ns1:year_1 a ns1:Year ;
+    rdfs:label "year" ;
+    quant:hasDeterminer quant:a .
+
+ns1:Complete rdfs:label "completed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:complete_2 a ns1:Complete ;
+    rdfs:label "completed" ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Theme ns1:work_1 .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "work" ;
+    ns1:workOf ns1:thing_1,
+        ns1:thing_2,
+        ns1:thing_3 .
+
+ns1:Person rdfs:label "I",
+        "ourselves",
+        "we" .
+
+owl:Thing rdfs:label "it",
+        "them" .
+

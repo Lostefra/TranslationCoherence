@@ -1,0 +1,177 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence592.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence592.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence592" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence592" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:By rdfs:label "by" .
+
+ns1:Of rdfs:label "'",
+        "'s",
+        "of" .
+
+ns1:achievement_1 rdfs:label "achievement" .
+
+ns1:describe_1 a ns1:Describe ;
+    rdfs:label "describes" ;
+    vn.role:Agent ns1:John_galt ;
+    vn.role:Theme ns1:laike_1 .
+
+ns1:docuverse earmark:hasContent "The novel's hero and laike leader John_Galt describes a laike to stop the world's engine by pulling individuals' minds that promote the prosperity and achievement of the nation."^^xsd:string .
+
+ns1:hero_1 rdfs:label "hero" .
+
+ns1:leader_1 rdfs:label "leader" .
+
+ns1:promote_1 a ns1:Promote ;
+    rdfs:label "promote" ;
+    vn.role:Agent ns1:mind_1 ;
+    vn.role:Theme ns1:prosperity_1 .
+
+ns1:pull_1 a ns1:Pull ;
+    rdfs:label "pulling" ;
+    vn.role:Agent ns1:John_galt ;
+    vn.role:Theme ns1:mind_1 .
+
+ns1:stop_1 a ns1:Stop ;
+    rdfs:label "stop" ;
+    vn.role:Agent ns1:John_galt ;
+    vn.role:Theme ns1:engine_1 ;
+    ns1:byMindOf ns1:individual_1 .
+
+ns1:Achievement rdfs:label "achievement" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Describe rdfs:label "describes" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Engine rdfs:label "engine" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Hero rdfs:label "John Galt",
+        "hero" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Individual rdfs:label "individuals" .
+
+ns1:LaikeLeader a owl:Class ;
+    rdfs:label "laike leader" ;
+    dul:hasQuality ns1:Laike ;
+    rdfs:subClassOf ns1:Leader .
+
+ns1:Leader a owl:Class ;
+    rdfs:label "John Galt",
+        "leader" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Mind rdfs:label "minds" .
+
+ns1:Nation rdfs:label "nation" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Novel rdfs:label "novel" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Promote rdfs:label "promote" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Prosperity rdfs:label "prosperity" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Pull rdfs:label "pulling" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Stop rdfs:label "stop" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:World rdfs:label "world" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:engine_1 a ns1:Engine ;
+    rdfs:label "engine" ;
+    ns1:engineOf ns1:world_1 .
+
+ns1:individual_1 a ns1:Individual ;
+    rdfs:label "individuals" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:laike_1 a ns1:Laike ;
+    rdfs:label "laike" ;
+    quant:hasDeterminer quant:a .
+
+ns1:nation_1 a ns1:Nation ;
+    rdfs:label "nation" ;
+    quant:hasDeterminer quant:the .
+
+ns1:novel_1 a ns1:Novel ;
+    rdfs:label "novel" ;
+    quant:hasDeterminer quant:the .
+
+ns1:prosperity_1 a ns1:Achievement,
+        ns1:Prosperity ;
+    rdfs:label "prosperity" ;
+    quant:hasDeterminer quant:the ;
+    ns1:prosperityOf ns1:nation_1 .
+
+ns1:world_1 a ns1:World ;
+    rdfs:label "world" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Laike a owl:Class ;
+    rdfs:label "Laike",
+        "laike" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:mind_1 a ns1:Mind ;
+    rdfs:label "minds" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:John_galt a ns1:Hero,
+        ns1:LaikeLeader ;
+    rdfs:label "John Galt",
+        "hero",
+        "leader" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:John_Galt_(novelist) ;
+    ns1:laikeLeaderOf ns1:novel_1 .
+

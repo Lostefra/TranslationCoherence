@@ -1,0 +1,289 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence626.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "of" .
+
+vn.role:Source rdfs:label "from" .
+
+translation_coherence:en_sentence626.ttl a owl:Ontology ;
+    rdfs:label "en_sentence626" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence626" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Few rdfs:label "few" .
+
+ns1:In rdfs:label "in" .
+
+ns1:With rdfs:label "with" .
+
+ns1:call_1 a ns1:Call ;
+    rdfs:label "calling" ;
+    vn.role:Agent ns1:Mimi_reisel_gladstein ;
+    vn.role:Predicate ns1:claptrap_1,
+        ns1:nightmare_1 ;
+    vn.role:Theme ns1:neuter_1 .
+
+ns1:cleverest_1 a ns1:Cleverest ;
+    rdfs:label "cleverest" ;
+    dul:associatedWith ns1:put-down_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:docuverse earmark:hasContent "Atlas_Shrugged received positive reviews from a few publications, but Rand scholar Mimi_Reisel_Gladstein later wrote that reviewers seemed to vie with each other in a contest to devise the cleverest put-downs, calling it execrable claptrap and a nightmare; they said it was written out of hate and showed remorseless hectoring and prolixity."^^xsd:string .
+
+ns1:prolixity_1 rdfs:label "prolixity" .
+
+ns1:receive_1 a ns1:Receive ;
+    rdfs:label "received" ;
+    vn.role:Agent ns1:Atlas_shrugged ;
+    vn.role:Source ns1:publication_1 ;
+    vn.role:Theme ns1:review_1 .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "said" ;
+    vn.role:Agent ns1:reviewer_1 ;
+    vn.role:Topic ns1:situation_1 .
+
+ns1:scholar_1 rdfs:label "scholar" .
+
+ns1:thing_1 coref:coref ns1:reviewer_1 .
+
+ns1:write_1 a ns1:LaterWrite ;
+    rdfs:label "wrote" ;
+    dul:hasQuality ns1:Later ;
+    vn.role:Agent ns1:Mimi_reisel_gladstein ;
+    vn.role:Topic ns1:seem_1 .
+
+ns1:Atlas_shrugged rdfs:label "Atlas Shrugged" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Atlas_Shrugged .
+
+ns1:Call rdfs:label "calling" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Claptrap a owl:Class ;
+    rdfs:label "claptrap" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Cleverest rdfs:label "cleverest" .
+
+ns1:CleverestPut-down rdfs:subClassOf ns1:Put-down .
+
+ns1:Contest rdfs:label "contest" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Devise rdfs:label "devise" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Execrable a owl:Class ;
+    rdfs:label "execrable" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ExecrableClaptrap a owl:Class ;
+    rdfs:label "Execrable Claptrap" ;
+    dul:hasQuality ns1:Execrable ;
+    rdfs:subClassOf ns1:Claptrap .
+
+ns1:FewPublication rdfs:subClassOf ns1:Publication .
+
+ns1:Hate a owl:Class ;
+    rdfs:label "hate" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> ;
+    owl:equivalentClass dbpedia:Out_of_Hate .
+
+ns1:Hectoring a owl:Class ;
+    rdfs:label "hectoring" .
+
+ns1:Later rdfs:label "later" .
+
+ns1:LaterWrite rdfs:subClassOf ns1:Write .
+
+ns1:Nightmare rdfs:label "nightmare" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Other rdfs:label "other" .
+
+ns1:Positive rdfs:label "positive" .
+
+ns1:PositiveReview rdfs:subClassOf ns1:Review .
+
+ns1:Prolixity rdfs:label "prolixity" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Publication rdfs:label "publications" .
+
+ns1:Put-down rdfs:label "put-downs" .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Receive rdfs:label "received" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:RemorselessHectoring a owl:Class ;
+    rdfs:label "remorseless hectoring" ;
+    dul:hasQuality ns1:Remorseless ;
+    rdfs:subClassOf ns1:Hectoring .
+
+ns1:Review rdfs:label "reviews" .
+
+ns1:Reviewer rdfs:label "reviewers" .
+
+ns1:Say rdfs:label "said" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Scholar rdfs:label "Mimi Reisel Gladstein",
+        "scholar" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Seem rdfs:label "seemed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Show rdfs:label "showed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Vie rdfs:label "Vie",
+        "vie" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:claptrap_1 a ns1:ExecrableClaptrap ;
+    rdfs:label "claptrap" .
+
+ns1:devise_1 a ns1:Devise ;
+    rdfs:label "devise" ;
+    vn.role:Agent ns1:contest_1 ;
+    vn.role:Theme ns1:put-down_1 .
+
+ns1:nightmare_1 a ns1:Nightmare ;
+    rdfs:label "nightmare" ;
+    quant:hasDeterminer quant:a .
+
+ns1:publication_1 a ns1:FewPublication ;
+    rdfs:label "publications" ;
+    quant:hasDeterminer quant:a ;
+    quant:hasQuantifier quant:few,
+        quant:multiple .
+
+ns1:review_1 a ns1:PositiveReview ;
+    rdfs:label "reviews" ;
+    dul:hasQuality ns1:Positive ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:seem_1 a ns1:Seem ;
+    rdfs:label "seemed" ;
+    vn.role:Predicate ns1:situation_2 ;
+    vn.role:Theme ns1:reviewer_1 .
+
+ns1:show_1 a ns1:Show ;
+    rdfs:label "showed" ;
+    vn.role:Agent ns1:neuter_1 ;
+    vn.role:Theme ns1:hectoring_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:hate_1,
+        ns1:hectoring_1,
+        ns1:show_1,
+        ns1:write_2 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:contest_1,
+        ns1:devise_1,
+        ns1:other_1,
+        ns1:vie_1 .
+
+ns1:vie_1 a ns1:Vie ;
+    rdfs:label "vie" ;
+    vn.role:Actor ns1:reviewer_1 ;
+    ns1:in ns1:contest_1 ;
+    ns1:with ns1:other_1 .
+
+ns1:write_2 a ns1:Write ;
+    rdfs:label "written" ;
+    vn.role:Destination ns1:hate_1 ;
+    vn.role:Theme ns1:neuter_1 .
+
+ns1:Mimi_reisel_gladstein a ns1:Scholar ;
+    rdfs:label "Mimi Reisel Gladstein",
+        "scholar" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith ns1:Rand ;
+    owl:sameAs dbpedia:Mimi_Reisel_Gladstein .
+
+ns1:Remorseless a owl:Class ;
+    rdfs:label "remorseless" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Write rdfs:label "written",
+        "wrote" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:hate_1 a ns1:Hate ;
+    rdfs:label "hate" .
+
+ns1:hectoring_1 a ns1:Prolixity,
+        ns1:RemorselessHectoring ;
+    rdfs:label "hectoring" ;
+    dul:hasQuality ns1:Remorseless .
+
+ns1:other_1 a ns1:Other ;
+    rdfs:label "other" ;
+    quant:hasQuantifier quant:each .
+
+ns1:put-down_1 a dbpedia:Insult,
+        ns1:CleverestPut-down ;
+    rdfs:label "put-downs" ;
+    quant:hasQuantifier quant:multiple .
+
+owl:Thing rdfs:label "it",
+        "they" .
+
+ns1:contest_1 a ns1:Contest ;
+    rdfs:label "contest" ;
+    quant:hasDeterminer quant:a .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "it" .
+
+ns1:reviewer_1 a owl:Thing,
+        ns1:Reviewer ;
+    rdfs:label "reviewers",
+        "they" ;
+    quant:hasQuantifier quant:multiple .
+

@@ -1,0 +1,187 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence618.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+vn.role:Predicate rdfs:label "for" .
+
+translation_coherence:de_sentence618.ttl a owl:Ontology ;
+    rdfs:label "de_sentence618" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence618" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Because rdfs:label "because" .
+
+ns1:By rdfs:label "by" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of",
+        "their" .
+
+ns1:consider_1 a ns1:EvenConsider ;
+    rdfs:label "considered" ;
+    dul:hasQuality ns1:Even ;
+    vn.role:Agent ns1:edge_1 ;
+    vn.role:Predicate ns1:pein_1 ;
+    vn.role:Theme ns1:assessment_1 ;
+    ns1:because ns1:contaminate_1 .
+
+ns1:docuverse earmark:hasContent "Screening of film production was mixed, and the edge even considered the positive assessments for pein because they were contaminated by significant changes in their script design by the manufacturer."^^xsd:string .
+
+ns1:film_1 a ns1:Film ;
+    rdfs:label "film" ;
+    dul:associatedWith ns1:production_1 .
+
+ns1:screen_1 a ns1:Screen ;
+    rdfs:label "Screening" ;
+    dul:hasQuality ns1:Mixed ;
+    ns1:screenOf ns1:production_1 .
+
+ns1:script_1 a ns1:Script ;
+    rdfs:label "script" ;
+    dul:associatedWith ns1:design_1 .
+
+ns1:thing_1 coref:coref ns1:thing_2 .
+
+owl:Thing rdfs:label "they" .
+
+ns1:Assessment rdfs:label "assessments" .
+
+ns1:Change rdfs:label "changes" .
+
+ns1:Consider rdfs:label "considered" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Contaminate rdfs:label "contaminated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Design a owl:Class ;
+    rdfs:label "design" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Edge rdfs:label "edge" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Even rdfs:label "even" .
+
+ns1:EvenConsider rdfs:subClassOf ns1:Consider .
+
+ns1:FilmProduction a owl:Class ;
+    rdfs:label "Film Production" ;
+    dul:associatedWith ns1:Film ;
+    rdfs:subClassOf ns1:Production .
+
+ns1:Manufacturer rdfs:label "manufacturer" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Mixed rdfs:label "mixed" .
+
+ns1:Pein rdfs:label "pein" .
+
+ns1:Positive rdfs:label "positive" .
+
+ns1:PositiveAssessment rdfs:subClassOf ns1:Assessment .
+
+ns1:Production a owl:Class ;
+    rdfs:label "production" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Screen rdfs:label "Screening" .
+
+ns1:ScriptDesign a owl:Class ;
+    rdfs:label "script design" ;
+    dul:associatedWith ns1:Script ;
+    rdfs:subClassOf ns1:Design .
+
+ns1:Significant rdfs:label "significant" .
+
+ns1:SignificantChange rdfs:subClassOf ns1:Change .
+
+ns1:assessment_1 a ns1:PositiveAssessment ;
+    rdfs:label "assessments" ;
+    dul:hasQuality ns1:Positive ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:change_1 a ns1:SignificantChange ;
+    rdfs:label "changes" ;
+    dul:hasQuality ns1:Significant ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:design_1 .
+
+ns1:contaminate_1 a ns1:Contaminate ;
+    rdfs:label "contaminated" ;
+    vn.role:Agent ns1:change_1 ;
+    vn.role:Destination ns1:thing_2 .
+
+ns1:edge_1 a ns1:Edge ;
+    rdfs:label "edge" ;
+    quant:hasDeterminer quant:the .
+
+ns1:manufacturer_1 a ns1:Manufacturer ;
+    rdfs:label "manufacturer" ;
+    quant:hasDeterminer quant:the .
+
+ns1:pein_1 a ns1:Pein ;
+    rdfs:label "pein" .
+
+ns1:Film a owl:Class ;
+    rdfs:label "film" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity>,
+        dul:InformationEntity .
+
+ns1:Script a owl:Class ;
+    rdfs:label "script" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:design_1 a ns1:ScriptDesign ;
+    rdfs:label "design" ;
+    ns1:scriptDesignBy ns1:manufacturer_1 ;
+    ns1:scriptDesignOf ns1:thing_2 .
+
+ns1:production_1 a ns1:FilmProduction ;
+    rdfs:label "production" .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "their",
+        "they" .
+

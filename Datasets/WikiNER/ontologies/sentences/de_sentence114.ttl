@@ -1,0 +1,153 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence114.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence114.ttl a owl:Ontology ;
+    rdfs:label "de_sentence114" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence114" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Over rdfs:label "over" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "In general, the region of Arizona has very hot summer and mild winter with copious rainfall over the year."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "has" ;
+    vn.role:Agent ns1:region_1 ;
+    vn.role:Patient ns1:summer_1 ;
+    ns1:in ns1:thing_1 ;
+    ns1:over ns1:year_1 ;
+    ns1:with ns1:rainfall_1 .
+
+ns1:winter_1 rdfs:label "winter" .
+
+dbpedia:Arizona a schema:AdministrativeArea,
+        schema:Place .
+
+owl:Thing rdfs:label "In" .
+
+ns1:Arizona rdfs:label "Arizona" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Arizona .
+
+ns1:CopiousRainfall a owl:Class ;
+    rdfs:label "Copious Rainfall" ;
+    dul:hasQuality ns1:Copious ;
+    rdfs:subClassOf ns1:Rainfall .
+
+ns1:General rdfs:label "general" .
+
+ns1:Have rdfs:label "has" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:HotSummer a owl:Class ;
+    rdfs:label "Hot Summer" ;
+    dul:hasQuality ns1:Hot ;
+    rdfs:subClassOf ns1:Summer .
+
+ns1:Mild a owl:Class ;
+    rdfs:label "mild" ;
+    dul:hasQuality ns1:Very ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:MildWinter a owl:Class ;
+    rdfs:label "Mild Winter" ;
+    dul:hasQuality ns1:Mild ;
+    rdfs:subClassOf ns1:Winter .
+
+ns1:Rainfall a owl:Class ;
+    rdfs:label "rainfall" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Region rdfs:label "region" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Summer a owl:Class ;
+    rdfs:label "summer" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:VeryHotSummer a owl:Class ;
+    rdfs:label "very hot summer" ;
+    rdfs:subClassOf ns1:HotSummer .
+
+ns1:Winter a owl:Class ;
+    rdfs:label "winter" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Year rdfs:label "year" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:rainfall_1 a ns1:CopiousRainfall ;
+    rdfs:label "rainfall" ;
+    dul:hasQuality ns1:Copious .
+
+ns1:region_1 a ns1:Region ;
+    rdfs:label "region" ;
+    quant:hasDeterminer quant:the ;
+    ns1:regionOf ns1:Arizona .
+
+ns1:summer_1 a ns1:MildWinter,
+        ns1:VeryHotSummer ;
+    rdfs:label "summer" ;
+    dul:hasQuality ns1:Hot .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "In" ;
+    dul:hasQuality ns1:General .
+
+ns1:year_1 a ns1:Year ;
+    rdfs:label "year" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Copious a owl:Class ;
+    rdfs:label "copious" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Hot a owl:Class ;
+    rdfs:label "hot" ;
+    dul:hasQuality ns1:Very ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Very rdfs:label "very" .
+

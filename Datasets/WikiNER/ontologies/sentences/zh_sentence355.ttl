@@ -1,0 +1,169 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence355.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence355.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence355" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence355" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "McClellan is an administrative officer for the west-to-school and railway of a young man, requiring military service and taking a more careful approach."^^xsd:string .
+
+ns1:require_1 a ns1:Require ;
+    rdfs:label "requiring" ;
+    vn.role:Agent ns1:Mcclellan ;
+    vn.role:Patient ns1:service_1 .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "taking" ;
+    vn.role:Agent ns1:Mcclellan ;
+    vn.role:Theme ns1:approach_1 .
+
+dbpedia:George_B._McClellan a schema:Person .
+
+ns1:Administrative a owl:Class ;
+    rdfs:label "administrative" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:AdministrativeOfficer a owl:Class ;
+    rdfs:label "Administrative Officer" ;
+    dul:hasQuality ns1:Administrative ;
+    rdfs:subClassOf ns1:Officer .
+
+ns1:Approach a owl:Class ;
+    rdfs:label "approach" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Careful a owl:Class ;
+    rdfs:label "careful" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:CarefulApproach a owl:Class ;
+    rdfs:label "Careful Approach" ;
+    dul:hasQuality ns1:Careful ;
+    rdfs:subClassOf ns1:Approach .
+
+ns1:MilitaryService a owl:Class ;
+    rdfs:label "Military Service" ;
+    dul:hasQuality ns1:Military ;
+    rdfs:subClassOf ns1:Service ;
+    owl:equivalentClass dbpedia:Conscription .
+
+ns1:More rdfs:label "more" .
+
+ns1:MoreCarefulApproach a owl:Class ;
+    rdfs:label "More Careful Approach" ;
+    rdfs:subClassOf ns1:CarefulApproach .
+
+ns1:Railway rdfs:label "railway" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Require rdfs:label "requiring" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Service a owl:Class ;
+    rdfs:label "service" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Take rdfs:label "taking" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:West-to-school rdfs:label "west-to-school" .
+
+ns1:Young a owl:Class ;
+    rdfs:label "young" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:YoungMan a owl:Class ;
+    rdfs:label "young man" ;
+    dul:hasQuality ns1:Young ;
+    rdfs:subClassOf ns1:Man .
+
+ns1:approach_1 a ns1:MoreCarefulApproach ;
+    rdfs:label "approach" ;
+    dul:hasQuality ns1:More ;
+    quant:hasDeterminer quant:a .
+
+ns1:officer_1 a ns1:Officer ;
+    rdfs:label "officer" ;
+    quant:hasDeterminer quant:an .
+
+ns1:service_1 a ns1:MilitaryService ;
+    rdfs:label "service" ;
+    dul:hasQuality ns1:Military .
+
+ns1:Man a owl:Class ;
+    rdfs:label "man" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Mcclellan a ns1:AdministrativeOfficer ;
+    rdfs:label "McClellan",
+        "officer" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:George_B._McClellan,
+        ns1:man_1,
+        ns1:officer_1,
+        ns1:railway_1 ;
+    ns1:for ns1:railway_1 .
+
+ns1:Military a owl:Class ;
+    rdfs:label "military" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Officer a owl:Class ;
+    rdfs:label "McClellan",
+        "officer" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:man_1 a ns1:Man,
+        ns1:YoungMan ;
+    rdfs:label "man" ;
+    quant:hasDeterminer quant:a .
+
+ns1:railway_1 a ns1:Railway ;
+    rdfs:label "railway" ;
+    dul:hasQuality ns1:West-to-school ;
+    quant:hasDeterminer quant:the ;
+    ns1:railwayOf ns1:man_1 .
+

@@ -1,0 +1,128 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence424.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence424.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence424" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence424" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "was" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:be_1 a ns1:Be ;
+    rdfs:label "was" ;
+    boxer:agent ns1:reading_1 .
+
+ns1:docuverse earmark:hasContent "The reading of Lincoln was, rather than his relationship, it was the most influential in shaping his personal faith."^^xsd:string .
+
+ns1:influential_1 rdfs:label "influential" .
+
+ns1:shape_1 a ns1:Shape ;
+    rdfs:label "shaping" ;
+    dul:associatedWith ns1:relationship_1 ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Theme ns1:faith_1 .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Be rdfs:label "was" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Faith a owl:Class ;
+    rdfs:label "faith" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Influential rdfs:label "influential" .
+
+ns1:Most rdfs:label "most" .
+
+ns1:MostInfluential rdfs:label "most influential" ;
+    rdfs:subClassOf ns1:Influential .
+
+ns1:Personal a owl:Class ;
+    rdfs:label "personal" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:PersonalFaith a owl:Class ;
+    rdfs:label "personal faith" ;
+    dul:hasQuality ns1:Personal ;
+    rdfs:subClassOf ns1:Faith .
+
+ns1:Reading a owl:Class ;
+    rdfs:label "reading" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> ;
+    owl:equivalentClass dbpedia:Reading_(process) .
+
+ns1:Relationship a owl:Class ;
+    rdfs:label "relationship" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Interpersonal_relationship .
+
+ns1:Shape rdfs:label "shaping" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:faith_1 a ns1:PersonalFaith ;
+    rdfs:label "faith" ;
+    quant:hasDeterminer quant:the ;
+    ns1:personalFaithOf ns1:male_1 .
+
+ns1:reading_1 a ns1:Reading ;
+    rdfs:label "reading" ;
+    quant:hasDeterminer quant:the ;
+    ns1:readingOf ns1:Lincoln .
+
+ns1:relationship_1 a ns1:Relationship ;
+    rdfs:label "relationship" ;
+    ns1:relationshipOf ns1:male_1 .
+
+ns1:Lincoln a ns1:MostInfluential ;
+    rdfs:label "Lincoln" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:hasQuality owl:Thing,
+        ns1:Most .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "his" .
+

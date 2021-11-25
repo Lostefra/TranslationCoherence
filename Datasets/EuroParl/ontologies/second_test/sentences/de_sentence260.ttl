@@ -1,0 +1,193 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence260.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Predicate rdfs:label "for" .
+
+vn.role:Recipient rdfs:label "for" .
+
+translation_coherence:de_sentence260.ttl a owl:Ontology ;
+    rdfs:label "de_sentence260" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence260" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:adaptation_1 rdfs:label "adaptation" .
+
+ns1:do_1 a ns1:Do ;
+    rdfs:label "done" ;
+    boxer:agent ns1:Koch ;
+    boxer:patient ns1:work_1 .
+
+ns1:docuverse earmark:hasContent "The rapporteur, Mr Koch, who thanked us for the work he had done, already pointed out that essentially everything would have been advanced, not for the inactivity of the CEN, which was very dilatant in the preparation and adaptation of the Directive."^^xsd:string .
+
+ns1:point_1 a ns1:AlreadyPoint ;
+    rdfs:label "pointed" ;
+    boxer:theme ns1:advance_1 ;
+    dul:hasQuality ns1:Already,
+        ns1:Out ;
+    vn.role:Agent ns1:rapporteur_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves ns1:Cen,
+        ns1:Dilatant,
+        ns1:Very ;
+    ns1:in ns1:preparation_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Cen,
+        ns1:Dilatant ;
+    dul:hasQuality ns1:Very .
+
+ns1:thank_1 a ns1:Thank ;
+    rdfs:label "thanked" ;
+    vn.role:Agent ns1:rapporteur_1 ;
+    vn.role:Predicate ns1:work_1 ;
+    vn.role:Theme ns1:person_1 .
+
+owl:Thing rdfs:label "everything" .
+
+ns1:Adaptation rdfs:label "adaptation" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Advance rdfs:label "advanced" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Already rdfs:label "already" .
+
+ns1:AlreadyPoint rdfs:subClassOf ns1:Point .
+
+ns1:Directive rdfs:label "Directive" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Do rdfs:label "done" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Essentially rdfs:label "essentially" .
+
+ns1:EssentiallyThing rdfs:subClassOf owl:Thing .
+
+ns1:Inactivity rdfs:label "inactivity" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Out rdfs:label "out" .
+
+ns1:Person rdfs:label "us" .
+
+ns1:Point rdfs:label "pointed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Preparation rdfs:label "preparation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Rapporteur rdfs:label "rapporteur" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Thank rdfs:label "thanked" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Work rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:advance_1 a ns1:Advance ;
+    rdfs:label "advanced" ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Recipient ns1:inactivity_1 ;
+    vn.role:Theme ns1:thing_1 .
+
+ns1:directive_1 a ns1:Directive ;
+    rdfs:label "Directive" .
+
+ns1:inactivity_1 a ns1:Inactivity ;
+    rdfs:label "inactivity" ;
+    quant:hasDeterminer quant:the ;
+    ns1:inactivityOf ns1:Cen .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "us" .
+
+ns1:preparation_1 a ns1:Adaptation,
+        ns1:Preparation ;
+    rdfs:label "preparation" ;
+    quant:hasDeterminer quant:the ;
+    ns1:preparationOf ns1:directive_1 .
+
+ns1:thing_1 a ns1:EssentiallyThing ;
+    rdfs:label "everything" ;
+    dul:hasQuality ns1:Essentially .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> rdfs:label "Mr" ;
+    boxer:possibleType dul:Role .
+
+ns1:Koch rdfs:label "Koch" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    dul:hasQuality ns1:Male ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> .
+
+ns1:Very rdfs:label "Very",
+        "very" .
+
+ns1:rapporteur_1 a ns1:Rapporteur ;
+    rdfs:label "rapporteur" ;
+    dul:associatedWith ns1:Koch ;
+    quant:hasDeterminer quant:the .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "work" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Cen rdfs:label "CEN" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality ns1:Dilatant .
+
+ns1:Dilatant rdfs:label "dilatant" ;
+    owl:sameAs dbpedia:Dilatant .
+

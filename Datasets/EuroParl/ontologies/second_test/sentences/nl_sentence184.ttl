@@ -1,0 +1,129 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence184.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "in" .
+
+translation_coherence:nl_sentence184.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence184" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence184" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "Madam President, the importance of transport safety is marked on regular basis in this parliament and right."^^xsd:string .
+
+ns1:mark_1 a ns1:Mark ;
+    rdfs:label "marked" ;
+    vn.role:Destination ns1:parliament_1 ;
+    vn.role:Theme ns1:President ;
+    ns1:on ns1:basis_1 .
+
+ns1:right_1 rdfs:label "right" .
+
+ns1:transport_1 a ns1:Transport ;
+    rdfs:label "transport" ;
+    dul:associatedWith ns1:safety_1 .
+
+ns1:Basis a owl:Class ;
+    rdfs:label "basis" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Importance rdfs:label "importance" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Madam rdfs:label "Madam" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Mark rdfs:label "marked" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Parliament rdfs:label "parliament" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:President rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith ns1:Madam,
+        ns1:importance_1 ;
+    owl:sameAs dbpedia:President .
+
+ns1:Regular a owl:Class ;
+    rdfs:label "regular" .
+
+ns1:RegularBasis rdfs:label "Regular Basis" ;
+    dul:associatedWith ns1:Basis ;
+    dul:hasModality ns1:Regular .
+
+ns1:Right rdfs:label "right" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Safety a owl:Class ;
+    rdfs:label "safety" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:TransportSafety a owl:Class ;
+    rdfs:label "transport safety" ;
+    dul:associatedWith ns1:Transport ;
+    rdfs:subClassOf ns1:Safety .
+
+ns1:basis_1 a ns1:RegularBasis ;
+    rdfs:label "basis" .
+
+ns1:importance_1 a ns1:Importance ;
+    rdfs:label "importance" ;
+    quant:hasDeterminer quant:the ;
+    ns1:importanceOf ns1:safety_1 .
+
+ns1:parliament_1 a ns1:Parliament,
+        ns1:Right ;
+    rdfs:label "parliament" ;
+    quant:hasDeterminer quant:this .
+
+ns1:Transport a owl:Class ;
+    rdfs:label "transport" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:safety_1 a ns1:TransportSafety ;
+    rdfs:label "safety" .
+

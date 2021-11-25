@@ -1,0 +1,133 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence144.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence144.ttl a owl:Ontology ;
+    rdfs:label "it_sentence144" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence144" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:company_1 rdfs:label "companies" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:docuverse earmark:hasContent "Birmingham is also an electric power plant of construction and engineering companies."^^xsd:string .
+
+ns1:engineering_1 a ns1:Engineering ;
+    rdfs:label "engineering" ;
+    dul:associatedWith ns1:construction_1 .
+
+ns1:plant_1 rdfs:label "plant" .
+
+ns1:power_1 a ns1:Power ;
+    rdfs:label "power" ;
+    dul:associatedWith ns1:Birmingham ;
+    quant:hasDeterminer quant:an .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Birmingham,
+        ns1:construction_1 ;
+    dul:hasQuality ns1:Also .
+
+dbpedia:Birmingham a schema:City,
+        schema:Place .
+
+ns1:Also rdfs:label "also" .
+
+ns1:Company rdfs:label "companies" .
+
+ns1:Construction a owl:Class ;
+    rdfs:label "construction" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Construction .
+
+ns1:Electric a owl:Class ;
+    rdfs:label "electric" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Electric_power .
+
+ns1:ElectricPower a owl:Class ;
+    dul:hasQuality ns1:Electric ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event>,
+        ns1:Power .
+
+ns1:ElectricPowerPlant a owl:Class ;
+    rdfs:label "electric power plant" ;
+    dul:associatedWith ns1:ElectricPower ;
+    rdfs:subClassOf ns1:PowerPlant ;
+    owl:equivalentClass dbpedia:Power_station .
+
+ns1:Engineering a owl:Class ;
+    rdfs:label "engineering" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Engineering .
+
+ns1:EngineeringCompany rdfs:subClassOf ns1:Company .
+
+ns1:Plant a owl:Class ;
+    rdfs:label "Birmingham",
+        "plant" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:PowerPlant a owl:Class ;
+    rdfs:label "Power Plant" ;
+    dul:associatedWith ns1:Power ;
+    rdfs:subClassOf dul:PhysicalObject,
+        ns1:Plant ;
+    owl:equivalentClass dbpedia:Power_station .
+
+ns1:Birmingham a ns1:ElectricPowerPlant ;
+    rdfs:label "Birmingham",
+        "plant",
+        "power" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Birmingham ;
+    ns1:electricPowerPlantOf ns1:construction_1 .
+
+ns1:Power a owl:Class ;
+    rdfs:label "Birmingham",
+        "power" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:construction_1 a ns1:Construction,
+        ns1:EngineeringCompany ;
+    rdfs:label "construction" .
+

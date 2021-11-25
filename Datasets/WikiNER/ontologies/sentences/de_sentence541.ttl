@@ -1,0 +1,94 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence541.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Predicate rdfs:label "as" .
+
+translation_coherence:de_sentence541.ttl a owl:Ontology ;
+    rdfs:label "de_sentence541" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence541" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:create_1 a ns1:Create ;
+    rdfs:label "creating" ;
+    vn.role:Agent ns1:thing_2 ;
+    vn.role:Product ns1:thing_1 .
+
+ns1:define_1 a ns1:Define ;
+    rdfs:label "defines" ;
+    vn.role:Agent ns1:Jewstum ;
+    vn.role:Predicate ns1:goal_1 ;
+    vn.role:Theme ns1:Elruism ;
+    ns1:defineOf ns1:thing_2 .
+
+ns1:desire_1 a ns1:Desire ;
+    rdfs:label "desired" ;
+    vn.role:Theme ns1:goal_1 .
+
+ns1:docuverse earmark:hasContent "Jewstum defines Elruism as the desired goal of creating."^^xsd:string .
+
+ns1:Create rdfs:label "creating" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Define rdfs:label "defines" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Desire rdfs:label "desired" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Elruism rdfs:label "Elruism" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Goal rdfs:label "goal" ;
+    rdfs:subClassOf dul:Goal .
+
+ns1:Jewstum rdfs:label "Jewstum" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:goal_1 a ns1:Goal ;
+    rdfs:label "goal" ;
+    quant:hasDeterminer quant:the .
+
+ns1:thing_2 a owl:Thing .
+

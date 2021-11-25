@@ -1,0 +1,225 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence505.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence505.ttl a owl:Ontology ;
+    rdfs:label "de_sentence505" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence505" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:confirm_1 a ns1:UnanimouslyConfirm ;
+    rdfs:label "confirmed" ;
+    dul:hasQuality ns1:Unanimously ;
+    vn.role:Agent ns1:Commission_president ;
+    vn.role:Theme ns1:criterion_1 .
+
+ns1:docuverse earmark:hasContent "Commission_President, Commissioner in the Employment and Social Committee, unanimously confirmed the criterion that it is of strategic importance and supports, as a matter of priority, the interventions of the Structural Funds and the Cohesion_Fund, which promote better employability for the unemployed and gender equality."^^xsd:string .
+
+ns1:employment_1 rdfs:label "Employment" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:importance_1 ;
+    ns1:as ns1:matter_1 .
+
+ns1:support_1 rdfs:label "supports" .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Better a owl:Class ;
+    rdfs:label "better" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:BetterEmployability a owl:Class ;
+    rdfs:label "better employability" ;
+    dul:hasQuality ns1:Better ;
+    rdfs:subClassOf ns1:Employability .
+
+ns1:Cohesion_fund a owl:Class ;
+    rdfs:label "Cohesion Fund" ;
+    owl:equivalentClass dbpedia:Structural_Funds_and_Cohesion_Fund .
+
+ns1:Commission_president rdfs:label "Commission President" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:Commissioner ;
+    dul:hasQuality owl:Thing ;
+    owl:sameAs dbpedia:President_of_the_European_Commission ;
+    ns1:of ns1:importance_1 .
+
+ns1:Commissioner rdfs:label "Commissioner" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Commissioner ;
+    ns1:in ns1:Social_committee .
+
+ns1:Confirm rdfs:label "confirmed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Criterion rdfs:label "criterion" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:Employability a owl:Class ;
+    rdfs:label "employability" ;
+    owl:equivalentClass dbpedia:Employability .
+
+ns1:Employment a owl:Class ;
+    rdfs:label "Employment",
+        "Social Committee" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Employment .
+
+ns1:Equality a owl:Class ;
+    rdfs:label "equality" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Fund rdfs:label "Funds" .
+
+ns1:Gender a owl:Class ;
+    rdfs:label "gender" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:GenderEquality a owl:Class ;
+    rdfs:label "gender equality" ;
+    dul:hasQuality ns1:Gender ;
+    rdfs:subClassOf ns1:Equality ;
+    owl:equivalentClass dbpedia:Gender_equality .
+
+ns1:Importance a owl:Class ;
+    rdfs:label "importance" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Intervention rdfs:label "interventions" .
+
+ns1:Matter rdfs:label "matter" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Priority rdfs:label "priority" ;
+    rdfs:subClassOf dul:Role .
+
+ns1:Promote rdfs:label "promote" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Social_committee a ns1:Employment ;
+    rdfs:label "Employment",
+        "Social Committee" ;
+    boxer:possibleType foaf:Organisation ;
+    quant:hasDeterminer quant:the .
+
+ns1:Strategic a owl:Class ;
+    rdfs:label "strategic" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:StrategicImportance a owl:Class ;
+    rdfs:label "Strategic Importance" ;
+    dul:hasQuality ns1:Strategic ;
+    rdfs:subClassOf ns1:Importance .
+
+ns1:Structural rdfs:label "Structural" ;
+    owl:sameAs dbpedia:Structural_Funds_and_Cohesion_Fund .
+
+ns1:StructuralFund rdfs:subClassOf ns1:Fund .
+
+ns1:Support rdfs:label "supports" .
+
+ns1:Unanimously rdfs:label "unanimously" .
+
+ns1:UnanimouslyConfirm rdfs:subClassOf ns1:Confirm .
+
+ns1:Unemployed rdfs:label "unemployed" ;
+    owl:sameAs dbpedia:Unemployment .
+
+ns1:criterion_1 a ns1:Criterion ;
+    rdfs:label "criterion" ;
+    boxer:theme ns1:promote_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:employability_1 a ns1:BetterEmployability ;
+    rdfs:label "employability" ;
+    ns1:for ns1:equality_1 .
+
+ns1:equality_1 a ns1:GenderEquality ;
+    rdfs:label "equality" ;
+    dul:hasQuality ns1:Unemployed ;
+    quant:hasDeterminer quant:the .
+
+ns1:fund_1 a ns1:StructuralFund ;
+    rdfs:label "Funds" ;
+    dul:hasQuality ns1:Structural ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:intervention_1 a ns1:Intervention ;
+    rdfs:label "interventions" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:interventionOf ns1:fund_1 .
+
+ns1:matter_1 a ns1:Matter ;
+    rdfs:label "matter" ;
+    quant:hasDeterminer quant:a ;
+    ns1:matterOf ns1:priority_1 .
+
+ns1:priority_1 a ns1:Priority ;
+    rdfs:label "priority" ;
+    dul:associatedWith ns1:cohesion_fund_1,
+        ns1:intervention_1 .
+
+ns1:promote_1 a ns1:Promote ;
+    rdfs:label "promote" ;
+    vn.role:Agent ns1:cohesion_fund_1 ;
+    vn.role:Theme ns1:employability_1 .
+
+ns1:cohesion_fund_1 a ns1:Cohesion_fund ;
+    rdfs:label "Cohesion Fund" ;
+    quant:hasDeterminer quant:the .
+
+ns1:importance_1 a ns1:StrategicImportance,
+        ns1:Support ;
+    rdfs:label "importance" ;
+    quant:hasQuantifier quant:multiple .
+

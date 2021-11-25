@@ -1,0 +1,182 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence616.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Predicate rdfs:label "for" .
+
+vn.role:Theme rdfs:label "in" .
+
+translation_coherence:zh_sentence616.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence616" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence616" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Because rdfs:label "because" .
+
+ns1:Between rdfs:label "between" .
+
+ns1:For rdfs:label "for" .
+
+ns1:able_1 a ns1:Able ;
+    rdfs:label "able" ;
+    boxer:agent ns1:support_1 ;
+    boxer:theme ns1:situation_1 ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:hasTruthValue boxing:False .
+
+ns1:docuverse earmark:hasContent "Support for corporate competitiveness alone will not be able to compensate for the cohesion envisaged between economic and social development, simply because there is no reason to support self-support in those areas."^^xsd:string .
+
+ns1:reason_1 rdfs:label "reason" .
+
+ns1:support_2 a ns1:Support ;
+    rdfs:label "support" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Experiencer ns1:there_1 ;
+    vn.role:Predicate ns1:self-support_1 ;
+    vn.role:Theme ns1:area_1 .
+
+ns1:Able rdfs:label "able" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Alone rdfs:label "alone" .
+
+ns1:Area rdfs:label "areas" .
+
+ns1:Cohesion rdfs:label "cohesion" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Compensate rdfs:label "compensate" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Competitiveness a owl:Class ;
+    rdfs:label "competitiveness" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Corporate a owl:Class ;
+    rdfs:label "corporate" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:CorporateCompetitiveness a owl:Class ;
+    rdfs:label "Corporate Competitiveness" ;
+    dul:hasQuality ns1:Corporate ;
+    rdfs:subClassOf ns1:Competitiveness .
+
+ns1:Development a owl:Class ;
+    rdfs:label "development" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Economic rdfs:label "economic" ;
+    owl:sameAs dbpedia:Economy .
+
+ns1:Envisage rdfs:label "envisaged" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Reason rdfs:label "reason" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Self-support rdfs:label "self-support" .
+
+ns1:Simply rdfs:label "simply" .
+
+ns1:Social a owl:Class ;
+    rdfs:label "social" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SocialDevelopment a owl:Class ;
+    rdfs:label "social development" ;
+    dul:hasQuality ns1:Social ;
+    rdfs:subClassOf ns1:Development ;
+    owl:equivalentClass dbpedia:Social_change .
+
+ns1:There rdfs:label "there" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:area_1 a ns1:Area ;
+    rdfs:label "areas" ;
+    quant:hasDeterminer quant:those ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:compensate_1 a ns1:Compensate ;
+    rdfs:label "compensate" ;
+    vn.role:Agent ns1:support_1 ;
+    vn.role:Predicate ns1:cohesion_1 .
+
+ns1:competitiveness_1 a ns1:CorporateCompetitiveness ;
+    rdfs:label "competitiveness" ;
+    dul:hasQuality ns1:Alone .
+
+ns1:envisage_1 a ns1:Envisage ;
+    rdfs:label "envisaged" ;
+    dul:hasQuality ns1:Simply ;
+    vn.role:Agent ns1:cohesion_1 ;
+    ns1:because ns1:situation_1 ;
+    ns1:between ns1:development_1 .
+
+ns1:self-support_1 a ns1:Self-support ;
+    rdfs:label "self-support" .
+
+ns1:Support rdfs:label "Support",
+        "support" ;
+    rdfs:subClassOf dul:Event,
+        dul:Situation .
+
+ns1:cohesion_1 a ns1:Cohesion ;
+    rdfs:label "cohesion" ;
+    quant:hasDeterminer quant:the .
+
+ns1:development_1 a ns1:SocialDevelopment ;
+    rdfs:label "development" ;
+    dul:hasQuality ns1:Economic .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:compensate_1,
+        ns1:development_1,
+        ns1:envisage_1,
+        ns1:there_1 .
+
+ns1:support_1 a ns1:Support ;
+    rdfs:label "Support" ;
+    ns1:for ns1:competitiveness_1 .
+
+ns1:there_1 a ns1:Reason,
+        ns1:There ;
+    rdfs:label "there" ;
+    quant:hasQuantifier quant:no .
+

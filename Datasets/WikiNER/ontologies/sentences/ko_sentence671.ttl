@@ -1,0 +1,203 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence671.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:ko_sentence671.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence671" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence671" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Among rdfs:label "among" .
+
+ns1:As rdfs:label "as" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:Over rdfs:label "Over" .
+
+ns1:Quantity rdfs:label "many" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:box_1 a ns1:Box ;
+    rdfs:label "box" ;
+    dul:associatedWith ns1:office_1,
+        ns1:smash_1 ;
+    quant:hasDeterminer quant:such .
+
+ns1:docuverse earmark:hasContent "Over 50 years of his long-standing successful career, he oversees 400 motion pictures, among them many high ratings, such as 1949 box office smash, Iwo_Jima sand."^^xsd:string .
+
+ns1:motion_1 a ns1:Motion ;
+    rdfs:label "motion" ;
+    dul:associatedWith ns1:picture_1 .
+
+ns1:oversee_1 a ns1:Oversee ;
+    rdfs:label "oversees" ;
+    boxer:agent ns1:male_1 ;
+    boxer:patient ns1:picture_1 ;
+    dul:associatedWith ns1:rating_1 ;
+    ns1:among ns1:thing_1 ;
+    ns1:over ns1:year_1 .
+
+dbpedia:Battle_of_Iwo_Jima a schema:Event .
+
+owl:Thing rdfs:label "them" .
+
+ns1:BoxOfficeSmash a owl:Class ;
+    rdfs:label "Box Office Smash" ;
+    dul:associatedWith ns1:BoxOffice ;
+    rdfs:subClassOf ns1:OfficeSmash .
+
+ns1:Career a owl:Class ;
+    rdfs:label "career" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:High rdfs:label "high" .
+
+ns1:HighRating rdfs:subClassOf ns1:Rating .
+
+ns1:Iwo_jima rdfs:label "Iwo Jima" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Battle_of_Iwo_Jima .
+
+ns1:Long-standing rdfs:label "long-standing" .
+
+ns1:Long-standingSuccessfulCareer a owl:Class ;
+    rdfs:label "long-standing successful career" ;
+    rdfs:subClassOf ns1:SuccessfulCareer .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Motion rdfs:label "motion" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:MotionPicture rdfs:subClassOf ns1:Picture .
+
+ns1:OfficeSmash a owl:Class ;
+    rdfs:label "Office Smash" ;
+    dul:associatedWith ns1:Office ;
+    rdfs:subClassOf ns1:Smash .
+
+ns1:Oversee rdfs:label "oversees" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Picture rdfs:label "pictures" .
+
+ns1:Rating rdfs:label "ratings" .
+
+ns1:Sand rdfs:label "sand" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Smash a owl:Class ;
+    rdfs:label "smash" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Successful a owl:Class ;
+    rdfs:label "successful" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SuccessfulCareer a owl:Class ;
+    rdfs:label "successful career" ;
+    dul:hasQuality ns1:Successful ;
+    rdfs:subClassOf ns1:Career .
+
+ns1:Year rdfs:label "years" .
+
+ns1:career_1 a ns1:Long-standingSuccessfulCareer ;
+    rdfs:label "career" ;
+    dul:hasQuality ns1:Long-standing ;
+    ns1:long-standingSuccessfulCareerOf ns1:male_1 .
+
+ns1:office_1 a ns1:BoxOffice ;
+    rdfs:label "office" ;
+    dul:associatedWith ns1:smash_1 .
+
+ns1:rating_1 a ns1:HighRating ;
+    rdfs:label "ratings" ;
+    dul:hasQuality ns1:High ;
+    quant:hasQuantifier quant:many,
+        quant:multiple ;
+    ns1:as ns1:smash_1 .
+
+ns1:sand_1 a ns1:Sand ;
+    rdfs:label "sand" ;
+    dul:associatedWith ns1:Iwo_jima .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "them" .
+
+ns1:year_1 a ns1:Year ;
+    rdfs:label "years" ;
+    dul:hasDataValue "50"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:yearOf ns1:career_1 .
+
+ns1:Box a owl:Class ;
+    rdfs:label "box" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:BoxOffice a owl:Class ;
+    rdfs:label "Box Office" ;
+    dul:associatedWith ns1:Box ;
+    rdfs:subClassOf dul:PhysicalObject,
+        ns1:Office .
+
+ns1:Office a owl:Class ;
+    rdfs:label "office" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:picture_1 a ns1:MotionPicture ;
+    rdfs:label "pictures" ;
+    dul:hasDataValue "400"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "he",
+        "his" ;
+    coref:coref ns1:male_1 .
+
+ns1:smash_1 a ns1:BoxOfficeSmash ;
+    rdfs:label "smash" ;
+    dul:associatedWith ns1:sand_1 ;
+    ns1:at "1949-01-01"^^xsd:date .
+

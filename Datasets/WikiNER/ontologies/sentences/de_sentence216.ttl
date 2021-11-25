@@ -1,0 +1,130 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence216.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "for" .
+
+translation_coherence:de_sentence216.ttl a owl:Ontology ;
+    rdfs:label "de_sentence216" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence216" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "his" .
+
+ns1:With rdfs:label "with" .
+
+ns1:call_1 a ns1:Call ;
+    rdfs:label "called" ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Recipient ns1:fight_1 .
+
+ns1:docuverse earmark:hasContent "He called for the fight to be overcome, ordered Achilles with his sole weapon, his sword, but failed."^^xsd:string .
+
+ns1:fail_1 a ns1:Fail ;
+    rdfs:label "failed" ;
+    vn.role:Agent ns1:male_1 .
+
+ns1:order_1 a ns1:Order ;
+    rdfs:label "ordered" ;
+    vn.role:Agent ns1:male_1 ;
+    vn.role:Theme ns1:Achilles ;
+    ns1:with ns1:sword_1,
+        ns1:weapon_1 .
+
+ns1:overcome_1 a ns1:Overcome ;
+    rdfs:label "overcome" ;
+    vn.role:Theme2 ns1:fight_1 .
+
+ns1:Achilles rdfs:label "Achilles" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Achilles .
+
+ns1:Call rdfs:label "called" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Fail rdfs:label "failed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Fight rdfs:label "fight" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Male rdfs:label "He" .
+
+ns1:Order rdfs:label "ordered" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Overcome rdfs:label "overcome" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Sole a owl:Class ;
+    rdfs:label "sole" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SoleWeapon a owl:Class ;
+    rdfs:label "sole weapon" ;
+    dul:hasQuality ns1:Sole ;
+    rdfs:subClassOf ns1:Weapon .
+
+ns1:Sword a owl:Class ;
+    rdfs:label "sword" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Sword .
+
+ns1:Weapon a owl:Class ;
+    rdfs:label "weapon" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Weapon .
+
+ns1:sword_1 a ns1:Sword ;
+    rdfs:label "sword" ;
+    ns1:swordOf ns1:male_1 .
+
+ns1:weapon_1 a ns1:SoleWeapon ;
+    rdfs:label "weapon" ;
+    ns1:soleWeaponOf ns1:male_1 .
+
+ns1:fight_1 a ns1:Fight ;
+    rdfs:label "fight" ;
+    quant:hasDeterminer quant:the .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "He",
+        "his" .
+

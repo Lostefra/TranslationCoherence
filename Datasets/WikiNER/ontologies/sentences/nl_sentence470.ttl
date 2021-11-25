@@ -1,0 +1,163 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence470.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence470.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence470" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence470" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "'" .
+
+ns1:Old rdfs:label "old" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "And the fourth, old library catalogues that predict Andronicus' intervention list, an Aristotelic corpus, similar to the one we currently own."^^xsd:string .
+
+ns1:event_1 a dul:Event ;
+    dul:associatedWith ns1:catalogue_1 ;
+    dul:hasQuality ns1:And .
+
+ns1:intervention_1 a ns1:Intervention ;
+    rdfs:label "intervention" ;
+    dul:associatedWith ns1:list_1 .
+
+ns1:library_1 a ns1:Library ;
+    rdfs:label "library" ;
+    dul:associatedWith ns1:catalogue_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:own_1 a ns1:CurrentlyOwn ;
+    rdfs:label "own" ;
+    dul:hasQuality ns1:Currently ;
+    vn.role:Theme1 ns1:person_1 ;
+    vn.role:Theme2 "1"^^xsd:nonNegativeInteger .
+
+ns1:predict_1 a ns1:Predict ;
+    rdfs:label "predict" ;
+    vn.role:Cause ns1:catalogue_1 ;
+    vn.role:Topic ns1:corpus_1,
+        ns1:list_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Similar,
+        ns1:similar_1 ;
+    ns1:to "1"^^xsd:nonNegativeInteger .
+
+ns1:And rdfs:label "And" .
+
+ns1:Andronicus rdfs:label "Andronicus" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:AristotelicCorpus a owl:Class ;
+    rdfs:label "Aristotelic corpus" ;
+    dul:hasQuality ns1:Aristotelic ;
+    rdfs:subClassOf ns1:Corpus .
+
+ns1:Catalogue rdfs:label "catalogues" .
+
+ns1:Corpus a owl:Class ;
+    rdfs:label "corpus" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Currently rdfs:label "currently" .
+
+ns1:CurrentlyOwn rdfs:label "Currently Own" ;
+    rdfs:subClassOf ns1:Own .
+
+ns1:Fourth rdfs:label "fourth" .
+
+ns1:InterventionList a owl:Class ;
+    rdfs:label "Intervention List" ;
+    dul:associatedWith ns1:Intervention ;
+    rdfs:subClassOf ns1:List .
+
+ns1:Library rdfs:label "library" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:LibraryCatalogue rdfs:subClassOf ns1:Catalogue .
+
+ns1:List a owl:Class ;
+    rdfs:label "list" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:OldLibraryCatalogue rdfs:subClassOf ns1:LibraryCatalogue .
+
+ns1:Own rdfs:label "own" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Predict rdfs:label "predict" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:corpus_1 a ns1:AristotelicCorpus ;
+    rdfs:label "corpus" ;
+    dul:hasQuality ns1:Aristotelic ;
+    quant:hasDeterminer quant:an .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:similar_1 a ns1:Similar ;
+    rdfs:label "similar" .
+
+ns1:Aristotelic a owl:Class ;
+    rdfs:label "Aristotelic" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Intervention a owl:Class ;
+    rdfs:label "intervention" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Similar rdfs:label "similar" .
+
+ns1:list_1 a ns1:InterventionList ;
+    rdfs:label "list" ;
+    ns1:interventionListOf ns1:Andronicus .
+
+ns1:catalogue_1 a ns1:OldLibraryCatalogue ;
+    rdfs:label "catalogues" ;
+    dul:hasQuality ns1:Fourth ;
+    quant:hasQuantifier quant:multiple .
+

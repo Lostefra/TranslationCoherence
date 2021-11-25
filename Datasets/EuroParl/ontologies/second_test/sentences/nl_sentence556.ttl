@@ -1,0 +1,139 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence556.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence556.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence556" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence556" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:At rdfs:label "at" .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:To rdfs:label "to" .
+
+ns1:city_1 a ns1:City ;
+    rdfs:label "city" ;
+    dul:associatedWith ns1:policy_1 .
+
+ns1:docuverse earmark:hasContent "Yes, I have recently said so much to all the ministers responsible for city policy at a meeting in Tampere."^^xsd:string .
+
+ns1:say_1 a ns1:RecentlySay ;
+    rdfs:label "said" ;
+    dul:hasQuality ns1:Recently,
+        ns1:Yes ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Topic ns1:much_1 ;
+    ns1:at ns1:meeting_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Responsible,
+        ns1:minister_1 ;
+    ns1:for ns1:policy_1 .
+
+ns1:CityPolicy a owl:Class ;
+    rdfs:label "City Policy" ;
+    dul:associatedWith ns1:City ;
+    rdfs:subClassOf ns1:Policy .
+
+ns1:Meeting rdfs:label "meeting" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Minister rdfs:label "ministers" .
+
+ns1:Much rdfs:label "much" ;
+    rdfs:subClassOf dul:Amount .
+
+ns1:Person rdfs:label "I" .
+
+ns1:Policy a owl:Class ;
+    rdfs:label "policy" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Recently rdfs:label "recently" .
+
+ns1:RecentlySay rdfs:subClassOf ns1:Say .
+
+ns1:Say rdfs:label "said" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:So rdfs:label "so" .
+
+ns1:SoMuch rdfs:label "So Much" ;
+    rdfs:subClassOf ns1:Much .
+
+ns1:Tampere rdfs:label "Tampere" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Tampere .
+
+ns1:Yes rdfs:label "Yes" .
+
+ns1:meeting_1 a ns1:Meeting ;
+    rdfs:label "meeting" ;
+    quant:hasDeterminer quant:a ;
+    ns1:locatedIn ns1:Tampere .
+
+ns1:much_1 a ns1:SoMuch ;
+    rdfs:label "much" ;
+    dul:hasQuality ns1:So ;
+    ns1:to ns1:minister_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:City a owl:Class ;
+    rdfs:label "city" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Responsible rdfs:label "responsible" .
+
+ns1:minister_1 a ns1:Minister ;
+    rdfs:label "ministers" ;
+    dul:hasQuality ns1:Responsible ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:much,
+        quant:multiple .
+
+ns1:policy_1 a ns1:CityPolicy ;
+    rdfs:label "policy" .
+

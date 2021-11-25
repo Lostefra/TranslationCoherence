@@ -1,0 +1,180 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence430.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence430.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence430" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence430" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Under rdfs:label "Under" .
+
+ns1:consider_1 a ns1:UsuallyConsider ;
+    rdfs:label "considered" ;
+    dul:hasQuality ns1:Usually ;
+    vn.role:Predicate ns1:freedom_1,
+        ns1:value_1 ;
+    vn.role:Theme ns1:Lincoln ;
+    ns1:in ns1:general_1 ;
+    ns1:under ns1:admirer_1 .
+
+ns1:contempt_1 a ns1:Contempt ;
+    rdfs:label "contempt" ;
+    dul:associatedWith ns1:admirer_1 .
+
+ns1:docuverse earmark:hasContent "Under contempt admirers, Lincoln is usually considered typical values of honesty and integrity, as well as respect for individual and minority rights, and human freedom in general."^^xsd:string .
+
+ns1:minority_1 a ns1:Minority ;
+    rdfs:label "minority" ;
+    dul:associatedWith ns1:rights_1 .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+ns1:Admirer rdfs:label "admirers" .
+
+ns1:Consider rdfs:label "considered" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Contempt rdfs:label "contempt" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:ContemptAdmirer rdfs:subClassOf ns1:Admirer .
+
+ns1:Freedom a owl:Class ;
+    rdfs:label "freedom" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:General rdfs:label "general" .
+
+ns1:Honesty a owl:Class ;
+    rdfs:label "honesty" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Honesty .
+
+ns1:Human a owl:Class ;
+    rdfs:label "human" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:HumanFreedom a owl:Class ;
+    rdfs:label "human freedom" ;
+    dul:hasQuality ns1:Human ;
+    rdfs:subClassOf ns1:Freedom ;
+    owl:equivalentClass dbpedia:Liberty .
+
+ns1:Individual rdfs:label "individual" ;
+    owl:sameAs dbpedia:Individual .
+
+ns1:Integrity a owl:Class ;
+    rdfs:label "integrity" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Integrity .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+
+ns1:MinorityRights a owl:Class ;
+    rdfs:label "minority rights" ;
+    dul:associatedWith ns1:Minority ;
+    rdfs:subClassOf ns1:Rights ;
+    owl:equivalentClass dbpedia:Minority_rights .
+
+ns1:Respect a owl:Class ;
+    rdfs:label "respect" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Respect .
+
+ns1:Rights a owl:Class ;
+    rdfs:label "rights" .
+
+ns1:Typical rdfs:label "typical" .
+
+ns1:TypicalValue rdfs:subClassOf ns1:Value .
+
+ns1:Usually rdfs:label "usually" .
+
+ns1:UsuallyConsider rdfs:subClassOf ns1:Consider .
+
+ns1:Value rdfs:label "values" .
+
+ns1:freedom_1 a ns1:HumanFreedom ;
+    rdfs:label "freedom" .
+
+ns1:general_1 a ns1:General ;
+    rdfs:label "general" .
+
+ns1:honesty_1 a ns1:Honesty ;
+    rdfs:label "honesty" .
+
+ns1:integrity_1 a ns1:Integrity ;
+    rdfs:label "integrity" .
+
+ns1:respect_1 a ns1:Respect ;
+    rdfs:label "respect" ;
+    ns1:for ns1:rights_1 .
+
+ns1:value_1 a dbpedia:Value_(ethics),
+        ns1:TypicalValue ;
+    rdfs:label "values" ;
+    dul:hasQuality ns1:Typical ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:typicalValueOf ns1:honesty_1,
+        ns1:integrity_1,
+        ns1:respect_1 .
+
+ns1:Minority a owl:Class ;
+    rdfs:label "minority" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:admirer_1 a ns1:ContemptAdmirer ;
+    rdfs:label "admirers" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:rights_1 a ns1:MinorityRights ;
+    rdfs:label "rights" ;
+    dul:hasQuality ns1:Individual ;
+    quant:hasQuantifier quant:multiple .
+

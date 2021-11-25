@@ -1,0 +1,105 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence458.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence458.ttl a owl:Ontology ;
+    rdfs:label "it_sentence458" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence458" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:On rdfs:label "on" .
+
+ns1:With rdfs:label "with" .
+
+ns1:agree_1 a ns1:Agree ;
+    rdfs:label "agree" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Actor ns1:Aristotle ;
+    ns1:on ns1:point_1 ;
+    ns1:with ns1:Plato .
+
+ns1:claim_1 a ns1:Claim ;
+    rdfs:label "claiming" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:Aristotle ;
+    vn.role:Theme ns1:instigate_1 .
+
+ns1:docuverse earmark:hasContent "Aristotle did not agree with Plato on this point, claiming that all universals are instigated."^^xsd:string .
+
+dbpedia:Aristotle a schema:Person .
+
+dbpedia:Plato a schema:Person .
+
+ns1:Agree rdfs:label "agree" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Claim rdfs:label "claiming" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Instigate rdfs:label "instigated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Plato rdfs:label "Plato" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Plato .
+
+ns1:Point rdfs:label "point" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Universal rdfs:label "universals" .
+
+ns1:instigate_1 a ns1:Instigate ;
+    rdfs:label "instigated" ;
+    vn.role:Theme ns1:universal_1 .
+
+ns1:point_1 a ns1:Point ;
+    rdfs:label "point" ;
+    quant:hasDeterminer quant:this .
+
+ns1:universal_1 a dbpedia:Universal_(metaphysics),
+        ns1:Universal ;
+    rdfs:label "universals" ;
+    quant:hasQuantifier quant:all,
+        quant:multiple .
+
+ns1:Aristotle rdfs:label "Aristotle" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Aristotle .
+

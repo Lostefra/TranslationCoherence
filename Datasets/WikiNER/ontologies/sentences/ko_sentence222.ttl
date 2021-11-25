@@ -1,0 +1,172 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence222.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:ko_sentence222.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence222" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence222" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:companion_1 rdfs:label "companion" .
+
+ns1:docuverse earmark:hasContent "Both versions have no killer, the killer of valor owing, and the Achilles of any kind owing to the general concept that Paris is not a companion."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:version_1 ;
+    vn.role:Patient ns1:killer_1 .
+
+ns1:have_2 a ns1:Have ;
+    rdfs:label "have" ;
+    vn.role:Agent ns1:version_1 ;
+    vn.role:Patient ns1:achille_1 .
+
+ns1:owe_1 a ns1:Owe ;
+    rdfs:label "owing" ;
+    vn.role:Agent ns1:kind_1 ;
+    vn.role:Recipient ns1:concept_1 .
+
+ns1:valor_1 a ns1:Valor ;
+    rdfs:label "valor" ;
+    dul:associatedWith ns1:owing_1 .
+
+dbpedia:Paris a schema:Place .
+
+ns1:Achille a owl:Class ;
+    rdfs:label "Achilles" ;
+    owl:equivalentClass dbpedia:Achilles .
+
+ns1:Concept a owl:Class ;
+    rdfs:label "concept" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:General a owl:Class ;
+    rdfs:label "general" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:GeneralConcept a owl:Class ;
+    rdfs:label "General Concept" ;
+    dul:hasQuality ns1:General ;
+    rdfs:subClassOf ns1:Concept .
+
+ns1:Kind rdfs:label "kind" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Owe rdfs:label "owing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Owing a owl:Class ;
+    rdfs:label "Owing",
+        "owing" .
+
+ns1:Paris a ns1:Companion ;
+    rdfs:label "Paris",
+        "companion" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    quant:hasDeterminer quant:a ;
+    owl:sameAs dbpedia:Paris,
+        dbpedia:Paris_(mythology) .
+
+ns1:ValorOwing a owl:Class ;
+    rdfs:label "Valor Owing" ;
+    dul:associatedWith ns1:Valor ;
+    rdfs:subClassOf ns1:Owing .
+
+ns1:Version rdfs:label "versions" .
+
+ns1:achille_1 a ns1:Achille ;
+    rdfs:label "Achilles" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:achilleOf ns1:kind_1 .
+
+ns1:concept_1 a ns1:GeneralConcept ;
+    rdfs:label "concept" ;
+    boxer:theme ns1:situation_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:killer_1 a ns1:Killer ;
+    rdfs:label "killer" ;
+    dul:associatedWith ns1:killer_2 ;
+    quant:hasQuantifier quant:no .
+
+ns1:killer_2 a ns1:Killer ;
+    rdfs:label "killer" ;
+    quant:hasDeterminer quant:the ;
+    ns1:killerOf ns1:owing_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves ns1:Companion,
+        ns1:Paris .
+
+ns1:Companion rdfs:label "Paris",
+        "companion" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Killer rdfs:label "killer" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Valor a owl:Class ;
+    rdfs:label "valor" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Courage .
+
+ns1:kind_1 a ns1:Kind ;
+    rdfs:label "kind" ;
+    quant:hasQuantifier quant:any .
+
+ns1:owing_1 a ns1:ValorOwing ;
+    rdfs:label "owing" .
+
+ns1:version_1 a ns1:Version ;
+    rdfs:label "versions" ;
+    quant:hasQuantifier quant:both,
+        quant:multiple .
+

@@ -1,0 +1,147 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence371.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Theme1 rdfs:label "by" .
+
+translation_coherence:ko_sentence371.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence371" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence371" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Eq rdfs:label "was" .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:Through rdfs:label "through" .
+
+ns1:cause_1 a ns1:Cause ;
+    rdfs:label "caused" ;
+    vn.role:Theme1 ns1:sea_1 ;
+    vn.role:Theme2 ns1:damage_1 .
+
+ns1:docuverse earmark:hasContent "In March of Sherman, the damage caused by the sea through Georgia was totaled more than 100 million dollars as a general 's own estimate."^^xsd:string .
+
+ns1:topic_1 a ns1:Topic ;
+    ns1:dateOf ns1:Sherman ;
+    ns1:in "0001-03-01"^^xsd:date .
+
+ns1:total_1 a ns1:Total ;
+    rdfs:label "totaled" ;
+    vn.role:Agent "0001-03-01"^^xsd:date ;
+    vn.role:Theme ns1:dollar_1 .
+
+dbpedia:Georgia_(U.S._state) a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:Cause rdfs:label "caused" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Damage rdfs:label "damage" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Dollar rdfs:label "dollars" .
+
+ns1:Estimate a owl:Class ;
+    rdfs:label "estimate" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:General rdfs:label "general" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Georgia rdfs:label "Georgia" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Georgia_(U.S._state) .
+
+ns1:More rdfs:label "more" .
+
+ns1:Own a owl:Class ;
+    rdfs:label "own" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:OwnEstimate a owl:Class ;
+    rdfs:label "Own Estimate" ;
+    dul:hasQuality ns1:Own ;
+    rdfs:subClassOf ns1:Estimate .
+
+ns1:Sea rdfs:label "sea" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Sherman rdfs:label "Sherman" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Than rdfs:label "than" .
+
+ns1:Total rdfs:label "totaled" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:damage_1 a ns1:Damage ;
+    rdfs:label "damage" ;
+    quant:hasDeterminer quant:the .
+
+ns1:dollar_1 a ns1:Dollar ;
+    rdfs:label "dollars" ;
+    dul:hasDataValue "100000000"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:More,
+        ns1:Than ;
+    quant:hasQuantifier quant:million,
+        quant:multiple ;
+    ns1:as ns1:estimate_1 .
+
+ns1:estimate_1 a ns1:OwnEstimate ;
+    rdfs:label "estimate" ;
+    ns1:ownEstimateOf ns1:general_1 .
+
+ns1:general_1 a ns1:General ;
+    rdfs:label "general" ;
+    quant:hasDeterminer quant:a .
+
+ns1:sea_1 a ns1:Sea ;
+    rdfs:label "sea" ;
+    quant:hasDeterminer quant:the ;
+    ns1:through ns1:Georgia .
+

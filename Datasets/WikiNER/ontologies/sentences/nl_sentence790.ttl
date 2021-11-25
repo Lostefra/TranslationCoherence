@@ -1,0 +1,173 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence790.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:nl_sentence790.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence790" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence790" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:contribute_1 a ns1:Contribute ;
+    rdfs:label "contributing" ;
+    vn.role:Agent ns1:anthropology_1 ;
+    vn.role:Recipient ns1:erosion_1 .
+
+ns1:docuverse earmark:hasContent "In Britain, anthropology had a major intellectual impact, contributing to the erosion of Christianity, the growth of cultural relativism, a consciousness of modern cultractivity."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "had" ;
+    vn.role:Agent ns1:anthropology_1 ;
+    vn.role:Patient ns1:impact_1 ;
+    ns1:locatedIn ns1:Britain .
+
+ns1:Anthropology a owl:Class ;
+    rdfs:label "anthropology" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> ;
+    owl:equivalentClass dbpedia:Anthropology .
+
+ns1:Britain rdfs:label "Britain" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Christianity rdfs:label "Christianity" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:growth_1 ;
+    owl:sameAs dbpedia:Christianity .
+
+ns1:Consciousness a owl:Class ;
+    rdfs:label "consciousness" ;
+    rdfs:subClassOf dul:Situation ;
+    owl:equivalentClass dbpedia:Consciousness .
+
+ns1:Contribute rdfs:label "contributing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Cultractivity a owl:Class ;
+    rdfs:label "cultractivity" .
+
+ns1:Cultural a owl:Class ;
+    rdfs:label "cultural" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:CulturalRelativism a owl:Class ;
+    rdfs:label "Cultural Relativism" ;
+    dul:hasQuality ns1:Cultural ;
+    rdfs:subClassOf ns1:Relativism ;
+    owl:equivalentClass dbpedia:Cultural_relativism .
+
+ns1:Erosion rdfs:label "erosion" ;
+    rdfs:subClassOf dul:Process .
+
+ns1:Growth rdfs:label "growth" ;
+    rdfs:subClassOf dul:Process .
+
+ns1:Have rdfs:label "had" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Impact a owl:Class ;
+    rdfs:label "impact" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Intellectual a owl:Class ;
+    rdfs:label "intellectual" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Intellectualism .
+
+ns1:IntellectualImpact a owl:Class ;
+    rdfs:label "intellectual impact" ;
+    dul:hasQuality ns1:Intellectual ;
+    rdfs:subClassOf ns1:Impact .
+
+ns1:Major rdfs:label "major" .
+
+ns1:MajorIntellectualImpact a owl:Class ;
+    rdfs:label "Major Intellectual Impact" ;
+    rdfs:subClassOf ns1:IntellectualImpact .
+
+ns1:Modern a owl:Class ;
+    rdfs:label "modern" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ModernCultractivity a owl:Class ;
+    rdfs:label "modern cultractivity" ;
+    dul:hasQuality ns1:Modern ;
+    rdfs:subClassOf ns1:Cultractivity .
+
+ns1:Relativism a owl:Class ;
+    rdfs:label "relativism" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:consciousness_1 a ns1:Consciousness ;
+    rdfs:label "consciousness" ;
+    quant:hasDeterminer quant:a ;
+    ns1:consciousnessOf ns1:cultractivity_1 .
+
+ns1:cultractivity_1 a ns1:ModernCultractivity ;
+    rdfs:label "cultractivity" .
+
+ns1:erosion_1 a ns1:Erosion ;
+    rdfs:label "erosion" ;
+    quant:hasDeterminer quant:the ;
+    ns1:erosionOf ns1:Christianity .
+
+ns1:growth_1 a ns1:Growth ;
+    rdfs:label "growth" ;
+    dul:associatedWith ns1:consciousness_1 ;
+    quant:hasDeterminer quant:the ;
+    ns1:growthOf ns1:relativism_1 .
+
+ns1:impact_1 a ns1:MajorIntellectualImpact ;
+    rdfs:label "impact" ;
+    dul:hasQuality ns1:Major ;
+    quant:hasDeterminer quant:a .
+
+ns1:relativism_1 a ns1:CulturalRelativism ;
+    rdfs:label "relativism" .
+
+ns1:anthropology_1 a ns1:Anthropology ;
+    rdfs:label "anthropology" .
+

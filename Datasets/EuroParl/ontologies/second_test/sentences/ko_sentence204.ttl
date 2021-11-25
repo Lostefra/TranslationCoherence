@@ -1,0 +1,152 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence204.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Eleast> rdfs:label "least" .
+
+translation_coherence:ko_sentence204.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence204" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence204" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:At rdfs:label "at" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:believe_1 a ns1:Believe ;
+    rdfs:label "believe" ;
+    dul:hasQuality ns1:But ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:do_1 .
+
+ns1:believe_2 a ns1:Believe ;
+    rdfs:label "believe" ;
+    vn.role:Agent ns1:person_3 ;
+    vn.role:Theme ns1:maintain_1 .
+
+ns1:docuverse earmark:hasContent "But I believe that we should do everything. We believe that we can maintain the shipping of dangerous goods in all countries at least."^^xsd:string .
+
+ns1:But rdfs:label "But" .
+
+ns1:Country rdfs:label "countries" .
+
+ns1:Dangerous a owl:Class ;
+    rdfs:label "dangerous" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:DangerousGoods a owl:Class ;
+    rdfs:label "Dangerous Goods" ;
+    dul:hasQuality ns1:Dangerous ;
+    rdfs:subClassOf ns1:Goods ;
+    owl:equivalentClass dbpedia:Dangerous_goods .
+
+ns1:Do rdfs:label "do" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Goods a owl:Class ;
+    rdfs:label "goods" .
+
+ns1:Least rdfs:label "least" .
+
+ns1:Maintain rdfs:label "maintain" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Shipping rdfs:label "shipping" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:country_1 a ns1:Country ;
+    rdfs:label "countries" ;
+    quant:hasQuantifier quant:all,
+        quant:multiple .
+
+ns1:do_1 a ns1:Do ;
+    rdfs:label "do" ;
+    boxer:agent ns1:person_2 ;
+    boxer:patient ns1:thing_3 ;
+    boxing:hasModality boxing:Necessary .
+
+ns1:goods_1 a ns1:DangerousGoods ;
+    rdfs:label "goods" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:country_1 .
+
+ns1:maintain_1 a ns1:Maintain ;
+    rdfs:label "maintain" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Agent ns1:person_4 ;
+    vn.role:Theme ns1:shipping_1 ;
+    ns1:at ns1:thing_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "We" .
+
+ns1:person_4 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:shipping_1 a ns1:Shipping ;
+    rdfs:label "shipping" ;
+    quant:hasDeterminer quant:the ;
+    ns1:shippingOf ns1:goods_1 .
+
+ns1:thing_1 a owl:Thing ;
+    dul:hasQuality ns1:Least ;
+    ns1:leastAmong owl:Thing .
+
+ns1:thing_3 a owl:Thing ;
+    rdfs:label "everything" .
+
+ns1:Believe rdfs:label "Believe",
+        "believe" ;
+    rdfs:subClassOf dul:Event .
+
+owl:Thing rdfs:label "everything" .
+
+ns1:Person rdfs:label "I",
+        "We",
+        "we" .
+

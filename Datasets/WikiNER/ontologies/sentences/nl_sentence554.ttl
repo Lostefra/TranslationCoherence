@@ -1,0 +1,158 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence554.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence554.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence554" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence554" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Agent rdfs:label "by" .
+
+ns1:At rdfs:label "at" .
+
+ns1:During rdfs:label "during" .
+
+ns1:Of rdfs:label "'s",
+        "Her",
+        "of" .
+
+ns1:To rdfs:label "to" .
+
+ns1:Under rdfs:label "under" .
+
+ns1:docuverse earmark:hasContent "Her father's pharmacy was impounded by the Bolsheviks, and the family fled to the Crimea, who was at first under control of the White_Army during the Russian war."^^xsd:string .
+
+ns1:flee_1 a ns1:Flee ;
+    rdfs:label "fled" ;
+    vn.role:Theme ns1:family_1 ;
+    ns1:to ns1:Crimea .
+
+ns1:impound_1 a ns1:Impound ;
+    rdfs:label "impounded" ;
+    boxer:agent ns1:Bolsheviks ;
+    boxer:patient ns1:pharmacy_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Control,
+        ns1:control_1 ;
+    ns1:at ns1:first_1 ;
+    ns1:during ns1:war_1 .
+
+dbpedia:Crimea a schema:Country,
+        schema:Place .
+
+ns1:Bolsheviks rdfs:label "Bolsheviks" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Bolshevik,
+        dbpedia:Bolsheviks .
+
+ns1:Crimea rdfs:label "Crimea" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Crimea ;
+    ns1:under ns1:control_1 .
+
+ns1:Family rdfs:label "family" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Father rdfs:label "father" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:First rdfs:label "first" .
+
+ns1:Flee rdfs:label "fled" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Impound rdfs:label "impounded" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Pharmacy rdfs:label "pharmacy" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:RussianWar a owl:Class ;
+    rdfs:label "Russian War" ;
+    dul:hasQuality ns1:Russian ;
+    rdfs:subClassOf ns1:War .
+
+ns1:White_army rdfs:label "White Army" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:White_movement .
+
+ns1:family_1 a ns1:Family ;
+    rdfs:label "family" ;
+    quant:hasDeterminer quant:the .
+
+ns1:father_1 a ns1:Father ;
+    rdfs:label "father" ;
+    ns1:fatherOf ns1:female_1 .
+
+ns1:female_1 a ns1:Female ;
+    rdfs:label "Her" .
+
+ns1:first_1 a ns1:First ;
+    rdfs:label "first" .
+
+ns1:pharmacy_1 a ns1:Pharmacy ;
+    rdfs:label "pharmacy" ;
+    owl:sameAs ns1:war_1 ;
+    ns1:pharmacyOf ns1:father_1 .
+
+ns1:Control rdfs:label "control" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Russian a owl:Class ;
+    rdfs:label "Russian" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Russians .
+
+ns1:War a owl:Class ;
+    rdfs:label "war" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:control_1 a ns1:Control ;
+    rdfs:label "control" ;
+    ns1:controlOf ns1:White_army .
+
+ns1:war_1 a ns1:RussianWar,
+        ns1:War ;
+    rdfs:label "war" ;
+    dul:hasQuality ns1:Russian ;
+    quant:hasDeterminer quant:the .
+

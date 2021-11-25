@@ -1,0 +1,114 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence175.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#-> rdfs:label "-" .
+
+translation_coherence:de_sentence175.ttl a owl:Ontology ;
+    rdfs:label "de_sentence175" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence175" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:docuverse earmark:hasContent "Republics hold an 8 - 1 majority in the Supreme_Court_of_Barbados and have a 5 - 2 majority in the state-elected subsidiaries."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "have" ;
+    <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#-> ns1:majority_2 ;
+    vn.role:Agent ns1:republic_1 ;
+    vn.role:Patient "5"^^xsd:nonNegativeInteger ;
+    ns1:in ns1:subsidiary_1 .
+
+ns1:hold_1 a ns1:Hold ;
+    rdfs:label "hold" ;
+    vn.role:Agent ns1:republic_1 ;
+    vn.role:Theme ns1:majority_1 .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Hold rdfs:label "hold" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Republic rdfs:label "Republics" .
+
+ns1:State-elected rdfs:label "state-elected" .
+
+ns1:State-electedSubsidiary rdfs:subClassOf ns1:Subsidiary .
+
+ns1:Subsidiary rdfs:label "subsidiaries" .
+
+ns1:Supreme_court_of_barbados a owl:Class ;
+    rdfs:label "Supreme Court of Barbados" ;
+    owl:equivalentClass dbpedia:Supreme_Court_of_Judicature_(Barbados) .
+
+ns1:majority_1 a ns1:Majority ;
+    rdfs:label "majority" ;
+    dul:hasDataValue "1"^^xsd:nonNegativeInteger,
+        "8"^^xsd:nonNegativeInteger ;
+    quant:hasDeterminer quant:an ;
+    ns1:in ns1:supreme_court_of_barbados_1 .
+
+ns1:majority_2 a ns1:Majority ;
+    rdfs:label "majority" ;
+    dul:hasDataValue "2"^^xsd:nonNegativeInteger ;
+    quant:hasDeterminer quant:a .
+
+ns1:subsidiary_1 a ns1:State-electedSubsidiary ;
+    rdfs:label "subsidiaries" ;
+    dul:hasQuality ns1:State-elected ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:supreme_court_of_barbados_1 a ns1:Supreme_court_of_barbados ;
+    rdfs:label "Supreme Court of Barbados" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Majority rdfs:label "majority" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:republic_1 a ns1:Republic ;
+    rdfs:label "Republics" ;
+    quant:hasQuantifier quant:multiple .
+

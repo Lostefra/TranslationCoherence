@@ -1,0 +1,115 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence479.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence479.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence479" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence479" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "Part of the symphonic compound is also in as good as it gets released in 1997."^^xsd:string .
+
+ns1:part_1 a ns1:Part ;
+    rdfs:label "Part" ;
+    ns1:in ns1:good_1 ;
+    ns1:partOf ns1:compound_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:As,
+        ns1:AsGood,
+        ns1:Good,
+        ns1:good_1 ;
+    dul:hasQuality ns1:Also ;
+    ns1:as ns1:release_1 .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Also rdfs:label "also" .
+
+ns1:Compound a owl:Class ;
+    rdfs:label "compound" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#System> .
+
+ns1:Part rdfs:label "Part" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Release rdfs:label "released" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Symphonic a owl:Class ;
+    rdfs:label "symphonic" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Orchestra .
+
+ns1:SymphonicCompound a owl:Class ;
+    rdfs:label "Symphonic Compound" ;
+    dul:hasQuality ns1:Symphonic ;
+    rdfs:subClassOf ns1:Compound .
+
+ns1:compound_1 a ns1:SymphonicCompound ;
+    rdfs:label "compound" ;
+    quant:hasDeterminer quant:the .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "it" .
+
+ns1:release_1 a ns1:Release ;
+    rdfs:label "released" ;
+    vn.role:Source ns1:neuter_1 ;
+    ns1:in "1997-01-01"^^xsd:date .
+
+ns1:As rdfs:label "as" .
+
+ns1:AsGood a owl:Class ;
+    rdfs:label "As Good" ;
+    rdfs:subClassOf ns1:Good ;
+    owl:equivalentClass dbpedia:As_Good_as_It_Gets .
+
+ns1:Good rdfs:label "good" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:good_1 a ns1:AsGood ;
+    rdfs:label "good" ;
+    dul:hasQuality ns1:As .
+

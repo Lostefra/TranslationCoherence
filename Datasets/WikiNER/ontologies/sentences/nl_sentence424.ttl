@@ -1,0 +1,135 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence424.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence424.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence424" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence424" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "was" .
+
+ns1:Of rdfs:label "'s",
+        "his",
+        "of" .
+
+ns1:That rdfs:label "that" .
+
+ns1:docuverse earmark:hasContent "It was Lincoln's lecture, instead of his relationships, that it was most influential to destroy his personal beliefs."^^xsd:string .
+
+ns1:male_1 rdfs:label "his" .
+
+ns1:neuter_1 rdfs:label "It" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Lecture,
+        ns1:lecture_1 ;
+    ns1:situationOf ns1:relationship_1 ;
+    ns1:that ns1:situation_2 .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+owl:Thing rdfs:label "It" ;
+    rdfs:subClassOf ns1:Lecture .
+
+ns1:Belief rdfs:label "beliefs" .
+
+ns1:Male rdfs:label "Lincoln" .
+
+ns1:MostInfluential rdfs:label "most influential" ;
+    rdfs:subClassOf ns1:Influential .
+
+ns1:Personal rdfs:label "personal" .
+
+ns1:PersonalBelief rdfs:subClassOf ns1:Belief .
+
+ns1:Relationship rdfs:label "relationships" .
+
+ns1:belief_1 a dbpedia:Belief,
+        ns1:PersonalBelief ;
+    rdfs:label "beliefs" ;
+    dul:hasQuality ns1:Personal ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:personalBeliefOf ns1:Lincoln .
+
+ns1:influential_1 a ns1:MostInfluential ;
+    rdfs:label "influential" ;
+    boxer:agent ns1:lecture_1 ;
+    boxer:theme ns1:destroy_1 ;
+    dul:hasQuality ns1:Most .
+
+ns1:relationship_1 a ns1:Relationship ;
+    rdfs:label "relationships" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:relationshipOf ns1:Lincoln .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:Destroy,
+        ns1:Influential,
+        ns1:Most,
+        ns1:destroy_1,
+        ns1:influential_1 .
+
+ns1:Destroy rdfs:label "destroy" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Influential rdfs:label "influential" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Most rdfs:label "most" .
+
+ns1:destroy_1 a ns1:Destroy ;
+    rdfs:label "destroy" ;
+    vn.role:Agent ns1:lecture_1 ;
+    vn.role:Patient ns1:belief_1 .
+
+ns1:Lecture rdfs:label "lecture" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Lincoln a ns1:Male ;
+    rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+
+ns1:lecture_1 a owl:Thing,
+        ns1:Lecture ;
+    rdfs:label "lecture" ;
+    ns1:lectureOf ns1:Lincoln .
+

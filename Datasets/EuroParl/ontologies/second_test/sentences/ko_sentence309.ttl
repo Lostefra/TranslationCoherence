@@ -1,0 +1,123 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence309.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence309.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence309" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence309" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of",
+        "our" .
+
+ns1:docuverse earmark:hasContent "Chairman, our committee started to report this problem very differently, I will say in terms of research."^^xsd:string .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "say" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_2 ;
+    ns1:inTermOf ns1:research_1 .
+
+ns1:start_1 a ns1:Start ;
+    rdfs:label "started" ;
+    vn.role:Agent ns1:Chairman,
+        ns1:committee_1 ;
+    vn.role:Theme ns1:report_1 .
+
+ns1:term_1 a ns1:Term ;
+    rdfs:label "terms" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Committee rdfs:label "committee" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Differently rdfs:label "differently" .
+
+ns1:Problem rdfs:label "problem" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Report rdfs:label "report" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Research rdfs:label "research" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Say rdfs:label "say" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Start rdfs:label "started" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Term rdfs:label "terms" .
+
+ns1:Very rdfs:label "very" .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "our" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:problem_1 a ns1:Problem ;
+    rdfs:label "problem" ;
+    quant:hasDeterminer quant:this .
+
+ns1:report_1 a ns1:Report ;
+    rdfs:label "report" ;
+    dul:hasQuality ns1:Differently,
+        ns1:Very ;
+    vn.role:Agent ns1:Chairman,
+        ns1:committee_1 ;
+    vn.role:Theme ns1:problem_1 .
+
+ns1:research_1 a ns1:Research ;
+    rdfs:label "research" .
+
+ns1:Chairman rdfs:label "Chairman" ;
+    boxer:possibleType owl:Thing .
+
+ns1:Person rdfs:label "I" .
+
+ns1:committee_1 a ns1:Committee ;
+    rdfs:label "committee" ;
+    ns1:committeeOf ns1:person_1 .
+

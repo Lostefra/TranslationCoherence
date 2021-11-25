@@ -1,0 +1,114 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence236.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:ko_sentence236.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence236" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence236" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Accurately rdfs:label "accurately" .
+
+ns1:On rdfs:label "on" .
+
+ns1:adopt_1 a ns1:Adopt ;
+    rdfs:label "adopted" ;
+    vn.role:Agent ns1:panel_1 ;
+    vn.role:Theme ns1:thing_2 ;
+    ns1:accuratelyOn ns1:procedure_1 .
+
+ns1:comitology_1 a ns1:Comitology ;
+    rdfs:label "comitology" ;
+    dul:associatedWith ns1:procedure_1 ;
+    quant:hasQuantifier quant:two .
+
+ns1:docuverse earmark:hasContent "unanimously indicated and adopted by panel accurately on two updated comitology procedures."^^xsd:string .
+
+ns1:indicate_1 a ns1:UnanimouslyIndicate ;
+    rdfs:label "indicated" ;
+    dul:hasQuality ns1:Unanimously ;
+    vn.role:Topic ns1:thing_1 .
+
+ns1:update_1 a ns1:Update ;
+    rdfs:label "updated" ;
+    vn.role:Recipient ns1:procedure_1 .
+
+ns1:Adopt rdfs:label "adopted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Comitology a owl:Class ;
+    rdfs:label "comitology" ;
+    owl:equivalentClass dbpedia:Comitology .
+
+ns1:ComitologyProcedure rdfs:subClassOf ns1:Procedure .
+
+ns1:Indicate rdfs:label "indicated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Panel rdfs:label "panel" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Procedure rdfs:label "procedures" .
+
+ns1:Unanimously rdfs:label "unanimously" ;
+    owl:sameAs dbpedia:Unanimity .
+
+ns1:UnanimouslyIndicate rdfs:subClassOf ns1:Indicate .
+
+ns1:Update rdfs:label "updated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:panel_1 a ns1:Panel ;
+    rdfs:label "panel" .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:thing_2 a owl:Thing .
+
+ns1:procedure_1 a dbpedia:Procedural_law,
+        ns1:ComitologyProcedure ;
+    rdfs:label "procedures" ;
+    dul:hasDataValue "2"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple .
+

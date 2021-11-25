@@ -1,0 +1,154 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence356.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%2C> rdfs:label "," .
+
+vn.role:Predicate rdfs:label "for" .
+
+translation_coherence:nl_sentence356.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence356" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence356" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:blame_1 a ns1:Blame ;
+    rdfs:label "blamed" ;
+    vn.role:Agent ns1:Mcclellan ;
+    vn.role:Predicate ns1:failure_1 ;
+    vn.role:Theme ns1:decision_1 .
+
+ns1:defend_1 a ns1:Defend ;
+    rdfs:label "defend" ;
+    dul:associatedWith ns1:decision_1 ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Theme ns1:capital_1 .
+
+ns1:docuverse earmark:hasContent "Lincoln insisted on holding some of McClellan's troops to defend the capital, a decision that McClellan blamed for the ultimate failure of the Peninsula_Campaign."^^xsd:string .
+
+ns1:hold_1 a ns1:Hold ;
+    rdfs:label "holding" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Theme ns1:thing_2 .
+
+ns1:insist_1 a ns1:Insist ;
+    rdfs:label "insisted" ;
+    vn.role:Agent ns1:Lincoln ;
+    ns1:onThingOf ns1:troops_1 .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+dbpedia:George_B._McClellan a schema:Person .
+
+ns1:Blame rdfs:label "blamed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Capital rdfs:label "capital" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Decision rdfs:label "decision" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Defend rdfs:label "defend" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Failure a owl:Class ;
+    rdfs:label "failure" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Hold rdfs:label "holding" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Insist rdfs:label "insisted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+
+ns1:Peninsula_campaign rdfs:label "Peninsula Campaign" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Peninsula_Campaign .
+
+ns1:Troops rdfs:label "troops" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Ultimate a owl:Class ;
+    rdfs:label "ultimate" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:UltimateFailure a owl:Class ;
+    rdfs:label "Ultimate Failure" ;
+    dul:hasQuality ns1:Ultimate ;
+    rdfs:subClassOf ns1:Failure .
+
+ns1:capital_1 a ns1:Capital ;
+    rdfs:label "capital" ;
+    quant:hasDeterminer quant:the .
+
+ns1:failure_1 a ns1:UltimateFailure ;
+    rdfs:label "failure" ;
+    quant:hasDeterminer quant:the ;
+    ns1:ultimateFailureOf ns1:Peninsula_campaign .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "some" .
+
+ns1:troops_1 a ns1:Troops ;
+    rdfs:label "troops" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:troopsOf ns1:Mcclellan .
+
+owl:Thing rdfs:label "some" .
+
+ns1:Mcclellan rdfs:label "McClellan" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:George_B._McClellan .
+
+ns1:decision_1 a ns1:Decision ;
+    rdfs:label "decision" ;
+    quant:hasDeterminer quant:a .
+
+ns1:thing_1 a owl:Thing .
+

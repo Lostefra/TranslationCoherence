@@ -1,0 +1,200 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence418.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence418.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence418" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence418" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:On rdfs:label "on" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "They are particularly helpful to the Member_States and I would like to pay particular attention to the Commission's. on sustainable development, job creation and in particular on equal opportunities and transport issues."^^xsd:string .
+
+ns1:job_1 a ns1:Job ;
+    rdfs:label "job" ;
+    dul:associatedWith ns1:creation_1 .
+
+ns1:like_1 a ns1:Like ;
+    rdfs:label "like" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Experiencer ns1:person_1 ;
+    vn.role:Theme ns1:situation_2 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Helpful,
+        ns1:thing_1 ;
+    dul:hasQuality ns1:Particularly ;
+    ns1:to ns1:Member_states .
+
+ns1:transport_1 a ns1:Transport ;
+    rdfs:label "transport" ;
+    dul:associatedWith ns1:issue_1 .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s.> rdfs:label "'s." .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s._1> a <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s.> ;
+    rdfs:label "'s." ;
+    dul:associatedWith ns1:Commission ;
+    ns1:on ns1:development_1 .
+
+ns1:Attention rdfs:label "attention" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Commission rdfs:label "Commission" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:European_Commission .
+
+ns1:Creation a owl:Class ;
+    rdfs:label "creation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Development a owl:Class ;
+    rdfs:label "development" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Equal rdfs:label "equal" .
+
+ns1:EqualOpportunity rdfs:subClassOf ns1:Opportunity .
+
+ns1:Issue rdfs:label "issues" .
+
+ns1:JobCreation a owl:Class ;
+    rdfs:label "Job Creation" ;
+    dul:associatedWith ns1:Job ;
+    rdfs:subClassOf ns1:Creation ;
+    owl:equivalentClass dbpedia:Unemployment .
+
+ns1:Like rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Member_states rdfs:label "Member States" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Member_state_of_the_European_Union .
+
+ns1:Opportunity rdfs:label "opportunities" .
+
+ns1:Particular rdfs:label "Particular",
+        "particular" .
+
+ns1:ParticularAttention rdfs:label "Particular Attention" ;
+    rdfs:subClassOf ns1:Attention .
+
+ns1:Particularly rdfs:label "particularly" .
+
+ns1:Pay rdfs:label "pay" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Person rdfs:label "I" .
+
+ns1:Sustainable a owl:Class ;
+    rdfs:label "sustainable" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SustainableDevelopment a owl:Class ;
+    rdfs:label "Sustainable Development" ;
+    dul:hasQuality ns1:Sustainable ;
+    rdfs:subClassOf ns1:Development ;
+    owl:equivalentClass dbpedia:Sustainable_development .
+
+ns1:Transport a owl:Class ;
+    rdfs:label "transport" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Transport .
+
+ns1:TransportIssue rdfs:subClassOf ns1:Issue .
+
+ns1:pay_1 a ns1:Pay ;
+    rdfs:label "pay" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Asset ns1:attention_1 ;
+    ns1:on ns1:issue_1,
+        ns1:opportunity_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:attention_1,
+        ns1:creation_1,
+        ns1:development_1,
+        ns1:issue_1,
+        ns1:opportunity_1,
+        ns1:pay_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "They" ;
+    dul:hasQuality ns1:Helpful .
+
+owl:Thing rdfs:label "They" .
+
+ns1:Helpful rdfs:label "helpful" .
+
+ns1:Job a owl:Class ;
+    rdfs:label "job" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:attention_1 a ns1:ParticularAttention ;
+    rdfs:label "attention" ;
+    dul:hasQuality ns1:Particular ;
+    ns1:to <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s._1> .
+
+ns1:development_1 a ns1:SustainableDevelopment ;
+    rdfs:label "development" ;
+    dul:associatedWith ns1:creation_1 .
+
+ns1:opportunity_1 a dbpedia:Equal_opportunity,
+        ns1:EqualOpportunity ;
+    rdfs:label "opportunities" ;
+    dul:hasQuality ns1:Equal ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:creation_1 a ns1:JobCreation ;
+    rdfs:label "creation" .
+
+ns1:issue_1 a ns1:TransportIssue ;
+    rdfs:label "issues" ;
+    quant:hasQuantifier quant:multiple .
+

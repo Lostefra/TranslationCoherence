@@ -1,0 +1,178 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence531.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%2C> rdfs:label "," .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Ebest> rdfs:label "best" .
+
+vn.role:Agent rdfs:label "by" .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:zh_sentence531.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence531" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence531" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Union rdfs:label "or" .
+
+ns1:award_2 a ns1:Award ;
+    rdfs:label "awarded" ;
+    dul:hasQuality ns1:Never ;
+    vn.role:Recipient ns1:movie_1 ;
+    vn.role:Theme ns1:award_1 .
+
+ns1:disjunct_1 a ns1:Disjunct ;
+    boxing:involves ns1:Photograph,
+        ns1:movie_1 ;
+    ns1:union ns1:disjunct_2 .
+
+ns1:docuverse earmark:hasContent "The best awards have never been awarded to a movie, scientific photograph or film; very few are terror, fanatics, anger and the Western recognized by the Global_Positioning_System."^^xsd:string .
+
+ns1:film_1 rdfs:label "film" .
+
+ns1:photograph_1 rdfs:label "photograph" .
+
+ns1:recognize_1 a ns1:Recognize ;
+    rdfs:label "recognized" ;
+    vn.role:Agent ns1:Global_positioning_system ;
+    vn.role:Theme ns1:western_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Terror,
+        ns1:few_1 ;
+    dul:associatedWith ns1:fanatic_1 .
+
+ns1:Anger rdfs:label "anger" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Best rdfs:label "best" .
+
+ns1:BestAward rdfs:subClassOf ns1:Award .
+
+ns1:Fanatic rdfs:label "fanatics" .
+
+ns1:Few rdfs:label "few" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Global_positioning_system rdfs:label "Global Positioning System" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Global_Positioning_System .
+
+ns1:Movie rdfs:label "movie" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity>,
+        dul:InformationEntity .
+
+ns1:Never rdfs:label "never" .
+
+ns1:Recognize rdfs:label "recognized" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Scientific a owl:Class ;
+    rdfs:label "scientific" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ScientificPhotograph a owl:Class ;
+    rdfs:label "Scientific Photograph" ;
+    dul:hasQuality ns1:Scientific ;
+    rdfs:subClassOf ns1:Photograph .
+
+ns1:Very rdfs:label "very" .
+
+ns1:VeryFew rdfs:label "Very Few" ;
+    rdfs:subClassOf ns1:Few .
+
+ns1:Western rdfs:label "Western" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity>,
+        dul:InformationEntity .
+
+ns1:anger_1 a ns1:Anger ;
+    rdfs:label "anger" .
+
+ns1:award_1 a ns1:Award,
+        ns1:BestAward ;
+    rdfs:label "awards" ;
+    dul:hasQuality ns1:Best ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:bestAmong ns1:Award .
+
+ns1:disjunct_2 a ns1:Disjunct ;
+    boxing:involves ns1:Film,
+        ns1:movie_1 .
+
+ns1:fanatic_1 a ns1:Fanatic ;
+    rdfs:label "fanatics" ;
+    dul:associatedWith ns1:anger_1,
+        ns1:western_1 ;
+    quant:hasQuantifier quant:few,
+        quant:multiple .
+
+ns1:few_1 a ns1:VeryFew ;
+    rdfs:label "few" ;
+    dul:hasQuality ns1:Terror .
+
+ns1:Film rdfs:label "film" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity>,
+        dul:InformationEntity .
+
+ns1:Photograph a owl:Class ;
+    rdfs:label "photograph" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Terror rdfs:label "terror" ;
+    dul:hasQuality ns1:Very .
+
+ns1:western_1 a ns1:Western ;
+    rdfs:label "Western" .
+
+ns1:movie_1 a ns1:Film,
+        ns1:Movie,
+        ns1:ScientificPhotograph ;
+    rdfs:label "movie" ;
+    quant:hasDeterminer quant:a .
+
+ns1:Award rdfs:label "awarded",
+        "awards" ;
+    rdfs:subClassOf dul:Event .
+

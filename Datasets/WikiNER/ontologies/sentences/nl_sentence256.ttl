@@ -1,0 +1,126 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence256.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence256.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence256" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence256" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Include rdfs:label "including" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:battle_1 a ns1:Battle ;
+    rdfs:label "battle" ;
+    dul:associatedWith ns1:effort_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:docuverse earmark:hasContent "Lincoln had accurately supervised the battle effort, especially the selection of top general, including Ulysses_S._Grant."^^xsd:string .
+
+ns1:supervise_1 a ns1:AccuratelySupervise ;
+    rdfs:label "supervised" ;
+    boxer:agent ns1:Lincoln ;
+    boxer:patient ns1:effort_1 ;
+    dul:hasQuality ns1:Accurately .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+ns1:Accurately rdfs:label "accurately" .
+
+ns1:AccuratelySupervise rdfs:subClassOf ns1:Supervise .
+
+ns1:BattleEffort a owl:Class ;
+    rdfs:label "Battle Effort" ;
+    dul:associatedWith ns1:Battle ;
+    rdfs:subClassOf ns1:Effort .
+
+ns1:Effort a owl:Class ;
+    rdfs:label "effort" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Especially rdfs:label "especially" .
+
+ns1:General a owl:Class ;
+    rdfs:label "general" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+
+ns1:Selection rdfs:label "selection" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Supervise rdfs:label "supervised" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Top a owl:Class ;
+    rdfs:label "top" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:TopGeneral a owl:Class ;
+    rdfs:label "Top General" ;
+    dul:hasQuality ns1:Top ;
+    rdfs:subClassOf ns1:General .
+
+<https://w3id.org/stlab/ke/amiala/nl_sentence256.ttl/Ulysses_s._grant.> rdfs:label "Ulysses S. Grant." ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:general_1 a ns1:TopGeneral ;
+    rdfs:label "general" .
+
+ns1:selection_1 a ns1:Selection ;
+    rdfs:label "selection" ;
+    dul:hasQuality ns1:Especially ;
+    quant:hasDeterminer quant:the ;
+    ns1:selectionOf ns1:general_1 .
+
+ns1:Battle a owl:Class ;
+    rdfs:label "battle" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:effort_1 a ns1:BattleEffort ;
+    rdfs:label "effort" ;
+    dul:associatedWith ns1:selection_1 ;
+    ns1:include <https://w3id.org/stlab/ke/amiala/nl_sentence256.ttl/Ulysses_s._grant.> .
+

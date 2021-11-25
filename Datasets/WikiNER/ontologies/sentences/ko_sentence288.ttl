@@ -1,0 +1,129 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence288.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Agent rdfs:label "by" .
+
+translation_coherence:ko_sentence288.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence288" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence288" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:After rdfs:label "after" .
+
+ns1:By rdfs:label "by" .
+
+ns1:Of rdfs:label "his" .
+
+ns1:die_1 a ns1:Die ;
+    rdfs:label "died" ;
+    boxer:patient "1985-12-24"^^xsd:date ;
+    vn.role:Theme ns1:Robert_todd_lincoln_beckwith ;
+    ns1:dieBy ns1:his_1 .
+
+ns1:docuverse earmark:hasContent "by his (and extended, by his father's) after the last known line, Robert_Todd_Lincoln_Beckwith, died December 24, 1985."^^xsd:string .
+
+ns1:extend_1 a ns1:Extend ;
+    rdfs:label "extended" ;
+    vn.role:Agent <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s_1> ;
+    vn.role:Theme ns1:thing_1 ;
+    ns1:after ns1:line_1 .
+
+ns1:father_1 a ns1:Father ;
+    rdfs:label "father" ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s_1> .
+
+ns1:male_1 coref:coref ns1:his_1 .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s> rdfs:label "'s" .
+
+ns1:Die rdfs:label "died" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Extend rdfs:label "extended" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Father rdfs:label "father" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Father%27s rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s> .
+
+ns1:His rdfs:label "his" .
+
+ns1:Known a owl:Class ;
+    rdfs:label "known" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:KnownLine a owl:Class ;
+    rdfs:label "known line" ;
+    dul:hasQuality ns1:Known ;
+    rdfs:subClassOf ns1:Line .
+
+ns1:Last rdfs:label "last" .
+
+ns1:LastKnownLine a owl:Class ;
+    rdfs:label "Last Known Line" ;
+    rdfs:subClassOf ns1:KnownLine .
+
+ns1:Line a owl:Class ;
+    rdfs:label "line" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Male rdfs:label "Robert Todd Lincoln Beckwith" .
+
+ns1:line_1 a ns1:LastKnownLine ;
+    rdfs:label "line" ;
+    dul:hasQuality ns1:Last ;
+    quant:hasDeterminer quant:the .
+
+ns1:thing_1 a owl:Thing .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%27s_1> a ns1:Father%27s ;
+    rdfs:label "'s" ;
+    ns1:father%27sOf ns1:Robert_todd_lincoln_beckwith .
+
+ns1:Robert_todd_lincoln_beckwith a ns1:Male ;
+    rdfs:label "Robert Todd Lincoln Beckwith" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Robert_Todd_Lincoln_Beckwith .
+
+ns1:his_1 a ns1:His ;
+    rdfs:label "his" .
+

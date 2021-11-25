@@ -1,0 +1,181 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence306.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "in" .
+
+translation_coherence:nl_sentence306.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence306" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence306" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "his",
+        "of" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:docuverse earmark:hasContent "Congress has never resoluted the resolution of it or even debate it, and his introduction resulted in a loss of political support for Lincoln in his district, an Illinois paper that unnoticed him."^^xsd:string .
+
+ns1:resolute_1 a ns1:NeverResolute ;
+    rdfs:label "resoluted" ;
+    boxer:agent ns1:Congress ;
+    boxer:theme ns1:debate_1 ;
+    dul:hasQuality ns1:Even,
+        ns1:Never ;
+    ns1:neverResoluteOf ns1:Congress ;
+    ns1:union ns1:debate_1 .
+
+ns1:result_1 a ns1:Result ;
+    rdfs:label "resulted" ;
+    boxer:patient ns1:paper_1 ;
+    vn.role:Location ns1:loss_1 ;
+    vn.role:Theme ns1:introduction_1 .
+
+ns1:unnotice_1 a ns1:Unnotice ;
+    rdfs:label "unnoticed" ;
+    boxer:agent ns1:paper_1 ;
+    boxer:patient ns1:male_1 .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+dbpedia:Illinois a schema:AdministrativeArea,
+        schema:Place .
+
+dbpedia:United_States_Congress a schema:Organization .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Debate rdfs:label "debate" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:District rdfs:label "district" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Even rdfs:label "even" .
+
+ns1:Illinois rdfs:label "Illinois" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Illinois .
+
+ns1:Introduction rdfs:label "introduction" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+
+ns1:Loss rdfs:label "loss" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Never rdfs:label "never" .
+
+ns1:NeverResolute rdfs:subClassOf ns1:Resolute .
+
+ns1:Paper rdfs:label "paper" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Political a owl:Class ;
+    rdfs:label "political" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:PoliticalSupport a owl:Class ;
+    rdfs:label "political support" ;
+    dul:hasQuality ns1:Political ;
+    rdfs:subClassOf ns1:Support .
+
+ns1:Resolute rdfs:label "resoluted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Resolution rdfs:label "resolution" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Result rdfs:label "resulted" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Support a owl:Class ;
+    rdfs:label "support" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Unnotice rdfs:label "unnoticed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:district_1 a ns1:District ;
+    rdfs:label "district" ;
+    ns1:districtOf ns1:male_1 .
+
+ns1:introduction_1 a ns1:Introduction ;
+    rdfs:label "introduction" ;
+    ns1:introductionOf ns1:male_1 .
+
+ns1:loss_1 a ns1:Loss ;
+    rdfs:label "loss" ;
+    quant:hasDeterminer quant:a ;
+    ns1:in ns1:district_1 ;
+    ns1:lossOf ns1:support_1 .
+
+ns1:resolution_1 a ns1:Resolution ;
+    rdfs:label "resolution" ;
+    quant:hasDeterminer quant:the .
+
+ns1:support_1 a ns1:PoliticalSupport ;
+    rdfs:label "support" ;
+    ns1:for ns1:Lincoln .
+
+ns1:debate_1 a ns1:Debate ;
+    rdfs:label "debate" ;
+    vn.role:Actor1 ns1:resolution_1 ;
+    vn.role:Actor2 ns1:Congress .
+
+ns1:paper_1 a ns1:Paper ;
+    rdfs:label "paper" ;
+    dul:associatedWith ns1:Illinois .
+
+ns1:Congress rdfs:label "Congress" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality owl:Thing ;
+    owl:sameAs dbpedia:United_States_Congress .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "his" .
+

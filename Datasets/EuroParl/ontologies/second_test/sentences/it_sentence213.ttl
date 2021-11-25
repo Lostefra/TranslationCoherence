@@ -1,0 +1,133 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence213.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "to" .
+
+translation_coherence:it_sentence213.ttl a owl:Ontology ;
+    rdfs:label "it_sentence213" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence213" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Few rdfs:label "few" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:do_1 a ns1:Do ;
+    rdfs:label "do" ;
+    boxer:agent ns1:paint_1 ;
+    boxer:patient ns1:risk_1 ;
+    boxing:hasTruthValue boxing:False ;
+    ns1:in ns1:principle_1 .
+
+ns1:docuverse earmark:hasContent "Margarine and a few pounds of paint that, in principle, do not present risks, have led to a real disaster."^^xsd:string .
+
+ns1:lead_1 a ns1:Lead ;
+    vn.role:Agent ns1:Margarine ;
+    vn.role:Destination ns1:disaster_1 .
+
+ns1:lead_2 a ns1:Lead ;
+    rdfs:label "led" ;
+    vn.role:Agent ns1:pound_1 ;
+    vn.role:Destination ns1:disaster_1 .
+
+ns1:Disaster a owl:Class ;
+    rdfs:label "disaster" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Do rdfs:label "do" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:FewPound rdfs:subClassOf ns1:Pound .
+
+ns1:Margarine rdfs:label "Margarine" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Margarine .
+
+ns1:Paint rdfs:label "paint" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Pound rdfs:label "pounds" .
+
+ns1:Present rdfs:label "present" .
+
+ns1:PresentRisk rdfs:subClassOf ns1:Risk .
+
+ns1:Principle rdfs:label "principle" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Real a owl:Class ;
+    rdfs:label "real" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:RealDisaster a owl:Class ;
+    rdfs:label "real disaster" ;
+    dul:hasQuality ns1:Real ;
+    rdfs:subClassOf ns1:Disaster .
+
+ns1:Risk rdfs:label "risks" .
+
+ns1:pound_1 a ns1:FewPound ;
+    rdfs:label "pounds" ;
+    quant:hasDeterminer quant:a ;
+    quant:hasQuantifier quant:few,
+        quant:multiple ;
+    ns1:fewPoundOf ns1:paint_1 .
+
+ns1:principle_1 a ns1:Principle ;
+    rdfs:label "principle" .
+
+ns1:risk_1 a ns1:PresentRisk ;
+    rdfs:label "risks" ;
+    dul:hasQuality ns1:Present ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Lead rdfs:label "led" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:disaster_1 a ns1:RealDisaster ;
+    rdfs:label "disaster" ;
+    quant:hasDeterminer quant:a .
+
+ns1:paint_1 a ns1:Paint ;
+    rdfs:label "paint" .
+

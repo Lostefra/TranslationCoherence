@@ -1,0 +1,95 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence689.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:en_sentence689.ttl a owl:Ontology ;
+    rdfs:label "en_sentence689" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence689" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "In 1555, Turgut Reis sacked Bastia, Corsica, taking 6000 prisoners."^^xsd:string .
+
+ns1:sack_1 a ns1:Sack ;
+    rdfs:label "sacked" ;
+    vn.role:Agent ns1:Turgut_reis ;
+    vn.role:Theme ns1:Bastia ;
+    ns1:in "1555-01-01"^^xsd:date .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "taking" ;
+    vn.role:Agent ns1:Turgut_reis ;
+    vn.role:Theme ns1:prisoner_1 .
+
+dbpedia:Corsica a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:Bastia rdfs:label "Bastia" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:Corsica ;
+    owl:sameAs dbpedia:Bastia .
+
+ns1:Corsica rdfs:label "Corsica" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Corsica .
+
+ns1:Prisoner rdfs:label "prisoners" .
+
+ns1:Sack rdfs:label "sacked" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Take rdfs:label "taking" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:prisoner_1 a dbpedia:Prisoner_of_war,
+        ns1:Prisoner ;
+    rdfs:label "prisoners" ;
+    dul:hasDataValue "6000"^^xsd:nonNegativeInteger ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Turgut_reis rdfs:label "Turgut Reis" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Dragut .
+

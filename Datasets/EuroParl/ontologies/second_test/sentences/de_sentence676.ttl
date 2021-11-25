@@ -1,0 +1,186 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence676.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence676.ttl a owl:Ontology ;
+    rdfs:label "de_sentence676" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence676" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Agent rdfs:label "by" .
+
+ns1:As rdfs:label "As" .
+
+ns1:Of rdfs:label "of",
+        "our" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Which rdfs:label "which" .
+
+ns1:docuverse earmark:hasContent "As regards taxation, state aid, the Structural Funds and the defence of our traditional products, practical measures are urgently planned which are characterised by ambitious and ambitious objectives. If this is not reflected, convergence and cohesion will unfortunately not be more than words for us, and it is to be feared that the structural policies implemented in our regions, despite the amount of the bounds, lead to a failure."^^xsd:string .
+
+ns1:plan_1 a ns1:UrgentlyPlan ;
+    rdfs:label "planned" ;
+    dul:hasQuality ns1:Urgently ;
+    vn.role:Theme ns1:measure_1 ;
+    ns1:as ns1:taxation_1 ;
+    ns1:which ns1:characterise_1 .
+
+ns1:regards_1 a ns1:Regards ;
+    rdfs:label "regards" ;
+    dul:associatedWith ns1:taxation_1,
+        ns1:thing_1 ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:state_1 a ns1:State ;
+    rdfs:label "state" ;
+    dul:associatedWith ns1:aid_1 .
+
+ns1:Aid a owl:Class ;
+    rdfs:label "aid" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Ambitious rdfs:label "Ambitious",
+        "ambitious" .
+
+ns1:AmbitiousObjective rdfs:subClassOf ns1:Objective .
+
+ns1:Characterise rdfs:label "characterised" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Defence rdfs:label "defence" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Fund rdfs:label "Funds" .
+
+ns1:Measure rdfs:label "measures" .
+
+ns1:Objective rdfs:label "objectives" .
+
+ns1:Plan rdfs:label "planned" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Practical rdfs:label "practical" .
+
+ns1:PracticalMeasure rdfs:subClassOf ns1:Measure .
+
+ns1:Product rdfs:label "products" .
+
+ns1:RegardsTaxation a owl:Class ;
+    rdfs:label "regards taxation" ;
+    dul:associatedWith ns1:Regards ;
+    rdfs:subClassOf ns1:Taxation .
+
+ns1:StateAid a owl:Class ;
+    rdfs:label "State Aid" ;
+    dul:associatedWith ns1:State ;
+    rdfs:subClassOf ns1:Aid .
+
+ns1:Structural rdfs:label "Structural" .
+
+ns1:StructuralFund rdfs:subClassOf ns1:Fund .
+
+ns1:Taxation a owl:Class ;
+    rdfs:label "taxation" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Tax .
+
+ns1:Traditional rdfs:label "traditional" .
+
+ns1:TraditionalProduct rdfs:subClassOf ns1:Product .
+
+ns1:Urgently rdfs:label "urgently" .
+
+ns1:UrgentlyPlan rdfs:subClassOf ns1:Plan .
+
+ns1:characterise_1 a ns1:Characterise ;
+    rdfs:label "characterised" ;
+    boxer:agent ns1:objective_1 ;
+    boxer:patient ns1:thing_1 .
+
+ns1:defence_1 a ns1:Defence ;
+    rdfs:label "defence" ;
+    quant:hasDeterminer quant:the ;
+    ns1:defenceOf ns1:product_1 .
+
+ns1:fund_1 a ns1:StructuralFund ;
+    rdfs:label "Funds" ;
+    dul:hasQuality ns1:Structural ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:measure_1 a ns1:PracticalMeasure ;
+    rdfs:label "measures" ;
+    dul:hasQuality ns1:Practical ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:objective_1 a ns1:AmbitiousObjective ;
+    rdfs:label "objectives" ;
+    dul:hasQuality ns1:Ambitious ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "our" .
+
+ns1:product_1 a ns1:TraditionalProduct ;
+    rdfs:label "products" ;
+    dul:hasQuality ns1:Traditional ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:traditionalProductOf ns1:person_1 .
+
+ns1:Regards a owl:Class ;
+    rdfs:label "regards" .
+
+ns1:State a owl:Class ;
+    rdfs:label "state" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:aid_1 a ns1:StateAid ;
+    rdfs:label "aid" ;
+    dul:associatedWith ns1:defence_1,
+        ns1:fund_1 .
+
+ns1:taxation_1 a ns1:RegardsTaxation ;
+    rdfs:label "taxation" ;
+    dul:associatedWith ns1:aid_1 .
+
+ns1:thing_1 a owl:Thing .
+

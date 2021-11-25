@@ -1,0 +1,171 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence352.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Cause rdfs:label "by" .
+
+translation_coherence:ko_sentence352.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence352" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence352" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Because rdfs:label "because" .
+
+ns1:Of rdfs:label "my",
+        "of",
+        "their" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Why rdfs:label "why" .
+
+ns1:certification_1 a ns1:Certification ;
+    rdfs:label "certification" ;
+    dul:associatedWith ns1:policy_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:docuverse earmark:hasContent "Mr. President, it was surprised by my colleagues, Mr Evans, why Wales actually achieved Objective_1 state. It was because of the certification policy of their detention."^^xsd:string .
+
+ns1:surprise_1 a ns1:Surprise ;
+    rdfs:label "surprised" ;
+    dul:associatedWith ns1:President ;
+    vn.role:Cause ns1:colleague_1 ;
+    vn.role:Experiencer ns1:neuter_1 .
+
+ns1:thing_1 coref:coref ns1:colleague_1 .
+
+dbpedia:Wales a schema:Country,
+        schema:Place .
+
+ns1:Achieve rdfs:label "achieved" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Actually rdfs:label "actually" .
+
+ns1:ActuallyAchieve rdfs:subClassOf ns1:Achieve .
+
+ns1:CertificationPolicy a owl:Class ;
+    rdfs:label "certification policy" ;
+    dul:associatedWith ns1:Certification ;
+    rdfs:subClassOf ns1:Policy .
+
+ns1:Colleague rdfs:label "colleagues" .
+
+ns1:Detention rdfs:label "detention" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Evans rdfs:label "Evans" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    ns1:why ns1:achieve_1 .
+
+ns1:Objective_1 a dbpedia:Regional_policy_of_the_European_Union,
+        owl:Class ;
+    rdfs:label "Objective 1" .
+
+ns1:Objective_1State a owl:Class ;
+    rdfs:label "Objective 1 State" ;
+    dul:associatedWith ns1:Objective_1 ;
+    rdfs:subClassOf ns1:State .
+
+ns1:Policy a owl:Class ;
+    rdfs:label "policy" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:President rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    owl:sameAs dbpedia:President .
+
+ns1:State a owl:Class ;
+    rdfs:label "state" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Surprise rdfs:label "surprised" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Wales rdfs:label "Wales" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Wales .
+
+ns1:achieve_1 a ns1:ActuallyAchieve ;
+    rdfs:label "achieved" ;
+    dul:hasQuality ns1:Actually ;
+    vn.role:Agent ns1:Wales ;
+    vn.role:Theme ns1:state_1 .
+
+ns1:detention_1 a ns1:Detention ;
+    rdfs:label "detention" ;
+    ns1:detentionOf ns1:colleague_1 .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "it" ;
+    ns1:becauseOf ns1:policy_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "my" .
+
+ns1:state_1 a ns1:Objective_1State ;
+    rdfs:label "state" ;
+    quant:hasQuantifier quant:objective_1 .
+
+ns1:Certification a owl:Class ;
+    rdfs:label "certification" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:policy_1 a ns1:CertificationPolicy ;
+    rdfs:label "policy" ;
+    ns1:certificationPolicyOf ns1:detention_1 .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> rdfs:label "Mr",
+        "Mr." ;
+    boxer:possibleType dul:Role .
+
+owl:Thing rdfs:label "it" .
+
+ns1:colleague_1 a owl:Thing,
+        ns1:Colleague ;
+    rdfs:label "colleagues",
+        "their" ;
+    dul:associatedWith ns1:Evans ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:colleagueOf ns1:person_1 .
+

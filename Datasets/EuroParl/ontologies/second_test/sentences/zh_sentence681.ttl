@@ -1,0 +1,171 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence681.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Topic rdfs:label "of" .
+
+translation_coherence:zh_sentence681.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence681" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence681" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "my",
+        "of",
+        "your" .
+
+ns1:On rdfs:label "On" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:behalf_1 a ns1:Behalf ;
+    rdfs:label "behalf" .
+
+ns1:docuverse earmark:hasContent "On behalf of all officers of the Committee and my predecessor, Mrs. Valentov-Master, I must inform you of the fact that we are very vigilant in this Chamber and your own evaluation."^^xsd:string .
+
+ns1:inform_1 a ns1:Inform ;
+    rdfs:label "inform" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Recipient ns1:person_4 ;
+    vn.role:Topic ns1:fact_1 ;
+    ns1:onBehalfOf ns1:officer_1 .
+
+ns1:person_3 coref:coref ns1:person_2 .
+
+ns1:situation_1 a ns1:Situation ;
+    ns1:entails ns1:situation_2 .
+
+ns1:Behalf rdfs:label "behalf" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Chamber rdfs:label "Chamber" ;
+    boxer:possibleType time:Interval .
+
+ns1:Committee rdfs:label "Committee" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Committee .
+
+ns1:Evaluation a owl:Class ;
+    rdfs:label "evaluation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Fact rdfs:label "fact" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Inform rdfs:label "inform" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Officer rdfs:label "officers" .
+
+ns1:Own a owl:Class ;
+    rdfs:label "own" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:OwnEvaluation a owl:Class ;
+    rdfs:label "Own Evaluation" ;
+    dul:hasQuality ns1:Own ;
+    rdfs:subClassOf ns1:Evaluation .
+
+ns1:Predecessor rdfs:label "predecessor" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Valentov-master rdfs:label "Valentov-Master" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis> ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis> .
+
+ns1:evaluation_1 a ns1:OwnEvaluation ;
+    rdfs:label "evaluation" ;
+    ns1:ownEvaluationOf ns1:person_1 .
+
+ns1:fact_1 a ns1:Fact ;
+    rdfs:label "fact" ;
+    boxer:theme ns1:situation_3 ;
+    quant:hasDeterminer quant:the .
+
+ns1:officer_1 a ns1:Officer ;
+    rdfs:label "officers" ;
+    quant:hasQuantifier quant:all,
+        quant:multiple ;
+    ns1:officerOf ns1:Committee,
+        ns1:predecessor_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "your" .
+
+ns1:person_4 a ns1:Person ;
+    rdfs:label "you" .
+
+ns1:person_5 a ns1:Person ;
+    rdfs:label "we" ;
+    dul:hasQuality ns1:Vigilant .
+
+ns1:predecessor_1 a ns1:Predecessor ;
+    rdfs:label "predecessor" ;
+    dul:associatedWith ns1:Valentov-master ;
+    ns1:predecessorOf ns1:person_2 .
+
+ns1:situation_2 a ns1:Situation .
+
+ns1:situation_3 a ns1:Situation ;
+    boxing:involves ns1:Very,
+        ns1:Vigilant,
+        ns1:person_5 ;
+    ns1:in ns1:Chamber,
+        ns1:evaluation_1 .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis> rdfs:label "Mrs." ;
+    boxer:possibleType dul:Role .
+
+ns1:Very rdfs:label "very" .
+
+ns1:Vigilant rdfs:label "vigilant" ;
+    dul:hasQuality ns1:Very .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "I",
+        "my" .
+
+ns1:Person rdfs:label "I",
+        "we",
+        "you" .
+

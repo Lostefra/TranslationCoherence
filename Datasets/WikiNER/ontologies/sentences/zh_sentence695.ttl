@@ -1,0 +1,168 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix fred: <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence695.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fred: rdfs:label ":"^^xsd:string .
+
+translation_coherence:zh_sentence695.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence695" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence695" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Behind rdfs:label "behind" .
+
+ns1:During rdfs:label "during" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "its" .
+
+ns1:Quantity rdfs:label "many" .
+
+ns1:docuverse earmark:hasContent "Algeria suffered the social fabric during its occupation: a decline in literacy rates and land development lagging behind many people."^^xsd:string .
+
+ns1:lag_1 a ns1:Lag ;
+    rdfs:label "lagging" ;
+    boxer:agent ns1:Algeria ;
+    ns1:behind ns1:people_1 .
+
+ns1:land_1 a ns1:Land ;
+    rdfs:label "land" ;
+    dul:associatedWith ns1:development_1 .
+
+ns1:literacy_1 a ns1:Literacy ;
+    rdfs:label "literacy" ;
+    dul:associatedWith ns1:rate_1 .
+
+ns1:neuter_1 coref:coref ns1:Algeria .
+
+ns1:suffer_1 a ns1:Suffer ;
+    rdfs:label "suffered" ;
+    vn.role:Experiencer ns1:Algeria ;
+    vn.role:Theme ns1:fabric_1 ;
+    ns1:during ns1:occupation_1 .
+
+dbpedia:Algeria a schema:Country,
+        schema:Place .
+
+owl:Thing rdfs:label "Algeria" .
+
+ns1:Decline rdfs:label "decline" ;
+    rdfs:subClassOf dul:Process .
+
+ns1:Development a owl:Class ;
+    rdfs:label "development" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Fabric a owl:Class ;
+    rdfs:label "fabric" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Lag rdfs:label "lagging" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:LandDevelopment a owl:Class ;
+    rdfs:label "land development" ;
+    dul:associatedWith ns1:Land ;
+    rdfs:subClassOf ns1:Development .
+
+ns1:Literacy rdfs:label "literacy" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:LiteracyRate rdfs:subClassOf ns1:Rate .
+
+ns1:Occupation rdfs:label "occupation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:People rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Rate rdfs:label "rates" .
+
+ns1:Social a owl:Class ;
+    rdfs:label "social" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SocialFabric a owl:Class ;
+    rdfs:label "Social Fabric" ;
+    dul:hasQuality ns1:Social ;
+    rdfs:subClassOf ns1:Fabric .
+
+ns1:Suffer rdfs:label "suffered" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:decline_1 a ns1:Decline ;
+    rdfs:label "decline" ;
+    quant:hasDeterminer quant:a ;
+    ns1:in ns1:rate_1 .
+
+ns1:fabric_1 a ns1:SocialFabric ;
+    rdfs:label "fabric" ;
+    quant:hasDeterminer quant:the .
+
+ns1:occupation_1 a ns1:Occupation ;
+    rdfs:label "occupation" ;
+    boxing:declaration ns1:decline_1,
+        ns1:development_1 ;
+    ns1:occupationOf ns1:Algeria .
+
+ns1:people_1 a ns1:People ;
+    rdfs:label "people" ;
+    quant:hasQuantifier quant:many,
+        quant:multiple .
+
+ns1:Land a owl:Class ;
+    rdfs:label "land" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:development_1 a ns1:LandDevelopment ;
+    rdfs:label "development" .
+
+ns1:rate_1 a ns1:LiteracyRate ;
+    rdfs:label "rates" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Algeria a owl:Thing ;
+    rdfs:label "Algeria",
+        "its" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Algeria .
+

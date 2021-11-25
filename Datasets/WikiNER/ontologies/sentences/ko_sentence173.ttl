@@ -1,0 +1,149 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence173.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence173.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence173" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence173" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "The voters of the State voted again to vote what they were recognized as an anaerobic and as an admittance of rights to elected the Republican Challenger Guy_Hunt."^^xsd:string .
+
+ns1:thing_2 coref:coref ns1:voter_1 .
+
+ns1:vote_1 a ns1:Vote ;
+    rdfs:label "voted" ;
+    dul:hasQuality ns1:Again ;
+    vn.role:Agent ns1:voter_1 ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:Admittance rdfs:label "admittance" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Again rdfs:label "again" .
+
+ns1:Anaerobic rdfs:label "anaerobic" .
+
+ns1:Elect rdfs:label "elected" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Recognize rdfs:label "recognized" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Republican_challenger_guy_hunt rdfs:label "Republican Challenger Guy Hunt" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Rights rdfs:label "rights" .
+
+ns1:State rdfs:label "State" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Voter rdfs:label "voters" .
+
+ns1:elect_1 a dbpedia:Election,
+        ns1:Elect ;
+    rdfs:label "elected" ;
+    vn.role:Predicate ns1:Republican_challenger_guy_hunt ;
+    vn.role:Theme ns1:thing_1 .
+
+ns1:recognize_1 a ns1:Recognize ;
+    rdfs:label "recognized" ;
+    vn.role:Theme ns1:voter_1 ;
+    ns1:as ns1:admittance_1,
+        ns1:anaerobic_1 ;
+    ns1:to ns1:thing_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:admittance_1,
+        ns1:anaerobic_1,
+        ns1:elect_1,
+        ns1:recognize_1,
+        ns1:rights_1,
+        ns1:thing_1,
+        ns1:vote_2 .
+
+ns1:state_1 a ns1:State ;
+    rdfs:label "State" ;
+    quant:hasDeterminer quant:the .
+
+ns1:vote_2 a ns1:Vote ;
+    rdfs:label "vote" ;
+    vn.role:Agent ns1:voter_1 ;
+    vn.role:Theme ns1:thing_1 .
+
+owl:Thing rdfs:label "they",
+        "what" .
+
+ns1:Vote a owl:Class ;
+    rdfs:label "Vote",
+        "vote",
+        "voted" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Voting .
+
+ns1:admittance_1 a ns1:Admittance ;
+    rdfs:label "admittance" ;
+    quant:hasDeterminer quant:an ;
+    ns1:admittanceOf ns1:rights_1 .
+
+ns1:anaerobic_1 a ns1:Anaerobic ;
+    rdfs:label "anaerobic" .
+
+ns1:rights_1 a ns1:Rights ;
+    rdfs:label "rights" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "what" .
+
+ns1:voter_1 a owl:Thing,
+        ns1:Voter ;
+    rdfs:label "they",
+        "voters" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:voterOf ns1:state_1 .
+

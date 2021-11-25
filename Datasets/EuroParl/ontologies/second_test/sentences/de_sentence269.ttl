@@ -1,0 +1,168 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence269.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence269.ttl a owl:Ontology ;
+    rdfs:label "de_sentence269" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence269" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Entails rdfs:label "If" .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "If we really want to create a common transport market, it is important that we have not only rules, but that these rules should also apply to each country."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:apply_1,
+        ns1:country_1,
+        ns1:have_1,
+        ns1:rule_1 ;
+    dul:hasQuality ns1:Important .
+
+ns1:transport_1 a ns1:Transport ;
+    rdfs:label "transport" ;
+    dul:associatedWith ns1:market_1 ;
+    quant:hasDeterminer quant:a .
+
+ns1:want_1 a ns1:ReallyWant ;
+    rdfs:label "want" ;
+    dul:hasQuality ns1:Really ;
+    vn.role:Experiencer ns1:person_1 ;
+    vn.role:Theme ns1:create_1 ;
+    ns1:entails ns1:create_1 .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoApply rdfs:label "also apply" ;
+    rdfs:subClassOf ns1:Apply .
+
+ns1:Apply rdfs:label "apply" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Common a owl:Class ;
+    rdfs:label "common" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:CommonTransport a owl:Class ;
+    dul:hasQuality ns1:Common ;
+    rdfs:subClassOf ns1:Transport .
+
+ns1:CommonTransportMarket a owl:Class ;
+    rdfs:label "Common Transport Market" ;
+    dul:associatedWith ns1:CommonTransport ;
+    rdfs:subClassOf ns1:TransportMarket .
+
+ns1:Country rdfs:label "country" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Create rdfs:label "create" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Important rdfs:label "important" .
+
+ns1:Market a owl:Class ;
+    rdfs:label "market" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Really rdfs:label "really" .
+
+ns1:ReallyWant rdfs:label "Really Want" ;
+    rdfs:subClassOf ns1:Want .
+
+ns1:TransportMarket a owl:Class ;
+    rdfs:label "transport market" ;
+    dul:associatedWith ns1:Transport ;
+    rdfs:subClassOf ns1:Market .
+
+ns1:Want rdfs:label "want" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:apply_1 a ns1:AlsoApply ;
+    rdfs:label "apply" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Agent ns1:rule_2 ;
+    ns1:to ns1:country_1 .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "have" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Patient ns1:rule_1 .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:rule_2 a ns1:Rule ;
+    rdfs:label "rules" ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Person rdfs:label "we" .
+
+ns1:Rule rdfs:label "rules" .
+
+ns1:country_1 a ns1:Country ;
+    rdfs:label "country" ;
+    quant:hasQuantifier quant:each .
+
+ns1:create_1 a ns1:Create ;
+    rdfs:label "create" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Product ns1:market_1 .
+
+ns1:market_1 a ns1:CommonTransportMarket ;
+    rdfs:label "market" .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:rule_1 a ns1:Rule ;
+    rdfs:label "rules" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Transport a owl:Class ;
+    rdfs:label "transport" ;
+    rdfs:subClassOf dul:PhysicalObject .
+

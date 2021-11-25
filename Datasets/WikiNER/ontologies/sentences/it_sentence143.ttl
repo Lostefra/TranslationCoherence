@@ -1,0 +1,119 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence143.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Elargest> rdfs:label "largest" .
+
+translation_coherence:it_sentence143.ttl a owl:Ontology ;
+    rdfs:label "it_sentence143" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence143" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "its" .
+
+ns1:Until rdfs:label "until" .
+
+ns1:base_1 a ns1:Base ;
+    rdfs:label "based" ;
+    vn.role:Theme1 ns1:Torchmark_corporation ;
+    ns1:in ns1:city_1 ;
+    ns1:until "2006-01-01"^^xsd:date .
+
+ns1:docuverse earmark:hasContent "Torchmark Corporation is based in the city until 2006, and still maintains its largest operation in the city."^^xsd:string .
+
+ns1:maintain_1 a ns1:StillMaintain ;
+    rdfs:label "maintains" ;
+    dul:hasQuality ns1:Still ;
+    vn.role:Agent ns1:Torchmark_corporation ;
+    vn.role:Theme ns1:operation_1 .
+
+ns1:neuter_1 rdfs:label "its" .
+
+dbpedia:Carole_King rdfs:subClassOf schema:MusicGroup,
+        schema:Person .
+
+owl:Thing rdfs:label "Torchmark Corporation" .
+
+ns1:Base rdfs:label "based" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:City a owl:Class ;
+    rdfs:label "city" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> ;
+    owl:equivalentClass dbpedia:Carole_King .
+
+ns1:Largest a owl:Class ;
+    rdfs:label "largest" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:LargestOperation a owl:Class ;
+    rdfs:label "Largest Operation" ;
+    dul:hasQuality ns1:Largest ;
+    rdfs:subClassOf ns1:Operation .
+
+ns1:Maintain rdfs:label "maintains" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Still rdfs:label "still" .
+
+ns1:StillMaintain rdfs:subClassOf ns1:Maintain .
+
+ns1:operation_1 a ns1:LargestOperation,
+        ns1:Operation ;
+    rdfs:label "operation" ;
+    ns1:in ns1:city_1 ;
+    ns1:largestAmong ns1:Operation ;
+    ns1:largestOperationOf ns1:Torchmark_corporation .
+
+ns1:city_1 a ns1:City ;
+    rdfs:label "city" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Operation a owl:Class ;
+    rdfs:label "operation" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Torchmark_corporation a owl:Thing ;
+    rdfs:label "Torchmark Corporation" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Torchmark .
+

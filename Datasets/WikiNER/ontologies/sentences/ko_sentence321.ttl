@@ -1,0 +1,139 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence321.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence321.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence321" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence321" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:counter_1 a ns1:Counter ;
+    rdfs:label "counter" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:person_3 ;
+    vn.role:Theme ns1:expansion_1 .
+
+ns1:docuverse earmark:hasContent "I think Whig, but others say that Whigs are not, and I am abolitionist. I do not counter the expansion of slaves."^^xsd:string .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "I" ;
+    dul:hasQuality ns1:Abolitionist .
+
+ns1:think_1 a ns1:Think ;
+    rdfs:label "think" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:situation_1 .
+
+dbpedia:Whig_Party_(United_States) rdfs:subClassOf schema:Organization .
+
+ns1:Abolitionist rdfs:label "abolitionist" ;
+    owl:sameAs dbpedia:Abolitionism_in_the_United_States .
+
+ns1:Counter rdfs:label "counter" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Expansion rdfs:label "expansion" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Other rdfs:label "others" .
+
+ns1:Slave rdfs:label "slaves" .
+
+ns1:Think rdfs:label "think" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:expansion_1 a ns1:Expansion ;
+    rdfs:label "expansion" ;
+    quant:hasDeterminer quant:the ;
+    ns1:expansionOf ns1:slave_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:say_1 a ns1:Say ;
+    vn.role:Agent ns1:other_1 ;
+    vn.role:Topic ns1:situation_1 .
+
+ns1:say_2 a ns1:Say ;
+    rdfs:label "say" ;
+    vn.role:Agent ns1:Whig ;
+    vn.role:Topic ns1:situation_1 .
+
+ns1:slave_1 a dbpedia:Slavery,
+        ns1:Slave ;
+    rdfs:label "slaves" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:whig_1 a ns1:Whig ;
+    rdfs:label "Whigs" ;
+    dul:hasQuality ns1:Not ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Not rdfs:label "Not",
+        "not" .
+
+ns1:Say rdfs:label "say" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Whig a owl:Class ;
+    rdfs:label "Whig",
+        "Whigs" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:equivalentClass dbpedia:Whig_Party_(United_States),
+        dbpedia:Whigs_(British_political_party) .
+
+ns1:other_1 a ns1:Other ;
+    rdfs:label "others" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Person rdfs:label "I" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Not,
+        ns1:other_1,
+        ns1:say_1,
+        ns1:say_2,
+        ns1:whig_1 .
+

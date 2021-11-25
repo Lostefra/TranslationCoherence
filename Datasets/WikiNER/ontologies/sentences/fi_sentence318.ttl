@@ -1,0 +1,126 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence318.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Source rdfs:label "In" .
+
+translation_coherence:fi_sentence318.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence318" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence318" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "his" .
+
+ns1:On rdfs:label "on" .
+
+ns1:docuverse earmark:hasContent "16. In 1854, Peoria_Speech Lincoln expressed his position on slavery, which he would repeat in the last six years."^^xsd:string .
+
+ns1:express_1 a ns1:Express ;
+    rdfs:label "expressed" ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Source "1854-01-01"^^xsd:date ;
+    vn.role:Theme ns1:position_1 .
+
+ns1:male_1 rdfs:label "his" .
+
+ns1:repeat_1 a ns1:Repeat ;
+    rdfs:label "repeat" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Agent ns1:Lincoln ;
+    vn.role:Theme ns1:position_1 ;
+    ns1:in ns1:year_1 .
+
+ns1:topic_1 a ns1:Topic ;
+    ns1:at "0001-01-16"^^xsd:date .
+
+dbpedia:Abraham_Lincoln a schema:Person .
+
+ns1:Express rdfs:label "expressed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Last rdfs:label "last" .
+
+ns1:Peoria_speech a ns1:Male ;
+    rdfs:label "Peoria Speech" ;
+    boxer:possibleType time:Interval ;
+    owl:sameAs <http://dbpedia.org/resource/Abraham_Lincoln's_Peoria_speech> .
+
+ns1:Position rdfs:label "position" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Repeat rdfs:label "repeat" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Slavery a owl:Class ;
+    rdfs:label "slavery" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Slavery_in_the_United_States .
+
+ns1:Year rdfs:label "years" .
+
+ns1:slavery_1 a ns1:Slavery ;
+    rdfs:label "slavery" .
+
+ns1:year_1 a ns1:Year ;
+    rdfs:label "years" ;
+    dul:hasDataValue "6"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:Last ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple,
+        quant:six .
+
+ns1:Male rdfs:label "Lincoln",
+        "Peoria Speech" .
+
+ns1:position_1 a ns1:Position ;
+    rdfs:label "position" ;
+    ns1:on ns1:slavery_1 ;
+    ns1:positionOf ns1:Lincoln .
+
+ns1:Lincoln a ns1:Male ;
+    rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith ns1:Peoria_speech ;
+    owl:sameAs dbpedia:Abraham_Lincoln .
+

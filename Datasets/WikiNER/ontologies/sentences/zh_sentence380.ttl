@@ -1,0 +1,176 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence380.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Actor2 rdfs:label "with" .
+
+translation_coherence:zh_sentence380.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence380" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence380" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "As" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "My",
+        "my",
+        "of" .
+
+ns1:docuverse earmark:hasContent "As fredrik Dougs observe, Lincoln is available. My first man, who spoke with me in Osa, freely reminds me of my own and my own differences in the colour."^^xsd:string .
+
+ns1:fredrik_1 a ns1:Fredrik ;
+    rdfs:label "fredrik" ;
+    dul:associatedWith ns1:doug_1,
+        ns1:person_2 .
+
+ns1:remind_1 a ns1:FreelyRemind ;
+    rdfs:label "reminds" ;
+    dul:hasQuality ns1:Freely ;
+    vn.role:Agent ns1:man_1 ;
+    vn.role:Recipient ns1:difference_1,
+        ns1:person_5 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Available,
+        ns1:Lincoln ;
+    ns1:as ns1:observe_1 .
+
+ns1:speak_1 a ns1:Speak ;
+    rdfs:label "spoke" ;
+    vn.role:Actor1 ns1:man_1 ;
+    vn.role:Actor2 ns1:person_4 ;
+    ns1:locatedIn ns1:Osa .
+
+ns1:Colour rdfs:label "colour" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Difference rdfs:label "differences" .
+
+ns1:Doug rdfs:label "Dougs" .
+
+ns1:First a owl:Class ;
+    rdfs:label "first" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FirstMan a owl:Class ;
+    rdfs:label "first man" ;
+    dul:hasQuality ns1:First ;
+    rdfs:subClassOf ns1:Man .
+
+ns1:Fredrik rdfs:label "fredrik" .
+
+ns1:FredrikDoug rdfs:subClassOf ns1:Doug .
+
+ns1:Freely rdfs:label "freely" .
+
+ns1:FreelyRemind rdfs:subClassOf ns1:Remind .
+
+ns1:Lincoln rdfs:label "Lincoln" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Available .
+
+ns1:Man a owl:Class ;
+    rdfs:label "man" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Observe rdfs:label "observe" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Osa rdfs:label "Osa" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:OwnDifference rdfs:subClassOf ns1:Difference .
+
+ns1:Remind rdfs:label "reminds" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Speak rdfs:label "spoke" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:colour_1 a ns1:Colour ;
+    rdfs:label "colour" ;
+    quant:hasDeterminer quant:the .
+
+ns1:difference_1 a ns1:OwnDifference ;
+    rdfs:label "differences" ;
+    dul:hasQuality ns1:Own ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:colour_1 ;
+    ns1:ownDifferenceOf ns1:person_3 .
+
+ns1:observe_1 a ns1:Observe ;
+    rdfs:label "observe" ;
+    vn.role:Agent ns1:doug_1 .
+
+ns1:own_1 a ns1:Own ;
+    rdfs:label "own" ;
+    ns1:ownOf ns1:person_2 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "My" .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "my" .
+
+ns1:person_4 a ns1:Person ;
+    rdfs:label "me" .
+
+ns1:person_5 a ns1:Person ;
+    rdfs:label "me" ;
+    ns1:personOf ns1:own_1 .
+
+ns1:Available rdfs:label "available" .
+
+ns1:Own rdfs:label "own" .
+
+ns1:doug_1 a ns1:FredrikDoug ;
+    rdfs:label "Dougs" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:man_1 a ns1:FirstMan ;
+    rdfs:label "man" ;
+    ns1:firstManOf ns1:person_1 .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "my" .
+
+ns1:Person rdfs:label "me" .
+

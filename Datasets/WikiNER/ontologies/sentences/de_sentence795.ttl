@@ -1,0 +1,129 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence795.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence795.ttl a owl:Ontology ;
+    rdfs:label "de_sentence795" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence795" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Against rdfs:label "against" .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Type rdfs:label "type" ;
+    owl:sameAs <http://dbpedia.org/resource/Type–token_distinction> .
+
+ns1:create_1 a ns1:Create ;
+    rdfs:label "created" ;
+    vn.role:Agent ns1:Franz_boas ;
+    vn.role:Product ns1:anthropology_1 ;
+    ns1:in ns1:united_states_1 .
+
+ns1:development_1 a ns1:Development ;
+    rdfs:label "development" ;
+    dul:associatedWith ns1:perspective_1 .
+
+ns1:docuverse earmark:hasContent "In the United_States, Franz_Boas has created scientific anthropology against this type of development perspective."^^xsd:string .
+
+dbpedia:United_States rdfs:subClassOf schema:Country,
+        schema:Place .
+
+ns1:Anthropology a owl:Class ;
+    rdfs:label "anthropology" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> ;
+    owl:equivalentClass dbpedia:Anthropology .
+
+ns1:Create rdfs:label "created" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:DevelopmentPerspective a owl:Class ;
+    rdfs:label "Development Perspective" ;
+    dul:associatedWith ns1:Development ;
+    rdfs:subClassOf ns1:Perspective .
+
+ns1:Franz_boas rdfs:label "Franz Boas" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Franz_Boas .
+
+ns1:Perspective a owl:Class ;
+    rdfs:label "perspective" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> ;
+    owl:equivalentClass dbpedia:Wisdom .
+
+ns1:Scientific a owl:Class ;
+    rdfs:label "scientific" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Science .
+
+ns1:ScientificAnthropology a owl:Class ;
+    rdfs:label "Scientific Anthropology" ;
+    dul:hasQuality ns1:Scientific ;
+    rdfs:subClassOf ns1:Anthropology .
+
+ns1:UnitedStates rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:United_states a owl:Class ;
+    rdfs:label "United States" ;
+    rdfs:subClassOf ns1:UnitedStates ;
+    owl:equivalentClass dbpedia:United_States .
+
+ns1:anthropology_1 a ns1:ScientificAnthropology ;
+    rdfs:label "anthropology" ;
+    ns1:against ns1:type_1 .
+
+ns1:type_1 rdfs:label "type" ;
+    quant:hasDeterminer quant:this ;
+    ns1:typeOf ns1:perspective_1 .
+
+ns1:united_states_1 a ns1:United_states ;
+    rdfs:label "United States" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Development a owl:Class ;
+    rdfs:label "development" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:perspective_1 a ns1:DevelopmentPerspective ;
+    rdfs:label "perspective" .
+

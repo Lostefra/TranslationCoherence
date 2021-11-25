@@ -1,0 +1,118 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence26.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence26.ttl a owl:Ontology ;
+    rdfs:label "de_sentence26" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence26" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of",
+        "their" .
+
+ns1:bolist_1 a ns1:Bolist ;
+    rdfs:label "bolist" ;
+    dul:associatedWith ns1:leader_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:criticise_1 a ns1:Criticise ;
+    rdfs:label "criticised" ;
+    boxer:agent ns1:thing_2 ;
+    boxer:patient ns1:control_1 .
+
+ns1:docuverse earmark:hasContent "Both have written their experiences in Russia and criticised the control of the bolist leaders."^^xsd:string .
+
+ns1:thing_1 coref:coref ns1:thing_2 .
+
+ns1:write_1 a ns1:Write ;
+    rdfs:label "written" ;
+    vn.role:Agent ns1:thing_2 ;
+    vn.role:Theme ns1:experience_1 .
+
+dbpedia:Russia a schema:Country,
+        schema:Place .
+
+owl:Thing rdfs:label "Both" .
+
+ns1:Bolist rdfs:label "bolist" .
+
+ns1:BolistLeader rdfs:subClassOf ns1:Leader .
+
+ns1:Control rdfs:label "control" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Criticise rdfs:label "criticised" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Experience rdfs:label "experiences" .
+
+ns1:Leader rdfs:label "leaders" .
+
+ns1:Russia rdfs:label "Russia" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Russia,
+        dbpedia:Russian_Empire .
+
+ns1:Write rdfs:label "written" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:control_1 a ns1:Control ;
+    rdfs:label "control" ;
+    quant:hasDeterminer quant:the ;
+    ns1:controlOf ns1:leader_1 .
+
+ns1:experience_1 a ns1:Experience ;
+    rdfs:label "experiences" ;
+    quant:hasQuantifier quant:both,
+        quant:multiple ;
+    ns1:experienceOf ns1:thing_2 ;
+    ns1:locatedIn ns1:Russia .
+
+ns1:leader_1 a dbpedia:Leadership,
+        ns1:BolistLeader ;
+    rdfs:label "leaders" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "Both",
+        "their" .
+

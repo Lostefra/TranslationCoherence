@@ -1,0 +1,179 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence594.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence594.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence594" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence594" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "Its",
+        "her" .
+
+ns1:begin_1 a ns1:Begin ;
+    rdfs:label "beginning" ;
+    vn.role:Agent ns1:work_1 ;
+    vn.role:Theme ns1:role_1 .
+
+ns1:docuverse earmark:hasContent "Its final false work marks a turning point in her life, ending her occupation as a newist and beginning her role as a public philosophical."^^xsd:string .
+
+ns1:end_1 a ns1:End ;
+    rdfs:label "ending" ;
+    vn.role:Agent ns1:work_1 ;
+    vn.role:Theme ns1:occupation_1 ;
+    ns1:as ns1:newist_1 .
+
+ns1:mark_1 a ns1:Mark ;
+    rdfs:label "marks" ;
+    vn.role:Agent ns1:work_1 ;
+    vn.role:Theme ns1:point_1 .
+
+ns1:turning_1 a ns1:Turning ;
+    rdfs:label "turning" ;
+    dul:associatedWith ns1:point_1 ;
+    quant:hasDeterminer quant:a .
+
+boxing:False rdfs:label "false" .
+
+ns1:Begin rdfs:label "beginning" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:End rdfs:label "ending" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:False a owl:Class .
+
+ns1:FalseWork a owl:Class ;
+    rdfs:label "False Work" ;
+    dul:associatedWith ns1:Work ;
+    dul:hasQuality ns1:False ;
+    owl:equivalentClass dbpedia:Falsework .
+
+ns1:Final rdfs:label "final" .
+
+ns1:FinalFalseWork a owl:Class ;
+    rdfs:label "Final False Work" ;
+    rdfs:subClassOf ns1:FalseWork .
+
+ns1:Life rdfs:label "life" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Mark rdfs:label "marks" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Newist rdfs:label "newist" .
+
+ns1:Occupation rdfs:label "occupation" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Philosophical a owl:Class ;
+    rdfs:label "philosophical" .
+
+ns1:Point a owl:Class ;
+    rdfs:label "point" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:PublicPhilosophical a owl:Class ;
+    rdfs:label "Public Philosophical" ;
+    dul:hasQuality ns1:Public ;
+    rdfs:subClassOf ns1:Philosophical .
+
+ns1:Role rdfs:label "role" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:TurningPoint a owl:Class ;
+    rdfs:label "turning point" ;
+    dul:associatedWith ns1:Turning ;
+    rdfs:subClassOf ns1:Point .
+
+ns1:Work a owl:Class ;
+    rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:life_1 a ns1:Life ;
+    rdfs:label "life" ;
+    ns1:lifeOf ns1:female_1 .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "Its" .
+
+ns1:newist_1 a ns1:Newist ;
+    rdfs:label "newist" ;
+    quant:hasDeterminer quant:a .
+
+ns1:occupation_1 a ns1:Occupation ;
+    rdfs:label "occupation" ;
+    ns1:occupationOf ns1:female_1 .
+
+ns1:philosophical_1 a ns1:PublicPhilosophical ;
+    rdfs:label "philosophical" ;
+    dul:hasQuality ns1:Public ;
+    quant:hasDeterminer quant:a .
+
+ns1:role_1 a ns1:Role ;
+    rdfs:label "role" ;
+    ns1:as ns1:philosophical_1 ;
+    ns1:roleOf ns1:female_1 .
+
+ns1:Public a owl:Class ;
+    rdfs:label "public" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Turning a owl:Class ;
+    rdfs:label "turning" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:point_1 a ns1:TurningPoint ;
+    rdfs:label "point" ;
+    ns1:in ns1:life_1 .
+
+ns1:female_1 a ns1:Female ;
+    rdfs:label "her" .
+
+ns1:work_1 a ns1:FinalFalseWork ;
+    rdfs:label "work" ;
+    dul:hasQuality boxing:False,
+        ns1:Final ;
+    ns1:finalFalseWorkOf ns1:neuter_1 .
+

@@ -1,0 +1,87 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence552.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:nl_sentence552.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence552" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence552" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:At rdfs:label "at" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "Rand was 12 at the time of the 1917 Russian_revolution."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Rand ;
+    ns1:at ns1:time_1 .
+
+dbpedia:Ayn_Rand a schema:Person .
+
+dbpedia:Russian_Revolution rdfs:subClassOf schema:Event .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasDataValue "12"^^xsd:nonNegativeInteger ;
+    owl:sameAs dbpedia:Ayn_Rand .
+
+ns1:RussianRevolution rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Russian_revolution a owl:Class ;
+    rdfs:label "Russian revolution" ;
+    rdfs:subClassOf ns1:RussianRevolution ;
+    owl:equivalentClass dbpedia:Russian_Revolution .
+
+ns1:Time rdfs:label "time" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:russian_revolution_1 a ns1:Russian_revolution ;
+    rdfs:label "Russian revolution" ;
+    quant:hasDeterminer quant:the ;
+    ns1:at "1917-01-01"^^xsd:date .
+
+ns1:time_1 a ns1:Time ;
+    rdfs:label "time" ;
+    quant:hasDeterminer quant:the ;
+    ns1:timeOf ns1:russian_revolution_1 .
+

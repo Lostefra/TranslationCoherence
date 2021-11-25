@@ -1,0 +1,227 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence765.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:ko_sentence765.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence765" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence765" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Important rdfs:label "important" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Like rdfs:label "Like" .
+
+ns1:Most rdfs:label "most" .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:Quantity rdfs:label "many" .
+
+ns1:Rel rdfs:label "(" .
+
+ns1:capitalist_1 a ns1:Capitalist ;
+    rdfs:label "Capitalist" ;
+    dul:associatedWith ns1:character_1 .
+
+ns1:docuverse earmark:hasContent "Like many of the Rand's Capitalist characters, he is a self-produced man who started as a ordinary worker, discover talent, founded the Rearden_steel and made the most important steel company in the United_States (one of the most important companies of all kinds)."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:company_1,
+        ns1:discover_1,
+        ns1:found_1,
+        ns1:kind_1,
+        ns1:make_1,
+        ns1:man_1,
+        ns1:start_1,
+        ns1:talent_1,
+        ns1:worker_1 .
+
+ns1:steel_1 a ns1:Steel ;
+    rdfs:label "steel" ;
+    dul:associatedWith ns1:company_1 ;
+    quant:hasDeterminer quant:the .
+
+dbpedia:Ayn_Rand a schema:Person .
+
+dbpedia:United_States rdfs:subClassOf schema:Country,
+        schema:Place .
+
+ns1:Capitalist a owl:Class ;
+    rdfs:label "Capitalist" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Capitalism .
+
+ns1:CapitalistCharacter rdfs:subClassOf ns1:Character .
+
+ns1:Character rdfs:label "characters" .
+
+ns1:Company rdfs:label "company" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Discover rdfs:label "discover" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Found rdfs:label "founded" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:ImportantSteelCompany rdfs:label "important steel company" ;
+    rdfs:subClassOf ns1:SteelCompany .
+
+ns1:Kind rdfs:label "kinds" .
+
+ns1:Make rdfs:label "made" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Male rdfs:label "he" .
+
+ns1:Man rdfs:label "Man",
+        "man" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:MostImportantSteelCompany rdfs:label "Most Important Steel Company" ;
+    rdfs:subClassOf ns1:ImportantSteelCompany .
+
+ns1:Ordinary a owl:Class ;
+    rdfs:label "ordinary" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:OrdinaryWorker a owl:Class ;
+    rdfs:label "ordinary worker" ;
+    dul:hasQuality ns1:Ordinary ;
+    rdfs:subClassOf ns1:Worker .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Ayn_Rand .
+
+ns1:Rearden_steel rdfs:label "Rearden steel" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:Atlas_Shrugged .
+
+ns1:Self-produced rdfs:label "self-produced" .
+
+ns1:Self-producedMan rdfs:label "self-produced man" ;
+    rdfs:subClassOf ns1:Man .
+
+ns1:Start rdfs:label "started" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Steel rdfs:label "steel" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:SteelCompany rdfs:label "Steel Company" ;
+    rdfs:subClassOf ns1:Company .
+
+ns1:Talent rdfs:label "talent" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:UnitedStates rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:United_states a owl:Class ;
+    rdfs:label "United States" ;
+    rdfs:subClassOf ns1:UnitedStates ;
+    owl:equivalentClass dbpedia:United_States .
+
+ns1:Worker a owl:Class ;
+    rdfs:label "worker" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:character_1 a ns1:CapitalistCharacter ;
+    rdfs:label "characters" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:capitalistCharacterOf ns1:Rand .
+
+ns1:discover_1 a ns1:Discover ;
+    rdfs:label "discover" ;
+    vn.role:Agent ns1:man_1 ;
+    vn.role:Theme ns1:talent_1 .
+
+ns1:found_1 a ns1:Found ;
+    rdfs:label "founded" ;
+    vn.role:Agent ns1:man_1 ;
+    vn.role:Theme ns1:Rearden_steel .
+
+ns1:make_1 a ns1:Make ;
+    rdfs:label "made" ;
+    vn.role:Agent ns1:man_1 ;
+    vn.role:Theme ns1:company_1 ;
+    ns1:in ns1:united_states_1 .
+
+ns1:start_1 a ns1:Start ;
+    rdfs:label "started" ;
+    vn.role:Theme ns1:man_1 ;
+    ns1:as ns1:worker_1 .
+
+ns1:united_states_1 a ns1:United_states ;
+    rdfs:label "United States" ;
+    dul:associatedWith ns1:company_1 ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:kind_1 a ns1:Kind ;
+    rdfs:label "kinds" ;
+    quant:hasQuantifier quant:all,
+        quant:multiple .
+
+ns1:talent_1 a ns1:Talent ;
+    rdfs:label "talent" .
+
+ns1:worker_1 a ns1:OrdinaryWorker ;
+    rdfs:label "worker" ;
+    quant:hasDeterminer quant:a .
+
+ns1:company_1 a ns1:MostImportantSteelCompany ;
+    rdfs:label "company" ;
+    dul:hasDataValue "1"^^xsd:nonNegativeInteger ;
+    ns1:mostImportantSteelCompanyOf ns1:kind_1 .
+
+ns1:man_1 a ns1:Self-producedMan ;
+    rdfs:label "man" ;
+    dul:hasQuality ns1:Male,
+        ns1:Self-produced ;
+    quant:hasDeterminer quant:a .
+

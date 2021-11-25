@@ -1,0 +1,125 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence618.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme rdfs:label "on" .
+
+translation_coherence:ko_sentence618.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence618" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence618" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Noteq rdfs:label "other" .
+
+ns1:answer_2 rdfs:label "answer" .
+
+ns1:demand_1 a ns1:Demand ;
+    rdfs:label "demanding" .
+
+ns1:docuverse earmark:hasContent "Focusing on all other exceptions to supply and demanding economic policy is not an answer."^^xsd:string .
+
+ns1:focus_1 a ns1:Answer,
+        ns1:Focus ;
+    rdfs:label "Focusing" ;
+    boxing:hasTruthValue boxing:False ;
+    quant:hasDeterminer quant:an ;
+    vn.role:Agent ns1:thing_2 ;
+    vn.role:Experiencer ns1:thing_1 ;
+    vn.role:Patient ns1:policy_1 ;
+    vn.role:Theme ns1:exception_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    ns1:entails ns1:situation_2 .
+
+ns1:supply_1 a ns1:Supply ;
+    rdfs:label "supply" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:exception_1 ;
+    vn.role:Theme ns1:thing_3 .
+
+ns1:Answer rdfs:label "answer" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Demand rdfs:label "demanding" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Economic a owl:Class ;
+    rdfs:label "economic" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:EconomicPolicy a owl:Class ;
+    rdfs:label "economic policy" ;
+    dul:hasQuality ns1:Economic ;
+    rdfs:subClassOf ns1:Policy .
+
+ns1:Focus rdfs:label "Focusing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Policy a owl:Class ;
+    rdfs:label "policy" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Supply rdfs:label "supply" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:exception_2 a ns1:Exception ;
+    rdfs:label "exceptions" ;
+    quant:hasDeterminer quant:other ;
+    quant:hasQuantifier quant:all,
+        quant:multiple .
+
+ns1:policy_1 a ns1:EconomicPolicy ;
+    rdfs:label "policy" .
+
+ns1:situation_2 a ns1:Situation .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:thing_2 a owl:Thing .
+
+ns1:thing_3 a owl:Thing .
+
+ns1:Exception rdfs:label "exceptions",
+        "other" .
+
+ns1:exception_1 a ns1:Exception ;
+    rdfs:label "other" ;
+    owl:differentFrom ns1:exception_2 .
+

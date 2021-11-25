@@ -1,0 +1,146 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence601.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Eclosest> rdfs:label "closest" .
+
+vn.role:Theme rdfs:label "on" .
+
+translation_coherence:fi_sentence601.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence601" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence601" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:believe_1 a ns1:Believe ;
+    rdfs:label "believe" ;
+    dul:hasQuality ns1:However ;
+    vn.role:Agent ns1:student_1 ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:docuverse earmark:hasContent "However, some entise NBI students believe that the extent of these behaviors is exaggerated, and the problem is focused on Rand's closest followers in New York."^^xsd:string .
+
+ns1:focus_1 a ns1:Focus ;
+    rdfs:label "focused" ;
+    boxer:patient ns1:problem_1 ;
+    vn.role:Theme ns1:follower_1 .
+
+dbpedia:New_York a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:Behavior rdfs:label "behaviors" .
+
+ns1:Believe a owl:Class ;
+    rdfs:label "believe" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Belief .
+
+ns1:Closest rdfs:label "closest" .
+
+ns1:ClosestFollower rdfs:subClassOf ns1:Follower .
+
+ns1:Extent rdfs:label "extent" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Focus rdfs:label "focused" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:However rdfs:label "However" .
+
+ns1:Nbi rdfs:label "NBI" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality ns1:Entise .
+
+ns1:New_york rdfs:label "New York" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:New_York .
+
+ns1:Problem rdfs:label "problem" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Student rdfs:label "students" .
+
+ns1:behavior_1 a ns1:Behavior ;
+    rdfs:label "behaviors" ;
+    quant:hasDeterminer quant:these ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:extent_1 a ns1:Extent ;
+    rdfs:label "extent" ;
+    dul:hasQuality ns1:Exaggerated ;
+    quant:hasDeterminer quant:the ;
+    ns1:extentOf ns1:behavior_1 .
+
+ns1:follower_1 a ns1:ClosestFollower,
+        ns1:Follower ;
+    rdfs:label "followers" ;
+    dul:hasQuality ns1:Closest ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:closestAmong ns1:Follower ;
+    ns1:closestFollowerOf ns1:Rand ;
+    ns1:locatedIn ns1:New_york .
+
+ns1:problem_1 a ns1:Problem ;
+    rdfs:label "problem" ;
+    quant:hasDeterminer quant:the .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Exaggerated,
+        ns1:extent_1 .
+
+ns1:student_1 a ns1:Student ;
+    rdfs:label "students" ;
+    dul:associatedWith ns1:Nbi ;
+    dul:hasQuality ns1:Entise ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Entise rdfs:label "entise" .
+
+ns1:Exaggerated rdfs:label "exaggerated" .
+
+ns1:Follower rdfs:label "followers" .
+

@@ -1,0 +1,112 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence530.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence530.ttl a owl:Ontology ;
+    rdfs:label "de_sentence530" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence530" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "Academy prices have also been unbalanced for certain types of performances and film music."^^xsd:string .
+
+ns1:film_1 a ns1:Film ;
+    rdfs:label "film" ;
+    dul:associatedWith ns1:music_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Unbalanced,
+        ns1:price_1 ;
+    dul:hasQuality ns1:Also ;
+    ns1:forCertainTypeOf ns1:performance_1 .
+
+ns1:type_1 a ns1:CertainType ;
+    rdfs:label "types" ;
+    dul:hasQuality ns1:Certain ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Academy rdfs:label "Academy" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality ns1:Unbalanced .
+
+ns1:Also rdfs:label "also" .
+
+ns1:Certain rdfs:label "certain" .
+
+ns1:CertainType rdfs:subClassOf ns1:Type .
+
+ns1:FilmMusic a owl:Class ;
+    rdfs:label "Film Music" ;
+    dul:associatedWith ns1:Film ;
+    rdfs:subClassOf ns1:Music .
+
+ns1:Music a owl:Class ;
+    rdfs:label "music" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Performance rdfs:label "performances" .
+
+ns1:Price rdfs:label "prices" .
+
+ns1:Type rdfs:label "types" .
+
+ns1:music_1 a ns1:FilmMusic ;
+    rdfs:label "music" .
+
+ns1:performance_1 a ns1:Performance ;
+    rdfs:label "performances" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:price_1 a ns1:Price ;
+    rdfs:label "prices" ;
+    dul:associatedWith ns1:Academy ;
+    dul:hasQuality ns1:Unbalanced ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Film a owl:Class ;
+    rdfs:label "film" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity>,
+        dul:InformationEntity .
+
+ns1:Unbalanced rdfs:label "unbalanced" .
+

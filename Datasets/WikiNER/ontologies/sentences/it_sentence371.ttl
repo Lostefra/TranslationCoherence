@@ -1,0 +1,126 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence371.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Theme1 rdfs:label "by" .
+
+translation_coherence:it_sentence371.ttl a owl:Ontology ;
+    rdfs:label "it_sentence371" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence371" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:From rdfs:label "from" .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:Through rdfs:label "through" .
+
+ns1:To rdfs:label "to" .
+
+ns1:cause_1 a ns1:Cause ;
+    rdfs:label "caused" ;
+    vn.role:Theme1 "0001-03-01"^^xsd:date ;
+    vn.role:Theme2 ns1:damage_1 ;
+    ns1:dateOf ns1:Sherman ;
+    ns1:to ns1:sea_1 .
+
+ns1:docuverse earmark:hasContent "The damage caused by Sherman's March to the sea through Georgia has totaled more than  million from the general's estimate."^^xsd:string .
+
+ns1:total_1 a ns1:Total ;
+    rdfs:label "totaled" ;
+    vn.role:Agent ns1:damage_1 ;
+    vn.role:Theme ns1:more_1 .
+
+dbpedia:Georgia_(U.S._state) a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:Cause rdfs:label "caused" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Damage rdfs:label "damage" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Estimate rdfs:label "estimate" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:General rdfs:label "general" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Georgia rdfs:label "Georgia" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Georgia_(U.S._state) .
+
+ns1:More rdfs:label "more" .
+
+ns1:Sea rdfs:label "sea" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Sherman rdfs:label "Sherman" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs <http://dbpedia.org/resource/Sherman's_March_to_the_Sea> .
+
+ns1:Total rdfs:label "totaled" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:estimate_1 a ns1:Estimate ;
+    rdfs:label "estimate" ;
+    ns1:estimateOf ns1:general_1 .
+
+ns1:general_1 a ns1:General ;
+    rdfs:label "general" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:million .
+
+ns1:more_1 a ns1:More ;
+    rdfs:label "more" ;
+    dul:hasDataValue "1000000"^^xsd:nonNegativeInteger ;
+    ns1:from ns1:estimate_1 .
+
+ns1:sea_1 a ns1:Sea ;
+    rdfs:label "sea" ;
+    quant:hasDeterminer quant:the ;
+    ns1:through ns1:Georgia .
+
+ns1:damage_1 a ns1:Damage ;
+    rdfs:label "damage" ;
+    quant:hasDeterminer quant:the .
+

@@ -1,0 +1,186 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence731.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:nl_sentence731.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence731" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence731" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:Fossil rdfs:label "fossil" ;
+    owl:sameAs dbpedia:Fossil,
+        dbpedia:Fossil_fuel .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Sector rdfs:label "sector" .
+
+ns1:budget_1 a ns1:Budget ;
+    rdfs:label "budget" ;
+    dul:associatedWith ns1:supplies_1 .
+
+ns1:consider_1 a ns1:Consider ;
+    rdfs:label "considering" ;
+    vn.role:Agent ns1:cord_1 ;
+    vn.role:Theme ns1:percent_1,
+        ns1:percent_2 .
+
+ns1:docuverse earmark:hasContent "The fossil fuels energy sector is the spinal cord of Algeria's economy, considering about 60% of budget supplies, 30% of GDP, and over 95% of the exports."^^xsd:string .
+
+ns1:energy_1 a ns1:Energy ;
+    rdfs:label "energy" ;
+    dul:associatedWith ns1:cord_1 .
+
+ns1:fuel_1 a ns1:Fuel ;
+    rdfs:label "fuels" ;
+    dul:associatedWith ns1:cord_1 ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:sector_1 rdfs:label "sector" ;
+    owl:sameAs ns1:cord_1 .
+
+dbpedia:Algeria a schema:Country,
+        schema:Place .
+
+ns1:About rdfs:label "about" .
+
+ns1:Algeria rdfs:label "Algeria" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Algeria .
+
+ns1:BudgetSupplies a owl:Class ;
+    rdfs:label "budget supplies" ;
+    dul:associatedWith ns1:Budget ;
+    rdfs:subClassOf ns1:Supplies .
+
+ns1:Consider rdfs:label "considering" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Economy a owl:Class ;
+    rdfs:label "economy" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#System> ;
+    owl:equivalentClass dbpedia:Economy .
+
+ns1:Energy a owl:Class ;
+    rdfs:label "energy" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> ;
+    owl:equivalentClass dbpedia:Energy,
+        dbpedia:Energy_industry .
+
+ns1:Export rdfs:label "exports" .
+
+ns1:FossilFuelEnergySector rdfs:subClassOf ns1:SpinalCord .
+
+ns1:Fuel rdfs:label "fuels" .
+
+ns1:Gdp rdfs:label "GDP" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Gross_domestic_product .
+
+ns1:Over rdfs:label "over" .
+
+ns1:Spinal a owl:Class ;
+    rdfs:label "spinal" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Supplies a owl:Class ;
+    rdfs:label "supplies" .
+
+ns1:economy_1 a ns1:Economy ;
+    rdfs:label "economy" ;
+    ns1:economyOf ns1:Algeria .
+
+ns1:export_1 a dbpedia:Export,
+        ns1:Export ;
+    rdfs:label "exports" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:percent_2 a ns1:Percent ;
+    rdfs:label "%" ;
+    dul:hasDataValue "95"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:Over ;
+    ns1:percentOf ns1:export_1 .
+
+ns1:Budget a owl:Class ;
+    rdfs:label "budget" ;
+    rdfs:subClassOf dul:Amount ;
+    owl:equivalentClass dbpedia:Government_budget .
+
+ns1:Cord a owl:Class ;
+    rdfs:label "cord" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Percent rdfs:label "%" .
+
+ns1:SpinalCord a owl:Class ;
+    rdfs:label "spinal cord" ;
+    dul:hasQuality ns1:Spinal ;
+    rdfs:subClassOf ns1:Cord ;
+    owl:equivalentClass dbpedia:Spinal_cord .
+
+ns1:percent_1 a ns1:Percent ;
+    rdfs:label "%" ;
+    dul:hasDataValue "30"^^xsd:nonNegativeInteger,
+        "60"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:About ;
+    ns1:percentOf ns1:Gdp,
+        ns1:supplies_1 .
+
+ns1:supplies_1 a ns1:BudgetSupplies ;
+    rdfs:label "supplies" ;
+    dul:associatedWith ns1:percent_1 ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:cord_1 a ns1:Cord,
+        ns1:FossilFuelEnergySector,
+        ns1:SpinalCord ;
+    rdfs:label "cord" ;
+    quant:hasDeterminer quant:the ;
+    ns1:spinalCordOf ns1:economy_1 .
+

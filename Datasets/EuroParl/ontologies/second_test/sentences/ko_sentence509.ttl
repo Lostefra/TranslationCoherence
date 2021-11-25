@@ -1,0 +1,179 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence509.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Ebiggest> rdfs:label "biggest" .
+
+vn.role:Predicate rdfs:label "as" .
+
+translation_coherence:ko_sentence509.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence509" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence509" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Because rdfs:label "because" .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "of",
+        "our" .
+
+ns1:docuverse earmark:hasContent "The Commissioner reads the opinions of committees for employment and social work, and treat it as a priority because it is the biggest issue of our citizens."^^xsd:string .
+
+ns1:issue_1 rdfs:label "issue" .
+
+ns1:read_1 a ns1:Read ;
+    rdfs:label "reads" ;
+    vn.role:Agent ns1:Commissioner ;
+    vn.role:Theme ns1:opinion_1,
+        ns1:work_1 .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Biggest a owl:Class ;
+    rdfs:label "biggest" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:BiggestIssue a owl:Class ;
+    rdfs:label "Biggest Issue" ;
+    dul:hasQuality ns1:Biggest ;
+    rdfs:subClassOf ns1:Issue .
+
+ns1:Citizen rdfs:label "citizens" .
+
+ns1:Committee rdfs:label "committees" .
+
+ns1:Employment a owl:Class ;
+    rdfs:label "employment" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Employment .
+
+ns1:Opinion rdfs:label "opinions" .
+
+ns1:Priority rdfs:label "priority" ;
+    rdfs:subClassOf dul:Role .
+
+ns1:Read rdfs:label "reads" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Social a owl:Class ;
+    rdfs:label "social" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SocialWork a owl:Class ;
+    rdfs:label "Social Work" ;
+    dul:hasQuality ns1:Social ;
+    rdfs:subClassOf ns1:Work ;
+    owl:equivalentClass dbpedia:Social_work .
+
+ns1:Treat a owl:Class ;
+    rdfs:label "treat" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Treaty .
+
+ns1:Work a owl:Class ;
+    rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Commissioner,
+        ns1:citizen_1,
+        ns1:committee_1,
+        ns1:employment_1,
+        ns1:opinion_1,
+        ns1:person_1,
+        ns1:priority_1,
+        ns1:treat_1 .
+
+ns1:treat_1 a ns1:Treat ;
+    rdfs:label "treat" ;
+    vn.role:Agent ns1:Commissioner ;
+    vn.role:Predicate ns1:priority_1 ;
+    vn.role:Theme ns1:Commissioner ;
+    ns1:because ns1:situation_1 .
+
+ns1:work_1 a ns1:SocialWork ;
+    rdfs:label "work" .
+
+ns1:citizen_1 a dbpedia:Citizenship,
+        ns1:Citizen ;
+    rdfs:label "citizens" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:citizenOf ns1:person_1 .
+
+ns1:committee_1 a ns1:Committee ;
+    rdfs:label "committees" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:employment_1 a ns1:Employment ;
+    rdfs:label "employment" .
+
+ns1:opinion_1 a dbpedia:Legal_opinion,
+        ns1:Opinion ;
+    rdfs:label "opinions" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:for ns1:employment_1 ;
+    ns1:opinionOf ns1:committee_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "our" .
+
+ns1:priority_1 a ns1:Priority ;
+    rdfs:label "priority" ;
+    quant:hasDeterminer quant:a .
+
+ns1:Issue a owl:Class ;
+    rdfs:label "issue" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> ;
+    owl:equivalentClass dbpedia:Child .
+
+ns1:Commissioner a ns1:BiggestIssue,
+        ns1:Issue ;
+    rdfs:label "Commissioner" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:hasQuality owl:Thing ;
+    quant:hasDeterminer quant:the ;
+    owl:sameAs dbpedia:Commissioner ;
+    ns1:biggestAmong ns1:Issue ;
+    ns1:biggestIssueOf ns1:citizen_1 .
+

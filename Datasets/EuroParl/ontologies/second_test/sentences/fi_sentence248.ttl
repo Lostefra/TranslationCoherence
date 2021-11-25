@@ -1,0 +1,116 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence248.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence248.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence248" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence248" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:To rdfs:label "to" .
+
+ns1:be_1 a ns1:Be ;
+    rdfs:label "is" ;
+    boxer:agent ns1:thing_1 ;
+    boxer:theme ns1:have.d_1 .
+
+ns1:docuverse earmark:hasContent "This is why I have.d some changes to the erinomaisetee's excellent report."^^xsd:string .
+
+owl:Thing rdfs:label "This" .
+
+ns1:Be rdfs:label "is" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Change rdfs:label "changes" .
+
+ns1:Erinomaisetee rdfs:label "erinomaisetee" .
+
+ns1:Excellent a owl:Class ;
+    rdfs:label "excellent" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ExcellentReport a owl:Class ;
+    rdfs:label "Excellent Report" ;
+    dul:hasQuality ns1:Excellent ;
+    rdfs:subClassOf ns1:Report .
+
+ns1:Have.d rdfs:label "have.d" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Person rdfs:label "I" .
+
+ns1:Reason rdfs:label "why" .
+
+ns1:Report a owl:Class ;
+    rdfs:label "report" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:change_1 a ns1:Change ;
+    rdfs:label "changes" ;
+    quant:hasDeterminer quant:this ;
+    quant:hasQuantifier quant:multiple,
+        quant:some .
+
+ns1:erinomaisetee_1 a ns1:Erinomaisetee ;
+    rdfs:label "erinomaisetee" ;
+    quant:hasDeterminer quant:the .
+
+ns1:have.d_1 a ns1:Have.d ;
+    rdfs:label "have.d" ;
+    boxer:agent ns1:person_1 ;
+    boxer:patient ns1:change_1 ;
+    ns1:reason_rel ns1:reason_1 ;
+    ns1:to ns1:report_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:reason_1 a ns1:Reason ;
+    rdfs:label "why" .
+
+ns1:report_1 a ns1:ExcellentReport ;
+    rdfs:label "report" ;
+    ns1:excellentReportOf ns1:erinomaisetee_1 .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "This" .
+

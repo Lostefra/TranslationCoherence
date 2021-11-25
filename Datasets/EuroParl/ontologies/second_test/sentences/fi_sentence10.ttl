@@ -1,0 +1,124 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence10.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:fi_sentence10.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence10" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence10" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Ago rdfs:label "ago" .
+
+ns1:Few rdfs:label "few" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "Kumar_Ponnambalam, one of the  murhaed people in Sri_Lanka, had been to the European_Parliament a few months ago."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Kumar_ponnambalam,
+        ns1:Sri_lanka,
+        ns1:european_parliament_1,
+        ns1:month_1,
+        ns1:people_1 ;
+    ns1:ago ns1:month_1 .
+
+dbpedia:European_Parliament rdfs:subClassOf schema:Organization .
+
+dbpedia:Sri_Lanka a schema:Country,
+        schema:Place .
+
+ns1:European_parliament a owl:Class ;
+    rdfs:label "European Parliament" ;
+    owl:equivalentClass dbpedia:European_Parliament .
+
+ns1:FewMonth rdfs:subClassOf ns1:Month .
+
+ns1:Kumar_ponnambalam rdfs:label "Kumar Ponnambalam" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:people_1 ;
+    owl:sameAs dbpedia:Kumar_Ponnambalam ;
+    ns1:to ns1:european_parliament_1 .
+
+ns1:Month rdfs:label "months" .
+
+ns1:Murhaed a owl:Class ;
+    rdfs:label "murhaed" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:MurhaedPeople a owl:Class ;
+    rdfs:label "murhaed people" ;
+    dul:hasQuality ns1:Murhaed ;
+    rdfs:subClassOf ns1:People .
+
+ns1:People a owl:Class ;
+    rdfs:label "people" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Sri_lanka rdfs:label "Sri Lanka" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Sri_Lanka .
+
+ns1:european_parliament_1 a ns1:European_parliament ;
+    rdfs:label "European Parliament" ;
+    quant:hasDeterminer quant:the .
+
+ns1:month_1 a ns1:FewMonth ;
+    rdfs:label "months" ;
+    quant:hasDeterminer quant:a ;
+    quant:hasQuantifier quant:few,
+        quant:multiple .
+
+ns1:people_1 a ns1:MurhaedPeople ;
+    rdfs:label "people" ;
+    dul:hasDataValue "1"^^xsd:nonNegativeInteger ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple,
+        quant:one ;
+    ns1:locatedIn ns1:Sri_lanka .
+

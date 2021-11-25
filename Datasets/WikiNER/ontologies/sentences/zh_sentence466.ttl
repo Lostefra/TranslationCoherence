@@ -1,0 +1,142 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix fred: <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence466.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fred: rdfs:label ":"^^xsd:string .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5Ehighest> rdfs:label "highest" .
+
+translation_coherence:zh_sentence466.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence466" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence466" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:At rdfs:label "at" .
+
+ns1:Eq rdfs:label "are" .
+
+ns1:Point rdfs:label "points" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:discuss_1 a ns1:Discuss ;
+    rdfs:label "discussed" ;
+    boxer:patient ns1:thing_2 ;
+    dul:hasQuality ns1:Below .
+
+ns1:disjunct_1 a ns1:Disjunct ;
+    boxing:involves ns1:Epidemic,
+        ns1:epidemic_1,
+        ns1:thing_4 ;
+    ns1:union ns1:disjunct_2 .
+
+ns1:docuverse earmark:hasContent "The main points discussed below are, if at the highest level: epidemics or the tragic cycle."^^xsd:string .
+
+ns1:point_1 rdfs:label "points" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Below rdfs:label "below" .
+
+ns1:Cycle a owl:Class ;
+    rdfs:label "cycle" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Discuss rdfs:label "discussed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Highest a owl:Class ;
+    rdfs:label "highest" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:HighestLevel a owl:Class ;
+    rdfs:label "highest level" ;
+    dul:hasQuality ns1:Highest ;
+    rdfs:subClassOf ns1:Level .
+
+ns1:Main rdfs:label "main" .
+
+ns1:MainPoint rdfs:subClassOf ns1:ThingThing .
+
+ns1:TragicCycle a owl:Class ;
+    rdfs:label "tragic cycle" ;
+    dul:hasQuality ns1:Tragic ;
+    rdfs:subClassOf ns1:Cycle .
+
+ns1:cycle_1 a ns1:TragicCycle ;
+    rdfs:label "cycle" ;
+    dul:hasQuality ns1:Tragic ;
+    quant:hasDeterminer quant:the .
+
+ns1:disjunct_2 a ns1:Disjunct ;
+    boxing:involves ns1:thing_4 .
+
+ns1:level_1 a ns1:HighestLevel,
+        ns1:Level ;
+    rdfs:label "level" ;
+    boxing:declaration ns1:cycle_1,
+        ns1:epidemic_1 ;
+    quant:hasDeterminer quant:the ;
+    ns1:highestAmong ns1:Level .
+
+ns1:thing_2 a ns1:MainPoint,
+        ns1:ThingThing ;
+    dul:hasQuality ns1:Main .
+
+ns1:Epidemic rdfs:label "epidemics" .
+
+ns1:Tragic a owl:Class ;
+    rdfs:label "tragic" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:epidemic_1 a ns1:Epidemic ;
+    rdfs:label "epidemics" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:thing_4 a ns1:ThingThing ;
+    ns1:at ns1:level_1 .
+
+ns1:Level a owl:Class ;
+    rdfs:label "level" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:ThingThing rdfs:subClassOf owl:Thing .
+

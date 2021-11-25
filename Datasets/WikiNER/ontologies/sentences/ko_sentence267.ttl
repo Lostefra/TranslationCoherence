@@ -1,0 +1,158 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence267.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence267.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence267" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence267" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of",
+        "their" .
+
+ns1:To rdfs:label "to" .
+
+ns1:Unlike rdfs:label "Unlike" .
+
+ns1:docuverse earmark:hasContent "Unlike the land of Northwest_Territory, Kentucky has a proper American survey, and farmers often spread their titles to their properties."^^xsd:string .
+
+ns1:have_1 a ns1:Have ;
+    rdfs:label "has" ;
+    vn.role:Agent ns1:Kentucky ;
+    vn.role:Patient ns1:survey_1 ;
+    ns1:unlike ns1:land_1 .
+
+ns1:spread_1 a ns1:OftenSpread ;
+    rdfs:label "spread" ;
+    dul:hasQuality ns1:Often ;
+    vn.role:Agent ns1:farmer_1 ;
+    vn.role:Theme ns1:title_1 .
+
+dbpedia:Kentucky a schema:AdministrativeArea,
+        schema:Place .
+
+dbpedia:Northwest_Territory a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:AmericanSurvey a owl:Class ;
+    rdfs:label "American Survey" ;
+    dul:hasQuality ns1:American ;
+    rdfs:subClassOf ns1:Survey .
+
+ns1:Farmer rdfs:label "farmers" .
+
+ns1:Have rdfs:label "has" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Kentucky rdfs:label "Kentucky" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Kentucky .
+
+ns1:Land a owl:Class ;
+    rdfs:label "land" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Real_property .
+
+ns1:Northwest_territory rdfs:label "Northwest Territory" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Northwest_Territory .
+
+ns1:Often rdfs:label "often" .
+
+ns1:OftenSpread rdfs:label "often spread" ;
+    rdfs:subClassOf ns1:Spread .
+
+ns1:Proper rdfs:label "proper" .
+
+ns1:ProperAmericanSurvey a owl:Class ;
+    rdfs:label "Proper American Survey" ;
+    rdfs:subClassOf ns1:AmericanSurvey .
+
+ns1:Property rdfs:label "properties" .
+
+ns1:Spread rdfs:label "spread" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Survey a owl:Class ;
+    rdfs:label "survey" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Surveying .
+
+ns1:Title rdfs:label "titles" .
+
+ns1:farmer_1 a ns1:Farmer ;
+    rdfs:label "farmers" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:land_1 a ns1:Land ;
+    rdfs:label "land" ;
+    quant:hasDeterminer quant:the ;
+    ns1:landOf ns1:Northwest_territory .
+
+ns1:property_1 a dbpedia:Real_property,
+        ns1:Property ;
+    rdfs:label "properties" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:propertyOf ns1:thing_2 .
+
+ns1:survey_1 a ns1:ProperAmericanSurvey ;
+    rdfs:label "survey" ;
+    dul:hasQuality ns1:American,
+        ns1:Proper ;
+    quant:hasDeterminer quant:a .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "their" .
+
+ns1:thing_2 a owl:Thing ;
+    rdfs:label "their" .
+
+ns1:title_1 a dbpedia:Title_(property),
+        ns1:Title ;
+    rdfs:label "titles" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:titleOf ns1:thing_1 ;
+    ns1:to ns1:property_1 .
+
+ns1:American a owl:Class ;
+    rdfs:label "American" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Americans .
+

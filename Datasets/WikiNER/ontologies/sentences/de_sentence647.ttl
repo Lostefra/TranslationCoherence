@@ -1,0 +1,202 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence647.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence647.ttl a owl:Ontology ;
+    rdfs:label "de_sentence647" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence647" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:At rdfs:label "at" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Through rdfs:label "through" .
+
+ns1:Where rdfs:label "where" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "Nick_Gillespie, Chief Editor, has pointed out that the edge is a torture where it is likely to be a protagonist ... with jibes at the edge of as cold and inhuman, [ning] through popular culture."^^xsd:string .
+
+ns1:point_1 a ns1:Point ;
+    rdfs:label "pointed" ;
+    boxer:theme ns1:situation_1 ;
+    dul:hasQuality ns1:Out ;
+    vn.role:Agent ns1:Nick_gillespie .
+
+ns1:torture_1 rdfs:label "torture" .
+
+ns1:Chief_editor rdfs:label "Chief Editor" ;
+    boxer:possibleType owl:Thing .
+
+ns1:Edge rdfs:label "edge" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Nick_gillespie rdfs:label "Nick Gillespie" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith ns1:Chief_editor ;
+    owl:sameAs dbpedia:Nick_Gillespie .
+
+ns1:Out rdfs:label "out" .
+
+ns1:Point rdfs:label "pointed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:PopularCulture a owl:Class ;
+    rdfs:label "popular culture" ;
+    dul:hasQuality ns1:Popular ;
+    rdfs:subClassOf ns1:Culture .
+
+ns1:likely_1 a ns1:Likely ;
+    rdfs:label "likely" ;
+    boxer:agent ns1:protagonist_1 ;
+    boxer:theme ns1:situation_2 .
+
+ns1:ning_1 a ns1:Ning ;
+    rdfs:label "ning" ;
+    boxer:agent <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5D_1> .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5B>,
+        <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5D>,
+        ns1:As,
+        ns1:Cold,
+        ns1:Culture,
+        ns1:Inhuman,
+        ns1:Jibe,
+        ns1:Likely,
+        ns1:Ning,
+        ns1:Popular,
+        ns1:Protagonist,
+        ns1:Torture,
+        ns1:edge_1,
+        ns1:situation_2 .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Torture a owl:Class ;
+    rdfs:label "torture" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Torture .
+
+ns1:culture_1 a ns1:PopularCulture ;
+    rdfs:label "culture" .
+
+ns1:edge_1 a ns1:Edge,
+        ns1:Torture ;
+    rdfs:label "edge" ;
+    quant:hasDeterminer quant:a,
+        quant:the ;
+    ns1:edgeOf <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5D_1> ;
+    ns1:where ns1:situation_2 .
+
+ns1:jibe_1 a ns1:Jibe ;
+    rdfs:label "jibes" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:at ns1:edge_1 .
+
+ns1:protagonist_1 a ns1:Protagonist ;
+    rdfs:label "protagonist" ;
+    dul:hasQuality owl:Thing ;
+    quant:hasDeterminer quant:a .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5B> rdfs:label "[" .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5D> rdfs:label "]" .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5D_1> a <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5D> ;
+    rdfs:label "]" ;
+    dul:hasQuality <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5B>,
+        ns1:As,
+        ns1:Cold,
+        ns1:Inhuman ;
+    ns1:through ns1:culture_1 .
+
+ns1:As rdfs:label "As",
+        "as" .
+
+ns1:Cold rdfs:label "cold" .
+
+ns1:Culture a owl:Class ;
+    rdfs:label "culture" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Inhuman rdfs:label "inhuman" .
+
+ns1:Jibe rdfs:label "jibes" .
+
+ns1:Likely rdfs:label "likely" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Ning rdfs:label "ning" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Popular a owl:Class ;
+    rdfs:label "popular" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Protagonist a owl:Class ;
+    rdfs:label "protagonist" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Protagonist .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5B>,
+        <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5D>,
+        <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%5D_1>,
+        ns1:As,
+        ns1:Cold,
+        ns1:Culture,
+        ns1:Inhuman,
+        ns1:Jibe,
+        ns1:Likely,
+        ns1:Ning,
+        ns1:Popular,
+        ns1:Protagonist,
+        ns1:culture_1,
+        ns1:jibe_1,
+        ns1:likely_1,
+        ns1:ning_1,
+        ns1:protagonist_1 ;
+    ns1:with ns1:jibe_1 .
+

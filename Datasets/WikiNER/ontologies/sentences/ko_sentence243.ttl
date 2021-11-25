@@ -1,0 +1,207 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence243.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "in" .
+
+translation_coherence:ko_sentence243.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence243" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence243" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Oncourtof rdfs:label "on the court of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Union rdfs:label "or" .
+
+ns1:claim_1 a ns1:Claim ;
+    rdfs:label "claims" ;
+    quant:hasQuantifier quant:multiple ;
+    vn.role:Agent ns1:source_1 ;
+    vn.role:Theme ns1:ensure_1 ;
+    ns1:union ns1:ensure_1 .
+
+ns1:court_1 a ns1:Court ;
+    rdfs:label "court" ;
+    quant:hasDeterminer quant:the .
+
+ns1:docuverse earmark:hasContent "Some post home source claims to ensure the Achilles security in war, Thetis (or, in some versions, Peleus) hides young man on the court of Lycomedes, king of Skyros."^^xsd:string .
+
+ns1:hide_1 a ns1:Hide ;
+    rdfs:label "hides" ;
+    vn.role:Agent ns1:Peleus ;
+    vn.role:Location ns1:version_1 ;
+    vn.role:Patient ns1:man_1 .
+
+ns1:post_1 a ns1:Post ;
+    rdfs:label "post" ;
+    dul:associatedWith ns1:home_1,
+        ns1:source_1 ;
+    quant:hasQuantifier quant:some .
+
+ns1:Achilles rdfs:label "Achilles" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Achilles .
+
+ns1:Claim rdfs:label "claims" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Court rdfs:label "court" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Ensure rdfs:label "ensure" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Hide rdfs:label "hides" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:HomeSource a owl:Class ;
+    rdfs:label "Home Source" ;
+    dul:associatedWith ns1:Home ;
+    rdfs:subClassOf ns1:Source .
+
+ns1:King rdfs:label "king" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Lycomedes rdfs:label "Lycomedes" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:king_1 ;
+    owl:sameAs dbpedia:Lycomedes .
+
+ns1:Man a owl:Class ;
+    rdfs:label "man" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Peleus rdfs:label "Peleus" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Peleus .
+
+ns1:PostHomeSource a owl:Class ;
+    rdfs:label "Post Home Source" ;
+    dul:associatedWith ns1:PostHome ;
+    rdfs:subClassOf ns1:HomeSource .
+
+ns1:Security rdfs:label "security" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Skyro a owl:Class ;
+    rdfs:label "Skyros" ;
+    owl:equivalentClass dbpedia:Skyros .
+
+ns1:Source a owl:Class ;
+    rdfs:label "source" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Thetis rdfs:label "Thetis" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Thetis .
+
+ns1:Version rdfs:label "versions" .
+
+ns1:War rdfs:label "war" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Young a owl:Class ;
+    rdfs:label "young" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:YoungMan a owl:Class ;
+    rdfs:label "Young Man" ;
+    dul:hasQuality ns1:Young ;
+    rdfs:subClassOf ns1:Man .
+
+ns1:home_1 a ns1:PostHome ;
+    rdfs:label "home" ;
+    dul:associatedWith ns1:source_1 .
+
+ns1:king_1 a ns1:King ;
+    rdfs:label "king" ;
+    ns1:kingOf ns1:skyro_1 .
+
+ns1:man_1 a ns1:YoungMan ;
+    rdfs:label "man" ;
+    ns1:onCourtOf ns1:Lycomedes .
+
+ns1:security_1 a ns1:Security ;
+    rdfs:label "security" ;
+    dul:associatedWith ns1:Achilles ;
+    ns1:in ns1:war_1 .
+
+ns1:skyro_1 a ns1:Skyro ;
+    rdfs:label "Skyros" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:version_1 a ns1:Version ;
+    rdfs:label "versions" ;
+    quant:hasQuantifier quant:multiple,
+        quant:some .
+
+ns1:war_1 a ns1:War ;
+    rdfs:label "war" ;
+    dul:associatedWith ns1:Thetis .
+
+ns1:Home a owl:Class ;
+    rdfs:label "home" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Post a owl:Class ;
+    rdfs:label "post" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:PostHome a owl:Class ;
+    rdfs:label "Post Home" ;
+    dul:associatedWith ns1:Post ;
+    rdfs:subClassOf ns1:Home .
+
+ns1:ensure_1 a ns1:Ensure ;
+    rdfs:label "ensure" ;
+    vn.role:Cause ns1:source_1 ;
+    vn.role:Theme ns1:security_1 .
+
+ns1:source_1 a ns1:PostHomeSource ;
+    rdfs:label "source" .
+

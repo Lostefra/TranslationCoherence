@@ -1,0 +1,112 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence570.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence570.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence570" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence570" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "In" .
+
+ns1:docuverse earmark:hasContent "In the prophecies for the novel, Rand said that we are closer to autobiography as we are now writing."^^xsd:string .
+
+ns1:say_1 a ns1:Say ;
+    rdfs:label "said" ;
+    vn.role:Agent ns1:Rand ;
+    vn.role:Topic ns1:autobiography_1 ;
+    ns1:in ns1:prophecy_1 .
+
+ns1:Autobiography rdfs:label "autobiography" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Closer rdfs:label "closer" .
+
+ns1:Novel rdfs:label "novel" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Now rdfs:label "now" .
+
+ns1:NowWrite rdfs:subClassOf ns1:Write .
+
+ns1:Prophecy rdfs:label "prophecies" .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Say rdfs:label "said" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Write rdfs:label "writing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:autobiography_1 a ns1:Autobiography ;
+    rdfs:label "autobiography" ;
+    boxer:agent ns1:person_1 ;
+    ns1:as ns1:write_1 .
+
+ns1:novel_1 a ns1:Novel ;
+    rdfs:label "novel" ;
+    quant:hasDeterminer quant:the .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "we" ;
+    dul:hasQuality ns1:Closer .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "we" .
+
+ns1:prophecy_1 a ns1:Prophecy ;
+    rdfs:label "prophecies" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:for ns1:novel_1 .
+
+ns1:write_1 a ns1:NowWrite ;
+    rdfs:label "writing" ;
+    dul:hasQuality ns1:Now ;
+    vn.role:Agent ns1:person_2 .
+
+ns1:Person rdfs:label "we" .
+

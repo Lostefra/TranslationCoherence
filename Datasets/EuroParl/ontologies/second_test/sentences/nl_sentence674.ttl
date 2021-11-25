@@ -1,0 +1,152 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence674.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Theme rdfs:label "with" .
+
+translation_coherence:nl_sentence674.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence674" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence674" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Amount rdfs:label "much" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:Until rdfs:label "until" .
+
+ns1:commission_1 a ns1:Commission ;
+    rdfs:label "commission" ;
+    dul:associatedWith ns1:document_1,
+        ns1:situation_1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:delay_1 a ns1:Delay ;
+    rdfs:label "delayed" ;
+    dul:associatedWith "0001-02-01"^^xsd:date ;
+    vn.role:Theme ns1:document_1 ;
+    ns1:until "0001-01-01"^^xsd:date .
+
+ns1:docuverse earmark:hasContent "The commission document expected to be ready in December 1999 was delayed until January, then February, and the first thought doesn't fill me with much optimism."^^xsd:string .
+
+ns1:expect_1 a ns1:Expect ;
+    rdfs:label "expected" ;
+    boxer:theme ns1:situation_1 ;
+    vn.role:Theme ns1:document_1 .
+
+ns1:fill_1 a ns1:Fill ;
+    rdfs:label "fill" ;
+    boxing:hasTruthValue boxing:False ;
+    vn.role:Agent ns1:thought_1 ;
+    vn.role:Destination ns1:person_1 ;
+    vn.role:Theme ns1:optimism_1 .
+
+ns1:then_1 a ns1:Then ;
+    rdfs:label "then" ;
+    ns1:at "0001-02-01"^^xsd:date .
+
+ns1:CommissionDocument a owl:Class ;
+    rdfs:label "commission document" ;
+    dul:associatedWith ns1:Commission ;
+    rdfs:subClassOf ns1:Document .
+
+ns1:Delay rdfs:label "delayed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Document a owl:Class ;
+    rdfs:label "document" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Expect rdfs:label "expected" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Fill a owl:Class ;
+    rdfs:label "fill" ;
+    rdfs:subClassOf dul:Event ;
+    owl:equivalentClass dbpedia:Fill_Me_In .
+
+ns1:First a owl:Class ;
+    rdfs:label "first" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FirstThought a owl:Class ;
+    rdfs:label "First Thought" ;
+    dul:hasQuality ns1:First ;
+    rdfs:subClassOf ns1:Thought .
+
+ns1:Optimism rdfs:label "optimism" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Person rdfs:label "me" .
+
+ns1:Then rdfs:label "then" .
+
+ns1:Thought a owl:Class ;
+    rdfs:label "thought" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:optimism_1 a ns1:Optimism ;
+    rdfs:label "optimism" ;
+    quant:hasQuantifier quant:much .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "me" .
+
+ns1:thought_1 a ns1:FirstThought ;
+    rdfs:label "thought" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Commission a owl:Class ;
+    rdfs:label "commission" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Ready rdfs:label "ready" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Ready,
+        ns1:document_1 ;
+    ns1:in "1999-12-01"^^xsd:date .
+
+ns1:document_1 a ns1:CommissionDocument ;
+    rdfs:label "document" ;
+    dul:hasQuality ns1:Ready .
+

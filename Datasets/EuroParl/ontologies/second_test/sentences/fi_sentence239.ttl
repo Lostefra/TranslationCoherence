@@ -1,0 +1,159 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence239.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Source rdfs:label "at" .
+
+translation_coherence:fi_sentence239.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence239" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence239" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Below rdfs:label "below" .
+
+ns1:C a ns1:Topic ;
+    rdfs:label "C" ;
+    boxer:possibleType owl:Thing .
+
+ns1:Entails rdfs:label "if" .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:carry_1 a ns1:Carry ;
+    rdfs:label "carried" ;
+    boxing:hasModality boxing:Possible ;
+    dul:hasQuality ns1:Out ;
+    vn.role:Theme ns1:work_1 ;
+    ns1:entails ns1:impose_1 ;
+    ns1:union ns1:transport_1 .
+
+ns1:docuverse earmark:hasContent "Member States may impose stricter requirements, in particular for vacuum tanks, if the work is carried out or the goods are primarily transported at temperatures below -20. C."^^xsd:string .
+
+ns1:vacuum_1 a ns1:Vacuum ;
+    rdfs:label "vacuum" ;
+    dul:associatedWith ns1:tank_1 .
+
+ns1:Carry rdfs:label "carried" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Goods rdfs:label "goods" .
+
+ns1:Impose rdfs:label "impose" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Member_states rdfs:label "Member States" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Out rdfs:label "out" .
+
+ns1:Particular rdfs:label "particular" .
+
+ns1:Primarily rdfs:label "primarily" .
+
+ns1:PrimarilyTransport rdfs:subClassOf ns1:Transport .
+
+ns1:Requirement rdfs:label "requirements" .
+
+ns1:Stricter rdfs:label "stricter" .
+
+ns1:StricterRequirement rdfs:subClassOf ns1:Requirement .
+
+ns1:Tank rdfs:label "tanks" .
+
+ns1:Temperature rdfs:label "temperatures" .
+
+ns1:Topic rdfs:label "C" .
+
+ns1:Transport rdfs:label "transported" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Vacuum rdfs:label "vacuum" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:VacuumTank rdfs:subClassOf ns1:Tank .
+
+ns1:Work rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:goods_1 a ns1:Goods ;
+    rdfs:label "goods" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:impose_1 a ns1:Impose ;
+    rdfs:label "impose" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Agent ns1:Member_states ;
+    vn.role:Theme ns1:requirement_1 ;
+    ns1:for ns1:tank_1 ;
+    ns1:in ns1:particular_1 .
+
+ns1:particular_1 a ns1:Particular ;
+    rdfs:label "particular" .
+
+ns1:requirement_1 a ns1:StricterRequirement ;
+    rdfs:label "requirements" ;
+    dul:hasQuality ns1:Stricter ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:temperature_1 a ns1:Temperature ;
+    rdfs:label "temperatures" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:below "-20"^^xsd:nonNegativeInteger .
+
+ns1:transport_1 a ns1:PrimarilyTransport ;
+    rdfs:label "transported" ;
+    boxing:hasModality boxing:Possible ;
+    dul:hasQuality ns1:Primarily ;
+    vn.role:Source ns1:temperature_1 ;
+    vn.role:Theme ns1:goods_1 .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "work" ;
+    quant:hasDeterminer quant:the .
+
+ns1:tank_1 a ns1:VacuumTank ;
+    rdfs:label "tanks" ;
+    quant:hasQuantifier quant:multiple .
+

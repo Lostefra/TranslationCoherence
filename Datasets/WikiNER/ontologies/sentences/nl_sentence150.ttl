@@ -1,0 +1,155 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence150.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+translation_coherence:nl_sentence150.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence150" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence150" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:To rdfs:label "to" .
+
+ns1:compare_1 a ns1:Compare ;
+    rdfs:label "compared" ;
+    vn.role:Patient ns1:Sell ;
+    ns1:to ns1:average_1 .
+
+ns1:docuverse earmark:hasContent "Sell and exclusive taxes in Alabama account for 51% of all states and local revenues compared to an average of about 36% nation."^^xsd:string .
+
+ns1:percent_1 a ns1:Percent ;
+    rdfs:label "%" ;
+    dul:hasDataValue "51"^^xsd:nonNegativeInteger .
+
+ns1:percent_2 a ns1:Percent ;
+    rdfs:label "%" ;
+    dul:associatedWith ns1:nation_1 .
+
+ns1:revenue_1 a dbpedia:Revenue,
+        ns1:LocalRevenue ;
+    rdfs:label "revenues" ;
+    dul:hasQuality ns1:Local ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:tax_1 a dbpedia:Tax ;
+    rdfs:label "taxes" ;
+    quant:hasQuantifier quant:multiple .
+
+dbpedia:Alabama a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:About rdfs:label "about" .
+
+ns1:Account rdfs:label "account" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Alabama rdfs:label "Alabama" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Alabama .
+
+ns1:Average rdfs:label "average" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Compare rdfs:label "compared" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Exclusive rdfs:label "exclusive" .
+
+ns1:ExclusiveTax rdfs:subClassOf ns1:Tax .
+
+ns1:Local rdfs:label "local" .
+
+ns1:LocalRevenue rdfs:subClassOf ns1:Revenue .
+
+ns1:Nation a owl:Class ;
+    rdfs:label "nation" ;
+    rdfs:subClassOf dul:Organization ;
+    owl:equivalentClass dbpedia:Nation .
+
+ns1:PercentNation rdfs:subClassOf ns1:Nation .
+
+ns1:Revenue rdfs:label "revenues" .
+
+ns1:Sell a ns1:ExclusiveTax ;
+    rdfs:label "Sell",
+        "taxes" ;
+    boxer:possibleType owl:Thing ;
+    dul:hasQuality ns1:Exclusive,
+        ns1:Topic ;
+    owl:sameAs dbpedia:Sales ;
+    ns1:in ns1:account_1 .
+
+ns1:State rdfs:label "states" .
+
+ns1:Tax a owl:Class ;
+    rdfs:label "Sell",
+        "taxes" ;
+    owl:equivalentClass dbpedia:Tax .
+
+ns1:account_1 a ns1:Account ;
+    rdfs:label "account" ;
+    dul:associatedWith ns1:Alabama ;
+    ns1:forPercentOf ns1:state_1 .
+
+ns1:average_1 a ns1:Average ;
+    rdfs:label "average" ;
+    quant:hasDeterminer quant:an ;
+    ns1:averageOf ns1:nation_1 .
+
+ns1:state_1 a dbpedia:State_(polity),
+        ns1:State ;
+    rdfs:label "states" ;
+    quant:hasQuantifier quant:all,
+        quant:multiple .
+
+ns1:Percent rdfs:label "%" .
+
+ns1:nation_1 a ns1:PercentNation ;
+    rdfs:label "nation" ;
+    dul:hasDataValue "36"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:About .
+

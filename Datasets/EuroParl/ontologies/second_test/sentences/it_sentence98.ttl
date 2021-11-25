@@ -1,0 +1,174 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence98.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence98.ttl a owl:Ontology ;
+    rdfs:label "it_sentence98" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence98" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "'s",
+        "my" .
+
+ns1:On rdfs:label "on" .
+
+ns1:be_1 a ns1:Be ;
+    rdfs:label "is" ;
+    boxer:agent ns1:fact_1 ;
+    boxer:theme ns1:reject_1 .
+
+ns1:docuverse earmark:hasContent "The fact that the subjects are connected also suggests to keep together the debate on both programs. That is why my group strongly rejects the Socialist_Group's proposal."^^xsd:string .
+
+ns1:keep_1 a ns1:Keep ;
+    rdfs:label "keep" ;
+    vn.role:Agent ns1:fact_1 ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:suggest_1 a ns1:AlsoSuggest ;
+    rdfs:label "suggests" ;
+    dul:hasQuality ns1:Also ;
+    vn.role:Agent ns1:fact_1 .
+
+ns1:thing_1 coref:coref ns1:fact_1 .
+
+dbpedia:Party_of_European_Socialists a schema:Organization .
+
+owl:Thing rdfs:label "That" .
+
+ns1:Also rdfs:label "also" .
+
+ns1:AlsoSuggest rdfs:subClassOf ns1:Suggest .
+
+ns1:Be rdfs:label "is" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Connect rdfs:label "connected" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Debate rdfs:label "debate" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Fact rdfs:label "fact" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Group rdfs:label "group" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Keep rdfs:label "keep" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Program rdfs:label "programs" .
+
+ns1:Proposal rdfs:label "proposal" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:Reason rdfs:label "why" .
+
+ns1:Reject rdfs:label "rejects" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Socialist_group rdfs:label "Socialist Group" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Party_of_European_Socialists .
+
+ns1:Strongly rdfs:label "strongly" .
+
+ns1:StronglyReject rdfs:subClassOf ns1:Reject .
+
+ns1:Subject rdfs:label "subjects" .
+
+ns1:Suggest rdfs:label "suggests" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:connect_1 a ns1:Connect ;
+    rdfs:label "connected" ;
+    vn.role:Patient ns1:subject_1 .
+
+ns1:debate_1 a ns1:Debate ;
+    rdfs:label "debate" ;
+    dul:hasQuality ns1:Together ;
+    quant:hasDeterminer quant:the ;
+    ns1:on ns1:program_1 .
+
+ns1:group_1 a ns1:Group ;
+    rdfs:label "group" ;
+    quant:hasDeterminer quant:that ;
+    ns1:groupOf ns1:person_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "my" .
+
+ns1:program_1 a ns1:Program ;
+    rdfs:label "programs" ;
+    quant:hasQuantifier quant:both,
+        quant:multiple .
+
+ns1:proposal_1 a ns1:Proposal ;
+    rdfs:label "proposal" ;
+    ns1:proposalOf ns1:Socialist_group .
+
+ns1:reason_1 a ns1:Reason ;
+    rdfs:label "why" .
+
+ns1:reject_1 a ns1:StronglyReject ;
+    rdfs:label "rejects" ;
+    dul:hasQuality ns1:Strongly ;
+    vn.role:Agent ns1:group_1 ;
+    vn.role:Proposition ns1:proposal_1 ;
+    ns1:reason_rel ns1:reason_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Together,
+        ns1:debate_1 .
+
+ns1:subject_1 a ns1:Subject ;
+    rdfs:label "subjects" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Together rdfs:label "together" .
+
+ns1:fact_1 a owl:Thing,
+        ns1:Fact ;
+    rdfs:label "That",
+        "fact" ;
+    boxer:theme ns1:connect_1 ;
+    quant:hasDeterminer quant:the .
+

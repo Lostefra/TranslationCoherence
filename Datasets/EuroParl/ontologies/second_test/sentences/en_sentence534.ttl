@@ -1,0 +1,178 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence534.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+vn.role:Destination rdfs:label "into" .
+
+translation_coherence:en_sentence534.ttl a owl:Ontology ;
+    rdfs:label "en_sentence534" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence534" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Within rdfs:label "within" .
+
+ns1:development_1 rdfs:label "development" .
+
+ns1:docuverse earmark:hasContent "The third objective is urban and rural development, within the scope of a balanced territorial policy. In fact, the guidelines take two horizontal principles into account."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Development,
+        ns1:Rural,
+        ns1:Urban,
+        ns1:objective_1 ;
+    ns1:within ns1:scope_1 .
+
+ns1:take_1 a ns1:Take ;
+    rdfs:label "take" ;
+    vn.role:Agent ns1:guideline_1 ;
+    vn.role:Destination ns1:account_1 ;
+    vn.role:Theme ns1:principle_1 ;
+    ns1:in ns1:fact_1 .
+
+ns1:Account rdfs:label "account" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Balanced rdfs:label "balanced" .
+
+ns1:BalancedTerritorialPolicy a owl:Class ;
+    rdfs:label "balanced territorial policy" ;
+    rdfs:subClassOf ns1:TerritorialPolicy .
+
+ns1:Fact rdfs:label "fact" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Guideline rdfs:label "guidelines" .
+
+ns1:Horizontal rdfs:label "horizontal" .
+
+ns1:HorizontalPrinciple rdfs:subClassOf ns1:Principle .
+
+ns1:Objective a owl:Class ;
+    rdfs:label "objective" ;
+    rdfs:subClassOf dul:Goal ;
+    owl:equivalentClass dbpedia:Objectivity_(philosophy) .
+
+ns1:Policy a owl:Class ;
+    rdfs:label "policy" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Policy .
+
+ns1:Principle rdfs:label "principles" .
+
+ns1:RuralDevelopment a owl:Class ;
+    rdfs:label "Rural Development" ;
+    dul:hasQuality ns1:Rural ;
+    rdfs:subClassOf ns1:Development .
+
+ns1:Scope rdfs:label "scope" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Take rdfs:label "take" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Territorial a owl:Class ;
+    rdfs:label "territorial" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:TerritorialPolicy a owl:Class ;
+    rdfs:label "Territorial Policy" ;
+    dul:hasQuality ns1:Territorial ;
+    rdfs:subClassOf ns1:Policy .
+
+ns1:Third a owl:Class ;
+    rdfs:label "third" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ThirdObjective a owl:Class ;
+    rdfs:label "third objective" ;
+    dul:hasQuality ns1:Third ;
+    rdfs:subClassOf ns1:Objective .
+
+ns1:account_1 a ns1:Account ;
+    rdfs:label "account" .
+
+ns1:fact_1 a ns1:Fact ;
+    rdfs:label "fact" .
+
+ns1:guideline_1 a ns1:Guideline ;
+    rdfs:label "guidelines" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:objective_1 a ns1:RuralDevelopment,
+        ns1:ThirdObjective ;
+    rdfs:label "objective" ;
+    dul:hasQuality ns1:Rural,
+        ns1:Urban ;
+    quant:hasDeterminer quant:the .
+
+ns1:policy_1 a ns1:BalancedTerritorialPolicy ;
+    rdfs:label "policy" ;
+    dul:hasQuality ns1:Balanced ;
+    quant:hasDeterminer quant:a .
+
+ns1:principle_1 a ns1:HorizontalPrinciple ;
+    rdfs:label "principles" ;
+    dul:hasDataValue "2"^^xsd:nonNegativeInteger ;
+    dul:hasQuality ns1:Horizontal ;
+    quant:hasQuantifier quant:multiple,
+        quant:two .
+
+ns1:scope_1 a ns1:Scope ;
+    rdfs:label "scope" ;
+    quant:hasDeterminer quant:the ;
+    ns1:scopeOf ns1:policy_1 .
+
+ns1:Development a owl:Class ;
+    rdfs:label "development" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Urban rdfs:label "urban" .
+
+ns1:Rural a owl:Class ;
+    rdfs:label "rural" ;
+    rdfs:subClassOf dul:Quality .
+

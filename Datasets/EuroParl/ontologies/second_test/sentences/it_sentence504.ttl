@@ -1,0 +1,161 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence504.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%2C> rdfs:label "," .
+
+translation_coherence:it_sentence504.ttl a owl:Ontology ;
+    rdfs:label "it_sentence504" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence504" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Entails rdfs:label "if" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "your" .
+
+ns1:On rdfs:label "on" .
+
+ns1:docuverse earmark:hasContent "I should like to be very grateful, Mrs Schroedter, if you actually included this amendment proposed in the part on subsidiarity in your positive deliberations."^^xsd:string .
+
+ns1:like_1 a ns1:Like ;
+    rdfs:label "like" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Experiencer ns1:person_2 ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:Actually rdfs:label "actually" .
+
+ns1:ActuallyInclude rdfs:subClassOf ns1:Include .
+
+ns1:Amendment rdfs:label "amendment" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Deliberation rdfs:label "deliberations" .
+
+ns1:Include rdfs:label "included" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Like rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Part rdfs:label "part" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Positive rdfs:label "positive" .
+
+ns1:PositiveDeliberation rdfs:subClassOf ns1:Deliberation .
+
+ns1:Propose rdfs:label "proposed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Schroedter rdfs:label "Schroedter" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis> ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis> .
+
+ns1:Subsidiarity a owl:Class ;
+    rdfs:label "subsidiarity" ;
+    rdfs:subClassOf dul:Role ;
+    owl:equivalentClass dbpedia:Subsidiarity .
+
+ns1:deliberation_1 a ns1:PositiveDeliberation ;
+    rdfs:label "deliberations" ;
+    dul:hasQuality ns1:Positive ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:positiveDeliberationOf ns1:person_1 .
+
+ns1:include_1 a ns1:ActuallyInclude ;
+    rdfs:label "included" ;
+    dul:hasQuality ns1:Actually ;
+    vn.role:Agent ns1:person_3 ;
+    vn.role:Theme ns1:amendment_1 .
+
+ns1:part_1 a ns1:Part ;
+    rdfs:label "part" ;
+    quant:hasDeterminer quant:the ;
+    ns1:on ns1:subsidiarity_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "your" .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "you" .
+
+ns1:propose_1 a ns1:Propose ;
+    rdfs:label "proposed" ;
+    vn.role:Theme ns1:amendment_1 ;
+    ns1:entails ns1:situation_1 ;
+    ns1:in ns1:deliberation_1,
+        ns1:part_1 .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis> rdfs:label "Mrs" ;
+    boxer:possibleType dul:Role .
+
+ns1:Grateful rdfs:label "grateful" ;
+    dul:hasQuality ns1:Very .
+
+ns1:Very rdfs:label "very" .
+
+ns1:amendment_1 a ns1:Amendment ;
+    rdfs:label "amendment" ;
+    quant:hasDeterminer quant:this .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "I" ;
+    dul:hasQuality ns1:Grateful .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:Grateful,
+        ns1:Very,
+        ns1:include_1,
+        ns1:person_2,
+        ns1:propose_1,
+        ns1:subsidiarity_1 ;
+    dul:associatedWith ns1:Schroedter .
+
+ns1:subsidiarity_1 a ns1:Subsidiarity ;
+    rdfs:label "subsidiarity" .
+
+ns1:Person rdfs:label "I",
+        "you" .
+

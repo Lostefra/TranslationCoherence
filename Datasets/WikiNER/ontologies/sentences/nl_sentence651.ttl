@@ -1,0 +1,184 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence651.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:nl_sentence651.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence651" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence651" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Despite rdfs:label "Despite" .
+
+ns1:Of rdfs:label "'s",
+        "of" .
+
+ns1:Union rdfs:label "or" .
+
+ns1:disjunct_1 a ns1:Disjunct ;
+    boxing:involves ns1:Conservative,
+        ns1:Member,
+        ns1:quoise_1 ;
+    ns1:union ns1:disjunct_2 .
+
+ns1:docuverse earmark:hasContent "Despite Rand's unconditional Republican attitude as pro-choice atheist, the political figures Rand quoise as influence is usually conservative or libertary members of the Republic Republic."^^xsd:string .
+
+ns1:member_1 rdfs:label "members" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:Conservative,
+        ns1:Libertary,
+        ns1:Member,
+        ns1:quoise_1 ;
+    dul:hasQuality ns1:Usually ;
+    ns1:despite ns1:attitude_1 .
+
+dbpedia:Ayn_Rand a schema:Person .
+
+ns1:Atheist a owl:Class ;
+    rdfs:label "atheist" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Atheism .
+
+ns1:Attitude a owl:Class ;
+    rdfs:label "attitude" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> ;
+    owl:equivalentClass dbpedia:Attitude_(psychology) .
+
+ns1:Figure rdfs:label "figures" .
+
+ns1:Influence a owl:Class ;
+    rdfs:label "influence" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Social_influence .
+
+ns1:Political rdfs:label "political" ;
+    owl:sameAs dbpedia:Politics .
+
+ns1:PoliticalFigure rdfs:subClassOf ns1:Figure .
+
+ns1:Pro-choice a owl:Class ;
+    rdfs:label "pro-choice" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Abortion-rights_movements .
+
+ns1:Pro-choiceAtheist a owl:Class ;
+    rdfs:label "Pro-choice Atheist" ;
+    dul:hasQuality ns1:Pro-choice ;
+    rdfs:subClassOf ns1:Atheist .
+
+ns1:Quoise rdfs:label "quoise" .
+
+ns1:Republic_republic rdfs:label "Republic Republic" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:RepublicanAttitude a owl:Class ;
+    rdfs:label "Republican attitude" ;
+    dul:hasQuality ns1:Republican ;
+    rdfs:subClassOf ns1:Attitude .
+
+ns1:Unconditional rdfs:label "unconditional" .
+
+ns1:UnconditionalRepublicanAttitude a owl:Class ;
+    rdfs:label "Unconditional Republican Attitude" ;
+    rdfs:subClassOf ns1:RepublicanAttitude .
+
+ns1:Usually rdfs:label "usually" .
+
+ns1:atheist_1 a ns1:Pro-choiceAtheist ;
+    rdfs:label "atheist" .
+
+ns1:attitude_1 a ns1:UnconditionalRepublicanAttitude ;
+    rdfs:label "attitude" ;
+    dul:hasQuality ns1:Republican,
+        ns1:Unconditional ;
+    ns1:as ns1:atheist_1,
+        ns1:figure_1 ;
+    ns1:unconditionalRepublicanAttitudeOf ns1:Rand .
+
+ns1:disjunct_2 a ns1:Disjunct ;
+    boxing:involves ns1:Libertary,
+        ns1:Member,
+        ns1:quoise_1 .
+
+ns1:figure_1 a ns1:PoliticalFigure ;
+    rdfs:label "figures" ;
+    dul:hasQuality ns1:Political ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:influence_1 a ns1:Influence ;
+    rdfs:label "influence" .
+
+ns1:LibertaryMember rdfs:subClassOf ns1:Member .
+
+ns1:Rand a ns1:LibertaryMember ;
+    rdfs:label "Rand",
+        "members" ;
+    boxer:possibleType foaf:Organisation,
+        foaf:Person ;
+    dul:hasQuality ns1:Conservative,
+        ns1:Libertary ;
+    owl:sameAs dbpedia:Ayn_Rand .
+
+ns1:Republican a owl:Class ;
+    rdfs:label "Republican" ;
+    rdfs:subClassOf dul:Quality ;
+    owl:equivalentClass dbpedia:Republicanism .
+
+ns1:quoise_1 a ns1:LibertaryMember,
+        ns1:Quoise ;
+    rdfs:label "quoise" ;
+    dul:associatedWith ns1:Rand ;
+    dul:hasQuality ns1:Conservative,
+        ns1:Libertary ;
+    ns1:as ns1:influence_1 ;
+    ns1:quoiseOf ns1:Republic_republic .
+
+ns1:Conservative rdfs:label "conservative" ;
+    owl:sameAs dbpedia:Conservatism .
+
+ns1:Libertary rdfs:label "libertary" .
+
+ns1:Member rdfs:label "Rand",
+        "members" .
+

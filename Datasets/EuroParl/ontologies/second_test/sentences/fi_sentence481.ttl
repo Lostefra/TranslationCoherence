@@ -1,0 +1,155 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence481.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Destination rdfs:label "to" .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:fi_sentence481.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence481" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence481" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:In rdfs:label "In" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:adapt_1 a ns1:Adapt ;
+    rdfs:label "adapt" ;
+    vn.role:Agent ns1:exibility_1 ;
+    vn.role:Destination ns1:condition_1 .
+
+ns1:change_1 a ns1:Change ;
+    rdfs:label "changing" ;
+    vn.role:Agent ns1:condition_1 .
+
+ns1:docuverse earmark:hasContent "In the end, social action requires greater,exibility to adapt to changing conditions and to respond to new challenges and opportunities of the new millennium."^^xsd:string .
+
+ns1:require_1 a ns1:Require ;
+    rdfs:label "requires" ;
+    vn.role:Agent ns1:action_1 ;
+    vn.role:Patient ns1:exibility_1 ;
+    ns1:in ns1:end_1 .
+
+ns1:respond_1 a ns1:Respond ;
+    rdfs:label "respond" ;
+    vn.role:Agent ns1:exibility_1 ;
+    vn.role:Recipient ns1:challenge_1,
+        ns1:opportunity_1 .
+
+ns1:Action a owl:Class ;
+    rdfs:label "action" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Adapt rdfs:label "adapt" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Challenge rdfs:label "challenges" .
+
+ns1:Change rdfs:label "changing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Condition rdfs:label "conditions" .
+
+ns1:End rdfs:label "end" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Exibility rdfs:label "exibility" .
+
+ns1:Greater rdfs:label "greater" .
+
+ns1:Millennium rdfs:label "millennium" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:NewChallenge rdfs:subClassOf ns1:Challenge .
+
+ns1:NewMillennium rdfs:label "new millennium" ;
+    rdfs:subClassOf ns1:Millennium .
+
+ns1:Opportunity rdfs:label "opportunities" .
+
+ns1:Require rdfs:label "requires" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Respond rdfs:label "respond" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Social a owl:Class ;
+    rdfs:label "social" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SocialAction a owl:Class ;
+    rdfs:label "Social Action" ;
+    dul:hasQuality ns1:Social ;
+    rdfs:subClassOf ns1:Action .
+
+ns1:action_1 a ns1:SocialAction ;
+    rdfs:label "action" .
+
+ns1:challenge_1 a ns1:NewChallenge ;
+    rdfs:label "challenges" ;
+    dul:hasQuality ns1:New ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:end_1 a ns1:End ;
+    rdfs:label "end" ;
+    quant:hasDeterminer quant:the .
+
+ns1:millennium_1 a ns1:NewMillennium ;
+    rdfs:label "millennium" ;
+    dul:hasQuality ns1:New ;
+    quant:hasDeterminer quant:the .
+
+ns1:opportunity_1 a ns1:Opportunity ;
+    rdfs:label "opportunities" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:opportunityOf ns1:millennium_1 .
+
+ns1:New rdfs:label "new" .
+
+ns1:condition_1 a ns1:Condition ;
+    rdfs:label "conditions" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:exibility_1 a ns1:Exibility ;
+    rdfs:label "exibility" ;
+    dul:hasQuality ns1:Greater .
+

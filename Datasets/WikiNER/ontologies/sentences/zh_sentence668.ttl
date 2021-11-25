@@ -1,0 +1,133 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence668.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence668.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence668" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence668" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "is" .
+
+ns1:Include rdfs:label "including" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "He is a member of the French_Academy of Sciences and a number of foreign colleges and societies, including the Danish Academy of Sciences, the Norwegian_Academy_of_Sciences, the Russian_Academy_of_Sciences and the United_States Academy of National Sciences."^^xsd:string .
+
+ns1:member_1 a ns1:Member ;
+    rdfs:label "member" ;
+    dul:hasQuality ns1:Male ;
+    quant:hasDeterminer quant:a ;
+    ns1:memberOf ns1:French_academy .
+
+ns1:society_1 rdfs:label "societies" .
+
+dbpedia:National_Academy_of_Sciences a schema:LandmarksOrHistoricalBuildings,
+        schema:Place .
+
+ns1:College rdfs:label "colleges" .
+
+ns1:Danish_academy rdfs:label "Danish Academy" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:Norwegian_academy_of_sciences ;
+    ns1:of ns1:Sciences .
+
+ns1:Foreign rdfs:label "foreign" .
+
+ns1:ForeignCollege rdfs:subClassOf ns1:College .
+
+ns1:French_academy rdfs:label "French Academy" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Académie_française ;
+    ns1:of ns1:Sciences,
+        ns1:number_1 .
+
+ns1:Male rdfs:label "He" .
+
+ns1:Member rdfs:label "member" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:National_sciences rdfs:label "National Sciences" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Norwegian_academy_of_sciences rdfs:label "Norwegian Academy of Sciences" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:United_states_academy,
+        ns1:russian_academy_of_sciences_1 ;
+    owl:sameAs dbpedia:Norwegian_Academy_of_Science_and_Letters .
+
+ns1:Number rdfs:label "number" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:Russian_academy_of_sciences a owl:Class ;
+    rdfs:label "Russian Academy of Sciences" ;
+    owl:equivalentClass dbpedia:Russian_Academy_of_Sciences .
+
+ns1:Society rdfs:label "societies" .
+
+ns1:United_states_academy rdfs:label "United States Academy" ;
+    boxer:possibleType foaf:Organisation ;
+    ns1:of ns1:National_sciences .
+
+ns1:college_1 a ns1:ForeignCollege,
+        ns1:Society ;
+    rdfs:label "colleges" ;
+    dul:hasQuality ns1:Foreign ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:number_1 a ns1:Number ;
+    rdfs:label "number" ;
+    quant:hasDeterminer quant:a ;
+    ns1:include ns1:Danish_academy ;
+    ns1:numberOf ns1:college_1 .
+
+ns1:russian_academy_of_sciences_1 a ns1:Russian_academy_of_sciences ;
+    rdfs:label "Russian Academy of Sciences" ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Sciences rdfs:label "Sciences" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:National_Academy_of_Sciences,
+        dbpedia:Science .
+

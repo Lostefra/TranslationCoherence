@@ -1,0 +1,152 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence282.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence282.ttl a owl:Ontology ;
+    rdfs:label "de_sentence282" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence282" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:Necessary rdfs:label "Necessary" .
+
+ns1:Rel rdfs:label "(" .
+
+ns1:Within rdfs:label "within" .
+
+ns1:docuverse earmark:hasContent "We all regret that the European Committee for Standardization (CEN) is not able to change the provisions necessary for the necessary harmonisation within the European_Union."^^xsd:string .
+
+ns1:regret_1 a ns1:AllRegret ;
+    rdfs:label "regret" ;
+    dul:hasQuality ns1:All ;
+    vn.role:Experiencer ns1:person_1 ;
+    vn.role:Theme ns1:situation_2 .
+
+ns1:All rdfs:label "all" .
+
+ns1:AllRegret rdfs:label "all regret" ;
+    rdfs:subClassOf ns1:Regret .
+
+ns1:Cen rdfs:label "CEN" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:European_Committee_for_Standardization .
+
+ns1:EuropeanUnion rdfs:subClassOf dul:Organization .
+
+ns1:European_union a owl:Class ;
+    rdfs:label "European Union" ;
+    rdfs:subClassOf ns1:EuropeanUnion ;
+    owl:equivalentClass dbpedia:European_Union .
+
+ns1:Harmonisation rdfs:label "harmonisation" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:NecessaryHarmonisation rdfs:label "Necessary Harmonisation" ;
+    rdfs:subClassOf ns1:Harmonisation .
+
+ns1:Person rdfs:label "We" .
+
+ns1:Provision rdfs:label "provisions" .
+
+ns1:Regret rdfs:label "regret" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Standardization rdfs:label "Standardization" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Standardization .
+
+ns1:able_1 a ns1:Able ;
+    rdfs:label "able" ;
+    boxer:agent ns1:European_committee ;
+    boxer:theme ns1:change_1 ;
+    boxing:hasTruthValue boxing:False .
+
+ns1:european_union_1 a ns1:European_union ;
+    rdfs:label "European Union" ;
+    quant:hasDeterminer quant:the .
+
+ns1:harmonisation_1 a ns1:NecessaryHarmonisation ;
+    rdfs:label "harmonisation" ;
+    dul:hasQuality boxing:Necessary ;
+    quant:hasDeterminer quant:the ;
+    ns1:within ns1:european_union_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "We" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves boxing:Necessary,
+        ns1:provision_1 ;
+    ns1:for ns1:harmonisation_1 .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves boxing:Necessary,
+        ns1:Able,
+        ns1:Change,
+        ns1:able_1,
+        ns1:change_1,
+        ns1:situation_1 .
+
+ns1:Able rdfs:label "able" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Change rdfs:label "change" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:European_committee rdfs:label "European Committee" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:Cen ;
+    owl:sameAs dbpedia:European_Committee_for_Standardization ;
+    ns1:for ns1:Standardization .
+
+ns1:change_1 a ns1:Change ;
+    rdfs:label "change" ;
+    vn.role:Agent ns1:European_committee ;
+    vn.role:Theme ns1:provision_1 .
+
+ns1:provision_1 a ns1:Provision ;
+    rdfs:label "provisions" ;
+    dul:hasQuality boxing:Necessary ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+boxing:Necessary rdfs:label "necessary" .
+

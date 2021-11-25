@@ -1,0 +1,89 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence304.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:de_sentence304.ttl a owl:Ontology ;
+    rdfs:label "de_sentence304" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence304" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:docuverse earmark:hasContent "I always have an old Henry Clay Whig sentenced 1861 friends."^^xsd:string .
+
+ns1:have_1 a ns1:AlwaysHave ;
+    rdfs:label "have" ;
+    dul:hasQuality ns1:Always ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Patient ns1:Henry_clay_whig .
+
+ns1:sentence_1 a ns1:Sentence ;
+    rdfs:label "sentenced" ;
+    boxer:agent ns1:Henry_clay_whig ;
+    boxer:patient ns1:friend_1 .
+
+ns1:Always rdfs:label "always" .
+
+ns1:AlwaysHave rdfs:label "Always Have" ;
+    rdfs:subClassOf ns1:Have .
+
+ns1:Friend rdfs:label "friends" .
+
+ns1:Have rdfs:label "have" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Old rdfs:label "old" ;
+    owl:sameAs dbpedia:Clay_Trotting_Horses .
+
+ns1:Person rdfs:label "I" .
+
+ns1:Sentence rdfs:label "sentenced" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:friend_1 a ns1:Friend ;
+    rdfs:label "friends" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:at "1861-01-01"^^xsd:date .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:Henry_clay_whig rdfs:label "Henry Clay Whig" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Old .
+

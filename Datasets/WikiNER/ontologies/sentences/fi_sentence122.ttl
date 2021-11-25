@@ -1,0 +1,153 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence122.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence122.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence122" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence122" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Although rdfs:label "Although" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Quantity rdfs:label "many" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:docuverse earmark:hasContent "Although snow is a rare occurrence in many parts of Alabama, areas in northernntgomery can get snowtyksenlination a few times in winter."^^xsd:string .
+
+ns1:part_1 a ns1:Part ;
+    rdfs:label "parts" ;
+    quant:hasQuantifier quant:many,
+        quant:multiple .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:event_1 ;
+    ns1:although ns1:get_1 .
+
+ns1:snow_1 a ns1:FewTime,
+        ns1:Snow ;
+    rdfs:label "snow" ;
+    dul:hasQuality ns1:Few ;
+    owl:sameAs ns1:occurrence_1 ;
+    ns1:in ns1:winter_1 .
+
+ns1:time_1 rdfs:label "times" ;
+    quant:hasDeterminer quant:a ;
+    quant:hasQuantifier quant:few,
+        quant:multiple .
+
+dbpedia:Alabama a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:Alabama rdfs:label "Alabama" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    dul:associatedWith ns1:area_1 ;
+    owl:sameAs dbpedia:Alabama .
+
+ns1:Area rdfs:label "areas" .
+
+ns1:Few rdfs:label "few" .
+
+ns1:FewTime rdfs:subClassOf ns1:Time .
+
+ns1:Get rdfs:label "get" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Northernntgomery rdfs:label "northernntgomery" .
+
+ns1:Part rdfs:label "parts" .
+
+ns1:Rare a owl:Class ;
+    rdfs:label "rare" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:RareOccurrence a owl:Class ;
+    rdfs:label "Rare Occurrence" ;
+    dul:hasQuality ns1:Rare ;
+    rdfs:subClassOf ns1:Occurrence .
+
+ns1:Snow rdfs:label "snow" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Snowtyksenlination rdfs:label "snowtyksenlination" .
+
+ns1:Time rdfs:label "times" .
+
+ns1:Winter a owl:Class ;
+    rdfs:label "winter" ;
+    rdfs:subClassOf dul:TimeInterval ;
+    owl:equivalentClass dbpedia:Winter .
+
+ns1:area_1 a ns1:Area ;
+    rdfs:label "areas" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:northernntgomery_1 .
+
+ns1:event_1 a dul:Event .
+
+ns1:get_1 a ns1:Get ;
+    rdfs:label "get" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Agent ns1:occurrence_1 ;
+    vn.role:Theme ns1:snowtyksenlination_1 .
+
+ns1:northernntgomery_1 a ns1:Northernntgomery ;
+    rdfs:label "northernntgomery" .
+
+ns1:snowtyksenlination_1 a ns1:Snowtyksenlination ;
+    rdfs:label "snowtyksenlination" .
+
+ns1:winter_1 a ns1:Winter ;
+    rdfs:label "winter" .
+
+ns1:Occurrence a owl:Class ;
+    rdfs:label "occurrence" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:occurrence_1 a ns1:Occurrence,
+        ns1:RareOccurrence ;
+    rdfs:label "occurrence" ;
+    quant:hasDeterminer quant:a ;
+    ns1:inPartOf ns1:Alabama .
+

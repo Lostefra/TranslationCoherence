@@ -1,0 +1,156 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence176.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:en_sentence176.ttl a owl:Ontology ;
+    rdfs:label "en_sentence176" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence176" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:At rdfs:label "at" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "There will be major problems with enforcing this rule at present, especially with smaller companies, as these cannot afford safety advisors."^^xsd:string .
+
+ns1:enforce_1 a ns1:Enforce ;
+    rdfs:label "enforcing" ;
+    vn.role:Agent ns1:thing_2 ;
+    vn.role:Theme ns1:rule_1 ;
+    ns1:as ns1:afford_1 .
+
+ns1:especially_1 rdfs:label "especially" .
+
+ns1:event_1 a dul:Event ;
+    boxer:agent ns1:thing_1 ;
+    boxer:patient ns1:there_1 ;
+    ns1:with ns1:thing_2 .
+
+ns1:problem_1 rdfs:label "problems" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:safety_1 a ns1:Safety ;
+    rdfs:label "safety" ;
+    dul:associatedWith ns1:advisor_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:Major,
+        ns1:MajorProblem,
+        ns1:Problem,
+        ns1:there_1 .
+
+ns1:Advisor rdfs:label "advisors" .
+
+ns1:Afford rdfs:label "afford" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Cannot rdfs:label "cannot" .
+
+ns1:Company rdfs:label "companies" .
+
+ns1:Enforce rdfs:label "enforcing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Especially rdfs:label "especially" .
+
+ns1:Present rdfs:label "present" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Rule rdfs:label "rule" ;
+    rdfs:subClassOf dul:Description .
+
+ns1:Safety rdfs:label "safety" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:SafetyAdvisor rdfs:subClassOf ns1:Advisor .
+
+ns1:Smaller rdfs:label "smaller" .
+
+ns1:SmallerCompany rdfs:subClassOf ns1:Company .
+
+ns1:There rdfs:label "There" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:afford_1 a ns1:Afford ;
+    rdfs:label "afford" ;
+    boxer:agent ns1:cannot_1 ;
+    boxer:patient ns1:advisor_1 .
+
+ns1:cannot_1 a ns1:Cannot ;
+    rdfs:label "cannot" ;
+    quant:hasDeterminer quant:these .
+
+ns1:company_1 a ns1:SmallerCompany ;
+    rdfs:label "companies" ;
+    dul:hasQuality ns1:Smaller ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:present_1 a ns1:Present ;
+    rdfs:label "present" .
+
+ns1:rule_1 a ns1:Especially,
+        ns1:Rule ;
+    rdfs:label "rule" ;
+    quant:hasDeterminer quant:this ;
+    ns1:at ns1:present_1 ;
+    ns1:with ns1:company_1 .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:Major rdfs:label "major" .
+
+ns1:MajorProblem rdfs:subClassOf ns1:Problem .
+
+ns1:Problem rdfs:label "problems" .
+
+ns1:advisor_1 a ns1:SafetyAdvisor ;
+    rdfs:label "advisors" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:there_1 a ns1:MajorProblem,
+        ns1:There ;
+    rdfs:label "There" ;
+    dul:hasQuality ns1:Major .
+
+ns1:thing_2 a owl:Thing .
+

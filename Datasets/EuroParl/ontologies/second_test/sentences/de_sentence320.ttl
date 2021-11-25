@@ -1,0 +1,126 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence320.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Oblique rdfs:label "In" .
+
+translation_coherence:de_sentence320.ttl a owl:Ontology ;
+    rdfs:label "de_sentence320" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence320" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:docuverse earmark:hasContent "In the past, this Parliament has seen the social economy as an important employment provider."^^xsd:string .
+
+ns1:employment_1 a ns1:Employment ;
+    rdfs:label "employment" ;
+    dul:associatedWith ns1:provider_1 ;
+    quant:hasDeterminer quant:an .
+
+ns1:see_1 a ns1:See ;
+    rdfs:label "seen" ;
+    vn.role:Experiencer ns1:Parliament ;
+    vn.role:Oblique ns1:past_1 ;
+    vn.role:Stimulus ns1:economy_1 .
+
+ns1:Economy a owl:Class ;
+    rdfs:label "economy" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#System> .
+
+ns1:EmploymentProvider a owl:Class ;
+    rdfs:label "employment provider" ;
+    dul:associatedWith ns1:Employment ;
+    rdfs:subClassOf ns1:Provider .
+
+ns1:Important a owl:Class ;
+    rdfs:label "important" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:ImportantEmployment a owl:Class ;
+    dul:hasQuality ns1:Important ;
+    rdfs:subClassOf ns1:Employment .
+
+ns1:ImportantEmploymentProvider a owl:Class ;
+    rdfs:label "important employment provider" ;
+    dul:associatedWith ns1:ImportantEmployment ;
+    rdfs:subClassOf ns1:EmploymentProvider .
+
+ns1:Parliament rdfs:label "Parliament" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Parliament .
+
+ns1:Past rdfs:label "past" ;
+    rdfs:subClassOf dul:TimeInterval .
+
+ns1:Provider a owl:Class ;
+    rdfs:label "provider" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:See rdfs:label "seen" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Social a owl:Class ;
+    rdfs:label "social" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SocialEconomy a owl:Class ;
+    rdfs:label "social economy" ;
+    dul:hasQuality ns1:Social ;
+    rdfs:subClassOf ns1:Economy ;
+    owl:equivalentClass dbpedia:Socioeconomics .
+
+ns1:economy_1 a ns1:SocialEconomy ;
+    rdfs:label "economy" ;
+    quant:hasDeterminer quant:the ;
+    ns1:as ns1:provider_1 .
+
+ns1:past_1 a ns1:Past ;
+    rdfs:label "past" ;
+    quant:hasDeterminer quant:the .
+
+ns1:provider_1 a ns1:ImportantEmploymentProvider ;
+    rdfs:label "provider" .
+
+ns1:Employment a owl:Class ;
+    rdfs:label "employment" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Employment .
+

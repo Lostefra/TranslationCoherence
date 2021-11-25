@@ -1,0 +1,211 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence615.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence615.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence615" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence615" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:About rdfs:label "about" .
+
+ns1:Because rdfs:label "because" .
+
+ns1:Eq rdfs:label "was" .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "her",
+        "of" .
+
+ns1:On rdfs:label "on" .
+
+ns1:That rdfs:label "that" .
+
+ns1:To rdfs:label "to" .
+
+ns1:company_1 rdfs:label "company" ;
+    quant:hasDeterminer quant:the .
+
+ns1:docuverse earmark:hasContent "There was a strong opposition to the view that, because it was not realistic for that reason, she expressed doubts about the Kanant company that her idea was the exact view of the company Kant on every fundamental issue."^^xsd:string .
+
+ns1:idea_1 rdfs:label "idea" .
+
+ns1:opposition_1 rdfs:label "opposition" ;
+    quant:hasDeterminer quant:a .
+
+ns1:there_1 a ns1:StrongOpposition,
+        ns1:There ;
+    rdfs:label "There" ;
+    ns1:to ns1:view_1 .
+
+dbpedia:Immanuel_Kant a schema:Person .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Company a owl:Class ;
+    rdfs:label "Company",
+        "Kant",
+        "company" ;
+    rdfs:subClassOf dul:Organization .
+
+ns1:Doubt rdfs:label "doubts" .
+
+ns1:Exact rdfs:label "exact" .
+
+ns1:Express rdfs:label "expressed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Female rdfs:label "she" .
+
+ns1:Idea a owl:Class ;
+    rdfs:label "idea" ;
+    rdfs:subClassOf dul:InformationEntity,
+        ns1:View ;
+    owl:equivalentClass dbpedia:Idea .
+
+ns1:KanantCompany a owl:Class ;
+    rdfs:label "Kanant Company" ;
+    dul:hasQuality ns1:Kanant ;
+    rdfs:subClassOf ns1:Company .
+
+ns1:Opposition a owl:Class ;
+    rdfs:label "opposition" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:Reason a owl:Class ;
+    rdfs:label "reason" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> ;
+    owl:equivalentClass dbpedia:Reason .
+
+ns1:Strong a owl:Class ;
+    rdfs:label "strong" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:StrongOpposition a owl:Class ;
+    rdfs:label "Strong Opposition" ;
+    dul:hasQuality ns1:Strong ;
+    rdfs:subClassOf ns1:Opposition .
+
+ns1:There rdfs:label "There" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "it" ;
+    dul:hasQuality ns1:Realistic .
+
+ns1:reason_1 a ns1:Reason ;
+    rdfs:label "reason" ;
+    quant:hasDeterminer quant:that .
+
+ns1:view_1 a ns1:Idea,
+        ns1:View ;
+    rdfs:label "view" ;
+    boxer:theme ns1:situation_1 ;
+    dul:hasQuality ns1:Exact ;
+    quant:hasDeterminer quant:the ;
+    owl:sameAs ns1:issue_1 ;
+    ns1:ideaOf ns1:female_1 ;
+    ns1:viewOf ns1:Kant .
+
+ns1:Fundamental a owl:Class ;
+    rdfs:label "fundamental" ;
+    owl:equivalentClass dbpedia:Fundamentalism .
+
+ns1:FundamentalIssue rdfs:label "Fundamental Issue" ;
+    dul:associatedWith ns1:Issue ;
+    dul:hasModality ns1:Fundamental .
+
+ns1:Kanant a owl:Class ;
+    rdfs:label "Kanant" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Kant a ns1:KanantCompany ;
+    rdfs:label "Kant",
+        "company" ;
+    boxer:possibleType foaf:Person ;
+    dul:hasQuality ns1:Kanant ;
+    owl:sameAs dbpedia:Immanuel_Kant ;
+    ns1:on ns1:issue_1 ;
+    ns1:that ns1:situation_1 .
+
+ns1:Realistic rdfs:label "realistic" ;
+    owl:sameAs dbpedia:Philosophical_realism .
+
+ns1:View rdfs:label "view" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:doubt_1 a ns1:Doubt ;
+    rdfs:label "doubts" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:about ns1:Kant .
+
+ns1:express_1 a ns1:Express ;
+    rdfs:label "expressed" ;
+    vn.role:Agent ns1:female_1 ;
+    vn.role:Theme ns1:doubt_1 .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves ns1:Fundamental,
+        ns1:FundamentalIssue,
+        ns1:Issue,
+        ns1:Realistic,
+        ns1:doubt_1,
+        ns1:express_1,
+        ns1:issue_1,
+        ns1:neuter_1 ;
+    ns1:because ns1:express_1 ;
+    ns1:for ns1:reason_1 .
+
+ns1:Issue a owl:Class ;
+    rdfs:label "issue" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> .
+
+ns1:female_1 a ns1:Female ;
+    rdfs:label "her",
+        "she" ;
+    coref:coref ns1:female_1 .
+
+ns1:issue_1 a ns1:FundamentalIssue,
+        ns1:Issue ;
+    rdfs:label "issue" ;
+    quant:hasQuantifier quant:every .
+

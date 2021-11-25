@@ -1,0 +1,184 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence317.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Location rdfs:label "for" .
+
+vn.role:Predicate rdfs:label "for" .
+
+vn.role:Recipient rdfs:label "to" .
+
+translation_coherence:nl_sentence317.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence317" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence317" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:For rdfs:label "for" .
+
+ns1:Of rdfs:label "my" .
+
+ns1:docuverse earmark:hasContent "Mr. President, I would like to thank Mrs. Schroedter for the work she's done and to explain to colleagues that I speak for my colleague, Mrs. Flautre, who followed this for the Commite Service and Social Affair."^^xsd:string .
+
+ns1:like_1 a ns1:Like ;
+    rdfs:label "like" ;
+    boxing:hasModality boxing:Necessary ;
+    dul:associatedWith ns1:President ;
+    vn.role:Experiencer ns1:person_2 ;
+    vn.role:Theme ns1:situation_1 .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> a ns1:Topic ;
+    rdfs:label "Mr." ;
+    boxer:possibleType dul:Role .
+
+ns1:Colleague rdfs:label "colleagues" .
+
+ns1:Commite_service_social_affair rdfs:label "Commite Service and Social Affair" ;
+    boxer:possibleType foaf:Organisation .
+
+ns1:Do rdfs:label "done" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Explain rdfs:label "explain" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Female rdfs:label "she" .
+
+ns1:Follow rdfs:label "followed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Like rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:President a ns1:Topic ;
+    rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Mister> ;
+    owl:sameAs dbpedia:President .
+
+ns1:Speak rdfs:label "speak" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Thank rdfs:label "thank" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Work rdfs:label "work" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:do_1 a ns1:Do ;
+    rdfs:label "done" ;
+    boxer:agent ns1:Schroedter ;
+    boxer:patient ns1:work_1 .
+
+ns1:explain_1 a ns1:Explain ;
+    rdfs:label "explain" ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Recipient ns1:colleague_1 ;
+    vn.role:Topic ns1:Flautre .
+
+ns1:follow_1 a ns1:Follow ;
+    rdfs:label "followed" ;
+    vn.role:Agent ns1:Flautre ;
+    vn.role:Location ns1:Commite_service_social_affair ;
+    vn.role:Theme ns1:thing_1 .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "my" .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasModality boxing:Necessary ;
+    boxing:involves ns1:colleague_1,
+        ns1:do_1,
+        ns1:explain_1,
+        ns1:follow_1,
+        ns1:speak_1,
+        ns1:thank_1 .
+
+ns1:speak_1 a ns1:Speak ;
+    rdfs:label "speak" ;
+    boxer:patient ns1:colleague_1 ;
+    vn.role:Agent ns1:person_3 ;
+    ns1:for ns1:colleague_1 .
+
+ns1:thank_1 a ns1:Thank ;
+    rdfs:label "thank" ;
+    vn.role:Agent ns1:person_2 ;
+    vn.role:Predicate ns1:work_1 ;
+    vn.role:Theme ns1:Schroedter .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "this" .
+
+owl:Thing rdfs:label "this" .
+
+ns1:Flautre rdfs:label "Flautre" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis> ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis> ;
+    owl:sameAs dbpedia:Hélène_Flautre .
+
+ns1:Schroedter rdfs:label "Schroedter" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis> ;
+    dul:hasQuality ns1:Female ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis> .
+
+ns1:Topic rdfs:label "Mr.",
+        "President" .
+
+ns1:work_1 a ns1:Work ;
+    rdfs:label "work" ;
+    quant:hasDeterminer quant:the .
+
+ns1:Person rdfs:label "I" .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "I" .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#Missis> rdfs:label "Mrs." ;
+    boxer:possibleType dul:Role .
+
+ns1:colleague_1 a ns1:Colleague ;
+    rdfs:label "colleagues" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:colleagueOf ns1:person_1 .
+

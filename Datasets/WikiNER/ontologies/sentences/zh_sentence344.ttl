@@ -1,0 +1,98 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence344.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence344" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence344" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+<https://w3id.org/stlab/ke/amiala/zh_sentence344.ttl/docuverse> earmark:hasContent "President Bukanan and elected Presidents refused to recognize lesbianism."^^xsd:string .
+
+<https://w3id.org/stlab/ke/amiala/zh_sentence344.ttl/elect_1> a <https://w3id.org/stlab/ke/amiala/zh_sentence344.ttl/Elect> ;
+    rdfs:label "elected" ;
+    vn.role:Theme <https://w3id.org/stlab/ke/amiala/zh_sentence344.ttl/president_1> .
+
+<https://w3id.org/stlab/ke/amiala/zh_sentence344.ttl/refuse_1> a <https://w3id.org/stlab/ke/amiala/zh_sentence344.ttl/Refuse> ;
+    rdfs:label "refused" ;
+    boxer:agent <https://w3id.org/stlab/ke/amiala/zh_sentence344.ttl/Bukanan>,
+        <https://w3id.org/stlab/ke/amiala/zh_sentence344.ttl/president_1> ;
+    boxer:theme <https://w3id.org/stlab/ke/amiala/zh_sentence344.ttl/recognize_1> .
+
+<https://w3id.org/stlab/ke/amiala/zh_sentence344.ttl/Elect> rdfs:label "elected" ;
+    rdfs:subClassOf dul:Event .
+
+<https://w3id.org/stlab/ke/amiala/zh_sentence344.ttl/Lesbianism> a owl:Class ;
+    rdfs:label "lesbianism" ;
+    rdfs:subClassOf dul:Process ;
+    owl:equivalentClass dbpedia:Lesbian .
+
+<https://w3id.org/stlab/ke/amiala/zh_sentence344.ttl/President> a owl:Class ;
+    rdfs:label "Presidents" ;
+    owl:equivalentClass dbpedia:President_of_the_United_States .
+
+<https://w3id.org/stlab/ke/amiala/zh_sentence344.ttl/Recognize> rdfs:label "recognize" ;
+    rdfs:subClassOf dul:Event .
+
+<https://w3id.org/stlab/ke/amiala/zh_sentence344.ttl/Refuse> rdfs:label "refused" ;
+    rdfs:subClassOf dul:Event .
+
+<https://w3id.org/stlab/ke/amiala/zh_sentence344.ttl/lesbianism_1> a <https://w3id.org/stlab/ke/amiala/zh_sentence344.ttl/Lesbianism> ;
+    rdfs:label "lesbianism" .
+
+<https://w3id.org/stlab/ke/amiala/zh_sentence344.ttl/recognize_1> a <https://w3id.org/stlab/ke/amiala/zh_sentence344.ttl/Recognize> ;
+    rdfs:label "recognize" ;
+    vn.role:Agent <https://w3id.org/stlab/ke/amiala/zh_sentence344.ttl/Bukanan>,
+        <https://w3id.org/stlab/ke/amiala/zh_sentence344.ttl/president_1> ;
+    vn.role:Theme <https://w3id.org/stlab/ke/amiala/zh_sentence344.ttl/lesbianism_1> .
+
+<http://www.ontologydesignpatterns.org/ont/boxer/title.owl#President> rdfs:label "President" ;
+    boxer:possibleType dul:Role ;
+    owl:sameAs dbpedia:President,
+        dbpedia:President_of_the_United_States .
+
+<https://w3id.org/stlab/ke/amiala/zh_sentence344.ttl/Bukanan> rdfs:label "Bukanan" ;
+    boxer:possibleType foaf:Person ;
+    dul:associatedWith <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#President> ;
+    dul:hasRole <http://www.ontologydesignpatterns.org/ont/boxer/title.owl#President> .
+
+<https://w3id.org/stlab/ke/amiala/zh_sentence344.ttl/president_1> a <https://w3id.org/stlab/ke/amiala/zh_sentence344.ttl/President> ;
+    rdfs:label "Presidents" ;
+    quant:hasQuantifier quant:multiple .
+

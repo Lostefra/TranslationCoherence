@@ -1,0 +1,162 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence255.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Instrument rdfs:label "with" .
+
+translation_coherence:de_sentence255.ttl a owl:Ontology ;
+    rdfs:label "de_sentence255" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence255" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:During rdfs:label "during" .
+
+ns1:Just rdfs:label "just" .
+
+ns1:Of rdfs:label "my",
+        "of",
+        "your" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "President, with your approval, I would like to start with my admiration as you have done the rapid change of the Presidency just during the debate."^^xsd:string .
+
+ns1:like_1 a ns1:Like ;
+    rdfs:label "like" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Experiencer ns1:President ;
+    vn.role:Theme ns1:start_1 ;
+    ns1:with ns1:approval_1 .
+
+ns1:person_1 coref:coref ns1:person_3 .
+
+ns1:Admiration rdfs:label "admiration" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> .
+
+ns1:Approval rdfs:label "approval" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Change a owl:Class ;
+    rdfs:label "change" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Debate rdfs:label "debate" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Do rdfs:label "done" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Like rdfs:label "like" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Presidency a owl:Class ;
+    rdfs:label "Presidency" ;
+    rdfs:subClassOf dul:TimeInterval ;
+    owl:equivalentClass dbpedia:President_of_the_United_States .
+
+ns1:Rapid a owl:Class ;
+    rdfs:label "rapid" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:RapidChange a owl:Class ;
+    rdfs:label "rapid change" ;
+    dul:hasQuality ns1:Rapid ;
+    rdfs:subClassOf ns1:Change .
+
+ns1:Start rdfs:label "start" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:admiration_1 a ns1:Admiration ;
+    rdfs:label "admiration" ;
+    ns1:admirationOf ns1:person_3 .
+
+ns1:approval_1 a ns1:Approval ;
+    rdfs:label "approval" ;
+    dul:associatedWith ns1:person_3 ;
+    ns1:approvalOf ns1:person_2 .
+
+ns1:change_1 a ns1:RapidChange ;
+    rdfs:label "change" ;
+    quant:hasDeterminer quant:the ;
+    ns1:rapidChangeOf ns1:presidency_1 .
+
+ns1:debate_1 a ns1:Debate ;
+    rdfs:label "debate" ;
+    quant:hasDeterminer quant:the .
+
+ns1:do_1 a ns1:Do ;
+    rdfs:label "done" ;
+    boxer:agent ns1:person_4 ;
+    boxer:patient ns1:change_1 ;
+    ns1:justDuring ns1:debate_1 .
+
+ns1:person_2 a ns1:Person ;
+    rdfs:label "your" .
+
+ns1:person_4 a ns1:Person ;
+    rdfs:label "you" .
+
+ns1:presidency_1 a ns1:Presidency ;
+    rdfs:label "Presidency" ;
+    quant:hasDeterminer quant:the .
+
+ns1:start_1 a ns1:Start ;
+    rdfs:label "start" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Instrument ns1:admiration_1 ;
+    vn.role:Theme ns1:President ;
+    ns1:as ns1:do_1 .
+
+ns1:President rdfs:label "President" ;
+    boxer:possibleType owl:Thing ;
+    owl:sameAs dbpedia:President,
+        dbpedia:President_of_the_United_States .
+
+ns1:Person rdfs:label "I",
+        "you" .
+
+ns1:person_3 a ns1:Person ;
+    rdfs:label "I",
+        "my" .
+

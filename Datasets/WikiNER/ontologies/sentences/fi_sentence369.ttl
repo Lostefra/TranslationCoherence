@@ -1,0 +1,125 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence369.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence369.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence369" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence369" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "was" .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:To rdfs:label "to" .
+
+ns1:With rdfs:label "with" .
+
+ns1:army_1 a ns1:Army ;
+    rdfs:label "army" ;
+    dul:associatedWith ns1:shrunk_1 .
+
+ns1:confederation_1 rdfs:label "confederation" .
+
+ns1:docuverse earmark:hasContent "The confederation was uncompensated, so Lee's army shrunk with each battle and forced it back to St._Petersburg."^^xsd:string .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:battle_1,
+        ns1:force_1 ;
+    dul:hasQuality ns1:So .
+
+owl:Thing rdfs:label "it" .
+
+ns1:Battle a owl:Class ;
+    rdfs:label "battle" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Battle .
+
+ns1:Confederation rdfs:label "confederation" ;
+    rdfs:subClassOf dul:Organization,
+        ns1:ArmyShrunk .
+
+ns1:Force rdfs:label "forced" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Lee rdfs:label "Lee" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Shrunk a owl:Class ;
+    rdfs:label "shrunk" .
+
+ns1:So rdfs:label "so" .
+
+<https://w3id.org/stlab/ke/amiala/fi_sentence369.ttl/St._petersburg.> rdfs:label "St. Petersburg." ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:Uncompensated rdfs:label "uncompensated" .
+
+ns1:force_1 a ns1:Force ;
+    rdfs:label "forced" ;
+    vn.role:Agent ns1:shrunk_1 ;
+    vn.role:Patient ns1:neuter_1 ;
+    ns1:to <https://w3id.org/stlab/ke/amiala/fi_sentence369.ttl/St._petersburg.> .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "it" .
+
+ns1:Army a owl:Class ;
+    rdfs:label "army" ;
+    rdfs:subClassOf dul:Organization ;
+    owl:equivalentClass dbpedia:Army .
+
+ns1:ArmyShrunk a owl:Class ;
+    rdfs:label "army shrunk" ;
+    dul:associatedWith ns1:Army ;
+    rdfs:subClassOf ns1:Shrunk .
+
+ns1:battle_1 a ns1:Battle ;
+    rdfs:label "battle" ;
+    quant:hasQuantifier quant:each .
+
+ns1:shrunk_1 a ns1:ArmyShrunk,
+        ns1:Confederation ;
+    rdfs:label "shrunk" ;
+    dul:hasQuality ns1:Uncompensated ;
+    quant:hasDeterminer quant:the ;
+    ns1:armyShrunkOf ns1:Lee ;
+    ns1:with ns1:battle_1 .
+

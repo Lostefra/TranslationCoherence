@@ -1,0 +1,185 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix fred: <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence704.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+fred: rdfs:label ":"^^xsd:string .
+
+translation_coherence:fi_sentence704.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence704" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence704" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Cont.ctory rdfs:label "cont.ctory" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Include rdfs:label "including" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:With rdfs:label "with" .
+
+ns1:docuverse earmark:hasContent "The new generation struggled with cultural obsesi with years of war and two cont.ctory protest movements in the city: Communists, including Berber identity movements, and Islamic integ.es."^^xsd:string .
+
+ns1:identity_1 a ns1:Identity ;
+    rdfs:label "identity" ;
+    dul:associatedWith ns1:movement_2 .
+
+ns1:movement_1 rdfs:label "movements" ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:protest_1 a ns1:Protest ;
+    rdfs:label "protest" ;
+    dul:associatedWith ns1:war_1 ;
+    quant:hasQuantifier quant:two .
+
+ns1:struggle_1 a ns1:Struggle ;
+    rdfs:label "struggled" ;
+    vn.role:Actor ns1:generation_1 ;
+    ns1:in ns1:city_1 ;
+    ns1:with ns1:obsesus_1 ;
+    ns1:withYearOf ns1:war_1 .
+
+ns1:year_1 a ns1:Year ;
+    rdfs:label "years" ;
+    quant:hasQuantifier quant:multiple .
+
+dbpedia:Carole_King rdfs:subClassOf schema:MusicGroup,
+        schema:Person .
+
+ns1:Berber rdfs:label "Berber",
+        "movements" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Berbers .
+
+ns1:City a owl:Class ;
+    rdfs:label "city" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> ;
+    owl:equivalentClass dbpedia:Carole_King .
+
+ns1:Communists rdfs:label "Communists" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Communism ;
+    ns1:include ns1:movement_2 .
+
+ns1:Cont.ctoryProtestMovement rdfs:subClassOf ns1:ProtestMovement .
+
+ns1:Cultural rdfs:label "cultural" .
+
+ns1:CulturalObsesus rdfs:subClassOf ns1:Obsesus .
+
+ns1:Generation a owl:Class ;
+    rdfs:label "generation" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Identity rdfs:label "identity" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> .
+
+ns1:IdentityMovement rdfs:subClassOf ns1:Movement .
+
+<https://w3id.org/stlab/ke/amiala/fi_sentence704.ttl/Integ.es.> rdfs:label "integ.es." .
+
+ns1:Islamic rdfs:label "Islamic" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Islamism .
+
+ns1:New a owl:Class ;
+    rdfs:label "new" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:NewGeneration a owl:Class ;
+    rdfs:label "New Generation" ;
+    dul:hasQuality ns1:New ;
+    rdfs:subClassOf ns1:Generation .
+
+ns1:Obsesus rdfs:label "obsesi" .
+
+ns1:Protest rdfs:label "protest" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:ProtestMovement rdfs:subClassOf ns1:Movement .
+
+ns1:Struggle rdfs:label "struggled" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:War a owl:Class ;
+    rdfs:label "war" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:War .
+
+ns1:Year rdfs:label "years" .
+
+ns1:city_1 a ns1:City ;
+    rdfs:label "city" ;
+    boxing:declaration ns1:Communists,
+        ns1:integ.es._1 ;
+    quant:hasDeterminer quant:the .
+
+ns1:generation_1 a ns1:NewGeneration ;
+    rdfs:label "generation" ;
+    quant:hasDeterminer quant:the .
+
+ns1:integ.es._1 a <https://w3id.org/stlab/ke/amiala/fi_sentence704.ttl/Integ.es.> ;
+    rdfs:label "integ.es." ;
+    dul:associatedWith ns1:Islamic .
+
+ns1:obsesus_1 a ns1:CulturalObsesus ;
+    rdfs:label "obsesi" ;
+    dul:hasQuality ns1:Cultural ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Movement a owl:Class ;
+    rdfs:label "Berber",
+        "movements" ;
+    owl:equivalentClass dbpedia:Protest .
+
+ns1:movement_2 a ns1:IdentityMovement ;
+    rdfs:label "movements" ;
+    dul:associatedWith ns1:Berber ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:war_1 a ns1:Cont.ctoryProtestMovement,
+        ns1:War ;
+    rdfs:label "war" ;
+    dul:hasDataValue "2"^^xsd:nonNegativeInteger .
+

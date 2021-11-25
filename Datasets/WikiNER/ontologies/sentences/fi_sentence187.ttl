@@ -1,0 +1,149 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence187.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:fi_sentence187.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence187" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence187" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:From rdfs:label "from" .
+
+ns1:Of rdfs:label "'s",
+        "his",
+        "of" .
+
+ns1:Until rdfs:label "until" .
+
+ns1:compete_1 a ns1:Compete ;
+    rdfs:label "competing" ;
+    vn.role:Actor ns1:Poseidon,
+        ns1:Zeus ;
+    ns1:from ns1:hand_1 ;
+    ns1:until ns1:Prometheus .
+
+ns1:docuverse earmark:hasContent "Zeus and Poseidon had been competing from the hand of Thet until Prometheus, a firefighter, warned Zeus of the prophecy that Thetis would bear his father's son."^^xsd:string .
+
+ns1:male_1 rdfs:label "his" .
+
+ns1:warn_1 a ns1:Warn ;
+    rdfs:label "warned" ;
+    vn.role:Agent ns1:firefighter_1 ;
+    vn.role:Recipient ns1:Zeus ;
+    vn.role:Topic ns1:bear_1 .
+
+ns1:Bear rdfs:label "bear" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Compete rdfs:label "competing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Father rdfs:label "father" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Firefighter a owl:Class ;
+    rdfs:label "firefighter" ;
+    rdfs:subClassOf dul:Person ;
+    owl:equivalentClass dbpedia:Firefighter .
+
+ns1:Hand rdfs:label "hand" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Male rdfs:label "Thetis" .
+
+ns1:Poseidon rdfs:label "Poseidon" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Poseidon .
+
+ns1:Prometheus rdfs:label "Prometheus" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> ;
+    owl:sameAs dbpedia:Prometheus .
+
+ns1:Prophecy a owl:Class ;
+    rdfs:label "prophecy" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#CognitiveEntity> ;
+    owl:equivalentClass dbpedia:Prophecy .
+
+ns1:Son rdfs:label "son" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Thet rdfs:label "Thet" ;
+    boxer:possibleType owl:Thing .
+
+ns1:Warn rdfs:label "warned" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:bear_1 a ns1:Bear ;
+    rdfs:label "bear" ;
+    boxing:hasModality boxing:Necessary ;
+    vn.role:Experiencer ns1:Thetis ;
+    vn.role:Theme ns1:son_1 .
+
+ns1:father_1 a ns1:Father ;
+    rdfs:label "father" ;
+    ns1:fatherOf ns1:Thetis .
+
+ns1:firefighter_1 a ns1:Firefighter ;
+    rdfs:label "firefighter" ;
+    quant:hasDeterminer quant:a .
+
+ns1:hand_1 a ns1:Hand ;
+    rdfs:label "hand" ;
+    quant:hasDeterminer quant:the ;
+    ns1:handOf ns1:Thet .
+
+ns1:prophecy_1 a ns1:Prophecy ;
+    rdfs:label "prophecy" ;
+    quant:hasDeterminer quant:the .
+
+ns1:son_1 a ns1:Son ;
+    rdfs:label "son" ;
+    ns1:sonOf ns1:father_1 .
+
+ns1:Thetis a ns1:Male ;
+    rdfs:label "Thetis" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Thetis .
+
+ns1:Zeus rdfs:label "Zeus" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Zeus ;
+    ns1:of ns1:prophecy_1 .
+

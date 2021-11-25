@@ -1,0 +1,175 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/nl_sentence632.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Beneficiary rdfs:label "for" .
+
+vn.role:Patient2 rdfs:label "with" .
+
+translation_coherence:nl_sentence632.ttl a owl:Ontology ;
+    rdfs:label "nl_sentence632" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "nl_sentence632" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:If rdfs:label "if" .
+
+ns1:Theme rdfs:label "necessary" .
+
+ns1:achieve_1 a ns1:Achieve ;
+    rdfs:label "achieved" ;
+    boxing:hasModality boxing:Possible ;
+    dul:associatedWith ns1:return_1 ;
+    vn.role:Theme ns1:connect_1 ;
+    ns1:achieveBy ns1:get_1 .
+
+ns1:docuverse earmark:hasContent "By getting them developed tailor plans for the relevant regions and if necessary, connecting this with financial help can be achieved a higher return."^^xsd:string .
+
+ns1:tailor_1 a ns1:Tailor ;
+    rdfs:label "tailor" ;
+    dul:associatedWith ns1:plan_1 .
+
+ns1:Achieve rdfs:label "achieved" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Connect rdfs:label "connecting" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Develop rdfs:label "developed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Financial a owl:Class ;
+    rdfs:label "financial" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:FinancialHelp a owl:Class ;
+    rdfs:label "financial help" ;
+    dul:hasQuality ns1:Financial ;
+    rdfs:subClassOf ns1:Help .
+
+ns1:Get rdfs:label "getting" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Help a owl:Class ;
+    rdfs:label "help" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> .
+
+ns1:Higher a owl:Class ;
+    rdfs:label "higher" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:HigherReturn a owl:Class ;
+    rdfs:label "higher return" ;
+    dul:hasQuality ns1:Higher ;
+    rdfs:subClassOf ns1:Return .
+
+ns1:Plan rdfs:label "plans" .
+
+ns1:Region rdfs:label "regions" .
+
+ns1:Relevant rdfs:label "relevant" .
+
+ns1:RelevantRegion rdfs:subClassOf ns1:Region .
+
+ns1:Return a owl:Class ;
+    rdfs:label "return" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Tailor rdfs:label "tailor" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:TailorPlan rdfs:subClassOf ns1:Plan .
+
+ns1:connect_1 a ns1:Connect ;
+    rdfs:label "connecting" ;
+    boxing:hasModality boxing:Possible ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Patient1 ns1:thing_1 ;
+    vn.role:Patient2 ns1:help_1 .
+
+ns1:develop_1 a ns1:Develop ;
+    rdfs:label "developed" ;
+    vn.role:Agent ns1:thing_5 ;
+    vn.role:Beneficiary ns1:region_1 ;
+    vn.role:Product ns1:plan_1 ;
+    ns1:if ns1:thing_2 .
+
+ns1:get_1 a ns1:Get ;
+    rdfs:label "getting" ;
+    vn.role:Agent ns1:thing_4 ;
+    vn.role:Theme ns1:situation_1 .
+
+ns1:help_1 a ns1:FinancialHelp ;
+    rdfs:label "help" ;
+    quant:hasDeterminer quant:this .
+
+ns1:region_1 a ns1:RelevantRegion ;
+    rdfs:label "regions" ;
+    dul:hasQuality ns1:Relevant ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:return_1 a ns1:HigherReturn ;
+    rdfs:label "return" ;
+    quant:hasDeterminer quant:a .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:develop_1,
+        ns1:plan_1 .
+
+ns1:thing_2 a owl:Thing ;
+    boxer:theme ns1:thing_3 .
+
+ns1:thing_3 a owl:Thing .
+
+ns1:thing_4 a owl:Thing ;
+    rdfs:label "By" .
+
+ns1:thing_5 a owl:Thing ;
+    rdfs:label "them" .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:plan_1 a ns1:TailorPlan ;
+    rdfs:label "plans" ;
+    quant:hasQuantifier quant:multiple .
+
+owl:Thing rdfs:label "By",
+        "them" .
+

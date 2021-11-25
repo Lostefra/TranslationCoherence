@@ -1,0 +1,210 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/ko_sentence402.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:ko_sentence402.ttl a owl:Ontology ;
+    rdfs:label "ko_sentence402" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "ko_sentence402" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:As rdfs:label "as" .
+
+ns1:Noteq rdfs:label "previous" .
+
+ns1:Of rdfs:label "his" .
+
+ns1:To rdfs:label "to" .
+
+ns1:appeal_1 a ns1:Appeal ;
+    rdfs:label "appealing" ;
+    boxer:patient ns1:remedy_1 ;
+    vn.role:Cause ns1:strategy_1 .
+
+ns1:docuverse earmark:hasContent "I think that, giving his previous experience as a local president, and he agrees to propagating indicators, and strategy is not just productivity, appealing economic and social remedies."^^xsd:string .
+
+ns1:productivity_1 rdfs:label "productivity" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:hasTruthValue boxing:False ;
+    boxing:involves ns1:Just,
+        ns1:JustProductivity,
+        ns1:Productivity,
+        ns1:strategy_1 .
+
+ns1:think_1 a ns1:Think ;
+    rdfs:label "think" ;
+    vn.role:Agent ns1:person_1 ;
+    vn.role:Theme ns1:situation_2 .
+
+ns1:Appeal rdfs:label "appealing" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Economic rdfs:label "economic" ;
+    owl:sameAs dbpedia:Economy .
+
+ns1:Give rdfs:label "giving" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Indicator rdfs:label "indicators" .
+
+ns1:LocalPresident a owl:Class ;
+    rdfs:label "Local President" ;
+    dul:hasQuality ns1:Local ;
+    rdfs:subClassOf ns1:President .
+
+ns1:Person rdfs:label "I" .
+
+ns1:President a owl:Class ;
+    rdfs:label "president" ;
+    rdfs:subClassOf dul:Person .
+
+ns1:Propagate rdfs:label "propagating" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Remedy rdfs:label "remedies" .
+
+ns1:Social rdfs:label "social" ;
+    owl:sameAs dbpedia:Social_science .
+
+ns1:SocialRemedy rdfs:subClassOf ns1:Remedy .
+
+ns1:Strategy a owl:Class ;
+    rdfs:label "strategy" ;
+    rdfs:subClassOf dul:Description ;
+    owl:equivalentClass dbpedia:Strategy .
+
+ns1:Think rdfs:label "think" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:agree_1 a ns1:Agree ;
+    vn.role:Actor ns1:give_1 ;
+    vn.role:Agent ns1:thing_2 ;
+    vn.role:Patient ns1:indicator_1 ;
+    ns1:to ns1:thing_3 .
+
+ns1:agree_2 a ns1:Agree ;
+    rdfs:label "agrees" ;
+    vn.role:Actor ns1:male_1 ;
+    ns1:to ns1:thing_2 .
+
+ns1:experience_1 a ns1:Experience ;
+    rdfs:label "previous" ;
+    owl:differentFrom ns1:experience_2 ;
+    ns1:experienceOf ns1:male_1 .
+
+ns1:experience_2 a ns1:Experience ;
+    rdfs:label "experience" .
+
+ns1:person_1 a ns1:Person ;
+    rdfs:label "I" .
+
+ns1:propagate_1 a ns1:Propagate ;
+    rdfs:label "propagating" ;
+    vn.role:Agent ns1:thing_3 ;
+    vn.role:Patient ns1:indicator_1 .
+
+ns1:remedy_1 a ns1:SocialRemedy ;
+    rdfs:label "remedies" ;
+    dul:hasQuality ns1:Economic,
+        ns1:Social ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:situation_2 a ns1:Situation ;
+    boxing:involves ns1:agree_1,
+        ns1:agree_2,
+        ns1:give_1,
+        ns1:indicator_1,
+        ns1:president_1,
+        ns1:propagate_1,
+        ns1:thing_1 .
+
+ns1:Agree rdfs:label "agrees" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Experience rdfs:label "experience",
+        "previous" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Just a owl:Class ;
+    rdfs:label "just" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:JustProductivity a owl:Class ;
+    rdfs:label "just productivity" ;
+    dul:hasQuality ns1:Just ;
+    rdfs:subClassOf ns1:Productivity .
+
+ns1:Local a owl:Class ;
+    rdfs:label "local" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:Productivity a owl:Class ;
+    rdfs:label "productivity" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Productivity .
+
+ns1:give_1 a ns1:Give ;
+    rdfs:label "giving" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Theme ns1:experience_1 ;
+    ns1:as ns1:president_1 .
+
+ns1:male_1 a ns1:Male ;
+    rdfs:label "his" .
+
+ns1:president_1 a ns1:LocalPresident ;
+    rdfs:label "president" ;
+    dul:hasQuality ns1:Local ;
+    quant:hasDeterminer quant:a .
+
+ns1:strategy_1 a ns1:JustProductivity,
+        ns1:Strategy ;
+    rdfs:label "strategy" .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:thing_2 a owl:Thing .
+
+ns1:thing_3 a owl:Thing .
+
+ns1:indicator_1 a ns1:Indicator ;
+    rdfs:label "indicators" ;
+    quant:hasQuantifier quant:multiple .
+

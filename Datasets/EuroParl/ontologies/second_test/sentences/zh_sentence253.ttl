@@ -1,0 +1,104 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence253.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:zh_sentence253.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence253" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence253" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Be rdfs:label "is" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Theme rdfs:label "necessary" .
+
+ns1:docuverse earmark:hasContent "It is necessary to maintain safety standards in the northern regions before."^^xsd:string .
+
+ns1:maintain_1 a ns1:Maintain ;
+    rdfs:label "maintain" ;
+    dul:hasQuality ns1:Before ;
+    vn.role:Agent ns1:neuter_1 ;
+    vn.role:Theme ns1:standard_1 ;
+    ns1:be ns1:thing_1 .
+
+ns1:safety_1 a ns1:Safety ;
+    rdfs:label "safety" ;
+    dul:associatedWith ns1:standard_1 .
+
+ns1:Before rdfs:label "before" .
+
+ns1:Maintain rdfs:label "maintain" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Northern rdfs:label "northern" .
+
+ns1:NorthernRegion rdfs:subClassOf ns1:Region .
+
+ns1:Region rdfs:label "regions" .
+
+ns1:Safety rdfs:label "safety" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:SafetyStandard rdfs:subClassOf ns1:Standard .
+
+ns1:Standard rdfs:label "standards" .
+
+ns1:neuter_1 a owl:Thing ;
+    rdfs:label "It" .
+
+ns1:region_1 a ns1:NorthernRegion ;
+    rdfs:label "regions" ;
+    dul:hasQuality ns1:Northern ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:thing_1 a owl:Thing ;
+    boxer:theme ns1:thing_2 .
+
+ns1:thing_2 a owl:Thing .
+
+ns1:standard_1 a ns1:SafetyStandard ;
+    rdfs:label "standards" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:region_1 .
+
+owl:Thing rdfs:label "It" .
+

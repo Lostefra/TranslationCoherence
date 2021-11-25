@@ -1,0 +1,133 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence625.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+foaf:Person rdfs:label "per" .
+
+translation_coherence:it_sentence625.ttl a owl:Ontology ;
+    rdfs:label "it_sentence625" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence625" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "of" .
+
+ns1:docuverse earmark:hasContent "Promoting a diversity of investment, the European_Union strives to increase GDP per head and increase employment."^^xsd:string .
+
+ns1:promote_1 a ns1:Promote ;
+    rdfs:label "Promoting" ;
+    vn.role:Agent ns1:thing_1 ;
+    vn.role:Theme ns1:diversity_1 .
+
+ns1:strive_1 a ns1:Strive ;
+    rdfs:label "strives" ;
+    boxer:agent ns1:European_union ;
+    boxer:theme ns1:situation_1 .
+
+ns1:Diversity a owl:Class ;
+    rdfs:label "diversity" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> ;
+    owl:equivalentClass dbpedia:Multiculturalism .
+
+ns1:Employment a owl:Class ;
+    rdfs:label "employment" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Employment .
+
+ns1:Gdp rdfs:label "GDP" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Gross_domestic_product ;
+    ns1:per ns1:head_1 .
+
+ns1:Head a owl:Class ;
+    rdfs:label "head" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Gross_domestic_product .
+
+ns1:Investment a owl:Class ;
+    rdfs:label "investment" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Investment .
+
+ns1:Promote rdfs:label "Promoting" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Strive rdfs:label "strives" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:diversity_1 a ns1:Diversity ;
+    rdfs:label "diversity" ;
+    quant:hasDeterminer quant:a ;
+    ns1:diversityOf ns1:investment_1 .
+
+ns1:increase_1 a ns1:Increase ;
+    rdfs:label "increase" ;
+    vn.role:Agent ns1:European_union ;
+    vn.role:Patient ns1:Gdp,
+        ns1:increase_2 .
+
+ns1:investment_1 a ns1:Investment ;
+    rdfs:label "investment" .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:employment_1,
+        ns1:head_1,
+        ns1:increase_1,
+        ns1:increase_2 .
+
+ns1:thing_1 a owl:Thing .
+
+ns1:European_union rdfs:label "European Union" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:European_Union .
+
+ns1:Increase rdfs:label "increase" ;
+    rdfs:subClassOf dul:Amount,
+        dul:Event .
+
+ns1:employment_1 a ns1:Employment ;
+    rdfs:label "employment" .
+
+ns1:head_1 a ns1:Head ;
+    rdfs:label "head" .
+
+ns1:increase_2 a ns1:Increase ;
+    rdfs:label "increase" ;
+    dul:associatedWith ns1:employment_1 .
+

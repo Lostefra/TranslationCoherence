@@ -1,0 +1,128 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/zh_sentence585.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Patient2 rdfs:label "from" .
+
+vn.role:Topic rdfs:label "about" .
+
+translation_coherence:zh_sentence585.ttl a owl:Ontology ;
+    rdfs:label "zh_sentence585" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "zh_sentence585" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Although rdfs:label "Although" .
+
+ns1:Noteq rdfs:label "other" .
+
+ns1:agent_1 rdfs:label "agent" .
+
+ns1:content_2 rdfs:label "content" .
+
+ns1:docuverse earmark:hasContent "Although she had used the Rand screen to be separated from the minor alterations, she had complained about editorial, agent and other content."^^xsd:string .
+
+ns1:use_1 a ns1:Use ;
+    rdfs:label "used" ;
+    boxer:theme ns1:separate_1 ;
+    vn.role:Agent ns1:female_1 ;
+    vn.role:Theme ns1:screen_1 ;
+    ns1:although ns1:complain_1 .
+
+ns1:Agent rdfs:label "agent" ;
+    rdfs:subClassOf owl:Thing .
+
+ns1:Alteration rdfs:label "alterations" .
+
+ns1:Complain rdfs:label "complained" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Content rdfs:label "content" ;
+    rdfs:subClassOf dul:Collection .
+
+ns1:Editorial rdfs:label "editorial" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Female rdfs:label "she" .
+
+ns1:Minor rdfs:label "minor" .
+
+ns1:MinorAlteration rdfs:subClassOf ns1:Alteration .
+
+ns1:Rand rdfs:label "Rand" ;
+    boxer:possibleType foaf:Person .
+
+ns1:Screen rdfs:label "screen" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Separate rdfs:label "separated" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Use rdfs:label "used" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:alteration_1 a ns1:MinorAlteration ;
+    rdfs:label "alterations" ;
+    dul:hasQuality ns1:Minor ;
+    quant:hasDeterminer quant:the ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:complain_1 a ns1:Complain ;
+    rdfs:label "complained" ;
+    vn.role:Agent ns1:female_1 ;
+    vn.role:Topic ns1:editorial_1 .
+
+ns1:editorial_1 a ns1:Agent,
+        ns1:Content,
+        ns1:Editorial ;
+    rdfs:label "editorial" ;
+    quant:hasDeterminer quant:other .
+
+ns1:screen_1 a ns1:Screen ;
+    rdfs:label "screen" ;
+    dul:associatedWith ns1:Rand .
+
+ns1:separate_1 a ns1:Separate ;
+    rdfs:label "separated" ;
+    vn.role:Patient1 ns1:female_1 ;
+    vn.role:Patient2 ns1:alteration_1 .
+
+ns1:female_1 a ns1:Female ;
+    rdfs:label "she" .
+

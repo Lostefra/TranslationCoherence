@@ -1,0 +1,137 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/en_sentence632.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vn.role:Predicate rdfs:label "in" .
+
+translation_coherence:en_sentence632.ttl a owl:Ontology ;
+    rdfs:label "en_sentence632" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "en_sentence632" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:About rdfs:label "about" .
+
+ns1:Few rdfs:label "few" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "'s",
+        "her",
+        "of" .
+
+ns1:Quantity rdfs:label "many" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:To rdfs:label "to" .
+
+ns1:appear_1 a ns1:Appear ;
+    rdfs:label "appeared" ;
+    vn.role:Predicate ns1:journal_1 ;
+    vn.role:Theme ns1:article_1 ;
+    ns1:to ns1:death_1 .
+
+ns1:docuverse earmark:hasContent "A few articles about Rand 's ideas appeared in academic journals prior to her death in 1982, many of them in The Personalist."^^xsd:string .
+
+ns1:female_1 rdfs:label "her" .
+
+ns1:personalist_1 a ns1:Personalist ;
+    rdfs:label "Personalist" ;
+    quant:hasDeterminer quant:the .
+
+ns1:thing_1 a owl:Thing ;
+    rdfs:label "them" .
+
+dbpedia:Ayn_Rand a schema:Person .
+
+owl:Thing rdfs:label "them" .
+
+ns1:Academic rdfs:label "academic" .
+
+ns1:AcademicJournal rdfs:subClassOf ns1:Journal .
+
+ns1:Appear rdfs:label "appeared" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Article rdfs:label "articles" .
+
+ns1:Death rdfs:label "death" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Event> .
+
+ns1:Female rdfs:label "Rand" .
+
+ns1:FewArticle rdfs:subClassOf ns1:Article .
+
+ns1:Idea rdfs:label "ideas" .
+
+ns1:Journal rdfs:label "journals" .
+
+ns1:Personalist a owl:Class ;
+    rdfs:label "Personalist" ;
+    owl:equivalentClass dbpedia:Personalism .
+
+ns1:article_1 a ns1:FewArticle ;
+    rdfs:label "articles" ;
+    quant:hasDeterminer quant:a ;
+    quant:hasQuantifier quant:few,
+        quant:multiple ;
+    ns1:about ns1:idea_1 .
+
+ns1:death_1 a ns1:Death ;
+    rdfs:label "death" ;
+    ns1:deathOf ns1:Rand ;
+    ns1:in "1982-01-01"^^xsd:date .
+
+ns1:idea_1 a dbpedia:Idea,
+        ns1:Idea ;
+    rdfs:label "ideas" ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:ideaOf ns1:Rand .
+
+ns1:journal_1 a ns1:AcademicJournal ;
+    rdfs:label "journals" ;
+    dul:hasQuality ns1:Academic ;
+    quant:hasQuantifier quant:multiple .
+
+ns1:Rand a ns1:Female ;
+    rdfs:label "Rand" ;
+    boxer:possibleType foaf:Person ;
+    owl:sameAs dbpedia:Ayn_Rand .
+

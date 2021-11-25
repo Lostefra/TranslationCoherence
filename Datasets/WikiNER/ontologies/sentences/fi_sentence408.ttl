@@ -1,0 +1,177 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/fi_sentence408.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:hasDataValue a owl:DataTypeProperty .
+
+<http://www.ontologydesignpatterns.org/ont/fred/domain.owl#%2C> rdfs:label "," .
+
+vn.role:Location rdfs:label "into" .
+
+translation_coherence:fi_sentence408.ttl a owl:Ontology ;
+    rdfs:label "fi_sentence408" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "fi_sentence408" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Of rdfs:label "'s" .
+
+ns1:On rdfs:label "on" .
+
+ns1:Quantity_44_1 rdfs:label "44" ;
+    dul:associatedWith ns1:ro_1 .
+
+ns1:Rel rdfs:label "(" .
+
+ns1:When rdfs:label "When" .
+
+ns1:begin_1 a ns1:Begin ;
+    rdfs:label "began" ;
+    vn.role:Theme ns1:laughter_1 ;
+    ns1:when ns1:situation_1 .
+
+ns1:caliber_1 rdfs:label "caliber" .
+
+ns1:docuverse earmark:hasContent "When laughter began, Booth jumped into the box and designed a single shot, a ro. .44 caliber (11mm) on Deringer's head."^^xsd:string .
+
+ns1:head_1 a ns1:Head ;
+    rdfs:label "head" .
+
+ns1:quantity_44_1 a ns1:quantity_1 .
+
+ns1:11mm rdfs:label "11mm" .
+
+ns1:44Caliber a owl:Class ;
+    rdfs:label "44 Caliber" ;
+    rdfs:subClassOf ns1:Caliber ;
+    owl:equivalentClass <http://dbpedia.org/resource/.44_Magnum> .
+
+ns1:Begin rdfs:label "began" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Box a owl:Class ;
+    rdfs:label "box" ;
+    rdfs:subClassOf dul:PhysicalObject ;
+    owl:equivalentClass dbpedia:Magazine_(firearms) .
+
+ns1:Caliber a owl:Class ;
+    rdfs:label "caliber" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic>,
+        dul:Amount ;
+    owl:equivalentClass dbpedia:Caliber .
+
+ns1:Deringer rdfs:label "Deringer" ;
+    boxer:possibleType time:Interval ;
+    owl:sameAs dbpedia:Henry_Deringer .
+
+ns1:Design rdfs:label "designed" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Head rdfs:label "head" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Jump rdfs:label "jumped" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Laughter rdfs:label "laughter" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Ro rdfs:label "ro" ;
+    rdfs:subClassOf dul:InformationEntity .
+
+ns1:Shot a owl:Class ;
+    rdfs:label "shot" ;
+    rdfs:subClassOf dul:PhysicalObject .
+
+ns1:Single a owl:Class ;
+    rdfs:label "single" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:SingleShot a owl:Class ;
+    rdfs:label "single shot" ;
+    dul:hasQuality ns1:Single ;
+    rdfs:subClassOf ns1:Shot ;
+    owl:equivalentClass dbpedia:Single-shot .
+
+ns1:box_1 a ns1:Box ;
+    rdfs:label "box" ;
+    quant:hasDeterminer quant:the .
+
+ns1:design_1 a ns1:Design ;
+    rdfs:label "designed" ;
+    dul:associatedWith ns1:ro_1 ;
+    vn.role:Agent ns1:Booth ;
+    vn.role:Product ns1:shot_1 ;
+    ns1:onHeadOf ns1:Deringer .
+
+ns1:jump_1 a ns1:Jump ;
+    rdfs:label "jumped" ;
+    vn.role:Location ns1:box_1 ;
+    vn.role:Theme ns1:Booth .
+
+ns1:laughter_1 a ns1:Laughter ;
+    rdfs:label "laughter" .
+
+ns1:quantity_1 dul:hasDataValue "44"^^xsd:nonNegativeInteger .
+
+ns1:situation_1 a ns1:Situation ;
+    boxing:involves ns1:11mm_1,
+        ns1:design_1,
+        ns1:jump_1,
+        ns1:ro_1,
+        ns1:shot_1 .
+
+"44"^^xsd:nonNegativeInteger rdfs:label "44" .
+
+ns1:11mm_1 a ns1:11mm ;
+    rdfs:label "11mm" .
+
+ns1:Booth rdfs:label "Booth" ;
+    boxer:possibleType <http://dbpedia.org/ontology/Place> .
+
+ns1:shot_1 a ns1:SingleShot ;
+    rdfs:label "shot" ;
+    quant:hasDeterminer quant:a .
+
+ns1:ro_1 a ns1:44Caliber,
+        ns1:Ro ;
+    rdfs:label "ro" ;
+    dul:associatedWith ns1:11mm_1 ;
+    quant:hasDeterminer quant:a .
+

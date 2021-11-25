@@ -1,0 +1,189 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/it_sentence74.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+translation_coherence:it_sentence74.ttl a owl:Ontology ;
+    rdfs:label "it_sentence74" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "it_sentence74" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:After rdfs:label "After" .
+
+ns1:As rdfs:label "as" .
+
+ns1:From rdfs:label "from" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Of rdfs:label "of" .
+
+ns1:Rel rdfs:label "," .
+
+ns1:To rdfs:label "to" .
+
+ns1:docuverse earmark:hasContent "After World_War_II, Alabama experienced growth as the economy of the transition state from agriculture to diversified interests in heavy production, mining, education and technology."^^xsd:string .
+
+ns1:experience_1 a ns1:Experience ;
+    rdfs:label "experienced" ;
+    vn.role:Experiencer ns1:Alabama ;
+    vn.role:Stimulus ns1:growth_1 ;
+    ns1:after ns1:World_war_ii .
+
+ns1:transition_1 a ns1:Transition ;
+    rdfs:label "transition" ;
+    dul:associatedWith ns1:state_1 ;
+    quant:hasDeterminer quant:the .
+
+dbpedia:Alabama a schema:AdministrativeArea,
+        schema:Place .
+
+ns1:Agriculture a owl:Class ;
+    rdfs:label "agriculture" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Agriculture .
+
+ns1:Alabama rdfs:label "Alabama" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Alabama .
+
+ns1:Diversified rdfs:label "diversified" .
+
+ns1:DiversifiedInterest rdfs:subClassOf ns1:Interest .
+
+ns1:Economy a owl:Class ;
+    rdfs:label "economy" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#System> ;
+    owl:equivalentClass dbpedia:Economy .
+
+ns1:Education a owl:Class ;
+    rdfs:label "education" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Education .
+
+ns1:Experience rdfs:label "experienced" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Growth a owl:Class ;
+    rdfs:label "growth" ;
+    rdfs:subClassOf dul:Process ;
+    owl:equivalentClass dbpedia:Economic_growth .
+
+ns1:Heavy a owl:Class ;
+    rdfs:label "heavy" ;
+    rdfs:subClassOf dul:Quality .
+
+ns1:HeavyProduction a owl:Class ;
+    rdfs:label "Heavy Production" ;
+    dul:hasQuality ns1:Heavy ;
+    rdfs:subClassOf ns1:Production .
+
+ns1:Interest rdfs:label "interests" .
+
+ns1:Mining a owl:Class ;
+    rdfs:label "mining" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#System> ;
+    owl:equivalentClass dbpedia:Mining .
+
+ns1:Production a owl:Class ;
+    rdfs:label "production" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Manufacturing .
+
+ns1:State a owl:Class ;
+    rdfs:label "state" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Location> .
+
+ns1:Technology a owl:Class ;
+    rdfs:label "technology" ;
+    rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> ;
+    owl:equivalentClass dbpedia:Technology .
+
+ns1:TransitionState a owl:Class ;
+    rdfs:label "transition state" ;
+    dul:associatedWith ns1:Transition ;
+    rdfs:subClassOf ns1:State ;
+    owl:equivalentClass dbpedia:Transition_state .
+
+ns1:World_war_ii rdfs:label "World War II" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:World_War_II .
+
+ns1:agriculture_1 a ns1:Agriculture ;
+    rdfs:label "agriculture" .
+
+ns1:economy_1 a ns1:Economy ;
+    rdfs:label "economy" ;
+    dul:associatedWith ns1:mining_1 ;
+    quant:hasDeterminer quant:the ;
+    ns1:economyOf ns1:state_1 .
+
+ns1:education_1 a ns1:Education ;
+    rdfs:label "education" .
+
+ns1:growth_1 a ns1:Growth ;
+    rdfs:label "growth" ;
+    ns1:as ns1:economy_1 .
+
+ns1:interest_1 a ns1:DiversifiedInterest ;
+    rdfs:label "interests" ;
+    dul:hasQuality ns1:Diversified ;
+    quant:hasQuantifier quant:multiple ;
+    ns1:in ns1:production_1 .
+
+ns1:mining_1 a ns1:Mining ;
+    rdfs:label "mining" ;
+    dul:associatedWith ns1:education_1,
+        ns1:technology_1 .
+
+ns1:production_1 a ns1:HeavyProduction ;
+    rdfs:label "production" .
+
+ns1:technology_1 a ns1:Technology ;
+    rdfs:label "technology" .
+
+ns1:Transition a owl:Class ;
+    rdfs:label "transition" ;
+    rdfs:subClassOf dul:Situation .
+
+ns1:state_1 a ns1:TransitionState ;
+    rdfs:label "state" ;
+    ns1:from ns1:agriculture_1 ;
+    ns1:to ns1:interest_1 .
+

@@ -1,0 +1,97 @@
+@prefix boxer: <http://www.ontologydesignpatterns.org/ont/boxer/boxer.owl#> .
+@prefix boxing: <http://www.ontologydesignpatterns.org/ont/boxer/boxing.owl#> .
+@prefix coref: <http://www.ontologydesignpatterns.org/ont/cnlp/coref.owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix fred: <http://www.ontologydesignpatterns.org/ont/fred/domain.owl#> .
+@prefix ns1: <https://w3id.org/stlab/ke/amiala/de_sentence15.ttl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quant: <http://www.ontologydesignpatterns.org/ont/fred/quantifiers.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix translation_coherence: <https://w3id.org/stlab/ke/amiala/> .
+@prefix vn.role: <http://www.ontologydesignpatterns.org/ont/vn/abox/role/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fred: rdfs:label ":"^^xsd:string .
+
+translation_coherence:de_sentence15.ttl a owl:Ontology ;
+    rdfs:label "de_sentence15" ;
+    dc:creator "Andrea Lavista",
+        "Lorenzo Mario Amorosa",
+        "Michele Iannello" ;
+    dc:description "None" ;
+    dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dc:title "de_sentence15" ;
+    dct:issued "2021-08-13" ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dct:modified "2021-11-17" ;
+    rdfs:comment "None" ;
+    owl:imports dbpedia:,
+        schema:,
+        boxer:,
+        boxing:,
+        coref:,
+        dul:,
+        quant:,
+        vn.role:,
+        rdf:,
+        rdfs:,
+        owl:,
+        time:,
+        foaf: .
+
+ns1:Eq rdfs:label "was" .
+
+ns1:In rdfs:label "in" .
+
+ns1:Rel rdfs:label "(" .
+
+ns1:docuverse earmark:hasContent "The most successful was the Confederacion Nacional del Trabajo (National Labour Confederation: CNT), which was founded in the year 1968."^^xsd:string .
+
+ns1:found_1 a ns1:Found ;
+    rdfs:label "founded" ;
+    vn.role:Theme ns1:Confederacion_nacional_del_trabajo ;
+    ns1:in "1968-01-01"^^xsd:date .
+
+ns1:successful_1 rdfs:label "successful" .
+
+ns1:year_1 a ns1:Year ;
+    rdfs:label "year" ;
+    quant:hasDeterminer quant:the ;
+    ns1:at "1968-01-01"^^xsd:date .
+
+ns1:Cnt rdfs:label "CNT" ;
+    boxer:possibleType foaf:Organisation ;
+    owl:sameAs dbpedia:Confederación_Nacional_del_Trabajo .
+
+ns1:Confederacion_nacional_del_trabajo a ns1:MostSuccessful ;
+    rdfs:label "Confederacion Nacional del Trabajo" ;
+    boxer:possibleType foaf:Organisation ;
+    dul:associatedWith ns1:National_labour_confederation ;
+    dul:hasQuality ns1:Most ;
+    owl:sameAs dbpedia:Confederación_Nacional_del_Trabajo .
+
+ns1:Found rdfs:label "founded" ;
+    rdfs:subClassOf dul:Event .
+
+ns1:Most rdfs:label "most" .
+
+ns1:MostSuccessful rdfs:label "most successful" ;
+    rdfs:subClassOf ns1:Successful .
+
+ns1:National_labour_confederation rdfs:label "National Labour Confederation" ;
+    boxer:possibleType foaf:Organisation ;
+    boxing:declaration ns1:Cnt .
+
+ns1:Successful rdfs:label "successful" .
+
+ns1:Year rdfs:label "year" ;
+    rdfs:subClassOf dul:TimeInterval .
+
